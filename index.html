@@ -10,18 +10,28 @@
 		box-sizing: border-box;
 		margin: 0;
 		padding: 0;
+		color: #fff;
+		font-family: monospace;
+		font-size: 20px;
 	}
 
 	body {
-		background: #000;
-		color: #fff;
-		font-family: monospace;
-		max-width: 350px;
+		position: relative;
 		margin: 0 auto;
-		border: 1px solid gold;
-		border-radius: 20px;
-		font-size: 20px;
-		padding: 24px;
+		width: 393px;
+		height: 855px;
+		padding: 17px 27px;
+		background: url("glass.png"), url("circle.png"), url("background.png");
+		background-size: cover, 517px 517px, cover;
+		background-position: center, center 570px, center;
+		background-repeat: no-repeat, no-repeat, repeat;
+	}
+
+	main {
+		width: 100%;
+		height: 100%;
+		background: no-repeat center center;
+		background-size: 100vw;
 	}
 
 	h1 {
@@ -29,48 +39,138 @@
 		margin-bottom: 48px;
 	}
 
-	ul {
-		list-style: circle;
+	.flex {
+		display: -webkit-flex;
+		display: -moz-flex;
+		display: -ms-flex;
+		display: -o-flex;
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 41px;
 	}
 
-	li {
-		margin-left: 24px;
-		margin-bottom: 24px;
+	.burger {
+		width: 36px;
+		height: 18px;
+		padding-top: 9px;
 	}
+
+	.burger .line {
+		width: 36px;
+		height: 4px;
+		background-color: #fff;
+		margin-bottom: 3px;
+	}
+
+	.burger .line-1,
+	.burger .line-3 {
+		width: 25px;
+	}
+
+	.burger .line-1 {
+		margin-left: 11px;
+	}
+
+	.cart {
+		width: 36px;
+		height: 34px;
+	}
+
+	.cart .line {
+		width: 36px;
+		height: 4px;
+		background-color: #fff;
+		margin-bottom: 3px;
+	}
+
+	.cart .line-5 {
+		width: 15px;
+		transform: rotate(58deg) translateY(-12px) translateX(16px);
+	}
+
+	.cart .line-6 {
+		width: 15px;
+		transform: rotate(-62deg) translateY(1px) translateX(0px);
+	}
+
+	.cart .line-1 {
+		width: 36px;
+	}
+
+	.cart .line-2 {
+		width: 20px;
+		transform: rotate(82deg) translateY(5px) translateX(2px);
+	}
+
+	.cart .line-4 {
+		width: 17px;
+		transform: rotate(-82deg) translateY(21px) translateX(7px);
+	}
+
+
+	.cart .line-3 {
+		width: 26px;
+		transform: translateY(-3px) translateX(5px);
+	}
+
+	.logo {
+		margin: 0 auto;
+		margin-bottom: 40px;
+		display: block;
+		padding-left: 5px;
+		margin-bottom: 148px;
+	}
+
+	.title {
+		display: block;
+		margin: 0 auto;
+		margin-bottom: 150px;
+	}
+
+	.circle {}
 </style>
 
 <body>
 
 
-	<h1>Javascript</h1>
 
-	<ul>
-		<li>alert('')</li>
-		<li>script src="script.js"</li>
-		<li>script src="https:"</li>
-		<li>"use strict";</li>
-		<li>let a = '';</li>
-		<li>const b = '';</li>
-		<li>1 / 0 Infinity</li>
-		<li>"не число" / 2 NaN</li>
-		<li>890n bigInt</li>
-		<li>" ' ```</li>
-		<li>`${ name }!`</li>
-		<li>`результат: ${1 + 2}`</li>
-		<li>4 > 1 true</li>
-		<li>null</li>
-		<li>undefined</li>
-		<li>typeof undefined // "undefined"</li>
-		<li>typeof Symbol("id") // "symbol"</li>
-		<li>typeof Math // "object"</li>
-		<li>typeof null // "object"</li>
-		<li>typeof alert // "function"</li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-	</ul>
+
+	<main>
+
+
+
+		<div class="flex">
+			<div class="burger">
+				<div class="line line-1"></div>
+				<div class="line line-2"></div>
+				<div class="line line-3"></div>
+			</div>
+
+
+
+
+			<div class="cart">
+				<div class="line line-5"></div>
+				<div class="line line-6"></div>
+
+				<div class="line line-1"></div>
+
+				<div class="line line-2"></div>
+				<div class="line line-4"></div>
+
+				<div class="line line-3"></div>
+			</div>
+		</div>
+
+
+
+		<img class="logo" src="logo.svg" alt="yammysneakers">
+		<img class="title" src="h1.svg" alt="buy">
+
+	</main>
+
+
+
 
 
 
