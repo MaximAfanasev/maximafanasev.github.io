@@ -20,11 +20,12 @@
 		margin: 0 auto;
 		width: 393px;
 		height: 855px;
-		padding: 17px 27px;
-		background: url("glass.png"), url("circle.png"), url("background.png");
-		background-size: cover, 517px 517px, cover;
-		background-position: center, center 570px, center;
-		background-repeat: no-repeat, no-repeat, repeat;
+		padding: 17px 27px 2350px;
+		background: url("glass.png"), url("circle.png"), url("background.png"), #19181D;
+		background-size: cover, 517px 517px, 399px 852px;
+		background-position: center, center 570px, top center;
+		background-repeat: no-repeat, no-repeat, repeat-x;
+		overflow-x: hidden;
 	}
 
 	main {
@@ -107,7 +108,6 @@
 		transform: rotate(-82deg) translateY(21px) translateX(7px);
 	}
 
-
 	.cart .line-3 {
 		width: 26px;
 		transform: translateY(-3px) translateX(5px);
@@ -124,21 +124,139 @@
 	.title {
 		display: block;
 		margin: 0 auto;
-		margin-bottom: 150px;
+		margin-bottom: 750px;
 	}
 
-	.circle {}
+	.filter {
+		display: flex;
+		width: 36px;
+		margin: 0 auto 24px;
+	}
+
+	.filter .line {
+		width: 3px;
+		background: #F2F0E5;
+		height: 36px;
+		display: block;
+		margin: 0 auto;
+	}
+
+	.filter .line .cross {
+		width: 11px;
+		height: 3px;
+		background: #F2F0E5;
+		margin-left: -4px;
+	}
+
+	.filter .line-1 .cross {
+		margin-top: 14px;
+	}
+
+	.filter .line-2 .cross {
+		margin-top: 7px;
+	}
+
+	.filter .line-3 .cross {
+		margin-top: 14px;
+	}
+
+	.card {
+		background: #2F2E31;
+		border-radius: 40px;
+		padding: 25px;
+		position: relative;
+		margin-bottom: 50px;
+	}
+
+	.card .title {
+		font-size: 24px;
+		margin-bottom: 24px;
+		letter-spacing: -0.2px;	}
+
+	.card .sneaker {
+		position: absolute;
+		right: -74px;
+		top: 0px;
+		z-index: 1;
+	}
+
+	.card .price {
+		font-size: 24px;
+		padding: 20px;
+		border: 1px solid #F2F0E5;
+		border-radius: 30px;
+		width: fit-content;
+		margin-bottom: 10px;
+	}
+
+	.card .plus {
+		font-size: 24px;
+		width: 85px;
+		height: 74px;
+		padding-top: 34px;
+		border: 1px solid #F2F0E5;
+		border-radius: 30px;
+		margin-bottom: 10px;
+	}
+
+	.card .plus .line-1 {
+		font-size: 24px;
+		width: 31px;
+		height: 3px;
+		background: #F2F0E5;
+		margin: 0 auto;
+	}
+
+	.card .plus .line-2 {
+		font-size: 24px;
+		width: 31px;
+		height: 3px;
+		background: #F2F0E5;
+		margin: 0 auto;
+		transform: translateY(-2px) rotate(90deg);
+	}
+
+	.card .flex {
+		justify-content: flex-start;
+		margin-bottom: 0;
+	}
+
+	.card .color {
+		font-size: 24px;
+		border: 1px solid #F2F0E5;
+		border-radius: 30px;
+		padding: 20px 30px;
+		font-weight: bold;
+		width: fit-content;
+		margin-bottom: 10px;
+		margin-right: 12px;
+		height: 74px;
+	}
+
+	.card .size {
+		font-size: 24px;
+		font-size: 24px;
+		border: 1px solid #F2F0E5;
+		border-radius: 30px;
+		padding: 20px;
+		font-weight: bold;
+		width: fit-content;
+		height: 74px;
+	}
+
+	.card .info {
+		display: inline-block;
+		font-size: 24px;
+		background: gray;
+		text-align: center;
+		width: 32px;
+		height: 32px;
+		border-radius: 50%;
+	}
 </style>
 
 <body>
-
-
-
-
 	<main>
-
-
-
 		<div class="flex">
 			<div class="burger">
 				<div class="line line-1"></div>
@@ -161,12 +279,75 @@
 				<div class="line line-3"></div>
 			</div>
 		</div>
-
-
-
 		<img class="logo" src="logo.svg" alt="yammysneakers">
 		<img class="title" src="h1.svg" alt="buy">
+		<div class="filter">
+			<div class="line line-1">
+				<div class="cross"></div>
+			</div>
+			<div class="line line-2">
+				<div class="cross"></div>
+			</div>
+			<div class="line line-3">
+				<div class="cross"></div>
+			</div>
+		</div>
 
+
+
+
+		<div class="card">
+			<h2 class="title">Air Force</h2>
+			<img class="sneaker" src="airforce.png" alt="yammysneakers">
+			<div class="price">10 000 руб.</div>
+			<div class="plus">
+				<div class="line line-1"></div>
+				<div class="line line-2"></div>
+			</div>
+			<div class="flex">
+				<div class="color">Белый</div>
+				<div class="size">
+					<span>EU 39</span>
+					<span class="info">i</span>
+				</div>
+			</div>
+		</div>
+		
+		
+		<div class="card">
+			<h2 class="title">Air Max</h2>
+			<img class="sneaker" src="airmax.png" alt="yammysneakers">
+			<div class="price">10 000 руб.</div>
+			<div class="plus">
+				<div class="line line-1"></div>
+				<div class="line line-2"></div>
+			</div>
+			<div class="flex">
+				<div class="color">Белый</div>
+				<div class="size">
+					<span>EU 39</span>
+					<span class="info">i</span>
+				</div>
+			</div>
+		</div>
+		
+		
+		<div class="card">
+			<h2 class="title">Epic React Flyknit 2</h2>
+			<img class="sneaker" src="EpicReactFlyknit2.png" alt="yammysneakers">
+			<div class="price">10 000 руб.</div>
+			<div class="plus">
+				<div class="line line-1"></div>
+				<div class="line line-2"></div>
+			</div>
+			<div class="flex">
+				<div class="color">Белый</div>
+				<div class="size">
+					<span>EU 39</span>
+					<span class="info">i</span>
+				</div>
+			</div>
+		</div>
 	</main>
 
 
