@@ -133,14 +133,11 @@
 	
 	let a = 1;
 	let b = 2;
-
 	let c = 3 - (a = b + 1);
-
 	alert( a ); // 3
 	alert( c ); // 0
 	
 	let a, b, c;
-
 	a = b = c = 2 + 2;
 	alert( a ); // 4
 	alert( b ); // 4
@@ -171,49 +168,80 @@
 	alert( 2 == 1 ); // false (неверно)
 	alert( 2 != 1 ); // true (верно)
 	
+	let result = 5 > 4; // результат сравнения присваивается переменной result
+	alert( result ); // true
 	
+	alert( 'Я' > 'А' ); // true
+	alert( 'Коты' > 'Кода' ); // true
 	
+	alert( '2' > 1 ); // true, строка '2' становится числом 2
 	
+	alert( true == 1 ); // true
+	alert( false == 0 ); // true
 	
+	let a = 0;
+	alert( Boolean(a) ); // false
+	let b = "0";
+	alert( Boolean(b) ); // true
 	
+	alert( 0 == false ); // true
+	alert( 0 === false ); // false, так как сравниваются разные типы
 	
+	alert( '' == false ); // true	
 	
+	alert( null === undefined ); // false
+	alert( null == undefined ); // true
 	
+	alert( null > 0 );  // (1) false
+	alert( null == 0 ); // (2) false
+	alert( null >= 0 ); // (3) true
 	
+	alert( undefined > 0 ); // false (1)
+	alert( undefined < 0 ); // false (2)
+	alert( undefined == 0 ); // false (3)
+
+	if (year < 2015) {
+	} else if (year > 2015) {
+	} else {
+	}
 	
-		
+	let result = условие ? значение1 : значение2;
 	
+	result = a || b;
 	
+	alert( true || true );   // true
+	alert( false || true );  // true
+	alert( true || false );  // true
+	alert( false || false ); // false
 	
+	let hour = 12;
+	let isWeekend = true;
+	if (hour < 10 || hour > 18 || isWeekend) {
+		alert( 'Офис закрыт.' ); // это выходной
+	}
 	
+	alert( 1 || 0 ); // 1 (1 - истинное значение)
+	alert( true || 'какая-то строка' ); // true
+
+	alert( null || 1 ); // 1 (первое истинное значение)
+	alert( null || 0 || 1 ); // 1 (первое истинное значение)
+	alert( undefined || null || 0 ); // 0 (поскольку все ложно, возвращается последнее значение)
 	
+	let firstName = "";
+	let lastName = "";
+	let nickName = "Суперкодер";
+	alert( firstName || lastName || nickName || "Аноним"); // Суперкодер
 	
+	true || alert("никогда не сработает");
+	false || alert("сработает");
 	
+	a ||= b;
+	a || (a = b);	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-		
-	
-	
-	
+	alert( true && true );   // true
+	alert( false && true );  // false
+	alert( true && false );  // false
+	alert( false && false ); // false
 	
 	
 	
