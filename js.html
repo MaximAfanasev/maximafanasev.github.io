@@ -39,11 +39,27 @@
 		line-height: 35px;
 		margin-right: 20px;
 	}
+	.ball {
+		width: 30px;
+		height: 30px;
+		background: green;
+		border-radius: 50%;
+		transition-timing-function: ease-out;
+		transition-duration: 0.44s;
+	}
+	.ball:active {
+		transform: translateX(100px);
+		width: 200px;
+		height: 200px;
+		opacity: 0.3;
+	}
 </style>
 
 <body>
 
 	<h1>Welcome to hell 😈</h1>
+	
+	<div class="ball"></div>
 
 	<div class="cards">
 
@@ -54,14 +70,12 @@
 })()</pre>
 
 		<pre class="card">
-let message;
-message = 'Hello'
 let user = 'John'
 let age = 25;</pre>
 
 		<pre class="card">
-let message = "1"
-let message = "2"
+let a = "1"
+let a = "2"
 // SyntaxError</pre>
 
 		<pre class="card">
@@ -96,8 +110,8 @@ let c = `a + ${str}`
 		<pre class="card">
 typeof
 5 number
-undefined -
-"undefined"
+undefined 
+// "undefined"
 10n "bigint"
 </pre>
 
@@ -105,8 +119,8 @@ undefined -
 typeof
 true "boolean"
 "a" "string"
-Symbol("id") -
-"symbol"
+Symbol("id")
+// "symbol"
 </pre>
 
 		<pre class="card">
@@ -152,7 +166,65 @@ alert(+y) // -2
 </pre>
 
 		<pre class="card">
+let n = 2;
+n += 5; // 7
+n *= 2; // 14
+</pre>
 
+		<pre class="card">
+let counter = 0;
+alert(counter++); // 0
+</pre>
+
+		<pre class="card">
+let counter = 0;
+++counter // 1
+</pre>
+
+		<pre class="card">
+let result = 5 > 4;
+'2' > 1 // true
+</pre>
+
+		<pre class="card">
+0 == false // true
+0 === false // false
+'' == false // true	
+</pre>
+
+		<pre class="card">
+null === undefined 
+// false
+null == undefined 
+// true
+</pre>
+
+		<pre class="card">
+let a = условие ? 
+значение1 : 
+значение2
+</pre>
+
+		<pre class="card">
+true || true // true
+false || true // true
+true || false // true
+false || false // false
+</pre>
+
+		<pre class="card">
+null || 0 || 1 // 1
+</pre>
+
+		<pre class="card">
+undefined || null || 0 
+// 0
+</pre>
+
+		<pre class="card">
+let user;
+alert(user ?? "aaa"); 
+// aaa
 </pre>
 
 		<pre class="card">
@@ -162,129 +234,8 @@ alert(+y) // -2
 		<pre class="card">
 
 </pre>
-
-		<pre class="card">
-
-</pre>
-
-		<pre class="card">
-
-</pre>
-
-		<pre class="card">
-
-</pre>
-
-
-
-
 
 
 	</div>
 
-
-
-
-
-</body>
-
-<script src="/js/script1.js"></script>
-<script src="file.js"></script>
-<script>
-	let n = 2;
-	n += 5; // теперь n = 7 (работает как n = n + 5)
-	n *= 2; // теперь n = 14 (работает как n = n * 2)
-	alert(n); // 14
-
-	let counter = 0;
-	alert(++counter); // 1
-
-	let counter = 0;
-	alert(counter++); // 0
-
-	AND(и)( & )
-	OR(или)( | )
-	XOR(побитовое исключающее или)( ^ )
-	NOT(не)(~)
-	LEFT SHIFT(левый сдвиг)( << )
-	RIGHT SHIFT(правый сдвиг)( >> )
-	ZERO - FILL RIGHT SHIFT(правый сдвиг с заполнением нулями)( >>> )
-
-	let a = (1 + 2, 3 + 4); // 7 возвращается результат только последнего (результат вычисления 3 + 4)
-
-	alert(2 > 1); // true (верно)
-	alert(2 == 1); // false (неверно)
-	alert(2 != 1); // true (верно)
-
-	let result = 5 > 4; // результат сравнения присваивается переменной result
-	alert(result); // true
-
-	alert('Я' > 'А'); // true
-	alert('Коты' > 'Кода'); // true
-
-	alert('2' > 1); // true, строка '2' становится числом 2
-
-	alert(true == 1); // true
-	alert(false == 0); // true
-
-	let a = 0;
-	alert(Boolean(a)); // false
-	let b = "0";
-	alert(Boolean(b)); // true
-
-	alert(0 == false); // true
-	alert(0 === false); // false, так как сравниваются разные типы
-
-	alert('' == false); // true	
-
-	alert(null === undefined); // false
-	alert(null == undefined); // true
-
-	alert(null > 0); // (1) false
-	alert(null == 0); // (2) false
-	alert(null >= 0); // (3) true
-
-	alert(undefined > 0); // false (1)
-	alert(undefined < 0); // false (2)
-	alert(undefined == 0); // false (3)
-
-	if (year < 2015) {} else if (year > 2015) {} else {}
-
-	let result = условие ? значение1 : значение2;
-
-	result = a || b;
-
-	alert(true || true); // true
-	alert(false || true); // true
-	alert(true || false); // true
-	alert(false || false); // false
-
-	let hour = 12;
-	let isWeekend = true;
-	if (hour < 10 || hour > 18 || isWeekend) {
-		alert('Офис закрыт.'); // это выходной
-	}
-
-	alert(1 || 0); // 1 (1 - истинное значение)
-	alert(true || 'какая-то строка'); // true
-
-	alert(null || 1); // 1 (первое истинное значение)
-	alert(null || 0 || 1); // 1 (первое истинное значение)
-	alert(undefined || null || 0); // 0 (поскольку все ложно, возвращается последнее значение)
-
-	let firstName = "";
-	let lastName = "";
-	let nickName = "Суперкодер";
-	alert(firstName || lastName || nickName || "Аноним"); // Суперкодер
-
-	true || alert("никогда не сработает");
-	false || alert("сработает");
-
-	a || = b;
-	a || (a = b);
-
-	alert(true && true); // true
-	alert(false && true); // false
-	alert(true && false); // false
-	alert(false && false); // false
-</script></html>
+</body></html>
