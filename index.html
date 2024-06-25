@@ -48,7 +48,7 @@
 		}
 
 		.menu img {
-			margin: 30px auto 60px;
+			margin: 20px auto 60px;
 		}
 
 		.menu a {
@@ -134,7 +134,19 @@
 		}
 
 		.burger.eated {
-			z-index: 100;
+			z-index: 0;
+			animation: eated 4.2s ease-in 1;
+		}
+		@keyframes eated {
+			0% {
+				z-index: 100;
+			}
+			99% {
+				z-index: 100;
+			}
+			100% {
+				z-index: 0;
+			}
 		}
 
 		.burger.eated .line-1 {
