@@ -42,17 +42,27 @@
 	.ball {
 		width: 30px;
 		height: 30px;
-		background: green;
+		background: gold;
 		border-radius: 50%;
 		transition-timing-function: ease-out;
 		transition-duration: 0.44s;
+		animation: rotate 8s linear infinite;
+    transform: translateX(-100px);
 	}
-	.ball:active {
-		transform: translateX(100px);
-		width: 200px;
-		height: 200px;
-		opacity: 0.3;
+	@keyframes rotate {
+  0% {
+  	transform: translateX(1200px);
+		width: 30px;
+		height: 30px;
+  }
+		50% {
+			background: red;
+	opacity: 0.3;
+		}
+	100% {
+	opacity: 1;
 	}
+}
 </style>
 
 <body>
