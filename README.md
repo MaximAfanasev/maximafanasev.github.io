@@ -1,2 +1,0 @@
-# maximafanasev.github.io
-sneakers

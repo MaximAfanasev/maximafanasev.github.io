@@ -5,475 +5,31 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
-	<style>
-		* {
-			box-sizing: border-box;
-			margin: 0;
-			padding: 0;
-			color: #fff;
-			font-family: monospace;
-			font-size: 20px;
-		}
-
-		.menu {
-			left: 0;
-			top: 0;
-			position: absolute;
-			width: 100%;
-			padding: 20px 50px;
-			text-align: center;
-			background: #19181D;
-			opacity: 0.85;
-			display: flex;
-			flex-direction: column;
-			justify-content: flex-start;
-			align-content: center;
-			z-index: 100;
-			height: 100vh;
-			animation: rotate 0.34s ease-out 1;
-		}
-
-		@keyframes rotate {
-			0% {
-				height: 45vh;
-			}
-
-			100% {
-				height: 100vh;
-			}
-		}
-
-		.menu.closed {
-			display: none;
-		}
-
-		.menu img {
-			margin: 20px auto 60px;
-		}
-
-		.menu a {
-			margin-bottom: 20px;
-			text-decoration: none;
-			font-size: 30px;
-		}
-
-		.cross {
-			width: 37px;
-			height: 37px;
-			background: none;
-			box-shadow: none;
-			border: none;
-			margin-left: auto;
-			cursor: pointer;
-		}
-
-		.cross .line {
-			width: 37px;
-			height: 3px;
-			background: #F2F0E5;
-			display: block;
-			transform: rotate(45deg)
-		}
-
-		.cross .line-2 {
-			transform: rotate(-45deg)
-		}
-
-		body {
-			position: relative;
-			padding: 17px 27px 2350px;
-			background: url("glass.png"), url("circle.png"), url("background.png"), #19181D;
-			background-size: cover, 517px 517px, 399px 852px;
-			background-position: center, center 570px, top center;
-			background-repeat: no-repeat, no-repeat, repeat-x;
-			overflow-x: hidden;
-		}
-
-		section {
-			width: 393px;
-			height: 855px;
-			margin: 0 auto;
-		}
-
-		h1 {
-			text-align: center;
-			margin-bottom: 48px;
-		}
-
-		.flex {
-			display: -webkit-flex;
-			display: -moz-flex;
-			display: -ms-flex;
-			display: -o-flex;
-			display: flex;
-			justify-content: space-between;
-			margin-bottom: 41px;
-		}
-
-		.burger {
-			width: 36px;
-			height: 18px;
-			padding-top: 9px;
-			cursor: pointer;
-		}
-
-		.burger .line {
-			width: 36px;
-			height: 4px;
-			background-color: #fff;
-			margin-bottom: 3px;
-		}
-
-		.burger .line-1,
-		.burger .line-3 {
-			width: 25px;
-		}
-
-		.burger .line-1 {
-			margin-left: 11px;
-		}
-
-		.burger.eated {
-			z-index: 0;
-			animation: eated 4.2s ease-in 1;
-		}
-		@keyframes eated {
-			0% {
-				z-index: 100;
-			}
-			99% {
-				z-index: 100;
-			}
-			100% {
-				z-index: 0;
-			}
-		}
-
-		.burger.eated .line-1 {
-			animation: line1 4.2s ease-in 1;
-			height: 3px;
-			width: 37px;
-			z-index: 1;
-			transform: translateX(346px) translateY(10px) rotate(45deg);
-		}
-
-		@keyframes line1 {
-			0% {
-				transform: translateX(0px) rotate(0deg)
-			}
-			20% {
-				transform: translateX(346px) translateY(10px) rotate(45deg);
-			}
-
-			66% {
-				transform: translateX(346px) translateY(10px) rotate(45deg);
-				background: white;
-				width: 37px;
-			}
-
-			68% {
-				transform: translateX(350px) translateY(14px) rotate(45deg);
-				background: red;
-				width: 45px;
-			}
-
-			70% {
-				transform: translateX(346px) translateY(10px) rotate(45deg);
-				background: white;
-				width: 37px;
-			}
-
-			100% {
-				z-index: 0;
-				transform: translateX(346px) translateY(10px) rotate(45deg);
-			}
-		}
-
-		.burger.eated .line-2 {
-			animation: line2 1.4s ease-in 1;
-			transform: translateX(358px) translateY(6px) rotate(-45deg);
-			height: 3px;
-			width: 37px;
-		}
-
-		@keyframes line2 {
-			0% {
-				transform: translateX(0px) rotate(0deg);
-			}
-
-			100% {
-				z-index: 0;
-			}
-		}
-
-		.burger.eated .line-3 {
-			animation: line3 4s ease-in-out 1;
-			width: 0;
-				background: red;
-		}
-
-		@keyframes line3 {
-			0% {
-				background: white;
-				width: 25px;
-			}
-			40% {
-				transform: translateX(0px) rotate(0deg);
-				opacity: 1;
-			}
-
-			50% {
-				transform: translateX(338px) translateY(6px) rotate(45deg);
-				width: 25px;
-			}
-
-			60% {
-				transform: translateX(328px) translateY(-5px) rotate(-30deg);
-				background: white;
-			}
-
-			65% {
-				transform: translateX(328px) translateY(-5px) rotate(-30deg);
-				background: red;
-			}
-
-			70% {
-				transform: translateX(340px) translateY(-10px) rotate(850deg);
-				width: 40px;
-				height: 5px;
-			}
-			99% {
-				width: 5px;
-			}
-			100% {
-				transform: translateX(-340px);
-				z-index: 0;
-				opacity: 1;
-			}
-		}
-
-		.cart {
-			width: 36px;
-			height: 34px;
-		}
-
-		.cart.closed {
-			display: none;
-		}
-
-		.cart .line {
-			width: 36px;
-			height: 4px;
-			background-color: #fff;
-			margin-bottom: 3px;
-		}
-
-		.cart .line-5 {
-			width: 15px;
-			transform: rotate(58deg) translateY(-12px) translateX(16px);
-		}
-
-		.cart .line-6 {
-			width: 15px;
-			transform: rotate(-62deg) translateY(1px) translateX(0px);
-		}
-
-		.cart .line-1 {
-			width: 36px;
-		}
-
-		.cart .line-2 {
-			width: 20px;
-			transform: rotate(82deg) translateY(5px) translateX(2px);
-		}
-
-		.cart .line-4 {
-			width: 17px;
-			transform: rotate(-82deg) translateY(21px) translateX(7px);
-		}
-
-		.cart .line-3 {
-			width: 26px;
-			transform: translateY(-3px) translateX(5px);
-		}
-
-		.logo {
-			margin: 0 auto;
-			margin-bottom: 40px;
-			display: block;
-			padding-left: 5px;
-			margin-bottom: 148px;
-		}
-
-		.title {
-			display: block;
-			margin: 0 auto;
-			margin-bottom: 750px;
-		}
-
-		.filter {
-			display: flex;
-			width: 36px;
-			margin: 0 auto 24px;
-		}
-
-		.filter .line {
-			width: 3px;
-			background: #F2F0E5;
-			height: 36px;
-			display: block;
-			margin: 0 auto;
-		}
-
-		.filter .line .cross {
-			width: 11px;
-			height: 3px;
-			background: #F2F0E5;
-			margin-left: -4px;
-		}
-
-		.filter .line-1 .cross {
-			margin-top: 14px;
-		}
-
-		.filter .line-2 .cross {
-			margin-top: 7px;
-		}
-
-		.filter .line-3 .cross {
-			margin-top: 14px;
-		}
-
-		.card {
-			background: #2F2E31;
-			border-radius: 40px;
-			padding: 25px;
-			position: relative;
-			margin-bottom: 50px;
-		}
-
-		.card .title {
-			font-size: 24px;
-			margin-bottom: 24px;
-			letter-spacing: -0.2px;
-		}
-
-		.card .sneaker {
-			position: absolute;
-			right: -74px;
-			top: 0px;
-			z-index: 1;
-		}
-
-		.card .price {
-			font-size: 24px;
-			padding: 20px;
-			border: 1px solid #F2F0E5;
-			border-radius: 30px;
-			width: fit-content;
-			margin-bottom: 10px;
-		}
-
-		.card .plus {
-			font-size: 24px;
-			width: 85px;
-			height: 74px;
-			padding-top: 34px;
-			border: 1px solid #F2F0E5;
-			border-radius: 30px;
-			margin-bottom: 10px;
-		}
-
-		.card .plus .line-1 {
-			font-size: 24px;
-			width: 31px;
-			height: 3px;
-			background: #F2F0E5;
-			margin: 0 auto;
-		}
-
-		.card .plus .line-2 {
-			font-size: 24px;
-			width: 31px;
-			height: 3px;
-			background: #F2F0E5;
-			margin: 0 auto;
-			transform: translateY(-2px) rotate(90deg);
-		}
-
-		.card .flex {
-			justify-content: flex-start;
-			margin-bottom: 0;
-		}
-
-		.card .color {
-			font-size: 24px;
-			border: 1px solid #F2F0E5;
-			border-radius: 30px;
-			padding: 20px 30px;
-			font-weight: bold;
-			width: fit-content;
-			margin-bottom: 10px;
-			margin-right: 12px;
-			height: 74px;
-		}
-
-		.card .size {
-			font-size: 24px;
-			font-size: 24px;
-			border: 1px solid #F2F0E5;
-			border-radius: 30px;
-			padding: 20px;
-			font-weight: bold;
-			width: fit-content;
-			height: 74px;
-		}
-
-		.card .info {
-			display: inline-block;
-			font-size: 24px;
-			background: gray;
-			text-align: center;
-			width: 32px;
-			height: 32px;
-			border-radius: 50%;
-		}
-
-		.kvadrat {
-			z-index: 10;
-			width: 83px;
-			height: 100px;
-			background: ;
-			position: fixed;
-			right: 0;
-			top: 150px;
-			border-top-left-radius: 50%;
-			border-bottom-left-radius: 50%;
-			background: url("call.png") center center no-repeat, gray;
-		}
-
-	</style>
+	<link rel="stylesheet" href="styles/style.css">
 
 </head>
 
 <body>
-	<div class="ball"></div>
-	<menu id="menu" class="menu closed">
-		<button class="cross" id="cross">
-			<span class="line line-1"></span>
-			<span class="line line-2"></span>
-		</button>
-		<img src="logo.svg" alt="" width="190">
-		<a href="/about">О нас</a>
-		<a href="/about">Кроссовки</a>
-		<a href="/about">Выбор размера</a>
-		<a href="/about">Корзина</a>
-		<a href="/about">Доставка</a>
-		<a href="/about">Оплата</a>
-		<a href="/about">Обучение покупкам</a>
-	</menu>
-	<section>
 
+	<menu id="menu" class="menu closed">
+		<wrapper>
+			<button class="cross" id="cross">
+				<span class="line line-1"></span>
+				<span class="line line-2"></span>
+			</button>
+			</wrapper>
+			<img src="img/logo.svg" alt="" width="190">
+			<a href="/about">О нас</a>
+			<a href="/about">Кроссовки</a>
+			<a href="/about">Выбор размера</a>
+			<a href="/about">Корзина</a>
+			<a href="/about">Доставка</a>
+			<a href="/about">Оплата</a>
+			<a href="/about">Обучение покупкам</a>
+	</menu>
+	
+	
+	<section>
 		<a class="kvadrat" class="btn price" href="https://t.me/maxim_afanasev">
 		</a>
 		<div class="flex">
@@ -496,8 +52,8 @@
 				<div class="line line-3"></div>
 			</div>
 		</div>
-		<img class="logo" src="logo.svg" alt="yammysneakers">
-		<img class="title" src="h1.svg" alt="buy">
+		<img class="logo" src="img/logo.svg" alt="yammysneakers">
+		<img class="title" src="img/h1.svg" alt="buy">
 		<div class="filter">
 			<div class="line line-1">
 				<div class="cross"></div>
@@ -512,7 +68,7 @@
 
 		<div class="card">
 			<h2 class="title">Air Force</h2>
-			<img class="sneaker" src="airforce.png" alt="yammysneakers">
+			<img class="sneaker" src="img/airforce.png" alt="yammysneakers">
 			<div class="price">10 000 руб.</div>
 			<div class="plus">
 				<div class="line line-1"></div>
@@ -530,7 +86,7 @@
 
 		<div class="card">
 			<h2 class="title">Air Max</h2>
-			<img class="sneaker" src="airmax.png" alt="yammysneakers">
+			<img class="sneaker" src="img/airmax.png" alt="yammysneakers">
 			<div class="price">10 000 руб.</div>
 			<div class="plus">
 				<div class="line line-1"></div>
@@ -548,7 +104,7 @@
 
 		<div class="card">
 			<h2 class="title">Epic React Flyknit 2</h2>
-			<img class="sneaker" src="EpicReactFlyknit2.png" alt="yammysneakers">
+			<img class="sneaker" src="img/EpicReactFlyknit2.png" alt="yammysneakers">
 			<div class="price">10 000 руб.</div>
 			<div class="plus">
 				<div class="line line-1"></div>
@@ -576,7 +132,6 @@
 			cart.classList.remove('closed')
 			button.classList.remove('eated')
 		};
-
 	</script>
 
 
@@ -584,6 +139,4 @@
 
 
 
-</body>
-
-</html>
+</body></html>
