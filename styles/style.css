@@ -21,19 +21,9 @@
 	justify-content: flex-start;
 	align-content: center;
 	z-index: 11;
-	height: 100vh;
-	animation: rotate 0.34s ease-out 1;
+	height: 100%;
 }
 
-@keyframes rotate {
-	0% {
-		height: 45vh;
-	}
-
-	100% {
-		height: 100vh;
-	}
-}
 
 .menu .container {
 	max-width: 383px;
