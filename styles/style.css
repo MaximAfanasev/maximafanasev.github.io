@@ -13,7 +13,7 @@
 	left: 0;
 	top: 0;
 	position: absolute;
-	padding: 20px 50px;
+	padding: 20px 20px;
 	text-align: center;
 	background: #19181D;
 	opacity: 0.85;
@@ -21,7 +21,7 @@
 	flex-direction: column;
 	justify-content: flex-start;
 	align-content: center;
-	z-index: 11;
+	z-index: 1;
 }
 
 
@@ -40,18 +40,17 @@
 }
 
 wrapper {
-	margin: 0 auto;
+	display: flex;
+	justify-content: flex-end;
 }
 
 .cross {
-	z-index: 12;
 	width: 37px;
 	height: 37px;
 	background: none;
 	box-shadow: none;
 	border: none;
 	cursor: pointer;
-	margin-left: 334px;
 	animation: cross 4s ease-in 1;
 }
 
@@ -133,21 +132,21 @@ h1 {
 }
 
 .burger.eated {
-	z-index: 0;
 	animation: eated 4.2s ease-in 1;
+	z-index: 0;
 }
 
 @keyframes eated {
 	0% {
-		z-index: 11;
+	z-index: 2;
 	}
 
 	99% {
-		z-index: 11;
+	z-index: 2;
 	}
 
 	100% {
-		z-index: 0;
+	z-index: 0;
 	}
 }
 
@@ -155,8 +154,7 @@ h1 {
 	animation: line1 4.2s ease-in 1;
 	height: 3px;
 	width: 37px;
-	z-index: 1;
-	transform: translateX(346px) translateY(10px) rotate(45deg);
+	transform: translateX(100vw) translateX(-100px) translateY(10px) rotate(45deg);
 }
 
 @keyframes line1 {
@@ -165,36 +163,35 @@ h1 {
 	}
 
 	20% {
-		transform: translateX(346px) translateY(10px) rotate(45deg);
+		transform: translateX(100vw) translateX(-100px) translateY(10px) rotate(45deg);
 	}
 
 	66% {
-		transform: translateX(346px) translateY(10px) rotate(45deg);
+		transform: translateX(100vw) translateX(-100px)translateY(10px) rotate(45deg);
 		background: white;
 		width: 37px;
 	}
 
 	68% {
-		transform: translateX(350px) translateY(14px) rotate(45deg);
+		transform: translateX(100vw) translateX(-100px) translateY(14px) rotate(45deg);
 		background: red;
 		width: 45px;
 	}
 
 	70% {
-		transform: translateX(346px) translateY(10px) rotate(45deg);
+		transform: translateX(100vw) translateX(-100px) translateY(10px) rotate(45deg);
 		background: white;
 		width: 37px;
 	}
 
 	100% {
-		z-index: 0;
-		transform: translateX(346px) translateY(10px) rotate(45deg);
+		transform: translateX(100vw) translateX(-100px) translateY(10px) rotate(45deg);
 	}
 }
 
 .burger.eated .line-2 {
 	animation: line2 1.4s ease-in 1;
-	transform: translateX(358px) translateY(6px) rotate(-45deg);
+	transform: translateX(100vw) translateX(-90px) translateY(6px) rotate(-45deg);
 	height: 3px;
 	width: 37px;
 }
@@ -205,7 +202,6 @@ h1 {
 	}
 
 	100% {
-		z-index: 0;
 	}
 }
 
@@ -227,22 +223,22 @@ h1 {
 	}
 
 	50% {
-		transform: translateX(338px) translateY(6px) rotate(45deg);
+		transform: translateX(100vw) translateX(-110px) translateY(6px) rotate(45deg);
 		width: 25px;
 	}
 
 	60% {
-		transform: translateX(328px) translateY(-5px) rotate(-30deg);
+		transform: translateX(100vw) translateX(-120px) translateY(-5px) rotate(-30deg);
 		background: white;
 	}
 
 	65% {
-		transform: translateX(328px) translateY(-5px) rotate(-30deg);
+		transform: translateX(100vw) translateX(-120px) translateY(-5px) rotate(-30deg);
 		background: red;
 	}
 
 	70% {
-		transform: translateX(340px) translateY(-10px) rotate(850deg);
+		transform: translateX(100vw) translateX(-90px) translateY(-10px) rotate(850deg);
 		width: 40px;
 		height: 5px;
 	}
@@ -252,8 +248,7 @@ h1 {
 	}
 
 	100% {
-		transform: translateX(-340px);
-		z-index: 0;
+		transform:  translateX(-400px);
 		opacity: 1;
 	}
 }
@@ -369,7 +364,6 @@ h1 {
 	position: absolute;
 	right: -74px;
 	top: 0px;
-	z-index: 1;
 }
 
 .card .price {
@@ -447,7 +441,6 @@ h1 {
 }
 
 .kvadrat {
-	z-index: 10;
 	width: 83px;
 	height: 100px;
 	background: ;
