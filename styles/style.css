@@ -8,10 +8,11 @@
 }
 
 .menu {
+	width: 100%;
+	height: 100%;
 	left: 0;
 	top: 0;
 	position: absolute;
-	width: 100%;
 	padding: 20px 50px;
 	text-align: center;
 	background: #19181D;
@@ -21,13 +22,8 @@
 	justify-content: flex-start;
 	align-content: center;
 	z-index: 11;
-	height: 100%;
 }
 
-
-.menu .container {
-	max-width: 383px;
-}
 
 .menu.closed {
 	display: none;
@@ -44,7 +40,6 @@
 }
 
 wrapper {
-	width: 321px;
 	margin: 0 auto;
 }
 
@@ -56,7 +51,7 @@ wrapper {
 	box-shadow: none;
 	border: none;
 	cursor: pointer;
-	margin-left: 100%;
+	margin-left: 334px;
 	animation: cross 4s ease-in 1;
 }
 
@@ -87,7 +82,7 @@ wrapper {
 
 body {
 	position: relative;
-	padding: 17px 27px 2350px;
+	padding: 17px 27px;
 	background: url("../img/glass.png"), url("../img/circle.png"), url("../img/background.png"), #19181D;
 	background-size: cover, 517px 517px, 399px 852px;
 	background-position: center, center 570px, top center;
@@ -96,8 +91,6 @@ body {
 }
 
 section {
-	width: 393px;
-	height: 855px;
 	margin: 0 auto;
 }
 
@@ -363,6 +356,7 @@ h1 {
 	padding: 25px;
 	position: relative;
 	margin-bottom: 50px;
+	overflow: hidden;
 }
 
 .card .title {
@@ -462,5 +456,5 @@ h1 {
 	top: 150px;
 	border-top-left-radius: 50%;
 	border-bottom-left-radius: 50%;
-	background: url("call.png") center center no-repeat, gray;
+	background: url("../img/call.png") center center no-repeat, gray;
 }
