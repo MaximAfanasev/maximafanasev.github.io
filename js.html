@@ -17,124 +17,210 @@
 		padding: 20px;
 		overflow-x: hidden;
 		font-size: 24px;
+		max-width: 1200px
 	}
+
 	table {
 		border-collapse: collapse;
+		margin-bottom: 100px;
 	}
+
 	table tr td {
 		border: 1px solid #fff;
 		padding: 20px;
+	}
+
+	h2 {
+		color: gold;
 	}
 </style>
 
 <body>
 
 	<h1>Welcome to hell 😈</h1>
+
+	<h2>Взаимодействие</h2>
 	<table>
 		<tr>
 			<td>alert('Привет');</td>
 			<td><img src="img/js/alert.png" alt=""></td>
 		</tr>
 		<tr>
-			<td><pre>
-let message;
-message = 'Hello!';
-alert(message); // показывает содержимое переменной
-			</pre></td>
-			<td><img src="img/js/alert2.png" alt=""></td>
-		</tr>
-		<tr>
-			<td><pre>
-const myBirthday = '18.04.1982';
-myBirthday = '01.01.2001';
-			</pre></td>
-			<td><img src="img/js/const.png" alt=""></td>
-		</tr>
-		<tr>
-			<td><pre>
-alert( 1 / 0 ); // Infinity
-			</pre></td>
-			<td><img src="img/js/4.png" alt=""></td>
-		</tr>
-		<tr>
-			<td><pre>
-alert( "не число" / 2 );
-			</pre></td>
-			<td><img src="img/js/5.png" alt=""></td>
-		</tr>
-		<tr>
-			<td><pre>
-let name = "Иван";
-alert( `Привет, ${name}!` );
-			</pre></td>
-			<td><img src="img/js/6.png" alt=""></td>
-		</tr>
-		<tr>
-			<td><pre>
-alert( `результат: ${1 + 2}` );
-			</pre></td>
-			<td><img src="img/js/7.png" alt=""></td>
-		</tr>
-		<tr>
-			<td><pre>
-let isGreater = 4 > 1;
-alert( isGreater );
-			</pre></td>
-			<td><img src="img/js/7.png" alt=""></td>
-		</tr>
-		<tr>
-			<td><pre>
-let age;
-alert(age);
-			</pre></td>
-			<td><img src="img/js/7.png" alt=""></td>
-		</tr>
-		<tr>
-			<td><pre>
-typeof undefined
-			</pre></td>
-			<td><img src="img/js/10.png" alt=""></td>
-		</tr>
-		<tr>
-			<td><pre>
-typeof 10n
-			</pre></td>
-			<td><img src="img/js/.png" alt=""></td>
-		</tr>
-		<tr>
-			<td><pre>
-typeof Symbol("id")
-			</pre></td>
-			<td><img src="img/js/.png" alt=""></td>
-		</tr>
-		<tr>
-			<td><pre>
-typeof null
-			</pre></td>
-			<td><img src="img/js/.png" alt=""></td>
-		</tr>
-		<tr>
-			<td><pre>
-let age = prompt('Сколько тебе лет?', 100);
-alert(`Тебе ${age} лет!`);
-			</pre></td>
+			<td>
+				<pre>
+let age = prompt('Сколько тебе лет?', 100)
+alert(`Тебе ${age} лет!`)
+			</pre>
+			</td>
 			<td><img src="img/js/11.png" alt=""><img src="img/js/12.png" alt=""></td>
 		</tr>
 		<tr>
-			<td><pre>
-let isBoss = confirm("Ты здесь главный?");
-alert( isBoss );
-			</pre></td>
+			<td>
+				<pre>
+let isBoss = confirm("Ты здесь главный?")
+alert( isBoss )
+			</pre>
+			</td>
 			<td><img src="img/js/13.png" alt=""><img src="img/js/14.png" alt=""></td>
 		</tr>
+	</table>
+
+	<h2>Переменные</h2>
+
+	<table>
 		<tr>
-			<td><pre>
-let value = true;
-alert(typeof value);
-value = String(value);
-alert(typeof value);
-			</pre></td>
-			<td><img src="img/js/15.png" alt=""><img src="img/js/16.png" alt=""></td>
+			<td>
+				<pre>
+let message
+message = 'Hello!'
+alert(message)
+			</pre>
+			</td>
+			<td><img src="img/js/alert2.png" alt=""></td>
+		</tr>
+		<tr>
+			<td>
+				<pre>
+const myBirthday = '18.04.1982'
+myBirthday = '01.01.2001'
+			</pre>
+			</td>
+			<td><img src="img/js/const.png" alt=""></td>
 		</tr>
 	</table>
+
+	<h2>Типы данных</h2>
+
+	<table>
+		<tr>
+			<td>
+				<pre>
+alert( 1 / 0 );
+			</pre>
+			</td>
+			<td><img src="img/js/4.png" alt=""></td>
+		</tr>
+		<tr>
+			<td>
+				<pre>
+alert( "не число" / 2 )
+			</pre>
+			</td>
+			<td><img src="img/js/5.png" alt=""></td>
+		</tr>
+		<tr>
+			<td>
+				<pre>
+let name = "Иван";
+alert( `Привет, ${name}!` )
+			</pre>
+			</td>
+			<td><img src="img/js/6.png" alt=""></td>
+		</tr>
+	</table>
+
+	<h2>Строки</h2>
+
+	<table>
+		<tr>
+			<td>
+				<pre>
+alert( `результат: ${1 + 2}` )
+			</pre>
+			</td>
+			<td><img src="img/js/7.png" alt=""></td>
+		</tr>
+	</table>
+
+	<h2>Boolean</h2>
+
+	<table>
+		<tr>
+			<td>
+				<pre>
+let isGreater = 4 > 1
+alert( isGreater )
+			</pre>
+			</td>
+			<td><img src="img/js/8.png" alt=""></td>
+		</tr>
+		<tr>
+			<td>
+				<pre>
+typeof undefined
+			</pre>
+			</td>
+			<td><img src="img/js/9.png" alt=""></td>
+		</tr>
+		<tr>
+			<td>
+				<pre>
+typeof 10n
+			</pre>
+			</td>
+			<td><img src="img/js/19.png" alt=""></td>
+		</tr>
+		<tr>
+			<td>
+				<pre>
+typeof Symbol("id")
+			</pre>
+			</td>
+			<td><img src="img/js/20.png" alt=""></td>
+		</tr>
+		<tr>
+			<td>
+				<pre>
+typeof null
+			</pre>
+			</td>
+			<td><img src="img/js/21.png" alt=""></td>
+		</tr>
+	</table>
+
+	<h2>Преобразование</h2>
+
+	<table>
+		<tr>
+			<td>
+				<pre>
+let value = true
+alert(typeof value)
+value = String(value)
+alert(typeof value)
+			</pre>
+			</td>
+			<td><img src="img/js/15.png" alt=""><img src="img/js/16.png" alt=""></td>
+		</tr>
+		<tr>
+			<td>
+				<pre>
+alert( "6" / "2" )
+			</pre>
+			</td>
+			<td><img src="img/js/17.png" alt=""></td>
+		</tr>
+		<tr>
+			<td>
+				<pre>
+let str = "123"
+alert(typeof str)
+let num = Number(str)
+alert(typeof num)
+			</pre>
+			</td>
+			<td><img src="img/js/18.png" alt=""></td>
+		</tr>
+		<tr>
+			<td>
+				<pre>
+let age = Number("Любая строка вместо числа")
+alert(age)
+			</pre>
+			</td>
+			<td><img src="img/js/181.png" alt=""></td>
+		</tr>
+	</table>
+	<script>
+	alert(typeof null)</script>
 </body></html>
