@@ -6,221 +6,252 @@
 	<title>Document</title>
 </head>
 <style>
+	* {
+		outline: 1px soli;
+	}
+
 	body {
 		margin: 0 auto;
 		padding: 0;
 		width: fit-content;
-		height: 100vh;
 		background: #000;
 		color: #fff;
 		font-family: sans-serif;
 		padding: 20px;
 		overflow-x: hidden;
 		font-size: 24px;
-		max-width: 1200px
+		max-width: 1200px;
+		width: 100%;
 	}
 
-	table {
-		border-collapse: collapse;
-		margin-bottom: 100px;
-	}
-
-	table tr td {
-		border: 1px solid #fff;
-		padding: 20px;
+	main {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 20px;
 	}
 
 	h2 {
 		color: gold;
 	}
+
+	span {
+		font-size: 24px;
+		line-height: 40px;
+	}
+
+	.card {
+		display: flex;
+		flex-direction: column;
+		margin-bottom: 20px;
+		border: 1px dashed #1fe;
+		border-radius: 20px;
+		padding: 20px;
+	}
+
+	section .card:last-child {
+		margin-bottom: 0;
+	}
 </style>
 
 <body>
 
-	<h1>Welcome to hell 😈</h1>
+	<h1>😈 + 😥 = JS</h1>
 
-	<h2>Взаимодействие</h2>
-	<table>
-		<tr>
-			<td>alert('Привет');</td>
-			<td><img src="img/js/alert.png" alt=""></td>
-		</tr>
-		<tr>
-			<td>
-				<pre>
-let age = prompt('Сколько тебе лет?', 100)
-alert(`Тебе ${age} лет!`)
-			</pre>
-			</td>
-			<td><img src="img/js/11.png" alt=""><img src="img/js/12.png" alt=""></td>
-		</tr>
-		<tr>
-			<td>
-				<pre>
-let isBoss = confirm("Ты здесь главный?")
-alert( isBoss )
-			</pre>
-			</td>
-			<td><img src="img/js/13.png" alt=""><img src="img/js/14.png" alt=""></td>
-		</tr>
-	</table>
+	<main>
+		<section>
 
-	<h2>Переменные</h2>
+			<h2>Взаимодействие</h2>
 
-	<table>
-		<tr>
-			<td>
-				<pre>
-let message
-message = 'Hello!'
-alert(message)
-			</pre>
-			</td>
-			<td><img src="img/js/alert2.png" alt=""></td>
-		</tr>
-		<tr>
-			<td>
-				<pre>
-const myBirthday = '18.04.1982'
-myBirthday = '01.01.2001'
-			</pre>
-			</td>
-			<td><img src="img/js/const.png" alt=""></td>
-		</tr>
-	</table>
+			<div class="card">
+				alert('Привет')
+				<br>// Привет
+			</div>
 
-	<h2>Типы данных</h2>
+			<div class="card">
 
-	<table>
-		<tr>
-			<td>
-				<pre>
-alert( 1 / 0 );
-			</pre>
-			</td>
-			<td><img src="img/js/4.png" alt=""></td>
-		</tr>
-		<tr>
-			<td>
-				<pre>
-alert( "не число" / 2 )
-			</pre>
-			</td>
-			<td><img src="img/js/5.png" alt=""></td>
-		</tr>
-		<tr>
-			<td>
-				<pre>
-let name = "Иван";
-alert( `Привет, ${name}!` )
-			</pre>
-			</td>
-			<td><img src="img/js/6.png" alt=""></td>
-		</tr>
-	</table>
+				let age = prompt('Сколько лет?', 100)<br>
+				alert(`Тебе ${age} лет!`)<br>
+				// 100 Ok Cancel<br>
+				// Тебе 100 лет!
 
-	<h2>Строки</h2>
+			</div>
 
-	<table>
-		<tr>
-			<td>
-				<pre>
-alert( `результат: ${1 + 2}` )
-			</pre>
-			</td>
-			<td><img src="img/js/7.png" alt=""></td>
-		</tr>
-	</table>
+			<div class="card">
+				let isBoss = confirm("главный?")<br>
+				alert( isBoss )<br>
+				// главный? Ok Cancel<br>
+				// true
+			</div>
+		</section>
+		<section>
+			<h2>Переменные</h2>
 
-	<h2>Boolean</h2>
+			<div class="card">
+				let message<br>
+				message = 'Hello!'<br>
+				alert(message)<br>
+				// Hello!
+			</div>
 
-	<table>
-		<tr>
-			<td>
-				<pre>
-let isGreater = 4 > 1
-alert( isGreater )
-			</pre>
-			</td>
-			<td><img src="img/js/8.png" alt=""></td>
-		</tr>
-		<tr>
-			<td>
-				<pre>
-typeof undefined
-			</pre>
-			</td>
-			<td><img src="img/js/9.png" alt=""></td>
-		</tr>
-		<tr>
-			<td>
-				<pre>
-typeof 10n
-			</pre>
-			</td>
-			<td><img src="img/js/19.png" alt=""></td>
-		</tr>
-		<tr>
-			<td>
-				<pre>
-typeof Symbol("id")
-			</pre>
-			</td>
-			<td><img src="img/js/20.png" alt=""></td>
-		</tr>
-		<tr>
-			<td>
-				<pre>
-typeof null
-			</pre>
-			</td>
-			<td><img src="img/js/21.png" alt=""></td>
-		</tr>
-	</table>
+			<div class="card">
+				const myBirthday = '18.04.1982'<br>
+				myBirthday = '01.01.2001'<br>
+				// Assigment to constant variable
+			</div>
 
-	<h2>Преобразование</h2>
 
-	<table>
-		<tr>
-			<td>
-				<pre>
-let value = true
-alert(typeof value)
-value = String(value)
-alert(typeof value)
-			</pre>
-			</td>
-			<td><img src="img/js/15.png" alt=""><img src="img/js/16.png" alt=""></td>
-		</tr>
-		<tr>
-			<td>
-				<pre>
-alert( "6" / "2" )
-			</pre>
-			</td>
-			<td><img src="img/js/17.png" alt=""></td>
-		</tr>
-		<tr>
-			<td>
-				<pre>
-let str = "123"
-alert(typeof str)
-let num = Number(str)
-alert(typeof num)
-			</pre>
-			</td>
-			<td><img src="img/js/18.png" alt=""></td>
-		</tr>
-		<tr>
-			<td>
-				<pre>
-let age = Number("Любая строка вместо числа")
-alert(age)
-			</pre>
-			</td>
-			<td><img src="img/js/181.png" alt=""></td>
-		</tr>
-	</table>
+		</section>
+		<section>
+			<h2>Типы данных</h2>
+
+			<div class="card">
+
+				alert( 1 / 0 )<br>
+				// Infinity
+
+			</div>
+
+			<div class="card">
+
+				alert( "не число" / 2 )<br>
+				// NaN
+
+			</div>
+
+		</section>
+		<section>
+
+			<h2>Строки</h2>
+
+			<div class="card">
+
+				let name = "Иван";<br>
+				alert( `Привет, ${name}!` )<br>
+				// Привет, Иван<br>
+
+
+				`результат: ${1 + 2}` // 3<br><br>
+				let s = "моя" + "строка";<br>
+				alert(s); // 'моястрока'<br><br>
+				'1' + 2 // '12'<br>
+				2 + 2 + '1' // "41"<br>
+				6 - '2' // 4<br>
+				'6' / '2' // 3
+
+			</div>
+
+
+		</section>
+		<section>
+
+			<h2>Boolean</h2>
+
+			<div class="card">
+
+				let isGreater = 4 > 1<br>
+				alert( isGreater ) <br>// true
+
+			</div>
+
+			<div class="card">
+
+				typeof undefined <br>// undefined
+
+			</div>
+
+			<div class="card">
+
+				typeof 10n <br>// bigint
+
+			</div>
+
+			<div class="card">
+
+				typeof Symbol("id") <br>// symbol
+
+			</div>
+
+			<div class="card">
+
+				typeof null <br>// null
+
+			</div>
+
+
+		</section>
+		<section>
+
+			<h2>Математика</h2>
+
+			<div class="card">
+
+				let value = true<br>
+				alert(typeof value)<br>
+				value = String(value)<br>
+				alert(typeof value)<br>
+				// boolean<br>
+				// string
+			</div>
+
+			<div class="card">
+				let str = "123"<br>
+				alert(typeof str)<br>
+				let num = Number(str)<br>
+				alert(typeof num)<br>
+				// number
+
+			</div>
+
+			<div class="card">
+				let age = Number("AAA")<br>
+				alert(age)<br>
+				// NaN
+			</div>
+
+			<div class="card">
+				let x = 1;<br>
+				x = -x;<br>
+				alert( x );<br>
+				// -1
+			</div>
+
+			<div class="card">
+				5 % 2 // 1
+			</div>
+
+			<div class="card">
+				2 ** 2 // 4
+			</div>
+
+			<div class="card">
+				let x = 1;
+				alert( +x ); // 1
+			</div>
+
+			<div class="card">
+				2 * 2 + 1 // 5
+			</div>
+
+			<div class="card">
+				"6" / "2" // 3
+			</div>
+
+			<div class="card">
+				let n = 2
+				n += 5 // 7
+				n *= 2 // 14
+			</div>
+
+			<div class="card">
+
+			</div>
+
+			<div class="card">
+
+			</div>
+		</section>
+	</main>
 	<script>
-	alert(typeof null)</script>
+		aler("моя" + "строка")
+	</script>
 </body></html>
