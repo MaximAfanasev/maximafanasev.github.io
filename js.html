@@ -2,256 +2,252 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
+    <meta charset="UTF-8">
+    <title>Document</title>
 </head>
 <style>
-	* {
-		outline: 1px soli;
-	}
+    * {
+        outline: 1px soli;
+    }
 
-	body {
-		margin: 0 auto;
-		padding: 0;
-		width: fit-content;
-		background: #000;
-		color: #fff;
-		font-family: sans-serif;
-		padding: 20px;
-		overflow-x: hidden;
-		font-size: 24px;
-		max-width: 1200px;
-		width: 100%;
-	}
+    body {
+        margin: 0 auto;
+        padding: 0;
+        width: fit-content;
+        background: #000;
+        color: #fff;
+        font-family: sans-serif;
+        padding: 20px;
+        overflow-x: hidden;
+        font-size: 24px;
+        max-width: 1200px;
+        width: 100%;
+    }
 
-	main {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 20px;
-	}
+    main {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
 
-	h2 {
-		color: gold;
-	}
+    h2 {
+        color: gold;
+    }
 
-	span {
-		font-size: 24px;
-		line-height: 40px;
-	}
+    span {
+        font-size: 24px;
+        line-height: 40px;
+    }
 
-	.card {
-		display: flex;
-		flex-direction: column;
-		margin-bottom: 20px;
-		border: 1px dashed #1fe;
-		border-radius: 20px;
-		padding: 20px;
-	}
+    .card {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+        border: 1px dashed #1fe;
+        border-radius: 20px;
+        padding: 20px;
+    }
 
-	section .card:last-child {
-		margin-bottom: 0;
-	}
+    section .card:last-child {
+        margin-bottom: 0;
+    }
 </style>
 
 <body>
 
-	<h1>😈 + 😥 = JS</h1>
+    <h1>😈 + 😥 = JS</h1>
 
-	<main>
-		<section>
+    <main>
+        <section>
 
-			<h2>Взаимодействие</h2>
+            <h2>Взаимодействие</h2>
 
-			<div class="card">
-				alert('Привет')
-				<br>// Привет
-			</div>
+            <div class="card">
+                alert('Привет')
+                <br>// Привет
+            </div>
 
-			<div class="card">
+            <div class="card">
 
-				let age = prompt('Сколько лет?', 100)<br>
-				alert(`Тебе ${age} лет!`)<br>
-				// 100 Ok Cancel<br>
-				// Тебе 100 лет!
+                let age = prompt('Сколько лет?', 100)<br>
+                alert(`Тебе ${age} лет!`)<br>
+                // 100 Ok Cancel<br>
+                // Тебе 100 лет!
 
-			</div>
+            </div>
 
-			<div class="card">
-				let isBoss = confirm("главный?")<br>
-				alert( isBoss )<br>
-				// главный? Ok Cancel<br>
-				// true
-			</div>
-		</section>
-		<section>
-			<h2>Переменные</h2>
+            <div class="card">
+                let isBoss = confirm("главный?")<br>
+                alert( isBoss )<br>
+                // главный? Ok Cancel<br>
+                // true
+            </div>
+        </section>
+        <section>
+            <h2>Переменные</h2>
 
-			<div class="card">
-				let message<br>
-				message = 'Hello!'<br>
-				alert(message)<br>
-				// Hello!
-			</div>
+            <div class="card">
+                let message<br>
+                message = 'Hello!'<br>
+                alert(message)<br>
+                // Hello!
+            </div>
 
-			<div class="card">
-				const myBirthday = '18.04.1982'<br>
-				myBirthday = '01.01.2001'<br>
-				// Assigment to constant variable
-			</div>
-
-
-		</section>
-		<section>
-			<h2>Типы данных</h2>
-
-			<div class="card">
-
-				alert( 1 / 0 )<br>
-				// Infinity
-
-			</div>
-
-			<div class="card">
-
-				alert( "не число" / 2 )<br>
-				// NaN
-
-			</div>
-
-		</section>
-		<section>
-
-			<h2>Строки</h2>
-
-			<div class="card">
-
-				let name = "Иван";<br>
-				alert( `Привет, ${name}!` )<br>
-				// Привет, Иван<br>
+            <div class="card">
+                const myBirthday = '18.04.1982'<br>
+                myBirthday = '01.01.2001'<br>
+                // Assigment to constant variable
+            </div>
 
 
-				`результат: ${1 + 2}` // 3<br><br>
-				let s = "моя" + "строка";<br>
-				alert(s); // 'моястрока'<br><br>
-				'1' + 2 // '12'<br>
-				2 + 2 + '1' // "41"<br>
-				6 - '2' // 4<br>
-				'6' / '2' // 3
+        </section>
+        <section>
+            <h2>Типы данных</h2>
 
-			</div>
+            <div class="card">
+
+                alert( 1 / 0 )<br>
+                // Infinity
+
+            </div>
+
+            <div class="card">
+
+                alert( "не число" / 2 )<br>
+                // NaN
+
+            </div>
+            <div class="card">
+                let value = true<br>
+                alert(typeof value)<br>
+                value = String(value)<br>
+                alert(typeof value)<br>
+                // boolean<br>
+                // string
+            </div>
+
+            <div class="card">
+                let str = "123"<br>
+                alert(typeof str)<br> 
+                let num = Number(str)<br>
+                alert(typeof num)<br>
+                // number
+            </div>
+
+            <div class="card">
+                let age = Number("AAA")<br>
+                alert(age)<br>
+                // NaN
+            </div>
+        </section>
+        <section>
+
+            <h2>Строки</h2>
+
+            <div class="card">
+
+                let name = "Иван";<br>
+                alert( `Привет, ${name}!` )<br>
+                // Привет, Иван<br>
 
 
-		</section>
-		<section>
+                `результат: ${1 + 2}` // 3<br><br>
+                let s = "моя" + "строка";<br>
+                alert(s); // 'моястрока'<br><br>
+                '1' + 2 // '12'<br>
+                2 + 2 + '1' // "41"<br>
+                6 - '2' // 4<br>
+                '6' / '2' // 3
 
-			<h2>Boolean</h2>
-
-			<div class="card">
-
-				let isGreater = 4 > 1<br>
-				alert( isGreater ) <br>// true
-
-			</div>
-
-			<div class="card">
-
-				typeof undefined <br>// undefined
-
-			</div>
-
-			<div class="card">
-
-				typeof 10n <br>// bigint
-
-			</div>
-
-			<div class="card">
-
-				typeof Symbol("id") <br>// symbol
-
-			</div>
-
-			<div class="card">
-
-				typeof null <br>// null
-
-			</div>
+            </div>
 
 
-		</section>
-		<section>
+        </section>
+        <section>
 
-			<h2>Математика</h2>
+            <h2>Boolean</h2>
 
-			<div class="card">
+            <div class="card">
 
-				let value = true<br>
-				alert(typeof value)<br>
-				value = String(value)<br>
-				alert(typeof value)<br>
-				// boolean<br>
-				// string
-			</div>
+                let isGreater = 4 > 1<br>
+                alert( isGreater ) <br>// true
 
-			<div class="card">
-				let str = "123"<br>
-				alert(typeof str)<br>
-				let num = Number(str)<br>
-				alert(typeof num)<br>
-				// number
+            </div>
 
-			</div>
+            <div class="card">
 
-			<div class="card">
-				let age = Number("AAA")<br>
-				alert(age)<br>
-				// NaN
-			</div>
+                typeof undefined <br>// undefined
 
-			<div class="card">
-				let x = 1;<br>
-				x = -x;<br>
-				alert( x );<br>
-				// -1
-			</div>
+            </div>
 
-			<div class="card">
-				5 % 2 // 1
-			</div>
+            <div class="card">
 
-			<div class="card">
-				2 ** 2 // 4
-			</div>
+                typeof 10n <br>// bigint
 
-			<div class="card">
-				let x = 1;
-				alert( +x ); // 1
-			</div>
+            </div>
 
-			<div class="card">
-				2 * 2 + 1 // 5
-			</div>
+            <div class="card">
 
-			<div class="card">
-				"6" / "2" // 3
-			</div>
+                typeof Symbol("id") <br>// symbol
 
-			<div class="card">
-				let n = 2
-				n += 5 // 7
-				n *= 2 // 14
-			</div>
+            </div>
 
-			<div class="card">
+            <div class="card">
 
-			</div>
+                typeof null <br>// null
 
-			<div class="card">
+            </div>
 
-			</div>
-		</section>
-	</main>
-	<script>
-		aler("моя" + "строка")
-	</script>
+
+        </section>
+        <section>
+
+            <h2>Математика</h2>
+
+            <div class="card">
+                let x = 1;<br>
+                x = -x;<br>
+                alert( x );<br>
+                // -1
+            </div>
+
+            <div class="card">
+                5 % 2 // 1
+            </div>
+
+            <div class="card">
+                2 ** 2 // 4
+            </div>
+
+            <div class="card">
+                let x = 1;<br>
+                alert( +x ); // 1
+            </div>
+
+            <div class="card">
+                2 * 2 + 1 // 5
+            </div>
+
+            <div class="card">
+                "6" / "2" // 3
+            </div>
+
+            <div class="card">
+                let n = 2<br>
+                n += 5 // 7<br>
+                n *= 2 // 14<br>
+            </div>
+
+            <div class="card">
+
+            </div>
+
+            <div class="card">
+
+            </div>
+        </section>
+    </main>
+    <script>
+        aler("моя" + "строка")
+    </script>
 </body></html>
