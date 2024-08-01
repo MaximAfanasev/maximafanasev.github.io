@@ -14,12 +14,13 @@
         margin: 0 auto;
         padding: 0;
         width: fit-content;
+        line-height: 34px;
         background: #000;
         color: #fff;
         font-family: sans-serif;
         padding: 20px;
         overflow-x: hidden;
-        font-size: 24px;
+        font-size: 22px;
         max-width: 1200px;
         width: 100%;
     }
@@ -63,75 +64,28 @@
             <h2>Взаимодействие</h2>
 
             <div class="card">
-                alert('Привет')
-                <br>// Привет
-            </div>
-
-            <div class="card">
-
-                let age = prompt('Сколько лет?', 100)<br>
-                alert(`Тебе ${age} лет!`)<br>
-                // 100 Ok Cancel<br>
-                // Тебе 100 лет!
-
-            </div>
-
-            <div class="card">
-                let isBoss = confirm("главный?")<br>
-                alert( isBoss )<br>
-                // главный? Ok Cancel<br>
-                // true
+                alert<br> prompt<br> confirm
             </div>
         </section>
         <section>
             <h2>Переменные</h2>
 
             <div class="card">
-                let message<br>
-                message = 'Hello!'<br>
-                alert(message)<br>
-                // Hello!
+                let<br>
+                const
             </div>
-
-            <div class="card">
-                const myBirthday = '18.04.1982'<br>
-                myBirthday = '01.01.2001'<br>
-                // Assigment to constant variable
-            </div>
-
 
         </section>
         <section>
             <h2>Типы данных</h2>
 
             <div class="card">
-
-                alert( 1 / 0 )<br>
+                1 / 0
                 // Infinity
-
             </div>
 
             <div class="card">
-
-                alert( "не число" / 2 )<br>
-                // NaN
-
-            </div>
-            <div class="card">
-                let value = true<br>
-                alert(typeof value)<br>
-                value = String(value)<br>
-                alert(typeof value)<br>
-                // boolean<br>
-                // string
-            </div>
-
-            <div class="card">
-                let str = "123"<br>
-                alert(typeof str)<br> 
-                let num = Number(str)<br>
-                alert(typeof num)<br>
-                // number
+                "aaa" / 2 // NaN
             </div>
 
             <div class="card">
@@ -145,10 +99,10 @@
             <h2>Строки</h2>
 
             <div class="card">
-
+                String(value)<br><br>
                 let name = "Иван";<br>
                 alert( `Привет, ${name}!` )<br>
-                // Привет, Иван<br>
+                // Привет, Иван<br><br>
 
 
                 `результат: ${1 + 2}` // 3<br><br>
@@ -158,7 +112,6 @@
                 2 + 2 + '1' // "41"<br>
                 6 - '2' // 4<br>
                 '6' / '2' // 3
-
             </div>
 
 
@@ -168,37 +121,34 @@
             <h2>Boolean</h2>
 
             <div class="card">
-
-                let isGreater = 4 > 1<br>
-                alert( isGreater ) <br>// true
-
+                4 > 1 // true
             </div>
 
             <div class="card">
-
                 typeof undefined <br>// undefined
 
             </div>
 
             <div class="card">
-
                 typeof 10n <br>// bigint
-
             </div>
 
             <div class="card">
-
                 typeof Symbol("id") <br>// symbol
-
             </div>
 
             <div class="card">
-
                 typeof null <br>// null
-
             </div>
 
 
+        </section>
+
+        <section>
+            <h2>Числа</h2>
+            <div class="card">
+                Number(str)
+            </div>
         </section>
         <section>
 
@@ -237,9 +187,13 @@
                 n += 5 // 7<br>
                 n *= 2 // 14<br>
             </div>
+        </section>
+        <section>
+
+            <h2>Сравнение</h2>
 
             <div class="card">
-
+                > &#60; == === !== !=
             </div>
 
             <div class="card">
