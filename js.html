@@ -52,6 +52,7 @@
     section .card:last-child {
         margin-bottom: 0;
     }
+
 </style>
 
 <body>
@@ -85,42 +86,13 @@
             </div>
 
             <div class="card">
-                "aaa" / 2 // NaN
+                NaN<br>
+                "aaa" / 2<br>
+                Number("AAA")
             </div>
 
             <div class="card">
-                let age = Number("AAA")<br>
-                alert(age)<br>
-                // NaN
-            </div>
-        </section>
-        <section>
-
-            <h2>Строки</h2>
-
-            <div class="card">
-                String(value)<br><br>
-                let name = "Иван";<br>
-                alert( `Привет, ${name}!` )<br>
-                // Привет, Иван<br><br>
-
-
-                `результат: ${1 + 2}` // 3<br><br>
-                let s = "моя" + "строка";<br>
-                alert(s); // 'моястрока'<br><br>
-                '1' + 2 // '12'<br>
-                2 + 2 + '1' // "41"<br>
-                6 - '2' // 4<br>
-                '6' / '2' // 3
-            </div>
-
-
-        </section>
-        <section>
-
-            <h2>Boolean</h2>
-
-            <div class="card">
+                Boolean<br>
                 4 > 1 // true
             </div>
 
@@ -140,6 +112,24 @@
             <div class="card">
                 typeof null <br>// null
             </div>
+        </section>
+        <section>
+
+            <h2>Строки</h2>
+
+            <div class="card">
+                String(value)<br><br>
+                let name = "Иван";<br>
+                alert( `Привет, ${name}!` )<br>
+                // Привет, Иван<br><br>
+
+
+                `${1 + 2}` // 3<br><br>
+                "a" + "b" // 'ab'<br><br>
+                '1' + 2 // '12'<br>
+                6 - '2' // 4<br>
+                '6' / '2' // 3
+            </div>
 
 
         </section>
@@ -155,9 +145,8 @@
             <h2>Математика</h2>
 
             <div class="card">
-                let x = 1;<br>
-                x = -x;<br>
-                alert( x );<br>
+                let x = 1<br>
+                x = -x
                 // -1
             </div>
 
@@ -170,8 +159,8 @@
             </div>
 
             <div class="card">
-                let x = 1;<br>
-                alert( +x ); // 1
+                x = 1<br>
+                +x // 1
             </div>
 
             <div class="card">
@@ -183,25 +172,91 @@
             </div>
 
             <div class="card">
-                let n = 2<br>
-                n += 5 // 7<br>
-                n *= 2 // 14<br>
+                2 += 5 // 7<br>
+                2 *= 2 // 4<br>
             </div>
         </section>
+
         <section>
-
             <h2>Сравнение</h2>
-
             <div class="card">
-                > &#60; == === !== !=
+                > >= &#60; &#60;= == === !== !=
             </div>
+        </section>
 
+        <section>
+            <h2>Условия</h2>
+            <div class="card">
+                if {}
+                else if {}
+                else {}
+            </div>
+            <div class="card">
+                (age > 18) ? true : false
+            </div>
+            <div class="card">
+                user ?? "Аноним" // Аноним
+            </div>
+            <div class="card">
+                let a = "S"<br>
+                null ?? a ?? "X" // S
+            </div>
+            <div class="card">
+                let A = 0<br>
+                A || 100 // 100<br>
+                A ?? 100 // 0
+            </div>
+        </section>
+
+        <section>
+            <h2>Циклы</h2>
+            <div class="card">
+                while (i &#60; 3) {...}
+            </div>
+            <div class="card">
+                do {...} while (i > 3)
+            </div>
+            <div class="card">
+                for (let i = 0; i &#60; 3; i++) {}
+            </div>
+            <div class="card">
+                break<br>
+                continue
+            </div>
+        </section>
+
+        <section>
+            <h2>Функции</h2>
+            <div class="card">
+               declaration<br>
+                function a(b, c) { return b + c
+                }
+                a()
+            </div>
+            <div class="card">
+                Expression<br>
+                let a = function() {};
+            </div>
+            <div class="card">
+                let sum = (a, b) => a + b;
+            </div>
+            <div class="card">
+                var local global block {}
+            </div>
+        </section>
+
+        <section>
+            <h2>Объекты</h2>
             <div class="card">
 
             </div>
         </section>
+
     </main>
     <script>
         aler("моя" + "строка")
+
     </script>
-</body></html>
+</body>
+
+</html>
