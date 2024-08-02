@@ -128,11 +128,25 @@
                 "a" + "b" // 'ab'<br><br>
                 '1' + 2 // '12'<br>
                 6 - '2' // 4<br>
-                '6' / '2' // 3
+                '6' / '2' // 3<br>
+                ~2 // -3 -(2+1)
             </div>
-            
+
             <div class="card">
-                toUpperCase<br>
+                length<br>
+                '123'[0] // 1<br>
+                `Hello`.at(-2) // l<br>
+                toUpperCase()<br>
+                toLowerCase()<br>
+                'abc'.indexOf('b') // 1<br>
+                'abc'.includes('c') // true<br>
+                'abc'.startsWith('ab') // true<br>
+                'abc'.endsWith('bc') // true<br>
+                'abcde'.slice(0,3) // 'abc'<br>
+                'abcde'.slice(2) // 'cde'<br>
+                "z".codePointAt(0) // 122<br>
+                String.fromCodePoint(90) // 'Z'<br>
+                'abc'.localeCompare('abc') // 0
             </div>
 
 
@@ -141,14 +155,14 @@
         <section>
             <h2>Числа</h2>
             <div class="card">
-               1e3 === 1 * 1000<br>
-               1e-6 // 0.000001<br>
-               0xff // 255<br>
-               0b11111111<br>
-               0o377<br>
+                1e3 === 1 * 1000<br>
+                1e-6 // 0.000001<br>
+                0xff // 255<br>
+                0b11111111<br>
+                0o377<br>
             </div>
             <div class="card">
-               255.toString(16) // ff<br>
+                255.toString(16) // ff<br>
                 Number(str)<br>
                 1.23456.toFixed(2) // 1.23<br>
                 new Number(0)<br>
@@ -249,7 +263,7 @@
         <section>
             <h2>Функции</h2>
             <div class="card">
-               declaration<br>
+                declaration<br>
                 function a(b, c) { return b + c
                 }
                 a()
@@ -296,14 +310,14 @@
                 userGuest.admin?.()
             </div>
             <div class="card">
-                
+
             </div>
         </section>
 
         <section>
             <h2>Объекты</h2>
             <div class="card">
-                
+
             </div>
         </section>
 
