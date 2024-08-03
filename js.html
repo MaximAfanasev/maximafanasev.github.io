@@ -19,10 +19,8 @@
         color: #fff;
         font-family: sans-serif;
         padding: 20px;
-        overflow-x: hidden;
         font-size: 22px;
         max-width: 1200px;
-        width: 100%;
     }
 
     main {
@@ -146,7 +144,8 @@
                 'abcde'.slice(2) // 'cde'<br>
                 "z".codePointAt(0) // 122<br>
                 String.fromCodePoint(90) // 'Z'<br>
-                'abc'.localeCompare('abc') // 0
+                'abc'.localeCompare('abc') // 0<br>
+                '1,2,3'.split(', ') // ['1,2,3']
             </div>
 
 
@@ -175,6 +174,41 @@
                 parseFloat('12.5em') // 12.5<br>
             </div>
         </section>
+
+
+        <section>
+            <h2>Массивы</h2>
+            <div class="card">
+                []<br>
+                0 == [] // true<br>
+                ['a',1,`eee`][2] // 'eee'<br>
+                ['a',1,{name: 'Max'},`eee`][2].name // 'Max'<br>
+            </div>
+            <div class="card">
+                ['a',1,,`eee`].length // 4<br>
+                ['a',1,{name: 'Max'},`eee`].at(-2) // {name: 'Max'}<br>
+                ['a','b','c'].pop() // 'c'<br>
+                ['a','b','c'].shift() // 'a'<br>
+                ['a','b','c'].push('d') // ['a','b','c','d']<br>
+                ['a','b','c'].unshift('d') // ['d',a','b','c']<br>
+                new Array('a','b') // ['a','b']
+                ['a','b','c'].splice(1,1) // ['b']<br>
+                ['a','b','c'].splice(2,0,'d','e') // ['a', 'b', 'd', 'e', 'c']<br>
+                [1,2].concat([3]) //[1,2,3]<br>
+                [1,2,3].forEach(a=>alert(a)) // 1 2 3<br>
+                [1,2,3].indexOf(2) // 1<br>
+                [1,2,3].lastIndexOf(3) // 2<br>
+                [1,2].includes(2) // true<br>
+                1,2,3,4].filter(a => a&#60;3)<br>
+                [1,2,3,4].map((a,acc)=> acc = a+ a) // [2, 4, 6, 8]<br>
+                [1,2,15].sort() // [1,15,2]<br>
+                [1,2,15].sort(a=> Number(a)) // [1,2,15]<br>
+                [1,2,3].reverse() // [3,2,1]<br>
+                [1,2,3].join(',') // '1,2,3'<br>
+                 [1,2,3,4].reduce((a,acc)=>acc+a) // 10<br>
+            </div>
+        </section>
+
         <section>
 
             <h2>Математика</h2>
@@ -308,9 +342,6 @@
                 user.address ? user.address.street<br>
                 user?.address?.street<br>
                 userGuest.admin?.()
-            </div>
-            <div class="card">
-
             </div>
         </section>
 
