@@ -145,7 +145,8 @@
                 "z".codePointAt(0) // 122<br>
                 String.fromCodePoint(90) // 'Z'<br>
                 'abc'.localeCompare('abc') // 0<br>
-                '1,2,3'.split(', ') // ['1,2,3']
+                '1,2,3'.split(', ') // ['1,2,3']<br>
+                a = 'abc' [...a] // ['a', 'b', 'c']
             </div>
 
 
@@ -172,6 +173,7 @@
                 isFinite("15") // true<br>
                 parseInt('100px') // 100<br>
                 parseFloat('12.5em') // 12.5<br>
+                Math.max(3,5,1) // 5
             </div>
         </section>
 
@@ -205,7 +207,29 @@
                 [1,2,15].sort(a=> Number(a)) // [1,2,15]<br>
                 [1,2,3].reverse() // [3,2,1]<br>
                 [1,2,3].join(',') // '1,2,3'<br>
-                 [1,2,3,4].reduce((a,acc)=>acc+a) // 10<br>
+                [1,2,3,4].reduce((a,acc)=>acc+a) // 10<br>
+                Array.from<br>
+            </div>
+            <div class="card">Map Set</div>
+            <div class="card">WealMap WeakSet</div>
+            <div class="card">
+                c = ['a','b']<br>
+                [x,y] = c<br>
+                x = 'a' y = 'b'
+            </div>
+            <div class="card">
+                let x = JSON.stringify(c) // '["a","b","c"]'<br>
+                - undefined<br>
+                - methods()<br>
+                - Symbol("id")
+            </div>
+            <div class="card">
+                let x = JSON.stringify(c,null,2) // с переносами
+            </div>
+            <div class="card">
+                a = '[0,1,2,3]'<br>
+                x = JSON.parse(a)<br>
+                // [0,1,2,3]
             </div>
         </section>
 
@@ -289,6 +313,9 @@
                 for (let i = 0; i &#60; 3; i++) {}
             </div>
             <div class="card">
+                for (let x in str) {alert(x)}
+            </div>
+            <div class="card">
                 break<br>
                 continue
             </div>
@@ -312,6 +339,16 @@
             <div class="card">
                 var local global block {}
             </div>
+            <div class="card">
+                function a(b,c,...args)
+            </div>
+            <div class="card">
+                arguments - псевдомассив
+            </div>
+            function sayHi() {<br>
+            alert("Hi");<br>
+            }<br>
+            sayHi.name // sayHi
         </section>
 
         <section>
@@ -343,10 +380,26 @@
                 user?.address?.street<br>
                 userGuest.admin?.()
             </div>
+            <div class="card">
+                range = {from:1, to: 5}
+                Symbol.iterator
+            </div>
+            <div class="card">
+                Object.keys values entires(ключ+значение) fromEntires
+            </div>
+            <div class="card">
+                let options = {<br>
+                title: "Menu",<br>
+                width: 100,<br>
+                height: 200<br>
+                };<br>
+                let {title, width, height} = options;<br>
+                let {width: w, height: h, title} = options;
+            </div>
         </section>
 
         <section>
-            <h2>Объекты</h2>
+            <h2>Title</h2>
             <div class="card">
 
             </div>
