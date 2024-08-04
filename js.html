@@ -148,6 +148,12 @@
                 '1,2,3'.split(', ') // ['1,2,3']<br>
                 a = 'abc' [...a] // ['a', 'b', 'c']
             </div>
+            <pre class="card">
+String.prototype.show = function() {
+  alert(this);
+};
+
+"BOOM!".show(); // BOOM!</pre>
 
 
         </section>
@@ -346,10 +352,58 @@
                 arguments - псевдомассив
             </div>
             <div class="card">
-            function sayHi() {<br>
-            alert("Hi");<br>
-            }<br>
-            sayHi.name // sayHi
+                function sayHi() {<br>
+                alert("Hi");<br>
+                }<br>
+                sayHi.name // sayHi
+            </div>
+            <div class="card">
+                let a = new Function('a','b','return a + b')<br>
+                a(1,2) // 3
+            </div>
+            <div class="card">
+                Замыкание<br>
+                function getFunc() {<br>
+                let value = "test";<br>
+
+                let func = new Function('alert(value)');<br>
+
+                return func;<br>
+                }<br>
+
+                getFunc()(); // ошибка
+            </div>
+            <div class="card"> setTimeout("alert('Привет')", 1000);
+            </div>
+            <div class="card">
+                setInterval(() => alert('tick'), 2000);</div>
+            <div class="card">
+                sayHi.call( user )
+                sayHi.apply( user )
+            </div>
+            <div class="card">
+                let user = {<br>
+                firstName: "Вася",<br>
+                sayHi() {<br>
+                alert(`Привет, ${this.firstName}!`);<br>
+                }<br>
+                };<br>
+                setTimeout(function() {<br>
+                user.sayHi(); // Привет, Вася!<br>
+                }, 1000);
+            </div>
+            <div class="card">let boundFunc = func.bind(context);</div>
+            <div class="card">
+                "writable": true,<br>
+                "enumerable": true,<br>
+                "configurable": true
+            </div>
+            <div class="card">
+                Object.defineProperty(Math, "PI", { writable: true });
+            </div>
+            <div class="card">
+                get<br>
+                set
             </div>
         </section>
 
@@ -398,6 +452,34 @@
                 let {title, width, height} = options;<br>
                 let {width: w, height: h, title} = options;
             </div>
+            <div class="card">
+                let animal = {<br>
+                eats: true<br>
+                };<br>
+
+                let rabbit = {<br>
+                jumps: true<br>
+                };<br>
+
+                rabbit.__proto__ = animal;<br>
+                alert( rabbit.eats ); // true<br>
+                alert( rabbit.jumps ); // true
+            </div>
+            <pre class="card">
+let animal = {
+eats: true
+};
+
+function Rabbit(name) {
+this.name = name;
+}
+
+Rabbit.prototype = animal;
+
+let rabbit = new Rabbit("White Rabbit"); 
+
+alert( rabbit.eats ); // true
+            </pre>
         </section>
 
         <section>
@@ -408,10 +490,6 @@
         </section>
 
     </main>
-    <script>
-        aler("моя" + "строка")
-
-    </script>
 </body>
 
 </html>
