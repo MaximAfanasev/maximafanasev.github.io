@@ -9,6 +9,15 @@
     * {
         outline: 1px soli;
     }
+    
+    ul {
+        margin: 0;
+        padding: 0;
+    }
+    
+    ul li {
+        list-style: none;
+    }
 
     body {
         margin: 0 auto;
@@ -50,7 +59,6 @@
     section .card:last-child {
         margin-bottom: 0;
     }
-
 </style>
 
 <body>
@@ -61,9 +69,13 @@
         <section>
 
             <h2>Взаимодействие</h2>
-
+            <ul class="card">
+                <li>alert</li>
+                <li>prompt</li>
+                <li>confirm</li>
+            </ul>
             <div class="card">
-                alert<br> prompt<br> confirm
+                <br> <br> 
             </div>
         </section>
         <section>
@@ -129,7 +141,13 @@
                 '6' / '2' // 3<br>
                 ~2 // -3 -(2+1)
             </div>
-
+            <ul class="card">
+                <li>
+                String.fromCodePoint(90) // 'Z'</li>
+                <li>
+                'abc'.localeCompare('abc') // 0</li>
+                <li></li>
+            </ul>
             <div class="card">
                 length<br>
                 '123'[0] // 1<br>
@@ -148,12 +166,12 @@
                 '1,2,3'.split(', ') // ['1,2,3']<br>
                 a = 'abc' [...a] // ['a', 'b', 'c']
             </div>
-            <pre class="card">
-String.prototype.show = function() {
-  alert(this);
-};
+            <div class="card">
+                String.prototype.show = function() {<br>
+                alert(this);<br>
+                };<br>
 
-"BOOM!".show(); // BOOM!</pre>
+                "BOOM!".show(); // BOOM!</div>
 
 
         </section>
@@ -465,21 +483,21 @@ String.prototype.show = function() {
                 alert( rabbit.eats ); // true<br>
                 alert( rabbit.jumps ); // true
             </div>
-            <pre class="card">
-let animal = {
-eats: true
-};
+            <div class="card">
+                let animal = {<br>
+                eats: true<br>
+                };<br>
 
-function Rabbit(name) {
-this.name = name;
-}
+                function Rabbit(name) {<br>
+                this.name = name;<br>
+                }<br>
 
-Rabbit.prototype = animal;
+                Rabbit.prototype = animal;<br>
 
-let rabbit = new Rabbit("White Rabbit"); 
+                let rabbit = new Rabbit("White Rabbit"); <br>
 
-alert( rabbit.eats ); // true
-            </pre>
+                alert( rabbit.eats ); // true<br>
+            </div>
         </section>
 
         <section>
@@ -490,6 +508,4 @@ alert( rabbit.eats ); // true
         </section>
 
     </main>
-</body>
-
-</html>
+</body></html>
