@@ -9,14 +9,14 @@
     * {
         outline: 1px soli;
     }
-    
-    ul {
-        margin: 0;
-        padding: 0;
+
+    h1 {
+        text-align: center;
+        color: gold;
     }
-    
-    ul li {
-        list-style: none;
+
+    h2 {
+        text-align: center;
     }
 
     body {
@@ -63,8 +63,122 @@
 
 <body>
 
-    <h1>JS</h1>
+    <h1>ТО ДА СЁ</h1>
 
+    <h2>HTML</h2>
+
+    <section>
+        <div class="card">!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+            "http://www.w3.org/TR/html4/strict.dtd"</div>
+        <div class="card">html lang="ru"</div>
+        <div class="card">link href="адрес_файла_стилей.css" rel="stylesheet"</div>
+        <div class="card">title Заголовок закладки /title</div>
+        <div class="card">meta charset="название кодировки"</div>
+        <div class="card">meta name="keywords" content="важные, ключевые, слова"</div>
+        <div class="card"></div>
+        <div class="card"></div>
+    </section>
+
+    <h2>теги</h2>
+    <section>
+        <div class="card">header</div>
+        <div class="card">nav</div>
+        <div class="card">main</div>
+        <div class="card">section</div>
+        <div class="card">article - оторванный</div>
+        <div class="card">aside - сайдбар</div>
+        <div class="card">footer</div>
+    </section>
+
+    <h2>разметка</h2>
+    <section>
+        <div class="card">h1 h2 h3 h4 h5 h6</div>
+        <div class="card">p</div>
+        <div class="card">ul ol(start="3") reversed type(1 a A i I) li
+            <ul>
+                <li>Я пункт списка, могу быть на любом месте</li>
+                <li>И я пункт списка, и мне тоже не важен порядок</li>
+            </ul>
+            <ol start="3">
+                <li>раз</li>
+                <li>два</li>
+            </ol>
+        </div>
+        <div class="card">dl dt dd<dl>
+                <dt>HTML</dt>
+                <dd>Язык гипертекстовой разметки</dd>
+                <dt>CSS</dt>
+                <dd>Каскадные таблицы стилей</dd>
+                <dd>Язык для оформления HTML-документов</dd>
+            </dl>
+        </div>
+        <div class="card">pre <pre>111</pre></div>
+        <div class="card">&#38;lt;</div>
+        <div class="card">code <code>&lt;ul&gt;</code></div>
+        <div class="card"><pre><code>
+if (a > b) {              // Игзампл оф коде ин
+  console.log('Hello!');  // ДжаваСкрипт лангуаге
+}
+</code></pre></div>
+        <div class="card">q - цитата <q cite="https://www.w3.org/TR/html52/">The q element represents some phrasing content quoted from another source</q></div>
+        <div class="card">br</div>
+        <div class="card">sup sub
+        <code>20м<sup>2</sup>
+H<sub>2</sub>O
+X<sup>3</sup>+X<sup>2</sup>=1</code></div>
+        <div class="card">time <time datetime="2016-11-18T09:54">09:54 утра</time></div>
+        <div class="card">em i <em>просто обожаю</em> <i>такого просто не может быть</i></div>
+        <div class="card">strong b <strong>Внимание!</strong><b>меч</b></div>
+        <div class="card">del ins <del datetime="2009-10-11T01:25-07:00">Погулять</del><ins>Купить принтер</ins></div>
+        <div class="card">div span <span>выделена фраза</span></div>
+    </section>       
+    
+    <h2>Ссылки</h2>
+
+    
+    <section>
+    <div class="card">a href="https://stackoverflow.ru"</div>
+    <div class="card">a href="day-2.html"</div>
+    <div class="card">a href="c:/blog/inner.html"</div>
+    <div class="card">a href="https://site.ru/blog/index.html"</div>
+    <div class="card">a href="file.pdf" download</div>
+    <div class="card">a href="#part1" article id="part1"</div>
+    <div class="card">title наведи курсор на слово Назад<a title="Ну какое назад? Вы на первой фотке!">Назад</a></div>
+    </section>
+    
+    <h2>изображения</h2>
+    
+    <section>
+        <div class="card">img src="logo.png"</div>
+        <div class="card">svg gif jpeg png</div>
+        <div class="card">img src="logo.png" width="200" height="100"</div>
+        <div class="card">img src="cat.png" alt="Кот, который гуляет сам по себе"</div>
+        <div class="card"><a href="http://keksby.ru">
+  <img src="cat.png" alt="Кекс">
+</a></div>
+        <div class="card">figure и figcaption<figure>
+  Схема, график, диаграмма или код
+  <figcaption>Подпись к содержимому</figcaption>
+</figure></div>
+        <div class="card"></div>
+        <div class="card"></div>
+    </section>
+
+
+
+    <h2>CSS</h2>
+    
+    <section>
+        <div class="card">h1 { color: red; }</div>
+        <div class="card">.info { color: blue; }</div>
+        <div class="card">h1, .danger { color: red; }</div>
+        <div class="card">background-image: url("img/bottle.svg");</div>
+        <div class="card">Наследование font-size, font-family, font-style, font-weight, color, text-align, text-transform, text-indent, line-height, letter-spacing, word-spacing, white-space, direction, list-style, cursor, visibility, border-collapse</div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+    </section>
     <main>
         <section>
             <h2>Взаимодействие</h2>
@@ -139,9 +253,9 @@
             </div>
             <ul class="card">
                 <li>
-                String.fromCodePoint(90) // 'Z'</li>
+                    String.fromCodePoint(90) // 'Z'</li>
                 <li>
-                'abc'.localeCompare('abc') // 0</li>
+                    'abc'.localeCompare('abc') // 0</li>
                 <li></li>
             </ul>
             <div class="card">
@@ -498,14 +612,14 @@
         <section>
             <h2>Классы</h2>
             <div class="card">
-							
+
             </div>
         </section>
 
         <section>
             <h2>Title</h2>
             <div class="card">
-							
+
             </div>
         </section>
 
