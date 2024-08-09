@@ -169,11 +169,58 @@ X<sup>3</sup>+X<sup>2</sup>=1</code></div>
     <h2>CSS</h2>
     
     <section>
+        <div class="card">Каскадирование Cascading накидывает стили по порядку теги классы и прочее</div>
+        <div class="card">Конфликт свойств - Сравниваются приоритеты</div>
+        <div class="card">атрибут style</div>
+        <div class="card">.class1 .class2</div>
+       <div class="card">теги классы</div>
+       <div class="card">вложенные</div>
         <div class="card">h1 { color: red; }</div>
-        <div class="card">.info { color: blue; }</div>
+        <div class="card">info { color: blue; }</div>
         <div class="card">h1, .danger { color: red; }</div>
         <div class="card">background-image: url("img/bottle.svg");</div>
         <div class="card">Наследование font-size, font-family, font-style, font-weight, color, text-align, text-transform, text-indent, line-height, letter-spacing, word-spacing, white-space, direction, list-style, cursor, visibility, border-collapse</div>
+        <div class="card">Ненаследуемые background, border, padding, margin, width, height, position и другие.</div>
+        <div class="card">font: 16px/26px "Arial", sans-serif;</div>
+        <div class="card"><pre>
+font-size: 16px;                  /* было задано в font */
+line-height: 26px;                /* было задано в font */
+font-family: "Arial", sans-serif; /* было задано в font */
+font-weight: normal;              /* не было задано в font */
+font-style: normal;               /* не было задано в font */
+font-variant: normal;             /* не было задано в font */
+</pre></div>
+        <div class="card">относительные значения em, rem, vh, vw
+        <pre>
+h1 { margin: 0.5in }      /* inches  */
+h2 { line-height: 3cm }   /* centimeters */
+h3 { word-spacing: 4mm }  /* millimeters */
+h3 { letter-spacing: 1Q } /* quarter-millimeters */
+h4 { font-size: 12pt }    /* points */
+h4 { font-size: 1pc }     /* picas */
+p  { font-size: 12px }    /* px */
+</pre></div>
+        <div class="card">line-height 
+        <pre>
+line-height: normal; /* значение будет примерно 12px */
+line-height: 150%; /* вычисленное значение: 10px * 150% = 15px */
+line-height: 2;    /* вычисленное значение: 10px * 2 = 20px */
+</pre>
+</div>
+        <div class="card">font-weight: bold; /* то же самое что и 700 */</div>
+        <div class="card">text-align
+        <pre>
+left — выравнивание по левому краю блока, 
+это значение по умолчанию;
+right — по правому краю блока;
+center — по центру блока;
+justify — по ширине блока, 
+при этом слова в строке будут размещаться так, чтобы занять равномерно всё 
+пространство строки (пробелы между 
+словами в таком случае становятся неравномерными, так как браузер «растягивает» слова в строке).
+</pre></div>
+        <div class="card"></div>
+        <div class="card"></div>
         <div class="card"></div>
         <div class="card"></div>
         <div class="card"></div>
