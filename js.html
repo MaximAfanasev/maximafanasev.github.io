@@ -12,34 +12,25 @@
 
     h1 {
         text-align: center;
-        color: gold;
+        color: red;
     }
 
     h2 {
         text-align: center;
+        margin: 40px 0;
+        color: chartreuse;
     }
 
     body {
         margin: 0 auto;
         padding: 0;
-        width: fit-content;
-        line-height: 34px;
+        line-height: 2em;
         background: #000;
         color: #fff;
         font-family: sans-serif;
         padding: 20px;
-        font-size: 22px;
+        font-size: 16px;
         max-width: 1200px;
-    }
-
-    main {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-    }
-
-    h2 {
-        color: gold;
     }
 
     span {
@@ -47,39 +38,45 @@
         line-height: 40px;
     }
 
+    section {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
     .card {
         display: flex;
         flex-direction: column;
-        margin-bottom: 20px;
-        border: 1px dashed #1fe;
-        border-radius: 20px;
-        padding: 20px;
+        background: gold;
+        border-radius: 10px;
+        color: #222;
+        font-weight: bold;
+        vertical-align: middle;
+        padding: 5px 30px;
     }
 
     section .card:last-child {
         margin-bottom: 0;
     }
+
 </style>
 
 <body>
 
-    <h1>ТО ДА СЁ</h1>
+    <h1>Library</h1>
 
     <h2>HTML</h2>
-
     <section>
-        <div class="card">!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-            "http://www.w3.org/TR/html4/strict.dtd"</div>
+        <div class="card">!DOCTYPE HTML
+        </div>
         <div class="card">html lang="ru"</div>
-        <div class="card">link href="адрес_файла_стилей.css" rel="stylesheet"</div>
-        <div class="card">title Заголовок закладки /title</div>
-        <div class="card">meta charset="название кодировки"</div>
-        <div class="card">meta name="keywords" content="важные, ключевые, слова"</div>
-        <div class="card"></div>
-        <div class="card"></div>
+        <div class="card">link href="style.css" rel="stylesheet"</div>
+        <div class="card">title закладка</div>
+        <div class="card">meta charset="кодировка"</div>
+        <div class="card">meta name="keywords" content="ключевые"</div>
     </section>
 
-    <h2>теги</h2>
+    <h2>Теги</h2>
     <section>
         <div class="card">header</div>
         <div class="card">nav</div>
@@ -88,587 +85,637 @@
         <div class="card">article - оторванный</div>
         <div class="card">aside - сайдбар</div>
         <div class="card">footer</div>
-    </section>
-
-    <h2>разметка</h2>
-    <section>
         <div class="card">h1 h2 h3 h4 h5 h6</div>
-        <div class="card">p</div>
+        <div class="card">p div span</div>
+        <div class="card"><em>em</em> <i>i</i></div>
+        <div class="card"> <strong>strong</strong><b>b</b></div>
+        <div class="card"><del datetime="2009-10-11T01:25-07:00">del</del><ins>ins</ins></div>
         <div class="card">ul ol(start="3") reversed type(1 a A i I) li
-            <ul>
-                <li>Я пункт списка, могу быть на любом месте</li>
-                <li>И я пункт списка, и мне тоже не важен порядок</li>
-            </ul>
-            <ol start="3">
-                <li>раз</li>
-                <li>два</li>
-            </ol>
         </div>
-        <div class="card">dl dt dd<dl>
-                <dt>HTML</dt>
-                <dd>Язык гипертекстовой разметки</dd>
-                <dt>CSS</dt>
-                <dd>Каскадные таблицы стилей</dd>
-                <dd>Язык для оформления HTML-документов</dd>
-            </dl>
+        <div class="card">dl dt dd
         </div>
-        <div class="card">pre <pre>111</pre></div>
+        <div class="card">pre</div>
         <div class="card">&#38;lt;</div>
-        <div class="card">code <code>&lt;ul&gt;</code></div>
-        <div class="card"><pre><code>
-if (a > b) {              // Игзампл оф коде ин
-  console.log('Hello!');  // ДжаваСкрипт лангуаге
-}
-</code></pre></div>
-        <div class="card">q - цитата <q cite="https://www.w3.org/TR/html52/">The q element represents some phrasing content quoted from another source</q></div>
+        <div class="card">code </div>
+        <div class="card">q quote cite</div>
         <div class="card">br</div>
-        <div class="card">sup sub
-        <code>20м<sup>2</sup>
-H<sub>2</sub>O
-X<sup>3</sup>+X<sup>2</sup>=1</code></div>
-        <div class="card">time <time datetime="2016-11-18T09:54">09:54 утра</time></div>
-        <div class="card">em i <em>просто обожаю</em> <i>такого просто не может быть</i></div>
-        <div class="card">strong b <strong>Внимание!</strong><b>меч</b></div>
-        <div class="card">del ins <del datetime="2009-10-11T01:25-07:00">Погулять</del><ins>Купить принтер</ins></div>
-        <div class="card">div span <span>выделена фраза</span></div>
-    </section>       
-    
+        <div class="card"><code><sup>sup</sup> <sub>sub</sub></code>
+        </div>
+        <div class="card">time datetime="2016-11-18T09:54">09:54 утра</div>
+    </section>
+
     <h2>Ссылки</h2>
-
-    
     <section>
-    <div class="card">a href="https://stackoverflow.ru"</div>
-    <div class="card">a href="day-2.html"</div>
-    <div class="card">a href="c:/blog/inner.html"</div>
-    <div class="card">a href="https://site.ru/blog/index.html"</div>
-    <div class="card">a href="file.pdf" download</div>
-    <div class="card">a href="#part1" article id="part1"</div>
-    <div class="card">title наведи курсор на слово Назад<a title="Ну какое назад? Вы на первой фотке!">Назад</a></div>
+        <div class="card">a href="https://stackoverflow.ru"</div>
+        <div class="card">a href="day-2.html"</div>
+        <div class="card">a href="c:/blog/inner.html"</div>
+        <div class="card">a href="https://site.ru/blog/index.html"</div>
+        <div class="card">a href="file.pdf" download</div>
+        <div class="card">a href="#part1" article id="part1"</div>
+        <div class="card">title<ins>наведи курсор на </ins><a title="Ну какое назад? Вы на первой фотке!">Назад</a></div>
     </section>
-    
-    <h2>изображения</h2>
-    
+
+    <h2>Изображения</h2>
     <section>
-        <div class="card">img src="logo.png"</div>
         <div class="card">svg gif jpeg png</div>
-        <div class="card">img src="logo.png" width="200" height="100"</div>
-        <div class="card">img src="cat.png" alt="Кот, который гуляет сам по себе"</div>
+        <div class="card">picture</div>
+        <div class="card">img src="logo.png"</div>
+        <div class="card">width="200" height="100"</div>
+        <div class="card">img src="cat.png" alt="подпись"</div>
         <div class="card"><a href="http://keksby.ru">
-  <img src="cat.png" alt="Кекс">
-</a></div>
-        <div class="card">figure и figcaption<figure>
-  Схема, график, диаграмма или код
-  <figcaption>Подпись к содержимому</figcaption>
-</figure></div>
-        <div class="card"></div>
-        <div class="card"></div>
+                <img src="cat.png" alt="Картинка ссылка">
+            </a></div>
+        <div class="card">figure и figcaption
+        </div>
     </section>
-
-
 
     <h2>CSS</h2>
-    
+
+    <h2>Селекторы</h2>
     <section>
-        <div class="card">Каскадирование Cascading накидывает стили по порядку теги классы и прочее</div>
-        <div class="card">Конфликт свойств - Сравниваются приоритеты</div>
-        <div class="card">атрибут style</div>
-        <div class="card">.class1 .class2</div>
-       <div class="card">теги классы</div>
-       <div class="card">вложенные</div>
-        <div class="card">h1 { color: red; }</div>
-        <div class="card">info { color: blue; }</div>
-        <div class="card">h1, .danger { color: red; }</div>
-        <div class="card">background-image: url("img/bottle.svg");</div>
-        <div class="card">Наследование font-size, font-family, font-style, font-weight, color, text-align, text-transform, text-indent, line-height, letter-spacing, word-spacing, white-space, direction, list-style, cursor, visibility, border-collapse</div>
-        <div class="card">Ненаследуемые background, border, padding, margin, width, height, position и другие.</div>
-        <div class="card">font: 16px/26px "Arial", sans-serif;</div>
-        <div class="card"><pre>
-font-size: 16px;                  /* было задано в font */
-line-height: 26px;                /* было задано в font */
-font-family: "Arial", sans-serif; /* было задано в font */
-font-weight: normal;              /* не было задано в font */
-font-style: normal;               /* не было задано в font */
-font-variant: normal;             /* не было задано в font */
-</pre></div>
-        <div class="card">относительные значения em, rem, vh, vw
-        <pre>
-h1 { margin: 0.5in }      /* inches  */
-h2 { line-height: 3cm }   /* centimeters */
-h3 { word-spacing: 4mm }  /* millimeters */
-h3 { letter-spacing: 1Q } /* quarter-millimeters */
-h4 { font-size: 12pt }    /* points */
-h4 { font-size: 1pc }     /* picas */
-p  { font-size: 12px }    /* px */
-</pre></div>
-        <div class="card">line-height 
-        <pre>
-line-height: normal; /* значение будет примерно 12px */
-line-height: 150%; /* вычисленное значение: 10px * 150% = 15px */
-line-height: 2;    /* вычисленное значение: 10px * 2 = 20px */
-</pre>
-</div>
-        <div class="card">font-weight: bold; /* то же самое что и 700 */</div>
-        <div class="card">text-align
-        <pre>
-left — выравнивание по левому краю блока, 
-это значение по умолчанию;
-right — по правому краю блока;
-center — по центру блока;
-justify — по ширине блока, 
-при этом слова в строке будут размещаться так, чтобы занять равномерно всё 
-пространство строки (пробелы между 
-словами в таком случае становятся неравномерными, так как браузер «растягивает» слова в строке).
-</pre></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
+        <div class="card">Cascading - стили по порядку</div>
+        <div class="card">атрибут - класс - класс с атрибутом - два класса - id - important</div>
+        <div class="card">style { }</div>
+        <div class="card">вложенные</div>
+        <div class="card">соседние +</div>
+        <div class="card">дочерние</div>
+        <div class="card">псевдоклассы</div>
+        <div class="card">селекторы атрибутов</div>
+        <div class="card">id</div>
     </section>
-    <main>
-        <section>
-            <h2>Взаимодействие</h2>
-            <div class="card">
-                alert<br>
-                prompt<br>
-                confirm
-            </div>
-        </section>
-        <section>
-            <h2>Переменные</h2>
+    
+    <h2>Псевдо</h2>
+    
 
-            <div class="card">
-                let<br>
-                const
-            </div>
+    <h2>Свойства</h2>
+    <section>
+        <div class="card">background: [bc] [bi] [br] [bp] [ba]</div>
+        <div class="card">border</div>
+        <div class="card">box-sizing</div>
+        <div class="card">display</div>
+        <div class="card">position</div>
+        <div class="card">схлопывание margin</div>
+        <div class="card">Наследование font-size, font-family, font-style, font-weight, color, text-align, text-transform, text-indent, line-height, letter-spacing, word-spacing, white-space, direction, list-style, cursor, visibility, border-collapse</div>
+        <div class="card">Ненаследуемые background, border, padding, margin, width, height, position</div>
+        <div class="card">font: 16px/26px "Arial", sans-serif;</div>
+        <div class="card">относительные em, rem, vh, vw, in, cm, mm, Q, pt, pc</div>
+        <div class="card">line-height</div>
+        <div class="card">font-weight</div>
+        <div class="card">text-align</div>
+        <div class="card">vertical-align</div>
+        <div class="card">color</div>
+        <div class="card">white-space</div>
+        <div class="card">text-decoration</div>
+        <div class="card">font-style</div>
+        <div class="card">text-transform</div>
+    </section>
 
-        </section>
-        <section>
-            <h2>Типы данных</h2>
+    <h2>Формы</h2>
 
-            <div class="card">
-                1 / 0
-                // Infinity
-            </div>
+    <section>
+        <div class="card">form</div>
+        <div class="card">action method</div>
+        <div class="card">get поисковые</div>
+        <div class="card">post отправка данных</div>
+    </section>
 
-            <div class="card">
-                NaN<br>
-                "aaa" / 2<br>
-                Number("AAA")
-            </div>
+    <h2>Input</h2>
+    <section>
+        <div class="card">cols rows</div>
+        <div class="card">value</div>
+        <div class="card">id</div>
+        <div class="card">label for id подпись</div>
+        <div class="card">required</div>
+        <div class="card">autofocus</div>
+        <div class="card">fieldset</div>
+        <div class="card">pattern</div>
+        <div class="card">placeholder</div>
+        <div class="card">readonly</div>
+        <div class="card">disabled</div>
+        <div class="card">autocomplete</div>
+        <div class="card">tabindex="3"</div>
+        <div class="card">localStorage</div>
+    </section>
+    
+    <h2>Type</h2>
+    <section>
+        <div class="card">name</div>
+        <div class="card">password</div>
+        <div class="card">email</div>
+        <div class="card">url</div>
+        <div class="card">submit</div>
+        <div class="card">checkbox checked</div>
+        <div class="card">file</div>
+        <div class="card">hidden</div>
+        <div class="card">reset</div>
+        <div class="card">radio</div>
+        <div class="card">button</div>
+        <div class="card">image</div>
+        <div class="card">date</div>
+        <div class="card">time</div>
+        <div class="card">datalist</div>
+        <div class="card">number</div>
+        <div class="card">search</div>
+        <div class="card">range</div>
+        <div class="card">output</div>
+        <div class="card">tel</div>
+        <div class="card">color</div>
+    </section>
+    
+    <h2>Select</h2>
+    <section>
+        <div class="card">select</div>
+        <div class="card">option value</div>
+        <div class="card">multiple</div>
+    </section>
 
-            <div class="card">
-                Boolean<br>
-                4 > 1 // true
-            </div>
+    <h2>Javascript</h2>
 
-            <div class="card">
-                typeof undefined <br>// undefined
+    <h2>Взаимодействие</h2>
+    <section>
+        <div class="card">
+            alert<br>
+            prompt<br>
+            confirm
+        </div>
+    </section>
 
-            </div>
+    <h2>Переменные</h2>
+    <section>
+        <div class="card">
+            let<br>
+            const
+        </div>
+    </section>
 
-            <div class="card">
-                typeof 10n <br>// bigint
-            </div>
+    <h2>Типы данных</h2>
+    <section>
+        <div class="card">
+            1 / 0
+            // Infinity
+        </div>
+        <div class="card">
+            NaN<br>
+            "aaa" / 2<br>
+            Number("AAA")
+        </div>
+        <div class="card">
+            Boolean<br>
+            4 > 1 // true
+        </div>
+        <div class="card">
+            typeof undefined <br>// undefined
 
-            <div class="card">
-                typeof Symbol("id") <br>// symbol
-            </div>
+        </div>
+        <div class="card">
+            typeof 10n <br>// bigint
+        </div>
 
-            <div class="card">
-                typeof null <br>// null
-            </div>
-        </section>
-        <section>
+        <div class="card">
+            typeof Symbol("id") <br>// symbol
+        </div>
 
-            <h2>Строки</h2>
+        <div class="card">
+            typeof null <br>// null
+        </div>
+    </section>
 
-            <div class="card">
-                String(value)<br><br>
-                let name = "Иван";<br>
-                alert( `Привет, ${name}!` )<br>
-                // Привет, Иван<br><br>
+    <h2>Строки</h2>
+    <section>
+        <div class="card">
+            String(value)<br><br>
+        </div>
+        <div class="card">
+            let name = "Иван";<br>
+            alert( `Привет, ${name}!` )<br>
+            // Привет, Иван<br><br>
+        </div>
+        <div class="card">
+            `${1 + 2}` // 3<br><br>
+            "a" + "b" // 'ab'<br><br>
+            '1' + 2 // '12'<br>
+            6 - '2' // 4<br>
+            '6' / '2' // 3<br>
+            ~2 // -3 -(2+1)
+        </div>
+        <div class="card">
+            String.fromCodePoint(90) // 'Z'
+        </div>
+        <div class="card">
+            'abc'.localeCompare('abc') // 0
+        </div>
+        <div class="card">
+            length<br>
+        </div>
+        <div class="card">
+            '123'[0] // 1<br>
+            `Hello`.at(-2) // l<br>
+        </div>
+        <div class="card">
+            toUpperCase()<br>
+            toLowerCase()<br>
+        </div>
+        <div class="card">
+            'abc'.indexOf('b') // 1<br>
+        </div>
+        <div class="card">
+            'abc'.includes('c') // true<br>
+        </div>
+        <div class="card">
+            'abc'.startsWith('ab') // true<br>
+            'abc'.endsWith('bc') // true<br>
+        </div>
+        <div class="card">
+            'abcde'.slice(0,3) // 'abc'<br>
+            'abcde'.slice(2) // 'cde'<br>
+        </div>
+        <div class="card">
+            "z".codePointAt(0) // 122<br>
+            String.fromCodePoint(90) // 'Z'<br>
+        </div>
+        <div class="card">
+            'abc'.localeCompare('abc') // 0<br>
+        </div>
+        <div class="card">
+            '1,2,3'.split(', ') // ['1,2,3']<br>
+        </div>
+        <div class="card">
+            a = 'abc' [...a] // ['a', 'b', 'c']
+        </div>
+        <div class="card">
+            String.prototype.show = function() {<br>
+            alert(this);<br>
+            };<br>
+            "BOOM!".show(); // BOOM!</div>
+    </section>
 
+    <h2>Числа</h2>
+    <section>
+        <div class="card">
+            1e3 === 1 * 1000<br>
+            1e-6 // 0.000001<br>
+            0xff // 255<br>
+            0b11111111<br>
+            0o377<br>
+        </div>
+        <div class="card">
+            255.toString(16) // ff<br>
+            Number(str)<br>
+        </div>
+        <div class="card">
+            1.23456.toFixed(2) // 1.23<br>
+        </div>
+        <div class="card">
+            new Number(0)<br>
+        </div>
+        <div class="card">
+            Math.floor<br>
+            Math.ceil<br>
+            Math.round<br>
+        </div>
+        <div class="card">
+            isNaN(NaN) // true<br>
+            isFinite("15") // true<br>
+        </div>
+        <div class="card">
+            parseInt('100px') // 100<br>
+            parseFloat('12.5em') // 12.5<br>
+            Math.max(3,5,1) // 5
+        </div>
+    </section>
 
-                `${1 + 2}` // 3<br><br>
-                "a" + "b" // 'ab'<br><br>
-                '1' + 2 // '12'<br>
-                6 - '2' // 4<br>
-                '6' / '2' // 3<br>
-                ~2 // -3 -(2+1)
-            </div>
-            <ul class="card">
-                <li>
-                    String.fromCodePoint(90) // 'Z'</li>
-                <li>
-                    'abc'.localeCompare('abc') // 0</li>
-                <li></li>
-            </ul>
-            <div class="card">
-                length<br>
-                '123'[0] // 1<br>
-                `Hello`.at(-2) // l<br>
-                toUpperCase()<br>
-                toLowerCase()<br>
-                'abc'.indexOf('b') // 1<br>
-                'abc'.includes('c') // true<br>
-                'abc'.startsWith('ab') // true<br>
-                'abc'.endsWith('bc') // true<br>
-                'abcde'.slice(0,3) // 'abc'<br>
-                'abcde'.slice(2) // 'cde'<br>
-                "z".codePointAt(0) // 122<br>
-                String.fromCodePoint(90) // 'Z'<br>
-                'abc'.localeCompare('abc') // 0<br>
-                '1,2,3'.split(', ') // ['1,2,3']<br>
-                a = 'abc' [...a] // ['a', 'b', 'c']
-            </div>
-            <div class="card">
-                String.prototype.show = function() {<br>
-                alert(this);<br>
-                };<br>
+    <h2>Массивы</h2>
+    <section>
+        <div class="card">
+            []<br>
+            0 == [] // true<br>
+        </div>
+        <div class="card">
+            ['a',1,`eee`][2] // 'eee'<br>
+            ['a',1,{name: 'Max'},`eee`][2].name // 'Max'<br>
+        </div>
+        <div class="card">
+            ['a',1,,`eee`].length // 4<br>
+        </div>
+        <div class="card">
+            ['a',1,{name: 'Max'},`eee`].at(-2) // {name: 'Max'}<br>
+        </div>
+        <div class="card">
+            ['a','b','c'].pop() // 'c'<br>
+            ['a','b','c'].shift() // 'a'<br>
+            ['a','b','c'].push('d') // ['a','b','c','d']<br>
+            ['a','b','c'].unshift('d') // ['d',a','b','c']<br>
+        </div>
+        <div class="card">
+            new Array('a','b') // ['a','b']
+        </div>
+        <div class="card">
+            ['a','b','c'].splice(1,1) // ['b']<br>
+            ['a','b','c'].splice(2,0,'d','e') // ['a', 'b', 'd', 'e', 'c']<br>
+        </div>
+        <div class="card">
+            [1,2].concat([3]) //[1,2,3]<br>
+        </div>
+        <div class="card">
+            [1,2,3].forEach(a=>alert(a)) // 1 2 3<br>
+        </div>
+        <div class="card">
+            [1,2,3].indexOf(2) // 1<br>
+            [1,2,3].lastIndexOf(3) // 2<br>
+        </div>
+        <div class="card">
+            [1,2].includes(2) // true<br>
+        </div>
+        <div class="card">
+            1,2,3,4].filter(a => a&#60;3)<br>
+            [1,2,3,4].map((a,acc)=> acc = a+ a) // [2, 4, 6, 8]<br>
+        </div>
+        <div class="card">
+            [1,2,15].sort() // [1,15,2]<br>
+            [1,2,15].sort(a=> Number(a)) // [1,2,15]<br>
+        </div>
+        <div class="card">
+            [1,2,3].reverse() // [3,2,1]<br>
+        </div>
+        <div class="card">
+            [1,2,3].join(',') // '1,2,3'<br>
+        </div>
+        <div class="card">
+            [1,2,3,4].reduce((a,acc)=>acc+a) // 10<br>
+            Array.from<br>
+        </div>
+        <div class="card">Map Set</div>
+        <div class="card">WeakMap WeakSet</div>
+        <div class="card">
+            c = ['a','b']<br>
+            [x,y] = c<br>
+            x = 'a' y = 'b'
+        </div>
+        <div class="card">
+            let x = JSON.stringify(c) // '["a","b","c"]'<br>
+            - undefined<br>
+            - methods()<br>
+            - Symbol("id")
+        </div>
+        <div class="card">
+            let x = JSON.stringify(c,null,2) // с переносами
+        </div>
+        <div class="card">
+            a = '[0,1,2,3]'<br>
+            x = JSON.parse(a)<br>
+            // [0,1,2,3]
+        </div>
+    </section>
 
-                "BOOM!".show(); // BOOM!</div>
+    <h2>Математика</h2>
+    <section>
+        <div class="card">
+            let x = 1<br>
+            x = -x
+            // -1
+        </div>
+        <div class="card">
+            5 % 2 // 1
+        </div>
+        <div class="card">
+            2 ** 2 // 4
+        </div>
+        <div class="card">
+            x = 1<br>
+            +x // 1
+        </div>
+        <div class="card">
+            2 * 2 + 1 // 5
+        </div>
+        <div class="card">
+            "6" / "2" // 3
+        </div>
+        <div class="card">
+            2 += 5 // 7<br>
+            2 *= 2 // 4<br>
+        </div>
+    </section>
 
+    <h2>Сравнение</h2>
+    <section>
+        <div class="card">
+            > >= &#60; &#60;= == === !== !=
+        </div>
+    </section>
 
-        </section>
-        <section>
-            <h2>Числа</h2>
-            <div class="card">
-                1e3 === 1 * 1000<br>
-                1e-6 // 0.000001<br>
-                0xff // 255<br>
-                0b11111111<br>
-                0o377<br>
-            </div>
-            <div class="card">
-                255.toString(16) // ff<br>
-                Number(str)<br>
-                1.23456.toFixed(2) // 1.23<br>
-                new Number(0)<br>
-                Math.floor<br>
-                Math.ceil<br>
-                Math.round<br>
-                isNaN(NaN) // true<br>
-                isFinite("15") // true<br>
-                parseInt('100px') // 100<br>
-                parseFloat('12.5em') // 12.5<br>
-                Math.max(3,5,1) // 5
-            </div>
-        </section>
+    <h2>Условия</h2>
+    <section>
+        <div class="card">
+            if {}
+            else if {}
+            else {}
+        </div>
+        <div class="card">
+            (age > 18) ? true : false
+        </div>
+        <div class="card">
+            user ?? "Аноним" // Аноним
+        </div>
+        <div class="card">
+            let a = "S"<br>
+            null ?? a ?? "X" // S
+        </div>
+        <div class="card">
+            let A = 0<br>
+            A || 100 // 100<br>
+            A ?? 100 // 0
+        </div>
+    </section>
 
+    <h2>Циклы</h2>
+    <section>
+        <div class="card">
+            while (i &#60; 3) {...}
+        </div>
+        <div class="card">
+            do {...} while (i > 3)
+        </div>
+        <div class="card">
+            for (let i = 0; i &#60; 3; i++) {}
+        </div>
+        <div class="card">
+            for (let x in str) {alert(x)}
+        </div>
+        <div class="card">
+            break<br>
+            continue
+        </div>
+    </section>
 
-        <section>
-            <h2>Массивы</h2>
-            <div class="card">
-                []<br>
-                0 == [] // true<br>
-                ['a',1,`eee`][2] // 'eee'<br>
-                ['a',1,{name: 'Max'},`eee`][2].name // 'Max'<br>
-            </div>
-            <div class="card">
-                ['a',1,,`eee`].length // 4<br>
-                ['a',1,{name: 'Max'},`eee`].at(-2) // {name: 'Max'}<br>
-                ['a','b','c'].pop() // 'c'<br>
-                ['a','b','c'].shift() // 'a'<br>
-                ['a','b','c'].push('d') // ['a','b','c','d']<br>
-                ['a','b','c'].unshift('d') // ['d',a','b','c']<br>
-                new Array('a','b') // ['a','b']
-                ['a','b','c'].splice(1,1) // ['b']<br>
-                ['a','b','c'].splice(2,0,'d','e') // ['a', 'b', 'd', 'e', 'c']<br>
-                [1,2].concat([3]) //[1,2,3]<br>
-                [1,2,3].forEach(a=>alert(a)) // 1 2 3<br>
-                [1,2,3].indexOf(2) // 1<br>
-                [1,2,3].lastIndexOf(3) // 2<br>
-                [1,2].includes(2) // true<br>
-                1,2,3,4].filter(a => a&#60;3)<br>
-                [1,2,3,4].map((a,acc)=> acc = a+ a) // [2, 4, 6, 8]<br>
-                [1,2,15].sort() // [1,15,2]<br>
-                [1,2,15].sort(a=> Number(a)) // [1,2,15]<br>
-                [1,2,3].reverse() // [3,2,1]<br>
-                [1,2,3].join(',') // '1,2,3'<br>
-                [1,2,3,4].reduce((a,acc)=>acc+a) // 10<br>
-                Array.from<br>
-            </div>
-            <div class="card">Map Set</div>
-            <div class="card">WeakMap WeakSet</div>
-            <div class="card">
-                c = ['a','b']<br>
-                [x,y] = c<br>
-                x = 'a' y = 'b'
-            </div>
-            <div class="card">
-                let x = JSON.stringify(c) // '["a","b","c"]'<br>
-                - undefined<br>
-                - methods()<br>
-                - Symbol("id")
-            </div>
-            <div class="card">
-                let x = JSON.stringify(c,null,2) // с переносами
-            </div>
-            <div class="card">
-                a = '[0,1,2,3]'<br>
-                x = JSON.parse(a)<br>
-                // [0,1,2,3]
-            </div>
-        </section>
+    <h2>Функции</h2>
+    <section>
+        <div class="card">
+            declaration<br>
+            function a(b, c) { return b + c
+            }
+            a()
+        </div>
+        <div class="card">
+            Expression<br>
+            let a = function() {};
+        </div>
+        <div class="card">
+            let sum = (a, b) => a + b;
+        </div>
+        <div class="card">
+            var local global block {}
+        </div>
+        <div class="card">
+            function a(b,c,...args)
+        </div>
+        <div class="card">
+            arguments - псевдомассив
+        </div>
+        <div class="card">
+            function sayHi() {<br>
+            alert("Hi");<br>
+            }<br>
+            sayHi.name // sayHi
+        </div>
+        <div class="card">
+            let a = new Function('a','b','return a + b')<br>
+            a(1,2) // 3
+        </div>
+        <div class="card">
+            Замыкание<br>
+            function getFunc() {<br>
+            let value = "test";<br>
 
-        <section>
+            let func = new Function('alert(value)');<br>
 
-            <h2>Математика</h2>
+            return func;<br>
+            }<br>
 
-            <div class="card">
-                let x = 1<br>
-                x = -x
-                // -1
-            </div>
+            getFunc()(); // ошибка
+        </div>
+        <div class="card"> setTimeout("alert('Привет')", 1000);
+        </div>
+        <div class="card">
+            setInterval(() => alert('tick'), 2000);</div>
+        <div class="card">
+            sayHi.call( user )
+            sayHi.apply( user )
+        </div>
+        <div class="card">
+            let user = {<br>
+            firstName: "Вася",<br>
+            sayHi() {<br>
+            alert(`Привет, ${this.firstName}!`);<br>
+            }<br>
+            };<br>
+            setTimeout(function() {<br>
+            user.sayHi(); // Привет, Вася!<br>
+            }, 1000);
+        </div>
+        <div class="card">let boundFunc = func.bind(context);</div>
+        <div class="card">
+            "writable": true,<br>
+            "enumerable": true,<br>
+            "configurable": true
+        </div>
+        <div class="card">
+            Object.defineProperty(Math, "PI", { writable: true });
+        </div>
+        <div class="card">
+            get<br>
+            set
+        </div>
+    </section>
 
-            <div class="card">
-                5 % 2 // 1
-            </div>
+    <h2>Объекты</h2>
+    <section>
+        <div class="card">
+            let user = {<br>
+            name: "Max",<br>
+            age: 35,<br>
+            "two words": true<br>
+            }
+        </div>
+        <div class="card">
+            user.name = "Maxi"<br>
+            user["two words"] = false<br>
+            delete user.age
+        </div>
+        <div class="card">
+            копирование по ссылке<br>
+            клонирование и объединение
+        </div>
+        <div class="card">
+            sayHi() {this.name}
+        </div>
+        <div class="card">
+            let user = new User("Max");
+        </div>
+        <div class="card">
+            user.address ? user.address.street<br>
+            user?.address?.street<br>
+            userGuest.admin?.()
+        </div>
+        <div class="card">
+            range = {from:1, to: 5}
+            Symbol.iterator
+        </div>
+        <div class="card">
+            Object.keys values entires(ключ+значение) fromEntires
+        </div>
+        <div class="card">
+            let options = {<br>
+            title: "Menu",<br>
+            width: 100,<br>
+            height: 200<br>
+            };<br>
+            let {title, width, height} = options;<br>
+            let {width: w, height: h, title} = options;
+        </div>
+        <div class="card">
+            let animal = {<br>
+            eats: true<br>
+            };<br>
 
-            <div class="card">
-                2 ** 2 // 4
-            </div>
+            let rabbit = {<br>
+            jumps: true<br>
+            };<br>
 
-            <div class="card">
-                x = 1<br>
-                +x // 1
-            </div>
+            rabbit.__proto__ = animal;<br>
+            alert( rabbit.eats ); // true<br>
+            alert( rabbit.jumps ); // true
+        </div>
+        <div class="card">
+            let animal = {<br>
+            eats: true<br>
+            };<br>
 
-            <div class="card">
-                2 * 2 + 1 // 5
-            </div>
+            function Rabbit(name) {<br>
+            this.name = name;<br>
+            }<br>
 
-            <div class="card">
-                "6" / "2" // 3
-            </div>
+            Rabbit.prototype = animal;<br>
 
-            <div class="card">
-                2 += 5 // 7<br>
-                2 *= 2 // 4<br>
-            </div>
-        </section>
+            let rabbit = new Rabbit("White Rabbit"); <br>
 
-        <section>
-            <h2>Сравнение</h2>
-            <div class="card">
-                > >= &#60; &#60;= == === !== !=
-            </div>
-        </section>
+            alert( rabbit.eats ); // true<br>
+        </div>
+    </section>
 
-        <section>
-            <h2>Условия</h2>
-            <div class="card">
-                if {}
-                else if {}
-                else {}
-            </div>
-            <div class="card">
-                (age > 18) ? true : false
-            </div>
-            <div class="card">
-                user ?? "Аноним" // Аноним
-            </div>
-            <div class="card">
-                let a = "S"<br>
-                null ?? a ?? "X" // S
-            </div>
-            <div class="card">
-                let A = 0<br>
-                A || 100 // 100<br>
-                A ?? 100 // 0
-            </div>
-        </section>
+    <h2>Классы</h2>
+    <section>
+        <div class="card">
 
-        <section>
-            <h2>Циклы</h2>
-            <div class="card">
-                while (i &#60; 3) {...}
-            </div>
-            <div class="card">
-                do {...} while (i > 3)
-            </div>
-            <div class="card">
-                for (let i = 0; i &#60; 3; i++) {}
-            </div>
-            <div class="card">
-                for (let x in str) {alert(x)}
-            </div>
-            <div class="card">
-                break<br>
-                continue
-            </div>
-        </section>
+        </div>
+    </section>
 
-        <section>
-            <h2>Функции</h2>
-            <div class="card">
-                declaration<br>
-                function a(b, c) { return b + c
-                }
-                a()
-            </div>
-            <div class="card">
-                Expression<br>
-                let a = function() {};
-            </div>
-            <div class="card">
-                let sum = (a, b) => a + b;
-            </div>
-            <div class="card">
-                var local global block {}
-            </div>
-            <div class="card">
-                function a(b,c,...args)
-            </div>
-            <div class="card">
-                arguments - псевдомассив
-            </div>
-            <div class="card">
-                function sayHi() {<br>
-                alert("Hi");<br>
-                }<br>
-                sayHi.name // sayHi
-            </div>
-            <div class="card">
-                let a = new Function('a','b','return a + b')<br>
-                a(1,2) // 3
-            </div>
-            <div class="card">
-                Замыкание<br>
-                function getFunc() {<br>
-                let value = "test";<br>
+    <section>
+        <h2>Title</h2>
+        <div class="card">
 
-                let func = new Function('alert(value)');<br>
+        </div>
+    </section>
 
-                return func;<br>
-                }<br>
+</body>
 
-                getFunc()(); // ошибка
-            </div>
-            <div class="card"> setTimeout("alert('Привет')", 1000);
-            </div>
-            <div class="card">
-                setInterval(() => alert('tick'), 2000);</div>
-            <div class="card">
-                sayHi.call( user )
-                sayHi.apply( user )
-            </div>
-            <div class="card">
-                let user = {<br>
-                firstName: "Вася",<br>
-                sayHi() {<br>
-                alert(`Привет, ${this.firstName}!`);<br>
-                }<br>
-                };<br>
-                setTimeout(function() {<br>
-                user.sayHi(); // Привет, Вася!<br>
-                }, 1000);
-            </div>
-            <div class="card">let boundFunc = func.bind(context);</div>
-            <div class="card">
-                "writable": true,<br>
-                "enumerable": true,<br>
-                "configurable": true
-            </div>
-            <div class="card">
-                Object.defineProperty(Math, "PI", { writable: true });
-            </div>
-            <div class="card">
-                get<br>
-                set
-            </div>
-        </section>
-
-        <section>
-            <h2>Объекты</h2>
-            <div class="card">
-                let user = {<br>
-                name: "Max",<br>
-                age: 35,<br>
-                "two words": true<br>
-                }
-            </div>
-            <div class="card">
-                user.name = "Maxi"<br>
-                user["two words"] = false<br>
-                delete user.age
-            </div>
-            <div class="card">
-                копирование по ссылке<br>
-                клонирование и объединение
-            </div>
-            <div class="card">
-                sayHi() {this.name}
-            </div>
-            <div class="card">
-                let user = new User("Max");
-            </div>
-            <div class="card">
-                user.address ? user.address.street<br>
-                user?.address?.street<br>
-                userGuest.admin?.()
-            </div>
-            <div class="card">
-                range = {from:1, to: 5}
-                Symbol.iterator
-            </div>
-            <div class="card">
-                Object.keys values entires(ключ+значение) fromEntires
-            </div>
-            <div class="card">
-                let options = {<br>
-                title: "Menu",<br>
-                width: 100,<br>
-                height: 200<br>
-                };<br>
-                let {title, width, height} = options;<br>
-                let {width: w, height: h, title} = options;
-            </div>
-            <div class="card">
-                let animal = {<br>
-                eats: true<br>
-                };<br>
-
-                let rabbit = {<br>
-                jumps: true<br>
-                };<br>
-
-                rabbit.__proto__ = animal;<br>
-                alert( rabbit.eats ); // true<br>
-                alert( rabbit.jumps ); // true
-            </div>
-            <div class="card">
-                let animal = {<br>
-                eats: true<br>
-                };<br>
-
-                function Rabbit(name) {<br>
-                this.name = name;<br>
-                }<br>
-
-                Rabbit.prototype = animal;<br>
-
-                let rabbit = new Rabbit("White Rabbit"); <br>
-
-                alert( rabbit.eats ); // true<br>
-            </div>
-        </section>
-
-        <section>
-            <h2>Классы</h2>
-            <div class="card">
-
-            </div>
-        </section>
-
-        <section>
-            <h2>Title</h2>
-            <div class="card">
-
-            </div>
-        </section>
-
-    </main>
-</body></html>
+</html>
