@@ -42,6 +42,7 @@
     }
 
     .card {
+        position: relative;
         width: fit-content;
         display: flex;
         flex-direction: column;
@@ -65,8 +66,253 @@
     .card h1 {
         font-size: 2em;
     }
+
     table tr td {
         border: 1px solid #222;
+    }
+
+    .card.animation {
+        width: 100px;
+        height: 100px;
+    }
+
+    .child {
+        border-radius: 25px;
+        position: absolute;
+    }
+
+    .child-one {
+        width: 50px;
+        height: 50px;
+        background-color: #F498AD;
+        animation-name: circle-to-square;
+        animation-duration: 5s;
+    }
+
+    .child-one {
+        animation-name: circle-to-square;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+    }
+
+    @keyframes circle-to-square {
+        from {
+            width: 10px;
+            height: 10px;
+            background-color: #F498AD;
+        }
+
+        50% {
+            width: 30px;
+            height: 50px;
+            background-color: #7F6EDB;
+        }
+
+        to {
+            width: 100px;
+            height: 100px;
+            background-color: #2E9AFF;
+        }
+    }
+    
+    .card div {
+        overflow: hidden;
+    }
+
+    .ease i {
+        animation-timing-function: ease;
+    }
+
+    .ease-in i {
+        animation-timing-function: ease-in;
+    }
+
+    .ease-in-out i {
+        animation-timing-function: ease-in-out;
+    }
+
+    .ease-out i {
+        animation-timing-function: ease-out;
+    }
+
+    .cubic-bezier-2 i {
+        animation-timing-function: cubic-bezier(0.47, -0.44, 0.49, 1.46);
+    }
+
+    .cubic-bezier-3 i {
+        animation-timing-function: cubic-bezier(1, 0, 0, 0.5);
+    }
+
+    .cubic-bezier-4 i {
+        animation-timing-function: cubic-bezier(0.1, 0.7, 1, 0.1);
+    }
+
+    .steps i {
+        animation-timing-function: steps(10, end);
+    }
+
+    .linear {
+        position: relative;
+        margin: 20px;
+        width: 150px;
+        height: 150px;
+        background: #282A2E;
+        box-shadow: 0 0 0 5px rgb(255 255 255 / 60%);
+        transition: .2s;
+    }
+
+    .ease {
+        position: relative;
+        margin: 20px;
+        width: 150px;
+        height: 150px;
+        background: #282A2E;
+        box-shadow: 0 0 0 5px rgb(255 255 255 / 60%);
+        transition: .2s;
+    }
+
+    .ease-in {
+        position: relative;
+        margin: 20px;
+        width: 150px;
+        height: 150px;
+        background: #282A2E;
+        box-shadow: 0 0 0 5px rgb(255 255 255 / 60%);
+        transition: .2s;
+    }
+
+    .ease-in-out {
+        position: relative;
+        margin: 20px;
+        width: 150px;
+        height: 150px;
+        background: #282A2E;
+        box-shadow: 0 0 0 5px rgb(255 255 255 / 60%);
+        transition: .2s;
+    }
+
+    .ease-out {
+        position: relative;
+        margin: 20px;
+        width: 150px;
+        height: 150px;
+        background: #282A2E;
+        box-shadow: 0 0 0 5px rgb(255 255 255 / 60%);
+        transition: .2s;
+    }
+
+    .cubic-bezier-1 {
+        position: relative;
+        margin: 20px;
+        width: 150px;
+        height: 150px;
+        background: #282A2E;
+        box-shadow: 0 0 0 5px rgb(255 255 255 / 60%);
+        transition: .2s;
+    }
+
+    .cubic-bezier-2 {
+        position: relative;
+        margin: 20px;
+        width: 150px;
+        height: 150px;
+        background: #282A2E;
+        box-shadow: 0 0 0 5px rgb(255 255 255 / 60%);
+        transition: .2s;
+    }
+
+    .cubic-bezier-3 {
+        position: relative;
+        margin: 20px;
+        width: 150px;
+        height: 150px;
+        background: #282A2E;
+        box-shadow: 0 0 0 5px rgb(255 255 255 / 60%);
+        transition: .2s;
+    }
+
+    .cubic-bezier-4 {
+        position: relative;
+        margin: 20px;
+        width: 150px;
+        height: 150px;
+        background: #282A2E;
+        box-shadow: 0 0 0 5px rgb(255 255 255 / 60%);
+        transition: .2s;
+    }
+
+    .steps {
+        position: relative;
+        margin: 20px;
+        width: 150px;
+        height: 150px;
+        background: #282A2E;
+        box-shadow: 0 0 0 5px rgb(255 255 255 / 60%);
+        transition: .2s;
+    }
+
+
+    i {
+        position: absolute;
+        width: 5px;
+        height: 5px;
+        left: 0;
+        bottom: 0;
+        border-radius: 50%;
+        background: #F498AD;
+        animation: move 2s infinite;
+    }
+
+    .linear i {
+        animation-timing-function: linear;
+    }
+
+    @keyframes move {
+        from {
+            left: 0;
+            bottom: 0;
+        }
+
+        to {
+            left: 145px;
+            bottom: 145px;
+        }
+    }
+
+    i:nth-child(2) {
+        animation-delay: 0.1s
+    }
+
+    i:nth-child(3) {
+        animation-delay: 0.2s
+    }
+
+    i:nth-child(4) {
+        animation-delay: 0.3s
+    }
+
+    i:nth-child(5) {
+        animation-delay: 0.4s
+    }
+
+    i:nth-child(6) {
+        animation-delay: 0.5s
+    }
+
+    i:nth-child(7) {
+        animation-delay: 0.6s
+    }
+
+    i:nth-child(8) {
+        animation-delay: 0.7s
+    }
+
+    i:nth-child(9) {
+        animation-delay: 0.8s
+    }
+
+    i:nth-child(10) {
+        animation-delay: 0.9s
     }
 </style>
 
@@ -126,7 +372,18 @@
         <div class="card"><code><sup>sup</sup> <sub>sub</sub></code>
         </div>
         <div class="card">time datetime="2016-11-18T09:54">09:54 утра</div>
-        <div class="card"><table><tr><td>table</td><td>td</td></tr><tr><td>row</td><td>column</td></tr></table></div>
+        <div class="card">
+            <table>
+                <tr>
+                    <td>table</td>
+                    <td>td</td>
+                </tr>
+                <tr>
+                    <td>row</td>
+                    <td>column</td>
+                </tr>
+            </table>
+        </div>
     </section>
 
     <h2>Ссылки</h2>
@@ -171,7 +428,7 @@
 
 
     <h2>Свойства</h2>
-    
+
     <h2>Типы</h2>
     <section>
         <div class="card">схлопывание margin</div>
@@ -179,7 +436,7 @@
         <div class="card">Ненаследуемые</div>
         <div class="card">относительные em, rem, vh, vw, in, cm, mm, Q, pt, pc</div>
     </section>
-    
+
     <h2>Стилизация</h2>
     <section>
         <div class="card">background: [bc] [bi] [br] [bp] [ba]</div>
@@ -272,9 +529,88 @@
 
     <h2>Select</h2>
     <section>
-        <div class="card">select <select name="" id=""><option value="1">1</option><option value="2">2</option></select></div>
+        <div class="card">select <select name="" id="">
+                <option value="1">1</option>
+                <option value="2">2</option>
+            </select></div>
         <div class="card">option value</div>
         <div class="card">multiple</div>
+    </section>
+
+    <h2>Animation</h2>
+    <section>
+        <div class="card">
+            p {<br>
+            animation-duration: 3s;<br>
+            animation-name: slidein;<br>
+            }<br><br>
+
+            @keyframes slidein {<br>
+            from {<br>
+            translate: 150vw 0;<br>
+            scale: 200% 1;<br>
+            }<br><br>
+
+            to {<br>
+            translate: 0 0;<br>
+            scale: 100% 1;<br>
+            }<br>
+            }
+        </div>
+        <div class="card">
+            animation-name;<br>
+            animation-duration;<br>
+            animation-iteration-count;<br>
+            animation-direction;<br>
+            animation-timing-function;<br>
+            animation-delay;<br>
+            animation-play-state;<br>
+            animation-fill-mode;<br>
+            animation.
+        </div>
+        <div class="card animation">
+            <div class="child child-one"></div>
+        </div>
+        <div class="card">
+            linear
+            <div class="linear"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+        <div class="card">
+            ease
+            <div class="ease"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+        <div class="card">
+            ease-in
+            <div class="ease-in"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+        <div class="card">
+            ease-in-out
+            <div class="ease-in-out"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+        <div class="card">
+            ease-out
+            <div class="ease-out"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+        <div class="card">
+            cubic-bezier-1
+            <div class="cubic-bezier-1"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+        <div class="card">
+            cubic-bezier-2
+            <div class="cubic-bezier-2"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+        <div class="card">
+            cubic-bezier-3
+            <div class="cubic-bezier-3"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+        <div class="card">
+            cubic-bezier-4
+            <div class="cubic-bezier-4"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+        <div class="card">
+            steps
+            <div class="steps"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
     </section>
 
     <h2>Javascript</h2>
