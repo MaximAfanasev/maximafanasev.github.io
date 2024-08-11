@@ -36,6 +36,7 @@
     }
 
     section {
+        position: relative;
         display: flex;
         flex-direction: column;
         gap: 10px;
@@ -114,7 +115,7 @@
             background-color: #2E9AFF;
         }
     }
-    
+
     .card div {
         overflow: hidden;
     }
@@ -314,21 +315,82 @@
     i:nth-child(10) {
         animation-delay: 0.9s
     }
+
+    label input[type="checkbox"] {
+        width: 30px;
+        height: 30px;
+        margin-right: 20px;
+    }
+
+    label input[type="checkbox"]:checked~.card {
+        background: lightgreen;
+    }
+
+    label {
+        display: flex;
+    }
+
+
+    #progress {
+        position: sticky;
+        top: 20px;
+        z-index: 10;;
+        width: 100%;
+        height: 30px;
+        background: lightgray;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        color: #222;
+    }
+
+    #bar {
+        padding-left: 15px;
+        width: 0%;
+        height: 30px;
+        background-color: blueviolet;
+        border-radius: 10px;
+    }
 </style>
 
 <body>
 
+
+
     <h1>Library</h1>
 
-    <h2>HTML</h2>
-    <section>
-        <div class="card">!DOCTYPE HTML
-        </div>
-        <div class="card">html lang="ru"</div>
-        <div class="card">link href="style.css" rel="stylesheet"</div>
-        <div class="card">title закладка</div>
-        <div class="card">meta charset="кодировка"</div>
-        <div class="card">meta name="keywords" content="ключевые"</div>
+    <section id="check">
+    <div id="progress">
+        <div id="bar">HTML</div>
+    </div>
+        <label for="1">
+            <input type="checkbox" id="1">
+            <div class="card">&#60;!DOCTYPE HTML>
+            </div>
+        </label>
+        <label for="2">
+            <input type="checkbox" id="2">
+            <div class="card">&#60;html lang="ru"></div>
+        </label>
+        <label for="3">
+            <input type="checkbox" id="3">
+            <div class="card">&#60;head></div>
+        </label>
+        <label for="4">
+            <input type="checkbox" id="4">
+            <div class="card">&#60;title> закладка</div>
+        </label>
+        <label for="5">
+            <input type="checkbox" id="5">
+            <div class="card">&#60;meta charset="кодировка"></div>
+        </label>
+        <label for="6">
+            <input type="checkbox" id="6">
+            <div class="card">&#60;meta name="keywords" content="ключевые"></div>
+        </label>
+        <label for="7">
+            <input type="checkbox" id="7">
+            <div class="card">&#60;link href="style.css" rel="stylesheet"></div>
+        </label>
     </section>
 
     <h2>Теги</h2>
@@ -1093,5 +1155,24 @@
 
         </div>
     </section>
+    <script>
+        function update() {
+            var checked = 0;
+            var myBar = document.getElementById("bar");
+            var checks = document.getElementById("check");
 
+            boxes = checks.querySelectorAll("input[type='checkbox']:checked");
+            checked = boxes.length
+
+            myBar.style.width = ((checked / 7) * 100) + "%";
+            return true;
+        }
+
+        checks = document.querySelectorAll("input[type='checkbox']");
+        checks.forEach(function(box) {
+            box.addEventListener("change", function(e) {
+                update()
+            });
+        });
+    </script>
 </body></html>
