@@ -40,6 +40,7 @@
         display: flex;
         flex-direction: column;
         gap: 10px;
+        margin-bottom: 30px;
     }
 
     .card {
@@ -331,10 +332,11 @@
     }
 
 
-    #progress {
+    .progress {
         position: sticky;
         top: 20px;
-        z-index: 10;;
+        z-index: 10;
+        font-weight: bold;
         width: 100%;
         height: 30px;
         background: lightgray;
@@ -343,66 +345,90 @@
         color: #222;
     }
 
-    #bar {
+    .bar {
         padding-left: 15px;
         width: 0%;
         height: 30px;
         background-color: blueviolet;
         border-radius: 10px;
     }
+
 </style>
 
 <body>
 
 
 
-    <h1>Library</h1>
+    <h1 hidden></h1>
 
-    <section id="check">
-    <div id="progress">
-        <div id="bar">HTML</div>
-    </div>
-        <label for="1">
-            <input type="checkbox" id="1">
+    <section class="check1">
+        <div class="progress">
+            <div class="bar bar1">HTML</div>
+        </div>
+        <label>
+            <input type="checkbox">
             <div class="card">&#60;!DOCTYPE HTML>
             </div>
         </label>
         <label for="2">
-            <input type="checkbox" id="2">
+            <input type="checkbox">
             <div class="card">&#60;html lang="ru"></div>
         </label>
-        <label for="3">
-            <input type="checkbox" id="3">
+        <label>
+            <input type="checkbox">
             <div class="card">&#60;head></div>
         </label>
-        <label for="4">
-            <input type="checkbox" id="4">
+        <label>
+            <input type="checkbox">
             <div class="card">&#60;title> закладка</div>
         </label>
-        <label for="5">
-            <input type="checkbox" id="5">
+        <label>
+            <input type="checkbox">
             <div class="card">&#60;meta charset="кодировка"></div>
         </label>
-        <label for="6">
-            <input type="checkbox" id="6">
+        <label>
+            <input type="checkbox">
             <div class="card">&#60;meta name="keywords" content="ключевые"></div>
         </label>
-        <label for="7">
-            <input type="checkbox" id="7">
+        <label>
+            <input type="checkbox">
             <div class="card">&#60;link href="style.css" rel="stylesheet"></div>
         </label>
     </section>
 
-    <h2>Теги</h2>
-    <h2>Семантика</h2>
-    <section>
-        <div class="card">header</div>
-        <div class="card">nav</div>
-        <div class="card">main</div>
-        <div class="card">section</div>
-        <div class="card">article - оторванный</div>
-        <div class="card">aside - сайдбар</div>
-        <div class="card">footer</div>
+    <section class="check2">
+        <div class="progress">
+            <div class="bar bar2">Семантика</div>
+        </div>
+        <label>
+            <input type="checkbox">
+            <div class="card">&#60;header>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">nav</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">main</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">section</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">article - оторванный</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">aside - сайдбар</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">footer</div>
+        </label>
     </section>
     <h2>Текстовые</h2>
     <section>
@@ -1156,23 +1182,27 @@
         </div>
     </section>
     <script>
-        function update() {
+        function update(check, bar) {
             var checked = 0;
-            var myBar = document.getElementById("bar");
-            var checks = document.getElementById("check");
+            var bar = document.querySelector(bar);
+            var section = document.querySelector(check);
 
-            boxes = checks.querySelectorAll("input[type='checkbox']:checked");
-            checked = boxes.length
+            checkBoxes = section.querySelectorAll("input[type='checkbox']");
 
-            myBar.style.width = ((checked / 7) * 100) + "%";
-            return true;
+            checkedBoxes = section.querySelectorAll("input[type='checkbox']:checked");
+
+            bar.style.width = ((checkedBoxes.length / checkBoxes.length) * 100) + "%";
         }
 
-        checks = document.querySelectorAll("input[type='checkbox']");
-        checks.forEach(function(box) {
-            box.addEventListener("change", function(e) {
-                update()
-            });
+        document.querySelector(".check1").addEventListener("change", function(e) {
+            update(".check1", ".bar1")
         });
+
+        document.querySelector(".check2").addEventListener("change", function(e) {
+            update(".check2", ".bar2")
+        });
+
     </script>
-</body></html>
+</body>
+
+</html>
