@@ -329,6 +329,11 @@
 
     label {
         display: flex;
+        cursor: pointer;
+    }
+
+    label:hover .card {
+        background: red;
     }
 
 
@@ -574,15 +579,11 @@
         </label>
         <label>
             <input type="checkbox">
-            <div class="card">img src="logo.png"</div>
+            <div class="card">img src="logo.png" alt="подпись"</div>
         </label>
         <label>
             <input type="checkbox">
             <div class="card">width="200" height="100"</div>
-        </label>
-        <label>
-            <input type="checkbox">
-            <div class="card">img src=".png" alt="подпись"</div>
         </label>
         <label>
             <input type="checkbox">
@@ -603,39 +604,35 @@
         </div>
         <label>
             <input type="checkbox">
-            <div class="card">Cascading - стили по порядку</div>
+            <div class="card">Cascading стилей</div>
         </label>
         <label>
             <input type="checkbox">
-            <div class="card">атрибут - класс - класс с атрибутом - два класса - id - important</div>
+            <div class="card">h1 &#60; .h1 &#60;<br> .h1 h1 &#60; .h1 .h1 &#60;<br> id &#60; important!</div>
         </label>
         <label>
             <input type="checkbox">
-            <div class="card">style { }</div>
+            <div class="card">&#60;style> { }</div>
         </label>
         <label>
             <input type="checkbox">
-            <div class="card">вложенные</div>
+            <div class="card">вложенные ul li</div>
         </label>
         <label>
             <input type="checkbox">
-            <div class="card">соседние +</div>
+            <div class="card">соседние ul + li</div>
         </label>
         <label>
             <input type="checkbox">
-            <div class="card">дочерние</div>
+            <div class="card">дочерние ul li {}</div>
         </label>
         <label>
             <input type="checkbox">
-            <div class="card">псевдоклассы</div>
+            <div class="card">псевдоклассы ::</div>
         </label>
         <label>
             <input type="checkbox">
-            <div class="card">селекторы атрибутов</div>
-        </label>
-        <label>
-            <input type="checkbox">
-            <div class="card">id</div>
+            <div class="card">селекторы атрибутов []</div>
         </label>
     </section>
 
@@ -1111,8 +1108,12 @@
     <h2>Взаимодействие</h2>
     <section>
         <div class="card">
-            alert<br>
-            prompt<br>
+            alert
+        </div>
+        <div class="card">
+            prompt
+        </div>
+        <div class="card">
             confirm
         </div>
     </section>
@@ -1120,7 +1121,9 @@
     <h2>Переменные</h2>
     <section>
         <div class="card">
-            let<br>
+            let
+        </div>
+        <div class="card">
             const
         </div>
     </section>
@@ -1128,49 +1131,44 @@
     <h2>Типы данных</h2>
     <section>
         <div class="card">
-            1 / 0
-            // Infinity
+            1 / 0 // Infinity
         </div>
         <div class="card">
-            NaN<br>
-            "aaa" / 2<br>
-            Number("AAA")
+            "aaa" / 2 // NaN
         </div>
         <div class="card">
-            Boolean<br>
-            4 > 1 // true
-        </div>
-        <div class="card">
-            typeof undefined <br>// undefined
+            4 > 1 // true Boolean<br>
 
         </div>
         <div class="card">
-            typeof 10n <br>// bigint
+            undefined
+        </div>
+        <div class="card">
+            typeof 10n // bigint
         </div>
 
         <div class="card">
-            typeof Symbol("id") <br>// symbol
+            typeof Symbol("id") // symbol
         </div>
 
         <div class="card">
-            typeof null <br>// null
+            typeof null // null
         </div>
     </section>
 
     <h2>Строки</h2>
     <section>
         <div class="card">
-            String(value)<br><br>
+            String(value)
         </div>
         <div class="card">
             let name = "Иван";<br>
-            alert( `Привет, ${name}!` )<br>
-            // Привет, Иван<br><br>
+            alert( `Привет, ${name}!`)<br>
+            // Привет, Иван<br>
         </div>
         <div class="card">
-            `${1 + 2}` // 3<br><br>
-            "a" + "b" // 'ab'<br><br>
-            '1' + 2 // '12'<br>
+            `${1 + 2}` // 3<br>
+            "a" + "b" // 'ab'<br>
             6 - '2' // 4<br>
             '6' / '2' // 3<br>
             ~2 // -3 -(2+1)
@@ -1229,14 +1227,24 @@
     <h2>Числа</h2>
     <section>
         <div class="card">
-            1e3 === 1 * 1000<br>
-            1e-6 // 0.000001<br>
-            0xff // 255<br>
-            0b11111111<br>
-            0o377<br>
+            1e3 === 1 * 1000
         </div>
         <div class="card">
-            255.toString(16) // ff<br>
+            1e-6 // 0.000001
+        </div>
+        <div class="card">
+            0xff // 255
+        </div>
+        <div class="card">
+            0b11111111
+        </div>
+        <div class="card">
+            0o377
+        </div>
+        <div class="card">
+            255.toString(16) // ff
+        </div>
+        <div class="card">
             Number(str)<br>
         </div>
         <div class="card">
@@ -1264,7 +1272,9 @@
     <h2>Массивы</h2>
     <section>
         <div class="card">
-            []<br>
+            []
+        </div>
+        <div class="card">
             0 == [] // true<br>
         </div>
         <div class="card">
@@ -1272,10 +1282,10 @@
             ['a',1,{name: 'Max'},`eee`][2].name // 'Max'<br>
         </div>
         <div class="card">
-            ['a',1,,`eee`].length // 4<br>
+            ['a',1,{name: 'Max'},`eee`].at(-2) // {name: 'Max'}<br>
         </div>
         <div class="card">
-            ['a',1,{name: 'Max'},`eee`].at(-2) // {name: 'Max'}<br>
+            ['a',1,,`eee`].length // 4<br>
         </div>
         <div class="card">
             ['a','b','c'].pop() // 'c'<br>
