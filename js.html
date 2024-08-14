@@ -324,7 +324,7 @@
     }
 
     label input[type="checkbox"]:checked~.card {
-        background: lightgreen;
+        background: #3ac83a;
     }
 
     label {
@@ -348,11 +348,11 @@
     .bar {
         padding-left: 15px;
         width: 0%;
+        max-width: calc(100% - 15px);
         height: 30px;
-        background-color: blueviolet;
+        background-color: #3ac83a;
         border-radius: 10px;
     }
-
 </style>
 
 <body>
@@ -370,7 +370,7 @@
             <div class="card">&#60;!DOCTYPE HTML>
             </div>
         </label>
-        <label for="2">
+        <label>
             <input type="checkbox">
             <div class="card">&#60;html lang="ru"></div>
         </label>
@@ -430,276 +430,680 @@
             <div class="card">&#60;footer></div>
         </label>
     </section>
-    <h2>Текстовые</h2>
-    <section>
-        <div class="card">
-            <h1>h1</h1>
-            <h2>h2</h2>
-            <h3>h3</h3>
-            <h4>h4</h4>
-            <h5>h5</h5>
-            <h6>h6</h6>
+    <section class="check3">
+        <div class="progress">
+            <div class="bar bar3">Текстовые</div>
         </div>
-        <div class="card">p div span</div>
-        <div class="card"><em>em</em></div>
-        <div class="card"> <strong>strong</strong><b>b</b></div>
-        <div class="card"><del datetime="2009-10-11T01:25-07:00">del</del><ins>ins</ins></div>
-        <div class="card">ul ol(start="3") reversed type(1 a A i I) li
-        </div>
-        <div class="card">dl dt dd
-        </div>
-        <div class="card">pre</div>
-        <div class="card">&#38;lt;</div>
-        <div class="card">code</div>
-        <div class="card">
-            <q>q</q>
-            <quote>quote</quote>
-            <cite>cite</cite>
-        </div>
-        <div class="card">br</div>
-        <div class="card"><code><sup>sup</sup> <sub>sub</sub></code>
-        </div>
-        <div class="card">time datetime="2016-11-18T09:54">09:54 утра</div>
-        <div class="card">
-            <table>
-                <tr>
-                    <td>table</td>
-                    <td>td</td>
-                </tr>
-                <tr>
-                    <td>row</td>
-                    <td>column</td>
-                </tr>
-            </table>
-        </div>
+        <label>
+            <input type="checkbox">
+            <div class="card">
+                <h1>h1</h1>
+                <h2>h2</h2>
+                <h3>h3</h3>
+                <h4>h4</h4>
+                <h5>h5</h5>
+                <h6>h6</h6>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">p div span</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card"><em>em</em></div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card"> <strong>strong</strong><b>b</b></div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card"><del datetime="2009-10-11T01:25-07:00">del</del><ins>ins</ins></div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">ul ol(start="3") reversed type(1 a A i I) li
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">dl dt dd
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">pre</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">&#38;lt;</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">code</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">
+                <q>q</q>
+                <quote>quote</quote>
+                <cite>cite</cite>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">br</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card"><code><sup>sup</sup> <sub>sub</sub></code>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">time datetime="2016-11-18T09:54">09:54 утра</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">
+                <table>
+                    <tr>
+                        <td>table</td>
+                        <td>td</td>
+                    </tr>
+                    <tr>
+                        <td>row</td>
+                        <td>column</td>
+                    </tr>
+                </table>
+            </div>
+        </label>
     </section>
 
-    <h2>Ссылки</h2>
-    <section>
-        <div class="card">a href="https://stackoverflow.ru"</div>
-        <div class="card">a href="day-2.html"</div>
-        <div class="card">a href="c:/blog/inner.html"</div>
-        <div class="card">a href="https://site.ru/blog/index.html"</div>
-        <div class="card">a href="file.pdf" download</div>
-        <div class="card">a href="#part1" article id="part1"</div>
-        <div class="card">title<ins>наведи курсор на </ins><a title="Ну какое назад? Вы на первой фотке!">Назад</a></div>
-        <div class="card">target="_blank"</div>
-    </section>
-
-    <h2>Изображения</h2>
-    <section>
-        <div class="card">svg gif jpeg png</div>
-        <div class="card">picture</div>
-        <div class="card">img src="logo.png"</div>
-        <div class="card">width="200" height="100"</div>
-        <div class="card">img src=".png" alt="подпись"</div>
-        <div class="card"><a href="http://learnjavascript.ru">
-                <img src="" alt="Подпись">
-            </a></div>
-        <div class="card">figure и figcaption
+    <section class="check4">
+        <div class="progress">
+            <div class="bar bar4">Ссылки</div>
         </div>
-    </section>
-
-    <h2>CSS</h2>
-
-    <h2>Селекторы</h2>
-    <section>
-        <div class="card">Cascading - стили по порядку</div>
-        <div class="card">атрибут - класс - класс с атрибутом - два класса - id - important</div>
-        <div class="card">style { }</div>
-        <div class="card">вложенные</div>
-        <div class="card">соседние +</div>
-        <div class="card">дочерние</div>
-        <div class="card">псевдоклассы</div>
-        <div class="card">селекторы атрибутов</div>
-        <div class="card">id</div>
+        <label>
+            <input type="checkbox">
+            <div class="card">a href=" "</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">"https://stackoverflow.ru"</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">"c:/blog/inner.html"</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">"https://site.ru/blog/index.html"</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">"file.pdf" download</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">"#part1" article id="part1"</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">&#60;title><ins>наведи курсор на </ins><a title="Ну какое назад? Вы на первой фотке!">Назад</a></div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">target="_blank"</div>
+        </label>
     </section>
 
 
-    <h2>Свойства</h2>
-
-    <h2>Типы</h2>
-    <section>
-        <div class="card">схлопывание margin</div>
-        <div class="card">Наследуемые</div>
-        <div class="card">Ненаследуемые</div>
-        <div class="card">относительные em, rem, vh, vw, in, cm, mm, Q, pt, pc</div>
+    <section class="check5">
+        <div class="progress">
+            <div class="bar bar5">Изображения</div>
+        </div>
+        <label>
+            <input type="checkbox">
+            <div class="card">svg gif jpeg png</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">picture</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">img src="logo.png"</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">width="200" height="100"</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">img src=".png" alt="подпись"</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card"><a href="http://learnjavascript.ru">
+                    <img src="" alt="Подпись">
+                </a></div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">figure и figcaption
+            </div>
+        </label>
     </section>
 
-    <h2>Стилизация</h2>
-    <section>
-        <div class="card">background: [bc] [bi] [br] [bp] [ba]</div>
-        <div class="card">border</div>
-        <div class="card">box-sizing</div>
-        <div class="card">display</div>
-        <div class="card">position</div>
-        <div class="card">font: 16px/26px "Arial", sans-serif;</div>
-        <div class="card">line-height</div>
-        <div class="card">font-weight</div>
-        <div class="card">vertical-align</div>
-        <div class="card">color</div>
-        <div class="card">white-space</div>
-        <div class="card">font-style</div>
-        <div class="card">box-shadow</div>
+    <section class="check6">
+        <div class="progress">
+            <div class="bar bar6">CSS</div>
+        </div>
+        <label>
+            <input type="checkbox">
+            <div class="card">Cascading - стили по порядку</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">атрибут - класс - класс с атрибутом - два класса - id - important</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">style { }</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">вложенные</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">соседние +</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">дочерние</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">псевдоклассы</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">селекторы атрибутов</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">id</div>
+        </label>
     </section>
 
-    <h2>Text</h2>
-    <section>
-        <div class="card">text-transform</div>
-        <div class="card">text-align</div>
-        <div class="card">text-shadow</div>
-        <div class="card">text-ident</div>
-        <div class="card">text-decoration</div>
+
+
+
+    <section class="check7">
+        <div class="progress">
+            <div class="bar bar7">Типы</div>
+        </div>
+        <label>
+            <input type="checkbox">
+            <div class="card">схлопывание margin</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">Наследуемые</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">Ненаследуемые</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">относительные em, rem, vh, vw, in, cm, mm, Q, pt, pc</div>
+        </label>
     </section>
 
-    <h2>Псевдо</h2>
-    <section>
-        <div class="card">:empty</div>
-        <div class="card">:only-child</div>
-        <div class="card">:only-of-type</div>
-        <div class="card">::before</div>
-        <div class="card">::after</div>
-        <div class="card">::first-line</div>
-        <div class="card">::first-letter</div>
+
+
+    <section class="check8">
+        <div class="progress">
+            <div class="bar bar8">Стилизация</div>
+        </div>
+        <label>
+            <input type="checkbox">
+            <div class="card">background: [bc] [bi] [br] [bp] [ba]</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">border</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">box-sizing</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">display</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">position</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">font: 16px/26px "Arial", sans-serif;</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">line-height</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">font-weight</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">vertical-align</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">color</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">white-space</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">font-style</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">box-shadow</div>
+        </label>
     </section>
 
-    <h2>Формы</h2>
-    <section>
-        <div class="card">form</div>
-        <div class="card">action</div>
-        <div class="card">method</div>
-        <div class="card">get поисковые</div>
-        <div class="card">post отправка данных</div>
+
+
+    <section class="check9">
+        <div class="progress">
+            <div class="bar bar9">Text</div>
+        </div>
+        <label>
+            <input type="checkbox">
+            <div class="card">text-transform</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">text-align</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">text-shadow</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">text-ident</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">text-decoration</div>
+        </label>
     </section>
 
-    <h2>Input</h2>
-    <section>
-        <div class="card">cols</div>
-        <div class="card">rows</div>
-        <div class="card">value</div>
-        <div class="card">id</div>
-        <div class="card">label for id </div>
-        <div class="card">required</div>
-        <div class="card">autofocus</div>
-        <div class="card">fieldset</div>
-        <div class="card">pattern</div>
-        <div class="card">placeholder</div>
-        <div class="card">readonly</div>
-        <div class="card">disabled</div>
-        <div class="card">autocomplete</div>
-        <div class="card">tabindex="3"</div>
-        <div class="card">localStorage</div>
+    <section class="check10">
+        <div class="progress">
+            <div class="bar bar10">Псевдо</div>
+        </div>
+        <label>
+            <input type="checkbox">
+            <div class="card">:empty</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">:only-child</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">:only-of-type</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">::before</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">::after</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">::first-line</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">::first-letter</div>
+        </label>
     </section>
 
-    <h2>Type</h2>
-    <section>
-        <div class="card"><input type="name" placeholder="name"></div>
-        <div class="card"><input type="password" placeholder="***password***"></div>
-        <div class="card"><input type="email" placeholder="email"></div>
-        <div class="card">url <input type="url"></div>
-        <div class="card">submit<input type="submit"></div>
-        <div class="card">checkbox <input type="checkbox"><input type="checkbox" checked></div>
-        <div class="card">file <input type="file"></div>
-        <div class="card">hidden <input type="hidden"></div>
-        <div class="card">reset <input type="reset"></div>
-        <div class="card">radio <input type="radio"> <input type="radio" checked></div>
-        <div class="card">button <input type="button"></div>
-        <div class="card">image <input type="image"></div>
-        <div class="card">date <input type="date"></div>
-        <div class="card">time <input type="time"></div>
-        <div class="card">datalist<input type="datalist"></div>
-        <div class="card">number <input type="number" placeholder="1"></div>
-        <div class="card">search <input type="search"></div>
-        <div class="card">range <input type="range"></div>
-        <div class="card">output <input type="output" placeholder="1"></div>
-        <div class="card">tel <input type="tel"></div>
-        <div class="card">color <input type="color"></div>
+    <section class="check11">
+        <div class="progress">
+            <div class="bar bar11">Формы</div>
+        </div>
+        <label>
+            <input type="checkbox">
+            <div class="card">form</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">action</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">method</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">get поисковые</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">post отправка данных</div>
+        </label>
     </section>
 
-    <h2>Select</h2>
-    <section>
-        <div class="card">select <select name="" id="">
-                <option value="1">1</option>
-                <option value="2">2</option>
-            </select></div>
-        <div class="card">option value</div>
-        <div class="card">multiple</div>
+    <section class="check12">
+        <div class="progress">
+            <div class="bar bar12">Input</div>
+        </div>
+        <label>
+            <input type="checkbox">
+            <div class="card">cols</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">rows</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">value</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">id</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">label for id </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">required</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">autofocus</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">fieldset</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">pattern</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">placeholder</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">readonly</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">disabled</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">autocomplete</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">tabindex="3"</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">localStorage</div>
+        </label>
     </section>
 
-    <h2>Animation</h2>
-    <section>
-        <div class="card">
-            p {<br>
-            animation-duration: 3s;<br>
-            animation-name: slidein;<br>
-            }<br><br>
+    <section class="check13">
+        <div class="progress">
+            <div class="bar bar13">Type</div>
+        </div>
+        <label>
+            <input type="checkbox">
+            <div class="card"><input type="name" placeholder="name"></div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card"><input type="password" placeholder="***password***"></div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card"><input type="email" placeholder="email"></div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">url <input type="url"></div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">submit<input type="submit"></div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">checkbox <input type="checkbox"><input type="checkbox" checked></div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">file <input type="file"></div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">hidden <input type="hidden"></div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">reset <input type="reset"></div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">radio <input type="radio"> <input type="radio" checked></div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">button <input type="button"></div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">image <input type="image"></div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">date <input type="date"></div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">time <input type="time"></div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">datalist<input type="datalist"></div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">number <input type="number" placeholder="1"></div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">search <input type="search"></div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">range <input type="range"></div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">output <input type="output" placeholder="1"></div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">tel <input type="tel"></div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">color <input type="color"></div>
+        </label>
+    </section>
 
-            @keyframes slidein {<br>
-            from {<br>
-            translate: 150vw 0;<br>
-            scale: 200% 1;<br>
-            }<br><br>
+    <section class="check14">
+        <div class="progress">
+            <div class="bar bar14">Select</div>
+        </div>
+        <label>
+            <input type="checkbox">
+            <div class="card">select <select name="" id="">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                </select></div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">option value</div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">multiple</div>
+        </label>
+    </section>
 
-            to {<br>
-            translate: 0 0;<br>
-            scale: 100% 1;<br>
-            }<br>
-            }
+    <section class="check15">
+        <div class="progress">
+            <div class="bar bar15">Animation</div>
         </div>
-        <div class="card">
-            animation-name;<br>
-            animation-duration;<br>
-            animation-iteration-count;<br>
-            animation-direction;<br>
-            animation-timing-function;<br>
-            animation-delay;<br>
-            animation-play-state;<br>
-            animation-fill-mode;<br>
-            animation.
-        </div>
-        <div class="card animation">
-            <div class="child child-one"></div>
-        </div>
-        <div class="card">
-            linear
-            <div class="linear"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-        </div>
-        <div class="card">
-            ease
-            <div class="ease"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-        </div>
-        <div class="card">
-            ease-in
-            <div class="ease-in"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-        </div>
-        <div class="card">
-            ease-in-out
-            <div class="ease-in-out"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-        </div>
-        <div class="card">
-            ease-out
-            <div class="ease-out"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-        </div>
-        <div class="card">
-            cubic-bezier-1
-            <div class="cubic-bezier-1"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-        </div>
-        <div class="card">
-            cubic-bezier-2
-            <div class="cubic-bezier-2"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-        </div>
-        <div class="card">
-            cubic-bezier-3
-            <div class="cubic-bezier-3"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-        </div>
-        <div class="card">
-            cubic-bezier-4
-            <div class="cubic-bezier-4"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-        </div>
-        <div class="card">
-            steps
-            <div class="steps"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-        </div>
+        <label>
+            <input type="checkbox">
+            <div class="card">
+                p {<br>
+                animation-duration: 3s;<br>
+                animation-name: slidein;<br>
+                }<br><br>
+
+                @keyframes slidein {<br>
+                from {<br>
+                translate: 150vw 0;<br>
+                scale: 200% 1;<br>
+                }<br><br>
+
+                to {<br>
+                translate: 0 0;<br>
+                scale: 100% 1;<br>
+                }<br>
+                }
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">
+                animation-name;<br>
+                animation-duration;<br>
+                animation-iteration-count;<br>
+                animation-direction;<br>
+                animation-timing-function;<br>
+                animation-delay;<br>
+                animation-play-state;<br>
+                animation-fill-mode;<br>
+                animation.
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card animation">
+                <div class="child child-one"></div>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">
+                linear
+                <div class="linear"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">
+                ease
+                <div class="ease"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">
+                ease-in
+                <div class="ease-in"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">
+                ease-in-out
+                <div class="ease-in-out"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">
+                ease-out
+                <div class="ease-out"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">
+                cubic-bezier-1
+                <div class="cubic-bezier-1"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">
+                cubic-bezier-2
+                <div class="cubic-bezier-2"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">
+                cubic-bezier-3
+                <div class="cubic-bezier-3"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">
+                cubic-bezier-4
+                <div class="cubic-bezier-4"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="card">
+                steps
+                <div class="steps"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            </div>
+        </label>
     </section>
 
     <h2>Javascript</h2>
@@ -1193,16 +1597,53 @@
 
             bar.style.width = ((checkedBoxes.length / checkBoxes.length) * 100) + "%";
         }
-
         document.querySelector(".check1").addEventListener("change", function(e) {
             update(".check1", ".bar1")
         });
-
         document.querySelector(".check2").addEventListener("change", function(e) {
             update(".check2", ".bar2")
         });
-
+        document.querySelector(".check3").addEventListener("change", function(e) {
+            update(".check3", ".bar3")
+        });
+        document.querySelector(".check4").addEventListener("change", function(e) {
+            update(".check4", ".bar4")
+        });
+        document.querySelector(".check5").addEventListener("change", function(e) {
+            update(".check4", ".bar4")
+        });
+        document.querySelector(".check4").addEventListener("change", function(e) {
+            update(".check5", ".bar5")
+        });
+        document.querySelector(".check6").addEventListener("change", function(e) {
+            update(".check6", ".bar6")
+        });
+        document.querySelector(".check7").addEventListener("change", function(e) {
+            update(".check7", ".bar7")
+        });
+        document.querySelector(".check8").addEventListener("change", function(e) {
+            update(".check8", ".bar8")
+        });
+        document.querySelector(".check9").addEventListener("change", function(e) {
+            update(".check9", ".bar9")
+        });
+        document.querySelector(".check10").addEventListener("change", function(e) {
+            update(".check10", ".bar10")
+        });
+        document.querySelector(".check11").addEventListener("change", function(e) {
+            update(".check11", ".bar11")
+        });
+        document.querySelector(".check12").addEventListener("change", function(e) {
+            update(".check12", ".bar12")
+        });
+        document.querySelector(".check13").addEventListener("change", function(e) {
+            update(".check13", ".bar13")
+        });
+        document.querySelector(".check14").addEventListener("change", function(e) {
+            update(".check14", ".bar14")
+        });
+        document.querySelector(".check15").addEventListener("change", function(e) {
+            update(".check15", ".bar15")
+        });
     </script>
-</body>
-
-</html>
+</body></html>
