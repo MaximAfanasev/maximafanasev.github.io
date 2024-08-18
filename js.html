@@ -1371,9 +1371,280 @@
 
     <h2>Классы</h2>
     <section>
-        <div class="card">
+        <pre class="card">
+class User {
+  constructor(name) {
+    this.name = name;
+  }
+  sayHi() {
+    console.log(this.name)
+  }
+}
 
-        </div>
+let user = new User("Max");
+user.sayHi();</pre>
+   
+   <pre class="card">
+function makeClass(phrase) {
+  return class {
+    sayHi() {
+      console.log(phrase)
+    };
+  };
+}
+
+let User = makeClass("Привет");
+new User().sayHi();
+</pre>   
+   <pre class="card">
+class User {
+  constructor(name) {
+    this.name = name;
+  }
+  get name() {
+    return this._name;
+  }
+  set name(value) {
+    if (value.length &#60; 3) {
+      console.log("Имя короткое");
+      return;
+    }
+    this._name = value;
+  }
+}
+
+let user = new User("max");
+console.log(user.name);
+user = new User("12");
+</pre>   
+   <pre class="card">
+class User {
+  name = 'Anonim';
+  sayHi() {
+    console.log(`hi, ${this.name}`)
+  }
+}
+new User().sayHi();
+</pre> 
+   <pre class="card">
+class Clock {
+  constructor({
+    template
+  }) {
+    this.template = template;
+  }
+  render() {
+    let date = new Date();
+
+    let hours = date.getHours();
+    if (hours &#60; 10) hours = '0' + hours;
+
+    let mins = date.getMinutes();
+    if (mins &#60; 10) mins = '0' + mins;
+
+    let secs = date.getSeconds();
+    if (secs &#60; 10) secs = '0' + secs;
+
+    let output = this.template
+      .replace('h', hours)
+      .replace('m', mins)
+      .replace('s', secs)
+
+    console.log(output);
+  }
+  stop() {
+    clearInterval(this.timer);
+  }
+  start() {
+    this.render();
+    this.timer = setInterval(() => 
+    this.render(), 1000);
+  }
+}
+
+let clock = new Clock({
+  template: 'hh:mm:ss'
+});
+clock.start();
+</pre> 
+   <pre class="card">
+class Animal {
+  constructor(name) {
+    this.speed = 0;
+    this.name = name;
+  }
+  run(speed) {
+    this.speed = speed;
+    console.log(`${this.name} 
+    скорость ${this.speed}.`);
+  }
+  stop() {
+    this.speed = 0;
+    console.log(`${this.name} 
+    стоит неподвижно`);
+  }
+}
+let animal = new Animal("Мой питомец")
+
+class Rabbit extends Animal {
+  hide() {
+    console.log(`${this.name} прячется!`);
+  }
+}
+
+let rabbit = new Rabbit("Белый кролик");
+
+rabbit.run(5);
+rabbit.hide();
+rabbit.stop();
+</pre> 
+   <pre class="card">
+class Animal2 {
+  constructor(name) {
+    this.speed = 0;
+    this.name = name;
+  }
+}
+
+class Rabbit2 extends Animal2 {
+  constructor(name, earLength) {
+    super(name);
+    this.earLength = earLength;
+  }
+}
+
+let rabbit2 = new Rabbit2("Белый 
+кролик", 10);
+console.log(rabbit2.name)
+console.log(rabbit2.earLength)
+</pre> 
+   <pre class="card">
+class Animal3 {
+  name = 'animal';
+  constructor() {
+    console.log(this.name)
+  }
+}
+class Rabbit3 extends Animal3 {
+  name = 'rabbit'
+}
+
+new Animal3();
+new Rabbit3();
+</pre> 
+   <pre class="card">
+class Animal4 {
+  showName() {
+    console.log('animal')
+  }
+  constructor() {
+    this.showName()
+  }
+}
+class Rabbit4 extends Animal4 {
+  showName() {
+   console.log('rabbit') 
+  }
+}
+
+new Animal4();
+new Rabbit4();
+</pre> 
+   <pre class="card">
+class User5 {
+  static staticMethod() {
+    console.log(this == User5);
+  }
+}
+
+User5.staticMethod();
+</pre> 
+   <pre class="card">
+class Article {
+  constructor(title, date) {
+    this.title = title;
+    this.date = date;
+  }
+  static compare(articleA, articleB) {
+    return articleA.date - articleB.date;
+  }
+}
+
+let articles = [
+  new Article("HTML", 
+  new Date(2019, 1, 1)),
+  new Article("CSS", 
+  new Date(2019, 0, 1)),
+  new Article("JavaScript", 
+  new Date(2019, 11, 1))
+];
+
+articles.sort(Article.compare);
+console.log(articles[0].title)
+</pre> 
+   <pre class="card">
+class CoffeeMachine {
+  _waterAmount = 0;
+
+  set waterAmount(value) {
+    if (value &#60; 0) {
+    console.log("Отрицательное кол-во")
+    }
+    this._waterAmount = value;
+  }
+
+  get waterAmount() {
+    return this._waterAmount;
+  }
+
+  constructor(power) {
+    this._power = power;
+  }
+
+}
+
+let coffeeMachine = new CoffeeMachine(100);
+
+coffeeMachine.waterAmount = -10; 
+</pre> 
+   <pre class="card">
+class CoffeeMachine2 {
+  _waterAmount = 0;
+
+  setWaterAmount(value) {
+    if (value &#60; 0) {
+    console.log("Отрицательное кол-во")
+    }
+    this._waterAmount = value;
+  }
+  getWaterAmount() {
+    return this._waterAmount;
+  }
+}
+new CoffeeMachine2().setWaterAmount(100);
+</pre> 
+   <pre class="card">
+class PowerArray extends Array {
+  isEmpty() {
+    return this.length === 0;
+  }
+}
+
+let arr = new PowerArray(1,2,5,10,50);
+console.log(arr.isEmpty());
+
+let filteredArr = arr.filter(item => item >= 10);
+console.log(filteredArr); 
+console.log(filteredArr.isEmpty());
+</pre> 
+   <pre class="card">
+class Rabbit5 {}
+let rabbit3 = new Rabbit5();
+console.log( rabbit3 instanceof Rabbit5)
+</pre> 
+   <pre class="card">
+
+</pre>
     </section>
 
 </body></html>
