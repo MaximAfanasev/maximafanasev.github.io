@@ -1643,7 +1643,68 @@ let rabbit3 = new Rabbit5();
 console.log( rabbit3 instanceof Rabbit5)
 </pre> 
    <pre class="card">
+try {
+  lalala;
+} catch (err) {
+  console.log(err.name);
+  console.log(err.message);
+  console.log(err.stack);
 
+  console.log(err);
+}
+</pre> 
+   <pre class="card">
+let json = '{"name" : "Max", "age": 30}'
+let user = JSON.parse(json);
+
+console.log(user.name);
+console.log(user.age);
+</pre> 
+   <pre class="card">
+let json2 = "{некорректно}"
+
+try {
+  let user = JSON.parse(json2);
+  alert(user.name)
+} catch (e) {
+  console.log("Проблема в данных")
+  console.log(e.name)
+  console.log(e.message)
+}
+</pre> 
+   <pre class="card">
+let error = new Error("Ого, ошибка!");
+
+console.log(error.name);
+console.log(error.message);
+</pre> 
+   <pre class="card">
+let json3 = '{ "age": 30 }';
+
+try {
+
+  let user = JSON.parse(json3);
+
+  if (!user.name) {
+    throw new SyntaxError("Данные 
+    неполны: нет имени"); // (*)
+  }
+
+  console.log(user.name);
+
+} catch (e) {
+  console.log("JSON Error: " + e.message);
+}
+</pre> 
+   <pre class="card">
+try {
+  console.log('try');
+  if (confirm('Сгенерировать ошибку?')) BAD_CODE();
+} catch (e) {
+  console.log('catch');
+} finally {
+  console.log('finally');
+}
 </pre>
     </section>
 
