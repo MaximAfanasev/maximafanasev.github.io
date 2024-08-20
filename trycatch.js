@@ -17,10 +17,10 @@ try {
 console.log("///////// 2")
 
 let json = '{"name" : "Max", "age": 30}'
-let user = JSON.parse(json);
+let user3 = JSON.parse(json);
 
-console.log(user.name);
-console.log(user.age);
+console.log(user3.name);
+console.log(user3.age);
 
 ///////// 3
 console.log("///////// 3")
@@ -28,7 +28,7 @@ console.log("///////// 3")
 let json2 = "{некорректно}"
 
 try {
-  let user = JSON.parse(json2);
+  let user4 = JSON.parse(json2);
   alert(user.name)
 } catch (e) {
   console.log("Проблема в данных")
@@ -51,9 +51,9 @@ let json3 = '{ "age": 30 }';
 
 try {
 
-  let user = JSON.parse(json3);
+  let user5 = JSON.parse(json3);
 
-  if (!user.name) {
+  if (!user5.name) {
     throw new SyntaxError("Данные неполны: нет имени"); // (*)
   }
 
@@ -68,7 +68,7 @@ console.log("///////// 6")
 
 try {
   console.log('try');
-  if (confirm('Сгенерировать ошибку?')) BAD_CODE();
+  BAD_CODE();
 } catch (e) {
   console.log('catch');
 } finally {
