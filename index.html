@@ -2,1454 +2,1452 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Library</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <meta charset="UTF-8">
+  <title>Library</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <style>
-    h1 {
-        text-align: center;
-        color: red;
+  h1 {
+    text-align: center;
+    color: red;
+  }
+
+  h2 {
+    margin: 40px 0;
+    color: chartreuse;
+  }
+
+  body {
+    margin: 0 auto;
+    padding: 0;
+    line-height: 2em;
+    background: #000;
+    color: #fff;
+    font-family: sans-serif;
+    padding: 20px;
+    font-size: 16px;
+    max-width: 1200px;
+  }
+
+  span {
+    font-size: 24px;
+    line-height: 40px;
+  }
+
+  section {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 30px;
+  }
+
+  .card {
+    position: relative;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    background: gold;
+    border-radius: 10px;
+    color: #222;
+    font-weight: bold;
+    padding: 5px 15px;
+    list-style: none;
+  }
+
+  .card h1,
+  .card h2,
+  .card h3,
+  .card h4,
+  .card h5,
+  .card h6 {
+    color: #000;
+    margin: 0;
+  }
+
+  .card h1 {
+    font-size: 2em;
+  }
+
+  table tr td {
+    border: 1px solid #222;
+  }
+
+  .card.animation {
+    width: 100px;
+    height: 100px;
+  }
+
+  .child {
+    border-radius: 25px;
+    position: absolute;
+  }
+
+  .child-one {
+    width: 50px;
+    height: 50px;
+    background-color: #F498AD;
+    animation-name: circle-to-square;
+    animation-duration: 5s;
+  }
+
+  .child-one {
+    animation-name: circle-to-square;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes circle-to-square {
+    from {
+      width: 10px;
+      height: 10px;
+      background-color: #F498AD;
     }
 
-    h2 {
-        margin: 40px 0;
-        color: chartreuse;
+    50% {
+      width: 30px;
+      height: 50px;
+      background-color: #7F6EDB;
     }
 
-    body {
-        margin: 0 auto;
-        padding: 0;
-        line-height: 2em;
-        background: #000;
-        color: #fff;
-        font-family: sans-serif;
-        padding: 20px;
-        font-size: 16px;
-        max-width: 1200px;
+    to {
+      width: 100px;
+      height: 100px;
+      background-color: #2E9AFF;
+    }
+  }
+
+  .card div {
+    overflow: hidden;
+  }
+
+  .ease i {
+    animation-timing-function: ease;
+  }
+
+  .ease-in i {
+    animation-timing-function: ease-in;
+  }
+
+  .ease-in-out i {
+    animation-timing-function: ease-in-out;
+  }
+
+  .ease-out i {
+    animation-timing-function: ease-out;
+  }
+
+  .cubic-bezier-2 i {
+    animation-timing-function: cubic-bezier(0.47, -0.44, 0.49, 1.46);
+  }
+
+  .cubic-bezier-3 i {
+    animation-timing-function: cubic-bezier(1, 0, 0, 0.5);
+  }
+
+  .cubic-bezier-4 i {
+    animation-timing-function: cubic-bezier(0.1, 0.7, 1, 0.1);
+  }
+
+  .steps i {
+    animation-timing-function: steps(10, start);
+  }
+
+  .linear {
+    position: relative;
+    margin: 20px;
+    width: 150px;
+    height: 150px;
+    background: #282A2E;
+    box-shadow: 0 0 0 5px rgb(255 255 255 / 60%);
+    transition: .2s;
+  }
+
+  .ease {
+    position: relative;
+    margin: 20px;
+    width: 150px;
+    height: 150px;
+    background: #282A2E;
+    box-shadow: 0 0 0 5px rgb(255 255 255 / 60%);
+    transition: .2s;
+  }
+
+  .ease-in {
+    position: relative;
+    margin: 20px;
+    width: 150px;
+    height: 150px;
+    background: #282A2E;
+    box-shadow: 0 0 0 5px rgb(255 255 255 / 60%);
+    transition: .2s;
+  }
+
+  .ease-in-out {
+    position: relative;
+    margin: 20px;
+    width: 150px;
+    height: 150px;
+    background: #282A2E;
+    box-shadow: 0 0 0 5px rgb(255 255 255 / 60%);
+    transition: .2s;
+  }
+
+  .ease-out {
+    position: relative;
+    margin: 20px;
+    width: 150px;
+    height: 150px;
+    background: #282A2E;
+    box-shadow: 0 0 0 5px rgb(255 255 255 / 60%);
+    transition: .2s;
+  }
+
+  .cubic-bezier-1 {
+    position: relative;
+    margin: 20px;
+    width: 150px;
+    height: 150px;
+    background: #282A2E;
+    box-shadow: 0 0 0 5px rgb(255 255 255 / 60%);
+    transition: .2s;
+  }
+
+  .cubic-bezier-2 {
+    position: relative;
+    margin: 20px;
+    width: 150px;
+    height: 150px;
+    background: #282A2E;
+    box-shadow: 0 0 0 5px rgb(255 255 255 / 60%);
+    transition: .2s;
+  }
+
+  .cubic-bezier-3 {
+    position: relative;
+    margin: 20px;
+    width: 150px;
+    height: 150px;
+    background: #282A2E;
+    box-shadow: 0 0 0 5px rgb(255 255 255 / 60%);
+    transition: .2s;
+  }
+
+  .cubic-bezier-4 {
+    position: relative;
+    margin: 20px;
+    width: 150px;
+    height: 150px;
+    background: #282A2E;
+    box-shadow: 0 0 0 5px rgb(255 255 255 / 60%);
+    transition: .2s;
+  }
+
+  .steps {
+    position: relative;
+    margin: 20px;
+    width: 150px;
+    height: 150px;
+    background: #282A2E;
+    box-shadow: 0 0 0 5px rgb(255 255 255 / 60%);
+    transition: .2s;
+  }
+
+
+  i {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    left: 0;
+    bottom: 0;
+    border-radius: 50%;
+    background: #F498AD;
+    animation: move 2s infinite;
+  }
+
+  .linear i {
+    animation-timing-function: linear;
+  }
+
+  @keyframes move {
+    from {
+      left: 0;
+      bottom: 0;
     }
 
-    span {
-        font-size: 24px;
-        line-height: 40px;
+    to {
+      left: 145px;
+      bottom: 145px;
     }
+  }
 
-    section {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        margin-bottom: 30px;
-    }
+  i:nth-child(2) {
+    animation-delay: 0.1s
+  }
 
-    .card {
-        position: relative;
-        width: fit-content;
-        display: flex;
-        flex-direction: column;
-        background: gold;
-        border-radius: 10px;
-        color: #222;
-        font-weight: bold;
-        padding: 5px 15px;
-      list-style: none;
-    }
+  i:nth-child(3) {
+    animation-delay: 0.2s
+  }
 
-    .card h1,
-    .card h2,
-    .card h3,
-    .card h4,
-    .card h5,
-    .card h6 {
-        color: #000;
-        margin: 0;
-    }
+  i:nth-child(4) {
+    animation-delay: 0.3s
+  }
 
-    .card h1 {
-        font-size: 2em;
-    }
+  i:nth-child(5) {
+    animation-delay: 0.4s
+  }
 
-    table tr td {
-        border: 1px solid #222;
-    }
+  i:nth-child(6) {
+    animation-delay: 0.5s
+  }
 
-    .card.animation {
-        width: 100px;
-        height: 100px;
-    }
+  i:nth-child(7) {
+    animation-delay: 0.6s
+  }
 
-    .child {
-        border-radius: 25px;
-        position: absolute;
-    }
+  i:nth-child(8) {
+    animation-delay: 0.7s
+  }
 
-    .child-one {
-        width: 50px;
-        height: 50px;
-        background-color: #F498AD;
-        animation-name: circle-to-square;
-        animation-duration: 5s;
-    }
+  i:nth-child(9) {
+    animation-delay: 0.8s
+  }
 
-    .child-one {
-        animation-name: circle-to-square;
-        animation-duration: 3s;
-        animation-iteration-count: infinite;
-    }
+  i:nth-child(10) {
+    animation-delay: 0.9s
+  }
 
-    @keyframes circle-to-square {
-        from {
-            width: 10px;
-            height: 10px;
-            background-color: #F498AD;
-        }
+  label input[type="checkbox"] {
+    width: 30px;
+    height: 30px;
+    margin-right: 20px;
+  }
 
-        50% {
-            width: 30px;
-            height: 50px;
-            background-color: #7F6EDB;
-        }
+  label input[type="checkbox"]:checked~.card {
+    background: #3ac83a;
+  }
 
-        to {
-            width: 100px;
-            height: 100px;
-            background-color: #2E9AFF;
-        }
-    }
+  label {
+    display: flex;
+    cursor: pointer;
+  }
 
-    .card div {
-        overflow: hidden;
-    }
-
-    .ease i {
-        animation-timing-function: ease;
-    }
-
-    .ease-in i {
-        animation-timing-function: ease-in;
-    }
-
-    .ease-in-out i {
-        animation-timing-function: ease-in-out;
-    }
-
-    .ease-out i {
-        animation-timing-function: ease-out;
-    }
-
-    .cubic-bezier-2 i {
-        animation-timing-function: cubic-bezier(0.47, -0.44, 0.49, 1.46);
-    }
-
-    .cubic-bezier-3 i {
-        animation-timing-function: cubic-bezier(1, 0, 0, 0.5);
-    }
-
-    .cubic-bezier-4 i {
-        animation-timing-function: cubic-bezier(0.1, 0.7, 1, 0.1);
-    }
-
-    .steps i {
-        animation-timing-function: steps(10, start);
-    }
-
-    .linear {
-        position: relative;
-        margin: 20px;
-        width: 150px;
-        height: 150px;
-        background: #282A2E;
-        box-shadow: 0 0 0 5px rgb(255 255 255 / 60%);
-        transition: .2s;
-    }
-
-    .ease {
-        position: relative;
-        margin: 20px;
-        width: 150px;
-        height: 150px;
-        background: #282A2E;
-        box-shadow: 0 0 0 5px rgb(255 255 255 / 60%);
-        transition: .2s;
-    }
-
-    .ease-in {
-        position: relative;
-        margin: 20px;
-        width: 150px;
-        height: 150px;
-        background: #282A2E;
-        box-shadow: 0 0 0 5px rgb(255 255 255 / 60%);
-        transition: .2s;
-    }
-
-    .ease-in-out {
-        position: relative;
-        margin: 20px;
-        width: 150px;
-        height: 150px;
-        background: #282A2E;
-        box-shadow: 0 0 0 5px rgb(255 255 255 / 60%);
-        transition: .2s;
-    }
-
-    .ease-out {
-        position: relative;
-        margin: 20px;
-        width: 150px;
-        height: 150px;
-        background: #282A2E;
-        box-shadow: 0 0 0 5px rgb(255 255 255 / 60%);
-        transition: .2s;
-    }
-
-    .cubic-bezier-1 {
-        position: relative;
-        margin: 20px;
-        width: 150px;
-        height: 150px;
-        background: #282A2E;
-        box-shadow: 0 0 0 5px rgb(255 255 255 / 60%);
-        transition: .2s;
-    }
-
-    .cubic-bezier-2 {
-        position: relative;
-        margin: 20px;
-        width: 150px;
-        height: 150px;
-        background: #282A2E;
-        box-shadow: 0 0 0 5px rgb(255 255 255 / 60%);
-        transition: .2s;
-    }
-
-    .cubic-bezier-3 {
-        position: relative;
-        margin: 20px;
-        width: 150px;
-        height: 150px;
-        background: #282A2E;
-        box-shadow: 0 0 0 5px rgb(255 255 255 / 60%);
-        transition: .2s;
-    }
-
-    .cubic-bezier-4 {
-        position: relative;
-        margin: 20px;
-        width: 150px;
-        height: 150px;
-        background: #282A2E;
-        box-shadow: 0 0 0 5px rgb(255 255 255 / 60%);
-        transition: .2s;
-    }
-
-    .steps {
-        position: relative;
-        margin: 20px;
-        width: 150px;
-        height: 150px;
-        background: #282A2E;
-        box-shadow: 0 0 0 5px rgb(255 255 255 / 60%);
-        transition: .2s;
-    }
+  label:hover .card {
+    background: #3ac83a;
+  }
 
 
-    i {
-        position: absolute;
-        width: 5px;
-        height: 5px;
-        left: 0;
-        bottom: 0;
-        border-radius: 50%;
-        background: #F498AD;
-        animation: move 2s infinite;
-    }
+  .progress {
+    position: sticky;
+    top: 20px;
+    z-index: 10;
+    font-weight: bold;
+    width: 100%;
+    height: 30px;
+    background: lightgray;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    color: #222;
+  }
 
-    .linear i {
-        animation-timing-function: linear;
-    }
-
-    @keyframes move {
-        from {
-            left: 0;
-            bottom: 0;
-        }
-
-        to {
-            left: 145px;
-            bottom: 145px;
-        }
-    }
-
-    i:nth-child(2) {
-        animation-delay: 0.1s
-    }
-
-    i:nth-child(3) {
-        animation-delay: 0.2s
-    }
-
-    i:nth-child(4) {
-        animation-delay: 0.3s
-    }
-
-    i:nth-child(5) {
-        animation-delay: 0.4s
-    }
-
-    i:nth-child(6) {
-        animation-delay: 0.5s
-    }
-
-    i:nth-child(7) {
-        animation-delay: 0.6s
-    }
-
-    i:nth-child(8) {
-        animation-delay: 0.7s
-    }
-
-    i:nth-child(9) {
-        animation-delay: 0.8s
-    }
-
-    i:nth-child(10) {
-        animation-delay: 0.9s
-    }
-
-    label input[type="checkbox"] {
-        width: 30px;
-        height: 30px;
-        margin-right: 20px;
-    }
-
-    label input[type="checkbox"]:checked~.card {
-        background: #3ac83a;
-    }
-
-    label {
-        display: flex;
-        cursor: pointer;
-    }
-
-    label:hover .card {
-        background: #3ac83a;
-    }
-
-
-    .progress {
-        position: sticky;
-        top: 20px;
-        z-index: 10;
-        font-weight: bold;
-        width: 100%;
-        height: 30px;
-        background: lightgray;
-        border-radius: 10px;
-        margin-bottom: 20px;
-        color: #222;
-    }
-
-    .bar {
-        padding-left: 15px;
-        width: 0%;
-        max-width: calc(100% - 15px);
-        height: 30px;
-        background-color: #3ac83a;
-        border-radius: 10px;
-    }
+  .bar {
+    padding-left: 15px;
+    width: 0%;
+    max-width: calc(100% - 15px);
+    height: 30px;
+    background-color: #3ac83a;
+    border-radius: 10px;
+  }
 </style>
 
 <body>
 
+  <h1 hidden></h1>
+
+  <section class="check1">
+    <div class="progress">
+      <div class="bar bar1">HTML</div>
+    </div>
+    <label>
+      <input type="checkbox">
+      <div class="card">&#60;!DOCTYPE HTML>
+      </div>
+    </label>
+    <label>
+      <input type="checkbox">
+      <div class="card">&#60;html lang="ru"></div>
+    </label>
+    <label>
+      <input type="checkbox">
+      <div class="card">&#60;head></div>
+    </label>
+    <label>
+      <input type="checkbox">
+      <div class="card">&#60;title> закладка</div>
+    </label>
+    <label>
+      <input type="checkbox">
+      <div class="card">&#60;meta charset="кодировка"></div>
+    </label>
+    <label>
+      <input type="checkbox">
+      <div class="card">&#60;meta name="keywords" content="ключевые"></div>
+    </label>
+    <label>
+      <input type="checkbox">
+      <div class="card">&#60;link href="style.css" rel="stylesheet"></div>
+    </label>
+  </section>
+
+  <section class="check2">
+    <div class="progress">
+      <div class="bar bar2">Семантика</div>
+    </div>
+    <label>
+      <input type="checkbox">
+      <div class="card">&#60;header>
+      </div>
+    </label>
+    <label>
+      <input type="checkbox">
+      <div class="card">&#60;nav></div>
+    </label>
+    <label>
+      <input type="checkbox">
+      <div class="card">&#60;main></div>
+    </label>
+    <label>
+      <input type="checkbox">
+      <div class="card">&#60;section></div>
+    </label>
+    <label>
+      <input type="checkbox">
+      <div class="card">&#60;article> оторванный</div>
+    </label>
+    <label>
+      <input type="checkbox">
+      <div class="card">&#60;aside> сайдбар</div>
+    </label>
+    <label>
+      <input type="checkbox">
+      <div class="card">&#60;footer></div>
+    </label>
+  </section>
+  <section>
+
+    <div class="card">
+      <h1>h1</h1>
+      <h2>h2</h2>
+      <h3>h3</h3>
+      <h4>h4</h4>
+      <h5>h5</h5>
+      <h6>h6</h6>
+    </div>
 
 
-    <h1 hidden></h1>
-
-     <section class="check1">
-        <div class="progress">
-            <div class="bar bar1">HTML</div>
-        </div>
-        <label>
-            <input type="checkbox">
-            <div class="card">&#60;!DOCTYPE HTML>
-            </div>
-        </label>
-        <label>
-            <input type="checkbox">
-            <div class="card">&#60;html lang="ru"></div>
-        </label>
-        <label>
-            <input type="checkbox">
-            <div class="card">&#60;head></div>
-        </label>
-        <label>
-            <input type="checkbox">
-            <div class="card">&#60;title> закладка</div>
-        </label>
-        <label>
-            <input type="checkbox">
-            <div class="card">&#60;meta charset="кодировка"></div>
-        </label>
-        <label>
-            <input type="checkbox">
-            <div class="card">&#60;meta name="keywords" content="ключевые"></div>
-        </label>
-        <label>
-            <input type="checkbox">
-            <div class="card">&#60;link href="style.css" rel="stylesheet"></div>
-        </label>
-    </section>
-
-    <section class="check2">
-        <div class="progress">
-            <div class="bar bar2">Семантика</div>
-        </div>
-        <label>
-            <input type="checkbox">
-            <div class="card">&#60;header>
-            </div>
-        </label>
-        <label>
-            <input type="checkbox">
-            <div class="card">&#60;nav></div>
-        </label>
-        <label>
-            <input type="checkbox">
-            <div class="card">&#60;main></div>
-        </label>
-        <label>
-            <input type="checkbox">
-            <div class="card">&#60;section></div>
-        </label>
-        <label>
-            <input type="checkbox">
-            <div class="card">&#60;article> оторванный</div>
-        </label>
-        <label>
-            <input type="checkbox">
-            <div class="card">&#60;aside> сайдбар</div>
-        </label>
-        <label>
-            <input type="checkbox">
-            <div class="card">&#60;footer></div>
-        </label>
-    </section>
-    <section>
-        
-            <div class="card">
-                <h1>h1</h1>
-                <h2>h2</h2>
-                <h3>h3</h3>
-                <h4>h4</h4>
-                <h5>h5</h5>
-                <h6>h6</h6>
-            </div>
-        
-        
-            <div class="card">p div span</div>
-        
-        
-            <div class="card"><em>em</em></div>
-        
-        
-            <div class="card"> <strong>strong</strong><b>b</b></div>
-        
-        
-            <div class="card"><del datetime="2009-10-11T01:25-07:00">del</del><ins>ins</ins></div>
-        
-        
-            <div class="card">ul ol(start="3") reversed type(1 a A i I) li
-            </div>
-        
-        
-            <div class="card">dl dt dd
-            </div>
-        
-        
-            <div class="card">pre</div>
-        
-        
-            <div class="card">&#38;lt;</div>
-        
-        
-            <div class="card">code</div>
-        
-        
-            <div class="card">
-                <q>q</q>
-                <quote>quote</quote>
-                <cite>cite</cite>
-            </div>
-        
-        
-            <div class="card">br</div>
-        
-        
-            <div class="card"><code><sup>sup</sup> <sub>sub</sub></code>
-            </div>
-        
-        
-            <div class="card">time datetime="2016-11-18T09:54">09:54 утра</div>
-        
-        
-            <div class="card">
-                <table>
-                    <tr>
-                        <td>table</td>
-                        <td>td</td>
-                    </tr>
-                    <tr>
-                        <td>row</td>
-                        <td>column</td>
-                    </tr>
-                </table>
-            </div>
-        
-    </section>
-
-    <section>
-        
-            <div class="card">a href=" "</div>
-        
-        
-            <div class="card">"https://stackoverflow.ru"</div>
-        
-        
-            <div class="card">"c:/blog/inner.html"</div>
-        
-        
-            <div class="card">"https://site.ru/blog/index.html"</div>
-        
-        
-            <div class="card">"file.pdf" download</div>
-        
-        
-            <div class="card">"#part1" article id="part1"</div>
-        
-        
-            <div class="card">&#60;title><ins>наведи курсор на </ins><a title="Ну какое назад? Вы на первой фотке!">Назад</a></div>
-        
-        
-            <div class="card">target="_blank"</div>
-        
-    </section>
+    <div class="card">p div span</div>
 
 
-    <section>
-        
-            <div class="card">svg gif jpeg png</div>
-        
-        
-            <div class="card">picture</div>
-        
-        
-            <div class="card">img src="logo.png" alt="подпись"</div>
-        
-        
-            <div class="card">width="200" height="100"</div>
-        
-        
-            <div class="card"><a href="http://learnjavascript.ru">
-                    <img src="" alt="Подпись">
-                </a></div>
-        
-        
-            <div class="card">figure и figcaption
-            </div>
-        
-    </section>
-
-    <section>
-        
-            <div class="card">Cascading стилей</div>
-        
-        
-            <div class="card">h1 &#60; .h1 &#60;<br> .h1 h1 &#60; .h1 .h1 &#60;<br> id &#60; important!</div>
-        
-        
-            <div class="card">&#60;style> .class { } &#60;/style></div>
-        
-        
-            <div class="card">вложенные ul li</div>
-        
-        
-            <div class="card">соседние ul + li</div>
-        
-        
-            <div class="card">дочерние ul li {}</div>
-        
-        
-            <div class="card">следствие label ~ .class</div>
-        
-        
-            <div class="card">псевдоклассы ::</div>
-        
-        
-            <div class="card">селекторы атрибутов []</div>
-        
-    </section>
+    <div class="card"><em>em</em></div>
 
 
-    <section>
-        
-            <div class="card">схлопывание margin</div>
-        
-        
-            <div class="card">Наследуемые</div>
-        
-        
-            <div class="card">Ненаследуемые</div>
-        
-        
-            <div class="card">относительные em, rem, vh, vw, in, cm, mm, Q, pt, pc</div>
-        
-    </section>
+    <div class="card"> <strong>strong</strong><b>b</b></div>
 
 
+    <div class="card"><del datetime="2009-10-11T01:25-07:00">del</del><ins>ins</ins></div>
 
-    <section>
-        
-            <div class="card">background: [bc] [bi] [br] [bp] [ba]</div>
-        
-        
-            <div class="card">border</div>
-        
-        
-            <div class="card">box-sizing</div>
-        
-        
-            <div class="card">display</div>
-        
-        
-            <div class="card">position</div>
-        
-        
-            <div class="card">font: 16px/26px "Arial", sans-serif;</div>
-        
-        
-            <div class="card">line-height</div>
-        
-        
-            <div class="card">font-weight</div>
-        
-        
-            <div class="card">vertical-align</div>
-        
-        
-            <div class="card">color</div>
-        
-        
-            <div class="card">white-space</div>
-        
-        
-            <div class="card">font-style</div>
-        
-        
-            <div class="card">box-shadow</div>
-        
-    </section>
+
+    <div class="card">ul ol(start="3") reversed type(1 a A i I) li
+    </div>
+
+
+    <div class="card">dl dt dd
+    </div>
+
+
+    <div class="card">pre</div>
+
+
+    <div class="card">&#38;lt;</div>
+
+
+    <div class="card">code</div>
+
+
+    <div class="card">
+      <q>q</q>
+      <quote>quote</quote>
+      <cite>cite</cite>
+    </div>
+
+
+    <div class="card">br</div>
+
+
+    <div class="card"><code><sup>sup</sup> <sub>sub</sub></code>
+    </div>
+
+
+    <div class="card">time datetime="2016-11-18T09:54">09:54 утра</div>
+
+
+    <div class="card">
+      <table>
+        <tr>
+          <td>table</td>
+          <td>td</td>
+        </tr>
+        <tr>
+          <td>row</td>
+          <td>column</td>
+        </tr>
+      </table>
+    </div>
+
+  </section>
+
+  <section>
+
+    <div class="card">a href=" "</div>
+
+
+    <div class="card">"https://stackoverflow.ru"</div>
+
+
+    <div class="card">"c:/blog/inner.html"</div>
+
+
+    <div class="card">"https://site.ru/blog/index.html"</div>
+
+
+    <div class="card">"file.pdf" download</div>
+
+
+    <div class="card">"#part1" article id="part1"</div>
+
+
+    <div class="card">&#60;title><ins>наведи курсор на </ins><a title="Ну какое назад? Вы на первой фотке!">Назад</a></div>
+
+
+    <div class="card">target="_blank"</div>
+
+  </section>
+
+
+  <section>
+
+    <div class="card">svg gif jpeg png</div>
+
+
+    <div class="card">picture</div>
+
+
+    <div class="card">img src="logo.png" alt="подпись"</div>
+
+
+    <div class="card">width="200" height="100"</div>
+
+
+    <div class="card"><a href="http://learnjavascript.ru">
+        <img src="" alt="Подпись">
+      </a></div>
+
+
+    <div class="card">figure и figcaption
+    </div>
+
+  </section>
+
+  <section>
+
+    <div class="card">Cascading стилей</div>
+
+
+    <div class="card">h1 &#60; .h1 &#60;<br> .h1 h1 &#60; .h1 .h1 &#60;<br> id &#60; important!</div>
+
+
+    <div class="card">&#60;style> .class { } &#60;/style></div>
+
+
+    <div class="card">вложенные ul li</div>
+
+
+    <div class="card">соседние ul + li</div>
+
+
+    <div class="card">дочерние ul li {}</div>
+
+
+    <div class="card">следствие label ~ .class</div>
+
+
+    <div class="card">псевдоклассы ::</div>
+
+
+    <div class="card">селекторы атрибутов []</div>
+
+  </section>
+
+
+  <section>
+
+    <div class="card">схлопывание margin</div>
+
+
+    <div class="card">Наследуемые</div>
+
+
+    <div class="card">Ненаследуемые</div>
+
+
+    <div class="card">относительные em, rem, vh, vw, in, cm, mm, Q, pt, pc</div>
+
+  </section>
 
 
 
-    <section>
-        
-            <div class="card">text-transform</div>
-        
-        
-            <div class="card">text-align</div>
-        
-        
-            <div class="card">text-shadow</div>
-        
-        
-            <div class="card">text-ident</div>
-        
-        
-            <div class="card">text-decoration</div>
-        
-    </section>
+  <section>
 
-    <section>
-        
-            <div class="card">:empty</div>
-        
-        
-            <div class="card">:only-child</div>
-        
-        
-            <div class="card">:only-of-type</div>
-        
-        
-            <div class="card">::before</div>
-        
-        
-            <div class="card">::after</div>
-        
-        
-            <div class="card">::first-line</div>
-        
-        
-            <div class="card">::first-letter</div>
-        
-    </section>
+    <div class="card">background: [bc] [bi] [br] [bp] [ba]</div>
 
-    <section>
-        
-            <div class="card">form</div>
-        
-        
-            <div class="card">action</div>
-        
-        
-            <div class="card">method</div>
-        
-        
-            <div class="card">get поисковые</div>
-        
-        
-            <div class="card">post отправка данных</div>
-        
-    </section>
 
-    <section>
-        
-            <div class="card">cols</div>
-        
-        
-            <div class="card">rows</div>
-        
-        
-            <div class="card">value</div>
-        
-        
-            <div class="card">id</div>
-        
-        
-            <div class="card">label for id </div>
-        
-        
-            <div class="card">required</div>
-        
-        
-            <div class="card">autofocus</div>
-        
-        
-            <div class="card">fieldset</div>
-        
-        
-            <div class="card">pattern</div>
-        
-        
-            <div class="card">placeholder</div>
-        
-        
-            <div class="card">readonly</div>
-        
-        
-            <div class="card">disabled</div>
-        
-        
-            <div class="card">autocomplete</div>
-        
-        
-            <div class="card">tabindex="3"</div>
-        
-        
-            <div class="card">localStorage</div>
-        
-    </section>
+    <div class="card">border</div>
 
-    <section>
-        
-            <div class="card"><input type="name" placeholder="name"></div>
-        
-        
-            <div class="card"><input type="password" placeholder="***password***"></div>
-        
-        
-            <div class="card"><input type="email" placeholder="email"></div>
-        
-        
-            <div class="card">url <input type="url"></div>
-        
-        
-            <div class="card">submit<input type="submit"></div>
-        
-        
-            <div class="card">checkbox <input type="checkbox"><input type="checkbox" checked></div>
-        
-        
-            <div class="card">file <input type="file"></div>
-        
-        
-            <div class="card">hidden <input type="hidden"></div>
-        
-        
-            <div class="card">reset <input type="reset"></div>
-        
-        
-            <div class="card">radio <input type="radio"> <input type="radio" checked></div>
-        
-        
-            <div class="card">button <input type="button"></div>
-        
-        
-            <div class="card">image <input type="image"></div>
-        
-        
-            <div class="card">date <input type="date"></div>
-        
-        
-            <div class="card">time <input type="time"></div>
-        
-        
-            <div class="card">datalist<input type="datalist"></div>
-        
-        
-            <div class="card">number <input type="number" placeholder="1"></div>
-        
-        
-            <div class="card">search <input type="search"></div>
-        
-        
-            <div class="card">range <input type="range"></div>
-        
-        
-            <div class="card">output <input type="output" placeholder="1"></div>
-        
-        
-            <div class="card">tel <input type="tel"></div>
-        
-        
-            <div class="card">color <input type="color"></div>
-        
-    </section>
 
-    <section>
-        
-            <div class="card">select <select name="" id="">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                </select></div>
-        
-        
-            <div class="card">option value</div>
-        
-        
-            <div class="card">multiple</div>
-        
-    </section>
+    <div class="card">box-sizing</div>
 
-    <section>
-        
-            <div class="card">
-                p {<br>
-                animation-duration: 3s;<br>
-                animation-name: slidein;<br>
-                }<br><br>
 
-                @keyframes slidein {<br>
-                from {<br>
-                translate: 150vw 0;<br>
-                scale: 200% 1;<br>
-                }<br><br>
+    <div class="card">display</div>
 
-                to {<br>
-                translate: 0 0;<br>
-                scale: 100% 1;<br>
-                }<br>
-                }
-            </div>
-        
-        
-            <div class="card">
-                animation-name;<br>
-                animation-duration;<br>
-                animation-iteration-count;<br>
-                animation-direction;<br>
-                animation-timing-function;<br>
-                animation-delay;<br>
-                animation-play-state;<br>
-                animation-fill-mode;<br>
-                animation.
-            </div>
-        
-        
-            <div class="card animation">
-                <div class="child child-one"></div>
-            </div>
-        
-        
-            <div class="card">
-                linear
-                <div class="linear"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-            </div>
-        
-        
-            <div class="card">
-                ease
-                <div class="ease"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-            </div>
-        
-        
-            <div class="card">
-                ease-in
-                <div class="ease-in"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-            </div>
-        
-        
-            <div class="card">
-                ease-in-out
-                <div class="ease-in-out"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-            </div>
-        
-        
-            <div class="card">
-                ease-out
-                <div class="ease-out"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-            </div>
-        
-        
-            <div class="card">
-                cubic-bezier-1
-                <div class="cubic-bezier-1"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-            </div>
-        
-        
-            <div class="card">
-                cubic-bezier-2
-                <div class="cubic-bezier-2"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-            </div>
-        
-        
-            <div class="card">
-                cubic-bezier-3
-                <div class="cubic-bezier-3"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-            </div>
-        
-        
-            <div class="card">
-                cubic-bezier-4
-                <div class="cubic-bezier-4"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-            </div>
-        
-        
-            <div class="card">
-                steps
-                <div class="steps"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-            </div>
-        
-    </section>
 
-    <h2>Javascript</h2>
+    <div class="card">position</div>
 
-    <section>
-        <div class="card">
-            alert
-        </div>
-        <div class="card">
-            prompt
-        </div>
-        <div class="card">
-            confirm
-        </div>
-    </section>
 
-    <section>
-        <div class="card">
-            let
-        </div>
-        <div class="card">
-            const
-        </div>
-    </section>
+    <div class="card">font: 16px/26px "Arial", sans-serif;</div>
 
-    <section>
-        <div class="card">
-            1 / 0 // Infinity
-        </div>
-        <div class="card">
-            "aaa" / 2 // NaN
-        </div>
-        <div class="card">
-            4 > 1 // true Boolean<br>
 
-        </div>
-        <div class="card">
-            undefined
-        </div>
-        <div class="card">
-            typeof 10n // Bigint
-        </div>
+    <div class="card">line-height</div>
 
-        <div class="card">
-            typeof Symbol("id") // symbol
-        </div>
 
-        <div class="card">
-            typeof null // null
-        </div>
-    </section>
+    <div class="card">font-weight</div>
 
-    <h2>Строки</h2>
-    <section>
-        <div class="card">
-            String(a)
-        </div>
-        <div class="card">
-            length<br>
-        </div>
-        <div class="card">
-            let a = "123";<br>
-            `${a}` // 123
-        </div>
-        <div class="card">
-            `${1 + 2}` // 3
-        </div>
-        <div class="card">
-            "a" + "b" // 'ab'
-        </div>
-        <div class="card">
-            6 - '2' // 4<br>
-            '6' / '2' // 3
-        </div>
-        <div class="card">
-            ~2 // -3 -(2+1)
-        </div>
-        <div class="card">
-            String.fromCodePoint(90) // 'Z'
-        </div>
-        <div class="card">
-            'abc'.localeCompare('abc') // 0
-        </div>
-        <div class="card">
-            '123'[0] // 1<br>
-            `Hello`.at(-2) // l<br>
-        </div>
-        <div class="card">
-            toUpperCase()<br>
-            toLowerCase()<br>
-        </div>
-        <div class="card">
-            'abc'.indexOf('b') // 1<br>
-        </div>
-        <div class="card">
-            'abc'.includes('c') // true<br>
-        </div>
-        <div class="card">
-            'abc'.startsWith('ab') // true<br>
-            'abc'.endsWith('bc') // true<br>
-        </div>
-        <div class="card">
-            'abcde'.slice(0,3) // 'abc'<br>
-            'abcde'.slice(2) // 'cde'<br>
-        </div>
-        <div class="card">
-            "z".codePointAt(0) // 122<br>
-            String.fromCodePoint(90) // 'Z'<br>
-        </div>
-        <div class="card">
-            'abc'.localeCompare('abc') // 0<br>
-        </div>
-        <div class="card">
-            '1,2,3'.split(', ') // ['1,2,3']<br>
-        </div>
-        <div class="card">
-            a = 'abc' [...a] // ['a', 'b', 'c']
-        </div>
-        <div class="card">
-            String.prototype.show = function() {<br>
-            alert(this);<br>
-            };<br>
-            "BOOM!".show(); // BOOM!</div>
-    </section>
 
-    <h2>Числа</h2>
-    <section>
-        <div class="card">
-            1e3 === 1 * 1000
-        </div>
-        <div class="card">
-            1e-6 // 0.000001
-        </div>
-        <div class="card">
-            0xff // 255
-        </div>
-        <div class="card">
-            0b11111111
-        </div>
-        <div class="card">
-            0o377
-        </div>
-        <div class="card">
-            255.toString(16) // ff
-        </div>
-        <div class="card">
-            Number(str)<br>
-        </div>
-        <div class="card">
-            1.23456.toFixed(2) // 1.23<br>
-        </div>
-        <div class="card">
-            new Number(0)<br>
-        </div>
-        <div class="card">
-            Math.floor<br>
-            Math.ceil<br>
-            Math.round<br>
-        </div>
-        <div class="card">
-            isNaN(NaN) // true<br>
-            isFinite("15") // true<br>
-        </div>
-        <div class="card">
-            parseInt('100px') // 100<br>
-            parseFloat('12.5em') // 12.5<br>
-            Math.max(3,5,1) // 5
-        </div>
-    </section>
+    <div class="card">vertical-align</div>
 
-    <h2>Массивы</h2>
-    <section>
-        <div class="card">
-            []
-        </div>
-        <div class="card">
-            0 == [] // true<br>
-        </div>
-        <div class="card">
-            ['a',1,`eee`][2] // 'eee'<br>
-            ['a',1,{name: 'Max'},`eee`][2].name // 'Max'<br>
-        </div>
-        <div class="card">
-            ['a',1,{name: 'Max'},`eee`].at(-2) // {name: 'Max'}<br>
-        </div>
-        <div class="card">
-            ['a',1,,`eee`].length // 4<br>
-        </div>
-        <div class="card">
-            ['a','b','c'].pop() // 'c'<br>
-            ['a','b','c'].shift() // 'a'<br>
-            ['a','b','c'].push('d') // ['a','b','c','d']<br>
-            ['a','b','c'].unshift('d') // ['d',a','b','c']<br>
-        </div>
-        <div class="card">
-            new Array('a','b') // ['a','b']
-        </div>
-        <div class="card">
-            ['a','b','c'].splice(1,1) // ['b']<br>
-            ['a','b','c'].splice(2,0,'d','e') // ['a', 'b', 'd', 'e', 'c']<br>
-        </div>
-        <div class="card">
-            [1,2].concat([3]) //[1,2,3]<br>
-        </div>
-        <div class="card">
-            [1,2,3].forEach(a=>alert(a)) // 1 2 3<br>
-        </div>
-        <div class="card">
-            [1,2,3].indexOf(2) // 1<br>
-            [1,2,3].lastIndexOf(3) // 2<br>
-        </div>
-        <div class="card">
-            [1,2].includes(2) // true<br>
-        </div>
-        <div class="card">
-            1,2,3,4].filter(a => a&#60;3)<br>
-            [1,2,3,4].map((a,acc)=> acc = a+ a) // [2, 4, 6, 8]<br>
-        </div>
-        <div class="card">
-            [1,2,15].sort() // [1,15,2]<br>
-            [1,2,15].sort(a=> Number(a)) // [1,2,15]<br>
-        </div>
-        <div class="card">
-            [1,2,3].reverse() // [3,2,1]<br>
-        </div>
-        <div class="card">
-            [1,2,3].join(',') // '1,2,3'<br>
-        </div>
-        <div class="card">
-            [1,2,3,4].reduce((a,acc)=>acc+a) // 10<br>
-            Array.from<br>
-        </div>
-        <div class="card">Map Set</div>
-        <div class="card">WeakMap WeakSet</div>
-        <div class="card">
-            c = ['a','b']<br>
-            [x,y] = c<br>
-            x = 'a' y = 'b'
-        </div>
-        <div class="card">
-            let x = JSON.stringify(c) // '["a","b","c"]'<br>
-            - undefined<br>
-            - methods()<br>
-            - Symbol("id")
-        </div>
-        <div class="card">
-            let x = JSON.stringify(c,null,2) // с переносами
-        </div>
-        <div class="card">
-            a = '[0,1,2,3]'<br>
-            x = JSON.parse(a)<br>
-            // [0,1,2,3]
-        </div>
-    </section>
 
-    <h2>Математика</h2>
-    <section>
-        <div class="card">
-            let x = 1<br>
-            x = -x
-            // -1
-        </div>
-        <div class="card">
-            5 % 2 // 1
-        </div>
-        <div class="card">
-            2 ** 2 // 4
-        </div>
-        <div class="card">
-            x = 1<br>
-            +x // 1
-        </div>
-        <div class="card">
-            2 * 2 + 1 // 5
-        </div>
-        <div class="card">
-            "6" / "2" // 3
-        </div>
-        <div class="card">
-            2 += 5 // 7<br>
-            2 *= 2 // 4<br>
-        </div>
-    </section>
+    <div class="card">color</div>
 
-    <h2>Сравнение</h2>
-    <section>
-        <div class="card">
-            > >= &#60; &#60;= == === !== !=
-        </div>
-    </section>
 
-    <h2>Условия</h2>
-    <section>
-        <div class="card">
-            if {}
-            else if {}
-            else {}
-        </div>
-        <div class="card">
-            (age > 18) ? true : false
-        </div>
-        <div class="card">
-            user ?? "Аноним" // Аноним
-        </div>
-        <div class="card">
-            let a = "S"<br>
-            null ?? a ?? "X" // S
-        </div>
-        <div class="card">
-            let A = 0<br>
-            A || 100 // 100<br>
-            A ?? 100 // 0
-        </div>
-    </section>
+    <div class="card">white-space</div>
 
-    <h2>Циклы</h2>
-    <section>
-        <div class="card">
-            while (i &#60; 3) {...}
-        </div>
-        <div class="card">
-            do {...} while (i > 3)
-        </div>
-        <div class="card">
-            for (let i = 0; i &#60; 3; i++) {}
-        </div>
-        <div class="card">
-            for (let x in str) {alert(x)}
-        </div>
-        <div class="card">
-            break<br>
-            continue
-        </div>
-    </section>
 
-    <h2>Функции</h2>
-    <section>
-        <div class="card">
-            declaration<br>
-            function a(b, c) { return b + c
-            }
-            a()
-        </div>
-        <div class="card">
-            Expression<br>
-            let a = function() {};
-        </div>
-        <div class="card">
-            let sum = (a, b) => a + b;
-        </div>
-        <div class="card">
-            var local global block {}
-        </div>
-        <div class="card">
-            function a(b,c,...args)
-        </div>
-        <div class="card">
-            arguments - псевдомассив
-        </div>
-        <div class="card">
-            function sayHi() {<br>
-            alert("Hi");<br>
-            }<br>
-            sayHi.name // sayHi
-        </div>
-        <div class="card">
-            let a = new Function('a','b','return a + b')<br>
-            a(1,2) // 3
-        </div>
-        <div class="card">
-            Замыкание<br>
-            function getFunc() {<br>
-            let value = "test";<br>
+    <div class="card">font-style</div>
 
-            let func = new Function('alert(value)');<br>
 
-            return func;<br>
-            }<br>
+    <div class="card">box-shadow</div>
 
-            getFunc()(); // ошибка
-        </div>
-        <div class="card"> setTimeout("alert('Привет')", 1000);
-        </div>
-        <div class="card">
-            setInterval(() => alert('tick'), 2000);</div>
-        <div class="card">
-            sayHi.call( user )
-            sayHi.apply( user )
-        </div>
-        <div class="card">
-            let user = {<br>
-            firstName: "Вася",<br>
-            sayHi() {<br>
-            alert(`Привет, ${this.firstName}!`);<br>
-            }<br>
-            };<br>
-            setTimeout(function() {<br>
-            user.sayHi(); // Привет, Вася!<br>
-            }, 1000);
-        </div>
-        <div class="card">let boundFunc = func.bind(context);</div>
-        <div class="card">
-            "writable": true,<br>
-            "enumerable": true,<br>
-            "configurable": true
-        </div>
-        <div class="card">
-            Object.defineProperty(Math, "PI", { writable: true });
-        </div>
-        <div class="card">
-            get<br>
-            set
-        </div>
-    </section>
+  </section>
 
-    <h2>Объекты</h2>
-    <section>
-        <div class="card">
-            let user = {<br>
-            name: "Max",<br>
-            age: 35,<br>
-            "two words": true<br>
-            }
-        </div>
-        <div class="card">
-            user.name = "Maxi"<br>
-            user["two words"] = false<br>
-            delete user.age
-        </div>
-        <div class="card">
-            копирование по ссылке<br>
-            клонирование и объединение
-        </div>
-        <div class="card">
-            sayHi() {this.name}
-        </div>
-        <div class="card">
-            let user = new User("Max");
-        </div>
-        <div class="card">
-            user.address ? user.address.street<br>
-            user?.address?.street<br>
-            userGuest.admin?.()
-        </div>
-        <div class="card">
-            range = {from:1, to: 5}
-            Symbol.iterator
-        </div>
-        <div class="card">
-            Object.keys values entires(ключ+значение) fromEntires
-        </div>
-        <div class="card">
-            let options = {<br>
-            title: "Menu",<br>
-            width: 100,<br>
-            height: 200<br>
-            };<br>
-            let {title, width, height} = options;<br>
-            let {width: w, height: h, title} = options;
-        </div>
-        <div class="card">
-            let animal = {<br>
-            eats: true<br>
-            };<br>
 
-            let rabbit = {<br>
-            jumps: true<br>
-            };<br>
 
-            rabbit.__proto__ = animal;<br>
-            alert( rabbit.eats ); // true<br>
-            alert( rabbit.jumps ); // true
-        </div>
-        <div class="card">
-            let animal = {<br>
-            eats: true<br>
-            };<br>
+  <section>
 
-            function Rabbit(name) {<br>
-            this.name = name;<br>
-            }<br>
+    <div class="card">text-transform</div>
 
-            Rabbit.prototype = animal;<br>
 
-            let rabbit = new Rabbit("White Rabbit"); <br>
+    <div class="card">text-align</div>
 
-            alert( rabbit.eats ); // true<br>
-        </div>
-    </section>
 
-    <h2>Классы</h2>
-    
-    <section>
-      <ul class="card">
-        
-        <li>[[IsClassConstructor]]: true</li>
-        <li>Конструктор класса не может быть вызван без new</li>
-        <li>Метод внутри extends переопрелелит главный метод</li>
-        <li>Для вызова родительского super.stop()</li>
-        <li>Если класс расширяет другой класс и не имеет конструктора, то автоматически создаётся такой «пустой» конструктор</li>
-        <li>Расширение конструктора через super</li>
-        <li>Родительский конструктор всегда использует своё собственное значение поля, а не переопределённое</li>
-        <li>Защищённые свойства обычно начинаются с префикса _</li>
-        <li>Приватные свойства и методы должны начинаться с #</li>
-        <li>instanceof позволяет проверить, принадлежит ли объект указанному классу, с учётом наследования</li>
-      </ul>
-    </section>
-    <section>
-        <pre class="card">
+    <div class="card">text-shadow</div>
+
+
+    <div class="card">text-ident</div>
+
+
+    <div class="card">text-decoration</div>
+
+  </section>
+
+  <section>
+
+    <div class="card">:empty</div>
+
+
+    <div class="card">:only-child</div>
+
+
+    <div class="card">:only-of-type</div>
+
+
+    <div class="card">::before</div>
+
+
+    <div class="card">::after</div>
+
+
+    <div class="card">::first-line</div>
+
+
+    <div class="card">::first-letter</div>
+
+  </section>
+
+  <section>
+
+    <div class="card">form</div>
+
+
+    <div class="card">action</div>
+
+
+    <div class="card">method</div>
+
+
+    <div class="card">get поисковые</div>
+
+
+    <div class="card">post отправка данных</div>
+
+  </section>
+
+  <section>
+
+    <div class="card">cols</div>
+
+
+    <div class="card">rows</div>
+
+
+    <div class="card">value</div>
+
+
+    <div class="card">id</div>
+
+
+    <div class="card">label for id </div>
+
+
+    <div class="card">required</div>
+
+
+    <div class="card">autofocus</div>
+
+
+    <div class="card">fieldset</div>
+
+
+    <div class="card">pattern</div>
+
+
+    <div class="card">placeholder</div>
+
+
+    <div class="card">readonly</div>
+
+
+    <div class="card">disabled</div>
+
+
+    <div class="card">autocomplete</div>
+
+
+    <div class="card">tabindex="3"</div>
+
+
+    <div class="card">localStorage</div>
+
+  </section>
+
+  <section>
+
+    <div class="card"><input type="name" placeholder="name"></div>
+
+
+    <div class="card"><input type="password" placeholder="***password***"></div>
+
+
+    <div class="card"><input type="email" placeholder="email"></div>
+
+
+    <div class="card">url <input type="url"></div>
+
+
+    <div class="card">submit<input type="submit"></div>
+
+
+    <div class="card">checkbox <input type="checkbox"><input type="checkbox" checked></div>
+
+
+    <div class="card">file <input type="file"></div>
+
+
+    <div class="card">hidden <input type="hidden"></div>
+
+
+    <div class="card">reset <input type="reset"></div>
+
+
+    <div class="card">radio <input type="radio"> <input type="radio" checked></div>
+
+
+    <div class="card">button <input type="button"></div>
+
+
+    <div class="card">image <input type="image"></div>
+
+
+    <div class="card">date <input type="date"></div>
+
+
+    <div class="card">time <input type="time"></div>
+
+
+    <div class="card">datalist<input type="datalist"></div>
+
+
+    <div class="card">number <input type="number" placeholder="1"></div>
+
+
+    <div class="card">search <input type="search"></div>
+
+
+    <div class="card">range <input type="range"></div>
+
+
+    <div class="card">output <input type="output" placeholder="1"></div>
+
+
+    <div class="card">tel <input type="tel"></div>
+
+
+    <div class="card">color <input type="color"></div>
+
+  </section>
+
+  <section>
+
+    <div class="card">select <select name="" id="">
+        <option value="1">1</option>
+        <option value="2">2</option>
+      </select></div>
+
+
+    <div class="card">option value</div>
+
+
+    <div class="card">multiple</div>
+
+  </section>
+
+  <section>
+
+    <div class="card">
+      p {<br>
+      animation-duration: 3s;<br>
+      animation-name: slidein;<br>
+      }<br><br>
+
+      @keyframes slidein {<br>
+      from {<br>
+      translate: 150vw 0;<br>
+      scale: 200% 1;<br>
+      }<br><br>
+
+      to {<br>
+      translate: 0 0;<br>
+      scale: 100% 1;<br>
+      }<br>
+      }
+    </div>
+
+
+    <div class="card">
+      animation-name;<br>
+      animation-duration;<br>
+      animation-iteration-count;<br>
+      animation-direction;<br>
+      animation-timing-function;<br>
+      animation-delay;<br>
+      animation-play-state;<br>
+      animation-fill-mode;<br>
+      animation.
+    </div>
+
+
+    <div class="card animation">
+      <div class="child child-one"></div>
+    </div>
+
+
+    <div class="card">
+      linear
+      <div class="linear"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+
+
+    <div class="card">
+      ease
+      <div class="ease"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+
+
+    <div class="card">
+      ease-in
+      <div class="ease-in"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+
+
+    <div class="card">
+      ease-in-out
+      <div class="ease-in-out"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+
+
+    <div class="card">
+      ease-out
+      <div class="ease-out"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+
+
+    <div class="card">
+      cubic-bezier-1
+      <div class="cubic-bezier-1"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+
+
+    <div class="card">
+      cubic-bezier-2
+      <div class="cubic-bezier-2"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+
+
+    <div class="card">
+      cubic-bezier-3
+      <div class="cubic-bezier-3"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+
+
+    <div class="card">
+      cubic-bezier-4
+      <div class="cubic-bezier-4"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+
+
+    <div class="card">
+      steps
+      <div class="steps"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+
+  </section>
+
+  <h2>Javascript</h2>
+
+  <section>
+    <div class="card">
+      alert
+    </div>
+    <div class="card">
+      prompt
+    </div>
+    <div class="card">
+      confirm
+    </div>
+  </section>
+
+  <section>
+    <div class="card">
+      let
+    </div>
+    <div class="card">
+      const
+    </div>
+  </section>
+
+  <section>
+    <div class="card">
+      1 / 0 // Infinity
+    </div>
+    <div class="card">
+      "aaa" / 2 // NaN
+    </div>
+    <div class="card">
+      4 > 1 // true Boolean<br>
+
+    </div>
+    <div class="card">
+      undefined
+    </div>
+    <div class="card">
+      typeof 10n // Bigint
+    </div>
+
+    <div class="card">
+      typeof Symbol("id") // symbol
+    </div>
+
+    <div class="card">
+      typeof null // null
+    </div>
+  </section>
+
+  <h2>Строки</h2>
+  <section>
+    <div class="card">
+      String(a)
+    </div>
+    <div class="card">
+      length<br>
+    </div>
+    <div class="card">
+      let a = "123";<br>
+      `${a}` // 123
+    </div>
+    <div class="card">
+      `${1 + 2}` // 3
+    </div>
+    <div class="card">
+      "a" + "b" // 'ab'
+    </div>
+    <div class="card">
+      6 - '2' // 4<br>
+      '6' / '2' // 3
+    </div>
+    <div class="card">
+      ~2 // -3 -(2+1)
+    </div>
+    <div class="card">
+      String.fromCodePoint(90) // 'Z'
+    </div>
+    <div class="card">
+      'abc'.localeCompare('abc') // 0
+    </div>
+    <div class="card">
+      '123'[0] // 1<br>
+      `Hello`.at(-2) // l<br>
+    </div>
+    <div class="card">
+      toUpperCase()<br>
+      toLowerCase()<br>
+    </div>
+    <div class="card">
+      'abc'.indexOf('b') // 1<br>
+    </div>
+    <div class="card">
+      'abc'.includes('c') // true<br>
+    </div>
+    <div class="card">
+      'abc'.startsWith('ab') // true<br>
+      'abc'.endsWith('bc') // true<br>
+    </div>
+    <div class="card">
+      'abcde'.slice(0,3) // 'abc'<br>
+      'abcde'.slice(2) // 'cde'<br>
+    </div>
+    <div class="card">
+      "z".codePointAt(0) // 122<br>
+      String.fromCodePoint(90) // 'Z'<br>
+    </div>
+    <div class="card">
+      'abc'.localeCompare('abc') // 0<br>
+    </div>
+    <div class="card">
+      '1,2,3'.split(', ') // ['1,2,3']<br>
+    </div>
+    <div class="card">
+      a = 'abc' [...a] // ['a', 'b', 'c']
+    </div>
+    <div class="card">
+      String.prototype.show = function() {<br>
+      alert(this);<br>
+      };<br>
+      "BOOM!".show(); // BOOM!</div>
+  </section>
+
+  <h2>Числа</h2>
+  <section>
+    <div class="card">
+      1e3 === 1 * 1000
+    </div>
+    <div class="card">
+      1e-6 // 0.000001
+    </div>
+    <div class="card">
+      0xff // 255
+    </div>
+    <div class="card">
+      0b11111111
+    </div>
+    <div class="card">
+      0o377
+    </div>
+    <div class="card">
+      255.toString(16) // ff
+    </div>
+    <div class="card">
+      Number(str)<br>
+    </div>
+    <div class="card">
+      1.23456.toFixed(2) // 1.23<br>
+    </div>
+    <div class="card">
+      new Number(0)<br>
+    </div>
+    <div class="card">
+      Math.floor<br>
+      Math.ceil<br>
+      Math.round<br>
+    </div>
+    <div class="card">
+      isNaN(NaN) // true<br>
+      isFinite("15") // true<br>
+    </div>
+    <div class="card">
+      parseInt('100px') // 100<br>
+      parseFloat('12.5em') // 12.5<br>
+      Math.max(3,5,1) // 5
+    </div>
+  </section>
+
+  <h2>Массивы</h2>
+  <section>
+    <div class="card">
+      []
+    </div>
+    <div class="card">
+      0 == [] // true<br>
+    </div>
+    <div class="card">
+      ['a',1,`eee`][2] // 'eee'<br>
+      ['a',1,{name: 'Max'},`eee`][2].name // 'Max'<br>
+    </div>
+    <div class="card">
+      ['a',1,{name: 'Max'},`eee`].at(-2) // {name: 'Max'}<br>
+    </div>
+    <div class="card">
+      ['a',1,,`eee`].length // 4<br>
+    </div>
+    <div class="card">
+      ['a','b','c'].pop() // 'c'<br>
+      ['a','b','c'].shift() // 'a'<br>
+      ['a','b','c'].push('d') // ['a','b','c','d']<br>
+      ['a','b','c'].unshift('d') // ['d',a','b','c']<br>
+    </div>
+    <div class="card">
+      new Array('a','b') // ['a','b']
+    </div>
+    <div class="card">
+      ['a','b','c'].splice(1,1) // ['b']<br>
+      ['a','b','c'].splice(2,0,'d','e') // ['a', 'b', 'd', 'e', 'c']<br>
+    </div>
+    <div class="card">
+      [1,2].concat([3]) //[1,2,3]<br>
+    </div>
+    <div class="card">
+      [1,2,3].forEach(a=>alert(a)) // 1 2 3<br>
+    </div>
+    <div class="card">
+      [1,2,3].indexOf(2) // 1<br>
+      [1,2,3].lastIndexOf(3) // 2<br>
+    </div>
+    <div class="card">
+      [1,2].includes(2) // true<br>
+    </div>
+    <div class="card">
+      1,2,3,4].filter(a => a&#60;3)<br>
+      [1,2,3,4].map((a,acc)=> acc = a+ a) // [2, 4, 6, 8]<br>
+    </div>
+    <div class="card">
+      [1,2,15].sort() // [1,15,2]<br>
+      [1,2,15].sort(a=> Number(a)) // [1,2,15]<br>
+    </div>
+    <div class="card">
+      [1,2,3].reverse() // [3,2,1]<br>
+    </div>
+    <div class="card">
+      [1,2,3].join(',') // '1,2,3'<br>
+    </div>
+    <div class="card">
+      [1,2,3,4].reduce((a,acc)=>acc+a) // 10<br>
+      Array.from<br>
+    </div>
+    <div class="card">Map Set</div>
+    <div class="card">WeakMap WeakSet</div>
+    <div class="card">
+      c = ['a','b']<br>
+      [x,y] = c<br>
+      x = 'a' y = 'b'
+    </div>
+    <div class="card">
+      let x = JSON.stringify(c) // '["a","b","c"]'<br>
+      - undefined<br>
+      - methods()<br>
+      - Symbol("id")
+    </div>
+    <div class="card">
+      let x = JSON.stringify(c,null,2) // с переносами
+    </div>
+    <div class="card">
+      a = '[0,1,2,3]'<br>
+      x = JSON.parse(a)<br>
+      // [0,1,2,3]
+    </div>
+  </section>
+
+  <h2>Математика</h2>
+  <section>
+    <div class="card">
+      let x = 1<br>
+      x = -x
+      // -1
+    </div>
+    <div class="card">
+      5 % 2 // 1
+    </div>
+    <div class="card">
+      2 ** 2 // 4
+    </div>
+    <div class="card">
+      x = 1<br>
+      +x // 1
+    </div>
+    <div class="card">
+      2 * 2 + 1 // 5
+    </div>
+    <div class="card">
+      "6" / "2" // 3
+    </div>
+    <div class="card">
+      2 += 5 // 7<br>
+      2 *= 2 // 4<br>
+    </div>
+  </section>
+
+  <h2>Сравнение</h2>
+  <section>
+    <div class="card">
+      > >= &#60; &#60;= == === !== !=
+    </div>
+  </section>
+
+  <h2>Условия</h2>
+  <section>
+    <div class="card">
+      if {}
+      else if {}
+      else {}
+    </div>
+    <div class="card">
+      (age > 18) ? true : false
+    </div>
+    <div class="card">
+      user ?? "Аноним" // Аноним
+    </div>
+    <div class="card">
+      let a = "S"<br>
+      null ?? a ?? "X" // S
+    </div>
+    <div class="card">
+      let A = 0<br>
+      A || 100 // 100<br>
+      A ?? 100 // 0
+    </div>
+  </section>
+
+  <h2>Циклы</h2>
+  <section>
+    <div class="card">
+      while (i &#60; 3) {...}
+    </div>
+    <div class="card">
+      do {...} while (i > 3)
+    </div>
+    <div class="card">
+      for (let i = 0; i &#60; 3; i++) {}
+    </div>
+    <div class="card">
+      for (let x in str) {alert(x)}
+    </div>
+    <div class="card">
+      break<br>
+      continue
+    </div>
+  </section>
+
+  <h2>Функции</h2>
+  <section>
+    <div class="card">
+      declaration<br>
+      function a(b, c) { return b + c
+      }
+      a()
+    </div>
+    <div class="card">
+      Expression<br>
+      let a = function() {};
+    </div>
+    <div class="card">
+      let sum = (a, b) => a + b;
+    </div>
+    <div class="card">
+      var local global block {}
+    </div>
+    <div class="card">
+      function a(b,c,...args)
+    </div>
+    <div class="card">
+      arguments - псевдомассив
+    </div>
+    <div class="card">
+      function sayHi() {<br>
+      alert("Hi");<br>
+      }<br>
+      sayHi.name // sayHi
+    </div>
+    <div class="card">
+      let a = new Function('a','b','return a + b')<br>
+      a(1,2) // 3
+    </div>
+    <div class="card">
+      Замыкание<br>
+      function getFunc() {<br>
+      let value = "test";<br>
+
+      let func = new Function('alert(value)');<br>
+
+      return func;<br>
+      }<br>
+
+      getFunc()(); // ошибка
+    </div>
+    <div class="card"> setTimeout("alert('Привет')", 1000);
+    </div>
+    <div class="card">
+      setInterval(() => alert('tick'), 2000);</div>
+    <div class="card">
+      sayHi.call( user )
+      sayHi.apply( user )
+    </div>
+    <div class="card">
+      let user = {<br>
+      firstName: "Вася",<br>
+      sayHi() {<br>
+      alert(`Привет, ${this.firstName}!`);<br>
+      }<br>
+      };<br>
+      setTimeout(function() {<br>
+      user.sayHi(); // Привет, Вася!<br>
+      }, 1000);
+    </div>
+    <div class="card">let boundFunc = func.bind(context);</div>
+    <div class="card">
+      "writable": true,<br>
+      "enumerable": true,<br>
+      "configurable": true
+    </div>
+    <div class="card">
+      Object.defineProperty(Math, "PI", { writable: true });
+    </div>
+    <div class="card">
+      get<br>
+      set
+    </div>
+  </section>
+
+  <h2>Объекты</h2>
+  <section>
+    <div class="card">
+      let user = {<br>
+      name: "Max",<br>
+      age: 35,<br>
+      "two words": true<br>
+      }
+    </div>
+    <div class="card">
+      user.name = "Maxi"<br>
+      user["two words"] = false<br>
+      delete user.age
+    </div>
+    <div class="card">
+      копирование по ссылке<br>
+      клонирование и объединение
+    </div>
+    <div class="card">
+      sayHi() {this.name}
+    </div>
+    <div class="card">
+      let user = new User("Max");
+    </div>
+    <div class="card">
+      user.address ? user.address.street<br>
+      user?.address?.street<br>
+      userGuest.admin?.()
+    </div>
+    <div class="card">
+      range = {from:1, to: 5}
+      Symbol.iterator
+    </div>
+    <div class="card">
+      Object.keys values entires(ключ+значение) fromEntires
+    </div>
+    <div class="card">
+      let options = {<br>
+      title: "Menu",<br>
+      width: 100,<br>
+      height: 200<br>
+      };<br>
+      let {title, width, height} = options;<br>
+      let {width: w, height: h, title} = options;
+    </div>
+    <div class="card">
+      let animal = {<br>
+      eats: true<br>
+      };<br>
+
+      let rabbit = {<br>
+      jumps: true<br>
+      };<br>
+
+      rabbit.__proto__ = animal;<br>
+      alert( rabbit.eats ); // true<br>
+      alert( rabbit.jumps ); // true
+    </div>
+    <div class="card">
+      let animal = {<br>
+      eats: true<br>
+      };<br>
+
+      function Rabbit(name) {<br>
+      this.name = name;<br>
+      }<br>
+
+      Rabbit.prototype = animal;<br>
+
+      let rabbit = new Rabbit("White Rabbit"); <br>
+
+      alert( rabbit.eats ); // true<br>
+    </div>
+  </section>
+
+  <h2>Классы</h2>
+
+  <section>
+    <ul class="card">
+
+      <li>[[IsClassConstructor]]: true</li>
+      <li>Конструктор класса не может быть вызван без new</li>
+      <li>Метод внутри extends переопрелелит главный метод</li>
+      <li>Для вызова родительского super.stop()</li>
+      <li>Если класс расширяет другой класс и не имеет конструктора, то автоматически создаётся такой «пустой» конструктор</li>
+      <li>Расширение конструктора через super</li>
+      <li>Родительский конструктор всегда использует своё собственное значение поля, а не переопределённое</li>
+      <li>Защищённые свойства обычно начинаются с префикса _</li>
+      <li>Приватные свойства и методы должны начинаться с #</li>
+      <li>instanceof позволяет проверить, принадлежит ли объект указанному классу, с учётом наследования</li>
+    </ul>
+  </section>
+  <section>
+    <pre class="card">
 class User {
   constructor(name) {
     this.name = name;
@@ -1461,8 +1459,8 @@ class User {
 
 let user = new User("Max");
 user.sayHi();</pre>
-   
-   <pre class="card">
+
+    <pre class="card">
 function makeClass(phrase) {
   return class {
     sayHi() {
@@ -1473,8 +1471,8 @@ function makeClass(phrase) {
 
 let User = makeClass("Привет");
 new User().sayHi();
-</pre>   
-   <pre class="card">
+</pre>
+    <pre class="card">
 class User {
   constructor(name) {
     this.name = name;
@@ -1494,8 +1492,8 @@ class User {
 let user = new User("max");
 console.log(user.name);
 user = new User("12");
-</pre>   
-   <pre class="card">
+</pre>
+    <pre class="card">
 class User {
   name = 'Anonim';
   sayHi() {
@@ -1503,8 +1501,8 @@ class User {
   }
 }
 new User().sayHi();
-</pre> 
-   <pre class="card">
+</pre>
+    <pre class="card">
 class Clock {
   constructor({
     template
@@ -1544,8 +1542,8 @@ let clock = new Clock({
   template: 'hh:mm:ss'
 });
 clock.start();
-</pre> 
-   <pre class="card">
+</pre>
+    <pre class="card">
 class Animal {
   constructor(name) {
     this.speed = 0;
@@ -1575,8 +1573,8 @@ let rabbit = new Rabbit("Белый кролик");
 rabbit.run(5);
 rabbit.hide();
 rabbit.stop();
-</pre> 
-   <pre class="card">
+</pre>
+    <pre class="card">
 class Animal2 {
   constructor(name) {
     this.speed = 0;
@@ -1595,8 +1593,8 @@ let rabbit2 = new Rabbit2("Белый
 кролик", 10);
 console.log(rabbit2.name)
 console.log(rabbit2.earLength)
-</pre> 
-   <pre class="card">
+</pre>
+    <pre class="card">
 class Animal3 {
   name = 'animal';
   constructor() {
@@ -1609,8 +1607,8 @@ class Rabbit3 extends Animal3 {
 
 new Animal3();
 new Rabbit3();
-</pre> 
-   <pre class="card">
+</pre>
+    <pre class="card">
 class Animal4 {
   showName() {
     console.log('animal')
@@ -1627,8 +1625,8 @@ class Rabbit4 extends Animal4 {
 
 new Animal4();
 new Rabbit4();
-</pre> 
-   <pre class="card">
+</pre>
+    <pre class="card">
 class User5 {
   static staticMethod() {
     console.log(this == User5);
@@ -1636,8 +1634,8 @@ class User5 {
 }
 
 User5.staticMethod();
-</pre> 
-   <pre class="card">
+</pre>
+    <pre class="card">
 class Article {
   constructor(title, date) {
     this.title = title;
@@ -1659,8 +1657,8 @@ let articles = [
 
 articles.sort(Article.compare);
 console.log(articles[0].title)
-</pre> 
-   <pre class="card">
+</pre>
+    <pre class="card">
 class CoffeeMachine {
   _waterAmount = 0;
 
@@ -1684,8 +1682,8 @@ class CoffeeMachine {
 let coffeeMachine = new CoffeeMachine(100);
 
 coffeeMachine.waterAmount = -10; 
-</pre> 
-   <pre class="card">
+</pre>
+    <pre class="card">
 class CoffeeMachine2 {
   _waterAmount = 0;
 
@@ -1700,8 +1698,8 @@ class CoffeeMachine2 {
   }
 }
 new CoffeeMachine2().setWaterAmount(100);
-</pre> 
-   <pre class="card">
+</pre>
+    <pre class="card">
 class PowerArray extends Array {
   isEmpty() {
     return this.length === 0;
@@ -1714,13 +1712,13 @@ console.log(arr.isEmpty());
 let filteredArr = arr.filter(item => item >= 10);
 console.log(filteredArr); 
 console.log(filteredArr.isEmpty());
-</pre> 
-   <pre class="card">
+</pre>
+    <pre class="card">
 class Rabbit5 {}
 let rabbit3 = new Rabbit5();
 console.log( rabbit3 instanceof Rabbit5)
-</pre> 
-   <pre class="card">
+</pre>
+    <pre class="card">
 try {
   lalala;
 } catch (err) {
@@ -1730,15 +1728,15 @@ try {
 
   console.log(err);
 }
-</pre> 
-   <pre class="card">
+</pre>
+    <pre class="card">
 let json = '{"name" : "Max", "age": 30}'
 let user = JSON.parse(json);
 
 console.log(user.name);
 console.log(user.age);
-</pre> 
-   <pre class="card">
+</pre>
+    <pre class="card">
 let json2 = "{некорректно}"
 
 try {
@@ -1749,14 +1747,14 @@ try {
   console.log(e.name)
   console.log(e.message)
 }
-</pre> 
-   <pre class="card">
+</pre>
+    <pre class="card">
 let error = new Error("Ого, ошибка!");
 
 console.log(error.name);
 console.log(error.message);
-</pre> 
-   <pre class="card">
+</pre>
+    <pre class="card">
 let json3 = '{ "age": 30 }';
 
 try {
@@ -1773,8 +1771,8 @@ try {
 } catch (e) {
   console.log("JSON Error: " + e.message);
 }
-</pre> 
-   <pre class="card">
+</pre>
+    <pre class="card">
 try {
   console.log('try');
   if (confirm('Сгенерировать ошибку?')) BAD_CODE();
@@ -1784,9 +1782,9 @@ try {
   console.log('finally');
 }
 </pre>
-    </section>
+  </section>
 
-    <script src="class.js"></script>
-    <script src="trycatch.js"></script>
-    <script src="progressbar.js"></script>
+  <script src="class.js"></script>
+  <script src="trycatch.js"></script>
+  <script src="progressbar.js"></script>
 </body></html>
