@@ -1,5 +1,8 @@
-///////// 1
-console.log("///////// 1")
+///////// trycatch.js
+console.log("///////// trycatch.js ///////////")
+console.log("///////// trycatch.js ///////////")
+console.log("///////// trycatch.js ///////////")
+console.log("///////// trycatch.js ///////////")
 
 try {
   lalala; // ошибка, переменная не определена!

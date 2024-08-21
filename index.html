@@ -1396,7 +1396,6 @@
 
   <section>
     <ul class="card">
-
       <li>[[IsClassConstructor]]: true</li>
       <li>Конструктор класса не может быть вызван без new</li>
       <li>Метод внутри extends переопрелелит главный метод</li>
@@ -1410,7 +1409,39 @@
     </ul>
   </section>
 
+  <h2>Callback</h2>
+  <section>
+    <ul class="card">
+      <li>callback — функция, которая будет вызвана по завершению асинхронного действия.</li>
+      <li>script.onload = () => callback(null, script);</li>
+      <li>script.onerror = () => callback(new Error(`Не удалось загрузить скрипт ${src}`));</li>
+    </ul>
+  </section>
+
+  <h2>Промисы</h2>
+  <section>
+    <ul class="card">
+      <li>Promise – это специальный объект в JavaScript, который связывает «создающий» и «потребляющий» коды вместе.</li>
+      <li>let promise = new Promise(function(resolve, reject) {
+        // функция-исполнитель (executor)
+        // "певец"
+        });</li>
+      <li>Функция, переданная в конструкцию new Promise, называется исполнитель (executor). Когда Promise создаётся, она запускается автоматически</li>
+      <li>Когда он получает результат, сейчас или позже – не важно, он должен вызвать один из этих колбэков</li>
+      <li>resolve(value) — если работа завершилась успешно, с результатом value.
+      </li>
+      <li>reject(error) — если произошла ошибка, error – объект ошибки.</li>
+      <li>Функции-потребители могут быть зарегистрированы (подписаны) с помощью методов .then и .catch</li>
+      <li>Обработчик finally «пропускает» результат или ошибку дальше, к последующим обработчикам.</li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </section>
+
+  <script src="progressbar.js"></script>
   <script src="class.js"></script>
   <script src="trycatch.js"></script>
-  <script src="progressbar.js"></script>
+  <script src="callback.js"></script>
+  <script src="promise.js"></script>
 </body></html>
