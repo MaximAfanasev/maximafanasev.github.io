@@ -9,14 +9,9 @@
 </head>
 <style>
 	h1 {
-		text-align: center;
 		color: red;
 	}
 
-	h2 {
-		margin: 40px 0;
-		color: chartreuse;
-	}
 
 	body {
 		margin: 0 auto;
@@ -27,109 +22,27 @@
 		font-family: sans-serif;
 		padding: 20px;
 		font-size: 16px;
-		max-width: 1200px;
+		max-width: 1920px;
 	}
 
-	span {
-		font-size: 24px;
-		line-height: 40px;
-	}
-
-	section {
-		position: relative;
+	main {
 		display: flex;
-		flex-direction: column;
-		gap: 10px;
-		margin-bottom: 30px;
-	}
-
-	.card {
-		position: relative;
-		width: fit-content;
-		display: flex;
-		flex-direction: column;
-		background: gold;
-		border-radius: 10px;
-		color: #222;
-		font-weight: bold;
-		padding: 5px 15px;
-		list-style: none;
-	}
-
-	.card h1,
-	.card h2,
-	.card h3,
-	.card h4,
-	.card h5,
-	.card h6 {
-		color: #000;
-		margin: 0;
-	}
-
-	.card h1 {
-		font-size: 2em;
-	}
-
-	table tr td {
-		border: 1px solid #222;
-	}
-
-	.card.animation {
-		width: 100px;
-		height: 100px;
-	}
-
-	.child {
-		border-radius: 25px;
-		position: absolute;
-	}
-
-	.child-one {
-		width: 50px;
-		height: 50px;
-		background-color: #F498AD;
-		animation-name: circle-to-square;
-		animation-duration: 5s;
-	}
-
-	.child-one {
-		animation-name: circle-to-square;
-		animation-duration: 3s;
-		animation-iteration-count: infinite;
-	}
-
-	@keyframes circle-to-square {
-		from {
-			width: 10px;
-			height: 10px;
-			background-color: #F498AD;
-		}
-
-		50% {
-			width: 30px;
-			height: 50px;
-			background-color: #7F6EDB;
-		}
-
-		to {
-			width: 100px;
-			height: 100px;
-			background-color: #2E9AFF;
-		}
-	}
-
-	textarea {
-		font-size: 22px;
-		border-radius: 20px;
-		background: #000;
-		color: #fff;
-		margin: 20px;
+		flex-wrap: wrap;
+		gap: 20px;
 	}
 
 	div {
 		display: flex;
 		flex-wrap: wrap;
 		gap: 20px;
+		border: 1px solid red;
+		width: fit-content;
+		padding: 20px;
+		border-radius: 20px;
+	}
+
+	.done {
+		border: 1px solid lightgreen;
 	}
 
 	.blur {
@@ -142,11 +55,10 @@
 </style>
 
 <body>
-
 	<h1>Последняя дата среза знаний по HTML CSS JS 27.08.2024</h1>
-
-	<div>
-		<pre class="blur">
+	<main>
+		<div class="done">
+			<pre class="blur">
 !DOCTYPE HTML
 html lang="ru"
 head
@@ -155,7 +67,7 @@ meta charset="UTF-8"
 meta name="keywords" content="ключевые"
 link href="style.css" rel="stylesheet"
   </pre>
-		<pre>
+			<pre>
 задать тип документа
 задать язык страницы
 головной тег
@@ -164,12 +76,10 @@ link href="style.css" rel="stylesheet"
 мета ключевые слова
 подключение css
   </pre>
-		<textarea name="" id="" cols="30" rows="2">
-  </textarea>
-	</div>
+		</div>
 
-	<div>
-		<pre class="blur">
+		<div class="done">
+			<pre class="blur">
 header
 nav
 main
@@ -178,7 +88,7 @@ article
 aside
 footer
  	</pre>
-		<pre>
+			<pre>
 тег разметки заголовка
 навигации
 главный
@@ -187,12 +97,10 @@ footer
 боковое меню
 подвал
 </pre>
-		<textarea name="" id="" cols="30" rows="2">
-  </textarea>
-	</div>
+		</div>
 
-	<div>
-		<pre class="blur">
+		<div class="done">
+			<pre class="blur">
 h1-h6
 p div span
 del
@@ -205,7 +113,7 @@ q quote cite
 br
 sup sub
 	</pre>
-		<pre>
+			<pre>
 заголовки
 блоки текста
 удаленный
@@ -218,51 +126,44 @@ sup sub
 перенос текста
 над текстом и под текстом
 	</pre>
-		<textarea name="" id="" cols="30" rows="2">
-  </textarea>
-	</div>
+		</div>
 
-	<div>
-		<pre class="blur">
+		<div class="done">
+			<pre class="blur">
 a href=" "
 "file.pdf" download
 "#part1"
 title
 target="_blank"
 </pre>
-		<pre>
+			<pre>
 ссылка
 тип файл скачать
 якорь
 заголовок
 открыть в новом окне
 </pre>
-		<textarea name="" id="" cols="30" rows="2">
-		</textarea>
-	</div>
+		</div>
 
-	<div>
-		<pre class="blur">
+		<div class="done">
+			<pre class="blur">
 svg gif jpeg png
 picture
 img src="logo.png" alt="подпись"
 width="200" height="100"
-Подпись
 figure и figcaption
 	</pre>
-		<pre>
+			<pre>
 типы изображений
 тег для разных разрешений
 подпись
 длина и высота
 подпись к картинке
 	</pre>
-		<textarea name="" id="" cols="30" rows="2">
-		</textarea>
-	</div>
+		</div>
 
-	<div>
-		<pre class="blur">
+		<div class="done">
+			<pre class="blur">
 Cascading стилей
 style
 ul li
@@ -272,7 +173,7 @@ ul li
 ::
 []
 	</pre>
-		<pre>
+			<pre>
 как работают стили
 тег со стилями
 вложенные
@@ -282,12 +183,10 @@ ul li
 псевдоклассы
 селекторы атрибутов
 	</pre>
-		<textarea name="" id="" cols="30" rows="2">
-		</textarea>
-	</div>
+		</div>
 
-	<div>
-		<pre class="blur">
+		<div class="done">
+			<pre class="blur">
 background: [bc] [bi] [br] [bp] [ba]
 border
 box-sizing
@@ -302,15 +201,25 @@ white-space
 font-style
 box-shadow
 	</pre>
-		<pre>
-
+			<pre>
+фон
+рамки
+размер
+дисплей
+позиционирование
+шрифт
+высота строки
+размер шрифта
+вертикальное выравнивание
+цвет
+перенос в словах
+размер шрифта
+тень
 	</pre>
-		<textarea name="" id="" cols="30" rows="2">
-		</textarea>
-	</div>
+		</div>
 
-	<div>
-		<pre class="blur">
+		<div class="done">
+			<pre class="blur">
 :empty
 :only-child
 :only-of-type
@@ -319,15 +228,20 @@ box-shadow
 ::first-line
 ::first-letter
 	</pre>
-		<pre>
-
+			<pre>
+:пустой элемент
+:единственный
+:тип
+::псевдо до
+::псевдо после
+::первая линия
+::первая буква
 	</pre>
-		<textarea name="" id="" cols="30" rows="2">
-		</textarea>
-	</div>
+		</div>
 
-	<div>
-		<pre class="blur">
+		<div>
+			<pre class="blur">
+input
 cols
 rows
 value
@@ -344,139 +258,103 @@ autocomplete
 tabindex="3"
 localStorage
 	</pre>
-		<pre>
-
+			<pre>
+input
+столбцы
+строки
+значение
+id
+подпись
+обязательное
+автофокус
+подпись
+паттерн
+подсказка
+для чтения
+недоступно
+автозаполнение
+индекс
+хранение данных
 	</pre>
-		<textarea name="" id="" cols="30" rows="2">
-		</textarea>
-	</div>
-
-	<section>
-
-		<div class="card"><input type="name" placeholder="name"></div>
-
-
-		<div class="card"><input type="password" placeholder="***password***"></div>
-
-
-		<div class="card"><input type="email" placeholder="email"></div>
-
-
-		<div class="card">url <input type="url"></div>
-
-
-		<div class="card">submit<input type="submit"></div>
-
-
-		<div class="card">checkbox <input type="checkbox"><input type="checkbox" checked></div>
-
-
-		<div class="card">file <input type="file"></div>
-
-
-		<div class="card">hidden <input type="hidden"></div>
-
-
-		<div class="card">reset <input type="reset"></div>
-
-
-		<div class="card">radio <input type="radio"> <input type="radio" checked></div>
-
-
-		<div class="card">button <input type="button"></div>
-
-
-		<div class="card">image <input type="image"></div>
-
-
-		<div class="card">date <input type="date"></div>
-
-
-		<div class="card">time <input type="time"></div>
-
-
-		<div class="card">datalist<input type="datalist"></div>
-
-
-		<div class="card">number <input type="number" placeholder="1"></div>
-
-
-		<div class="card">search <input type="search"></div>
-
-
-		<div class="card">range <input type="range"></div>
-
-
-		<div class="card">output <input type="output" placeholder="1"></div>
-
-
-		<div class="card">tel <input type="tel"></div>
-
-
-		<div class="card">color <input type="color"></div>
-
-	</section>
-
-	<section>
-
-		<div class="card">select <select name="" id="">
-				<option value="1">1</option>
-				<option value="2">2</option>
-			</select></div>
-
-	</section>
-
-	<section>
-
-		<div class="card">
-			animation-name;<br>
-			animation-duration;<br>
-			animation-iteration-count;<br>
-			animation-direction;<br>
-			animation-timing-function;<br>
-			animation-delay;<br>
-			animation-play-state;<br>
-			animation-fill-mode;<br>
 		</div>
 
-
-		<div class="card animation">
-			<div class="child child-one"></div>
+		<div class="done">
+			<pre class="blur">
+name
+password
+email
+url
+submit
+checkbox
+file
+hidden
+reset
+radio
+button
+image
+date
+time
+datalist
+number
+search
+range
+output
+tel
+color
+select
+	</pre>
+			<pre>
+<input type="name" placeholder="name">
+<input type="password" placeholder="***password***">
+<input type="email" placeholder="email">
+<input type="url" placeholder="url">
+<input type="submit">
+<input type="checkbox"><input type="checkbox" checked>
+<input type="file">
+<input type="hidden">
+<input type="reset">
+<input type="radio"> <input type="radio" checked>
+<input type="button" value="Отправить">
+<input type="image">
+<input type="date">
+<input type="time">
+<input type="datalist" placeholder="datalist">
+<input type="number" placeholder="1">
+<input type="search" placeholder="search">
+<input type="range">
+<input type="output" placeholder="output">
+<input type="tel" placeholder="telephone">
+<input type="color">
+<select name="" id="">
+		<option value="1">1</option>
+		<option value="2">2</option>
+	</select>
+	</pre>
 		</div>
 
-	</section>
-
-	<h2>Javascript</h2>
-
-
-	<div>
-		<pre class="blur">
+		<div class="done">
+			<pre class="blur">
 alert
 prompt
 confirm
 	</pre>
-		<pre>
+			<pre>
 взаимодействие с пользователем
 	</pre>
-		<textarea name="" id="" cols="30" rows="2">
-		</textarea>
-	</div>
+		</div>
 
-
-	<div>
-		<pre class="blur">
+		<div class="done">
+			<pre class="blur">
 let
 const
 	</pre>
-		<pre>
+			<pre>
 тип переменных
 	</pre>
-		<textarea name="" id="" cols="30" rows="2">
-		</textarea>
-	</div>
+		</div>
 
-	<div>
-		<pre class="blur">
+		<div class="done">
+			<pre class="blur">
 String
 Number
 Infinity
@@ -490,18 +368,13 @@ Function
 undefined
 null
 	</pre>
-		<pre>
+			<pre>
 типы данных
 	</pre>
-		<textarea name="" id="" cols="30" rows="2">
-		</textarea>
-	</div>
+		</div>
 
-	<h2>Строки</h2>
-
-
-	<div>
-		<pre class="blur">
+		<div class="done">
+			<pre class="blur">
 String(a)
 length
 3
@@ -520,7 +393,7 @@ true
 ['1,2,3']
 ['a', 'b', 'c']
 	</pre>
-		<pre>
+			<pre>
 Перевести в строку
 длина строки
 `${1 + 2}`
@@ -539,21 +412,15 @@ String.fromCodePoint(90)
 '1,2,3'.split(', ')
 a = 'abc' [...a]
 	</pre>
-		<textarea name="" id="" cols="30" rows="2">
-		</textarea>
-	</div>
+		</div>
 
-	<h2>Числа</h2>
-
-
-	<div>
-		<pre class="blur">
+		<div class="done">
+			<pre class="blur">
 1 * 1000
 0.000001
 255
-0b11111111
-0o377
-ff
+255
+255
 123
 1.23
 0
@@ -566,13 +433,12 @@ true
 12.5
 5
 	</pre>
-		<pre>
+			<pre>
 1e3
 1e-6
 0xff
 0b11111111
 0o377
-255.toString(16)
 Number('123')
 1.23456.toFixed(2)
 new Number(0)
@@ -585,14 +451,10 @@ parseInt('100px')
 parseFloat('12.5em')
 Math.max(3,5,1)
 	</pre>
-		<textarea name="" id="" cols="30" rows="2">
-		</textarea>
-	</div>
+		</div>
 
-	<h2>Массивы</h2>
-
-	<div>
-		<pre class="blur">
+		<div class="done">
+			<pre class="blur">
 true
 'eee'
 'Max'
@@ -617,12 +479,12 @@ true
 '1,2,3'
 10
 	</pre>
-		<pre>
+			<pre>
 0 == []
 ['a',1,`eee`][2]
 ['a',1,{name: 'Max'},`eee`][2].name
 ['a',1,{name: 'Max'},`eee`].at(-2)
-['a',1,,`eee`].length
+['a',1, ,`eee`].length
 ['a','b','c'].pop()
 ['a','b','c'].shift()
 ['a','b','c'].push('d')
@@ -642,12 +504,10 @@ new Array('a','b')
 [1,2,3].join(',')
 [1,2,3,4].reduce((a,acc)=>acc+a)
 	</pre>
-		<textarea name="" id="" cols="30" rows="2">
-		</textarea>
-	</div>
-	<h2>Математика</h2>
-	<div>
-		<pre class="blur">
+		</div>
+
+		<div class="done">
+			<pre class="blur">
 
 -1
 1
@@ -658,7 +518,7 @@ new Array('a','b')
 7
 4
 	</pre>
-		<pre>
+			<pre>
 let x = 1
 x = -x
 5 % 2
@@ -669,25 +529,26 @@ x = -x
 2 += 5
 2 *= 2
 	</pre>
-		<textarea name="" id="" cols="30" rows="2">
-		</textarea>
-	</div>
+		</div>
 
-	<h2>Сравнение</h2>
-	<div>
-		<pre class="blur">
-> >= &#60; &#60;= == === !== !=
+		<div class="done">
+			<pre class="blur">
+> 
+>= 
+&#60; 
+&#60;= 
+== 
+=== 
+!=
+!== 
 	</pre>
-		<pre>
+			<pre>
 все типы сравнений
 	</pre>
-		<textarea name="" id="" cols="30" rows="2">
-		</textarea>
-	</div>
+		</div>
 
-	<h2>Условия</h2>
-	<div>
-		<pre class="blur">
+		<div class="done">
+			<pre class="blur">
 
 
 Аноним
@@ -695,7 +556,7 @@ S
 100
 0
 	</pre>
-		<pre>
+			<pre>
 if {} else if {} else {}
 (age > 18) ? true : false
 user ?? "Аноним"
@@ -703,12 +564,10 @@ null ?? "S" ?? "X"
 0 || 100
 0 ?? 100
 	</pre>
-		<textarea name="" id="" cols="30" rows="2">
-		</textarea>
-	</div>
-	<h2>Циклы</h2>
-	<div>
-		<pre class="blur">
+		</div>
+
+		<div class="done">
+			<pre class="blur">
 while (i &#60; 3) {...}
 do {...} while (i > 3)
 for (let i = 0; i &#60; 3; i++) {}
@@ -716,30 +575,27 @@ for (let x in str) {alert(x)}
 break
 continue
 	</pre>
-		<pre>
-while (i &#60; 3) {...}
-do {...} while (i > 3)
-for (let i = 0; i &#60; 3; i++) {}
-for (let x in str) {alert(x)}
-break
-continue
+			<pre>
+цикл while
+цикл do while
+цикл for
+цикл for in
+стоп
+продолжение
 	</pre>
-		<textarea name="" id="" cols="30" rows="2">
-		</textarea>
-	</div>
-	<h2>Функции</h2>
-	<div>
-		<pre class="blur">
+		</div>
+
+		<div class="done">
+			<pre class="blur">
 function a(b, c) { return b + c } a()
 let a = function() {};
-
 var local global block {}
 function a(b,c,...args)
 
 3
-ошибка
 setTimeout("alert('Привет')", 1000);
 setInterval(() => alert('tick'), 2000);
+ошибка
 let boundFunc = func.bind(context);
 "writable": true,
 "enumerable": true,
@@ -748,33 +604,28 @@ Object.defineProperty(Math, "PI", { writable: true });
 get
 set
 	</pre>
-		<pre>
+			<pre>
 declaration
 Expression
-
-var local global block {}
-function a(b,c,...args)
+области видимости
+остаточные аргументы
 let a = new Function('a','b','return a + b')
 a(1,2)
+Привет через 1сек
+tick каждые 2 секунды
 getFunc()()
-setTimeout("alert('Привет')", 1000);
-setInterval(() => alert('tick'), 2000);
-let boundFunc = func.bind(context);
-"writable": true,
-"enumerable": true,
-"configurable": true
-Object.defineProperty(Math, "PI", { writable: true });
-get
-set
+бинд контекста
+свойство чтения
+свойство перебора
+свойство удаления
+запись свойств
+геттер
+сеттер
 	</pre>
-		<textarea name="" id="" cols="30" rows="2">
-		</textarea>
-	</div>
-	<h2>Объекты</h2>
+		</div>
 
-
-	<div>
-		<pre class="blur">
+		<div>
+			<pre class="blur">
 user.name = "Maxi"
 user["two words"] = false
 delete user.age
@@ -786,72 +637,76 @@ user.address ? user.address.street
 range = {from:1, to: 5} Symbol.iterator
 Object.keys values entires(ключ+значение) fromEntires
 	</pre>
-		<pre>
-user.name = "Maxi"
-user["two words"] = false
-delete user.age
+			<pre>
+задать ключ
+два слова в ключе
+удалить ключ
 копирование по ссылке
 клонирование и объединение
-sayHi() {this.name}
-let user = new User("Max");
-user.address ? user.address.street
-range = {from:1, to: 5} Symbol.iterator
-Object.keys values entires(ключ+значение) fromEntires
+this
+новый объект
+опциональная цепочка
+перебор итератором
+методы объекта (4)
 	</pre>
-		<textarea name="" id="" cols="30" rows="2">
-		</textarea>
-	</div>
-	<h2>Классы</h2>
+		</div>
 
-	<section>
-		<ul class="card">
-			<li>[[IsClassConstructor]]: true</li>
-			<li>Конструктор класса не может быть вызван без new</li>
-			<li>Метод внутри extends переопрелелит главный метод</li>
-			<li>Для вызова родительского super.stop()</li>
-			<li>Если класс расширяет другой класс и не имеет конструктора, то автоматически создаётся такой «пустой» конструктор</li>
-			<li>Расширение конструктора через super</li>
-			<li>Родительский конструктор всегда использует своё собственное значение поля, а не переопределённое</li>
-			<li>Защищённые свойства обычно начинаются с префикса _</li>
-			<li>Приватные свойства и методы должны начинаться с #</li>
-			<li>instanceof позволяет проверить, принадлежит ли объект указанному классу, с учётом наследования</li>
-		</ul>
-	</section>
+		<div>
+			<pre class="blur">
+new
+extends 
+super.stop()
+создаётся такой «пустой» конструктор
+super
+префикс _
+#
+instanceof
+	</pre>
+			<pre>
+Конструктор класса
+переопрелелит главный метод
+Для вызова родительского
+Если класс расширяет другой класс
+Расширение конструктора
+Защищённые свойства
+Приватные свойства и методы
+принадлежит ли объект
+	</pre>
+		</div>
 
-	<h2>Callback</h2>
-	<section>
-		<ul class="card">
-			<li>callback — функция, которая будет вызвана по завершению асинхронного действия.</li>
-			<li>script.onload = () => callback(null, script);</li>
-			<li>script.onerror = () => callback(new Error(`Не удалось загрузить скрипт ${src}`));</li>
-		</ul>
-	</section>
-	<h2>Промисы</h2>
-	<section>
-		<ul class="card">
-			<li>Promise – это специальный объект в JavaScript, который связывает «создающий» и «потребляющий» коды вместе.</li>
-			<li>let promise = new Promise(function(resolve, reject) {
-				// функция-исполнитель (executor)
-				// "певец"
-				});</li>
-			<li>Функция, переданная в конструкцию new Promise, называется исполнитель (executor). Когда Promise создаётся, она запускается автоматически</li>
-			<li>Когда он получает результат, сейчас или позже – не важно, он должен вызвать один из этих колбэков</li>
-			<li>resolve(value) — если работа завершилась успешно, с результатом value.
-			</li>
-			<li>reject(error) — если произошла ошибка, error – объект ошибки.</li>
-			<li>Функции-потребители могут быть зарегистрированы (подписаны) с помощью методов .then и .catch</li>
-			<li>Обработчик finally «пропускает» результат или ошибку дальше, к последующим обработчикам.</li>
-			<li>Promise.all параллельно загрузить несколько файлов и обработать результат, когда он готов</li>
-			<li>Promise.allSettled завершается с ошибкой, если она возникает в любом из переданных промисов</li>
-			<li>Promise.race Метод очень похож на Promise.all, но ждёт только первый выполненный промис, из которого берёт результат (или ошибку).</li>
-			<li>Promise.any ждёт только первый успешно выполненный промис</li>
-			<li>Promise.resolve/reject</li>
-		</ul>
-	</section>
+		<div>
+			<pre class="blur">
+callback
+script.onload
+script.onerror
+	</pre>
+			<pre>
+функция, которая будет вызвана по завершению асинхронного действия
+удачная загрузка
+неудачная загрузка
+	</pre>
+		</div>
 
-	<h2>async</h2>
-
-
+		<div>
+			<pre class="blur">
+Promise
+executor
+.then .catch .finaly
+Promise.all
+Promise.allSettled 
+Promise.race
+Promise.any
+resolve(value)
+reject(error)
+	</pre>
+			<pre>
+связывает «создающий» и «потребляющий» коды
+Функция исполнитель
+Функции-потребители (3)
+методы промисов (6)
+	</pre>
+		</div>
+	</main>
 
 	<script src="progressbar.js"></script>
 	<script src="class.js"></script>
