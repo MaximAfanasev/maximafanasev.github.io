@@ -1,13 +1,11 @@
 let promise = new Promise(function (resolve, reject) {
-	// эта функция выполнится автоматически, при вызове new Promise
-
 	// через 1 секунду сигнализировать, что задача выполнена с результатом "done"
-	setTimeout(() => resolve("done"), 1000);
+	setTimeout(() => resolve("done1"), 1000);
 });
 
 let promise2 = new Promise(function (resolve, reject) {
 	// спустя одну секунду будет сообщено, что задача выполнена с ошибкой
-	setTimeout(() => reject(new Error("Whoops!")), 1000);
+	setTimeout(() => reject(new Error("Whoops!1")), 1000);
 });
 
 let promise3 = new Promise(function (resolve, reject) {
@@ -23,7 +21,7 @@ promise.then(
 );
 
 let promise4 = new Promise(function (resolve, reject) {
-	setTimeout(() => resolve("done!"), 1000);
+	setTimeout(() => resolve("done!2"), 1000);
 });
 
 // resolve запустит первую функцию, переданную в .then
@@ -34,7 +32,7 @@ promise4.then(
 
 
 let promise5 = new Promise(function (resolve, reject) {
-	setTimeout(() => reject(new Error("Whoops!")), 1000);
+	setTimeout(() => reject(new Error("Whoops!2")), 1000);
 });
 
 // reject запустит вторую функцию, переданную в .then
