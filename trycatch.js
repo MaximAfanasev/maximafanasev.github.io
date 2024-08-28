@@ -1,9 +1,3 @@
-///////// trycatch.js
-console.log("///////// trycatch.js ///////////")
-console.log("///////// trycatch.js ///////////")
-console.log("///////// trycatch.js ///////////")
-console.log("///////// trycatch.js ///////////")
-
 try {
   lalala; // ошибка, переменная не определена!
 } catch (err) {
