@@ -600,7 +600,8 @@ let boundFunc = func.bind(context);
 "writable": true,
 "enumerable": true,
 "configurable": true
-Object.defineProperty(Math, "PI", { writable: true });
+Object.defineProperty(Math, "PI", 
+{ writable: true });
 get
 set
 	</pre>
@@ -619,6 +620,7 @@ getFunc()()
 свойство перебора
 свойство удаления
 запись свойств
+
 геттер
 сеттер
 	</pre>
@@ -681,7 +683,7 @@ script.onload
 script.onerror
 	</pre>
 			<pre>
-функция, которая будет вызвана по завершению асинхронного действия
+функция по завершению
 удачная загрузка
 неудачная загрузка
 	</pre>
