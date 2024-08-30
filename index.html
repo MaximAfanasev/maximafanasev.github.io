@@ -34,7 +34,7 @@
 	div {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 20px;
+		column-gap: 20px;
 		border: 1px solid red;
 		width: fit-content;
 		padding: 20px;
@@ -55,6 +55,10 @@
 	
 	img {
 		width: 100%;
+	}
+	
+	pre {
+		margin: 0;
 	}
 </style>
 
@@ -715,6 +719,148 @@ reject(error)
 методы промисов (6)
 	</pre>
 		</div>
+
+		<div>
+			<pre class="blur">
+async function f() {
+  return 1;
+}
+f().then(alert); // 1
+
+async function f() {
+
+  let promise = new Promise(
+  (resolve, reject) => 
+   {
+    setTimeout(() => 
+    resolve("готово!"), 
+    1000)
+  });
+
+  let result = await promise;
+   // будет ждать, пока 
+   промис не выполнится (*)
+
+  alert(result); // "готово!"
+}
+
+f();
+	</pre>
+			<pre>
+// async function f() 
+// Await работает только 
+	внутри async–функций
+// await нельзя использовать 
+в обычных функциях
+// await нельзя использовать 
+на верхнем уровне вложенности
+// await работает с 
+«thenable»–объектами
+	</pre>
+		</div>
+
+		<div>
+			<pre class="blur">
+function* generateSequence() {
+  yield 1;
+  yield 2;
+  return 3;
+}
+let generator = generateSequence();
+let one = generator.next();
+alert(JSON.stringify(one));
+// {value: 1, done: false}
+	</pre>
+			<pre>
+генератор для yield множества значений
+	</pre>
+		</div>
+
+		<div>
+			<pre class="blur">
+// 📁 sayHi.js
+export function sayHi(user) {
+  alert(`Hello, ${user}!`);
+}
+
+// 📁 main.js
+import {sayHi} from './sayHi.js';
+
+alert(sayHi); // function...
+sayHi('John'); // Hello, John!
+	</pre>
+			<pre>
+модули для разбиения
+</pre>
+		</div>
+
+		<div>
+			<pre class="blur">
+let target = {};
+let proxy = new Proxy(target, {}); 
+// пустой handler
+
+proxy.test = 5; 
+// записываем в прокси (1)
+alert(target.test); 
+// 5, свойство появилось в target!
+
+alert(proxy.test); 
+// 5, мы также можем 
+прочитать его из прокси (2)
+
+for(let key in proxy) alert(key); 
+// test, итерация работает (3)
+	</pre>
+			<pre>
+Proxy «оборачивается» 
+вокруг другого объекта
+</pre>
+		</div>
+
+		<div>
+			<pre class="blur">
+let code = 'alert("Привет")';
+eval(code); // Привет
+	</pre>
+			<pre>
+сразу выполняется
+</pre>
+		</div>
+
+		<div>
+			<pre class="blur">
+function curry(f) { 
+ // curry(f) выполняет каррирование
+  return function(a) {
+    return function(b) {
+      return f(a, b);
+    };
+  };
+}
+
+// использование
+function sum(a, b) {
+  return a + b;
+}
+
+let curriedSum = curry(sum);
+
+alert( curriedSum(1)(2) ); // 3
+</pre>
+			<pre>
+Каррирование - трансформация функций
+</pre>
+		</div>
+		
+		<div>
+			<pre class="blur">
+
+</pre>
+			<pre>
+
+</pre>
+		</div>
 		
 		<div>
 			<pre class="blur">
@@ -730,10 +876,12 @@ print(lesson, year, 'класс')
 print(input() + '!')
 print('Аа' * 5)
 
+type
+
 len('123')
 
-
 int('123')
+float('123.12')
 str(123)
 
 if условие:
@@ -767,13 +915,41 @@ s1.count('кот ')
 .replace
 '{x+y}'
 
+12 / 4 // 3.0
 
+[1, 2, 3]
+[0] * 5
+      
+[].append(45) // [45]
 
+list('123')
 
+from random import randint
+randint(1, 6)
 
+people_count = int(input())
+people = [0] * 150
+for k in range(people_count):
+    age = int(input())
+    people[age] += 1
+print(people)
 
+for elem in A
 
+[::3]
 
+"Катя Ваня".split(" ")
+", ".join(["кит", "акула", "скат"])
+
+x.index(value)
+x.count(value)
+x.pop(index)
+x.remove(value)
+x.insert(i, value)
+max() и min()
+in
+not in
+sum()
 	</pre>
 		<img src="img/1.webp" alt="">
 			<pre>
