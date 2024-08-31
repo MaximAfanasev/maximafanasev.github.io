@@ -35,7 +35,7 @@
 		display: flex;
 		flex-wrap: wrap;
 		column-gap: 20px;
-		border: 1px solid red;
+		border: 1px solid gold;
 		width: fit-content;
 		padding: 20px;
 		border-radius: 20px;
@@ -850,6 +850,249 @@ alert( curriedSum(1)(2) ); // 3
 </pre>
 			<pre>
 Каррирование - трансформация функций
+</pre>
+		</div>
+		
+		<div>
+			<pre class="blur">
+1. window.
+
+2. document.body.style.background 
+= "red";
+setTimeout(() => 
+document.body.style.background = "", 
+1000);
+
+location
+</pre>
+			<pre>
+1. окно браузера
+
+2. изменить цвет фона через JS
+
+позволяет получить 
+текущий URL и перенаправить 
+браузер по новому адресу
+</pre>
+		</div>
+		
+		<div>
+			<pre class="blur">
+childNodes, firstChild, lastChild
+</pre>
+			<pre>
+Дети
+</pre>
+		</div>
+		
+		<div>
+			<pre class="blur">
+querySelector
+querySelectorAll
+getElementById
+getElementsByName
+getElementsByTagName
+getElementsByClassName
+</pre>
+			<pre>
+поиск элемента
+</pre>
+		</div>
+		
+		<div>
+			<pre class="blur">
+nodeType
+nodeName/tagName
+innerHTML
+outerHTML
+nodeValue/data
+textContent
+hidden
+</pre>
+			<pre>
+узнать тип DOM-узла
+возвращает название тега
+Внутреннее содержимое
+Полный HTML
+Содержимое узла
+Текст внутри
+display:none
+</pre>
+		</div>
+		
+		<div>
+			<pre class="blur">
+elem.hasAttribute(name)
+elem.getAttribute(name)
+elem.setAttribute(name, value)
+elem.removeAttribute(name)
+elem.attributes
+</pre>
+			<pre>
+проверить на наличие
+получить значение
+установить значение
+удалить атрибут
+коллекция
+</pre>
+		</div>
+		
+		<div>
+			<pre class="blur">
+document.createElement(tag)
+document.createTextNode(value)
+elem.cloneNode(deep)
+</pre>
+			<pre>
+создаёт элемент
+текстовый узел
+клонирует элемент
+</pre>
+		</div>
+		
+		<div>
+			<pre class="blur">
+node.append()
+node.prepend()
+node.before()
+node.after()
+node.replaceWith()
+node.remove()
+</pre>
+			<pre>
+вставляет в node в конец
+вставляет в node в начало
+вставляет прямо перед node
+вставляет сразу после node
+заменяет node
+удаляет node
+</pre>
+		</div>
+		
+		<div>
+			<pre class="blur">
+className
+classList
+</pre>
+			<pre>
+управления всем набором
+управления отдельными
+</pre>
+		</div>
+		
+		<div>
+			<pre class="blur">
+offsetParent
+offsetLeft/offsetTop
+offsetWidth/offsetHeight
+clientLeft/clientTop
+clientWidth/clientHeight
+scrollWidth/scrollHeight
+scrollLeft/scrollTop
+</pre>
+			<pre>
+позиционированный родитель
+в пикселях
+«внешняя» ширина/высота
+расстояние от верхнего левого
+ширина/высота содержимого
+учитывают прокрученную
+от верхнего левого угла
+</pre>
+		</div>
+		
+		<div>
+			<pre class="blur">
+window.scrollTo(pageX,pageY)
+window.scrollBy(x,y)
+elem.scrollIntoView(top)
+</pre>
+			<pre>
+абсолютные
+относительно текущего
+elem видим
+</pre>
+		</div>
+		
+		<div>
+			<pre class="blur">
+elem.getBoundingClientRect()
+elem.getBoundingClientRect()
+</pre>
+			<pre>
+относительно окна
+относительно документа
+</pre>
+		</div>
+		
+		<div>
+			<pre class="blur">
+event.target
+event.currentTarget
+event.eventPhase
+</pre>
+			<pre>
+глубокий
+в данный момент
+на какой фазе:
+погружение=1
+фаза цели=2 
+всплытие=3
+</pre>
+		</div>
+		
+		<div>
+			<pre class="blur">
+mousedown
+submit
+keydown
+contextmenu
+</pre>
+			<pre>
+выделять текст
+данные отправляются
+появляется символ
+контекстное меню
+</pre>
+		</div>
+		
+		<div>
+			<pre class="blur">
+bubbles: true
+cancelable: true
+</pre>
+			<pre>
+событие всплывало
+event.preventDefault()
+работал
+</pre>
+		</div>
+		
+		<div>
+			<pre class="blur">
+altKey
+ctrlKey
+shiftKey
+metaKey(Mac)
+</pre>
+			<pre>
+Клавиши-модификаторы
+</pre>
+		</div>
+		
+		<div>
+			<pre class="blur">
+mouseover
+mouseout
+mousemove
+mouseenter
+mouseleave
+mouseover/out
+mouseenter/leave 
+relatedTarget
+</pre>
+			<pre>
+события мыши
 </pre>
 		</div>
 		

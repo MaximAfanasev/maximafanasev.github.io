@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html>
+<body>
+
+  <a name="list">The list:</a>
+  <ul>
+    <li><a href="https://google.com">https://google.com</a></li>
+    <li><a href="/tutorial">/tutorial.html</a></li>
+    <li><a href="local/path">local/path</a></li>
+    <li><a href="ftp://ftp.com/my.zip">ftp://ftp.com/my.zip</a></li>
+    <li><a href="https://nodejs.org">https://nodejs.org</a></li>
+    <li><a href="http://internal.com/test">http://internal.com/test</a></li>
+  </ul>
+
+  <script>
+    let selector = 'a[href*="://"]:not([href^="http://internal.com"])';
+    let links = document.querySelectorAll(selector);
+
+    links.forEach(link => link.style.color = 'orange');
+  </script>
+
+</body>
+</html>
