@@ -721,6 +721,33 @@ reject(error)
 		</div>
 
 		<div>
+			<pre>
+1 7 3 5 2 6 4
+	</pre>
+			<pre class="blur">
+console.log(1);
+
+setTimeout(() => 
+console.log(2));
+
+Promise.resolve().then(() 
+=> console.log(3));
+
+Promise.resolve().then(() 
+=> setTimeout(() => 
+console.log(4)));
+
+Promise.resolve().then(() 
+=> console.log(5));
+
+setTimeout(() => 
+console.log(6));
+
+console.log(7);
+	</pre>
+		</div>
+
+		<div>
 			<pre class="blur">
 async function f() {
   return 1;
@@ -1093,6 +1120,121 @@ relatedTarget
 </pre>
 			<pre>
 события мыши
+</pre>
+		</div>
+		
+		<div>
+			<pre class="blur">
+
+</pre>
+			<pre>
+
+</pre>
+		</div>
+		
+		<div>
+			<pre class="blur">
+keydown 
+keyup
+</pre>
+			<pre>
+нажатие
+отпускание
+</pre>
+		</div>
+		
+		<div>
+			<pre class="blur">
+pointerId
+isPrimary
+pointerup
+pointercancel
+</pre>
+			<pre>
+мультитач 
+</pre>
+		</div>
+		
+		<div>
+			<pre class="blur">
+document.forms
+form.elements
+input.value 
+textarea.value 
+select.value
+</pre>
+			<pre>
+навигации по формам
+элементы формы
+значения элементов(3)
+</pre>
+		</div>
+		
+		<div>
+			<pre class="blur">
+DOMContentLoaded
+
+
+load
+
+beforeunload/unload
+
+
+document.readyState
+</pre>
+			<pre>
+полностью загрузил HTML
+стили ещё не загружены
+
+загрузил HTML
+
+пользователь покидает 
+страницу
+
+текущее состояние
+</pre>
+		</div>
+		
+		<div>
+			<pre class="blur">
+async
+
+
+defer
+</pre>
+			<pre>
+загрузится первым, 
+тот и сработает
+
+как расположены 
+в документе
+</pre>
+		</div>
+		
+		<div>
+			<pre class="blur">
+
+</pre>
+			<pre>
+
+</pre>
+		</div>
+		
+		<div>
+			<pre class="blur">
+
+</pre>
+			<pre>
+
+</pre>
+		</div>
+		
+		<div>
+			<pre class="blur">
+
+</pre>
+			<pre>
+
 </pre>
 		</div>
 		
