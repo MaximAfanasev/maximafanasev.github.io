@@ -15,9 +15,11 @@ let promise3 = new Promise(function (resolve, reject) {
 
 promise.then(
 	function (result) {
-		/* обработает успешное выполнение */ },
+		/* обработает успешное выполнение */
+	},
 	function (error) {
-		/* обработает ошибку */ }
+		/* обработает ошибку */
+	}
 );
 
 let promise4 = new Promise(function (resolve, reject) {
@@ -94,24 +96,6 @@ let requests = urls.map(url => fetch(url));
 
 // Promise.all будет ожидать выполнения всех промисов
 Promise.all(requests)
-  .then(responses => responses.forEach(
-    response => console.log(`${response.url}: ${response.status}`)
-  ));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	.then(responses => responses.forEach(
+		response => console.log(`${response.url}: ${response.status}`)
+	));
