@@ -1,16 +1,45 @@
-def f(x, y, z, w):
-  return (a <= b) and (b <= (not c)) and ((not c) <= d) 
+s1 = 'секунда'
+print(s1[0]+ '-' + s1[len(s1)-1])
 
-from itertools import permutations, product
-# перебор всех возможных вариантов заполнения пропусков
-for a1, a2, a3, a4 in product([0, 1], repeat=4):
-  # формирование таблицы с заполненными пропусками
-  table = [(a1, a2, 0, 0), (1, 0, a3, 0), (1, 0, 1, a4)]
-  # если количество строк в таблице не равно количеству уникальных
-  # значит есть дублирующиеся строки
-  if len(table) != len(set(table)):
-    # поэтому перебираем следующий вариант заполнения пропусков
-    continue
-  for p in permutations('xyzw'):
-    if [f(**dict(zip(p, row))) for row in table] == [0, 0, 0]:
-      print(*p, sep ='')
+s2 = 'огонь'
+print(s2[len(s2)//2])
+
+s3 = 'Привет!'
+if s3[-1] == '!':
+    print('ура')
+elif s3[-1] == '?':
+    print('вопрос')
+elif a[-1] == '.':
+    print('серьезно')
+else: print('непонятно')
+
+s3 = ['abc', 'abcd', 'aaa','stop']
+s33 = ''
+for i in s3:
+  if i == 'stop':
+    break
+  s33 = s33 + i[-1]
+print(s33)
+
+s4 = 'Hi.'
+print(s4[:len(s4)-1]+'?')
+
+s5 = 'Hello!'
+print(s5[2::3])
+
+if 'Василий' < 'Васька' < 'Вася': print('ДА')
+else: print('НЕТ')
+
+s6 = 'съешь ещё этих мягких французских булок да выпей же чаю'
+s7 = 'передай'
+s8 = ''
+for i in s7:
+  s8 += str(s6.find(i))
+print(s8)
+
+s9 = 'Жёлтый огонёк нёсся на ёжика.'
+s10 = s9.replace('Ё', 'Е').replace('ё', 'е')
+print(s10)
+
+
+
