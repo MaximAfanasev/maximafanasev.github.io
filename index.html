@@ -12,16 +12,23 @@
 <style>
 	body {
 		margin: 0 auto;
-		padding: 0;
+		padding: 10px;
+		
 		background: #000;
 		color: gray;
-		font-family: sans-serif;
-		padding: 20px;
+		
+		font-family: var(--fontStack-monospace, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace);
+		
+		font-size: 16px;
+		line-height: 24px;
+		letter-spacing: 3px;
+		
+		@media(min-width: 450px) {
 		font-size: 25px;
 		line-height: 32px;
 		letter-spacing: 6px;
-		max-width: 1920px;
-		font-family: var(--fontStack-monospace, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace);
+		padding: 20px;
+		}
 	}
 
 	ul {
@@ -41,10 +48,15 @@
 	}
 	
 	input {
+		font-size: 16px;
+		line-height: 24px;
+		letter-spacing: 3px;
+		
+		@media(min-width: 450px) {
 		font-size: 25px;
 		line-height: 32px;
-		font-family: sans-serif;
 		letter-spacing: 6px;
+		}
 	}
 	
 	button {
@@ -69,7 +81,9 @@
 		<li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="red">let</span> <span class="blue">min = i</span></li>
 		<li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="red">for</span> (<span class="gold">let j=i+1; j&#60;n; j++</span>){</li>
 		<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="red">if</span> (<span class="gold">a[j] &#60; a[min]</span>) <span class="blue">min = j</span></li>
-		<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="red">let</span> <span class="blue">t = a[min]; a[min] = a[i]; a[i] = t</span></li>
+		<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="red">let</span> <span class="blue">t = a[min]</span></li>
+		<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">a[min] = a[i]</span></li>
+		<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">a[i] = t</span></li>
 		<li>&nbsp;&nbsp;&nbsp;&nbsp;}</li>
 		<li>&nbsp;&nbsp;}</li>
 		<li>&nbsp;&nbsp;<span class="red">return</span> a</li>
@@ -83,34 +97,16 @@
 	</ul>
 
 	<ul>
-		<li><span class="red">function</span></li>
-		<li><span class="red">let</span></li>
-		<li><span class="red">for</span></li>
-		<li><span class="red">let</span></li>
-		<li><span class="red">for</span></li>
-		<li><span class="red">if</span></li>
-		<li><span class="red">let</span></li>
-		<li>}</li>
-		<li>}</li>
-		<li><span class="red">return</span></li>
-		<li>}</li>
-	</ul>
-
-	<ul>
-		<li>Sort(<span class="gold">a</span>) {</li>
+		<li>Sort(<span class="gold">a</span>)</li>
 		<li><span class="blue">n = a.length</span></li>
-		<li>(<span class="gold">let i=0; i&#60;n-1; i++</span>){ </li>
+		<li><span class="gold">let i=0; i&#60;n-1; i++</span></li>
 		<li><span class="blue">min = i</span></li>
-		<li>(<span class="gold">let j=i+1; j&#60;n; j++</span>){</li>
-		<li>(<span class="gold">a[j] &#60; a[min]</span>) <span class="blue">min = j</span></li>
-		<li><span class="blue">t = a[min]; a[min] = a[i]; a[i] = t</span></li>
-		<li>}</li>
-		<li>}</li>
-		<li>a</li>
-		<li>}</li>
+		<li><span class="gold">let j=i+1; j&#60;n; j++</span></li>
+		<li><span class="gold">a[j] &#60; a[min]</span> <span class="blue">min = j</span></li>
+		<li><span class="blue">t = a[min]</span></li>
+		<li><span class="blue">a[min] = a[i]</span></li>
+		<li><span class="blue">a[min] = a[i]</span></li>
 	</ul>
-
-
 
 	<script src="algoritms.js"></script>
 	<script>
