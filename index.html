@@ -13,7 +13,6 @@
 	body {
 		margin: 0 auto;
 		padding: 0;
-		line-height: 2em;
 		background: #000;
 		color: gray;
 		font-family: sans-serif;
@@ -40,6 +39,23 @@
 	.gold {
 		color: gold;
 	}
+	
+	input {
+		font-size: 25px;
+		line-height: 32px;
+		font-family: sans-serif;
+		letter-spacing: 6px;
+	}
+	
+	button {
+		font-size: 25px;
+		line-height: 32px;
+		font-family: sans-serif;
+		background: #000;
+		color: gray;
+		border: 1px solid #fff;
+		border-radius: 10px;
+	}
 </style>
 
 <body>
@@ -53,15 +69,60 @@
 		<li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="red">let</span> <span class="blue">min = i</span></li>
 		<li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="red">for</span> (<span class="gold">let j=i+1; j&#60;n; j++</span>){</li>
 		<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="red">if</span> (<span class="gold">a[j] &#60; a[min]</span>) <span class="blue">min = j</span></li>
-		<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="red">let</span> <span class="blue">t = a[min];</span></li>
-		<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">a[min] = a[i]</span></li>
-		<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">a[i] = t</span></li>
+		<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="red">let</span> <span class="blue">t = a[min]; a[min] = a[i]; a[i] = t</span></li>
 		<li>&nbsp;&nbsp;&nbsp;&nbsp;}</li>
 		<li>&nbsp;&nbsp;}</li>
-		<li>&nbsp;&nbsp;<span class="red">return</span> a;</li>
-		<li>};</li>
+		<li>&nbsp;&nbsp;<span class="red">return</span> a</li>
+		<li>}</li>
+	</ul>
+
+	<ul>
+		<li><span class="red">flflfil}}r}</span></li>
+	<input id="search">
+	<button id="button">Check</button>
+	</ul>
+
+	<ul>
+		<li><span class="red">function</span></li>
+		<li><span class="red">let</span></li>
+		<li><span class="red">for</span></li>
+		<li><span class="red">let</span></li>
+		<li><span class="red">for</span></li>
+		<li><span class="red">if</span></li>
+		<li><span class="red">let</span></li>
+		<li>}</li>
+		<li>}</li>
+		<li><span class="red">return</span></li>
+		<li>}</li>
+	</ul>
+
+	<ul>
+		<li>Sort(<span class="gold">a</span>) {</li>
+		<li><span class="blue">n = a.length</span></li>
+		<li>(<span class="gold">let i=0; i&#60;n-1; i++</span>){ </li>
+		<li><span class="blue">min = i</span></li>
+		<li>(<span class="gold">let j=i+1; j&#60;n; j++</span>){</li>
+		<li>(<span class="gold">a[j] &#60; a[min]</span>) <span class="blue">min = j</span></li>
+		<li><span class="blue">t = a[min]; a[min] = a[i]; a[i] = t</span></li>
+		<li>}</li>
+		<li>}</li>
+		<li>a</li>
+		<li>}</li>
 	</ul>
 
 
+
 	<script src="algoritms.js"></script>
+	<script>
+		let button = document.getElementById('button');
+		let search = document.getElementById('search');
+
+		button.addEventListener('click', () => {
+			if (search.value == "flflfil}}r}") {
+				alert("Верняк!");
+			} else {
+				alert('Все х-ня, давай по новой');
+			}
+		});
+	</script>
 </body></html>
