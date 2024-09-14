@@ -15,47 +15,53 @@
 		padding: 0;
 		line-height: 2em;
 		background: #000;
-		color: #fff;
+		color: gray;
 		font-family: sans-serif;
 		padding: 20px;
-		font-size: 20px;
+		font-size: 25px;
+		line-height: 32px;
+		letter-spacing: 6px;
 		max-width: 1920px;
+		font-family: var(--fontStack-monospace, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace);
+	}
+
+	ul {
+		list-style: none;
+	}
+
+	.red {
+		color: #ff7b72;
+	}
+
+	.blue {
+		color: #79c0ff;
+	}
+
+	.gold {
+		color: gold;
 	}
 </style>
 
 <body>
 
-<h1>Javascript</h1>
+	<h1>Алгоритмы</h1>
 
-<h2>Основы Javascript</h2>
-
-<ul>
-	<li>как хранить переменные</li>
-	<li>изменение типа данных</li>
-	<li>математические операции</li>
-	<li>сравнение</li>
-	<li>условия</li>
-	<li>циклы</li>
-</ul>
-
-<h2>Объекты основы</h2>
-
-<ul>
-	<li>Как хранить данные в объекте</li>
-	<li>ключ: значение</li>
-	<li>удаление ключей</li>
-	<li>проверка существования</li>
-	<li>цикл по ключам</li>
-	<li>клонирование объекта</li>
-	<li>this</li>
-	<li>конструктор объектов</li>
-	<li>проверка ключа</li>
-</ul>
+	<ul>
+		<li><span class="red">function</span> Sort(<span class="gold">a</span>) {</li>
+		<li>&nbsp;&nbsp;<span class="red">let</span> <span class="blue">n = a.length</span></li>
+		<li>&nbsp;&nbsp;<span class="red">for</span> (<span class="gold">let i=0; i&#60;n-1; i++</span>){ </li>
+		<li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="red">let</span> <span class="blue">min = i</span></li>
+		<li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="red">for</span> (<span class="gold">let j=i+1; j&#60;n; j++</span>){</li>
+		<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="red">if</span> (<span class="gold">a[j] &#60; a[min]</span>) <span class="blue">min = j</span></li>
+		<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="red">let</span> <span class="blue">t = a[min];</span></li>
+		<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">a[min] = a[i]</span></li>
+		<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">a[i] = t</span></li>
+		<li>&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+		<li>&nbsp;&nbsp;}</li>
+		<li>&nbsp;&nbsp;<span class="red">return</span> a;</li>
+		<li>};</li>
+	</ul>
 
 
-<h2>Типы данных</h2>
-
-
-
-<script src="theory.js"></script>
+	<script src="algoritms.js"></script>
 </body></html>
