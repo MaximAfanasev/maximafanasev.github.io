@@ -13,21 +13,21 @@
 	body {
 		margin: 0 auto;
 		padding: 10px;
-		
+
 		background: #000;
 		color: gray;
-		
+
 		font-family: var(--fontStack-monospace, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace);
-		
+
 		font-size: 16px;
 		line-height: 24px;
 		letter-spacing: 3px;
-		
+
 		@media(min-width: 450px) {
-		font-size: 25px;
-		line-height: 32px;
-		letter-spacing: 6px;
-		padding: 20px;
+			font-size: 25px;
+			line-height: 32px;
+			letter-spacing: 6px;
+			padding: 20px;
 		}
 	}
 
@@ -46,19 +46,19 @@
 	.gold {
 		color: gold;
 	}
-	
+
 	input {
 		font-size: 16px;
 		line-height: 24px;
 		letter-spacing: 3px;
-		
+
 		@media(min-width: 450px) {
-		font-size: 25px;
-		line-height: 32px;
-		letter-spacing: 6px;
+			font-size: 25px;
+			line-height: 32px;
+			letter-spacing: 6px;
 		}
 	}
-	
+
 	button {
 		font-size: 25px;
 		line-height: 32px;
@@ -68,7 +68,7 @@
 		border: 1px solid #fff;
 		border-radius: 10px;
 	}
-	
+
 	div {
 		margin-bottom: 20px;
 	}
@@ -77,25 +77,41 @@
 <body>
 
 	<h1>Алгоритмы</h1>
-	
-	<h2>Сортировка выбором</h2>
+
+	<h2>Сортировка выбором O(n<sup>2</sup>)</h2>
 
 	<ul>
-		<li><span class="red">function</span> Sort(<span class="gold">a</span>) {</li>
-		<li>&nbsp;&nbsp;<span class="red">let</span> <span class="blue">n = a.length</span></li>
+		<li><span class="red">function</span> Sort(a) {</li>
+		<li>&nbsp;&nbsp;<span class="red">let</span> n = a.length</li>
 		<li>&nbsp;&nbsp;<span class="red">for</span> (<span class="gold">let i=0; i&#60;n-1; i++</span>){ </li>
 		<li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="red">let</span> <span class="blue">min = i</span></li>
 		<li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="red">for</span> (<span class="gold">let j=i+1; j&#60;n; j++</span>){</li>
 		<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="red">if</span> (<span class="gold">a[j] &#60; a[min]</span>) <span class="blue">min = j</span></li>
-		<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="red">let</span> <span class="blue">t = a[min]</span></li>
-		<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">a[min] = a[i]</span></li>
-		<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">a[i] = t</span></li>
+		<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">[arr[i], arr[min]] = [arr[min], arr[i]]</span></li>
 		<li>&nbsp;&nbsp;&nbsp;&nbsp;}</li>
 		<li>&nbsp;&nbsp;}</li>
 		<li>&nbsp;&nbsp;<span class="red">return</span> a</li>
 		<li>}</li>
 	</ul>
+	
+	<img src="selectsort.gif" alt="">
+
+	<h2>Сортировка пузырьком O(n<sup>2</sup>)</h2>
+	<ul>
+		<li><span class="red">function</span> bubbleSort(a) {</li>
+		<li>&nbsp;&nbsp;<span class="red">let</span> n = a.length;</li>
+		<li>&nbsp;&nbsp;<span class="red">for</span> (<span class="gold">let i = 0; i &#60; n - 1; i++</span>) {</li>
+		<li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="red">for</span> (<span class="gold">let j = 0; j &#60; n - 1 - i; j++</span>) {</li>
+		<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="red">if</span> (<span class="gold">arr[j] > arr[j + 1]</span>) {</li>
+		<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">[arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]</span></li>
+		<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+		<li>&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+		<li>&nbsp;&nbsp;}</li>
+		<li><span class="red">return</span> a</li>
+		<li>}</li>
+	</ul>
+	<img src="bubblesort.gif" alt="">
 
 	<script src="algoritms.js"></script>
-	
+
 </body></html>
