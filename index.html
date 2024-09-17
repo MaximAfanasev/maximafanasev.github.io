@@ -13,6 +13,7 @@
 	body {
 		margin: 0 auto;
 		padding: 10px;
+		max-width: 1200px;
 
 		background: #000;
 		color: gray;
@@ -72,13 +73,22 @@
 	div {
 		margin-bottom: 20px;
 	}
+	
+	img {
+    width: 100%;
+    max-width: fit-content;
+}
+	
+	a {
+		color: blueviolet;
+	}
 </style>
 
 <body>
 
 	<h1>Алгоритмы</h1>
 
-	<h2>Сортировка выбором O(n<sup>2</sup>)</h2>
+	<h2>Сортировка выбором O(n<sup>2</sup>)⭐</h2>
 
 	<ul>
 		<li><span class="red">function</span> Sort(a) {</li>
@@ -111,6 +121,32 @@
 		<li>}</li>
 	</ul>
 	<img src="bubblesort.gif" alt="">
+	
+	<h2>Arrays</h2>
+	
+	<span>#1 ⭐</span>
+	
+	<ul>
+		<li><span class="blue">['h','o','l','a']</span> --> <span class="blue">'h,o,l,a'</span></li>
+		<li>&nbsp;</li>
+		<li><span class="red">const</span> f = (a) => a.<span class="gold">join(',')</span></li>
+	</ul>
+	
+	<span>#2 <a href="https://www.codewars.com/kata/55edaba99da3a9c84000003b/train/javascript">codewars</a></span>
+  	
+	<ul>
+		<li><span class="blue">[1, 2, 3, 4, 5, 6], 2 --> [2, 4, 6]</span></li>
+		<li>&nbsp;</li>
+		<li><span class="red">const</span> f = (a, b) => <span class="gold">a.filter(n => n % b === 0)</span></li>
+	</ul>
+	
+	<span>#3 <a href="https://www.codewars.com/kata/5a2be17aee1aaefe2a000151/train/javascript">codewars</a></span>
+  	
+	<ul>
+		<li><span class="blue">[1, 2, 3] [4, 5, 6] --> 21</span></li>
+		<li>&nbsp;</li>
+		<li><span class="red">const</span>  arrayPlusArray = (a, b) => <span class="gold">[...a, ...b].reduce((a, b) => a + b)</span></li>
+	</ul>
 
 	<script src="algoritms.js"></script>
 
