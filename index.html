@@ -93,9 +93,9 @@
 	<ul>
 		<li><span class="red">function</span> Sort(a) {</li>
 		<li>&nbsp;&nbsp;<span class="red">let</span> n = a.length</li>
-		<li>&nbsp;&nbsp;<span class="red">for</span> (<span class="gold">let i=0; i&#60;n-1; i++</span>){ </li>
+		<li>&nbsp;&nbsp;<span class="red">for</span> (<span class="red">let</span> <span class="gold"> i=0; i&#60;n-1; i++</span>){ </li>
 		<li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="red">let</span> <span class="blue">min = i</span></li>
-		<li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="red">for</span> (<span class="gold">let j=i+1; j&#60;n; j++</span>){</li>
+		<li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="red">for</span> (<span class="red">let</span> <span class="gold"> j=i+1; j&#60;n; j++</span>){</li>
 		<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="red">if</span> (<span class="gold">a[j] &#60; a[min]</span>) <span class="blue">min = j</span></li>
 		<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">[a[i], a[min]] = [a[min], a[i]]</span></li>
 		<li>&nbsp;&nbsp;&nbsp;&nbsp;}</li>
@@ -110,7 +110,7 @@
 	<ul>
 		<li><span class="red">function</span> bubbleSort(a) {</li>
 		<li>&nbsp;&nbsp;<span class="red">let</span> n = a.length;</li>
-		<li>&nbsp;&nbsp;<span class="red">for</span> (<span class="gold">let i = 0; i &#60; n - 1; i++</span>) {</li>
+		<li>&nbsp;&nbsp;<span class="red">for</span> (<span class="red">let</span> <span class="gold">i = 0; i &#60; n - 1; i++</span>) {</li>
 		<li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="red">for</span> (<span class="gold">j = 0; j &#60; n - i; j++</span>) {</li>
 		<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="red">if</span> (<span class="gold">a[j] > a[j + 1]</span>) {</li>
 		<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">[a[j], a[j + 1]] = [a[j + 1], a[j]]</span></li>
@@ -121,6 +121,25 @@
 		<li>}</li>
 	</ul>
 	<img src="bubblesort.gif" alt="">
+
+	<h2>Сортировка вставками O(n<sup>2</sup>)⭐</h2>
+	<ul>
+		<li><span class="red">function</span> insertionSort(a) {</li>
+		<li>&nbsp;&nbsp;<span class="red">let</span> n = a.length</li>
+		<li>&nbsp;&nbsp;<span class="red">for</span> (<span class="red">let</span> <span class="gold">i = 0; i &#60; n; i++</span>) {</li>
+		<li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="red">let</span> <span class="blue">v = a[i]</span>,</li>
+		<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">j = i - 1</span></li>
+		<li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="red">while</span> (<span class="gold">j >= 0 && a[j] > v</span>) {</li>
+		<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">a[j + 1] = a[j]</span></li>
+		<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">j--;</span></li>
+		<li>&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+		<li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">a[j + 1] = v</span></li>
+		<li>&nbsp;&nbsp;}</li>
+			<li>&nbsp;&nbsp;<span class="red">return</span> a;</li>
+		<li>};</li>
+	</ul>
+	
+	
 	
 	<h2>Arrays</h2>
 	
