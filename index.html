@@ -76,7 +76,7 @@
 	
 	img {
     width: 100%;
-    max-width: fit-content;
+    max-width: 500px;
 }
 	
 	a {
@@ -88,7 +88,7 @@
 
 	<h1>Алгоритмы</h1>
 
-	<h2>Сортировка выбором O(n<sup>2</sup>)⭐</h2>
+	<h2>Сортировка выбором O(n<sup>2</sup>)</h2>
 
 	<ul>
 		<li><span class="red">function</span> Sort(a) {</li>
@@ -106,7 +106,7 @@
 	
 	<img src="selectsort.gif" alt="">
 
-	<h2>Сортировка пузырьком O(n<sup>2</sup>)⭐</h2>
+	<h2>Сортировка пузырьком O(n<sup>2</sup>)</h2>
 	<ul>
 		<li><span class="red">function</span> bubbleSort(a) {</li>
 		<li>&nbsp;&nbsp;<span class="red">let</span> n = a.length;</li>
@@ -122,7 +122,7 @@
 	</ul>
 	<img src="bubblesort.gif" alt="">
 
-	<h2>Сортировка вставками O(n<sup>2</sup>)⭐</h2>
+	<h2>Сортировка вставками O(n<sup>2</sup>)</h2>
 	<ul>
 		<li><span class="red">function</span> insertionSort(a) {</li>
 		<li>&nbsp;&nbsp;<span class="red">let</span> n = a.length</li>
@@ -139,11 +139,60 @@
 		<li>};</li>
 	</ul>
 	
+	<img src="insertionsort.gif" alt="">
+
+	<h2>Быстрая сортировка O(n<sup>2</sup>)</h2>
+	<ul>
+
+		<li><span class="red">function</span> quickSort(arr) {</li>
+		<li>&nbsp;&nbsp;<span class="red">if</span> (<span class="gold">arr.length &#60; 2</span>) <span class="red">return</span> arr;</li>
+		<li>&nbsp;&nbsp;<span class="red">let</span> <span class="gold">pivot = arr[0];</span></li>
+		<li>&nbsp;&nbsp;<span class="red">const</span> left = [];</li>
+		<li>&nbsp;&nbsp;<span class="red">const</span> right = [];</li>
+<li>&nbsp;</li>
+		<li>&nbsp;&nbsp;<span class="red">for</span> (<span class="red">let</span> <span class="gold"> i = 1; i &#60; arr.length; i++</span>) {</li>
+		<li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="red">if</span> (<span class="gold">pivot > arr[i]</span>) {</li>
+		<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">left.push(arr[i])</span></li>
+		<li>&nbsp;&nbsp;&nbsp;&nbsp;} <span class="red">else</span> {</li>
+		<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">right.push(arr[i])</span></li>
+		<li>&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+		<li>&nbsp;&nbsp;}</li>
+		<li>&nbsp;&nbsp;<span class="red">return</span> <span class="blue">quickSort(left).concat(pivot, quickSort(right))</span></li>
+		<li>}</li>
+	</ul>
+	
+	<img src="quicksort.gif" alt="">
+
+	<h2>Сортировка слиянием O(n<sup>2</sup>)</h2>
+	<ul>
+		<li><span class="red">function</span> merge(left, right) {</li>
+		<li>&nbsp;&nbsp;<span class="red">let</span> arr = []</li>
+		<li>&nbsp;&nbsp;<span class="red">while</span> (<span class="gold">left.length && right.length</span>) {</li>
+		<li>&nbsp;&nbsp;&nbsp;&nbsp;if (<span class="gold">left[0] &#60; right[0]</span>) {</li>
+		<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">arr.push(left.shift())</span></li>
+		<li>&nbsp;&nbsp;&nbsp;&nbsp;} <span class="red">else</span> {</li>
+		<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">arr.push(right.shift())</span></li>
+		<li>&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+		<li>&nbsp;&nbsp;}</li>
+		<li>&nbsp;&nbsp;<span class="red">return</span> <span class="blue">[ ...arr, ...left, ...right ]</span></li>
+		<li>}</li>
+<li>&nbsp;</li>
+		<li><span class="red">function</span> mergeSort(array) {</li>
+		<li>&nbsp;&nbsp;<span class="red">const</span> <span class="blue">half = array.length / 2</span></li>
+		<li>&nbsp;&nbsp;<span class="red">if</span> (<span class="gold">array.length &#60; 2</span>){</li>
+		<li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="red">return</span> array</li>
+		<li>&nbsp;&nbsp;}</li>
+		<li>&nbsp;&nbsp;<span class="red">const</span> <span class="blue">left = array.splice(0, half)</span></li>
+		<li>&nbsp;&nbsp;<span class="red">return</span> <span class="blue">merge(mergeSort(left),mergeSort(array))</span></li>
+		<li>}</li>
+	</ul>
+	
+	<img src="mergesort.gif" alt="">
 	
 	
 	<h2>Arrays</h2>
 	
-	<span>#1 ⭐ <a href="https://www.codewars.com/kata/56e2f59fb2ed128081001328" target="_blank">codewars</a></span>
+	<span>#1 <a href="https://www.codewars.com/kata/56e2f59fb2ed128081001328" target="_blank">codewars</a></span>
 	
 	<ul>
 		<li><span class="blue">['h','o','l','a']</span> --> <span class="blue">'h,o,l,a'</span></li>
