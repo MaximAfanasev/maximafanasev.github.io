@@ -91,7 +91,15 @@
 </style>
 
 <body>
-
+	
+	<h2>Portfolio</h2>
+	<article>
+		<ul>
+			<li><a href="catenergy/index.html" target="_blank">catenergy</a></li>
+			<li><a href="sedona/index.html" target="_blank">sedona</a></li>
+		</ul>
+	</article>
+	
 	<h1>Алгоритмы</h1>
 
 	<h2>Сортировка выбором O(n<sup>2</sup>)</h2>
@@ -198,7 +206,6 @@
 	
 	<h2>Arrays</h2>
 	
-	<span>#1</span>
 	<section class="codewars">
 	<ul>
 		<li><span class="blue">['h','o','l','a']</span> --> <span class="blue">'h,o,l,a'</span></li>
@@ -206,48 +213,36 @@
 		<li><span class="red">const</span> f = a => a.<span class="gold">join(',')</span></li>
 	</ul>
 	
-	<span>#2</span>
-  	
 	<ul>
 		<li><span class="blue">[1, 2, 3, 4, 5, 6], 2 --> [2, 4, 6]</span></li>
 		<li>&nbsp;</li>
 		<li><span class="red">const</span> f = (a, b) => <span class="gold">a.filter(n => n % b === 0)</span></li>
 	</ul>
 	
-	<span>#3</span>
-  	
 	<ul>
 		<li><span class="blue">[1, 2, 3] [4, 5, 6] --> 21</span></li>
 		<li>&nbsp;</li>
 		<li><span class="red">const</span>  f = (a, b) => <span class="gold">[...a, ...b].reduce((a, b) => a + b)</span></li>
 	</ul>
 	
-	<span>#4</span>
-  	
 	<ul>
 		<li><span class="blue">[1, 2, 1, 1, 3, 2] --> [1, 2, 3]</span></li>
 		<li>&nbsp;</li>
 		<li><span class="red">const</span>  f = a => <span class="gold">[...new Set(a)]</span></li>
 	</ul>
 	
-	<span>#5</span>
-  	
 	<ul>
 		<li><span class="blue">f(7) --> "I love you"</span></li>
 		<li>&nbsp;</li>
 		<li><span class="red">const</span>  f = a => <span class="gold">['not at all','I love you','a little','a lot','passionately','madly'][a%6]</span></li>
 	</ul>
 	
-	<span>#6</span>
-  	
 	<ul>
 		<li><span class="blue">f([1,2,'a']) == '11'</span></li>
 		<li>&nbsp;</li>
 		<li><span class="red">const</span> f = a => <span class="gold">a.filter(x => typeof x == 'number').reduce((x, y) => x + y, 0).toString(2)</span></li>
 	</ul>
 	
-	<span>#7</span>
-  	
 	<ul>
 		<li><span class="blue">[1, -2, 3, -4, 5] --> [-1, 2, -3, 4, -5]</span></li>
 		<li>&nbsp;</li>
