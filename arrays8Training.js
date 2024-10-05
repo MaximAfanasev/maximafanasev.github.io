@@ -235,3 +235,19 @@ const mergeArrays = (arr1, arr2) => {
 }
 
 console.log(mergeArrays(arr16, arr17))
+
+
+
+
+
+
+// [1,2,3,4] --> 2.5
+
+
+
+
+
+
+
+
+

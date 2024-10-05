@@ -231,3 +231,26 @@ const mergeArrays = (arr1, arr2) => {
 }
 
 console.log(mergeArrays(arr16, arr17))
+
+
+
+
+
+// [1,2,3,4] --> 2.5
+const arr18 = [1,2,3,4]
+
+const findAverage =array => {
+  return array.reduce((a,b)=>a+b)/array.length
+}
+
+
+console.log(findAverage(arr18))
+
+
+
+
+
+
+
+
+
