@@ -1,15 +1,14 @@
 arr = ['a', 'b', 'c']
 
-// get
 // 'a,b,c'
 // 'abc'
 // 'a-b-c'
 // 'a,b,c'
 
-console.log(arr)
-console.log(arr)
-console.log(arr)
-console.log(arr)
+console.log(arr.join())
+console.log(arr.join(' '))
+console.log(arr.join('-'))
+console.log(arr.join(','))
 
 
 
@@ -23,7 +22,7 @@ const arr2 = [1, 2, 3, 4, 5, 6]
 const divider = 2 
 // [2, 4, 6]
 const f = (a,b) => {
-	return 
+	return a.filter(x=>x%b===0)
 }
 
 console.log(f(arr2, divider))
@@ -40,7 +39,7 @@ const arr3 = [1, 2, 3]
 const arr4 = [4, 5, 6]
 
 const f2 = (a,b) => {
-	return 
+	return [...a, ...b].reduce((a,b)=>a+b)
 }
 
 console.log(f2(arr3, arr4))
@@ -60,7 +59,7 @@ console.log(f2(arr3, arr4))
 const arr5 = [1, 2, 1, 1, 3, 2]
 
 const f3 = a => {
-	return 
+	return [...new Set(a)]
 }
 
 console.log(f3(arr5))
@@ -76,7 +75,7 @@ console.log(f3(arr5))
 arr6 = ['0', '1', '2', '3', '4', '5']
 
 const f4 = a => {
-	return 
+	return arr6[a%6]
 }
 
 console.log(f4(7))
@@ -89,7 +88,7 @@ console.log(f4(7))
 // f([1,2,'a']) == '11' (двоичная система)
 
 const f5 = a => {
-	return 
+	return a.filter(x=> typeof x === 'number').reduce((a,b)=>a+b,0).toString(2)
 }
 
 console.log(f5([1,2,'a']))
@@ -104,7 +103,7 @@ console.log(f5([1,2,'a']))
 const arr7 = [1, -2, 3, -4, 5]
 
 const f6 = a => {
-	return 
+	return a.map(x=> -x)
 }
 
 console.log(f6(arr7))
@@ -118,13 +117,20 @@ console.log(f6(arr7))
 // ["1:0","2:0","3:0","4:0","2:1","3:1","4:1","3:2","4:2","4:3"]) --> 30
 // ["1:1","2:2","3:3","4:4","2:2","3:3","4:4","3:3","4:4","4:4"])  --> 10
 // ["0:1","0:2","0:3","0:4","1:2","1:3","1:4","2:3","2:4","3:4"])   --> 0
-
+arr8 = ["1:0", "2:0", "3:0", "4:0", "2:1", "3:1", "4:1", "3:2", "4:2", "4:3"]
+arr9 = ["1:1", "2:2", "3:3", "4:4", "2:2", "3:3", "4:4", "3:3", "4:4", "4:4"]
+arr10 = ["0:1", "0:2", "0:3", "0:4", "1:2", "1:3", "1:4", "2:3", "2:4", "3:4"]
 
 const points = games => {
-	return 
+	return games.reduce((out,cur)=> {
+		return out += cur[0] > cur[2] ? 3 : cur[0] === cur[2] ? 1 : 0
+	}, 0)
 }
 
 
+console.log(points(arr8))
+console.log(points(arr9))
+console.log(points(arr10))
 
 
 
@@ -135,7 +141,7 @@ const points = games => {
 const str = "Robin Singh"
 
 const strToArr = a => {
-	return 
+	return a.split()
 }
 
 console.log(strToArr(str))
@@ -150,7 +156,7 @@ console.log(strToArr(str))
 arr11 = [undefined,null,false,true,true,false,null,undefined]
 
 const countSheeps = arr => {
-  return 
+  return arr.filter(Boolean).length
 }
 
 console.log(countSheeps(arr11))
@@ -165,7 +171,7 @@ console.log(countSheeps(arr11))
 arr12 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 const removeEveryOther = arr => {
-	return 
+	return arr.filter(x=>x%2!==0)
 }
 
 console.log(removeEveryOther(arr12))
@@ -181,7 +187,11 @@ const arr13 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15]
 
 
 const countPositivesSumNegatives = input => {
-  
+  return input.reduce((arr, n)=> {
+		if (n>0) arr[0]++
+		if (n<0) arr[1] += n
+		return arr
+	}, [0,0])
 }
 
 console.log(countPositivesSumNegatives(arr13))
@@ -239,9 +249,6 @@ console.log(mergeArrays(arr16, arr17))
 
 
 
-
-
-// [1,2,3,4] --> 2.5
 
 
 
