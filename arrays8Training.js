@@ -206,12 +206,12 @@ console.log(countPositivesSumNegatives(arr13))
 const arr14 = [82, 15, 6, 38, 35]
 
 const differenceInAges = ages => {
-  
-  
-  return 
+  const max = Math.max(...ages)
+  const min = Math.min(...ages)
+  return [min, max, max-min]
 }
 
-
+console.log(differenceInAges(arr14))
 
 
 
@@ -222,14 +222,16 @@ const differenceInAges = ages => {
 const arr15 = ['Algebra', 'History', 'Geometry', 'English']
 
 const sorter = arr => {
-	return 
+	return arr.sort((a,b)=> {
+		const aa = a.toLocaleLowerCase()
+		const bb = b.toLocaleLowerCase()
+		if (aa > bb) return 1
+		if (bb > aa) return -1
+		return 0
+	})
 }
-	
 
 console.log(sorter(arr15))
-
-
-
 
 
 
@@ -240,12 +242,25 @@ const arr16 = [1,3,5,7,9,11,12]
 const arr17 = [1,2,3,4,5,10,12]
 
 const mergeArrays = (arr1, arr2) => {
-	
-	return 
+	const arr = [...new Set([...arr1, ...arr2])]
+	return arr.sort((a,b)=>a-b)
 }
 
 console.log(mergeArrays(arr16, arr17))
 
+
+
+
+
+// [1,2,3,4] --> 2.5
+const arr18 = [1,2,3,4]
+
+const findAverage = array => {
+  return array.reduce((a,b)=>a+b)/array.length
+}
+
+
+console.log(findAverage(arr18))
 
 
 

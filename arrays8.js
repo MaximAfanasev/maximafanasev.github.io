@@ -198,6 +198,24 @@ console.log(countPositivesSumNegatives(arr13))
 
 
 
+
+// [82, 15, 6, 38, 35]
+// [max, min, diff]
+// [6, 82, 76]
+
+const arr14 = [82, 15, 6, 38, 35]
+
+const differenceInAges = ages => {
+  const min = Math.min(...ages);
+  const max = Math.max(...ages);
+  
+  return [min, max, max-min];
+}
+
+console.log(differenceInAges(arr14))
+
+
+
 // ['Algebra', 'history', 'Geometry', 'english']
 // ['Algebra', 'english', 'Geometry', 'history']
 const arr15 = ['Algebra', 'History', 'Geometry', 'English']
