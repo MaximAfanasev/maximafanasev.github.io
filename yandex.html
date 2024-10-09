@@ -37,13 +37,19 @@
 	:root {
 		--white: #fff;
 		--gray: #313131;
+		--lightgray: #D0D0D0;
 		--dark: #1F1F1F;
 		--red: #F54932;
 	}
 
+	.wrapper {
+		max-width: 375px;
+		margin: 0 auto;
+	}
+
 	body {
 		margin: 0 auto;
-		overflow: hidden;
+		overflow-x: hidden;
 
 		background: var(--white);
 		color: var(--gray);
@@ -57,6 +63,7 @@
 
 	.header {
 		position: relative;
+		margin-bottom: 44px;
 	}
 
 	.background {
@@ -84,10 +91,13 @@
 		position: relative;
 		background: url(img/header-checkmates.svg);
 		z-index: 30;
-		padding: 18px 20px 298px 20px;
 		background: url(img/header-checkmates.svg);
 		background-repeat: no-repeat;
 		background-position: 79% bottom;
+	}
+
+	.header-content {
+		padding: 18px 20px 298px 20px;
 	}
 
 	.header-logo {
@@ -132,12 +142,12 @@
 
 	.red-line {
 		position: absolute;
-    display: flex;
-    background: var(--red);
-    text-transform: uppercase;
-    white-space: nowrap;
-    bottom: -17px;
-    z-index: 30;
+		display: flex;
+		background: var(--red);
+		text-transform: uppercase;
+		white-space: nowrap;
+		bottom: -17px;
+		z-index: 30;
 	}
 
 	.red-line .div {
@@ -191,6 +201,83 @@
 			transform: translateX(-200%);
 		}
 	}
+
+	.main .wrapper {
+		padding: 20px;
+	}
+
+	.main-title {
+		font-size: 28px;
+		line-height: 38px;
+		letter-spacing: 0;
+		text-transform: uppercase;
+		font-family: Merriweather, sans-serif;
+		margin-bottom: 24px;
+		font-weight: 500;
+	}
+
+	.main-title-idea {
+		margin-bottom: 13px;
+	}
+
+	.red {
+		color: var(--red);
+		font-weight: bold
+	}
+
+	.main-img {
+		margin: 0 auto;
+		margin-bottom: 22px;
+		display: block;
+	}
+
+	.main-img.poster {
+		margin-bottom: 6px;
+	}
+
+	.table {
+		padding: 0 20px 120px 20px;
+		font-size: 20px;
+		letter-spacing: 0;
+	}
+
+	.table .bold {
+		font-weight: bold;
+		margin-bottom: 13px;
+	}
+
+	.line {
+		border-bottom: 2px solid var(--lightgray);
+	}
+	
+	.line:nth-child(5) {
+		border-bottom: 0px solid gold;
+		margin-bottom: 40px;
+	}
+
+	.line p {
+		margin-top: 14px;
+		margin-bottom: 12px;
+	}
+	
+	.price {
+		position: relative;
+	}
+	
+	.price::before {
+		position: absolute;
+		content: "";
+		width: 100%;
+		height: 2px;
+		background: var(--red);
+		top: 50%;
+	}
+	
+	.table .link {
+		font-size: 18px;
+		line-height: 12px;
+		text-decoration: none;
+	}
 </style>
 
 <body>
@@ -199,27 +286,73 @@
 		<div class="background"></div>
 		<div class="color"></div>
 		<div class="header-wrapper">
-			<a class="header-logo" href="#"><img src="img/logo.svg" alt="logo"></a>
-			<h1 hidden>Превратите уездный город
-				в столицу
-				земного шара</h1>
-			<img class="header-title" src="img/h1.svg" alt="">
-			<p class="header-description">Оплатите взнос на телеграммы для организации Международного васюкинского турнира по шахматам</p>
-			<a class="btn" href="/">Поддержать шахматную мысль</a>
-			<a class="btn btn-white" href="/">Подробнее о турнире</a>
+			<div class="wrapper header-content">
+				<a class="header-logo" href="#"><img src="img/logo.svg" alt="logo"></a>
+				<h1 hidden>Превратите уездный город
+					в столицу
+					земного шара</h1>
+				<img class="header-title" src="img/h1.svg" alt="title">
+				<p class="header-description">Оплатите взнос на телеграммы для организации Международного васюкинского турнира по шахматам</p>
+				<a class="btn" href="/">Поддержать шахматную мысль</a>
+				<a class="btn btn-white" href="/">Подробнее о турнире</a>
+			</div>
 		</div>
-	<section class="red-line">
-		<div class="div1">
-			<div class="div">Дело помощи утопающим — дело рук самих утопающих!</div>
-			<div class="div">Шахматы двигают вперед не только культуру, но и экономику!</div>
-			<div class="div">Лед тронулся, господа присяжные заседатели!</div>
+		<section class="red-line">
+			<div class="div1">
+				<div class="div">Дело помощи утопающим — дело рук самих утопающих!</div>
+				<div class="div">Шахматы двигают вперед не только культуру, но и экономику!</div>
+				<div class="div">Лед тронулся, господа присяжные заседатели!</div>
+			</div>
+			<div class="div2">
+				<div class="div">Дело помощи утопающим — дело рук самих утопающих!</div>
+				<div class="div">Шахматы двигают вперед не только культуру, но и экономику!</div>
+				<div class="div">Лед тронулся, господа присяжные заседатели!</div>
+			</div>
+		</section>
+	</header>
+
+	<main class="main">
+		<div class="wrapper">
+			<h2 class="main-title">Чтобы поддержать Международный васюкинский турнир</h2>
+			<img class="main-img" src="img/players.jpg" alt="players">
+			<h2 class="main-title main-title-idea">посетите лекцию на тему: <span class="red">«Плодотворная дебютная идея»</span></h2>
 		</div>
-		<div class="div2">
-			<div class="div">Дело помощи утопающим — дело рук самих утопающих!</div>
-			<div class="div">Шахматы двигают вперед не только культуру, но и экономику!</div>
-			<div class="div">Лед тронулся, господа присяжные заседатели!</div>
+		<img class="main-img poster" src="img/poster.png" alt="players">
+		<div class="wrapper">
+			<h2 class="main-title main-title-idea">и Сеанс <span class="red">одновременной игры в шахматы на 160 досках</span> гроссмейстера О. Бендера</h2>
+		</div>
+	</main>
+
+	<section class="table">
+		<div class="wrapper">
+			<div class="line">
+				<p>Место проведения:</p>
+				<p class="bold">Клуб «Картонажник»</p>
+			</div>
+			<div class="line">
+				<p>Дата и время мероприятия:</p>
+				<p class="bold">
+					22 июня 1927 г. в 18:00</p>
+			</div>
+
+			<div class="line">
+				<p>Стоимость входных билетов:</p>
+				<p class="bold">20 коп.</p>
+			</div>
+
+			<div class="line">
+				<p>Плата за игру:&nbsp;&nbsp;<span class="bold">50 коп.</span></p></div>
+
+			<div class="line">
+				<p>Взнос на телеграммы:</p>
+				<p class="bold">
+					<span class="price">100 руб.&nbsp;</span>&nbsp; 21 руб. 16 коп.</p>
+			</div>
+			<a class="link" href="#">По всем вопросам обращаться в администрацию к К. Михельсону</a>
 		</div>
 	</section>
-	</header>
+
+
+
 
 </body></html>
