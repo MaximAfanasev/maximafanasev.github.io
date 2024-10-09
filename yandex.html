@@ -6,6 +6,7 @@
 	<title>Checkmates</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="icon" type="image/x-icon" href="/img/checkmate.ico">
+	<link rel="stylesheet" href="slider.css">
 	<meta charset="UTF-8">
 	<meta name="keywords" content="ключевые">
 </head>
@@ -45,6 +46,10 @@
 	.wrapper {
 		max-width: 375px;
 		margin: 0 auto;
+	}
+
+	h2 {
+		font-family: Merriweather, sans-serif;
 	}
 
 	body {
@@ -236,9 +241,12 @@
 	}
 
 	.table {
-		padding: 0 20px 120px 20px;
 		font-size: 20px;
 		letter-spacing: 0;
+	}
+	
+	.table .wrapper {
+		padding: 0 20px 120px 20px;
 	}
 
 	.table .bold {
@@ -249,7 +257,7 @@
 	.line {
 		border-bottom: 2px solid var(--lightgray);
 	}
-	
+
 	.line:nth-child(5) {
 		border-bottom: 0px solid gold;
 		margin-bottom: 40px;
@@ -259,11 +267,11 @@
 		margin-top: 14px;
 		margin-bottom: 12px;
 	}
-	
+
 	.price {
 		position: relative;
 	}
-	
+
 	.price::before {
 		position: absolute;
 		content: "";
@@ -272,7 +280,7 @@
 		background: var(--red);
 		top: 50%;
 	}
-	
+
 	.table .link {
 		font-size: 18px;
 		line-height: 12px;
@@ -341,18 +349,91 @@
 			</div>
 
 			<div class="line">
-				<p>Плата за игру:&nbsp;&nbsp;<span class="bold">50 коп.</span></p></div>
+				<p>Плата за игру:&nbsp;&nbsp;<span class="bold">50 коп.</span></p>
+			</div>
 
 			<div class="line">
 				<p>Взнос на телеграммы:</p>
 				<p class="bold">
-					<span class="price">100 руб.&nbsp;</span>&nbsp; 21 руб. 16 коп.</p>
+					<span class="price">100 руб.&nbsp;</span>&nbsp; 21 руб. 16 коп.
+				</p>
 			</div>
 			<a class="link" href="#">По всем вопросам обращаться в администрацию к К. Михельсону</a>
 		</div>
 	</section>
 
+	<section class="slider">
+		<div class="wrapper">
+			<h2 class="slider-title">Этапы преображения Васюков</h2>
+			<a class="link" href="#">Будущие источники обогащения васюкинцев</a>
+			<img class="plane" src="img/plane.png" alt="plane">
+		</div>
+
+		<div class="slides">
+			<input id="slide1" type="radio" name="controls" checked="checked" />
+			<input id="slide2" type="radio" name="controls" />
+			<input id="slide3" type="radio" name="controls" />
+			<input id="slide4" type="radio" name="controls" />
+			<input id="slide5" type="radio" name="controls" />
+
+			<label for="slide1" class="nav-dot"></label>
+			<label for="slide2" class="nav-dot"></label>
+			<label for="slide3" class="nav-dot"></label>
+			<label for="slide4" class="nav-dot"></label>
+			<label for="slide5" class="nav-dot"></label>
 
 
+			<label for="slide1" class="left-arrow">
+				</label>
+			<label for="slide2" class="left-arrow">
+				</label>
+			<label for="slide3" class="left-arrow">
+				</label>
+			<label for="slide4" class="left-arrow">
+				</label>
+			<label for="slide5" class="left-arrow">
+				</label>
 
+			<label for="slide1" class="right-arrow">  </label>
+			<label for="slide2" class="right-arrow">  </label>
+			<label for="slide3" class="right-arrow">  </label>
+			<label for="slide4" class="right-arrow">  </label>
+			<label for="slide5" class="right-arrow">  </label>
+
+			<div class="carousel">
+				<ul>
+					<li class="slide">
+						<div class="background"></div>
+						<div class="color"></div>
+						<p>Строительство железнодорожной магистрали Москва-Васюки</p>
+						<p>Открытие фешенебельной гостиницы «Проходная пешка» и других небоскрёбов</p>
+					</li>
+					<li class="slide">
+
+						<div class="background"></div>
+						<div class="color"></div>
+						<p>Поднятие сельского хозяйства в радиусе на тысячу километров: производство овощей, фруктов, икры, шоколадных конфет</p>
+					</li>
+					<li class="slide">
+
+						<div class="background"></div>
+						<div class="color"></div>
+						<p>Строительство дворца для турнира</p>
+						<p>Размещение гаражей для гостевого автотранспорта</p>
+					</li>
+					<li class="slide">
+
+						<div class="background"></div>
+						<div class="color"></div>
+						<p>Постройка сверхмощной радиостанции для передачи всему миру сенсационных результатов</p>
+					</li>
+					<li class="slide">
+						<div class="background"></div>
+						<div class="color"></div>
+						<p>Создание аэропорта «Большие Васюки» с регулярным отправлением почтовых самолётов и дирижаблей во все концы света, включая Лос-Анжелос и Мельбурн</p>
+				</ul>
+			</div>
+		</div>
+
+	</section>
 </body></html>
