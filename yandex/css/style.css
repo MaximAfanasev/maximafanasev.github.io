@@ -94,18 +94,17 @@
 	.header-wrapper {
 	  position: relative;
 	  z-index: 30;
-	  background: url(../img/header-checkmates.svg);
+	  background: url(../img/header-checkmates.png);
 	  background-repeat: no-repeat;
-	  background-position: 79% bottom;
+	  background-position: -144px bottom;
 	}
 
 
 	@media(min-width: 1366px) {
 	  .header-wrapper {
-	    background: url(../img/header-checkmates.svg);
+	    background: url(../img/header-checkmates-desktop.png);
 	    background-repeat: no-repeat;
-	    background-position: 48% -129px;
-	    background-size: 133%;
+	    background-position: 60% -101px;
 	  }
 	}
 
@@ -1090,6 +1089,31 @@
 	    background-size: 34%;
 	    background-position: 22px;
 	  }
+
+	  .left:hover::before {
+	    background: url("../img/row.svg"), var(--yellow);
+	    background-repeat: no-repeat;
+	    background-position: center center;
+	    background-size: 28%;
+	    background-position: 15px;
+	  }
+
+	  .left:hover::after {
+	    display: none;
+	  }
+
+	  .right:hover::before {
+	    background: url(../img/row.svg), var(--yellow);
+	    background-repeat: no-repeat;
+	    background-position: center center;
+	    transform: rotate(180deg);
+	    background-size: 28%;
+	    background-position: 17px;
+	  }
+
+	  .right:hover::after {
+	    display: none;
+	  }
 	}
 
 	.footer {
@@ -1106,11 +1130,10 @@
 	}
 
 
-@media(min-width: 1366px) { 
-  .footer {
-    
-  }
-	.footer .wrapper {
-    max-width: 1222px;
-  }
-}
+	@media(min-width: 1366px) {
+	  .footer {}
+
+	  .footer .wrapper {
+	    max-width: 1222px;
+	  }
+	}
