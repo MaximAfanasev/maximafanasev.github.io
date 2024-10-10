@@ -265,6 +265,15 @@
 	  top: 15px;
 	}
 
+
+	@media(min-width: 1366px) {
+
+	.red-line .div::after {
+	  right: -18px;
+	  top: 25px;
+	}
+	}
+
 	.div1 {
 	  animation: marquee1 21s infinite linear;
 	  animation-delay: -21s;
