@@ -226,7 +226,7 @@ const arr16 = [1, 3, 5, 7, 9, 11, 12]
 const arr17 = [1, 2, 3, 4, 5, 10, 12]
 
 const mergeArrays = (arr1, arr2) => {
-  
+  const 
 }
 
 console.log(mergeArrays(arr16, arr17))
