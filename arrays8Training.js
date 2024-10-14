@@ -226,8 +226,7 @@ const arr16 = [1, 3, 5, 7, 9, 11, 12]
 const arr17 = [1, 2, 3, 4, 5, 10, 12]
 
 const mergeArrays = (arr1, arr2) => {
-  const arr = [...new Set([...arr1, ...arr2])]
-  return arr.sort((a, b) => a - b)
+  const 
 }
 
 console.log(mergeArrays(arr16, arr17))
@@ -240,7 +239,7 @@ console.log(mergeArrays(arr16, arr17))
 const arr18 = [1, 2, 3, 4]
 
 const findAverage = array => {
-  return array.reduce((a, b) => a + b) / array.length
+  return 
 }
 
 
