@@ -1,9 +1,9 @@
 arr = ['a', 'b', 'c']
 
 // 'a,b,c'
+// 'a,b,c'
 // 'abc'
 // 'a-b-c'
-// 'a,b,c'
 
 console.log(arr)
 console.log(arr)
