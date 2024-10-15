@@ -2,113 +2,164 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<title>Library</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<meta charset="UTF-8">
-	<meta name="keywords" content="ключевые">
+  <meta charset="UTF-8">
+  <title>Library</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="keywords" content="ключевые">
 </head>
 <style>
-	body {
-		margin: 0 auto;
-		padding: 10px;
-		max-width: 1200px;
+  body {
+    margin: 0 auto;
+    padding: 10px;
+    max-width: 1200px;
 
-		background: #000;
-		color: gray;
+    background: #000;
+    color: gray;
 
-		font-family: var(--fontStack-monospace, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace);
+    font-family: var(--fontStack-monospace, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace);
 
-		font-size: 16px;
-		line-height: 24px;
-		letter-spacing: 3px;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 3px;
 
 
-		@media(min-width: 460px) {
-			font-size: 25px;
-			line-height: 32px;
-			letter-spacing: 6px;
-			padding: 20px;
-		}
-	}
+    @media(min-width: 460px) {
+      font-size: 25px;
+      line-height: 32px;
+      letter-spacing: 6px;
+      padding: 20px;
+    }
+  }
 
-	ul {
-		list-style: none;
-	}
+  * {
+    outline: 1px solid redd;
+  }
 
-	.red {
-		color: #ff7b72;
-	}
+  .cards {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
 
-	.blue {
-		color: #79c0ff;
-	}
+  .card {
+    width: 100px;
+    height: 100px;
+    border: 1px solid gray;
+    color: #fff;
+    cursor: pointer;
+    perspective: 300px;
+  }
 
-	.gold {
-		color: gold;
-	}
+  .inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: 0.3s;
+    text-align: center;
+    transition: 0.5s;
+    transform-style: preserve-3d;
+  }
 
-	input {
-		font-size: 16px;
-		line-height: 24px;
-		letter-spacing: 3px;
+  .card.active .inner {
+    transform: rotateY(180deg);
+  }
 
-		@media(min-width: 450px) {
-			font-size: 25px;
-			line-height: 32px;
-			letter-spacing: 6px;
-		}
-	}
+  .front,
+  .back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+  }
 
-	button {
-		font-size: 25px;
-		line-height: 32px;
-		font-family: sans-serif;
-		background: #000;
-		color: gray;
-		border: 1px solid #fff;
-		border-radius: 10px;
-	}
+  .front {
+    background: red;
+  }
 
-	div {
-		margin-bottom: 20px;
-	}
-
-	img {
-		width: 100%;
-		max-width: 500px;
-	}
-
-	a {
-		color: blueviolet;
-	}
-
-	ul {
-		border: 1px solid gray;
-		padding: 20px;
-		border-radius: 20px;
-	}
-
-	.blur {
-		filter: blur(10px);
-	}
-
-	.blur:hover {
-		filter: blur(0px);
-	}
-
-	textarea {
-		background: #000;
-		border-radius: 10px;
-		margin-top: 20px;
-		margin-bottom: 30px;
-		color: gray;
-		font-size: inherit;
-	}
+  .back {
+    background: green;
+    transform: rotateY(180deg);
+  }
 </style>
 
 <body>
-	<h1>Algoritms + Codewars</h1>
-	<h2><a href="https://github.com/MaximAfanasev">Maxim Afanasev</a></h2>
-	<script src="14.10.2024.js"></script>
+
+  <div class="cards">
+    <div id="one" class="card">
+      <div class="inner">
+        <div class="front">
+        </div>
+        <div class="back">1</div>
+      </div>
+    </div>
+
+    <div id="two" class="card">
+      <div class="inner">
+        <div class="front">
+        </div>
+        <div class="back">2</div>
+      </div>
+    </div>
+
+    <div id="one-clone" class="card">
+      <div class="inner">
+        <div class="front">
+        </div>
+        <div class="back">1</div>
+      </div>
+    </div>
+
+
+    <div id="two-clone" class="card">
+      <div class="inner">
+        <div class="front">
+        </div>
+        <div class="back">2</div>
+      </div>
+    </div>
+
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+  </div>
+  <script>
+    let cards = document.querySelectorAll('.card')
+    console.log(cards[0])
+
+    card1 = document.getElementById('one')
+    card2 = document.getElementById('one-clone')
+    card3 = document.getElementById('two')
+    count = 0
+
+    card1.addEventListener("click", function(e) {
+      card1.classList.add('active')
+      count++
+      console.log(count)
+    });
+
+    card2.addEventListener("click", function(e) {
+      card2.classList.add('active')
+      count++
+
+      if (count === 2) {
+
+      }
+    });
+
+    cards.forEach(card => {
+      let selected = document.querySelectorAll('.active');
+      selected.contains('.active').style.display = 'none'
+    })
+
+
+    
+    
+  </script>
+
 </body></html>
