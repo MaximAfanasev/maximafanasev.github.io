@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        #taskInput {
+            padding: 10px;
+            width: 300px;
+            margin-right: 10px;
+        }
+        #addTaskButton {
+            padding: 10px;
+        }
+        .task {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .completed {
+            text-decoration: line-through;
+            color: gray;
+        }
+        .deleteButton {
+            background: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>To-Do List</h1>
+    <input type="text" id="taskInput" placeholder="Введите новую задачу">
+    <button id="addTaskButton">Добавить задачу</button>
+    <div id="taskList"></div>
+
+    <script>
+        const addTaskButton = document.getElementById('addTaskButton');
+        const taskInput = document.getElementById('taskInput');
+        const taskList = document.getElementById('taskList');
+
+        addTaskButton.addEventListener('click', addTask);
+        
+        function addTask() {
+            const taskText = taskInput.value;
+
+            if (taskText === '') {
+                alert('Введите текст задачи!');
+                return;
+            }
+
+            const taskDiv = document.createElement('div');
+            taskDiv.className = 'task';
+
+            const taskLabel = document.createElement('span');
+            taskLabel.textContent = taskText;
+
+            taskLabel.addEventListener('click', function() {
+                taskLabel.classList.toggle('completed');
+            });
+
+            const deleteButton = document.createElement('button');
+            deleteButton.className = 'deleteButton';
+            deleteButton.textContent = 'Удалить';
+            deleteButton.addEventListener('click', function() {
+                taskList.removeChild(taskDiv);
+            });
+
+            taskDiv.appendChild(taskLabel);
+            taskDiv.appendChild(deleteButton);
+            taskList.appendChild(taskDiv);
+
+            taskInput.value = '';
+        }
+    </script>
+</body>
+</html>
