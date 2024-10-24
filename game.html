@@ -36,6 +36,8 @@
     width: 100px;
     height: 100px;
     perspective: 1000px;
+    margin-bottom: 10px;
+    cursor: pointer;
   }
 
   .inner {
@@ -43,7 +45,7 @@
     width: 100%;
     height: 100%;
     transform-style: preserve-3d;
-  transition: transform 0.8s;
+    transition: transform 0.8s;
   }
 
   .card.rotate .inner {
@@ -56,6 +58,12 @@
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
+    color: #fff;
+    text-align: center;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .front {
@@ -66,22 +74,138 @@
     background: gold;
     transform: rotateY(180deg);
   }
+  
+  button {
+    margin-bottom: 20px;
+  }
+
+  .flex {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
 </style>
 
 <body>
 
+  <h2>Click on button and flip</h2>
   <div class="card">
     <div class="inner">
-      <div class="front"></div>
-      <div class="back"></div>
+      <div class="front">Front</div>
+      <div class="back">Back</div>
+    </div>
+  </div>
+    <button class="rotateBtn">Flip Card</button>
+
+  <h2>Click on cards and flip</h2>
+  <div class="flex">
+    <div class="card">
+      <div class="inner">
+        <div class="front">Front</div>
+        <div class="back">Back</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="inner">
+        <div class="front">Front</div>
+        <div class="back">Back</div>
+      </div>
     </div>
   </div>
 
+  <h2>Click to card for destroy</h2>
+
+
+  <div class="card destroyCard">
+    <div class="inner">
+      <div class="front">Front</div>
+      <div class="back">Back</div>
+    </div>
+  </div>
+  <button class="destroyBtn">Destroy Card</button>
+
+
+  <h2>Click to create card</h2>
+  
+  <div class="flex game">
+  </div>
+  <button class="createBtn">Create Card</button>
+  
+  <div class="flex">
+    <div id="game"></div>
+  </div>
+
   <script>
+    // ROTATE BUTTON
+    let rotateBtn = document.querySelector('.rotateBtn')
     let card = document.querySelector('.card')
-    card.addEventListener("click", e => {
+    rotateBtn.addEventListener("click", e => {
       card.classList.toggle('rotate')
     })
-  </script>
 
-</body></html>
+    // CLICK AND FLIP
+
+    function flipcards() {
+      this.classList.toggle('rotate');
+    }
+
+
+    let flex = document.querySelector('.flex')
+    let cards = flex.querySelectorAll('.card')
+    cards.forEach(card => card.addEventListener('click', flipcards))
+
+    function shuffle(array) {
+      array.sort(() => Math.random() - 0.5);
+    }
+
+
+    // DESTROY BUTTON
+
+
+    let destroyBtn = document.querySelector('.destroyBtn')
+    let destroyCard = document.querySelector('.destroyCard')
+    destroyBtn.addEventListener('click', e => {
+      destroyCard.remove()
+    })
+
+
+    // CREATE BUTTON
+
+
+    let createBtn = document.querySelector('.createBtn')
+
+    createBtn.addEventListener('click', e => {
+      const gameBoard = document.querySelector('.game');
+
+      const cardElement = document.createElement('div');
+      cardElement.classList.add('card');
+      const innerCard = document.createElement('div');
+      innerCard.classList.add('inner');
+      const innerCardFront = document.createElement('div');
+      innerCardFront.classList.add('front');
+      innerCardFront.textContent = 'Front'
+      const innerCardBack = document.createElement('div');
+      innerCardBack.classList.add('back');
+      innerCardBack.textContent = 'Back'
+      cardElement.dataset.cardValue = card;
+      gameBoard.appendChild(cardElement);
+      cardElement.appendChild(innerCard);
+      innerCard.appendChild(innerCardFront);
+      innerCard.appendChild(innerCardBack);
+      cardElement.addEventListener('click', flipcards);
+    })
+    
+    
+    // GAME
+   
+    const game = document.getElementById('game')
+    
+    
+    
+    
+  </script>
+</body>
+
+</html>
