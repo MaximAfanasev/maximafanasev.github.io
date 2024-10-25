@@ -25,19 +25,20 @@
 
 
     @media(min-width: 460px) {
-      font-size: 25px;
-      line-height: 32px;
+      font-size: 20px;
+      line-height: 22px;
       letter-spacing: 6px;
       padding: 20px;
     }
   }
 
   .card {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     perspective: 1000px;
     margin-bottom: 10px;
     cursor: pointer;
+    border-radius: 10px;
   }
 
   .inner {
@@ -64,17 +65,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 10px;
   }
 
   .front {
-    background: green;
+    background: #222;
   }
 
   .back {
-    background: gold;
+    background: #888;
     transform: rotateY(180deg);
   }
-  
+
   button {
     margin-bottom: 20px;
   }
@@ -84,7 +86,6 @@
     gap: 20px;
     flex-wrap: wrap;
   }
-
 </style>
 
 <body>
@@ -96,7 +97,7 @@
       <div class="back">Back</div>
     </div>
   </div>
-    <button class="rotateBtn">Flip Card</button>
+  <button class="rotateBtn">Flip Card</button>
 
   <h2>Click on cards and flip</h2>
   <div class="flex">
@@ -128,14 +129,13 @@
 
 
   <h2>Click to create card</h2>
-  
+
   <div class="flex game">
   </div>
   <button class="createBtn">Create Card</button>
-  
-  <div class="flex">
-    <div id="game"></div>
-  </div>
+
+  <div id="game" class="flex"></div>
+  <button class="gameBtn">New Game</button>
 
   <script>
     // ROTATE BUTTON
@@ -153,8 +153,8 @@
 
 
     let flex = document.querySelector('.flex')
-    let cards = flex.querySelectorAll('.card')
-    cards.forEach(card => card.addEventListener('click', flipcards))
+    let cards1 = flex.querySelectorAll('.card')
+    cards1.forEach(card => card.addEventListener('click', flipcards))
 
     function shuffle(array) {
       array.sort(() => Math.random() - 0.5);
@@ -196,16 +196,48 @@
       innerCard.appendChild(innerCardBack);
       cardElement.addEventListener('click', flipcards);
     })
-    
-    
-    // GAME
-   
-    const game = document.getElementById('game')
-    
-    
-    
-    
-  </script>
-</body>
 
-</html>
+
+    // GAME
+
+    const game = document.getElementById('game')
+
+    const cards = [
+      'A', 'A', 'B', 'B', 'C', 'C', 'D', 'D',
+    ]
+
+    // Функция перемешивания карт
+
+    function shuffle(array) {
+      return array.sort(() => Math.random() - 0.5);
+    }
+
+    console.log(shuffle(cards))
+
+    // Функция создания карт
+
+
+    let gameBtn = document.querySelector('.gameBtn')
+
+    gameBtn.addEventListener('click', e => {
+      const cardElement = document.createElement('div');
+      cardElement.classList.add('card');
+      const innerCard = document.createElement('div');
+      innerCard.classList.add('inner');
+      const innerCardFront = document.createElement('div');
+      innerCardFront.classList.add('front');
+      innerCardFront.textContent = 'Front'
+      const innerCardBack = document.createElement('div');
+      innerCardBack.classList.add('back');
+      innerCardBack.textContent = 'Back'
+      cardElement.dataset.cardValue = card;
+      game.appendChild(cardElement);
+      cardElement.appendChild(innerCard);
+      innerCard.appendChild(innerCardFront);
+      innerCard.appendChild(innerCardBack);
+      cardElement.addEventListener('click', flipcards);
+    })
+    // Функция разворота карт
+    // Функция проверки совпадений
+  </script>
+</body></html>
