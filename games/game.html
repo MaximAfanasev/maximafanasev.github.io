@@ -151,7 +151,6 @@
       this.classList.toggle('rotate');
     }
 
-
     let flex = document.querySelector('.flex')
     let cards1 = flex.querySelectorAll('.card')
     cards1.forEach(card => card.addEventListener('click', flipcards))
@@ -212,13 +211,16 @@
       return array.sort(() => Math.random() - 0.5);
     }
 
-    console.log(shuffle(cards))
+    console.log(cards)
 
     // Функция создания карт
 
 
     let gameBtn = document.querySelector('.gameBtn')
-
+    
+    shuffle(cards);
+    
+    for (let i = 0; i<cards.length; i++) {
     gameBtn.addEventListener('click', e => {
       const cardElement = document.createElement('div');
       cardElement.classList.add('card');
@@ -229,7 +231,7 @@
       innerCardFront.textContent = 'Front'
       const innerCardBack = document.createElement('div');
       innerCardBack.classList.add('back');
-      innerCardBack.textContent = 'Back'
+      innerCardBack.textContent = cards[i]
       cardElement.dataset.cardValue = card;
       game.appendChild(cardElement);
       cardElement.appendChild(innerCard);
@@ -237,6 +239,7 @@
       innerCard.appendChild(innerCardBack);
       cardElement.addEventListener('click', flipcards);
     })
+    }
     // Функция разворота карт
     // Функция проверки совпадений
   </script>
