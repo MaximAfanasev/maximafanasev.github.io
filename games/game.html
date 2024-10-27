@@ -12,7 +12,7 @@
   body {
     margin: 0 auto;
     padding: 10px;
-    max-width: 1200px;
+    max-width: fit-content;
 
     background: #000;
     color: gray;
@@ -23,7 +23,6 @@
     line-height: 18px;
     letter-spacing: 1px;
 
-
     @media(min-width: 460px) {
       font-size: 20px;
       line-height: 22px;
@@ -32,85 +31,77 @@
     }
   }
 
-  .card {
-    width: 150px;
-    height: 150px;
-    perspective: 1000px;
-    margin-bottom: 10px;
-    cursor: pointer;
-    border-radius: 10px;
-  }
-
-  .inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-    transition: transform 0.8s;
-  }
-
-  .card.rotate .inner {
-    transform: rotateY(180deg);
-  }
-
-  .front,
-  .back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    color: #fff;
-    text-align: center;
-    font-size: 2rem;
+  #game {
     display: flex;
+    flex-wrap: wrap;
+    grid-template-columns: repeat(4, 150px);
+    gap: 10px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .card {
+    min-width: 150px;
+    min-height: 150px;
+    max-width: 290px;
+    white-space: nowrap;
+    background-color: lightgray;
+    padding: 10px;
+    text-align: center;
+    line-height: 150px;
+    color: #222;
     justify-content: center;
     align-items: center;
+    font-size: 2rem;
+    cursor: pointer;
     border-radius: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
-  .front {
-    background: #222;
-  }
-
-  .back {
-    background: #888;
-    transform: rotateY(180deg);
-  }
-
-  button {
-    margin-bottom: 20px;
-  }
-
-  .flex,
-  .flexx {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
+  .matched {
+    background: #000;
+    color: #000;
   }
 
   .game-title {
     color: gold;
     font-size: 50px;
-    margin-bottom: 80px;
+    margin-bottom: 40px;
+  }
+
+  .hidden {
+    visibility: hidden;
+  }
+
+  .congratulations {
+    font-size: 40px;
+    line-height: 50px;
+    color: gold;
+    text-align: center;
+    margin-bottom: 30px;
   }
 </style>
 
 <body>
   <h1 class="game-title">Игра Memory</h1>
+  <div id="congratulations" class="hidden congratulations">Поздравляем! Вы нашли все пары!</div>
   <div id="game" class="flex"></div>
-
   <script>
     // GAME
 
     const game = document.getElementById('game')
+    const congratulationsText = document.getElementById('congratulations');
 
     const cards = [
-      'Ф', 'Ф', 'Л', 'Л', 'Э', 'Э', 'T', 'T',
+      'ФЛЭТ', 'ФЛЭТ', 'XXXXXX', 'XXXXXX', 'Длинное слово', 'Длинное слово', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', 'ТОРТ', 'ТОРТ',
     ]
 
     let firstCard = null;
     let secondCard = null;
     let lockBoard = false;
+    let matchedCardsCount = 0;
 
     // Функция перемешивания карт
 
@@ -120,38 +111,28 @@
 
     // Функция создания карт
 
-
-    shuffle(cards);
-
     function startGame() {
-      for (let i = 0; i < cards.length; i++) {
+      shuffle(cards);
+      const gameBoard = document.getElementById('game');
+      arr = []
+      for (i = 0; i < cards.length; i++) {
+        arr.push(cards[i].length)
+      }
+      let maximum = Math.max(...arr)
+      cards.forEach((card, index) => {
         const cardElement = document.createElement('div');
         cardElement.classList.add('card');
-
-        const innerCard = document.createElement('div');
-        innerCard.classList.add('inner');
-
-        const innerCardFront = document.createElement('div');
-        innerCardFront.classList.add('front');
-        innerCardFront.textContent = 'X'
-
-        const innerCardBack = document.createElement('div');
-        innerCardBack.classList.add('back');
-        innerCardBack.textContent = cards[i];
-
-        game.appendChild(cardElement);
-        cardElement.appendChild(innerCard);
-        innerCard.appendChild(innerCardFront);
-        innerCard.appendChild(innerCardBack);
+        cardElement.dataset.cardValue = card;
+        cardElement.style.width = maximum * 20 + 'px'
         cardElement.addEventListener('click', flipcardsGame);
-      }
+        gameBoard.appendChild(cardElement);
+      });
     }
     // Функция разворота карт
 
     function flipcardsGame() {
       if (lockBoard || this === firstCard) return;
-      this.dataset.cardValue = this.querySelector('.back').textContent;
-      this.classList.toggle('rotate');
+      this.textContent = this.dataset.cardValue;
       if (!firstCard) {
         firstCard = this;
         return;
@@ -166,18 +147,21 @@
     function checkForMatch() {
       if (firstCard.dataset.cardValue === secondCard.dataset.cardValue) {
         setTimeout(() => {
-          firstCard.textContent = '';
-          secondCard.textContent = '';
-        }, 500);
-        setTimeout(() => {
+          firstCard.classList.add('matched');
+          secondCard.classList.add('matched');
+          matchedCardsCount += 2;
           reset();
+          if (matchedCardsCount === cards.length) {
+            congratulationsText.classList.remove('hidden');
+          }
         }, 1000);
+
       } else {
         setTimeout(() => {
-          firstCard.classList.toggle('rotate');
-          secondCard.classList.toggle('rotate');
+          firstCard.textContent = '';
+          secondCard.textContent = '';
           reset();
-        }, 1000);
+        }, 1500);
       }
     }
 
