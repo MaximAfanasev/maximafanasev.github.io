@@ -81,75 +81,23 @@
     margin-bottom: 20px;
   }
 
-  .flex, .flexx {
+  .flex,
+  .flexx {
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
   }
-  
-  .matched .back {
-    background: #73992A;
-  }
-  
+
   .game-title {
     color: gold;
     font-size: 50px;
-  }
-  
-  .title-instruction {
-    color: aqua
+    margin-bottom: 80px;
   }
 </style>
 
 <body>
   <h1 class="game-title">Игра Memory</h1>
   <div id="game" class="flex"></div>
-  <button class="gameBtn">Начать новую игру</button>
-  
-  <h2 class="title-instruction">Как создавалась memory game</h2>
-  
-  <h2>Клик по кнопке перевернет карточку</h2>
-  <div class="card">
-    <div class="inner">
-      <div class="front">X</div>
-      <div class="back">Y</div>
-    </div>
-  </div>
-  <button class="rotateBtn">Click and Flip</button>
-
-  <h2>Клик по карточке развернет карточку</h2>
-  <div class="flexx">
-    <div class="card">
-      <div class="inner">
-        <div class="front">X</div>
-        <div class="back">Y</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="inner">
-        <div class="front">X</div>
-        <div class="back">Y</div>
-      </div>
-    </div>
-  </div>
-
-  <h2>Клик по кнопке удалит карточку</h2>
-
-  <div class="card destroyCard">
-    <div class="inner">
-      <div class="front">X</div>
-      <div class="back">Back</div>
-    </div>
-  </div>
-  <button class="destroyBtn">Destroy Card</button>
-
-
-  <h2>Клик по кнопке создаст карточку</h2>
-
-  <div class="flex game">
-  </div>
-  <button class="createBtn">Create Card</button>
 
   <script>
     // GAME
@@ -172,12 +120,11 @@
 
     // Функция создания карт
 
-    let gameBtn = document.querySelector('.gameBtn')
 
     shuffle(cards);
 
-    for (let i = 0; i < cards.length; i++) {
-      gameBtn.addEventListener('click', e => {
+    function startGame() {
+      for (let i = 0; i < cards.length; i++) {
         const cardElement = document.createElement('div');
         cardElement.classList.add('card');
 
@@ -197,7 +144,7 @@
         innerCard.appendChild(innerCardFront);
         innerCard.appendChild(innerCardBack);
         cardElement.addEventListener('click', flipcardsGame);
-      })
+      }
     }
     // Функция разворота карт
 
@@ -218,8 +165,10 @@
 
     function checkForMatch() {
       if (firstCard.dataset.cardValue === secondCard.dataset.cardValue) {
-        firstCard.classList.add('matched');
-        secondCard.classList.add('matched');
+        setTimeout(() => {
+          firstCard.textContent = '';
+          secondCard.textContent = '';
+        }, 500);
         setTimeout(() => {
           reset();
         }, 1000);
@@ -237,61 +186,7 @@
       secondCard = null;
       lockBoard = false;
     }
-    
-    // ROTATE BUTTON
-    let rotateBtn = document.querySelector('.rotateBtn')
-    let card = document.querySelector('.card')
-    rotateBtn.addEventListener("click", e => {
-      card.classList.toggle('rotate')
-    })
 
-    // CLICK AND FLIP
-
-    function flipcards() {
-      this.classList.toggle('rotate');
-      console.log('click')
-    }
-
-    let flex = document.querySelector('.flexx')
-    let cards1 = flex.querySelectorAll('.card')
-    cards1.forEach(card => card.addEventListener('click', flipcards))
-
-
-    // DESTROY BUTTON
-
-
-    let destroyBtn = document.querySelector('.destroyBtn')
-    let destroyCard = document.querySelector('.destroyCard')
-    destroyBtn.addEventListener('click', e => {
-      destroyCard.remove()
-    })
-
-
-    // CREATE BUTTON
-
-
-    let createBtn = document.querySelector('.createBtn')
-
-    createBtn.addEventListener('click', e => {
-      const gameBoard = document.querySelector('.game');
-
-      const cardElement = document.createElement('div');
-      cardElement.classList.add('card');
-      const innerCard = document.createElement('div');
-      innerCard.classList.add('inner');
-      const innerCardFront = document.createElement('div');
-      innerCardFront.classList.add('front');
-      innerCardFront.textContent = 'X'
-      const innerCardBack = document.createElement('div');
-      innerCardBack.classList.add('back');
-      innerCardBack.textContent = 'Y'
-      cardElement.dataset.cardValue = card;
-      gameBoard.appendChild(cardElement);
-      cardElement.appendChild(innerCard);
-      innerCard.appendChild(innerCardFront);
-      innerCard.appendChild(innerCardBack);
-      cardElement.addEventListener('click', flipcards);
-    })
-
+    startGame()
   </script>
 </body></html>
