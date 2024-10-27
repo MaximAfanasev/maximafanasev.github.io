@@ -20,14 +20,14 @@
     font-family: var(--fontStack-monospace, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace);
 
     font-size: 14px;
-    line-height: 10px;
+    line-height: 18px;
     letter-spacing: 1px;
 
 
     @media(min-width: 460px) {
       font-size: 20px;
       line-height: 22px;
-      letter-spacing: 6px;
+      letter-spacing: 1px;
       padding: 20px;
     }
   }
@@ -81,63 +81,163 @@
     margin-bottom: 20px;
   }
 
-  .flex {
+  .flex, .flexx {
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
   }
+  
+  .matched .back {
+    background: #73992A;
+  }
+  
+  .game-title {
+    color: gold;
+    font-size: 50px;
+  }
+  
+  .title-instruction {
+    color: aqua
+  }
 </style>
 
 <body>
-
-  <h2>Click on button and flip</h2>
+  <h1 class="game-title">Игра Memory</h1>
+  <div id="game" class="flex"></div>
+  <button class="gameBtn">Начать новую игру</button>
+  
+  <h2 class="title-instruction">Как создавалась memory game</h2>
+  
+  <h2>Клик по кнопке перевернет карточку</h2>
   <div class="card">
     <div class="inner">
-      <div class="front">Front</div>
-      <div class="back">Back</div>
+      <div class="front">X</div>
+      <div class="back">Y</div>
     </div>
   </div>
-  <button class="rotateBtn">Flip Card</button>
+  <button class="rotateBtn">Click and Flip</button>
 
-  <h2>Click on cards and flip</h2>
-  <div class="flex">
+  <h2>Клик по карточке развернет карточку</h2>
+  <div class="flexx">
     <div class="card">
       <div class="inner">
-        <div class="front">Front</div>
-        <div class="back">Back</div>
+        <div class="front">X</div>
+        <div class="back">Y</div>
       </div>
     </div>
 
     <div class="card">
       <div class="inner">
-        <div class="front">Front</div>
-        <div class="back">Back</div>
+        <div class="front">X</div>
+        <div class="back">Y</div>
       </div>
     </div>
   </div>
 
-  <h2>Click to card for destroy</h2>
-
+  <h2>Клик по кнопке удалит карточку</h2>
 
   <div class="card destroyCard">
     <div class="inner">
-      <div class="front">Front</div>
+      <div class="front">X</div>
       <div class="back">Back</div>
     </div>
   </div>
   <button class="destroyBtn">Destroy Card</button>
 
 
-  <h2>Click to create card</h2>
+  <h2>Клик по кнопке создаст карточку</h2>
 
   <div class="flex game">
   </div>
   <button class="createBtn">Create Card</button>
 
-  <div id="game" class="flex"></div>
-  <button class="gameBtn">New Game</button>
-
   <script>
+    // GAME
+
+    const game = document.getElementById('game')
+
+    const cards = [
+      'Ф', 'Ф', 'Л', 'Л', 'Э', 'Э', 'T', 'T',
+    ]
+
+    let firstCard = null;
+    let secondCard = null;
+    let lockBoard = false;
+
+    // Функция перемешивания карт
+
+    function shuffle(array) {
+      return array.sort(() => Math.random() - 0.5);
+    }
+
+    // Функция создания карт
+
+    let gameBtn = document.querySelector('.gameBtn')
+
+    shuffle(cards);
+
+    for (let i = 0; i < cards.length; i++) {
+      gameBtn.addEventListener('click', e => {
+        const cardElement = document.createElement('div');
+        cardElement.classList.add('card');
+
+        const innerCard = document.createElement('div');
+        innerCard.classList.add('inner');
+
+        const innerCardFront = document.createElement('div');
+        innerCardFront.classList.add('front');
+        innerCardFront.textContent = 'X'
+
+        const innerCardBack = document.createElement('div');
+        innerCardBack.classList.add('back');
+        innerCardBack.textContent = cards[i];
+
+        game.appendChild(cardElement);
+        cardElement.appendChild(innerCard);
+        innerCard.appendChild(innerCardFront);
+        innerCard.appendChild(innerCardBack);
+        cardElement.addEventListener('click', flipcardsGame);
+      })
+    }
+    // Функция разворота карт
+
+    function flipcardsGame() {
+      if (lockBoard || this === firstCard) return;
+      this.dataset.cardValue = this.querySelector('.back').textContent;
+      this.classList.toggle('rotate');
+      if (!firstCard) {
+        firstCard = this;
+        return;
+      }
+      secondCard = this;
+      lockBoard = true;
+
+      checkForMatch();
+    }
+    // Функция проверки совпадений
+
+    function checkForMatch() {
+      if (firstCard.dataset.cardValue === secondCard.dataset.cardValue) {
+        firstCard.classList.add('matched');
+        secondCard.classList.add('matched');
+        setTimeout(() => {
+          reset();
+        }, 1000);
+      } else {
+        setTimeout(() => {
+          firstCard.classList.toggle('rotate');
+          secondCard.classList.toggle('rotate');
+          reset();
+        }, 1000);
+      }
+    }
+
+    function reset() {
+      firstCard = null;
+      secondCard = null;
+      lockBoard = false;
+    }
+    
     // ROTATE BUTTON
     let rotateBtn = document.querySelector('.rotateBtn')
     let card = document.querySelector('.card')
@@ -149,15 +249,12 @@
 
     function flipcards() {
       this.classList.toggle('rotate');
+      console.log('click')
     }
 
-    let flex = document.querySelector('.flex')
+    let flex = document.querySelector('.flexx')
     let cards1 = flex.querySelectorAll('.card')
     cards1.forEach(card => card.addEventListener('click', flipcards))
-
-    function shuffle(array) {
-      array.sort(() => Math.random() - 0.5);
-    }
 
 
     // DESTROY BUTTON
@@ -184,10 +281,10 @@
       innerCard.classList.add('inner');
       const innerCardFront = document.createElement('div');
       innerCardFront.classList.add('front');
-      innerCardFront.textContent = 'Front'
+      innerCardFront.textContent = 'X'
       const innerCardBack = document.createElement('div');
       innerCardBack.classList.add('back');
-      innerCardBack.textContent = 'Back'
+      innerCardBack.textContent = 'Y'
       cardElement.dataset.cardValue = card;
       gameBoard.appendChild(cardElement);
       cardElement.appendChild(innerCard);
@@ -196,51 +293,5 @@
       cardElement.addEventListener('click', flipcards);
     })
 
-
-    // GAME
-
-    const game = document.getElementById('game')
-
-    const cards = [
-      'A', 'A', 'B', 'B', 'C', 'C', 'D', 'D',
-    ]
-
-    // Функция перемешивания карт
-
-    function shuffle(array) {
-      return array.sort(() => Math.random() - 0.5);
-    }
-
-    console.log(cards)
-
-    // Функция создания карт
-
-
-    let gameBtn = document.querySelector('.gameBtn')
-    
-    shuffle(cards);
-    
-    for (let i = 0; i<cards.length; i++) {
-    gameBtn.addEventListener('click', e => {
-      const cardElement = document.createElement('div');
-      cardElement.classList.add('card');
-      const innerCard = document.createElement('div');
-      innerCard.classList.add('inner');
-      const innerCardFront = document.createElement('div');
-      innerCardFront.classList.add('front');
-      innerCardFront.textContent = 'Front'
-      const innerCardBack = document.createElement('div');
-      innerCardBack.classList.add('back');
-      innerCardBack.textContent = cards[i]
-      cardElement.dataset.cardValue = card;
-      game.appendChild(cardElement);
-      cardElement.appendChild(innerCard);
-      innerCard.appendChild(innerCardFront);
-      innerCard.appendChild(innerCardBack);
-      cardElement.addEventListener('click', flipcards);
-    })
-    }
-    // Функция разворота карт
-    // Функция проверки совпадений
   </script>
 </body></html>
