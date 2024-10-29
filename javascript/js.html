@@ -20,20 +20,22 @@
     font-family: var(--fontStack-monospace, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace);
 
     font-size: 14px;
-    line-height: 10px;
+    line-height: 14px;
     letter-spacing: 1px;
-
-
-    @media(min-width: 460px) {
-      font-size: 25px;
-      line-height: 32px;
-      letter-spacing: 6px;
-      padding: 20px;
-    }
+    
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
   }
   
   h2 {
     margin: 30px 0 20px 0;
+  }
+  
+  .group {
+    border: 1px solid;
+    padding: 10px;
+    border-radius: 15px;
   }
 
 
@@ -41,10 +43,7 @@
 
 <body>
 
-<h1>Javascript</h1>
-
-<p>//</p>
-<p>/* */</p>
+<section class="group">
 
 <h2>Types</h2>
 <p>null</p>
@@ -79,7 +78,8 @@
 <p>throw</p>
 <p>debugger</p>
 <p>import/export</p>
-
+  </section>
+<section class="group">
 <h2>Numbers</h2>
 <h3>Math.</h3>
 <p>pow</p>
@@ -98,6 +98,8 @@
 <p>Date.now</p>
 <p>new Date</p>
 
+  </section>
+<section class="group">
 
 <h2>String</h2>
 <p>'' "" ``</p>
@@ -122,15 +124,16 @@
 <p>.concat</p>
 <p>.repeat</p>
 
-<h2>Boolean</h2>
-<p>true false</p>
-
+  </section>
+<section class="group">
 <h2>Changes</h2>
 <p>Number()</p>
 <p>String()</p>
 <p>.toString()</p>
 <p>Boolean</p>
 
+  </section>
+<section class="group">
 <h2>Arrays</h2>
 <p>[]</p>
 <p>new Array()</p>
@@ -164,6 +167,8 @@
 <p>slice</p>
 <p>splice</p>
 
+  </section>
+<section class="group">
 <h2>Objects</h2>
 <p>Object.creat</p>
 <p>Object.prototype</p>
@@ -175,6 +180,8 @@
 <p>toJSON</p>
 <p>valueof</p>
 
+  </section>
+<section class="group">
 <h2>DOM</h2>
 <p>document.head</p>
 <p>document.body</p>
@@ -188,5 +195,5 @@
 <p>document.querySelectorAll('ul')</p>
 <p>elem.matches('a[href$="zip"]')</p>
 <p>getElementsByTagName('div')</p>
-
+  </section>
 </body></html>
