@@ -18,7 +18,7 @@
       font-family: var(--fontStack-monospace, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace);
 
       font-size: 14px;
-      line-height: 14px;
+      line-height: 20px;
       letter-spacing: 1px;
     }
 
@@ -31,6 +31,11 @@
       margin: 10px;
       padding: 10px;
       font-size: 16px;
+      border-radius: 15px;
+      border: 2px solid gray;
+      color: gold;
+      background: #000;
+      cursor: pointer;
     }
 
     #score {
@@ -70,7 +75,7 @@
     const arr = ['a', 'b', 'c'];
 
     function displayResult(result) {
-      document.getElementById('result').innerText = result;
+      document.getElementById('result').innerText = `'${result}'`;
     }
 
     function joinWithComma() {

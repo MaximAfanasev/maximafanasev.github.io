@@ -3,81 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Игра "Собери код"</title>
+    <title>Игра для запоминания</title>
     <style>
         body { font-family: Arial, sans-serif; text-align: center; }
-        #result { margin: 20px; font-size: 24px; }
+        input { margin: 10px; padding: 10px; font-size: 16px; }
         button { margin: 10px; padding: 10px; font-size: 16px; }
-        .correct { background-color: green; color: white; }
-        .incorrect { background-color: red; color: white; }
-        #score { margin-top: 20px; font-size: 20px; }
+        #result { margin: 20px; font-size: 24px; }
+        #correctResult { color: green; }
+        #wrongResult { color: red; }
     </style>
 </head>
 <body>
-    <h1>Игра "Собери код"</h1>
-    <p>Нажимайте на кнопки, чтобы выбрать метод:</p>
-    <div id="buttonsContainer"></div>
+    <h1>Игра для запоминания функции фильтрации</h1>
+    <p>Введите элементы массива (через запятую):</p>
+    <input type="text" id="arrayInput" placeholder="1, 2, 3, 4, 5, 6">
+    <p>Введите делитель:</p>
+    <input type="number" id="dividerInput" placeholder="2">
+    <button onclick="checkResult()">Проверить!</button>
+    
     <div id="result"></div>
-    <div id="score">Очки: <span id="scoreCount">0</span></div>
 
     <script>
-        const arr = ['a', 'b', 'c'];
-        let score = 0;
+        const correctDivider = 2;
 
-        function checkMethod(selected) {
+        function filterEvenNumbers(arr) {
+            return arr.filter(x => x % correctDivider === 0);
+        }
+
+        function checkResult() {
+            const arrayInput = document.getElementById('arrayInput').value;
+            const dividerInput = document.getElementById('dividerInput').value;
+
+            const array = arrayInput.split(',').map(Number);
+            const divider = Number(dividerInput);
+
+            const filteredResult = filterEvenNumbers(array);
+
             const resultElement = document.getElementById('result');
-            const scoreCountElement = document.getElementById('scoreCount');
+            resultElement.innerHTML = '';
 
-            if (selected === 'join') {
-                resultElement.innerText = arr.join(',');
-                score++;
-                scoreCountElement.innerText = score;
-                event.target.classList.add('correct');
+            // Проверяем, совпадают ли результаты
+            if (divider === correctDivider && JSON.stringify(filteredResult) === JSON.stringify([2, 4, 6])) {
+                resultElement.innerHTML = <code>&lt;span id="correctResult"&gt;Правильный ответ: [${filteredResult.join(', ')}]&lt;/span&gt;</code>;
             } else {
-                resultElement.innerText = 'Неправильный метод!';
-                event.target.classList.add('incorrect');
+                resultElement.innerHTML = <code>&lt;span id="wrongResult"&gt;Неправильный ответ! Попробуйте снова.&lt;/span&gt;</code>;
             }
-            disableButtons();
         }
-
-        function disableButtons() {
-            const buttons = document.querySelectorAll('button');
-            buttons.forEach(button => {
-                button.disabled = true;
-            });
-        }
-
-        function shuffleButtons() {
-            const buttons = [
-                { text: 'join (правильный)', value: 'join' },
-                { text: 'concat (неправильный)', value: 'concat' },
-                { text: 'push (неправильный)', value: 'push' },
-                { text: 'forEach (неправильный)', value: 'forEach' },
-            ];
-
-            // Функция для перемешивания массива
-            function shuffle(array) {
-                for (let i = array.length - 1; i > 0; i--) {
-                    const j = Math.floor(Math.random() * (i + 1));
-                    [array[i], array[j]] = [array[j], array[i]];
-                }
-                return array;
-            }
-
-            const shuffledButtons = shuffle(buttons);
-            const container = document.getElementById('buttonsContainer');
-            container.innerHTML = ''; // Очистить контейнер
-
-            shuffledButtons.forEach(button => {
-                const btn = document.createElement('button');
-                btn.innerText = button.text;
-                btn.onclick = () => checkMethod(button.value);
-                container.appendChild(btn);
-            });
-        }
-
-        // Перемешать кнопки при загрузке страницы
-        shuffleButtons();
     </script>
 </body>
 </html>
