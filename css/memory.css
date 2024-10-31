@@ -1,7 +1,6 @@
 
     .memory {
       margin: 0 auto;
-      padding: 10px;
       max-width: fit-content;
       background: #1e1e1e;
       color: gray;
@@ -9,6 +8,7 @@
       font-size: 20px;
       line-height: 22px;
       letter-spacing: 1px;
+  margin-top: 20px;
     }
 
     .memory #game {

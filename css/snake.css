@@ -1,0 +1,8 @@
+canvas {
+  border: 2px solid gray;
+  border-radius: 10px;
+  display: block;
+  margin: auto;
+  background-color: #1e1e1e;
+  margin-top: 20px;
+}

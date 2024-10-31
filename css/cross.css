@@ -21,6 +21,7 @@
   width: 100px;
   height: 100px;
   font-size: 2rem;
+  border-radius: 15px;
   background-color: darkslategray;
 }
 
