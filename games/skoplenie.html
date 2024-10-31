@@ -10,14 +10,16 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
-      background-color: #f0f0f0;
+      background-color: #1e1e1e;
       margin: 0;
       overflow: hidden;
     }
 
     canvas {
-      border: 2px solid #000;
-      background: #fff;
+      border: 2px solid gray;
+      border-radius: 10px;
+      padding: 10px;
+      background: #1e1e1e;
     }
   </style>
 </head>
@@ -35,7 +37,6 @@
     let basketX = canvas.width / 2 - basketWidth / 2;
     let objectX = Math.random() * (canvas.width - objectSize);
     let objectY = 0;
-    let score = 0;
 
     document.addEventListener("mousemove", moveBasket);
 
@@ -80,16 +81,12 @@
         objectX + objectSize > basketX &&
         objectX < basketX + basketWidth
       ) {
-        score++;
         resetFallingObject(); // Сбросить объект, если он пойман
       }
 
       // Отображение счета
       ctx.font = "20px Arial";
       ctx.fillStyle = "black";
-      ctx.fillText(`Счет: $ {
-          score
-        }`, 10, 20);
 
         requestAnimationFrame(update);
       }

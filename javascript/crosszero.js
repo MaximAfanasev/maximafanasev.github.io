@@ -1,8 +1,8 @@
 const board2 = document.getElementById('board2');
+const resetButton = document.getElementById('reset');
 let currentPlayer = 'X';
 const cells = Array(9).fill(null);
 let gameInterval;
-let timer;
 
 function render() {
   board2.innerHTML = '';
@@ -64,4 +64,7 @@ function startAutoPlay() {
   clearInterval(gameInterval); // Остановить предыдущие игры
   gameInterval = setInterval(handleAutoPlay, 1000); // Запуск игры с интервалом 1 секунда
 }
+
+resetButton.addEventListener('click', resetGame);
 resetGame(); // Начинаем игру автоматически
+

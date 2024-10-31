@@ -11,13 +11,14 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
-            background-color: #f0f0f0;
+            background-color: #1e1e1e;
         }
         .board {
             display: grid;
             grid-template-columns: repeat(3, 100px);
             grid-template-rows: repeat(3, 100px);
             gap: 5px;
+          margin-bottom: 20px;
         }
         .cell {
             display: flex;
@@ -37,7 +38,6 @@
 </head>
 <body>
 
-    <h1>Крестики-нолики</h1>
     <div class="board" id="board"></div>
     <button id="reset">Сбросить игру</button>
 
