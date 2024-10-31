@@ -1,92 +1,7 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2048</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<style>
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    font-family: Arial, sans-serif;
-    background-color: #faf8ef;
-}
-
-.game-container {
-    position: relative;
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 10px;
-    width: 500px;
-    height: 500px;
-    padding: 10px;
-    background-color: #bbada0;
-    border-radius: 10px;
-}
-
-.tile {
-    width: 100%;
-    height: 100%;
-    background-color: #eee4da;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2em;
-    color: #776e65;
-    border-radius: 5px;
-    transition: all 0.25s ease;
-}
-
-.tile-2 { background-color: #eee4da; }
-.tile-4 { background-color: #ede0c8; }
-.tile-8 { background-color: #f2b179; }
-.tile-16 { background-color: #f59563; }
-.tile-32 { background-color: #f67c5f; }
-.tile-64 { background-color: #f57c20; }
-.tile-128 { background-color: #eccg81; }
-.tile-256 { background-color: #edcf72; }
-.tile-512 { background-color: #edcc61; }
-.tile-1024 { background-color: #edc850; }
-.tile-2048 { background-color: #edc53f; }
-
-#game-status {
-    text-align: center;
-    font-size: 1.5em;
-    margin-top: 20px;
-}</style>
-<body>
-     <div class="game-container">
-        <div class="grid">
-            <div class="tile" id="tile-0"></div>
-            <div class="tile" id="tile-1"></div>
-            <div class="tile" id="tile-2"></div>
-            <div class="tile" id="tile-3"></div>
-            <div class="tile" id="tile-4"></div>
-            <div class="tile" id="tile-5"></div>
-            <div class="tile" id="tile-6"></div>
-            <div class="tile" id="tile-7"></div>
-            <div class="tile" id="tile-8"></div>
-            <div class="tile" id="tile-9"></div>
-            <div class="tile" id="tile-10"></div>
-            <div class="tile" id="tile-11"></div>
-            <div class="tile" id="tile-12"></div>
-            <div class="tile" id="tile-13"></div>
-            <div class="tile" id="tile-14"></div>
-            <div class="tile" id="tile-15"></div>
-        </div>
-        <button onclick="startGame()">Начать заново</button>
-        <div id="game-status"></div>
-    </div>
-    <script>let board = Array.from({ length: 16 }).map(() => 0);
+let board = Array.from({ length: 16 }).map(() => 0);
 let tileElements = Array.from(document.querySelectorAll('.tile'));
 let score = 0;
+let autoPlayInterval;
 
 function startGame() {
     board = Array.from({ length: 16 }).map(() => 0);
@@ -95,12 +10,13 @@ function startGame() {
     generateTile();
     generateTile();
     updateBoard();
+    autoPlay();  // Запускаем автоматическую игру
 }
 
 function generateTile() {
     let emptyTiles = board.map((v, i) => (v === 0 ? i : null)).filter(v => v !== null);
     let randomIndex = emptyTiles[Math.floor(Math.random() * emptyTiles.length)];
-    board[randomIndex] = Math.random() < 0.5 ? 2 : 4;
+    board[randomIndex] = 2;  // Генерируем только 2
 }
 
 function updateBoard() {
@@ -108,28 +24,68 @@ function updateBoard() {
         tile.innerText = board[index] !== 0 ? board[index] : '';
         tile.className = 'tile tile-' + board[index];
     });
-    
+
     if (board.includes(2048)) {
         document.getElementById('game-status').innerText = 'Вы выиграли!';
+        clearInterval(autoPlayInterval); // Остановка игры при выигрыше
     }
 }
 
-document.addEventListener('keydown', (event) => {
-    let moved = false;
+function autoPlay() {
+    autoPlayInterval = setInterval(() => {
+        if (canMove() === false) {
+            clearInterval(autoPlayInterval);
+            document.getElementById('game-status').innerText = 'Игра окончена!';
+            return;
+        }
+        
+        // Оптимизация движения, выбирая между доступными направлениями
+        if (tryMoveLeft() || tryMoveUp() || tryMoveRight() || tryMoveDown()) {
+            generateTile();
+            updateBoard();
+        }
+    }, 500);  // Ускоренное автоматическое движение каждую 0.5 секунды
+}
+
+function tryMoveLeft() {
     let previousBoard = [...board];
-
-    switch (event.key) {
-        case 'ArrowLeft': moved = moveLeft(); break;
-        case 'ArrowRight': moved = moveRight(); break;
-        case 'ArrowUp': moved = moveUp(); break;
-        case 'ArrowDown': moved = moveDown(); break;
+    moveLeft();
+    if (!areBoardsEqual(previousBoard, board)) {
+        return true; // Движение успешно
     }
+    return false; // Движение не сработало
+}
 
-    if (moved) {
-        generateTile();
-        updateBoard();
+function tryMoveRight() {
+    let previousBoard = [...board];
+    moveRight();
+    if (!areBoardsEqual(previousBoard, board)) {
+        return true; // Движение успешно
     }
-});
+    return false; // Движение не сработало
+}
+
+function tryMoveUp() {
+    let previousBoard = [...board];
+    moveUp();
+    if (!areBoardsEqual(previousBoard, board)) {
+        return true; // Движение успешно
+    }
+    return false; // Движение не сработало
+}
+
+function tryMoveDown() {
+    let previousBoard = [...board];
+    moveDown();
+    if (!areBoardsEqual(previousBoard, board)) {
+        return true; // Движение успешно
+    }
+    return false; // Движение не сработало
+}
+
+function areBoardsEqual(board1, board2) {
+    return board1.join() === board2.join();
+}
 
 function moveLeft() {
     let moved = false;
@@ -137,7 +93,7 @@ function moveLeft() {
     for (let row = 0; row < 4; row++) {
         let rowTiles = board.slice(row * 4, row * 4 + 4).filter(v => v !== 0);
         let mergedRow = mergeTiles(rowTiles);
-        
+
         for (let i = 0; i < 4; i++) {
             if (mergedRow[i] !== board[row * 4 + i]) {
                 moved = true;
@@ -145,7 +101,7 @@ function moveLeft() {
             board[row * 4 + i] = mergedRow[i];
         }
     }
-    
+
     return moved;
 }
 
@@ -155,7 +111,7 @@ function moveRight() {
     for (let row = 0; row < 4; row++) {
         let rowTiles = board.slice(row * 4, row * 4 + 4).filter(v => v !== 0).reverse();
         let mergedRow = mergeTiles(rowTiles).reverse();
-        
+
         for (let i = 0; i < 4; i++) {
             if (mergedRow[i] !== board[row * 4 + i]) {
                 moved = true;
@@ -163,7 +119,7 @@ function moveRight() {
             board[row * 4 + i] = mergedRow[i];
         }
     }
-    
+
     return moved;
 }
 
@@ -186,7 +142,7 @@ function moveUp() {
             board[row * 4 + col] = mergedCol[row];
         }
     }
-    
+
     return moved;
 }
 
@@ -222,9 +178,8 @@ function mergeTiles(tiles) {
             skip = false;
             continue;
         }
-        if (i < tiles.length - 1 && tiles[i] === tiles[i + 1]) {
+        if (i < tiles.length - 1 && tiles[i] === tiles[i + 1] && tiles[i] < 2048) {  // Не позволяйте слиянию превышать 2048
             result.push(tiles[i] * 2);
-            score += tiles[i] * 2;
             skip = true;
         } else {
             result.push(tiles[i]);
@@ -238,6 +193,13 @@ function mergeTiles(tiles) {
     return result;
 }
 
-startGame();</script>
-</body>
-</html>
+function canMove() {
+    for (let i = 0; i < board.length; i++) {
+        if (board[i] === 0) return true; // Пустое место
+        if (i % 4 !== 3 && board[i] === board[i + 1]) return true; // Соседние плитки в одной строке
+        if (i < 12 && board[i] === board[i + 4]) return true; // Соседние плитки в одном столбце
+    }
+    return false;
+}
+
+startGame();

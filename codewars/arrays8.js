@@ -17,7 +17,7 @@ console.log(arr.join())
 const arr2 = [1, 2, 3, 4, 5, 6]
 const divider = 2
 // [2, 4, 6]
-const f = (a, b) => {
+const f = a => {
 	return a.filter(x=>x%2 === 0)
 }
 

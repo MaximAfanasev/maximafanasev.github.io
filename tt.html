@@ -1,54 +1,132 @@
+
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Игра для запоминания</title>
-    <style>
-        body { font-family: Arial, sans-serif; text-align: center; }
-        input { margin: 10px; padding: 10px; font-size: 16px; }
-        button { margin: 10px; padding: 10px; font-size: 16px; }
-        #result { margin: 20px; font-size: 24px; }
-        #correctResult { color: green; }
-        #wrongResult { color: red; }
-    </style>
+  <meta charset="UTF-8">
+  <title>Memory Game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      margin: 0 auto;
+      padding: 10px;
+      max-width: fit-content;
+      background: #000;
+      color: gray;
+      font-family: monospace;
+      font-size: 20px;
+      line-height: 22px;
+      letter-spacing: 1px;
+    }
+
+    #game {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 10px;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .card {
+      min-width: 150px;
+      min-height: 150px;
+      background-color: lightgray;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      animation-fill-mode: forwards;
+    }
+
+    .text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 2rem;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+
+    @keyframes hideCards {
+      0% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+
+    .card.hide {
+      animation: hideCards 3s forwards;
+    }
+
+    .card.hide .text {
+      opacity: 1;
+      visibility: visible;
+    }
+
+  </style>
 </head>
+
 <body>
-    <h1>Игра для запоминания функции фильтрации</h1>
-    <p>Введите элементы массива (через запятую):</p>
-    <input type="text" id="arrayInput" placeholder="1, 2, 3, 4, 5, 6">
-    <p>Введите делитель:</p>
-    <input type="number" id="dividerInput" placeholder="2">
-    <button onclick="checkResult()">Проверить!</button>
-    
-    <div id="result"></div>
+  <h1 class="game-title">Игра Memory</h1>
+  <div id="game">
+    <div class="card" data-card-value="1">
+      <div class="text">1</div>
+    </div>
+    <div class="card" data-card-value="2">
+      <div class="text">2</div>
+    </div>
+    <div class="card" data-card-value="2">
+      <div class="text">2</div>
+    </div>
+    <div class="card" data-card-value="1">
+      <div class="text">1</div>
+    </div>
+  </div>
+  <script>
+    function hideCards(cards) {
+      cards.forEach(card => {
+        card.classList.add('hide');
+        card.classList.remove('show'); 
+      });
+    }
 
-    <script>
-        const correctDivider = 2;
+    // Функция для показа карточек
+    function showCards(cards) {
+      cards.forEach(card => {
+        card.classList.remove('hide');
+        card.classList.add('show'); // Добавляем класс показа
+      });
+    }
 
-        function filterEvenNumbers(arr) {
-            return arr.filter(x => x % correctDivider === 0);
-        }
+    // Функция для анимации карточек
+    function startAnimation() {
+      const cards1 = document.querySelectorAll('.card:nth-child(1), .card:nth-child(4)');
+      const cards2 = document.querySelectorAll('.card:nth-child(2), .card:nth-child(3)');
 
-        function checkResult() {
-            const arrayInput = document.getElementById('arrayInput').value;
-            const dividerInput = document.getElementById('dividerInput').value;
+      // Показываем все карточки
+      showCards(document.querySelectorAll('.card'));
 
-            const array = arrayInput.split(',').map(Number);
-            const divider = Number(dividerInput);
+      // Скрываем карточки "1" через 3 секунды
+      setTimeout(() => {
+        hideCards(cards1);
+      }, 2000);
 
-            const filteredResult = filterEvenNumbers(array);
+      // Затем скрываем карточки "2" через 6 секунд
+      setTimeout(() => {
+        hideCards(cards2);
+      }, 4000);
+    }
 
-            const resultElement = document.getElementById('result');
-            resultElement.innerHTML = '';
+    // Запускаем анимацию при загрузке страницы
+    startAnimation();
 
-            // Проверяем, совпадают ли результаты
-            if (divider === correctDivider && JSON.stringify(filteredResult) === JSON.stringify([2, 4, 6])) {
-                resultElement.innerHTML = <code>&lt;span id="correctResult"&gt;Правильный ответ: [${filteredResult.join(', ')}]&lt;/span&gt;</code>;
-            } else {
-                resultElement.innerHTML = <code>&lt;span id="wrongResult"&gt;Неправильный ответ! Попробуйте снова.&lt;/span&gt;</code>;
-            }
-        }
-    </script>
-</body>
-</html>
+    // Устанавливаем интервал для повторения анимации
+    setInterval(() => {
+      startAnimation();
+    }, 7000); // Повторяем каждые 7 секунд
+  </script>
+</body></html>

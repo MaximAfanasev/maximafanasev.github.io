@@ -1,0 +1,61 @@
+
+    .memory {
+      margin: 0 auto;
+      padding: 10px;
+      max-width: fit-content;
+      background: #1e1e1e;
+      color: gray;
+      font-family: monospace;
+      font-size: 20px;
+      line-height: 22px;
+      letter-spacing: 1px;
+    }
+
+    .memory #game {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 10px;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .memory .card {
+      min-width: 150px;
+      min-height: 150px;
+      background-color: lightgray;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      animation-fill-mode: forwards;
+    }
+
+    .memory .text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 2rem;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+
+    @keyframes hideCards {
+      0% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+
+    .memory .card.hide {
+      animation: hideCards 3s forwards;
+    }
+
+    .memory .card.hide .text {
+      opacity: 1;
+      visibility: visible;
+    }
