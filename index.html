@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Maxim Afanasev</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta charset="UTF-8">
-  <link type="image/x-icon" href="img/favicon.ico" rel="shortcut icon">
-  <meta name="keywords" content="ключевые">
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/2048.css">
+  <link rel="stylesheet" href="css/cross.css">
+  <link rel="stylesheet" href="css/memory.css">
 </head>
 <style>
 
@@ -15,20 +16,106 @@
 
 <body>
 
-<h1>Maxim Afanasev</h1>
+  <header>
+    <h1>Добро пожаловать</h1>
+  </header>
 
-<div class="flex">
-<h2>Games</h2>
-<a href="games/run.html" target="_blank">Побег</a>
-<a href="games/skoplenie.html" target="_blank">Поймай кубик</a>
-<a href="games/snake.html" target="_blank">Змейка</a>
-<a href="games/whatnumber.html" target="_blank">Угадай число</a>
-<h2>Javascript</h2>
-<a href="javascript/js.html" target="_blank">Теория</a>
-<a href="javascript/codewars.html" target="_blank">Codewars</a>
-<a href="javascript/game.html" target="_blank">Game</a>
-<a href="javascript/todolist.html" target="_blank">Todolist</a>
-<a href="javascript/rotatecard.html" target="_blank">Rotatecard</a>
+  <main>
+    <section id="about">
+      <h2>Обо мне</h2>
+      <p><a href="https://hh.ru/applicant/resumes/view?resume=e18650e5ff0d0a272a0039ed1f69676b353374" target="_blank">Резюме на hh.ru</a></p>
+      <p>2018 <a href="https://www.wildberries.ru/" target="_blank">wildberries</a> вёрстка + vue 2.0
+      </p>
+      <p>2020 <a href="https://voximplant.com/" target="_blank">voximplant</a> vue 2.0 + webanimation api</p>
+      <p>2022 <a href="https://sberbankins.ru/" target="_blank">sber</a> angular</p>
 
-</div>
+      <p>Хобби - шахматы, головоломки</p>
+      <img src="img/chess43.jpg" alt="">
+    </section>
+
+    <section id="projects">
+      <h2>Проекты</h2>
+      <div class="flex">
+        <div class="project">
+          <h3>Лендинг про шахматы</h3>
+          <p>
+            <a href="yandex/index.html" target="_blank">Перейти к проекту</a>
+          </p>
+          <img class="yandex" src="img/chess.jpg" alt="">
+        </div>
+
+        <div class="project">
+          <h3>Игра 2048</h3>
+          <a href="https://link-to-your-project-2.com" target="_blank"></a>
+          <a href="games/2048.html" target="_blank">Перейти к проекту</a>
+          <div class="wrapper">
+            <div class="game-container">
+              <div class="grid">
+                <div class="tile" id="tile-0"></div>
+                <div class="tile" id="tile-1"></div>
+                <div class="tile" id="tile-2"></div>
+                <div class="tile" id="tile-3"></div>
+                <div class="tile" id="tile-4"></div>
+                <div class="tile" id="tile-5"></div>
+                <div class="tile" id="tile-6"></div>
+                <div class="tile" id="tile-7"></div>
+                <div class="tile" id="tile-8"></div>
+                <div class="tile" id="tile-9"></div>
+                <div class="tile" id="tile-10"></div>
+                <div class="tile" id="tile-11"></div>
+                <div class="tile" id="tile-12"></div>
+                <div class="tile" id="tile-13"></div>
+                <div class="tile" id="tile-14"></div>
+                <div class="tile" id="tile-15"></div>
+              </div>
+              <button onclick="startGame()" hidden>Начать заново</button>
+              <div id="game-status" hidden></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project">
+          <h3>Крестики нолики</h3>
+          <a href="games/crosszero.html" target="_blank">Перейти к проекту</a>
+          <div class="cross">
+            <div class="board" id="board2"></div>
+            <button id="reset" hidden>Сбросить игру</button>
+          </div>
+        </div>
+
+        <!-- Добавьте еще проекты как нужно -->
+        <div class="project">
+          <h3>Memory</h3>
+          <a href="games/game.html" target="_blank">Перейти к проекту</a>
+          <div class="memory">
+            <div id="game">
+              <div class="card" data-card-value="1">
+                <div class="text">1</div>
+              </div>
+              <div class="card" data-card-value="2">
+                <div class="text">2</div>
+              </div>
+              <div class="card" data-card-value="2">
+                <div class="text">2</div>
+              </div>
+              <div class="card" data-card-value="1">
+                <div class="text">1</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project">
+          <h3>Проект 5</h3>
+          <p>Описание проекта 5...</p>
+          <a href="https://link-to-your-project-5.com" target="_blank">Перейти к проекту 5</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="javascript/2048.js"></script>
+  <script src="javascript/crosszero.js"></script>
+  <script src="javascript/memory.js"></script>
 </body></html>
