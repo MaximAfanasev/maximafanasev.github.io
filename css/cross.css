@@ -24,4 +24,13 @@
   border-radius: 15px;
   background-color: darkslategray;
 }
+.cross button {
+  margin-top: 20px;
+  border-radius: 10px;
+  padding: 10px;
+  background: #1e1e1e;
+  color: #fff;
+  font-size: 20px;
+  box-shadow: none;
+}
 

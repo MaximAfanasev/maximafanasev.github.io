@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="css/cross.css">
   <link rel="stylesheet" href="css/memory.css">
   <link rel="stylesheet" href="css/snake.css">
+  <link rel="stylesheet" href="css/catch.css">
 </head>
 <style>
 
@@ -81,7 +82,7 @@
           <a href="games/crosszero.html" target="_blank">Перейти к проекту</a>
           <div class="cross">
             <div class="board" id="board2"></div>
-            <button id="reset" hidden>Сбросить игру</button>
+            <button id="reset">Restart autoplay</button>
           </div>
         </div>
 
@@ -110,12 +111,15 @@
         <div class="project">
           <h3>Змейка</h3>
           <a href="games/snake.html" target="_blank">Перейти к проекту</a>
-    <canvas id="gameCanvas" width="330" height="330"></canvas>
+          <canvas id="gameCanvas" width="330" height="330"></canvas>
         </div>
 
         <div class="project">
           <h3>Поймай кубик</h3>
           <a href="games/skoplenie.html" target="_blank">Перейти к проекту</a>
+          <div class="catch">
+            <canvas id="gameCanvas2" width="330" height="330"></canvas>
+          </div>
         </div>
 
         <div class="project">
@@ -134,8 +138,8 @@
         </div>
 
         <div class="project">
-          <h3>Game</h3>
-<a href="javascript/game.html" target="_blank">Перейти к проекту</a>
+          <h3>Угадай метод</h3>
+          <a href="javascript/game.html" target="_blank">Перейти к проекту</a>
         </div>
       </div>
     </section>
@@ -146,4 +150,5 @@
   <script src="javascript/crosszero.js"></script>
   <script src="javascript/memory.js"></script>
   <script src="javascript/snake.js"></script>
+  <script src="javascript/catch.js"></script>
 </body></html>
