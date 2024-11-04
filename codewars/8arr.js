@@ -180,10 +180,7 @@ arr9 = ["1:1", "2:2", "3:3", "4:4", "2:2", "3:3", "4:4", "3:3", "4:4", "4:4"]
 arr10 = ["0:1", "0:2", "0:3", "0:4", "1:2", "1:3", "1:4", "2:3", "2:4", "3:4"]
 
 const points = a => {
-	return a.reduce((x,y)=> {
-    return x += y[0] > y[2] ?
-      3 : y[0] < y[2] ? 0 : 1
-  }, 0)
+	return 
 }
 
 console.log(points(arr8))
@@ -198,11 +195,7 @@ const arr13 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15]
 
 
 const countPositivesSumNegatives = a => {
-	return a.reduce((arr,n)=> {
-    if (n>0) arr[0]++
-    if (n<0) arr[1]+=n
-    return arr
-  }, [0,0])
+	
 }
 
 console.log(countPositivesSumNegatives(arr13))
@@ -214,13 +207,7 @@ console.log(countPositivesSumNegatives(arr13))
 const arr15 = ['Algebra', 'History', 'Geometry', 'English']
 
 const sorter = a => {
-	return a.sort((a,b)=> {
-    const aa = a.toLowerCase()
-    const bb = b.toLowerCase()
-    if (aa < bb) return 1
-    if (bb > aa) return -1
-    return 0
-  })
+	
 }
 
 console.log(sorter(arr15))
@@ -234,11 +221,7 @@ let x = 1
 let n = 10
 
 function countBy(x, n) {
-  let z = [];
-  for(let i =1; i<=n;i++) {
-    z.push(x*i)
-  }
-  return z;
+  
 }
 
 console.log(countBy(x,n))
@@ -251,13 +234,7 @@ console.log(countBy(x,n))
 const arr19 = [118,117,120,121,117,98,122,97,120,106,104,116,113,114,113,120,106]
 
 function isVow(a){
- for (let i=0; i< a.length; i++) {
-   var char = String.fromCharCode(a[i])
-   if ('aeiou'.indexOf(char) !== -1) {
-     a[i] = char
-   }
- }
-   return a
+ 
 }
 
 console.log(isVow(arr19))
@@ -268,7 +245,7 @@ console.log(isVow(arr19))
 // [1,-4,7,12] => 1 + 7 + 12 = 20
 const arr21 = [1,-4,7,12]
 function positiveSum(a) {
-  return a.reduce((a,b)=>a + (b>0? b : 0))
+  
 }
 console.log(positiveSum(arr21))
 
@@ -279,7 +256,7 @@ console.log(positiveSum(arr21))
 const arr22 = [1,2,3,4,5]
 const ff = function(v){return v<9}
 function all(a, fun ){
-  return a.every(fun)
+  
 }
 console.log(all(arr22,ff))
 
@@ -288,7 +265,7 @@ console.log(all(arr22,ff))
 const Str1 = '35231'
 
 function digitize(a) {
-  return a.split('').map(Number).reverse()
+  
 }
 
 console.log(digitize(Str1))
