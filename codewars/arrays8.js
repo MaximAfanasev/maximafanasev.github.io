@@ -295,7 +295,7 @@ console.log(digitize(Str1))
 
 // [1, 2, 2] --> 9
 
-function squareSum(numbers){
-  return numbers.reduce((sum,num) => sum + (num * num), 0);
+function squareSum(a){
+  return a.reduce((sum,num) => sum + (num * num), 0);
 }
 
