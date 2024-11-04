@@ -163,7 +163,7 @@ console.log(countSheeps(arr11))
 arr12 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 const removeEveryOther = a => {
-	return a.filter(x=>x%2!==0)
+	return arr.filter((x,i)=>i%2===0)
 }
 
 console.log(removeEveryOther(arr12))
@@ -203,8 +203,8 @@ console.log(differenceInAges(arr14))
 // ['Algebra', 'english', 'Geometry', 'history']
 const arr15 = ['Algebra', 'History', 'Geometry', 'English']
 
-const sorter = arr => {
-	return arr.sort((a, b) => {
+const sorter = a => {
+	return a.sort((a, b) => {
 		const aa = a.toLowerCase()
     const bb = b.toUpperCase()
     if (aa &#60; bb) return 1
@@ -262,9 +262,9 @@ console.log(countBy(x,n))
 const arr19 = [118,117,120,121,117,98,122,97,120,106,104,116,113,114,113,120,106]
 
 function isVow(a){
-  for (var i=0; i &#60; a.length ; ++i)
+  for (let i=0; i &#60; a.length ; ++i)
   {
-    var char = String.fromCharCode(a[i])
+    let char = String.fromCharCode(a[i])
     if ('aeiou'.indexOf(char) !== -1)
     a[i] = char;
   }
@@ -278,8 +278,8 @@ console.log(isVow(arr19))
 // [1,2,3,4,5] --> 3 
 const arr20 = [1,2,3,4,5]
 
-function getAverage(marks){
-  return Math.floor(marks.reduce((sum, x) => sum + x) / marks.length);
+function getAverage(a){
+  return Math.floor(a.reduce((a, b) => a + b) / a.length);
 }
 
 console.log(getAverage(arr20))
@@ -288,8 +288,8 @@ console.log(getAverage(arr20))
 // [1,-4,7,12] => 1 + 7 + 12 = 20
 
 const arr21 = [1,-4,7,12]
-function positiveSum(arr) {
-   return arr.reduce((a,b)=> a + (b > 0 ? b : 0),0);
+function positiveSum(a) {
+   return a.reduce((a,b)=> a + (b > 0 ? b : 0));
 }
 console.log(positiveSum(arr21))
  </pre>
@@ -298,8 +298,8 @@ console.log(positiveSum(arr21))
 
 const arr22 = [1,2,3,4,5]
 const ff = function(v){return v ^#60; 9}
-function all( arr, fun ){
-  return arr.every(fun)
+function all(a, fun ){
+  return a.every(fun)
 }
 console.log(all(arr22,ff))
  </pre>
@@ -308,12 +308,13 @@ console.log(all(arr22,ff))
 
 const Str1 = '35231'
 
-function digitize(n) {
-  return String(n).split('').map(Number).reverse()
+function digitize(a) {
+  return String(a).split('').map(Number).reverse()
 }
 
 console.log(digitize(Str1))
  </pre>
   </section>
+  <script src="../codewars/math8.js"></script>
   <script src="../codewars/8arr.js"></script>
 </body></html>
