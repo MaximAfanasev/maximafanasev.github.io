@@ -13,12 +13,16 @@
     }
 
     body {
-      background-color: #121212;
+      background-color: #263238;
       color: #e0e0e0;
       font-family: var(--fontStack-monospace, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace);
       font-size: 20px;
       line-height: 1.6;
       overflow: hidden;
+    }
+    
+    .wrapper {
+      background: #1f1f1f;
     }
 
     a {
@@ -33,11 +37,12 @@
     }
 
     header {
-      background: #1f1f1f;
+      background: #263238 ;
       color: #ffffff;
-      padding: 40px 0;
+      padding: 93px 0;
       text-align: center;
-      min-height: 150px;
+      min-height: 250px;
+      border-bottom-right-radius: 120px;
     }
 
     h1 {
@@ -67,6 +72,7 @@
     }
 
     .panel {
+      display: none;
       flex: 1;
       background-color: #3498db;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -75,7 +81,8 @@
       transform-origin: center;
       text-align: center;
       line-height: 100vh;
-      font-size: 60px;
+      font-size: 70px;
+      color: gold;
     }
 
     .panel.hide {
@@ -84,21 +91,57 @@
     }
 
     .content {
-      display: none;
       text-align: center;
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
     }
+    
+    main {
+      border-top-left-radius: 120px;
+      background: #1f1f1f;
+      width: 100%;
+      height: 2000px;
+      padding: 60px;
+      font-size: 30px;
+    }
+    
+    .purple {
+      color: #c848e6;
+    }
+    
+    .gold {
+      color: gold
+    }
+    
+    .task {
+      margin-bottom: 70px;
+    }
+    
+    .task .center {
+      text-align: center;
+    }
+    .circle {
+      border: 3px solid gold;
+      width: fit-content;
+      margin: 20px auto;
+      padding: 5px;
+      border-radius: 50%;
+      width: 60px;
+    }
+    .reshenie {
+      
+    }
   </style>
 </head>
 
 <body>
+ <div class="wrapper">
   <header>
     <h1 id="text"></h1>
-    <canvas id="gameCanvas" width="320" height="150"></canvas>
-  </header>
+    <canvas id="gameCanvas" width="420" height="240"></canvas>
+  </header></div>
 
   <div class="container" id="blinds">
     <div class="panel">J</div>
@@ -112,45 +155,23 @@
     <div class="panel">P</div>
     <div class="panel">T</div>
   </div>
+  
+  <main>
+    <div class="task">
+     <p class="purple center">[1, 2, 3, 4, 5, 6]</p>
+     <p class="purple center circle">2</p>
+     <p class="purple center">[2, 4, 6]</p>
+    </div>
+    <div class="reshenie">
+      <p><span class="purple">const</span> f = a => {</p>
+      <p>&nbsp;&nbsp;<span class="purple">return</span> <span class="gold">a.filter(x => x % 2 === 0)</span></p>
+      <p>}</p>
+      
+  <span class="gold"></span>
+    </div>
+  </main>
 
-  <script>
-    const panels = document.querySelectorAll('.panel');
-    const content = document.getElementById('mainContent');
-
-    function openBlinds() {
-      // Добавляем задержку перед началом анимации
-      setTimeout(() => {
-        panels.forEach((panel, index) => {
-          setTimeout(() => {
-            panel.classList.add('hide'); // Поворачиваем панели с задержкой
-          }, index * 300);
-        });
-
-        // Показываем контент после того, как все панели открыты
-        setTimeout(() => {
-          document.getElementById('blinds').style.display = 'none'; // Скрываем жалюзи
-          content.style.display = 'block'; // Показываем контент
-        }, panels.length * 500); // Время, равное времени, необходимому для поворота всех панелей
-      }, 1000); // Задержка 2 секунды
-    }
-
-    window.onload = openBlinds;
-
-    const textElement = document.getElementById('text');
-    const textToAnimate = "JAVASCRIPT";
-    let index = 0;
-
-    function animateText() {
-      if (index < textToAnimate.length) {
-        textElement.innerText += textToAnimate[index];
-        index++;
-        textElement.style.opacity = 1;
-        setTimeout(animateText, 300);
-      }
-    }
-
-    setTimeout(animateText, 3300);
-  </script>
+  <script src="panels.js"></script>
   <script src="snake.js"></script>
 </body>
 </html>
