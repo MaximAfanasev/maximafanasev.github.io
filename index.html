@@ -4,157 +4,142 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link type="image/x-icon" rel="icon" href="img/favicon.ico">
   <title>Maxim Afanasev</title>
-  <link rel="stylesheet" href="css/index.css">
-  <link rel="stylesheet" href="css/2048.css">
-  <link rel="stylesheet" href="css/cross.css">
-  <link rel="stylesheet" href="css/memory.css">
-  <link rel="stylesheet" href="css/snake.css">
-  <link rel="stylesheet" href="css/catch.css">
-</head>
-<style>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-</style>
+    body {
+      background-color: #121212;
+      color: #e0e0e0;
+      font-family: var(--fontStack-monospace, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace);
+      font-size: 20px;
+      line-height: 1.6;
+      overflow: hidden
+    }
+
+    a {
+      color: gold;
+    }
+
+    img {
+      width: fit-content;
+      max-width: 400px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+
+    header {
+      background: #1f1f1f;
+      color: #ffffff;
+      padding: 40px 0;
+      text-align: center;
+      min-height: 150px;
+    }
+
+    h1 {
+      position: relative;
+      z-index: 2;
+      margin-bottom: 20px;
+      width: fit-content;
+      margin: 0 auto;
+      color: gold;
+    }
+
+    #gameCanvas {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      transform: translate(-50%, 0);
+    }
+
+    .container {
+      display: flex;
+      width: 100vw;
+      height: 100vh;
+      perspective: 1000px;
+      /* Для 3D эффекта */
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .panel {
+      flex: 1;
+      background-color: #3498db;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      transition: transform 0.5s ease, opacity 0.5s ease;
+      opacity: 1;
+      transform-origin: center;
+    }
+
+    .panel.hide {
+      transform: rotateY(90deg);
+      opacity: 0;
+    }
+
+    .content {
+      display: none;
+      text-align: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  </style>
+</head>
 
 <body>
-
   <header>
-    <h1>Добро пожаловать</h1>
+    <h1 id="text"></h1>
+    <canvas id="gameCanvas" width="320" height="150"></canvas>
   </header>
 
-  <main>
-    <section id="about">
-      <h2>Обо мне</h2>
-      <p><a href="https://hh.ru/applicant/resumes/view?resume=e18650e5ff0d0a272a0039ed1f69676b353374" target="_blank">Резюме на hh.ru</a></p>
-      <p>2018 <a href="https://www.wildberries.ru/" target="_blank">wildberries</a> вёрстка + vue 2.0
-      </p>
-      <p>2020 <a href="https://voximplant.com/" target="_blank">voximplant</a> vue 2.0 + webanimation api</p>
-      <p>2022 <a href="https://sberbankins.ru/" target="_blank">sber</a> angular</p>
+  <div class="container" id="blinds">
+    <div class="panel"></div>
+    <div class="panel"></div>
+    <div class="panel"></div>
+    <div class="panel"></div>
+    <div class="panel"></div>
+  </div>
 
-      <p>Хобби - шахматы, головоломки</p>
-      <img src="img/chess43.jpg" alt="">
-    </section>
+  <script>
+    const panels = document.querySelectorAll('.panel');
+    const content = document.getElementById('mainContent');
 
-    <section id="projects">
-      <h2>Проекты</h2>
-      <div class="flex">
-        <div class="project">
-          <h3>Лендинг про шахматы</h3>
-          <p>
-            <a href="yandex/index.html" target="_blank">Перейти к проекту</a>
-          </p>
-          <p>Обычный лендинг</p>
-          <img class="yandex" src="img/chess.jpg" alt="">
-        </div>
+    function openBlinds() {
+      panels.forEach((panel, index) => {
+        setTimeout(() => {
+          panel.classList.add('hide'); // Поворачиваем панели с задержкой
+        }, index * 300);
+      });
 
-        <div class="project">
-          <h3>Игра 2048</h3>
-          <a href="games/2048.html" target="_blank">Перейти к проекту</a>
-          <p>Ниже компьютер сам играет в игру</p>
-          <div class="wrapper">
-            <div class="game-container">
-              <div class="grid">
-                <div class="tile" id="tile-0"></div>
-                <div class="tile" id="tile-1"></div>
-                <div class="tile" id="tile-2"></div>
-                <div class="tile" id="tile-3"></div>
-                <div class="tile" id="tile-4"></div>
-                <div class="tile" id="tile-5"></div>
-                <div class="tile" id="tile-6"></div>
-                <div class="tile" id="tile-7"></div>
-                <div class="tile" id="tile-8"></div>
-                <div class="tile" id="tile-9"></div>
-                <div class="tile" id="tile-10"></div>
-                <div class="tile" id="tile-11"></div>
-                <div class="tile" id="tile-12"></div>
-                <div class="tile" id="tile-13"></div>
-                <div class="tile" id="tile-14"></div>
-                <div class="tile" id="tile-15"></div>
-              </div>
-              <button onclick="startGame()" hidden>Начать заново</button>
-              <div id="game-status" hidden></div>
-            </div>
-          </div>
-        </div>
+      // Показываем контент после того, как все панели открыты
+      setTimeout(() => {
+        document.getElementById('blinds').style.display = 'none'; // Скрываем жалюзи
+        content.style.display = 'block'; // Показываем контент
+      }, panels.length * 300); // Время, равное времени, необходимому для поворота всех панелей
+    }
 
-        <div class="project">
-          <h3>Крестики нолики</h3>
-          <a href="games/crosszero.html" target="_blank">Перейти к проекту</a>
-          <p>Ниже компьютер сам играет в игру</p>
-          <div class="cross">
-            <div class="board" id="board2"></div>
-            <button id="reset" >Restart autoplay</button>
-          </div>
-        </div>
+    window.onload = openBlinds;
 
-        <!-- Добавьте еще проекты как нужно -->
-        <div class="project">
-          <h3>Memory</h3>
-          <a href="games/game.html" target="_blank">Перейти к проекту</a>
-          <p>Игра на запоминание</p>
-          <div class="memory">
-            <div id="game">
-              <div class="card" data-card-value="1">
-                <div class="text">1</div>
-              </div>
-              <div class="card" data-card-value="2">
-                <div class="text">2</div>
-              </div>
-              <div class="card" data-card-value="2">
-                <div class="text">2</div>
-              </div>
-              <div class="card" data-card-value="1">
-                <div class="text">1</div>
-              </div>
-            </div>
-          </div>
-        </div>
+    const textElement = document.getElementById('text');
+    const textToAnimate = "JAVASCRIPT";
+    let index = 0;
 
-        <div class="project">
-          <h3>Змейка</h3>
-          <a href="games/snake.html" target="_blank">Перейти к проекту</a>
-          <p>Ниже компьютер сам играет в игру</p>
-          <canvas id="gameCanvas" width="330" height="330"></canvas>
-        </div>
+    function animateText() {
+      if (index < textToAnimate.length) {
+        textElement.innerText += textToAnimate[index];
+        index++;
+        textElement.style.opacity = 1;
+        setTimeout(animateText, 300);
+      }
+    }
 
-        <div class="project">
-          <h3>Поймай кубик</h3>
-          <a href="games/skoplenie.html" target="_blank">Перейти к проекту</a>
-          <p>Ниже компьютер сам играет в игру</p>
-          <div class="catch">
-            <canvas id="gameCanvas2" width="330" height="330"></canvas>
-          </div>
-        </div>
-
-        <div class="project">
-          <h3>Угадай число</h3>
-          <p><a href="games/whatnumber.html" target="_blank">Перейти к проекту</a></p>
-          <p>Нужно ввести число и угадать</p>
-          <img src="img/whatnumber.jpg" alt="">
-        </div>
-
-        <div class="project">
-          <h3>Todolist</h3>
-          <p><a href="javascript/todolist.html" target="_blank">Перейти к проекту</a></p>
-          <p>Обычный todo</p>
-          <img src="img/todo.jpg" alt="">
-        </div>
-
-        <div class="project">
-          <h3>Угадай метод</h3><p><a href="javascript/game.html" target="_blank">Перейти к проекту</a></p>
-          <p>Интерактив </p>
-          <img src="img/method.jpg" alt="">
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <script src="javascript/2048.js"></script>
-  <script src="javascript/crosszero.js"></script>
-  <script src="javascript/memory.js"></script>
-  <script src="javascript/snake.js"></script>
-  <script src="javascript/catch.js"></script>
-  <script src="javascript/8kata.js"></script>
+    setTimeout(animateText, 1300);
+  </script>
+  <script src="snake.js"></script>
 </body></html>
