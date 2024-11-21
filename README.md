@@ -1,4 +1,4 @@
-download GIT/n
+download GIT
 OPEN GIT BASH HERE
 ssh-keygen -t ed25519 -C 'mail@mail.com'
 eval "$(ssh-agent -s)"
