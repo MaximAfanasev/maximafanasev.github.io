@@ -5,107 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Maxim Afanasev</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      background-color: #263238;
-      color: #e0e0e0;
-      font-family: var(--fontStack-monospace, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace);
-      font-size: 20px;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-    
-    .wrapper {
-      background: #1f1f1f;
-    }
-
-    a {
-      color: gold;
-    }
-
-    img {
-      width: fit-content;
-      max-width: 400px;
-      border-radius: 10px;
-      margin-top: 20px;
-    }
-
-    header {
-      background: #263238 ;
-      color: #ffffff;
-      padding: 93px 0;
-      text-align: center;
-      min-height: 250px;
-      border-bottom-right-radius: 120px;
-    }
-
-    h1 {
-      position: relative;
-      z-index: 2;
-      margin-bottom: 20px;
-      width: fit-content;
-      margin: 0 auto;
-      color: gold;
-    }
-
-    #gameCanvas {
-      position: absolute;
-      left: 50%;
-      top: 0;
-      transform: translate(-50%, 0);
-    }
-
-    .container {
-      display: flex;
-      width: 100vw;
-      height: 100vh;
-      perspective: 1000px;
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
-
-    .panel {
-      flex: 1;
-      background-color: #3498db;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-      transition: transform 0.5s ease, opacity 0.5s ease;
-      opacity: 1;
-      transform-origin: center;
-      text-align: center;
-      line-height: 100vh;
-      font-size: 70px;
-      color: gold;
-    }
-
-    .panel.hide {
-      transform: rotateY(90deg);
-      opacity: 0;
-    }
-
-    .content {
-      text-align: center;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-    
-    main {
-      border-top-left-radius: 120px;
-      background: #1f1f1f;
-      width: 100%;
-      height: 2000px;
-      padding: 60px;
-      font-size: 30px;
-    }
-  </style>
+  <link rel="stylesheet" href="css/body.css">
+  <link rel="stylesheet" href="css/canvas.css">
+  <link rel="stylesheet" href="css/panels.css">
 </head>
 
 <body>
@@ -128,7 +30,8 @@
   <main>
   </main>
 
-  <script src="panels.js"></script>
-  <script src="snake.js"></script>
+  <script src="js/title.js"></script>
+  <script src="js/panels.js"></script>
+  <script src="js/snake.js"></script>
 </body>
 </html>

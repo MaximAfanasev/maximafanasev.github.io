@@ -1,0 +1,36 @@
+ * {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+ }
+
+ body {
+   background-color: #263238;
+   color: #e0e0e0;
+   font-family: var(--fontStack-monospace, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace);
+   font-size: 20px;
+   line-height: 1.6;
+   overflow-x: hidden;
+ }
+
+ .wrapper {
+   background: #1f1f1f;
+ }
+
+ header {
+   background: #263238;
+   color: #ffffff;
+   padding: 93px 0;
+   text-align: center;
+   min-height: 250px;
+   border-bottom-right-radius: 120px;
+ }
+
+ h1 {
+   position: relative;
+   z-index: 2;
+   margin-bottom: 20px;
+   width: fit-content;
+   margin: 0 auto;
+   color: gold;
+ }
