@@ -35,7 +35,38 @@
    color: gold;
  }
 
-main {
-  max-width: 1200px;
-  margin: 0 auto;
-}
+ .wrap {
+   max-width: 800px;
+   margin: 0 auto;
+ }
+
+ .task {
+   margin-bottom: 80px;
+   border: 2px solid lightgray;
+   padding: 20px;
+   border-radius: 30px;
+ }
+
+ .purple {
+   color: #d756d7;
+ }
+
+ .gold {
+   color: gold;
+ }
+
+ .green {
+   color: green;
+ }
+
+ .center {
+   text-align: center;
+ }
+
+ .circle {
+   width: fit-content;
+   margin: 10px auto;
+   border: 2px solid green;
+   border-radius: 20px;
+   padding: 0 10px;
+ }
