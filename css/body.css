@@ -70,11 +70,3 @@ main {
  .center {
    text-align: center;
  }
-
- .circle {
-   width: fit-content;
-   margin: 10px auto;
-   border: 2px solid green;
-   border-radius: 20px;
-   padding: 0 10px;
- }

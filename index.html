@@ -33,32 +33,49 @@
 
       <div class="task">
         <p class="purple center">[1, 2, 3, 4, 5, 6]</p>
-        <p class="green center circle">2</p>
-        <p class="purple center">[2, 4, 6]</p>
+        <p class="green center">[2, 4, 6]</p>
         <p>&nbsp;</p>
         <p>const f = a => <span class="gold">a.filter(x => x % 2 === 0)</span></p>
       </div>
 
       <div class="task">
         <p class="purple center">[1, 2, 3], [4, 5, 6]</p>
-        <p class="green center circle">21</p>
+        <p class="green center">21</p>
         <p>&nbsp;</p>
         <p>const f = (a, b) => <span class="gold">[...a, ...b].reduce((a, b) => a + b)</span></p>
       </div>
 
       <div class="task">
         <p class="purple center">[1, 2, 1, 1, 3, 2]</p>
-        <p class="green center circle">[1, 2, 3]</p>
+        <p class="green center">[1, 2, 3]</p>
         <p>&nbsp;</p>
         <p>const f = a => <span class="gold">[...new Set(a)]</span></p>
       </div>
 
       <div class="task">
         <p class="purple center">[1, 2, 'a']</p>
-        <p class="green center circle">'11'</p>
+        <p class="green center">'11'</p>
         <p>&nbsp;</p>
         <p>const f = a => <span class="gold">a.filter(x => typeof x === 'number').reduce((a, b) => a + b).toString(2)</span></p>
       </div>
+
+      <div class="task">
+        <p class="purple center">[1, -2, 3, -4, 5]</p>
+        <p class="green center">[-1, 2, -3, 4, -5]</p>
+        <p>&nbsp;</p>
+        <p>const f = a => <span class="gold">a.map(x => -x)</span></p>
+      </div>
+
+      <div class="task">
+        <p class="purple center">"Robin Singh"</p>
+        <p class="green center">["Robin", "Singh"]</p>
+        <p>&nbsp;</p>
+        <p>const f = a => <span class="gold">a.split(' ')</span></p>
+      </div>
+      
+      
+      
+      
     </div>
   </main>
 

@@ -1,33 +1,3 @@
-const f = a => {
-  return a.filter(x => x % 2 === 0)
-}
-console.log(f([1, 2, 3, 4, 5, 6], 2)) // [2, 4, 6]
-
-const f2 = (a, b) => {
-  return [...a, ...b].reduce((a, b) => a + b)
-}
-console.log(f2([1, 2, 3], [4, 5, 6])) // 21
-
-const f3 = a => {
-  return [...new Set(a)]
-}
-console.log(f3([1, 2, 1, 1, 3, 2])) // [1, 2, 3]
-
-const f5 = a => {
-  return a.filter(x => typeof x === 'number').reduce((a, b) => a + b).toString(2)
-}
-console.log(f5([1, 2, 'a'])) // '11' (двоичная система)
-
-const f6 = a => {
-  return a.map(x => -x)
-}
-console.log(f6([1, -2, 3, -4, 5])) // [-1, 2, -3, 4, -5]
-
-const f7 = a => {
-  return a.split(' ')
-}
-console.log(f7("Robin Singh")) // ["Robin", "Singh"]
-
 const f8 = a => {
   return a.filter(Boolean).length
 }
