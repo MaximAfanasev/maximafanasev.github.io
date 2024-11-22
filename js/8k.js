@@ -13,12 +13,6 @@ const f3 = a => {
 }
 console.log(f3([1, 2, 1, 1, 3, 2])) // [1, 2, 3]
 
-arr6 = ['0', '1', '2', '3', '4', '5']
-const f4 = a => {
-  return arr6[a % 6]
-}
-console.log(f4(7)) // ['0', '1', '2', '3', '4', '5'] '1'
-
 const f5 = a => {
   return a.filter(x => typeof x === 'number').reduce((a, b) => a + b).toString(2)
 }

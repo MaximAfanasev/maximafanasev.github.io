@@ -13,6 +13,14 @@
    overflow-x: hidden;
  }
 
+main {
+  border-top-left-radius: 120px;
+  background: #1f1f1f;
+  width: 100%;
+  padding: 60px;
+  font-size: 30px;
+}
+
  .wrapper {
    background: #1f1f1f;
  }

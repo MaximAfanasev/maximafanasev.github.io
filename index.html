@@ -52,6 +52,13 @@
         <p>&nbsp;</p>
         <p>const f = a => <span class="gold">[...new Set(a)]</span></p>
       </div>
+
+      <div class="task">
+        <p class="purple center">[1, 2, 'a']</p>
+        <p class="green center circle">'11'</p>
+        <p>&nbsp;</p>
+        <p>const f = a => <span class="gold">a.filter(x => typeof x === 'number').reduce((a, b) => a + b).toString(2)</span></p>
+      </div>
     </div>
   </main>
 
