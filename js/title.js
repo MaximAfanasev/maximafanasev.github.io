@@ -1,5 +1,5 @@
 const textElement = document.getElementById('text');
-const textToAnimate = "ANIMATIONS";
+const textToAnimate = "JAVASCRIPT";
 let index = 0;
 
 function animateText() {

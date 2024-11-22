@@ -10,6 +10,30 @@
   <link rel="stylesheet" href="css/snake.css">
 </head>
 
+<style>
+  .task {
+    margin-bottom: 80px;
+  }
+  .purple {
+    color: #d756d7;
+  }
+
+  .gold {
+    color: gold;
+  }
+  .center {
+    text-align: center;
+  }
+  .circle {
+    width: fit-content;
+    margin: 0 auto;
+    width: 50px;
+    border: 3px solid gold;
+    border-radius: 50%;
+    color: gold;
+  }
+</style>
+
 <body>
   <div class="wrapper">
     <header>
@@ -29,13 +53,26 @@
   </div>
 
   <main>
-
-    <div class="block">
-      
+  <h2 class="center">#1</h2>
+   
+    <div class="task">
+      <p class="purple center">[1, 2, 3, 4, 5, 6]</p>
+      <p class="purple center circle">2</p>
+      <p class="purple center">[2, 4, 6]</p>
+      <p>&nbsp;</p>
+      <p>const f = a => <span class="gold">a.filter(x => x % 2 === 0)</span></p>
+    </div>
+    
+    <div class="task">
+      <p class="purple center">[1, 2, 3], [4, 5, 6]</p>
+      <p class="purple center circle">21</p>
+      <p>&nbsp;</p>
+      <p>const f = (a, b) => <span class="gold">[...a, ...b].reduce((a, b) => a + b)</span></p>
     </div>
   </main>
 
   <script src="js/title.js"></script>
   <script src="js/panels.js"></script>
   <script src="js/snake.js"></script>
+  <script src="js/8k.js"></script>
 </body></html>
