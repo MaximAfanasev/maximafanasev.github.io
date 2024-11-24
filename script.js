@@ -4,7 +4,7 @@ const width = window.innerWidth,
   height = window.innerHeight;
 
 // init
-const camera = new THREE.PerspectiveCamera(70, width / height, 0.01, 10);
+const camera = new THREE.PerspectiveCamera(30, width / height, 0.01, 10);
 camera.position.z = 1;
 
 const scene = new THREE.Scene();
