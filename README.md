@@ -13,3 +13,7 @@ git config --global user.name ''
 git add .
 git commit -m 'commit'
 git push
+
+
+npm i
+npm run start
