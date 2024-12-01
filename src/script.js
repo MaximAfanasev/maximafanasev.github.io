@@ -1,32 +1,32 @@
 import * as THREE from 'three'
 import '../style/style.css'
 
-const width = window.innerWidth,
-  height = window.innerHeight;
-
-// init
-const camera = new THREE.PerspectiveCamera(30, width / height, 0.01, 10);
-camera.position.z = 1;
-
 const scene = new THREE.Scene();
 
-const geometry = new THREE.BoxGeometry(0.2, 0.2, 0.2);
-const material = new THREE.MeshNormalMaterial();
+const geometry = new THREE.BoxGeometry(1,1,1);
+const material = new THREE.MeshBasicMaterial({
+  color: 'purple',
+  wireframe: true,
+});
 
 const mesh = new THREE.Mesh(geometry, material);
+
 scene.add(mesh);
 
-const renderer = new THREE.WebGLRenderer({
-  antialias: true
-});
-renderer.setSize(width, height);
-renderer.setAnimationLoop(animate);
-document.body.appendChild(renderer.domElement);
+const sizes = {
+  width: 600,
+  height: 600,
+};
 
-// animation
-function animate(time) {
-  mesh.rotation.x = time / 2000;
-  mesh.rotation.y = time / 1000;
+const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height);
+camera.position.z = 3;
+camera.position.y = -1;
 
-  renderer.render(scene, camera);
-}
+scene.add(camera);
+
+const canvas = document.querySelector('.canvas');
+
+const renderer = new THREE.WebGLRenderer({canvas});
+
+renderer.setSize(sizes.width, sizes.height);
+renderer.render(scene, camera);
