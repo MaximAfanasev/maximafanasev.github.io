@@ -22,8 +22,14 @@
    font-size: 18px;
    line-height: 1.6;
  }
+	.card {
+		margin-bottom: 30px;
+	}
 	.gold {
 		color: gold;
+	}
+	table td {
+		padding: 5px;
 	}
     </style>
 
@@ -31,8 +37,75 @@
 
 <span class="gold"></span>
 
+<div class="card">
 	<div><span class="gold">for</span> a <span class="gold">in</span> 5,4,3,2,1,'hi'<span class="gold">:</span>
-    </div>
-    <div>&nbsp;<span class="gold">print</span>(a)</div>
+	</div>
+	<div>&nbsp;<span class="gold">print</span>(a)</div>
+	</div>
+	<div class="card">
+	<div>
+		a = <span class="gold">[1,2,3]</span>
+	</div>
+	<div>
+		print(<span class="gold">a[2]</span>)</div>
+</div>
+<div class="card">
+	<div>a0 = {</div>
+	<div>'a': '1',</div>
+	<div>'b': '2'</div>
+	<div>}</div>
+	<div>b = 'b'</div>
+	<div>print(<span class="gold">b, a0[b]</span>)</div>
+</div>
+<table>
+    <tr>
+        <td>bool</td>
+					<td><span class="gold">true false</span></td>
+    </tr>
+    <tr>
+        <td>int</td>
+					<td><span class="gold">1</span></td>
+    </tr>
+    <tr>
+        <td>float</td>
+					<td><span class="gold">1.1</span></td>
+    </tr>
+    <tr>
+        <td>complex</td>
+					<td><span class="gold">3j</span></td>
+    </tr>
+    <tr>
+        <td>str</td>
+					<td><span class="gold">'a'</span></td>
+    </tr>
+    <tr>
+        <td>list</td>
+					<td><span class="gold">[1,2]</span></td>
+    </tr>
+    <tr>
+        <td>tuple</td>
+					<td><span class="gold">(1,2)</span></td>
+    </tr>
+    <tr>
+        <td>bytes</td>
+					<td><span class="gold">b'ab\xff'</span></td>
+    </tr>
+    <tr>
+        <td>bytearray</td>
+					<td><span class="gold">bytearray(..)</span></td>
+    </tr>
+    <tr>
+        <td>set</td>
+					<td><span class="gold">set([1,2])</span></td>
+    </tr>
+    <tr>
+        <td>frozenset</td>
+					<td><span class="gold">frozenset([1,2])</span></td>
+    </tr>
+    <tr>
+        <td>dict</td>
+					<td><span class="gold">{'a':'1'}</span></td>
+    </tr>
+</table>
 
 </body></html>
