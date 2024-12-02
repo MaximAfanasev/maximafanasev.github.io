@@ -10,3 +10,5 @@ a0 = {
     }
 b = 'b'
 print(b, a0[b])
+
+print(type(7))

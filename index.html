@@ -2,110 +2,125 @@
 <html lang="ru">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Maxim Afanasev</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Maxim Afanasev</title>
 </head>
 
 <style>
-    * {
-   margin: 0;
-   padding: 0;
-   box-sizing: border-box;
- }
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
 
- body {
-	 padding: 16px;
-   background-color: #263238;
-   color: #e0e0e0;
-   font-family: monospace;
-   font-size: 18px;
-   line-height: 1.6;
- }
-	.card {
+	body {
+		padding: 16px;
+		background-color: #263238;
+		color: #e0e0e0;
+		font-family: monospace;
+		font-size: 18px;
+		line-height: 1.6;
+	}
+
+	.a {
 		margin-bottom: 30px;
 	}
-	.gold {
+
+	.c {
 		color: gold;
 	}
+
 	table td {
 		padding: 5px;
 	}
-    </style>
+
+</style>
 
 <body>
 
-<span class="gold"></span>
+	<span class="c"></span>
 
-<div class="card">
-	<div><span class="gold">for</span> a <span class="gold">in</span> 5,4,3,2,1,'hi'<span class="gold">:</span>
+	<div class="a">
+		<div><span class="c">for</span> a <span class="c">in</span> 5,4,3,2,1,'hi'<span class="c">:</span>
+		</div>
+		<div>&nbsp;<span class="c">print</span>(a)</div>
 	</div>
-	<div>&nbsp;<span class="gold">print</span>(a)</div>
+	<div class="a">
+		<div>
+			a = <span class="c">[1,2,3]</span>
+		</div>
+		<div>
+			print(<span class="c">a[2]</span>)</div>
 	</div>
-	<div class="card">
-	<div>
-		a = <span class="gold">[1,2,3]</span>
+	<div class="a">
+		<div>a0 = {</div>
+		<div>'a': '1',</div>
+		<div>'b': '2'</div>
+		<div>}</div>
+		<div>b = 'b'</div>
+		<div>print(<span class="c">b, a0[b]</span>)</div>
 	</div>
-	<div>
-		print(<span class="gold">a[2]</span>)</div>
-</div>
-<div class="card">
-	<div>a0 = {</div>
-	<div>'a': '1',</div>
-	<div>'b': '2'</div>
-	<div>}</div>
-	<div>b = 'b'</div>
-	<div>print(<span class="gold">b, a0[b]</span>)</div>
-</div>
-<table>
-    <tr>
-        <td>bool</td>
-					<td><span class="gold">true false</span></td>
-    </tr>
-    <tr>
-        <td>int</td>
-					<td><span class="gold">1</span></td>
-    </tr>
-    <tr>
-        <td>float</td>
-					<td><span class="gold">1.1</span></td>
-    </tr>
-    <tr>
-        <td>complex</td>
-					<td><span class="gold">3j</span></td>
-    </tr>
-    <tr>
-        <td>str</td>
-					<td><span class="gold">'a'</span></td>
-    </tr>
-    <tr>
-        <td>list</td>
-					<td><span class="gold">[1,2]</span></td>
-    </tr>
-    <tr>
-        <td>tuple</td>
-					<td><span class="gold">(1,2)</span></td>
-    </tr>
-    <tr>
-        <td>bytes</td>
-					<td><span class="gold">b'ab\xff'</span></td>
-    </tr>
-    <tr>
-        <td>bytearray</td>
-					<td><span class="gold">bytearray(..)</span></td>
-    </tr>
-    <tr>
-        <td>set</td>
-					<td><span class="gold">set([1,2])</span></td>
-    </tr>
-    <tr>
-        <td>frozenset</td>
-					<td><span class="gold">frozenset([1,2])</span></td>
-    </tr>
-    <tr>
-        <td>dict</td>
-					<td><span class="gold">{'a':'1'}</span></td>
-    </tr>
-</table>
+	<table class="a">
+		<tr>
+			<td>bool</td>
+			<td><span class="c">true false</span></td>
+		</tr>
+		<tr>
+			<td>int</td>
+			<td><span class="c">1</span></td>
+		</tr>
+		<tr>
+			<td>float</td>
+			<td><span class="c">1.1</span></td>
+		</tr>
+		<tr>
+			<td>complex</td>
+			<td><span class="c">3j</span></td>
+		</tr>
+		<tr>
+			<td>str</td>
+			<td><span class="c">'a'</span></td>
+		</tr>
+		<tr>
+			<td>list</td>
+			<td><span class="c">[1,2]</span></td>
+		</tr>
+		<tr>
+			<td>tuple</td>
+			<td><span class="c">(1,2)</span></td>
+		</tr>
+		<tr>
+			<td>bytes</td>
+			<td><span class="c">b'ab\xff'</span></td>
+		</tr>
+		<tr>
+			<td>bytearray</td>
+			<td><span class="c">bytearray(..)</span></td>
+		</tr>
+		<tr>
+			<td>set</td>
+			<td><span class="c">set([1,2])</span></td>
+		</tr>
+		<tr>
+			<td>frozenset</td>
+			<td><span class="c">frozenset([1,2])</span></td>
+		</tr>
+		<tr>
+			<td>dict</td>
+			<td><span class="c">{'a':'1'}</span></td>
+		</tr>
+	</table>
 
-</body></html>
+	<ul class="a">
+		<li>a z</li>
+		<li>A Z</li>
+		<li>0 9</li>
+		<li>_</li>
+	</ul>
+
+	<div class="a">print(type(7))</div>
+
+</body>
+
+</html>
