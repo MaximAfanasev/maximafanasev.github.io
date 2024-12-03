@@ -122,6 +122,26 @@ else: print('no')
 
 print('''three''')
 
+print(str(98.5))
+
+print('1' + '+' + '2')
+
+print('Na'*4)
+
+print('abc'[2])
+
+print('abc'.replace('a', 'X'))
+
+print('abc'[:])
+
+print('abc'[:1])
+
+print('abc'[1:])
+
+print()
+
+print()
+
 
 
 
