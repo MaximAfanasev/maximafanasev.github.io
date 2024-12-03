@@ -84,18 +84,43 @@ a5 = (1 +
       2)
 print(a5)
 
+a6 = True
+if a6:
+    print('a6 True')
+
+a7 = 'a'
+if a7 == 'b':
+    print('b')
+elif a7 == 'a':
+    print('a')
+
+a8 = 5
+print((a8<7) and (a8<10))
+
+a9 = []
+if a9: print('some')
+else: print('empty')
+
+a10 = 'o'
+if a10 == 'o' or a10 == 'a':
+    print(a10, 'it"s wowel')
+
+vowels = 'aoeui'
+if a10 in vowels:
+    print(a10, 'yeah')
 
 
+vowels2 = {'a','o','e','u','i'}
+if a10 in vowels2:
+    print(a10, 'yeah2')
 
+a11 = 10
+b2 = 'b'*a11
+if c2 := a11 - len(b2) >= 0:
+    print('yes')
+else: print('no')
 
-
-
-
-
-
-
-
-
+print('''three''')
 
 
 
