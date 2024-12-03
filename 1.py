@@ -138,10 +138,47 @@ print('abc'[:1])
 
 print('abc'[1:])
 
+print(len('abc'))
+
+print('a,b,c'.split(','))
+
+print(''.join(['a','b','c']))
+
+print('   strip    '.strip())
+
+print('strip'.strip('s'))
+
+print('stst'.startswith('st'))
+
+print('stst'.endswith('st'))
+
+print('abc'.find('b'))
+
+print('abc'.index('a'))
+
+print('aaa'.count('a'))
+
+print('abc'.capitalize())
+
+print('abc'.title())
+
+print('abc'.upper())
+
+print()
+
 print()
 
 print()
 
+print()
+
+print()
+
+print()
+
+print()
+
+print()
 
 
 
