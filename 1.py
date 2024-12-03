@@ -176,13 +176,13 @@ print('%x' % 42)
 
 print('abc%c' % 'd')
 
-print()
+print('abc {} def {} hig'.format('SSS', 'SSS'))
 
-print()
+print(f'abc {"def".title()} bbb {"eee".rjust(20)}')
 
-print()
+print(f'The {"def":>20} is in the {"eee":.^10}')
 
-print()
+print(f'{'aaa' = }, {'ddd'= }')
 
 print()
 
