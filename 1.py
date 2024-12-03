@@ -184,29 +184,21 @@ print(f'The {"def":>20} is in the {"eee":.^10}')
 
 print(f'{'aaa' = }, {'ddd'= }')
 
-print()
+c3 = 1
+while c3 <= 5:
+    print(c3)
+    c3 += 1
 
-print()
-
-print()
-
-print()
-
-print()
-
-print()
-
-print()
-
-print()
-
-print()
-
-print()
-
-print()
-
-print()
+for a in 'abc':
+    print(a)
 
 
+for a in range(0,3):
+    print(a)
 
+a12 = 'a',
+print(a12)
+
+a13 = ('a','b','c')
+a13,b3,c3 = a13
+print(a13)
