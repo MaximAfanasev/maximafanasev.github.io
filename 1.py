@@ -164,6 +164,34 @@ print('abc'.title())
 
 print('abc'.upper())
 
+print('ABC'.lower())
+
+print('AbC'.swapcase())
+
+print('abc     '.center(30))
+
+print('abc'.rjust(30))
+
+print('%x' % 42)
+
+print('abc%c' % 'd')
+
+print()
+
+print()
+
+print()
+
+print()
+
+print()
+
+print()
+
+print()
+
+print()
+
 print()
 
 print()
