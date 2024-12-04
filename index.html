@@ -14,6 +14,12 @@
 		box-sizing: border-box;
 	}
 
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
 	body {
 		padding: 16px;
 		background-color: #263238;
@@ -77,13 +83,13 @@
 		<div>&nbsp;<span class="c">print</span>(a)</div>
 		<div class="s">5 4 3 2 1 hi</div>
 	</div>
-	
+
 	<div class="a">
 		<div>
 			print(<span class="c c1">[</span>1, 2, 3<span class="c">][2]</span>)</div>
 		<div class="s">3</div>
 	</div>
-	
+
 	<div class="a">
 		<div>a = {</div>
 		<div>'a': '1',</div>
@@ -102,7 +108,7 @@
 		<div>int</div>
 		<div><span class="s c">1</span></div>
 	</div>
-	
+
 	<div class="a">
 		<div>float</div>
 		<div><span class="s c">1.1</span></div>
@@ -117,66 +123,75 @@
 		<div>str</div>
 		<div><span class="s c">'a'</span></div>
 	</div>
-	
+
 	<div class="a">
 		<div>list</div>
 		<div><span class="s c">[1,2]</span></div>
 	</div>
-	
+
 	<div class="a">
 		<div>tuple</div>
 		<div><span class="s c">(1,2)</span></div>
 	</div>
-	
+
 	<div class="a">
 		<div>bytes</div>
 		<div><span class="s c">b'ab\xff'</span></div>
 	</div>
-	
+
 	<div class="a">
 		<div>bytearray</div>
 		<div><span class="s c">bytearray(..)</span></div>
 	</div>
-	
+
 	<div class="a">
 		<div>set</div>
 		<div><span class="s c">set([1,2])</span></div>
 	</div>
-	
+
 	<div class="a">
 		<div>frozenset</div>
 		<div><span class="s c">frozenset([1,2])</span></div>
 	</div>
-	
+
 	<div class="a">
 		<div>dict</div>
 		<div><span class="s c">{'a':'1'}</span></div>
 	</div>
 
 	<ul class="a">
-		<li>a z</li>
-		<li>A Z</li>
-		<li>0 9</li>
-		<li>_</li>
+		<li>Names variables</li>
+		<li class="s c">a z A Z 0 9 _</li>
 	</ul>
 
-	<div class="a">print(<span class="c">type</span>(7))</div>
+	<div class="a">
+		<div><span class="c">type</span>(1)</div>
+		<div class="s">class 'int'</div>
+	</div>
 
-	<div class="a"><span class="c">a1 = b1 = c1</span> = 2</div>
+	<div class="a">
+	<div><span class="c">a = b = c</span> = 2</div>
+	<div>a? b? c?</div>
+	<div class="s c">2 2 2</div></div>
 
 	<div class="a">
 		<div>x = 5</div>
 		<div>y = x</div>
 		<div>x = 29</div>
-		<div><span class="c">print(x)??</span></div>
-		<div><span class="c">print(y)??</span></div>
+		<div><span class="c">x?</span></div>
+		<div><span class="c">y?</span></div>
+		<div class="s c">x = 29</div>
+		<div class="s c">y = 5</div>
 	</div>
 
 	<div class="a">
-		<div>a2 = [1,2,3]</div>
-		<div>b2 = a2</div>
-		<div>a2[0] = 5</div>
-		<div><span class="c">print(b2)??</span></div>
+		<div>a = [1,2,3]</div>
+		<div>b = a</div>
+		<div>a[0] = 5</div>
+		<div><span class="c">a?</span></div>
+		<div><span class="c">b?</span></div>
+		<div class="s c">[5, 2, 3]</div>
+		<div class="s c">[5, 2, 3]</div>
 	</div>
 
 	<div class="a">
