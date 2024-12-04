@@ -32,6 +32,21 @@
 	.c {
 		color: gold;
 	}
+	
+	.s {
+		margin-top: 20px;
+		filter: blur(5px);
+		border: 1px solid gold;
+		width: fit-content;
+		padding: 10px 20px;
+		border-radius: 10px;
+		cursor: progress;
+	}
+	
+	.s:hover {
+		filter: blur(0);
+		transition: 2s;
+	}
 
 	table td {
 		padding: 5px;
@@ -46,6 +61,7 @@
 		<div><span class="c">for</span> a <span class="c">in</span> 5,4,3,2,1,'hi'<span class="c">:</span>
 		</div>
 		<div>&nbsp;<span class="c">print</span>(a)</div>
+		<div class="s">5 4 3 2 1 hi</div>
 	</div>
 	<div class="a">
 		<div>
