@@ -51,6 +51,21 @@
 	.s:hover {
 		filter: blur(0);
 	}
+	
+	.c1 {
+		position: relative;
+	}
+	
+	.c1::before {
+		content: '0 1 2';
+		position: absolute;
+		width: 100px;
+		height: 20px;
+		top: -30px;
+		left: 10px;
+		letter-spacing: 5.5px;
+		color: gray;
+	}
 
 	table td {
 		padding: 5px;
@@ -66,10 +81,8 @@
 	</div>
 	<div class="a">
 		<div>
-			a = <span class="c">[1,2,3]</span>
-		</div>
-		<div>
-			print(<span class="c">a[2]</span>)</div>
+			<span class="c c1">[</span>1, 2, 3<span class="c">][2]</span></div>
+			<div class="s">3</div>
 	</div>
 	<div class="a">
 		<div>a0 = {</div>

@@ -1,15 +1,14 @@
 for a in 5,4,3,2,1,'hi':
     print(a)
 
-a = [1,2,3]
-print(a[2])
+print([1,2,3][2])
 
 a0 = {
-    'a': '1',
-    'b': '2'
+    '1': '1',
+    '2': '2'
     }
-b = 'b'
-print(b, a0[b])
+n = '2'
+print(n, a0[n])
 
 print(type(7))
 
