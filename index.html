@@ -27,11 +27,11 @@
 
 	.a {
 		margin: 0 a;
-		margin-bottom: 100px;
+		margin-bottom: 250px;
 		border: 1px solid gray;
 		padding: 60px;
 		border-radius: 15px;
-		width: 100%
+		width: 100%;
 	}
 
 	.c {
@@ -39,7 +39,7 @@
 	}
 	
 	.s {
-		margin-top: 20px;
+		margin-top: 50px;
 		filter: blur(5px);
 		border: 1px solid gold;
 		width: fit-content;
@@ -63,7 +63,7 @@
 		width: 100px;
 		height: 20px;
 		top: -50px;
-		left: 10px;
+		left: 13px;
 		letter-spacing: 5.5px;
 		color: gray;
 	}
@@ -82,16 +82,15 @@
 	</div>
 	<div class="a">
 		<div>
-			<span class="c c1">[</span>1, 2, 3<span class="c">][2]</span></div>
+			print(<span class="c c1">[</span>1, 2, 3<span class="c">][2]</span>)</div>
 			<div class="s">3</div>
 	</div>
 	<div class="a">
-		<div>a0 = {</div>
+		<div>a = {</div>
 		<div>'a': '1',</div>
 		<div>'b': '2'</div>
 		<div>}</div>
-		<div>b = 'b'</div>
-		<div>print(<span class="c">b, a0[b]</span>)</div>
+		<div>print(<span class="c">a['b']</span>)</div>
 	</div>
 	<table class="a">
 		<tr>
