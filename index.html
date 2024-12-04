@@ -13,16 +13,19 @@
 	}
 
 	body {
-		position: relative;
 		background-color: #263238;
 		overflow: hidden;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		height: 100vh;
+		color: #e0e0e0;
+		font-family: monospace;
+		font-size: 20px;
+		line-height: 2.5;
 	}
-
+	
 	.wrapper {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
 	}
 
 	canvas {
