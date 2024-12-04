@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Maxim Afanasev</title>
+	<title>Авто Змейка</title>
+	<link rel="stylesheet" href="style.css">
 </head>
-
 <style>
 	* {
 		margin: 0;
@@ -14,499 +13,162 @@
 		box-sizing: border-box;
 	}
 
-	ul {
-		list-style: none;
-		margin: 0;
-		padding: 0;
-	}
-
 	body {
-		padding: 16px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		width: 100vw;
+		height: 100vh;
 		background-color: #263238;
-		color: #e0e0e0;
+		overflow: hidden;
 		font-family: monospace;
-		font-size: 20px;
-		line-height: 2.5;
-		max-width: 500px;
-		margin: 100px auto;
-	}
-
-	.a {
-		margin: 0 a;
-		margin-bottom: 250px;
-		border: 1px solid gray;
-		padding: 60px;
-		border-radius: 15px;
-		width: 100%;
-	}
-
-	.c {
+		font-size: 18px;
+		letter-spacing: 2px;
 		color: gold;
 	}
 
-	.s {
-		margin-top: 50px;
-		filter: blur(5px);
-		border: 1px solid gold;
-		width: fit-content;
-		padding: 10px 20px;
-		border-radius: 10px;
-		cursor: progress;
-		transition: 1s;
-	}
-
-	.s:hover {
-		filter: blur(0);
-	}
-
-	.c1 {
+	.game-container {
 		position: relative;
 	}
 
-	.c1::before {
-		content: '0 1 2';
-		position: absolute;
-		width: 100px;
-		height: 20px;
-		top: -50px;
-		left: 13px;
-		letter-spacing: 5.5px;
-		color: gray;
+	canvas {
+		margin-top: 50px;
+		background-color: #263238;
+		width: 300px;
+		height: 500px;
+	}
+
+	button {
+		font-size: 50px;
+
+	}
+
+	.button-container {
+		position: relative;
+	}
+
+	.snake-button {
+		position: relative;
+		padding: 15px 30px;
+		font-size: 24px;
+		color: white;
+		text-shadow: 2px 4px 2px #000;
+		background-color: #4CAF50;
+		border: none;
+		border-radius: 30px;
 	}
 </style>
 
 <body>
-
-	<div class="a">
-		<div><span class="c">for</span> a <span class="c">in</span> 5,4,3,2,1,'hi'<span class="c">:</span>
-		</div>
-		<div>&nbsp;<span class="c">print</span>(a)</div>
-		<div class="s">5 4 3 2 1 hi</div>
-	</div>
-
-	<div class="a">
-		<div>
-			print(<span class="c c1">[</span>1, 2, 3<span class="c">][2]</span>)</div>
-		<div class="s">3</div>
-	</div>
-
-	<div class="a">
-		<div>a = {</div>
-		<div>'a': '1',</div>
-		<div>'b': '2'</div>
-		<div>}</div>
-		<div>print(<span class="c">a['b']</span>)</div>
-		<div class="s">2</div>
-	</div>
-
-	<div class="a">
-		<div>bool</div>
-		<div><span class="s c">true false</span></div>
-	</div>
-
-	<div class="a">
-		<div>int</div>
-		<div><span class="s c">1</span></div>
-	</div>
-
-	<div class="a">
-		<div>float</div>
-		<div><span class="s c">1.1</span></div>
-	</div>
-
-	<div class="a">
-		<div>complex</div>
-		<div><span class="s c">3j</span></div>
-	</div>
-
-	<div class="a">
-		<div>str</div>
-		<div><span class="s c">'a'</span></div>
-	</div>
-
-	<div class="a">
-		<div>list</div>
-		<div><span class="s c">[1,2]</span></div>
-	</div>
-
-	<div class="a">
-		<div>tuple</div>
-		<div><span class="s c">(1,2)</span></div>
-	</div>
-
-	<div class="a">
-		<div>bytes</div>
-		<div><span class="s c">b'ab\xff'</span></div>
-	</div>
-
-	<div class="a">
-		<div>bytearray</div>
-		<div><span class="s c">bytearray(..)</span></div>
-	</div>
-
-	<div class="a">
-		<div>set</div>
-		<div><span class="s c">set([1,2])</span></div>
-	</div>
-
-	<div class="a">
-		<div>frozenset</div>
-		<div><span class="s c">frozenset([1,2])</span></div>
-	</div>
-
-	<div class="a">
-		<div>dict</div>
-		<div><span class="s c">{'a':'1'}</span></div>
-	</div>
-
-	<ul class="a">
-		<li>Names variables</li>
-		<li class="s c">a z A Z 0 9 _</li>
-	</ul>
-
-	<div class="a">
-		<div><span class="c">type</span>(1)</div>
-		<div class="s">class 'int'</div>
-	</div>
-
-	<div class="a">
-	<div><span class="c">a = b = c</span> = 2</div>
-	<div>a? b? c?</div>
-	<div class="s c">2 2 2</div></div>
-
-	<div class="a">
-		<div>x = 5</div>
-		<div>y = x</div>
-		<div>x = 29</div>
-		<div><span class="c">x?</span></div>
-		<div><span class="c">y?</span></div>
-		<div class="s c">x = 29</div>
-		<div class="s c">y = 5</div>
-	</div>
-
-	<div class="a">
-		<div>a = [1,2,3]</div>
-		<div>b = a</div>
-		<div>a[0] = 5</div>
-		<div><span class="c">a?</span></div>
-		<div><span class="c">b?</span></div>
-		<div class="s c">[5, 2, 3]</div>
-		<div class="s c">[5, 2, 3]</div>
-	</div>
-
-	<div class="a">
-		<div>print(<span class="c">bool</span>(1))</div>
-		<div>print(bool(0))</div>
-	</div>
-
-	<div class="a">print(1<span class="c">_</span>000<span class="c">_</span>000)</div>
-
-	<div class="a">
-		<div>a3 = 95</div>
-		<div>a3 -= 3</div>
-		<div><span class="c">print(a3)??</span></div>
-	</div>
-
-	<div class="a">
-		<div class="c">divmod(9,5)</div>
-	</div>
-
-	<div class="a">
-		<div class="c">2**3</div>
-	</div>
-
-	<div class="a">
-		<div class="c">(-5)**2</div>
-	</div>
-
-	<div class="a">
-		<div class="c">0b10</div>
-		<div class="c">0o10</div>
-		<div class="c">0x10</div>
-	</div>
-
-	<div class="a">
-		<div class="c">bin(65)</div>
-		<div class="c">oct(65)</div>
-		<div class="c">hex(65)</div>
-	</div>
-
-	<div class="a">
-		<div class="c">chr(65)</div>
-	</div>
-
-	<div class="a">
-		<div class="c">int(True)</div>
-	</div>
-
-	<div class="a">
-		<div class="c">int(98.6)</div>
-	</div>
-
-	<div class="a">
-		<div class="c">int('99')</div>
-	</div>
-
-	<div class="a">
-		<div class="c">int('10',2)</div>
-	</div>
-
-	<div class="a">
-		<div class="c">True + 2</div>
-	</div>
-
-	<div class="a">
-		<div class="c">43+2.</div>
-	</div>
-
-	<div class="a">
-		<div class="c">#comment</div>
-	</div>
-
-	<div class="a">
-		<div></div>
-		<div>a4 = 0</div>
-		<div>a4 = 1 + \</div>
-		<div>2</div>
-		<div class="c">print(a4)??</div>
-	</div>
-
-	<div class="a">
-		<div>a5 = 0</div>
-		<div>a5 = (1 +</div>
-		<div>2)</div>
-		<div class="c">print(a5)??</div>
-	</div>
-
-	<div class="a">
-		<div>a6 = True</div>
-		<div>&nbsp;&nbsp;if a6:</div>
-		<div>print('a6 True')</div>
-	</div>
-
-	<div class="a">
-		<div>a7 = 'a'</div>
-		<div>if a7 == 'b':</div>
-		<div>&nbsp;&nbsp;print('b')</div>
-		<div>elif a7 == 'a':</div>
-		<div class="c">&nbsp;&nbsp;print('a')</div>
-	</div>
-
-	<div class="a">
-		<div class="c">==</div>
-		<div class="c">!=</div>
-		<div class="c">></div>
-		<div class="c">>=</div>
-		<div class="c">&#60;</div>
-		<div class="c">&#60;=</div>
-	</div>
-
-	<div class="a">
-		<div>a8 = 5</div>
-		<div class="c">print((a8&#60;7) and (a8&#60;10))</div>
-	</div>
-
-	<div class="a">
-		<div>a9 = []</div>
-		<div>if a9: print('some')</div>
-		<div class="c">else: print('empty')</div>
-	</div>
-
-	<div class="a">
-		<div>a10 = 'o'</div>
-		<div>if a10 == 'o' or a10 == 'a':</div>
-		<div class="c">print(a10, 'it"s wowel')</div>
-	</div>
-
-	<div class="a">
-		<div>vowels = 'aoeui'</div>
-		<div>if a10 in vowels:</div>
-		<div class="c">print(a10, 'yeah')</div>
-	</div>
-
-	<div class="a">
-		<div>a11 = 10</div>
-		<div>b2 = 'b'*a11</div>
-		<div class="c">if c2 := a11 - len(b2) >= 0:</div>
-		<div>print('yes')</div>
-		<div>else: print('no')</div>
-	</div>
-
-	<div class="a c">'''three'''</div>
-
-	<div class="a">
-		<div class="c">str(98.5)</div>
-	</div>
-
-	<div class="a">
-		<div class="c">'1' + '+' + '2'</div>
-	</div>
-
-	<div class="a">
-		<div class="c">'Na'*4</div>
-	</div>
-
-	<div class="a">
-		<div class="c">'abc'[0]</div>
-	</div>
-
-	<div class="a">
-		<div class="c">'abc'.replace('a','X')</div>
-	</div>
-
-	<div class="a">
-		<div class="c">'abc'[:]</div>
-	</div>
-
-	<div class="a">
-		<div class="c">'abc'[:1]</div>
-	</div>
-
-	<div class="a">
-		<div class="c">'abc'[1:]</div>
-	</div>
-
-	<div class="a">
-		<div class="c">len('abc')</div>
-	</div>
-
-	<div class="a">
-		<div class="c">'a,b,c'.split(',')</div>
-	</div>
-
-	<div class="a">
-		<div class="c">''.join(['a','b','c'])</div>
-	</div>
-
-	<div class="a">
-		<div class="c">' strip '.strip()</div>
-	</div>
-
-	<div class="a">
-		<div class="c">'strip'.strip('s')</div>
-	</div>
-
-	<div class="a">
-		<div class="c">'stst'.startswith('st')</div>
-	</div>
-
-	<div class="a">
-		<div class="c">'stst'.endswith('st')</div>
-	</div>
-
-	<div class="a">
-		<div class="c">'abc'.find('b')</div>
-	</div>
-
-	<div class="a">
-		<div class="c">'abc'.index('a')</div>
-	</div>
-
-	<div class="a">
-		<div class="c">'aaa'.count('a')</div>
-	</div>
-
-	<div class="a">
-		<div class="c">'abc'.capitalize()</div>
-	</div>
-
-	<div class="a">
-		<div class="c">'abc'.title()</div>
-	</div>
-
-	<div class="a">
-		<div class="c">'abc'.upper()</div>
-	</div>
-
-	<div class="a">
-		<div class="c">'ABC'.lower()</div>
-	</div>
-
-	<div class="a">
-		<div class="c">'aBc'.swapcase()</div>
-	</div>
-
-	<div class="a">
-		<div class="c">'abc'.center(30)</div>
-	</div>
-
-	<div class="a">
-		<div class="c">'abc'.rjust(30)</div>
-	</div>
-
-	<div class="a">
-		<div class="c">'%x' % 42</div>
-	</div>
-
-	<div class="a">
-		<div class="c">'abc%s' % 'd'</div>
-	</div>
-
-	<div class="a">
-		<div class="c">'abc {} def {} hig'.format('SSS', 'XXX')</div>
-	</div>
-
-	<div class="a">
-		<div class="c">f'abc {"def".title()} bbb {"eee".rjust(20)}'</div>
-	</div>
-
-	<div class="a">
-		<div class="c">f'The {"def":>20} is in the {"eee":.^10}'</div>
-	</div>
-
-	<div class="a">
-		<div class="c">f'{'aaa' =}, {'ddd'=}'</div>
-	</div>
-
-	<div class="a">
-		<div class="c"></div>
-		<div>c3 = 1</div>
-		<div class="c">while c3 &#60;= 5:</div>
-		<div>&nbsp;&nbsp;print(c3)</div>
-		<div>&nbsp;&nbsp;c3 += 1</div>
-	</div>
-
-	<div class="a">
-		<div class="c">for a in 'abc': print(a)
-		</div>
-	</div>
-
-	<div class="a">
-		<div class="c">for a in range(0,3):
-			print(a)</div>
-	</div>
-
-	<div class="a">
-		<div class="c">a12 = 'a',
-		</div>
-		<div class="c">print(a12)</div>
-	</div>
-
-	<div class="a">
-		<div class="c">a13 = ('a','b','c')
-		</div>
-		<div class="c">a13,b3,c3 = a13</div>
-	</div>
-
-	<div class="a">
-		<div class="c">tuple(['a','b','c'])</div>
-	</div>
-
-	<div class="a">
-		<div class="c">('a',) + ('b','c')</div>
-	</div>
-
-	<div class="a">
-		<div class="c"></div>
-	</div>
-
-
-
-
-
-
-
-
-
-
+	<h1>PYTHON</h1>
+	<div class="game-container">
+		<canvas id="gameCanvas" width="300" height="500"></canvas>
+	</div>
+	<div class="button-container">
+		<button class="snake-button">
+			<span class="snake"></span>
+			START
+		</button>
+	</div>
+	<script>
+		const canvas = document.getElementById('gameCanvas');
+		const ctx = canvas.getContext('2d');
+
+		const box = 25; // размер клетки
+		let snake;
+		let food;
+		let direction; // текущее направление
+		let game;
+
+		function resetGame() {
+			snake = [{
+				x: 4 * box,
+				y: 4 * box
+			}];
+			food = {
+				x: Math.floor(Math.random() * (canvas.width / box)) * box,
+				y: Math.floor(Math.random() * (canvas.height / box)) * box
+			};
+			direction = 'RIGHT'; // начальное направление
+			clearInterval(game); // Останавливаем предыдущую игру
+			game = setInterval(draw, 100); // Запускаем игру заново
+		}
+
+		function draw() {
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+			// Рисуем змею
+			for (let i = 0; i < snake.length; i++) {
+				ctx.beginPath();
+				ctx.arc(snake[i].x + box / 2, snake[i].y + box / 2, box / 2, 0, Math.PI * 1.8); // Используем arc для круга
+				ctx.fillStyle = (i === 0) ? 'green' : 'lightgreen';
+				ctx.fill();
+				ctx.strokeStyle = 'darkgreen';
+				ctx.stroke();
+			}
+
+			// Рисуем еду
+			ctx.fillStyle = 'red';
+			ctx.fillRect(food.x, food.y, box, box);
+
+			// Логика движения змейки
+			let snakeX = snake[0].x;
+			let snakeY = snake[0].y;
+
+			if (direction === 'LEFT') snakeX -= box;
+			if (direction === 'UP') snakeY -= box;
+			if (direction === 'RIGHT') snakeX += box;
+			if (direction === 'DOWN') snakeY += box;
+
+			// Проверка на сбитие с едой
+			if (snakeX === food.x && snakeY === food.y) {
+				// Создаем новую еду в случайном месте
+				food = {
+					x: Math.floor(Math.random() * (canvas.width / box)) * box,
+					y: Math.floor(Math.random() * (canvas.height / box)) * box
+				};
+			} else {
+				snake.pop(); // Удаляем последний сегмент змейки
+			}
+
+			// Обработка выхода за границы
+			snakeX = (snakeX + canvas.width) % canvas.width;
+			snakeY = (snakeY + canvas.height) % canvas.height;
+
+			const newHead = {
+				x: snakeX,
+				y: snakeY
+			};
+
+			// Проверка на столкновение со своим телом
+			if (collide(newHead, snake)) {
+				resetGame(); // Перезагружаем игру
+				return; // Выход из функции, чтобы не добавлять новую голову
+			}
+
+			snake.unshift(newHead); // Добавляем новую голову
+			autoDirection(newHead); // Вызываем функцию для изменения направления
+		}
+
+		function collide(head, array) {
+			for (let i = 1; i < array.length; i++) { // Начинаем с 1, чтобы не проверять голову
+				if (array[i].x === head.x && array[i].y === head.y) {
+					return true;
+				}
+			}
+			return false;
+		}
+
+		function autoDirection(snakeHead) {
+			// Логика самоуправления: поворачиваем к еде
+			if (snakeHead.x < food.x) direction = 'RIGHT';
+			else if (snakeHead.x > food.x) direction = 'LEFT';
+			else if (snakeHead.y < food.y) direction = 'DOWN';
+			else if (snakeHead.y > food.y) direction = 'UP';
+		}
+
+		// Инициализация первой игры
+		resetGame();
+	</script>
 </body></html>
