@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>PYTHON</title>
 </head>
 <style>
@@ -24,10 +24,13 @@
     }
 
     .wrapper {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%,-50%);
+        position: fixed; /* Измените с absolute на fixed */
+       top: 50%;
+       left: 50%;
+       transform: translate(-50%, -50%);
+       height: 100%; /* Занять всю высоту */
+       width: 100%; /* Занять всю ширину */
+       overflow: hidden; /* Убираем прокрутку */
     }
 
     canvas {
