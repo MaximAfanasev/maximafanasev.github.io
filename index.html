@@ -14,6 +14,7 @@
 	}
 
 	body {
+		position: relative;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -28,10 +29,6 @@
 		color: gold;
 	}
 
-	.game-container {
-		position: relative;
-	}
-
 	canvas {
 		background-color: #263238;
 		width: 300px;
@@ -39,15 +36,11 @@
 	}
 
 	button {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
 		font-size: 50px;
-	}
-
-	.button-container {
-		position: relative;
-	}
-
-	.snake-button {
-		position: relative;
 		padding: 15px 30px;
 		font-size: 24px;
 		color: white;
@@ -59,16 +52,10 @@
 </style>
 
 <body>
-	<h1>PYTHON</h1>
-	<div class="game-container">
-		<canvas id="gameCanvas" width="300" height="400"></canvas>
-	</div>
-	<div class="button-container">
-		<button class="snake-button">
-			<span class="snake"></span>
-			START
-		</button>
-	</div>
+	<canvas id="gameCanvas" width="300" height="400"></canvas>
+	<button class="snake-button">
+		START
+	</button>
 	<script>
 		const canvas = document.getElementById('gameCanvas');
 		const ctx = canvas.getContext('2d');
