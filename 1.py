@@ -7,8 +7,7 @@ a0 = {
     '1': '1',
     '2': '2'
     }
-n = '2'
-print(n, a0[n])
+print(a0['2'])
 
 print(type(7))
 

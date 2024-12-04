@@ -37,7 +37,7 @@
 	.c {
 		color: gold;
 	}
-	
+
 	.s {
 		margin-top: 50px;
 		filter: blur(5px);
@@ -48,15 +48,15 @@
 		cursor: progress;
 		transition: 1s;
 	}
-	
+
 	.s:hover {
 		filter: blur(0);
 	}
-	
+
 	.c1 {
 		position: relative;
 	}
-	
+
 	.c1::before {
 		content: '0 1 2';
 		position: absolute;
@@ -67,81 +67,91 @@
 		letter-spacing: 5.5px;
 		color: gray;
 	}
-
-	table td {
-		padding: 5px;
-	}
 </style>
 
 <body>
+
 	<div class="a">
 		<div><span class="c">for</span> a <span class="c">in</span> 5,4,3,2,1,'hi'<span class="c">:</span>
 		</div>
 		<div>&nbsp;<span class="c">print</span>(a)</div>
 		<div class="s">5 4 3 2 1 hi</div>
 	</div>
+	
 	<div class="a">
 		<div>
 			print(<span class="c c1">[</span>1, 2, 3<span class="c">][2]</span>)</div>
-			<div class="s">3</div>
+		<div class="s">3</div>
 	</div>
+	
 	<div class="a">
 		<div>a = {</div>
 		<div>'a': '1',</div>
 		<div>'b': '2'</div>
 		<div>}</div>
 		<div>print(<span class="c">a['b']</span>)</div>
+		<div class="s">2</div>
 	</div>
-	<table class="a">
-		<tr>
-			<td>bool</td>
-			<td><span class="c">true false</span></td>
-		</tr>
-		<tr>
-			<td>int</td>
-			<td><span class="c">1</span></td>
-		</tr>
-		<tr>
-			<td>float</td>
-			<td><span class="c">1.1</span></td>
-		</tr>
-		<tr>
-			<td>complex</td>
-			<td><span class="c">3j</span></td>
-		</tr>
-		<tr>
-			<td>str</td>
-			<td><span class="c">'a'</span></td>
-		</tr>
-		<tr>
-			<td>list</td>
-			<td><span class="c">[1,2]</span></td>
-		</tr>
-		<tr>
-			<td>tuple</td>
-			<td><span class="c">(1,2)</span></td>
-		</tr>
-		<tr>
-			<td>bytes</td>
-			<td><span class="c">b'ab\xff'</span></td>
-		</tr>
-		<tr>
-			<td>bytearray</td>
-			<td><span class="c">bytearray(..)</span></td>
-		</tr>
-		<tr>
-			<td>set</td>
-			<td><span class="c">set([1,2])</span></td>
-		</tr>
-		<tr>
-			<td>frozenset</td>
-			<td><span class="c">frozenset([1,2])</span></td>
-		</tr>
-		<tr>
-			<td>dict</td>
-			<td><span class="c">{'a':'1'}</span></td>
-		</tr>
-	</table>
+
+	<div class="a">
+		<div>bool</div>
+		<div><span class="s c">true false</span></div>
+	</div>
+
+	<div class="a">
+		<div>int</div>
+		<div><span class="s c">1</span></div>
+	</div>
+	
+	<div class="a">
+		<div>float</div>
+		<div><span class="s c">1.1</span></div>
+	</div>
+
+	<div class="a">
+		<div>complex</div>
+		<div><span class="s c">3j</span></div>
+	</div>
+
+	<div class="a">
+		<div>str</div>
+		<div><span class="s c">'a'</span></div>
+	</div>
+	
+	<div class="a">
+		<div>list</div>
+		<div><span class="s c">[1,2]</span></div>
+	</div>
+	
+	<div class="a">
+		<div>tuple</div>
+		<div><span class="s c">(1,2)</span></div>
+	</div>
+	
+	<div class="a">
+		<div>bytes</div>
+		<div><span class="s c">b'ab\xff'</span></div>
+	</div>
+	
+	<div class="a">
+		<div>bytearray</div>
+		<div><span class="s c">bytearray(..)</span></div>
+	</div>
+	
+	<div class="a">
+		<div>set</div>
+		<div><span class="s c">set([1,2])</span></div>
+	</div>
+	
+	<div class="a">
+		<div>frozenset</div>
+		<div><span class="s c">frozenset([1,2])</span></div>
+	</div>
+	
+	<div class="a">
+		<div>dict</div>
+		<div><span class="s c">{'a':'1'}</span></div>
+	</div>
 
 	<ul class="a">
 		<li>a z</li>
@@ -275,30 +285,30 @@
 		<div class="c">&#60;</div>
 		<div class="c">&#60;=</div>
 	</div>
-	
+
 	<div class="a">
 		<div>a8 = 5</div>
 		<div class="c">print((a8&#60;7) and (a8&#60;10))</div>
 	</div>
-	
+
 	<div class="a">
 		<div>a9 = []</div>
 		<div>if a9: print('some')</div>
 		<div class="c">else: print('empty')</div>
 	</div>
-	
+
 	<div class="a">
 		<div>a10 = 'o'</div>
 		<div>if a10 == 'o' or a10 == 'a':</div>
 		<div class="c">print(a10, 'it"s wowel')</div>
 	</div>
-	
+
 	<div class="a">
 		<div>vowels = 'aoeui'</div>
 		<div>if a10 in vowels:</div>
 		<div class="c">print(a10, 'yeah')</div>
 	</div>
-	
+
 	<div class="a">
 		<div>a11 = 10</div>
 		<div>b2 = 'b'*a11</div>
@@ -306,133 +316,133 @@
 		<div>print('yes')</div>
 		<div>else: print('no')</div>
 	</div>
-	
+
 	<div class="a c">'''three'''</div>
-	
+
 	<div class="a">
 		<div class="c">str(98.5)</div>
 	</div>
-	
+
 	<div class="a">
 		<div class="c">'1' + '+' + '2'</div>
 	</div>
-	
+
 	<div class="a">
 		<div class="c">'Na'*4</div>
 	</div>
-	
+
 	<div class="a">
 		<div class="c">'abc'[0]</div>
 	</div>
-	
+
 	<div class="a">
 		<div class="c">'abc'.replace('a','X')</div>
 	</div>
-	
+
 	<div class="a">
 		<div class="c">'abc'[:]</div>
 	</div>
-	
+
 	<div class="a">
 		<div class="c">'abc'[:1]</div>
 	</div>
-	
+
 	<div class="a">
 		<div class="c">'abc'[1:]</div>
 	</div>
-	
+
 	<div class="a">
 		<div class="c">len('abc')</div>
 	</div>
-	
+
 	<div class="a">
 		<div class="c">'a,b,c'.split(',')</div>
 	</div>
-	
+
 	<div class="a">
 		<div class="c">''.join(['a','b','c'])</div>
 	</div>
-	
+
 	<div class="a">
-		<div class="c">'   strip    '.strip()</div>
+		<div class="c">' strip '.strip()</div>
 	</div>
-	
+
 	<div class="a">
 		<div class="c">'strip'.strip('s')</div>
 	</div>
-	
+
 	<div class="a">
 		<div class="c">'stst'.startswith('st')</div>
 	</div>
-	
+
 	<div class="a">
 		<div class="c">'stst'.endswith('st')</div>
 	</div>
-	
+
 	<div class="a">
 		<div class="c">'abc'.find('b')</div>
 	</div>
-	
+
 	<div class="a">
 		<div class="c">'abc'.index('a')</div>
 	</div>
-	
+
 	<div class="a">
 		<div class="c">'aaa'.count('a')</div>
 	</div>
-	
+
 	<div class="a">
 		<div class="c">'abc'.capitalize()</div>
 	</div>
-	
+
 	<div class="a">
 		<div class="c">'abc'.title()</div>
 	</div>
-	
+
 	<div class="a">
 		<div class="c">'abc'.upper()</div>
 	</div>
-	
+
 	<div class="a">
 		<div class="c">'ABC'.lower()</div>
 	</div>
-	
+
 	<div class="a">
 		<div class="c">'aBc'.swapcase()</div>
 	</div>
-	
+
 	<div class="a">
 		<div class="c">'abc'.center(30)</div>
 	</div>
-	
+
 	<div class="a">
 		<div class="c">'abc'.rjust(30)</div>
 	</div>
-	
+
 	<div class="a">
 		<div class="c">'%x' % 42</div>
 	</div>
-	
+
 	<div class="a">
 		<div class="c">'abc%s' % 'd'</div>
 	</div>
-	
+
 	<div class="a">
 		<div class="c">'abc {} def {} hig'.format('SSS', 'XXX')</div>
 	</div>
-	
+
 	<div class="a">
 		<div class="c">f'abc {"def".title()} bbb {"eee".rjust(20)}'</div>
 	</div>
-	
+
 	<div class="a">
 		<div class="c">f'The {"def":>20} is in the {"eee":.^10}'</div>
 	</div>
-	
+
 	<div class="a">
 		<div class="c">f'{'aaa' =}, {'ddd'=}'</div>
 	</div>
-	
+
 	<div class="a">
 		<div class="c"></div>
 		<div>c3 = 1</div>
@@ -440,61 +450,48 @@
 		<div>&nbsp;&nbsp;print(c3)</div>
 		<div>&nbsp;&nbsp;c3 += 1</div>
 	</div>
-	
+
 	<div class="a">
 		<div class="c">for a in 'abc': print(a)
-    </div>
+		</div>
 	</div>
-	
+
 	<div class="a">
 		<div class="c">for a in range(0,3):
-    print(a)</div>
+			print(a)</div>
 	</div>
-	
+
 	<div class="a">
 		<div class="c">a12 = 'a',
-</div>
-<div class="c">print(a12)</div>
+		</div>
+		<div class="c">print(a12)</div>
 	</div>
-	
+
 	<div class="a">
 		<div class="c">a13 = ('a','b','c')
-</div>
+		</div>
 		<div class="c">a13,b3,c3 = a13</div>
 	</div>
-	
+
 	<div class="a">
 		<div class="c">tuple(['a','b','c'])</div>
 	</div>
-	
+
 	<div class="a">
 		<div class="c">('a',) + ('b','c')</div>
 	</div>
-	
+
 	<div class="a">
 		<div class="c"></div>
 	</div>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
+
 
 </body></html>
