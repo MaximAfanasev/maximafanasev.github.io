@@ -1,127 +1,125 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>PYTHON</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PYTHON</title>
 </head>
 <style>
-	* {
-		margin: 0;
-		padding: 0;
-		box-sizing: border-box;
-	}
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-	body {
-		background-color: #263238;
-		overflow: hidden;
-		color: #e0e0e0;
-		font-family: monospace;
-		font-size: 20px;
-		line-height: 2.5;
-	}
-	
-	.wrapper {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%,-50%);
-	}
+    body {
+        background-color: #263238;
+        overflow: hidden; /* Отключает прокрутку */
+        touch-action: pan-x pan-y; /* Отключает прокрутку на сенсорных экранах */
+        -webkit-overflow-scrolling: touch; /* Ускоренное скроллирование на iOS */
+        color: #e0e0e0;
+        font-family: monospace;
+        font-size: 20px;
+        line-height: 2.5;
+    }
 
-	canvas {
-		background-color: #263238;
-		width: 300px;
-		height: 400px;
-	}
+    .wrapper {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
 
-	button {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		font-size: 50px;
-		padding: 15px 30px;
-		font-size: 24px;
-		color: white;
-		text-shadow: 2px 4px 2px #000;
-		background-color: #4CAF50;
-		border: none;
-		border-radius: 30px;
-	}
+    canvas {
+        background-color: #263238;
+        width: 300px;
+        height: 400px;
+    }
 
-	.hidden {
-		display: none;
-	}
+    button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 50px;
+        padding: 15px 30px;
+        font-size: 24px;
+        color: white;
+        text-shadow: 2px 4px 2px #000;
+        background-color: #4CAF50;
+        border: none;
+        border-radius: 30px;
+    }
 
+    .hidden {
+        display: none;
+    }
 
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
 
-	ul {
-		list-style: none;
-		margin: 0;
-		padding: 0;
-	}
+    .a {
+        margin: 0 a;
+        margin-bottom: 250px;
+        border: 1px solid gray;
+        padding: 60px;
+        border-radius: 15px;
+        width: 100%;
+    }
 
-	.a {
-		margin: 0 a;
-		margin-bottom: 250px;
-		border: 1px solid gray;
-		padding: 60px;
-		border-radius: 15px;
-		width: 100%;
-	}
+    .c {
+        color: gold;
+    }
 
-	.c {
-		color: gold;
-	}
+    .s {
+        margin-top: 50px;
+        filter: blur(5px);
+        border: 1px solid gold;
+        width: fit-content;
+        padding: 10px 20px;
+        border-radius: 10px;
+        cursor: progress;
+        transition: 1s;
+    }
 
-	.s {
-		margin-top: 50px;
-		filter: blur(5px);
-		border: 1px solid gold;
-		width: fit-content;
-		padding: 10px 20px;
-		border-radius: 10px;
-		cursor: progress;
-		transition: 1s;
-	}
+    .s:hover {
+        filter: blur(0);
+    }
 
-	.s:hover {
-		filter: blur(0);
-	}
+    .c1 {
+        position: relative;
+    }
 
-	.c1 {
-		position: relative;
-	}
-
-	.c1::before {
-		content: '0 1 2';
-		position: absolute;
-		width: 100px;
-		height: 20px;
-		top: -50px;
-		left: 13px;
-		letter-spacing: 5.5px;
-		color: gray;
-	}
+    .c1::before {
+        content: '0 1 2';
+        position: absolute;
+        width: 100px;
+        height: 20px;
+        top: -50px;
+        left: 13px;
+        letter-spacing: 5.5px;
+        color: gray;
+    }
 </style>
 
 <body>
-	<div class="wrapper">
-		<canvas id="gameCanvas" width="300" height="400"></canvas>
-		<button class="snake-button" id="startButton">
-			START
-		</button>
-	</div>
-	<main class="content hidden">
-
-
-		<div class="a">
-			<div><span class="c">for</span> a <span class="c">in</span> 5,4,3,2,1,'hi'<span class="c">:</span>
-			</div>
-			<div>&nbsp;<span class="c">print</span>(a)</div>
-			<div class="s">5 4 3 2 1 hi</div>
-		</div>
-	</main>
+    <div class="wrapper">
+        <canvas id="gameCanvas" width="300" height="400"></canvas>
+        <button class="snake-button" id="startButton">
+            START
+        </button>
+    </div>
+    <main class="content hidden">
+        <div class="a">
+            <div><span class="c">for</span> a <span class="c">in</span> 5,4,3,2,1,'hi'<span class="c">:</span>
+            </div>
+            <div>&nbsp;<span class="c">print</span>(a)</div>
+            <div class="s">5 4 3 2 1 hi</div>
+        </div>
+    </main>
 
 	<script>
 		const canvas = document.getElementById('gameCanvas');
