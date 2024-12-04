@@ -1,66 +1,63 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PYTHON</title>
-    <link rel="stylesheet" href="style.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>PYTHON</title>
 </head>
 <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
 
-    body {
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        width: 100vw;
-        height: 100vh;
-        background-color: #263238;
-        overflow: hidden;
-        font-family: monospace;
-        font-size: 5vw;
-        letter-spacing: 2px;
-        color: gold;
-    }
+	body {
+		position: relative;
+		background-color: #263238;
+		overflow: hidden;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		height: 100vh;
+	}
 
-    canvas {
-        background-color: #263238;
-        width: 300px;
-        height: 400px;
-    }
+	.wrapper {
+	}
 
-    button {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 50px;
-        padding: 15px 30px;
-        font-size: 24px;
-        color: white;
-        text-shadow: 2px 4px 2px #000;
-        background-color: #4CAF50;
-        border: none;
-        border-radius: 30px;
-    }
+	canvas {
+		background-color: #263238;
+		width: 300px;
+		height: 400px;
+	}
 
-    .hidden {
-        display: none;
-    }
-	
-	
+	button {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		font-size: 50px;
+		padding: 15px 30px;
+		font-size: 24px;
+		color: white;
+		text-shadow: 2px 4px 2px #000;
+		background-color: #4CAF50;
+		border: none;
+		border-radius: 30px;
+	}
+
+	.hidden {
+		display: none;
+	}
+
+
 
 	ul {
 		list-style: none;
 		margin: 0;
 		padding: 0;
 	}
+
 	.a {
 		margin: 0 a;
 		margin-bottom: 250px;
@@ -106,131 +103,131 @@
 </style>
 
 <body>
-    <canvas id="gameCanvas" width="300" height="400"></canvas>
-    <button class="snake-button" id="startButton">
-        START
-    </button>
-
-    <main class="content hidden">
-    	
-
-	<div class="a">
-		<div><span class="c">for</span> a <span class="c">in</span> 5,4,3,2,1,'hi'<span class="c">:</span>
-		</div>
-		<div>&nbsp;<span class="c">print</span>(a)</div>
-		<div class="s">5 4 3 2 1 hi</div>
+	<div class="wrapper">
+		<canvas id="gameCanvas" width="300" height="400"></canvas>
+		<button class="snake-button" id="startButton">
+			START
+		</button>
 	</div>
-    </main>
+	<main class="content hidden">
 
-    <script>
-        const canvas = document.getElementById('gameCanvas');
-        const ctx = canvas.getContext('2d');
-        const startButton = document.getElementById('startButton');
-        const content = document.querySelector('.content');
 
-        const box = 25; // размер клетки
-        let snake;
-        let food;
-        let direction; // текущее направление
-        let game;
+		<div class="a">
+			<div><span class="c">for</span> a <span class="c">in</span> 5,4,3,2,1,'hi'<span class="c">:</span>
+			</div>
+			<div>&nbsp;<span class="c">print</span>(a)</div>
+			<div class="s">5 4 3 2 1 hi</div>
+		</div>
+	</main>
 
-        function resetGame() {
-            snake = [{
-                x: 4 * box,
-                y: 4 * box
-            }];
-            food = {
-                x: Math.floor(Math.random() * (canvas.width / box)) * box,
-                y: Math.floor(Math.random() * (canvas.height / box)) * box
-            };
-            direction = 'RIGHT'; // начальное направление
-            clearInterval(game); // Останавливаем предыдущую игру
-            game = setInterval(draw, 100); // Запускаем игру заново
-        }
+	<script>
+		const canvas = document.getElementById('gameCanvas');
+		const ctx = canvas.getContext('2d');
+		const startButton = document.getElementById('startButton');
+		const content = document.querySelector('.content');
 
-        function draw() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+		const box = 25; // размер клетки
+		let snake;
+		let food;
+		let direction; // текущее направление
+		let game;
 
-            // Рисуем змею
-            for (let i = 0; i < snake.length; i++) {
-                ctx.beginPath();
-                ctx.arc(snake[i].x + box / 2, snake[i].y + box / 2, box / 2, 0, Math.PI * 1.8); // Используем arc для круга
-                ctx.fillStyle = (i === 0) ? 'green' : 'lightgreen';
-                ctx.fill();
-                ctx.strokeStyle = 'darkgreen';
-                ctx.stroke();
-            }
+		function resetGame() {
+			snake = [{
+				x: 4 * box,
+				y: 4 * box
+			}];
+			food = {
+				x: Math.floor(Math.random() * (canvas.width / box)) * box,
+				y: Math.floor(Math.random() * (canvas.height / box)) * box
+			};
+			direction = 'RIGHT'; // начальное направление
+			clearInterval(game); // Останавливаем предыдущую игру
+			game = setInterval(draw, 100); // Запускаем игру заново
+		}
 
-            // Рисуем еду
-            ctx.fillStyle = 'red';
-            ctx.fillRect(food.x, food.y, box, box);
+		function draw() {
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            // Логика движения змейки
-            let snakeX = snake[0].x;
-            let snakeY = snake[0].y;
+			// Рисуем змею
+			for (let i = 0; i < snake.length; i++) {
+				ctx.beginPath();
+				ctx.arc(snake[i].x + box / 2, snake[i].y + box / 2, box / 2, 0, Math.PI * 1.8); // Используем arc для круга
+				ctx.fillStyle = (i === 0) ? 'green' : 'lightgreen';
+				ctx.fill();
+				ctx.strokeStyle = 'darkgreen';
+				ctx.stroke();
+			}
 
-            if (direction === 'LEFT') snakeX -= box;
-            if (direction === 'UP') snakeY -= box;
-            if (direction === 'RIGHT') snakeX += box;
-            if (direction === 'DOWN') snakeY += box;
+			// Рисуем еду
+			ctx.fillStyle = 'red';
+			ctx.fillRect(food.x, food.y, box, box);
 
-            // Проверка на сбитие с едой
-            if (snakeX === food.x && snakeY === food.y) {
-                // Создаем новую еду в случайном месте
-                food = {
-                    x: Math.floor(Math.random() * (canvas.width / box)) * box,
-                    y: Math.floor(Math.random() * (canvas.height / box)) * box
-                };
-            } else {
-                snake.pop(); // Удаляем последний сегмент змейки
-            }
+			// Логика движения змейки
+			let snakeX = snake[0].x;
+			let snakeY = snake[0].y;
 
-            // Обработка выхода за границы
-            snakeX = (snakeX + canvas.width) % canvas.width;
-            snakeY = (snakeY + canvas.height) % canvas.height;
+			if (direction === 'LEFT') snakeX -= box;
+			if (direction === 'UP') snakeY -= box;
+			if (direction === 'RIGHT') snakeX += box;
+			if (direction === 'DOWN') snakeY += box;
 
-            const newHead = {
-                x: snakeX,
-                y: snakeY
-            };
+			// Проверка на сбитие с едой
+			if (snakeX === food.x && snakeY === food.y) {
+				// Создаем новую еду в случайном месте
+				food = {
+					x: Math.floor(Math.random() * (canvas.width / box)) * box,
+					y: Math.floor(Math.random() * (canvas.height / box)) * box
+				};
+			} else {
+				snake.pop(); // Удаляем последний сегмент змейки
+			}
 
-            // Проверка на столкновение со своим телом
-            if (collide(newHead, snake)) {
-                resetGame(); // Перезагружаем игру
-                return; // Выход из функции, чтобы не добавлять новую голову
-            }
+			// Обработка выхода за границы
+			snakeX = (snakeX + canvas.width) % canvas.width;
+			snakeY = (snakeY + canvas.height) % canvas.height;
 
-            snake.unshift(newHead); // Добавляем новую голову
-            autoDirection(newHead); // Вызываем функцию для изменения направления
-        }
+			const newHead = {
+				x: snakeX,
+				y: snakeY
+			};
 
-        function collide(head, array) {
-            for (let i = 1; i < array.length; i++) { // Начинаем с 1, чтобы не проверять голову
-                if (array[i].x === head.x && array[i].y === head.y) {
-                    return true;
-                }
-            }
-            return false;
-        }
+			// Проверка на столкновение со своим телом
+			if (collide(newHead, snake)) {
+				resetGame(); // Перезагружаем игру
+				return; // Выход из функции, чтобы не добавлять новую голову
+			}
 
-        function autoDirection(snakeHead) {
-            // Логика самоуправления: поворачиваем к еде
-            if (snakeHead.x < food.x) direction = 'RIGHT';
-            else if (snakeHead.x > food.x) direction = 'LEFT';
-            else if (snakeHead.y < food.y) direction = 'DOWN';
-            else if (snakeHead.y > food.y) direction = 'UP';
-        }
+			snake.unshift(newHead); // Добавляем новую голову
+			autoDirection(newHead); // Вызываем функцию для изменения направления
+		}
 
-        // Обработчик события кнопки "START"
-        startButton.addEventListener('click', () => {
-            canvas.classList.add('hidden'); // Скрываем canvas
-            startButton.classList.add('hidden'); // Скрываем кнопку
-            resetGame(); // Запускаем игру
-					content.classList.remove('hidden')
-        });
+		function collide(head, array) {
+			for (let i = 1; i < array.length; i++) { // Начинаем с 1, чтобы не проверять голову
+				if (array[i].x === head.x && array[i].y === head.y) {
+					return true;
+				}
+			}
+			return false;
+		}
 
-        // Инициализация первой игры
-        resetGame();
-    </script>
-</body>
-</html>
+		function autoDirection(snakeHead) {
+			// Логика самоуправления: поворачиваем к еде
+			if (snakeHead.x < food.x) direction = 'RIGHT';
+			else if (snakeHead.x > food.x) direction = 'LEFT';
+			else if (snakeHead.y < food.y) direction = 'DOWN';
+			else if (snakeHead.y > food.y) direction = 'UP';
+		}
+
+		// Обработчик события кнопки "START"
+		startButton.addEventListener('click', () => {
+			canvas.classList.add('hidden'); // Скрываем canvas
+			startButton.classList.add('hidden'); // Скрываем кнопку
+			resetGame(); // Запускаем игру
+			content.classList.remove('hidden')
+		});
+
+		// Инициализация первой игры
+		resetGame();
+	</script>
+</body></html>
