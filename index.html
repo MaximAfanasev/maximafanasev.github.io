@@ -1475,5 +1475,15 @@
 				updateProgress();
 			});
 		});
+
+
+		const vibrateButton = document.querySelectorAll('.check');
+		vibrateButton.forEach(button => {
+			button.addEventListener('click', () => {
+				if (navigator.vibrate) {
+					navigator.vibrate(100); // Вибрация на 100 мс
+				}
+			});
+		});
 	</script>
 </body></html>
