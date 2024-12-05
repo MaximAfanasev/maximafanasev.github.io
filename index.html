@@ -47,11 +47,6 @@
 		transition: background-color 0.3s, transform 0.3s;
 	}
 
-	button:active {
-		box-shadow: 0px 0px 0px #fff;
-		background-color: #45a049;
-	}
-
 	.b-w {
 		display: block;
 		position: absolute;
@@ -60,11 +55,17 @@
 		bottom: 20px;
 	}
 
-	.s-btn {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
+	.b-w button:nth-child(1) {
+		background: #f44336;
+	}
+
+	.b-w button:nth-child(2) {
+		background: #4CAF50;
+	}
+
+	.b-w button.s-btn {
+		background: #e2721b;
+		color: #fff;
 	}
 
 	.h {
@@ -156,10 +157,11 @@
 
 <body>
 	<canvas id="gameCanvas" width="300" height="400"></canvas>
+	<div class="b-w">
 	<button class="s-btn" id="startButton">
 		START
 	</button>
-
+</div>
 	<main class="content h">
 
 		<div class="a">
@@ -169,8 +171,8 @@
 				<div class="s">5 4 3 2 1 hi</div>
 			</div>
 			<div class="b-w">
-				<button class="btn" id="crossButton" style="background-color: #f44336;">✗</button>
-				<button class="btn" id="checkButton" style="background-color: #4CAF50;">✓</button>
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
 			</div>
 		</div>
 
@@ -180,8 +182,9 @@
 				<div class="s">3</div>
 			</div>
 
-			<div class="b-w"><button class="btn" id="checkButton2" style="background-color: #4CAF50;">✓</button>
-				<button class="btn" id="crossButton2" style="background-color: #f44336;">✗</button>
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
 			</div>
 		</div>
 
@@ -194,709 +197,1038 @@
 				<div><span class="c">a['b']</span></div>
 				<div class="s">2</div>
 			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
 		</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>bool</div>
-					<div><span class="s c">true false</span></div>
-				</div>
-				<button class="btn">Далее</button>
+		<div class="a h">
+			<div class="wrap">
+				<div>bool</div>
+				<div><span class="s c">true false</span></div>
 			</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>int</div>
-					<div><span class="s c">1</span></div>
-				</div>
-				<button class="btn">Далее</button>
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
 			</div>
+		</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>float</div>
-					<div><span class="s c">1.1</span></div>
-				</div>
-				<button class="btn">Далее</button>
+		<div class="a h">
+			<div class="wrap">
+				<div>int</div>
+				<div><span class="s c">1</span></div>
 			</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>complex</div>
-					<div><span class="s c">3j</span></div>
-				</div>
-				<button class="btn">Далее</button>
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
 			</div>
+		</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>str</div>
-					<div><span class="s c">'a'</span></div>
-				</div>
-				<button class="btn">Далее</button>
+		<div class="a h">
+			<div class="wrap">
+				<div>float</div>
+				<div><span class="s c">1.1</span></div>
 			</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>list</div>
-					<div><span class="s c">[1,2]</span></div>
-				</div>
-				<button class="btn">Далее</button>
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
 			</div>
+		</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>tuple</div>
-					<div><span class="s c">(1,2)</span></div>
-				</div>
-				<button class="btn">Далее</button>
+		<div class="a h">
+			<div class="wrap">
+				<div>complex</div>
+				<div><span class="s c">3j</span></div>
 			</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>bytes</div>
-					<div><span class="s c">b'ab\xff'</span></div>
-				</div>
-				<button class="btn">Далее</button>
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
 			</div>
+		</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>bytearray</div>
-					<div><span class="s c">bytearray(..)</span></div>
-				</div>
-				<button class="btn">Далее</button>
+		<div class="a h">
+			<div class="wrap">
+				<div>str</div>
+				<div><span class="s c">'a'</span></div>
 			</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>set</div>
-					<div><span class="s c">set([1,2])</span></div>
-				</div>
-				<button class="btn">Далее</button>
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
 			</div>
+		</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>frozenset</div>
-					<div><span class="s c">frozenset([1,2])</span></div>
-				</div>
-				<button class="btn">Далее</button>
+		<div class="a h">
+			<div class="wrap">
+				<div>list</div>
+				<div><span class="s c">[1,2]</span></div>
 			</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>dict</div>
-					<div><span class="s c">{'a':'1'}</span></div>
-				</div>
-				<button class="btn">Далее</button>
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
 			</div>
+		</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>Names variables</div>
-					<div><span class="s c">a z A Z 0 9 _</span></div>
-				</div>
-				<button class="btn">Далее</button>
+		<div class="a h">
+			<div class="wrap">
+				<div>tuple</div>
+				<div><span class="s c">(1,2)</span></div>
 			</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div><span class="c">type</span>(1)</div>
-					<div class="s">class 'int'</div>
-				</div>
-				<button class="btn">Далее</button>
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
 			</div>
+		</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div><span class="c">a = b = c</span> = 2</div>
-					<div>a? b? c?</div>
-					<div class="s c">2 2 2</div>
-				</div>
-				<button class="btn">Далее</button>
-			</div>
-
-			<div class="a h">
-				<div class="wrap">
-					<div>x = 5</div>
-					<div>y = x</div>
-					<div>x = 29</div>
-					<div class="c">x?</div>
-					<div class="c">y?</div>
-					<div class="s c">x = 29</div>
-					<div class="s c">y = 5</div>
-				</div>
-				<button class="btn">Далее</button>
-			</div>
-
-			<div class="a h">
-				<div class="wrap">
-					<div>a = [1,2,3]</div>
-					<div>b = a</div>
-					<div>a[0] = 5</div>
-					<div class="c">a? b?</div>
-					<div class="s c">[5, 2, 3]</div>
-					<div class="s c">[5, 2, 3]</div>
-				</div>
-				<button class="btn">Далее</button>
+		<div class="a h">
+			<div class="wrap">
+				<div>bytes</div>
+				<div><span class="s c">b'ab\xff'</span></div>
 			</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>bool(1)</div>
-					<div>bool(0)</div>
-					<div class="s c">True False</div>
-				</div>
-				<button class="btn">Далее</button>
-			</div>
-
-			<div class="a h">
-				<div class="wrap">
-					<div>a = 95</div>
-					<div>a -= 3</div>
-					<div class="c">a?</div>
-					<div class="s c">92</div>
-				</div>
-				<button class="btn">Далее</button>
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
 			</div>
+		</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>divmod(9,5)</div>
-					<div><span class="s c">(1, 4)</span></div>
-				</div>
-				<button class="btn">Далее</button>
+		<div class="a h">
+			<div class="wrap">
+				<div>bytearray</div>
+				<div><span class="s c">bytearray(..)</span></div>
 			</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>2**3</div>
-					<div><span class="s c">8</span></div>
-				</div>
-				<button class="btn">Далее</button>
-			</div>
-
-			<div class="a h">
-				<div class="wrap">
-					<div>0b10</div>
-					<div>0o10</div>
-					<div>0x10</div>
-					<div><span class="s c">2 8 16</span></div>
-				</div>
-				<button class="btn">Далее</button>
-			</div>
-
-			<div class="a h">
-				<div class="wrap">
-					<div>bin(65)</div>
-					<div>oct(65)</div>
-					<div>hex(65)</div>
-					<div><span class="s c">0b1000001
-							0o101
-							0x41</span></div>
-				</div>
-				<button class="btn">Далее</button>
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
 			</div>
+		</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>chr(65)</div>
-					<div><span class="s c">A</span></div>
-				</div>
-				<button class="btn">Далее</button>
+		<div class="a h">
+			<div class="wrap">
+				<div>set</div>
+				<div><span class="s c">set([1,2])</span></div>
 			</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>int(True)</div>
-					<div><span class="s c">1</span></div>
-				</div>
-				<button class="btn">Далее</button>
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
 			</div>
+		</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>int(98.6)</div>
-					<div><span class="s c">98</span></div>
-				</div>
-				<button class="btn">Далее</button>
+		<div class="a h">
+			<div class="wrap">
+				<div>frozenset</div>
+				<div><span class="s c">frozenset([1,2])</span></div>
 			</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>int('99')</div>
-					<div><span class="s c">99</span></div>
-				</div>
-				<button class="btn">Далее</button>
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
 			</div>
+		</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>int('10',2)</div>
-					<div><span class="s c">2</span></div>
-				</div>
-				<button class="btn">Далее</button>
+		<div class="a h">
+			<div class="wrap">
+				<div>dict</div>
+				<div><span class="s c">{'a':'1'}</span></div>
 			</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>True + 1</div>
-					<div><span class="s c">2</span></div>
-				</div>
-				<button class="btn">Далее</button>
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
 			</div>
+		</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>43+2.</div>
-					<div><span class="s c">45.0</span></div>
-				</div>
-				<button class="btn">Далее</button>
+		<div class="a h">
+			<div class="wrap">
+				<div>Names variables</div>
+				<div><span class="s c">a z A Z 0 9 _</span></div>
 			</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>False + 0.</div>
-					<div><span class="s c">0.0</span></div>
-				</div>
-				<button class="btn">Далее</button>
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
 			</div>
+		</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>#comment</div>
-					<div><span class="s c">comment</span></div>
-				</div>
-				<button class="btn">Далее</button>
-			</div>
-
-			<div class="a h">
-				<div class="wrap">
-					<div>a = 0</div>
-					<div>a = 1 + \</div>
-					<div>2</div>
-					<div class="c">a?</div>
-					<div><span class="s c">3</span></div>
-				</div>
-				<button class="btn">Далее</button>
-			</div>
-
-			<div class="a h">
-				<div class="wrap">
-					<div>a = 0</div>
-					<div>a = (1 +</div>
-					<div>2)</div>
-					<div class="c">a?</div>
-					<div><span class="s c">3</span></div>
-				</div>
-				<button class="btn">Далее</button>
+		<div class="a h">
+			<div class="wrap">
+				<div><span class="c">type</span>(1)</div>
+				<div class="s">class 'int'</div>
 			</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>if True:</div>
-					<div>&nbsp;&nbsp;print('True')</div>
-					<div><span class="s c">'True'</span></div>
-				</div>
-				<button class="btn">Далее</button>
-			</div>
-
-			<div class="a h">
-				<div class="wrap">
-					<div>a7 = 'a'</div>
-					<div>if a7 == 'b':</div>
-					<div>&nbsp;&nbsp;print('b')</div>
-					<div>elif a7 == 'a':</div>
-					<div class="c">&nbsp;&nbsp;print('a')</div>
-					<div><span class="s c">a</span></div>
-				</div>
-				<button class="btn">Далее</button>
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
 			</div>
+		</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>== != > >= &#60; &#60;=</div>
-					<div><span class="s c">== != > >= &#60; &#60;=</span></div>
-				</div>
-				<button class="btn">Далее</button>
+		<div class="a h">
+			<div class="wrap">
+				<div><span class="c">a = b = c</span> = 2</div>
+				<div>a? b? c?</div>
+				<div class="s c">2 2 2</div>
 			</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>a = 5</div>
-					<div class="c">print((a8&#60;7) and (a8&#60;10))</div>
-					<div><span class="s c">True</span></div>
-				</div>
-				<button class="btn">Далее</button>
-			</div>
-
-			<div class="a h">
-				<div class="wrap">
-					<div>a9 = []</div>
-					<div>if a9: print('some')</div>
-					<div class="c">else: print('empty')</div>
-					<div><span class="s c">empty</span></div>
-				</div>
-				<button class="btn">Далее</button>
-			</div>
-
-			<div class="a h">
-				<div class="wrap">
-					<div>a = 'o'</div>
-					<div>if a == 'o' or a == 'a':</div>
-					<div class="c">print('it"s vowel')</div>
-					<div><span class="s c">it"s vowel</span></div>
-				</div>
-				<button class="btn">Далее</button>
-			</div>
-
-			<div class="a h">
-				<div class="wrap">
-					<div>vw = 'aoeui'</div>
-					<div>if a in vw:</div>
-					<div>print('yeah')</div>
-					<div><span class="s c">yeah</span></div>
-				</div>
-				<button class="btn">Далее</button>
-			</div>
-
-			<div class="a h">
-				<div class="wrap">
-					<div>vw = 'aoeui'</div>
-					<div>if a in vw:</div>
-					<div class="c">print(a, 'yeah')</div>
-					<div><span class="s c">o, yeah</span></div>
-				</div>
-				<button class="btn">Далее</button>
-			</div>
-
-			<div class="a h">
-				<div class="wrap">
-					<div>a = 10</div>
-					<div>b = 'b'*a</div>
-					<div class="c">if c2 := a - len(b) >= 0:</div>
-					<div>print('yes')</div>
-					<div>else: print('no')</div>
-					<div><span class="s c">yes</span></div>
-				</div>
-				<button class="btn">Далее</button>
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
 			</div>
+		</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>'''aaa'''</div>
-					<div><span class="s c">aaa</span></div>
-				</div>
-				<button class="btn">Далее</button>
+		<div class="a h">
+			<div class="wrap">
+				<div>x = 5</div>
+				<div>y = x</div>
+				<div>x = 29</div>
+				<div class="c">x?</div>
+				<div class="c">y?</div>
+				<div class="s c">x = 29</div>
+				<div class="s c">y = 5</div>
 			</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>str(98.5)</div>
-					<div><span class="s c">98.5</span></div>
-				</div>
-				<button class="btn">Далее</button>
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
 			</div>
+		</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>'1' + '+' + '2'</div>
-					<div><span class="s c">1+2</span></div>
-				</div>
-				<button class="btn">Далее</button>
+		<div class="a h">
+			<div class="wrap">
+				<div>a = [1,2,3]</div>
+				<div>b = a</div>
+				<div>a[0] = 5</div>
+				<div class="c">a? b?</div>
+				<div class="s c">[5, 2, 3]</div>
+				<div class="s c">[5, 2, 3]</div>
 			</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>'Na'*4</div>
-					<div><span class="s c">NaNaNaNa</span></div>
-				</div>
-				<button class="btn">Далее</button>
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
 			</div>
+		</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>'abc'[2]</div>
-					<div><span class="s c">c</span></div>
-				</div>
-				<button class="btn">Далее</button>
+		<div class="a h">
+			<div class="wrap">
+				<div>bool(1)</div>
+				<div>bool(0)</div>
+				<div class="s c">True False</div>
 			</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>'abc'.replace('a','X')</div>
-					<div><span class="s c">Xbc</span></div>
-				</div>
-				<button class="btn">Далее</button>
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
 			</div>
+		</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>'abc'[:]</div>
-					<div><span class="s c">abc</span></div>
-				</div>
-				<button class="btn">Далее</button>
+		<div class="a h">
+			<div class="wrap">
+				<div>a = 95</div>
+				<div>a -= 3</div>
+				<div class="c">a?</div>
+				<div class="s c">92</div>
 			</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>'abc'[:1]</div>
-					<div><span class="s c">a</span></div>
-				</div>
-				<button class="btn">Далее</button>
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
 			</div>
+		</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>'abc'[1:]</div>
-					<div><span class="s c">bc</span></div>
-				</div>
-				<button class="btn">Далее</button>
+		<div class="a h">
+			<div class="wrap">
+				<div>divmod(9,5)</div>
+				<div><span class="s c">(1, 4)</span></div>
 			</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>len('abc')</div>
-					<div><span class="s c">3</span></div>
-				</div>
-				<button class="btn">Далее</button>
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
 			</div>
+		</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>'a,b,c'.split(',')</div>
-					<div><span class="s c">['a', 'b', 'c']</span></div>
-				</div>
-				<button class="btn">Далее</button>
+		<div class="a h">
+			<div class="wrap">
+				<div>2**3</div>
+				<div><span class="s c">8</span></div>
 			</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>''.join(['a','b','c'])</div>
-					<div><span class="s c">'abc'</span></div>
-				</div>
-				<button class="btn">Далее</button>
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
 			</div>
+		</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>' strip '.strip()</div>
-					<div><span class="s c">strip</span></div>
-				</div>
-				<button class="btn">Далее</button>
+		<div class="a h">
+			<div class="wrap">
+				<div>0b10</div>
+				<div>0o10</div>
+				<div>0x10</div>
+				<div><span class="s c">2 8 16</span></div>
 			</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>'strip'.strip('s')</div>
-					<div><span class="s c">trip</span></div>
-				</div>
-				<button class="btn">Далее</button>
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
 			</div>
+		</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>'abc'.startswith('a')</div>
-					<div><span class="s c">True</span></div>
-				</div>
-				<button class="btn">Далее</button>
+		<div class="a h">
+			<div class="wrap">
+				<div>bin(65)</div>
+				<div>oct(65)</div>
+				<div>hex(65)</div>
+				<div><span class="s c">0b1000001
+						0o101
+						0x41</span></div>
 			</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>'abc'.endswith('bc')</div>
-					<div><span class="s c">True</span></div>
-				</div>
-				<button class="btn">Далее</button>
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
 			</div>
+		</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>'abc'.find('b')</div>
-					<div><span class="s c">True</span></div>
-				</div>
-				<button class="btn">Далее</button>
+		<div class="a h">
+			<div class="wrap">
+				<div>chr(65)</div>
+				<div><span class="s c">A</span></div>
 			</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>'abc'.find('b')</div>
-					<div><span class="s c">1</span></div>
-				</div>
-				<button class="btn">Далее</button>
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
 			</div>
+		</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>'abc'.index('a')</div>
-					<div><span class="s c">0</span></div>
-				</div>
-				<button class="btn">Далее</button>
+		<div class="a h">
+			<div class="wrap">
+				<div>int(True)</div>
+				<div><span class="s c">1</span></div>
 			</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>'aaa'.count('a')</div>
-					<div><span class="s c">3</span></div>
-				</div>
-				<button class="btn">Далее</button>
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
 			</div>
+		</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>'abc'.capitalize()</div>
-					<div><span class="s c">Abc</span></div>
-				</div>
-				<button class="btn">Далее</button>
+		<div class="a h">
+			<div class="wrap">
+				<div>int(98.6)</div>
+				<div><span class="s c">98</span></div>
 			</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>'abc'.title()</div>
-					<div><span class="s c">Abc</span></div>
-				</div>
-				<button class="btn">Далее</button>
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
 			</div>
+		</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>'abc'.upper()</div>
-					<div><span class="s c">ABC</span></div>
-				</div>
-				<button class="btn">Далее</button>
+		<div class="a h">
+			<div class="wrap">
+				<div>int('99')</div>
+				<div><span class="s c">99</span></div>
 			</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>'ABC'.lower()</div>
-					<div><span class="s c">abc</span></div>
-				</div>
-				<button class="btn">Далее</button>
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
 			</div>
+		</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>'aBc'.swapcase()</div>
-					<div><span class="s c">AbC</span></div>
-				</div>
-				<button class="btn">Далее</button>
+		<div class="a h">
+			<div class="wrap">
+				<div>int('10',2)</div>
+				<div><span class="s c">2</span></div>
 			</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>'abc'.center(10)</div>
-					<div><span class="s c"> abc </span></div>
-				</div>
-				<button class="btn">Далее</button>
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
 			</div>
+		</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>'abc'.rjust(5)</div>
-					<div><span class="s c"> abc</span></div>
-				</div>
-				<button class="btn">Далее</button>
+		<div class="a h">
+			<div class="wrap">
+				<div>True + 1</div>
+				<div><span class="s c">2</span></div>
 			</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>'%x' % 42</div>
-					<div><span class="s c">2a</span></div>
-				</div>
-				<button class="btn">Далее</button>
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
 			</div>
+		</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>'abc %c' % 'd'</div>
-					<div><span class="s c">abc d</span></div>
-				</div>
-				<button class="btn">Далее</button>
+		<div class="a h">
+			<div class="wrap">
+				<div>43+2.</div>
+				<div><span class="s c">45.0</span></div>
 			</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>'a {} b {} c'.format('1', '2')</div>
-					<div><span class="s c">a 1 b 2 c</span></div>
-				</div>
-				<button class="btn">Далее</button>
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
 			</div>
+		</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>f'a {"b".title()} c {"d".rjust(3)}'</div>
-					<div><span class="s c">a B c d</span></div>
-				</div>
-				<button class="btn">Далее</button>
+		<div class="a h">
+			<div class="wrap">
+				<div>False + 0.</div>
+				<div><span class="s c">0.0</span></div>
 			</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>f'a {"b".title()} c {"d".rjust(3)}'</div>
-					<div><span class="s c">a b c ..d..</span></div>
-				</div>
-				<button class="btn">Далее</button>
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
 			</div>
+		</div>
 
-			<div class="a h">
-				<div class="wrap">
-					<div>f'{'a' = }, {'b'= }'</div>
-					<div><span class="s c">'a' = 'a', 'b'= 'b'</span></div>
-				</div>
-				<button class="btn">Далее</button>
-			</div>
-
-			<div class="a h">
-				<div class="wrap">
-					<div>c = 1</div>
-					<div>while c &#60;= 2:</div>
-					<div>print(c)</div>
-					<div>c += 1</div>
-					<div><span class="s c">1 2</span></div>
-				</div>
-				<button class="btn">Далее</button>
-			</div>
-
-			<div class="a h">
-				<div class="wrap">
-					<div>for x in 'abc':
-					</div>
-					<div>print(x)</div>
-					<div><span class="s c">a b c</span></div>
-				</div>
-				<button class="btn">Далее</button>
-			</div>
-
-			<div class="a h">
-				<div class="wrap">
-					<div>for x in range(0,3):
-					</div>
-					<div>print(x)</div>
-					<div><span class="s c">0 1 2</span></div>
+		<div class="a h">
+			<div class="wrap">
+				<div>#comment</div>
+				<div><span class="s c">comment</span></div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>a = 0</div>
+				<div>a = 1 + \</div>
+				<div>2</div>
+				<div class="c">a?</div>
+				<div><span class="s c">3</span></div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>a = 0</div>
+				<div>a = (1 +</div>
+				<div>2)</div>
+				<div class="c">a?</div>
+				<div><span class="s c">3</span></div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>if True:</div>
+				<div>&nbsp;&nbsp;print('True')</div>
+				<div><span class="s c">'True'</span></div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>a7 = 'a'</div>
+				<div>if a7 == 'b':</div>
+				<div>&nbsp;&nbsp;print('b')</div>
+				<div>elif a7 == 'a':</div>
+				<div class="c">&nbsp;&nbsp;print('a')</div>
+				<div><span class="s c">a</span></div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>== != > >= &#60; &#60;=</div>
+				<div><span class="s c">== != > >= &#60; &#60;=</span></div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>a = 5</div>
+				<div class="c">print((a8&#60;7) and (a8&#60;10))</div>
+				<div><span class="s c">True</span></div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>a9 = []</div>
+				<div>if a9: print('some')</div>
+				<div class="c">else: print('empty')</div>
+				<div><span class="s c">empty</span></div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>a = 'o'</div>
+				<div>if a == 'o' or a == 'a':</div>
+				<div class="c">print('it"s vowel')</div>
+				<div><span class="s c">it"s vowel</span></div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>vw = 'aoeui'</div>
+				<div>if a in vw:</div>
+				<div>print('yeah')</div>
+				<div><span class="s c">yeah</span></div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>vw = 'aoeui'</div>
+				<div>if a in vw:</div>
+				<div class="c">print(a, 'yeah')</div>
+				<div><span class="s c">o, yeah</span></div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>a = 10</div>
+				<div>b = 'b'*a</div>
+				<div class="c">if c2 := a - len(b) >= 0:</div>
+				<div>print('yes')</div>
+				<div>else: print('no')</div>
+				<div><span class="s c">yes</span></div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>'''aaa'''</div>
+				<div><span class="s c">aaa</span></div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>str(98.5)</div>
+				<div><span class="s c">98.5</span></div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>'1' + '+' + '2'</div>
+				<div><span class="s c">1+2</span></div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>'Na'*4</div>
+				<div><span class="s c">NaNaNaNa</span></div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>'abc'[2]</div>
+				<div><span class="s c">c</span></div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>'abc'.replace('a','X')</div>
+				<div><span class="s c">Xbc</span></div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>'abc'[:]</div>
+				<div><span class="s c">abc</span></div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>'abc'[:1]</div>
+				<div><span class="s c">a</span></div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>'abc'[1:]</div>
+				<div><span class="s c">bc</span></div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>len('abc')</div>
+				<div><span class="s c">3</span></div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>'a,b,c'.split(',')</div>
+				<div><span class="s c">['a', 'b', 'c']</span></div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>''.join(['a','b','c'])</div>
+				<div><span class="s c">'abc'</span></div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>' strip '.strip()</div>
+				<div><span class="s c">strip</span></div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>'strip'.strip('s')</div>
+				<div><span class="s c">trip</span></div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>'abc'.startswith('a')</div>
+				<div><span class="s c">True</span></div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>'abc'.endswith('bc')</div>
+				<div><span class="s c">True</span></div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>'abc'.find('b')</div>
+				<div><span class="s c">True</span></div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>'abc'.find('b')</div>
+				<div><span class="s c">1</span></div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>'abc'.index('a')</div>
+				<div><span class="s c">0</span></div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>'aaa'.count('a')</div>
+				<div><span class="s c">3</span></div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>'abc'.capitalize()</div>
+				<div><span class="s c">Abc</span></div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>'abc'.title()</div>
+				<div><span class="s c">Abc</span></div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>'abc'.upper()</div>
+				<div><span class="s c">ABC</span></div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>'ABC'.lower()</div>
+				<div><span class="s c">abc</span></div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>'aBc'.swapcase()</div>
+				<div><span class="s c">AbC</span></div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>'abc'.center(10)</div>
+				<div><span class="s c"> abc </span></div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>'abc'.rjust(5)</div>
+				<div><span class="s c"> abc</span></div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>'%x' % 42</div>
+				<div><span class="s c">2a</span></div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>'abc %c' % 'd'</div>
+				<div><span class="s c">abc d</span></div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>'a {} b {} c'.format('1', '2')</div>
+				<div><span class="s c">a 1 b 2 c</span></div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>f'a {"b".title()} c {"d".rjust(3)}'</div>
+				<div><span class="s c">a B c d</span></div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>f'a {"b".title()} c {"d".rjust(3)}'</div>
+				<div><span class="s c">a b c ..d..</span></div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>f'{'a' = }, {'b'= }'</div>
+				<div><span class="s c">'a' = 'a', 'b'= 'b'</span></div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>c = 1</div>
+				<div>while c &#60;= 2:</div>
+				<div>print(c)</div>
+				<div>c += 1</div>
+				<div><span class="s c">1 2</span></div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>for x in 'abc':
 				</div>
-				<button class="btn">Далее</button>
-			</div>
-
-			<div class="a h">
-				<div class="wrap">
-					<div>x = 'a',
-					</div>
-					<div>print(x)</div>
-					<div><span class="s c">('a',)</span></div>
+				<div>print(x)</div>
+				<div><span class="s c">a b c</span></div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>for x in range(0,3):
 				</div>
-				<button class="btn">Далее</button>
-			</div>
-
-			<div class="a h">
-				<div class="wrap">
-					<div>x = ('a','b','c')</div>
-					<div>a,b,c = x</div>
-					<div>print(a)</div>
-					<div><span class="s c">'a'</span></div>
+				<div>print(x)</div>
+				<div><span class="s c">0 1 2</span></div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>x = 'a',
 				</div>
-				<button class="btn">Далее</button>
+				<div>print(x)</div>
+				<div><span class="s c">('a',)</span></div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>x = ('a','b','c')</div>
+				<div>a,b,c = x</div>
+				<div>print(a)</div>
+				<div><span class="s c">'a'</span></div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
 			</div>
+		</div>
 
 	</main>
 
@@ -905,11 +1237,6 @@
 		const ctx = canvas.getContext('2d');
 		const startButton = document.getElementById('startButton');
 		const content = document.querySelector('.content');
-
-		let currentBlock = 0; // Начальный блок, который показывается
-		const blocks = document.querySelectorAll('.a'); // Все блоки с классом 'a'
-		const checkButtons = document.querySelectorAll('button[id^="checkButton"]'); // Все кнопки с галочкой
-		const crossButtons = document.querySelectorAll('button[id^="crossButton"]'); // Все кнопки с крестиком
 
 		const box = 25; // размер клетки
 		let snake;
@@ -1016,6 +1343,12 @@
 		resetGame();
 
 
+		let currentBlock = 0; // Начальный блок, который показывается
+		const blocks = document.querySelectorAll('.a'); // Все блоки с классом 'a'
+		const checkButtons = document.querySelectorAll('.check'); // Все кнопки с галочкой
+		const crossButtons = document.querySelectorAll('.cross'); // Все кнопки с крестиком
+
+		// Функция для переключения блоков
 		function switchBlock() {
 			if (currentBlock < blocks.length - 1) { // Проверяем, есть ли следующий блок
 				blocks[currentBlock].classList.add('h'); // Скрываем текущий блок
