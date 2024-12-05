@@ -50,6 +50,13 @@
 		border: none;
 		border-radius: 30px;
 		cursor: pointer;
+		box-shadow: 3px 3px 3px #000;
+		transition: background-color 0.3s, transform 0.3s;
+	}
+
+	button:active {
+		box-shadow: 0px 0px 0px #fff;
+		background-color: #45a049;
 	}
 
 	.btn {
@@ -123,27 +130,70 @@
 		START
 	</button>
 	<main class="content hidden">
-		<div class="a" id="block1">
+		<div class="a">
 			<div><span class="c">for</span> a <span class="c">in</span> 5,4,3,2,1,'hi'<span class="c">:</span></div>
-			<div>&nbsp;<span class="c">print</span>(a)</div>
+			<div>&nbsp;&nbsp;<span class="c">print</span>(a)</div>
 			<div class="s">5 4 3 2 1 hi</div>
 			<button class="btn">Далее</button>
 		</div>
 
-		<div class="a hidden" id="block2">
-			<div>print(<span class="c c1">[</span>1, 2, 3<span class="c">][2]</span>)</div>
+		<div class="a hidden">
+			<div><span class="c c1">[</span>1, 2, 3<span class="c">][2]</span></div>
 			<div class="s">3</div>
 			<button class="btn">Далее</button>
 		</div>
 
-		<div class="a hidden" id="block3">
+		<div class="a hidden">
 			<div>a = {</div>
 			<div>'a': '1',</div>
 			<div>'b': '2'</div>
 			<div>}</div>
-			<div>print(<span class="c">a['b']</span>)</div>
+			<div><span class="c">a['b']</span></div>
 			<div class="s">2</div>
+			<button class="btn">Далее</button>
 		</div>
+
+		<div class="a hidden">
+			<div>bool</div>
+			<div><span class="s c">true false</span></div>
+			<button class="btn">Далее</button>
+		</div>
+
+		<div class="a hidden">
+
+			<button class="btn">Далее</button>
+		</div>
+
+		<div class="a hidden">
+
+			<button class="btn">Далее</button>
+		</div>
+
+		<div class="a hidden">
+
+			<button class="btn">Далее</button>
+		</div>
+
+		<div class="a hidden">
+
+			<button class="btn">Далее</button>
+		</div>
+
+		<div class="a hidden">
+
+			<button class="btn">Далее</button>
+		</div>
+
+		<div class="a hidden">
+
+			<button class="btn">Далее</button>
+		</div>
+
+		<div class="a hidden">
+
+			<button class="btn">Далее</button>
+		</div>
+
 	</main>
 
 	<script>
