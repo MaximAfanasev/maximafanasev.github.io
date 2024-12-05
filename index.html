@@ -191,7 +191,7 @@
 	}
 
 	.progress {
-		height: 10px;
+		height: 5px;
 		background: green;
 		text-align: center;
 		line-height: 30px;
@@ -199,13 +199,14 @@
 		transition: width 0.3s;
 	}
 
-        .message {
-					text-align: center;
-            margin-top: 20px;
-            font-size: 24px;
-            color: gold;
-            display: none; /* Скрыто изначально */
-        }
+	.message {
+		text-align: center;
+		margin-top: 20px;
+		font-size: 24px;
+		color: gold;
+		display: none;
+		/* Скрыто изначально */
+	}
 </style>
 
 <body>
@@ -1292,8 +1293,8 @@
 		</div>
 
 	</main>
-	
-    <div class="message" id="finalMessage">Поздравляю! <br>Вы все прошли :)</div>
+
+	<div class="message" id="finalMessage">Поздравляю! <br>Вы все прошли :)</div>
 
 	<script>
 		const canvas = document.getElementById('gameCanvas');
@@ -1449,17 +1450,17 @@
 
 			correctProgress.style.width = `${correctPercentage}%`;
 			if (correctCount + incorrectCount === totalQuestions) {
-                finalMessage.style.display = 'block'; 
-				content.style.display = 'none'// Показываем сообщение
-            }
+				finalMessage.style.display = 'block';
+				content.style.display = 'none' // Показываем сообщение
+			}
 
 		}
 
 		startButton.addEventListener('click', () => {
 			correctCount = 0;
 			incorrectCount = 0;
-            finalMessage.style.display = 'none'; // Скрываем сообщение при новом старте
-            updateProgress();
+			finalMessage.style.display = 'none'; // Скрываем сообщение при новом старте
+			updateProgress();
 		});
 
 		checkButtons.forEach(button => {
