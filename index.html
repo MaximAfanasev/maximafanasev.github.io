@@ -182,19 +182,30 @@
 		}
 	}
 
-	.circle {
-		width: 30px;
-		height: 30px;
-		border-radius: 50%;
-		background: transparent;
-		border: 2px solid gold;
-		margin: 5px;
+	.progress-container {
+		width: 80%;
+		background: #e0e0e0;
+		border-radius: 25px;
+		margin: 10px auto;
+		overflow: hidden;
 	}
 
-	.filled {
-		background: green;/ Заливка зеленым цветом /
+	.progress {
+		height: 10px;
+		background: green;
+		text-align: center;
+		line-height: 30px;
+		color: black;
+		transition: width 0.3s;
 	}
 
+        .message {
+					text-align: center;
+            margin-top: 20px;
+            font-size: 24px;
+            color: gold;
+            display: none; /* Скрыто изначально */
+        }
 </style>
 
 <body>
@@ -209,6 +220,10 @@
 		<div class="a-w">
 			<div class="score" id="correctScore"></div>
 			<div class="score" id="incorrectScore"></div>
+		</div>
+
+		<div class="progress-container" id="correctProgressContainer">
+			<div class="progress" id="correctProgress" style="width: 0%;"></div>
 		</div>
 		<div class="a">
 			<div class="wrap">
@@ -1277,6 +1292,8 @@
 		</div>
 
 	</main>
+	
+    <div class="message" id="finalMessage">Поздравляю! <br>Вы все прошли :)</div>
 
 	<script>
 		const canvas = document.getElementById('gameCanvas');
@@ -1419,43 +1436,44 @@
 			});
 		});
 
-		const correctScoreElement = document.getElementById('correctScore');
-		const incorrectScoreElement = document.getElementById('incorrectScore');
+		const correctProgress = document.getElementById('correctProgress');
 
 
 		let correctCount = 0;
 		let incorrectCount = 0;
 		const totalQuestions = document.querySelectorAll('.a').length;
 
+		function updateProgress() {
+			const correctPercentage = (correctCount / totalQuestions) * 100;
+			const incorrectPercentage = (incorrectCount / totalQuestions) * 100;
 
-		// Инициализация счетчиков
-		function updateScores() {
-			correctScoreElement.textContent = `: ${correctCount} ⭐ из ${totalQuestions}`;
-			incorrectScoreElement.textContent = `Неправильно: ${incorrectCount} из ${totalQuestions}`;
+			correctProgress.style.width = `${correctPercentage}%`;
+			if (correctCount + incorrectCount === totalQuestions) {
+                finalMessage.style.display = 'block'; 
+				content.style.display = 'none'// Показываем сообщение
+            }
+
 		}
 
 		startButton.addEventListener('click', () => {
-			// Сбрасываем счет
 			correctCount = 0;
 			incorrectCount = 0;
-			updateScores();
+            finalMessage.style.display = 'none'; // Скрываем сообщение при новом старте
+            updateProgress();
 		});
 
-		checkButtons.forEach((button) => {
+		checkButtons.forEach(button => {
 			button.addEventListener('click', () => {
 				correctCount++;
-				updateScores();
+				updateProgress();
 			});
 		});
 
-		crossButtons.forEach((button) => {
+		crossButtons.forEach(button => {
 			button.addEventListener('click', () => {
 				incorrectCount++;
-				updateScores();
+				updateProgress();
 			});
 		});
-
 	</script>
-</body>
-
-</html>
+</body></html>
