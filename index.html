@@ -73,7 +73,7 @@
 		transform: translate(-50%, -50%);
 	}
 
-	.hidden {
+	.h {
 		display: none;
 	}
 
@@ -129,7 +129,7 @@
 	<button class="s-btn" id="startButton">
 		START
 	</button>
-	<main class="content hidden">
+	<main class="content h">
 		<div class="a">
 			<div><span class="c">for</span> a <span class="c">in</span> 5,4,3,2,1,'hi'<span class="c">:</span></div>
 			<div>&nbsp;&nbsp;<span class="c">print</span>(a)</div>
@@ -137,13 +137,13 @@
 			<button class="btn">Далее</button>
 		</div>
 
-		<div class="a hidden">
+		<div class="a h">
 			<div><span class="c c1">[</span>1, 2, 3<span class="c">][2]</span></div>
 			<div class="s">3</div>
 			<button class="btn">Далее</button>
 		</div>
 
-		<div class="a hidden">
+		<div class="a h">
 			<div>a = {</div>
 			<div>'a': '1',</div>
 			<div>'b': '2'</div>
@@ -153,43 +153,109 @@
 			<button class="btn">Далее</button>
 		</div>
 
-		<div class="a hidden">
+		<div class="a h">
 			<div>bool</div>
 			<div><span class="s c">true false</span></div>
 			<button class="btn">Далее</button>
 		</div>
 
-		<div class="a hidden">
+		<div class="a h">
+			<div>int</div>
+			<div><span class="s c">1</span></div>
+			<button class="btn">Далее</button>
+		</div>
+
+		<div class="a h">
+			<div>float</div>
+			<div><span class="s c">1.1</span></div>
+			<button class="btn">Далее</button>
+		</div>
+
+		<div class="a h">
+			<div>complex</div>
+			<div><span class="s c">3j</span></div>
+			<button class="btn">Далее</button>
+		</div>
+
+		<div class="a h">
+			<div>str</div>
+			<div><span class="s c">'a'</span></div>
+			<button class="btn">Далее</button>
+		</div>
+
+		<div class="a h">
+			<div>list</div>
+			<div><span class="s c">[1,2]</span></div>
+			<button class="btn">Далее</button>
+		</div>
+
+		<div class="a h">
+			<div>tuple</div>
+			<div><span class="s c">(1,2)</span></div>
+			<button class="btn">Далее</button>
+		</div>
+
+		<div class="a h">
+			<div>bytes</div>
+			<div><span class="s c">b'ab\xff'</span></div>
+			<button class="btn">Далее</button>
+		</div>
+
+		<div class="a h">
+			<div>bytearray</div>
+			<div><span class="s c">bytearray(..)</span></div>
+			<button class="btn">Далее</button>
+		</div>
+
+		<div class="a h">
+			<div>set</div>
+			<div><span class="s c">set([1,2])</span></div>
+			<button class="btn">Далее</button>
+		</div>
+
+		<div class="a h">
+			<div>frozenset</div>
+			<div><span class="s c">frozenset([1,2])</span></div>
+			<button class="btn">Далее</button>
+		</div>
+
+		<div class="a h">
+			<div>dict</div>
+			<div><span class="s c">{'a':'1'}</span></div>
+			<button class="btn">Далее</button>
+		</div>
+
+		<div class="a h">
 
 			<button class="btn">Далее</button>
 		</div>
 
-		<div class="a hidden">
+		<div class="a h">
 
 			<button class="btn">Далее</button>
 		</div>
 
-		<div class="a hidden">
+		<div class="a h">
 
 			<button class="btn">Далее</button>
 		</div>
 
-		<div class="a hidden">
+		<div class="a h">
 
 			<button class="btn">Далее</button>
 		</div>
 
-		<div class="a hidden">
+		<div class="a h">
 
 			<button class="btn">Далее</button>
 		</div>
 
-		<div class="a hidden">
+		<div class="a h">
 
 			<button class="btn">Далее</button>
 		</div>
 
-		<div class="a hidden">
+		<div class="a h">
 
 			<button class="btn">Далее</button>
 		</div>
@@ -301,10 +367,10 @@
 
 		// Обработчик события кнопки "START"
 		startButton.addEventListener('click', () => {
-			canvas.classList.add('hidden'); // Скрываем canvas
-			startButton.classList.add('hidden'); // Скрываем кнопку
+			canvas.classList.add('h'); // Скрываем canvas
+			startButton.classList.add('h'); // Скрываем кнопку
 			resetGame(); // Запускаем игру
-			content.classList.remove('hidden')
+			content.classList.remove('h')
 		});
 
 		// Инициализация первой игры
@@ -312,9 +378,9 @@
 		buttons.forEach(button => {
 			button.addEventListener('click', () => {
 				if (currentBlock < blocks.length - 1) { // Проверяем, есть ли следующий блок
-					blocks[currentBlock].classList.add('hidden'); // Скрываем текущий блок
+					blocks[currentBlock].classList.add('h'); // Скрываем текущий блок
 					currentBlock++; // Переходим к следующему блоку
-					blocks[currentBlock].classList.remove('hidden'); // Показываем новый блок
+					blocks[currentBlock].classList.remove('h'); // Показываем новый блок
 				}
 			});
 		});
