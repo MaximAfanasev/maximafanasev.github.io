@@ -1,134 +1,160 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>PYTHON</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+	<title>PYTHON</title>
 </head>
 <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
 
-    body {
-        background-color: #263238;
-        overflow: hidden; /* Отключает прокрутку */
-        touch-action: pan-x pan-y; /* Отключает прокрутку на сенсорных экранах */
-        -webkit-overflow-scrolling: touch; /* Ускоренное скроллирование на iOS */
-        color: #e0e0e0;
-        font-family: monospace;
-        font-size: 20px;
-        line-height: 2.5;
-    }
+	body {
+		background-color: #263238;
+		overflow: hidden;
+		color: #e0e0e0;
+		font-family: monospace;
+		font-size: 20px;
+		line-height: 2.5;
+		height: 100vh;
+	}
 
-    .wrapper {
-        position: fixed; /* Измените с absolute на fixed */
-       top: 50%;
-       left: 50%;
-       transform: translate(-50%, -50%);
-       height: 100%; /* Занять всю высоту */
-       width: 100%; /* Занять всю ширину */
-       overflow: hidden; /* Убираем прокрутку */
-    }
+	.content {
+		position: relative;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: fit-content;
+	}
 
-    canvas {
-        background-color: #263238;
-        width: 300px;
-        height: 400px;
-    }
+	canvas {
+		background-color: #263238;
+		width: 300px;
+		height: 400px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
 
-    button {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 50px;
-        padding: 15px 30px;
-        font-size: 24px;
-        color: white;
-        text-shadow: 2px 4px 2px #000;
-        background-color: #4CAF50;
-        border: none;
-        border-radius: 30px;
-    }
+	button {
+		padding: 15px 30px;
+		font-size: 24px;
+		color: white;
+		text-shadow: 2px 4px 2px #000;
+		background-color: #4CAF50;
+		border: none;
+		border-radius: 30px;
+		cursor: pointer;
+	}
 
-    .hidden {
-        display: none;
-    }
+	.btn {
+		display: block;
+		margin: 0 auto;
+		margin-top: 50px;
+		width: fit-content;
+	}
 
-    ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-    }
+	.s-btn {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
 
-    .a {
-        margin: 0 a;
-        margin-bottom: 250px;
-        border: 1px solid gray;
-        padding: 60px;
-        border-radius: 15px;
-        width: 100%;
-    }
+	.hidden {
+		display: none;
+	}
 
-    .c {
-        color: gold;
-    }
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
 
-    .s {
-        margin-top: 50px;
-        filter: blur(5px);
-        border: 1px solid gold;
-        width: fit-content;
-        padding: 10px 20px;
-        border-radius: 10px;
-        cursor: progress;
-        transition: 1s;
-    }
+	.a {
+		padding: 60px;
+		border-radius: 15px;
+		width: 100%;
+	}
 
-    .s:hover {
-        filter: blur(0);
-    }
+	.c {
+		color: gold;
+	}
 
-    .c1 {
-        position: relative;
-    }
+	.s {
+		margin-top: 50px;
+		filter: blur(5px);
+		border: 1px solid gold;
+		width: fit-content;
+		padding: 10px 20px;
+		border-radius: 10px;
+		cursor: progress;
+		transition: 1s;
+	}
 
-    .c1::before {
-        content: '0 1 2';
-        position: absolute;
-        width: 100px;
-        height: 20px;
-        top: -50px;
-        left: 13px;
-        letter-spacing: 5.5px;
-        color: gray;
-    }
+	.s:hover {
+		filter: blur(0);
+	}
+
+	.c1 {
+		position: relative;
+	}
+
+	.c1::before {
+		content: '0 1 2';
+		position: absolute;
+		width: 100px;
+		height: 20px;
+		top: -50px;
+		left: 13px;
+		letter-spacing: 5.5px;
+		color: gray;
+	}
 </style>
 
 <body>
-    <div class="wrapper">
-        <canvas id="gameCanvas" width="300" height="400"></canvas>
-        <button class="snake-button" id="startButton">
-            START
-        </button>
-    </div>
-    <main class="content hidden">
-        <div class="a">
-            <div><span class="c">for</span> a <span class="c">in</span> 5,4,3,2,1,'hi'<span class="c">:</span>
-            </div>
-            <div>&nbsp;<span class="c">print</span>(a)</div>
-            <div class="s">5 4 3 2 1 hi</div>
-        </div>
-    </main>
+	<canvas id="gameCanvas" width="300" height="400"></canvas>
+	<button class="s-btn" id="startButton">
+		START
+	</button>
+	<main class="content hidden">
+		<div class="a" id="block1">
+			<div><span class="c">for</span> a <span class="c">in</span> 5,4,3,2,1,'hi'<span class="c">:</span></div>
+			<div>&nbsp;<span class="c">print</span>(a)</div>
+			<div class="s">5 4 3 2 1 hi</div>
+			<button class="btn">Далее</button>
+		</div>
+
+		<div class="a hidden" id="block2">
+			<div>print(<span class="c c1">[</span>1, 2, 3<span class="c">][2]</span>)</div>
+			<div class="s">3</div>
+			<button class="btn">Далее</button>
+		</div>
+
+		<div class="a hidden" id="block3">
+			<div>a = {</div>
+			<div>'a': '1',</div>
+			<div>'b': '2'</div>
+			<div>}</div>
+			<div>print(<span class="c">a['b']</span>)</div>
+			<div class="s">2</div>
+		</div>
+	</main>
 
 	<script>
 		const canvas = document.getElementById('gameCanvas');
 		const ctx = canvas.getContext('2d');
 		const startButton = document.getElementById('startButton');
 		const content = document.querySelector('.content');
+
+		let currentBlock = 0; // Начальный блок, который показывается
+		const blocks = document.querySelectorAll('.a'); // Все блоки с классом 'a'
+		const buttons = document.querySelectorAll('.btn'); // Все кнопки "Далее"
 
 		const box = 25; // размер клетки
 		let snake;
@@ -233,5 +259,14 @@
 
 		// Инициализация первой игры
 		resetGame();
+		buttons.forEach(button => {
+			button.addEventListener('click', () => {
+				if (currentBlock < blocks.length - 1) { // Проверяем, есть ли следующий блок
+					blocks[currentBlock].classList.add('hidden'); // Скрываем текущий блок
+					currentBlock++; // Переходим к следующему блоку
+					blocks[currentBlock].classList.remove('hidden'); // Показываем новый блок
+				}
+			});
+		});
 	</script>
 </body></html>
