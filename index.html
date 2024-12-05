@@ -104,7 +104,7 @@
 		padding: 10px 20px;
 		border-radius: 10px;
 		cursor: progress;
-		transition: 1s;
+		transition: 0.2s;
 	}
 
 	.s:hover {
@@ -153,17 +153,63 @@
 		}
 	}
 
+	.coin {
+		width: 50px;
+		height: 50px;
+		position: relative;
+		animation: spin 1s infinite linear;
+		overflow: hidden;
+	}
+
+	.coin::before {
+		content: '';
+		background: gold;
+		position: absolute;
+		left: 0;
+		width: 50px;
+		height: 50px;
+		border-radius: 50%;
+	}
+
+	@keyframes spin {
+		0% {
+			/*			transform: rotateY(0deg);*/
+
+		}
+
+		100% {
+			/*			transform: rotateY(360deg);*/
+		}
+	}
+
+	.circle {
+		width: 30px;
+		height: 30px;
+		border-radius: 50%;
+		background: transparent;
+		border: 2px solid gold;
+		margin: 5px;
+	}
+
+	.filled {
+		background: green;/ Заливка зеленым цветом /
+	}
+
 </style>
 
 <body>
 	<canvas id="gameCanvas" width="300" height="400"></canvas>
 	<div class="b-w">
-	<button class="s-btn" id="startButton">
-		START
-	</button>
-</div>
+		<button class="s-btn" id="startButton">
+			START
+		</button>
+	</div>
 	<main class="content h">
 
+		<div class="a-w">
+			<div class="score" id="correctScore"></div>
+			<div class="score" id="incorrectScore"></div>
+		</div>
 		<div class="a">
 			<div class="wrap">
 				<div><span class="c">for</span> a <span class="c">in</span> 5,4,3,2,1,'hi'<span class="c">:</span></div>
@@ -1365,11 +1411,47 @@
 		// Добавление обработчиков событий для кнопок с крестиком
 		crossButtons.forEach(button => {
 			button.addEventListener('click', (event) => {
-				const block = event.target.closest('.a'); // Находим родительский блок
+				const block = event.target.closest('.cross'); // Находим родительский блок
 				block.classList.add('shake'); // Добавляем класс тряски
 				setTimeout(() => {
 					block.classList.remove('shake'); // Удаляем класс тряски после анимации
 				}, 500);
+			});
+		});
+
+		const correctScoreElement = document.getElementById('correctScore');
+		const incorrectScoreElement = document.getElementById('incorrectScore');
+
+
+		let correctCount = 0;
+		let incorrectCount = 0;
+		const totalQuestions = document.querySelectorAll('.a').length;
+
+
+		// Инициализация счетчиков
+		function updateScores() {
+			correctScoreElement.textContent = `: ${correctCount} ⭐ из ${totalQuestions}`;
+			incorrectScoreElement.textContent = `Неправильно: ${incorrectCount} из ${totalQuestions}`;
+		}
+
+		startButton.addEventListener('click', () => {
+			// Сбрасываем счет
+			correctCount = 0;
+			incorrectCount = 0;
+			updateScores();
+		});
+
+		checkButtons.forEach((button) => {
+			button.addEventListener('click', () => {
+				correctCount++;
+				updateScores();
+			});
+		});
+
+		crossButtons.forEach((button) => {
+			button.addEventListener('click', () => {
+				incorrectCount++;
+				updateScores();
 			});
 		});
 
