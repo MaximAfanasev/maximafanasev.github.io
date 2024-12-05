@@ -166,9 +166,9 @@ print('ABC'.lower())
 
 print('AbC'.swapcase())
 
-print('abc     '.center(30))
+print('abc     '.center(10))
 
-print('abc'.rjust(30))
+print('abc'.rjust(5))
 
 print('%x' % 42)
 
