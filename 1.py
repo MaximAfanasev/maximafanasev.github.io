@@ -172,27 +172,26 @@ print('abc'.rjust(5))
 
 print('%x' % 42)
 
-print('abc%c' % 'd')
+print('abc %c' % 'd')
 
-print('abc {} def {} hig'.format('SSS', 'SSS'))
+print('a {} b {} c'.format('1', '2'))
 
-print(f'abc {"def".title()} bbb {"eee".rjust(20)}')
+print(f'a {"b".title()} c {"d".rjust(3)}')
 
-print(f'The {"def":>20} is in the {"eee":.^10}')
+print(f'a {"b":>2} c {"d":.^5}')
 
-print(f'{'aaa' = }, {'ddd'= }')
+print(f'{'a' = }, {'b'= }')
 
 c3 = 1
-while c3 <= 5:
+while c3 <= 2:
     print(c3)
     c3 += 1
 
-for a in 'abc':
-    print(a)
+for x in 'abc':
+    print(x)
 
-
-for a in range(0,3):
-    print(a)
+for x in range(0,3):
+    print(x)
 
 a12 = 'a',
 print(a12)
