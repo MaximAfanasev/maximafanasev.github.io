@@ -152,51 +152,21 @@
 		}
 	}
 
-	.coin {
-		width: 50px;
-		height: 50px;
-		position: relative;
-		animation: spin 1s infinite linear;
-		overflow: hidden;
-	}
-
-	.coin::before {
-		content: '';
-		background: gold;
-		position: absolute;
-		left: 0;
-		width: 50px;
-		height: 50px;
-		border-radius: 50%;
-	}
-
-	@keyframes spin {
-		0% {
-			/*			transform: rotateY(0deg);*/
-
-		}
-
-		100% {
-			/*			transform: rotateY(360deg);*/
-		}
-	}
-
 	.progress-container {
 		width: 80%;
 		background: #e0e0e0;
-		border-radius: 25px;
 		margin: 10px auto;
-		overflow: hidden;
+		border-radius: 25px;
+		position: relative;
 	}
 
 	.progress {
 		height: 5px;
 		background: green;
-		text-align: center;
-		line-height: 30px;
-		color: black;
 		transition: width 0.3s;
+		border-radius: 25px;
 	}
+
 
 	.message {
 		text-align: center;
@@ -223,6 +193,7 @@
 
 		<div class="progress-container" id="correctProgressContainer">
 			<div class="progress" id="correctProgress" style="width: 0%;"></div>
+			<div class="coin" id="coin" style="left: 0; position: absolute; top: 20px; width: 10px; height: 10px; background: gold; border-radius: 50%;"></div>
 		</div>
 		<div class="a">
 			<div class="wrap">
@@ -1448,12 +1419,18 @@
 
 		function updateProgress() {
 			const correctPercentage = (correctCount / totalQuestions) * 100;
-			const incorrectPercentage = (incorrectCount / totalQuestions) * 100;
+
+			const correctProgress = document.getElementById('correctProgress');
+			const coin = document.getElementById('coin');
 
 			correctProgress.style.width = `${correctPercentage}%`;
+
+			// Перемещение монетки
+			coin.style.left = `${correctPercentage}%`;
+
 			if (correctCount + incorrectCount === totalQuestions) {
-				finalMessage.style.display = 'block';
-				content.style.display = 'none' // Показываем сообщение
+				// Логика завершения теста
+				console.log("Тест завершён");
 			}
 
 		}
@@ -1474,7 +1451,7 @@
 
 		crossButtons.forEach(button => {
 			button.addEventListener('click', () => {
-				incorrectCount++;
+				correctCount++;
 				updateProgress();
 			});
 		});
