@@ -154,22 +154,23 @@
 
 	.progress-container {
 		width: 80%;
-		background: #e0e0e0;
+		background: #222;
 		margin: 10px auto;
 		border-radius: 25px;
 		position: relative;
 	}
-	
+
 	.progress-container::after {
 		position: absolute;
 		content: '💰';
 		right: -20px;
-		top: -10px;
+		top: -5px;
 		font-size: 30px;
 	}
+
 	.progress {
 		height: 5px;
-		background: green;
+		background: gold;
 		transition: width 0.3s;
 		border-radius: 25px;
 	}
@@ -225,56 +226,12 @@
 	</div>
 	<main class="content h">
 
-		<div class="a-w">
-			<div class="score" id="correctScore"></div>
-			<div class="score" id="incorrectScore"></div>
-		</div>
-
 		<div class="progress-container" id="correctProgressContainer">
 			<div class="progress" id="correctProgress" style="width: 0%;"></div>
 			<div class="coin" id="coin" style="">$</div>
 		</div>
+		
 		<div class="a">
-			<div class="wrap">
-				<div><span class="c">for</span> a <span class="c">in</span> 5,4,3,2,1,'hi'<span class="c">:</span></div>
-				<div>&nbsp;&nbsp;<span class="c">print</span>(a)</div>
-				<div class="s">5 4 3 2 1 hi</div>
-			</div>
-			<div class="b-w">
-				<button class="btn cross">✗</button>
-				<button class="btn check">✓</button>
-			</div>
-		</div>
-
-		<div class="a h">
-			<div class="wrap">
-				<div><span class="c c1">[</span>1, 2, 3<span class="c">][2]</span></div>
-				<div class="s">3</div>
-			</div>
-
-			<div class="b-w">
-				<button class="btn cross">✗</button>
-				<button class="btn check">✓</button>
-			</div>
-		</div>
-
-		<div class="a h">
-			<div class="wrap">
-				<div>a = {</div>
-				<div>'a': '1',</div>
-				<div>'b': '2'</div>
-				<div>}</div>
-				<div><span class="c">a['b']</span></div>
-				<div class="s">2</div>
-			</div>
-
-			<div class="b-w">
-				<button class="btn cross">✗</button>
-				<button class="btn check">✓</button>
-			</div>
-		</div>
-
-		<div class="a h">
 			<div class="wrap">
 				<div>bool</div>
 				<div><span class="s c">True False</span></div>
@@ -1252,7 +1209,46 @@
 				<button class="btn cross">✗</button>
 				<button class="btn check">✓</button>
 			</div>
+		</div><div class="a h">
+			<div class="wrap">
+				<div><span class="c">for</span> x <span class="c">in</span> 1,2,3<span class="c">:</span></div>
+				<div>&nbsp;&nbsp;<span class="c">print</span>(x)</div>
+				<div class="s">1 2 3</div>
+			</div>
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
 		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div><span class="c c1">[</span>1, 2, 3<span class="c">][2]</span></div>
+				<div class="s">3</div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>a = {</div>
+				<div>'a': '1',</div>
+				<div>'b': '2'</div>
+				<div>}</div>
+				<div><span class="c">a['b']</span></div>
+				<div class="s">2</div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
 
 		<div class="a h">
 			<div class="wrap">
@@ -1475,7 +1471,7 @@
 			if (correctCount + incorrectCount === totalQuestions) {
 				// Логика завершения теста
 				content.style.display = 'none'
-			finalMessage.style.display = 'block'; 
+				finalMessage.style.display = 'block';
 			}
 
 		}
@@ -1483,7 +1479,7 @@
 		startButton.addEventListener('click', () => {
 			correctCount = 0;
 			incorrectCount = 0;
-			finalMessage.style.display = 'none'; 
+			finalMessage.style.display = 'none';
 			updateProgress();
 		});
 
