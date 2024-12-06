@@ -204,7 +204,6 @@
 		font-size: 24px;
 		color: gold;
 		display: none;
-		/* Скрыто изначально */
 	}
 </style>
 
@@ -268,7 +267,7 @@
 		<div class="a h">
 			<div class="wrap">
 				<div>bool</div>
-				<div><span class="s c">true false</span></div>
+				<div><span class="s c">True False</span></div>
 			</div>
 
 			<div class="b-w">
@@ -535,7 +534,7 @@
 				<div>0b10</div>
 				<div>0o10</div>
 				<div>0x10</div>
-				<div><span class="s c">2 8 16</span></div>
+				<div><span class="s c">2я 8я 16я</span></div>
 			</div>
 
 			<div class="b-w">
@@ -549,9 +548,7 @@
 				<div>bin(65)</div>
 				<div>oct(65)</div>
 				<div>hex(65)</div>
-				<div><span class="s c">0b1000001
-						0o101
-						0x41</span></div>
+				<div><span class="s c">2я 8я 16я</span></div>
 			</div>
 
 			<div class="b-w">
@@ -649,6 +646,13 @@
 				<div>False + 0.</div>
 				<div><span class="s c">0.0</span></div>
 			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>False + .</div>
+				<div><span class="s c">invalid</span></div>
+			</div>
 
 			<div class="b-w">
 				<button class="btn cross">✗</button>
@@ -702,7 +706,7 @@
 			<div class="wrap">
 				<div>if True:</div>
 				<div>&nbsp;&nbsp;print('True')</div>
-				<div><span class="s c">'True'</span></div>
+				<div><span class="s c">True</span></div>
 			</div>
 
 			<div class="b-w">
@@ -713,10 +717,10 @@
 
 		<div class="a h">
 			<div class="wrap">
-				<div>a7 = 'a'</div>
-				<div>if a7 == 'b':</div>
+				<div>a = 'a'</div>
+				<div>if a == 'b':</div>
 				<div>&nbsp;&nbsp;print('b')</div>
-				<div>elif a7 == 'a':</div>
+				<div>elif a == 'a':</div>
 				<div class="c">&nbsp;&nbsp;print('a')</div>
 				<div><span class="s c">a</span></div>
 			</div>
@@ -754,8 +758,8 @@
 
 		<div class="a h">
 			<div class="wrap">
-				<div>a9 = []</div>
-				<div>if a9: print('some')</div>
+				<div>a = []</div>
+				<div>if a: print('some')</div>
 				<div class="c">else: print('empty')</div>
 				<div><span class="s c">empty</span></div>
 			</div>
@@ -1290,7 +1294,6 @@
 				<button class="btn check">✓</button>
 			</div>
 		</div>
-
 	</main>
 
 	<div class="message" id="finalMessage">Поздравляю! <br>Вы все прошли :)</div>

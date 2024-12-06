@@ -199,3 +199,5 @@ print(a12)
 a13 = ('a','b','c')
 a13,b3,c3 = a13
 print(a13)
+
+print(False + 1.)
