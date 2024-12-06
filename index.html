@@ -1209,46 +1209,7 @@
 				<button class="btn cross">✗</button>
 				<button class="btn check">✓</button>
 			</div>
-		</div><div class="a h">
-			<div class="wrap">
-				<div><span class="c">for</span> x <span class="c">in</span> 1,2,3<span class="c">:</span></div>
-				<div>&nbsp;&nbsp;<span class="c">print</span>(x)</div>
-				<div class="s">1 2 3</div>
-			</div>
-			<div class="b-w">
-				<button class="btn cross">✗</button>
-				<button class="btn check">✓</button>
-			</div>
 		</div>
-
-		<div class="a h">
-			<div class="wrap">
-				<div><span class="c c1">[</span>1, 2, 3<span class="c">][2]</span></div>
-				<div class="s">3</div>
-			</div>
-
-			<div class="b-w">
-				<button class="btn cross">✗</button>
-				<button class="btn check">✓</button>
-			</div>
-		</div>
-
-		<div class="a h">
-			<div class="wrap">
-				<div>a = {</div>
-				<div>'a': '1',</div>
-				<div>'b': '2'</div>
-				<div>}</div>
-				<div><span class="c">a['b']</span></div>
-				<div class="s">2</div>
-			</div>
-
-			<div class="b-w">
-				<button class="btn cross">✗</button>
-				<button class="btn check">✓</button>
-			</div>
-		</div>
-
 
 		<div class="a h">
 			<div class="wrap">
@@ -1489,14 +1450,6 @@
 				updateProgress();
 			});
 		});
-
-		crossButtons.forEach(button => {
-			button.addEventListener('click', () => {
-				correctCount++;
-				updateProgress();
-			});
-		});
-
 
 		const vibrateButton = document.querySelectorAll('.check');
 		vibrateButton.forEach(button => {
