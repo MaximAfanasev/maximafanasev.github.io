@@ -167,6 +167,37 @@
 		border-radius: 25px;
 	}
 
+	.coin {
+		left: 0;
+		position: absolute;
+		top: 20px;
+		background: gold;
+		border-radius: 50%;
+
+		width: 20px;
+		height: 20px;
+		background: red;
+		border-radius: 50%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		animation-name: rotateCoin;
+		animation-duration: 2s;
+		animation-iteration-count: infinite;
+		animation-timing-function: linear;
+	}
+
+	@keyframes rotateCoin {
+		0% {
+			transform: rotateY(0deg);
+			/* Начальное состояние */
+		}
+
+		100% {
+			transform: rotateY(360deg);
+			/* Полный круг */
+		}
+	}
 
 	.message {
 		text-align: center;
@@ -193,7 +224,7 @@
 
 		<div class="progress-container" id="correctProgressContainer">
 			<div class="progress" id="correctProgress" style="width: 0%;"></div>
-			<div class="coin" id="coin" style="left: 0; position: absolute; top: 20px; width: 10px; height: 10px; background: gold; border-radius: 50%;"></div>
+			<div class="coin" id="coin" style=""></div>
 		</div>
 		<div class="a">
 			<div class="wrap">
@@ -616,6 +647,11 @@
 			<div class="wrap">
 				<div>False + 0.</div>
 				<div><span class="s c">0.0</span></div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn cross">✗</button>
+				<button class="btn check">✓</button>
 			</div>
 		</div>
 
