@@ -206,3 +206,12 @@ ul {
 	color: gold;
 	display: none;
 }
+
+
+ul li a{
+	color: gold;
+	text-decoration: none;
+	border: 2px solid;
+	padding: 10px 20px;
+	border-radius: 10px;
+}
