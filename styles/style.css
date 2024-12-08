@@ -215,3 +215,8 @@ ul li a{
 	padding: 10px 20px;
 	border-radius: 10px;
 }
+
+ul li {
+	text-align: center;
+	margin-bottom: 20px;
+}

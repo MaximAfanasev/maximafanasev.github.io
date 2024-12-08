@@ -1,6 +1,7 @@
 const correctProgress = document.getElementById('correctProgress');
 const finalMessage = document.getElementById('finalMessage');
 const types = document.querySelector('.types')
+const basics = document.querySelector('.basics')
 
 let correctCount = 0;
 let incorrectCount = 0;
@@ -26,6 +27,7 @@ function updateProgress() {
 	if (correctCount + incorrectCount === totalQuestions) {
 		// Логика завершения теста
 		types.style.display = 'none'
+		basics.style.display = 'none'
 		finalMessage.style.display = 'block';
 	}
 }
@@ -51,7 +53,8 @@ function switchBlock() {
 		blocks[currentBlock].classList.add('h'); // Скрываем текущий блок
 		currentBlock++; // Переходим к следующему блоку
 		blocks[currentBlock].classList.remove('h'); // Показываем новый блок
-	}updateProgress();
+	}
+	updateProgress();
 }
 
 // Добавление обработчиков событий для кнопок с галочкой
