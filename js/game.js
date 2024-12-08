@@ -1,7 +1,8 @@
 const correctProgress = document.getElementById('correctProgress');
 const finalMessage = document.getElementById('finalMessage');
-//const types = document.querySelector('.types')
-//const basics = document.querySelector('.basics')
+const types = document.querySelector('.types')
+const basics = document.querySelector('.basics')
+const numbers = document.querySelector('.numbers')
 
 let correctCount = 0;
 let incorrectCount = 0;
@@ -11,7 +12,9 @@ let currentBlock = 0; // Начальный блок, который показ�
 const blocks = document.querySelectorAll('.a'); // Все блоки с классом 'a'
 const checkButtons = document.querySelectorAll('.check'); // Все кнопки с галочкой
 const crossButtons = document.querySelectorAll('.cross'); // Все кнопки с крестиком
-finalMessage.style.display = 'none';
+if (finalMessage) {
+	finalMessage.style.display = 'none';
+}
 
 function updateProgress() {
 	const correctPercentage = (correctCount / totalQuestions) * 100;
@@ -26,9 +29,16 @@ function updateProgress() {
 
 	if (correctCount + incorrectCount === totalQuestions) {
 		// Логика завершения теста
-//		types.style.display = 'none'
-//		basics.style.display = 'none'
-console.log(basics)
+		if (types) {
+			types.style.display = 'none'
+		}
+		if (basics) {
+			basics.style.display = 'none'
+		}
+		if (numbers) {
+			numbers.style.display = 'none'
+		}
+		console.log(basics)
 		finalMessage.style.display = 'block';
 	}
 }
