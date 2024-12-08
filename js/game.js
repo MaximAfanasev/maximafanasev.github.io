@@ -1,101 +1,69 @@
 const correctProgress = document.getElementById('correctProgress');
 const finalMessage = document.getElementById('finalMessage');
-const types = document.querySelector('.types')
-const basics = document.querySelector('.basics')
-const numbers = document.querySelector('.numbers')
-const arrays = document.querySelector('.arrays')
-const str = document.querySelector('.str')
-const cicle = document.querySelector('.cicle')
-const tuple = document.querySelector('.tuple')
+const blockElements = {
+    types: document.querySelector('.types'),
+    basics: document.querySelector('.basics'),
+    numbers: document.querySelector('.numbers'),
+    arrays: document.querySelector('.arrays'),
+    str: document.querySelector('.str'),
+    cicle: document.querySelector('.cicle'),
+    tuple: document.querySelector('.tuple')
+};
 
 let correctCount = 0;
 let incorrectCount = 0;
-const totalQuestions = document.querySelectorAll('.a').length;
-
-let currentBlock = 0; // Начальный блок, который показывается
+const totalQuestions = document.querySelectorAll('.a').length; // Определение общего количества вопросов
+let currentBlock = 0; // Индекс текущего блока
 const blocks = document.querySelectorAll('.a'); // Все блоки с классом 'a'
-const checkButtons = document.querySelectorAll('.check'); // Все кнопки с галочкой
-const crossButtons = document.querySelectorAll('.cross'); // Все кнопки с крестиком
+
 if (finalMessage) {
-	finalMessage.style.display = 'none';
+    finalMessage.style.display = 'none'; // Скрываем финальное сообщение изначально
 }
 
 function updateProgress() {
-	const correctPercentage = (correctCount / totalQuestions) * 100;
+    const correctPercentage = (correctCount / totalQuestions) * 100;
+    correctProgress.style.width = `${correctPercentage}%`;
 
-	const correctProgress = document.getElementById('correctProgress');
-	const coin = document.getElementById('coin');
-
-	correctProgress.style.width = `${correctPercentage}%`;
-
-	// Перемещение монетки
-	coin.style.left = `${correctPercentage}%`;
-
-	if (correctCount + incorrectCount === totalQuestions) {
-		// Логика завершения теста
-		if (types) {
-			types.style.display = 'none'
-		}
-		if (basics) {
-			basics.style.display = 'none'
-		}
-		if (numbers) {
-			numbers.style.display = 'none'
-		}
-		if (arrays) {
-			numbers.style.display = 'none'
-		}
-		if (str) {
-			str.style.display = 'none'
-		}
-		if (cicle) {
-			cicle.style.display = 'none'
-		}
-		if (tuple) {
-			tuple.style.display = 'none'
-		}
-		console.log(basics)
-		finalMessage.style.display = 'block';
-	}
+    // Показываем финальное сообщение, если все вопросы пройдены
+    if (correctCount + incorrectCount === totalQuestions) {
+        finalizeTest();
+    }
 }
-checkButtons.forEach(button => {
-	button.addEventListener('click', () => {
-		correctCount++;
-		updateProgress();
-	});
-});
 
-const vibrateButton = document.querySelectorAll('.check');
-vibrateButton.forEach(button => {
-	button.addEventListener('click', () => {
-		if (navigator.vibrate) {
-			navigator.vibrate(100); // Вибрация на 100 мс
-		}
-	});
+function finalizeTest() {
+    Object.values(blockElements).forEach(element => {
+        if (element) element.style.display = 'none'; // Скрываем все блоки
+    });
+    finalMessage.style.display = 'block'; // Показываем сообщение о завершении
+}
+
+// Обработчик для кнопок с галочкой
+document.querySelectorAll('.check').forEach(button => {
+    button.addEventListener('click', () => {
+        correctCount++;
+        updateProgress();
+        switchBlock();
+    });
 });
 
 // Функция для переключения блоков
 function switchBlock() {
-	if (currentBlock < blocks.length - 1) { // Проверяем, есть ли следующий блок
-		blocks[currentBlock].classList.add('h'); // Скрываем текущий блок
-		currentBlock++; // Переходим к следующему блоку
-		blocks[currentBlock].classList.remove('h'); // Показываем новый блок
-	}
-	updateProgress();
+    if (currentBlock < blocks.length - 1) {
+        blocks[currentBlock].classList.add('h'); // Скрываем текущий блок
+        currentBlock++; // Переходим к следующему блоку
+        blocks[currentBlock].classList.remove('h'); // Показываем новый блок
+    }
 }
 
-// Добавление обработчиков событий для кнопок с галочкой
-checkButtons.forEach(button => {
-	button.addEventListener('click', switchBlock);
-});
-
-// Добавление обработчиков событий для кнопок с крестиком
-crossButtons.forEach(button => {
-	button.addEventListener('click', (event) => {
-		const block = event.target.closest('.cross'); // Находим родительский блок
-		block.classList.add('shake'); // Добавляем класс тряски
-		setTimeout(() => {
-			block.classList.remove('shake'); // Удаляем класс тряски после анимации
-		}, 500);
-	});
+// Обработчик для кнопок с крестиком
+document.querySelectorAll('.cross').forEach(button => {
+    button.addEventListener('click', (event) => {
+        const block = event.target.closest('.a'); // Находим родительский блок
+        if (block) {
+            block.classList.add('shake'); // Добавляем класс тряски
+            setTimeout(() => {
+                block.classList.remove('shake'); // Удаляем класс тряски после анимации
+            }, 500);
+        }
+    });
 });
