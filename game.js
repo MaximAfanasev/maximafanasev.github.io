@@ -1,7 +1,7 @@
 const correctProgress = document.getElementById('correctProgress');
 const finalMessage = document.getElementById('finalMessage');
-const types = document.querySelector('.types')
-const basics = document.querySelector('.basics')
+//const types = document.querySelector('.types')
+//const basics = document.querySelector('.basics')
 
 let correctCount = 0;
 let incorrectCount = 0;
@@ -26,8 +26,8 @@ function updateProgress() {
 
 	if (correctCount + incorrectCount === totalQuestions) {
 		// Логика завершения теста
-		types.style.display = 'none'
-		basics.style.display = 'none'
+//		types.style.display = 'none'
+//		basics.style.display = 'none'
 console.log(basics)
 		finalMessage.style.display = 'block';
 	}
