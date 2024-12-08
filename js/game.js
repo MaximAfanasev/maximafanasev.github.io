@@ -3,6 +3,10 @@ const finalMessage = document.getElementById('finalMessage');
 const types = document.querySelector('.types')
 const basics = document.querySelector('.basics')
 const numbers = document.querySelector('.numbers')
+const arrays = document.querySelector('.arrays')
+const str = document.querySelector('.str')
+const cicle = document.querySelector('.cicle')
+const tuple = document.querySelector('.tuple')
 
 let correctCount = 0;
 let incorrectCount = 0;
@@ -37,6 +41,18 @@ function updateProgress() {
 		}
 		if (numbers) {
 			numbers.style.display = 'none'
+		}
+		if (arrays) {
+			numbers.style.display = 'none'
+		}
+		if (str) {
+			str.style.display = 'none'
+		}
+		if (cicle) {
+			cicle.style.display = 'none'
+		}
+		if (tuple) {
+			tuple.style.display = 'none'
 		}
 		console.log(basics)
 		finalMessage.style.display = 'block';
