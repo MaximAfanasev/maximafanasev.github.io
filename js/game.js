@@ -35,6 +35,22 @@ function finalizeTest() {
         if (element) element.style.display = 'none'; // Скрываем все блоки
     });
     finalMessage.style.display = 'block'; // Показываем сообщение о завершении
+    startRedirectCountdown(); // Запускаем обратный отсчет до перехода
+}
+
+function startRedirectCountdown() {
+    let countdown = 3; // Начинаем с 3 секунд
+    finalMessage.insertAdjacentHTML('beforeend', `<div id="countdown">Переход на главную через <span>${countdown}</span> сек.</div>`);
+
+    const intervalId = setInterval(() => {
+        countdown--;
+        document.querySelector('#countdown span').textContent = countdown;
+
+        if (countdown <= 0) {
+            clearInterval(intervalId);
+            window.location.href = '../index.html'; // Переход на главную страницу
+        }
+    }, 1000); // Каждую секунду
 }
 
 // Обработчик для кнопок с галочкой
