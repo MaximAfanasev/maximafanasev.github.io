@@ -84,7 +84,7 @@ ul {
 
 .s {
 	margin-top: 50px;
-	filter: blur(0px);
+	filter: blur(6px);
 	border: 1px solid gold;
 	width: fit-content;
 	padding: 10px 20px;
