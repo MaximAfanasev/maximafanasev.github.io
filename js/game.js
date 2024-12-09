@@ -78,7 +78,7 @@ function finalizeTest() {
 }
 
 function startRedirectCountdown() {
-    let countdown = 3; // Начинаем с 3 секунд
+    let countdown = 1; // Начинаем с 1 секунд
     countdownDiv.style.display = 'block'; // Отображаем блок обратного отсчета
     countdownDiv.innerHTML = `Переход на главную через <span>${countdown}</span> сек.`;
 
