@@ -46,10 +46,6 @@ button {
 }
 
 .b-w button:nth-child(1) {
-	background: #f44336;
-}
-
-.b-w button:nth-child(2) {
 	background: #4CAF50;
 }
 
@@ -114,33 +110,6 @@ ul {
 	left: 13px;
 	letter-spacing: 5.5px;
 	color: gray;
-}
-
-
-.shake {
-	animation: shake 0.5s;
-}
-
-@keyframes shake {
-	0% {
-		transform: translate(0);
-	}
-
-	25% {
-		transform: translate(-5px, 0);
-	}
-
-	50% {
-		transform: translate(5px, 0);
-	}
-
-	75% {
-		transform: translate(-5px, 0);
-	}
-
-	100% {
-		transform: translate(0);
-	}
 }
 
 .progress-container {
