@@ -15,8 +15,51 @@
 			<div class="progress" id="correctProgress" style="width: 0%;"></div>
 			<div class="coin" id="coin" style="">$</div>
 		</div>
-		
-		<div class="a h">
+
+		<div class="a">
+			<div class="wrap">
+				<ul>
+					<li>True False</li>
+					<li>1</li>
+					<li>1.1</li>
+					<li>3j</li>
+					<li>'a'</li>
+				</ul>
+			</div>
+			<div class="b-w">
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a">
+			<div class="wrap">
+				<ul>
+					<li>[1,2]</li>
+					<li>(1,2)</li>
+					<li>b'ab\xff'</li>
+					<li>bytearray()</li>
+					<li>set([1,2])</li>
+				</ul>
+			</div>
+			<div class="b-w">
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a">
+			<div class="wrap">
+				<ul>
+				<li>frozenset([1,2])</li>
+				<li>{'a':'1'}</li>
+				<li>type()</li>
+				</ul>
+			</div>
+			<div class="b-w">
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a">
 			<div class="wrap">
 				<div>True False</div>
 				<div class="s c">bool</div>
@@ -164,7 +207,7 @@
 	<div class="message" id="finalMessage">Поздравляю! <br>Вы все прошли :)<br>
 		<span id="countdown" style="display: none;"></span>
 	</div>
-	
+
 	<script src="../js/game.js"></script>
 
 </body></html>
