@@ -1,9 +1,13 @@
-print(dict([['a','b'],['c','d']]))
+print([1,2,3])
 
-print(dict(a='x',b='y'))
+print([1,2,3][2])
 
-print(dict(['ab','cd']))
+print([1,2,3][0:2])
 
+print([1,2,3,4][::2])
 
-def a(): print('a')
-a()
+arrAppend = [1,2,3]
+arrAppend.append(4)
+print(arrAppend)
+
+print([1]*3)
