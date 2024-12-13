@@ -16,8 +16,150 @@
 			<div class="coin" id="coin" style="">$</div>
 		</div>
 
-
 		<div class="a">
+			<div class="wrap">
+				<div>True False</div>
+				<div class="s c">bool</div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>1</div>
+				<div class="s c">int</div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>1.1</div>
+				<div class="s c">float</div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>3j</div>
+				<div class="s c">complex</div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>'a'</div>
+				<div class="s c">str</div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>[1,2]</div>
+				<div class="s c">list</div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>(1,2)</div>
+				<div class="s c">tuple - кортеж</div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h r">
+			<div class="wrap">
+				<div>b'ab\xff'</div>
+				<div class="s c">bytes</div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>bytearray(..)</div>
+				<div class="s c">bytearray</div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>set([1,2])</div>
+				<div class="s c">set</div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>frozenset([1,2])</div>
+				<div class="s c">frozenset</div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>{'a':'1'}</div>
+				<div class="s c">dict</div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>type(1)</div>
+				<div class="s c">class 'int'</div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
 			<div class="wrap">
 				<div>Names</div>
 				<div class="s c">a z A Z 0 9 _</div>
@@ -66,7 +208,7 @@
 				<button class="btn check">✓</button>
 			</div>
 		</div>
-		
+
 		<div class="a h">
 			<div class="wrap">
 				<div>a = 0</div>
@@ -179,6 +321,71 @@
 				<div>print('yes')</div>
 				<div>else: print('no')</div>
 				<div class="s c">yes</div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+		<div class="a h">
+			<div class="wrap">
+				<div>c = 1</div>
+				<div>while c &#60;= 2:</div>
+				<div>print(c)</div>
+				<div>c += 1</div>
+				<div class="s c">1 2</div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>for x in 'abc':
+				</div>
+				<div>print(x)</div>
+				<div class="s c">a b c</div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>for x in range(0,3):
+				</div>
+				<div>print(x)</div>
+				<div class="s c">0 1 2</div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+		
+		<div class="a h">
+			<div class="wrap">
+				<div>x = 'a',
+				</div>
+				<div>print(x)</div>
+				<div class="s c">('a',)</div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>x = ('a','b','c')</div>
+				<div>a,b,c = x</div>
+				<div>print(a)</div>
+				<div class="s c">'a'</div>
 			</div>
 
 			<div class="b-w">
