@@ -22,12 +22,14 @@ print(arr3)
 
 arr4 = [1,2,3,4]
 arr4[1:3]=[8,9]
-
 print(arr4)
 
 arr5 = [1]
 del(arr5[0])
-
 print(arr5)
+
+arr6 = [1,2]
+arr6.remove(1)
+print(arr6)
 
 
