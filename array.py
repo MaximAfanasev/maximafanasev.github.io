@@ -29,3 +29,5 @@ arr5 = [1]
 del(arr5[0])
 
 print(arr5)
+
+
