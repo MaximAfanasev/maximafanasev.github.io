@@ -1,15 +1,31 @@
-Python 3.13.0 (v3.13.0:60403a5409f, Oct  7 2024, 00:37:40) [Clang 15.0.0 (clang-1500.3.9.4)] on darwin
-Type "help", "copyright", "credits" or "license()" for more information.
->>> 
-= RESTART: /Users/test/Documents/Документы — Maxim/maximafanasev.github.io/1.py
-{'a': 'b', 'c': 'd'}
-{'a': 'x', 'b': 'y'}
-{'a': 'b', 'c': 'd'}
-a
->>> 
-= RESTART: /Users/test/Documents/Документы — Maxim/maximafanasev.github.io/1.py
-[1, 2, 3]
->>> 
-= RESTART: /Users/test/Documents/Документы — Maxim/maximafanasev.github.io/1.py
-[1, 2, 3]
-3
+print([1,2,3])
+
+print([1,2,3][2])
+
+print([1,2,3][0:2])
+
+print([1,2,3,4][::2])
+
+arr1 = [1,2,3]
+arr1.append(4)
+print(arr1)
+
+print([1]*3)
+
+arr2 = [1,2,3]
+arr2.extend([4,5])
+print(arr2)
+
+arr3 = [1,2,3]
+arr3 +=[4,5]
+print(arr3)
+
+arr4 = [1,2,3,4]
+arr4[1:3]=[8,9]
+
+print(arr4)
+
+arr5 = [1]
+del(arr5[0])
+
+print(arr5)
