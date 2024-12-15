@@ -92,7 +92,7 @@ ul {
     border-radius: 10px;
     cursor: progress;
     transition: 0.2s;
-    filter: blur(3px);
+    filter: blur(8px);
 }
 
 .s:hover {

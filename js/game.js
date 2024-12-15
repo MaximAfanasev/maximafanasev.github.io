@@ -8,7 +8,6 @@ const totalQuestions = document.querySelectorAll('.a').length;
 const blocks = document.querySelectorAll('.a');
 let currentIndex = 0; // Индекс текущей карточки
 const checkButtons = document.querySelectorAll('.check');
-const crossButtons = document.querySelectorAll('.cross');
 
 // Функция для отображения текущей карточки
 function showCurrentBlock() {
