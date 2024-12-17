@@ -15,8 +15,7 @@
 
 
 
-a = ['1', '2', '3']
-print(', '.join(a))
-
+a = {'a': 'b', 'c': 'd'}
+print(a.items())
 
 
