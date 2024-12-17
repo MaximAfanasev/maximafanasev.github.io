@@ -16,6 +16,4 @@
 
 
 a = {'a': 'b', 'c': 'd'}
-print(a.items())
-
-
+print('a' in a)

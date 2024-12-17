@@ -153,8 +153,9 @@ print(a.items())</pre>
 
 		<div class="a h">
 			<div class="wrap">
-			<pre></pre>
-				<div class="s c"></div>
+			<pre>a = {'a': 'b', 'c': 'd'}
+print(a.get('a'))</pre>
+				<div class="s c">b</div>
 			</div>
 
 			<div class="b-w">
@@ -165,8 +166,9 @@ print(a.items())</pre>
 
 		<div class="a h">
 			<div class="wrap">
-			<pre></pre>
-				<div class="s c"></div>
+			<pre>a = {'a': 'b', 'c': 'd'}
+print(a['a'])</pre>
+				<div class="s c">b</div>
 			</div>
 
 			<div class="b-w">
@@ -177,8 +179,10 @@ print(a.items())</pre>
 
 		<div class="a h">
 			<div class="wrap">
-			<pre></pre>
-				<div class="s c"></div>
+			<pre>a = {'a': 'b'}
+b = {'c': 'd'}
+print({**a, **b})</pre>
+				<div class="s c">{'a': 'b', 'c': 'd'}</div>
 			</div>
 
 			<div class="b-w">
@@ -189,8 +193,13 @@ print(a.items())</pre>
 
 		<div class="a h">
 			<div class="wrap">
-			<pre></pre>
-				<div class="s c"></div>
+			<pre>a = {'a': 'b'}
+b = {'c': 'd'}
+a.update(b)
+print(a)
+print(b)</pre>
+				<div class="s c">{'a': 'b', 'c': 'd'}<br>
+{'c': 'd'}</div>
 			</div>
 
 			<div class="b-w">
@@ -201,8 +210,9 @@ print(a.items())</pre>
 
 		<div class="a h">
 			<div class="wrap">
-			<pre></pre>
-				<div class="s c"></div>
+			<pre>a = {'a': 'b', 'c': 'd'}
+print(a.pop('a'))</pre>
+				<div class="s c">b</div>
 			</div>
 
 			<div class="b-w">
@@ -213,8 +223,10 @@ print(a.items())</pre>
 
 		<div class="a h">
 			<div class="wrap">
-			<pre></pre>
-				<div class="s c"></div>
+			<pre>a = {'a': 'b', 'c': 'd'}
+a.clear()
+print(a)</pre>
+				<div class="s c">{}</div>
 			</div>
 
 			<div class="b-w">
