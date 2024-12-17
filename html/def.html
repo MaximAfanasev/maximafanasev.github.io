@@ -18,9 +18,11 @@
 
 		<div class="a">
 			<div class="wrap">
-<pre>a = {}
-print(a)</pre>
-				<div class="s c">{}</div>
+				<pre>def a():
+    print('a')
+
+a()</pre>
+				<div class="s c">a</div>
 			</div>
 
 			<div class="b-w">
@@ -31,65 +33,9 @@ print(a)</pre>
 
 		<div class="a h">
 			<div class="wrap">
-			<pre>
-a = {
-    'a': '1',
-    'b': '2'
-    }
-print(a)</pre>
-				<div class="s c">{'a': '1', 'b': '2'}</div>
-			</div>
-
-			<div class="b-w">
-				<button class="btn check">✓</button>
-			</div>
-		</div>
-
-
-		<div class="a h">
-			<div class="wrap">
-			<pre>a = [['a', 'b'],['c','d']]
-print(dict(a))</pre>
-				<div class="s c">{'a': 'b', 'c': 'd'}</div>
-			</div>
-
-			<div class="b-w">
-				<button class="btn check">✓</button>
-			</div>
-		</div>
-
-
-		<div class="a h">
-			<div class="wrap">
-			<pre>a = [('a', 'b'),('c','d')]
-print(dict(a))</pre>
-				<div class="s c">{'a': 'b', 'c': 'd'}</div>
-			</div>
-
-			<div class="b-w">
-				<button class="btn check">✓</button>
-			</div>
-		</div>
-
-
-		<div class="a h">
-			<div class="wrap">
-			<pre>a = ['ab','cd']
-print(dict(a))
-</pre>
-				<div class="s c">{'a': 'b', 'c': 'd'}</div>
-			</div>
-
-			<div class="b-w">
-				<button class="btn check">✓</button>
-			</div>
-		</div>
-
-
-		<div class="a h">
-			<div class="wrap">
-			<pre>a = {'a': 'b', 'c': 'd'}
-print('a' in a)</pre>
+				<pre>def a():
+    return True
+if a: print('True')</pre>
 				<div class="s c">True</div>
 			</div>
 
@@ -101,9 +47,10 @@ print('a' in a)</pre>
 
 		<div class="a h">
 			<div class="wrap">
-			<pre>a = {'a': 'b', 'c': 'd'}
-print('b' in a)</pre>
-				<div class="s c">False</div>
+				<pre>def a(x):
+    return x + '' + x
+print(a('y'))</pre>
+				<div class="s c">yy</div>
 			</div>
 
 			<div class="b-w">
@@ -114,9 +61,9 @@ print('b' in a)</pre>
 
 		<div class="a h">
 			<div class="wrap">
-			<pre>a = {'a': 'b', 'c': 'd'}
-print(a.keys())</pre>
-				<div class="s c">dict_keys(['a', 'c'])</div>
+				<pre>x = None
+print(x)</pre>
+				<div class="s c">None</div>
 			</div>
 
 			<div class="b-w">
@@ -127,9 +74,8 @@ print(a.keys())</pre>
 
 		<div class="a h">
 			<div class="wrap">
-			<pre>a = {'a': 'b', 'c': 'd'}
-print(a.values())</pre>
-				<div class="s c">dict_values(['b', 'd'])</div>
+				<pre>if x: print('None')</pre>
+				<div class="s c">-</div>
 			</div>
 
 			<div class="b-w">
@@ -140,9 +86,10 @@ print(a.values())</pre>
 
 		<div class="a h">
 			<div class="wrap">
-			<pre>a = {'a': 'b', 'c': 'd'}
-print(a.items())</pre>
-				<div class="s c">dict_items([('a', 'b'), ('c', 'd')])</div>
+				<pre>def a(x,y,z='zzz'):
+    return {'a': x, 'b': y, 'c': z}
+print(a('a','b'))</pre>
+				<div class="s c">{'a': 'a', 'b': 'b', 'c': 'zzz'}</div>
 			</div>
 
 			<div class="b-w">
@@ -153,9 +100,10 @@ print(a.items())</pre>
 
 		<div class="a h">
 			<div class="wrap">
-			<pre>a = {'a': 'b', 'c': 'd'}
-print(a.get('a'))</pre>
-				<div class="s c">b</div>
+				<pre>def a(*args):
+    print(args)
+a(1,2,3)</pre>
+				<div class="s c">(1, 2, 3)</div>
 			</div>
 
 			<div class="b-w">
@@ -166,9 +114,8 @@ print(a.get('a'))</pre>
 
 		<div class="a h">
 			<div class="wrap">
-			<pre>a = {'a': 'b', 'c': 'd'}
-print(a['a'])</pre>
-				<div class="s c">b</div>
+				<pre></pre>
+				<div class="s c"></div>
 			</div>
 
 			<div class="b-w">
@@ -179,10 +126,8 @@ print(a['a'])</pre>
 
 		<div class="a h">
 			<div class="wrap">
-			<pre>a = {'a': 'b'}
-b = {'c': 'd'}
-print({**a, **b})</pre>
-				<div class="s c">{'a': 'b', 'c': 'd'}</div>
+				<pre></pre>
+				<div class="s c"></div>
 			</div>
 
 			<div class="b-w">
@@ -193,13 +138,8 @@ print({**a, **b})</pre>
 
 		<div class="a h">
 			<div class="wrap">
-			<pre>a = {'a': 'b'}
-b = {'c': 'd'}
-a.update(b)
-print(a)
-print(b)</pre>
-				<div class="s c">{'a': 'b', 'c': 'd'}<br>
-{'c': 'd'}</div>
+				<pre></pre>
+				<div class="s c"></div>
 			</div>
 
 			<div class="b-w">
@@ -210,9 +150,8 @@ print(b)</pre>
 
 		<div class="a h">
 			<div class="wrap">
-			<pre>a = {'a': 'b', 'c': 'd'}
-print(a.pop('a'))</pre>
-				<div class="s c">b</div>
+				<pre></pre>
+				<div class="s c"></div>
 			</div>
 
 			<div class="b-w">
@@ -223,16 +162,27 @@ print(a.pop('a'))</pre>
 
 		<div class="a h">
 			<div class="wrap">
-			<pre>a = {'a': 'b', 'c': 'd'}
-a.clear()
-print(a)</pre>
-				<div class="s c">{}</div>
+				<pre></pre>
+				<div class="s c"></div>
 			</div>
 
 			<div class="b-w">
 				<button class="btn check">✓</button>
 			</div>
 		</div>
+
+
+		<div class="a h">
+			<div class="wrap">
+				<pre></pre>
+				<div class="s c"></div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
 
 
 	</main>
@@ -244,4 +194,6 @@ print(a)</pre>
 
 	<script src="../js/game.js"></script>
 
-</body></html>
+</body>
+
+</html>

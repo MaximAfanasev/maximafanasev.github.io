@@ -14,6 +14,6 @@
 
 
 
-
-a = {'a': 'b', 'c': 'd'}
-print('a' in a)
+def a(*args):
+    print(args)
+a(1,2,3)
