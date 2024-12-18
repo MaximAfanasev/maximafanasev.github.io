@@ -14,6 +14,7 @@
 
 
 
-def a(*args):
-    print(args)
-a(1,2,3)
+class Cat():
+    def __init__(self):
+        print('a')
+Cat()
