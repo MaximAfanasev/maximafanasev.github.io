@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+	<title>PYTHON</title>
+	<link rel="stylesheet" href="../styles/style.css">
+</head>
+
+<body>
+
+	<main class="basics">
+		<div class="progress-container" id="correctProgressContainer">
+			<div class="progress" id="correctProgress" style="width: 0%;"></div>
+			<div class="coin" id="coin" style="">$</div>
+		</div>
+
+		<div class="a">
+			<div class="wrap">
+				<pre>from random import choice
+places = [1,2,3]
+def pick():
+return random.choice(places)
+				</pre>
+				<div class="s c">1 or 2 or 3</div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+
+		<div class="a h">
+			<div class="wrap">
+				<pre>counter</pre>
+				<div class="s c">Подсчет</div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+
+		<div class="a h">
+			<div class="wrap">
+				<pre>orderedDict</pre>
+				<div class="s c">вывод ключей объекта по порядку</div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+
+		<div class="a h">
+			<div class="wrap">
+				<pre>deque</pre>
+				<div class="s c">очередь</div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+
+		<div class="a h">
+			<div class="wrap">
+				<pre>itertools
+.chain
+.cycle 
+.accumulate</pre>
+				<div class="s c"> 1 раз<br>бесконечно<br>суммирование</div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+
+		<div class="a h">
+			<div class="wrap">
+				<pre>pprint</pre>
+				<div class="s c">красивый вывод {}</div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+
+		<div class="a h">
+			<div class="wrap">
+				<pre>random
+.choice
+.sample
+.randint
+			</pre>
+				<div class="s c">выбор<br>более 1<br>число</div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+
+		<div class="a h">
+			<div class="wrap">
+				<pre>randrange</pre>
+				<div class="s c">с шагом</div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+
+		<div class="a h">
+			<div class="wrap">
+				<pre>unicode</pre>
+				<div class="s c">\u</div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+
+		<div class="a h">
+			<div class="wrap">
+				<pre>unicodedata</pre>
+				<div class="s c">данные символа</div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+
+		<div class="a h">
+			<div class="wrap">
+				<pre>re
+.match
+.search
+.findall
+				</pre>
+				<div class="s c">точное<br>первое<br>все</div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+
+		<div class="a h">
+			<div class="wrap">
+				<pre>split</pre>
+				<div class="s c">разбиение по символу</div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+
+		<div class="a h">
+			<div class="wrap">
+				<pre>sub</pre>
+				<div class="s c">замена символа</div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+
+		<div class="a h">
+			<div class="wrap">
+				<pre>x = open('a.txt', '?')
+r w x a
+</pre>
+				<div class="s c">чтение, запись, если не сущ., данные</div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+
+	</main>
+
+
+	<div class="message" id="finalMessage">Поздравляю! <br>Вы все прошли :)<br>
+		<span id="countdown" style="display: none;"></span>
+	</div>
+
+	<script src="../js/game.js"></script>
+
+</body>
+
+</html>
