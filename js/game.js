@@ -35,26 +35,6 @@ checkButtons.forEach((button, index) => {
     });
 });
 
-// Обработчики для кнопок перекрестка
-crossButtons.forEach(button => {
-    button.addEventListener('click', function (event) { // Используем обычную функцию
-        const block = event.target.closest('.a');
-
-        // Удаляем класс "h"
-        block.classList.remove('h');
-
-        // Добавляем класс 'shake'
-        block.classList.add('shake');
-        setTimeout(() => {
-            block.classList.remove('shake');
-        }, 500);
-
-        // Увеличиваем счетчик неверных ответов
-        incorrectCount++;
-        updateProgress();
-    });
-});
-
 function updateProgress() {
     const correctPercentage = (correctCount / totalQuestions) * 100;
     const correctProgress = document.getElementById('correctProgress');
