@@ -1,183 +1,188 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 body {
-    position: relative;
-    background-color: #263238;
-    color: #e0e0e0;
-    font-family: monospace;
-    font-size: 20px;
-    line-height: 2.5;
-    height: 100vh;
+	position: relative;
+	background-color: #263238;
+	color: #e0e0e0;
+	font-family: monospace;
+	font-size: 20px;
+	line-height: 2.5;
+	height: 100vh;
 }
 
 canvas {
-    background-color: #263238;
-    width: 300px;
-    height: 400px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+	background-color: #263238;
+	width: 300px;
+	height: 400px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
 button {
-    padding: 15px 30px;
-    font-size: 24px;
-    color: white;
-    text-shadow: 2px 4px 2px #000;
-    background-color: #4CAF50;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    box-shadow: 3px 3px 3px #000;
-    transition: background-color 0.3s, transform 0.3s;
+	padding: 15px 30px;
+	font-size: 24px;
+	color: white;
+	text-shadow: 2px 4px 2px #000;
+	background-color: #4CAF50;
+	border: none;
+	border-radius: 30px;
+	cursor: pointer;
+	box-shadow: 3px 3px 3px #000;
+	transition: background-color 0.3s, transform 0.3s;
 }
 
 .b-w {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	bottom: 20px;
 }
 
 textarea {
-    margin-bottom: 30px;
-    border-radius: 10px;
-    background: transparent;
-    padding: 10px;
-    color: gold;
-    font-size: 20px;
+	margin-bottom: 30px;
+	border-radius: 10px;
+	background: transparent;
+	padding: 10px;
+	color: gold;
+	font-size: 20px;
 }
 
 .b-w button.s-btn {
-    background: #e2721b;
-    color: #fff;
+	background: #e2721b;
+	color: #fff;
 }
 
 ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+	list-style: none;
+	margin: 0;
+	padding: 0;
 }
 
 .wrap {
 	width: 100%;
 	max-width: 350px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
 .a {
-    padding: 60px;
-    border-radius: 15px;
-    width: 100%;
+	padding: 60px;
+	border-radius: 15px;
+	width: 100%;
 }
 
 .c {
-    color: gold;
+	color: gold;
 }
 
 .s {
-    margin-top: 50px;
-    border: 1px solid gold;
-    padding: 10px 20px;
-    border-radius: 10px;
-    cursor: progress;
-    transition: 0.2s;
-    filter: blur(0px);
+	margin-top: 50px;
+	border: 1px solid gold;
+	padding: 10px 20px;
+	border-radius: 10px;
+	cursor: progress;
+	transition: 0.2s;
+	filter: blur(0px);
 }
 
 .s:hover {
-    filter: blur(0);
+	filter: blur(0);
 }
 
 .c1 {
-    position: relative;
+	position: relative;
 }
 
 .c1::before {
-    content: '0 1 2';
-    position: absolute;
-    width: 100px;
-    height: 20px;
-    top: -50px;
-    left: 13px;
-    letter-spacing: 5.5px;
-    color: gray;
+	content: '0 1 2';
+	position: absolute;
+	width: 100px;
+	height: 20px;
+	top: -50px;
+	left: 13px;
+	letter-spacing: 5.5px;
+	color: gray;
 }
 
 .progress-container {
-    width: 80%;
-    background: #222;
-    margin: 10px auto;
-    border-radius: 25px;
-    position: relative;
+	width: 80%;
+	background: #222;
+	margin: 10px auto;
+	border-radius: 25px;
+	position: relative;
 }
 
 .progress-container::after {
-    position: absolute;
-    content: '💰';
-    right: -20px;
-    top: -5px;
-    font-size: 30px;
+	position: absolute;
+	content: '💰';
+	right: -20px;
+	top: -5px;
+	font-size: 30px;
 }
 
 .progress {
-    height: 5px;
-    background: gold;
-    transition: width 0.3s;
-    border-radius: 25px;
+	height: 5px;
+	background: gold;
+	transition: width 0.3s;
+	border-radius: 25px;
 }
 
 .coin {
-    position: absolute;
-    top: 20px;
-    background: gold;
-    border-radius: 50%;
-    border: 2px solid #000;
-    width: 25px;
-    height: 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation: rotateCoin 2s infinite cubic-bezier(0.1, 0.7, 1.0, 0.1);
-    color: #000;
-    font-weight: bolder;
-    font-family: sans-serif;
+	position: absolute;
+	top: 20px;
+	background: gold;
+	border-radius: 50%;
+	border: 2px solid #000;
+	width: 25px;
+	height: 25px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	animation: rotateCoin 2s infinite cubic-bezier(0.1, 0.7, 1.0, 0.1);
+	color: #000;
+	font-weight: bolder;
+	font-family: sans-serif;
 }
 
 @keyframes rotateCoin {
-    from { transform: rotateY(0deg); }
-    to { transform: rotateY(360deg); }
+	from {
+		transform: rotateY(0deg);
+	}
+
+	to {
+		transform: rotateY(360deg);
+	}
 }
 
 .message {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 24px;
-    color: gold;
-    display: none;
+	text-align: center;
+	margin-top: 20px;
+	font-size: 24px;
+	color: gold;
+	display: none;
 }
 
 ul li a {
-    color: gold;
-    text-decoration: none;
-    border: 2px solid;
-    padding: 10px 20px;
-    border-radius: 10px;
+	color: gold;
+	text-decoration: none;
+	border: 2px solid;
+	padding: 10px 20px;
+	border-radius: 10px;
 }
 
 ul li {
-    text-align: center;
-    margin-bottom: 20px;
+	text-align: center;
+	margin-bottom: 20px;
 }

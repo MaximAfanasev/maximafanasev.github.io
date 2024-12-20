@@ -1,6 +1,7 @@
 // Переменные для работы с тестом
 const finalMessage = document.getElementById('finalMessage');
 const countdownDiv = document.getElementById('countdown');
+const correctProgressContainer = document.getElementById('correctProgressContainer');
 
 let correctCount = 0;
 let incorrectCount = 0;
@@ -50,6 +51,7 @@ function updateProgress() {
 
 function finalizeTest() {
     for (const block of blocks) {
+			correctProgressContainer.style.display = 'none';
         block.style.display = 'none';
     }
     finalMessage.style.display = 'block';
@@ -57,7 +59,7 @@ function finalizeTest() {
 }
 
 function startRedirectCountdown() {
-    let countdown = 1; // Начинаем с 1 секунд
+    let countdown = 5; // Начинаем с 1 секунд
     countdownDiv.style.display = 'block'; // Отображаем блок обратного отсчета
     countdownDiv.innerHTML = `Переход на главную через <span>${countdown}</span> сек.`;
 
@@ -67,7 +69,7 @@ function startRedirectCountdown() {
 
         if (countdown <= 0) {
             clearInterval(intervalId);
-            window.location.href = '../index.html'; // Переход на главную страницу
+            window.location.href = '../first/index.html'; // Переход на главную страницу
         }
     }, 1000); // Каждую секунду
 }
