@@ -180,7 +180,7 @@ ul li a {
 ul li a.block {
 	display: block;
 	padding: 20px;
-	border: 1px dashed gold;
+	border: none;
 }
 
 ul li {
