@@ -1,105 +1,121 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Swipe Cards</title>
-	<style>
-		body {
-			font-family: Arial, sans-serif;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			height: 100vh;
-			background-color: #263238;
-		}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swipe Cards</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #263238;
+        }
 
-		.card-container {
-			width: 300px;
-			height: 400px;
-			overflow: hidden;
-			position: relative;
-		}
+        .card-container {
+            width: 300px;
+            height: 400px;
+            overflow: hidden;
+            position: relative;
+            border-radius: 10px;
+        }
 
-		.card {
-			width: 100%;
-			height: 100%;
-			position: absolute;
-			transition: transform 0.3s ease;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			font-size: 24px;
-			color: white;
-			border-radius: 10px;
-		}
+        .card {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: white;
+            border-radius: 10px;
+            opacity: 0; /* Скрываем карточки по умолчанию */
+            transform: translateX(100%); /* Сдвигаем карточки вправо */
+        }
 
-		.card1 {
-			background-color: #3498db;
-		}
+        .card.active {
+            opacity: 1; /* Делаем активную карточку видимой */
+            transform: translateX(0); /* Возвращаем к базовому положению */
+        }
 
-		.card2 {
-			background-color: #e74c3c;
-			transform: translateX(100%);
-			/* Скрываем вторую карточку за пределами видимости */
-		}
-	</style>
+        .card.prev {
+            opacity: 1; /* Делаем предыдущую карточку видимой */
+            transform: translateX(-100%); /* Сдвигаем предыдущую карточку влево */
+        }
+
+        .card1, .card3 {
+            background-color: #3498db;
+        }
+
+        .card2, .card4 {
+            background-color: #e74c3c;
+        }
+    </style>
 </head>
 
 <body>
 
-	<div class="card-container">
-		<div class="card card1">Карточка 1</div>
-		<div class="card card2">Карточка 2</div>
-	</div>
+    <div class="card-container">
+        <div class="card card1 active">True1 False1</div>
+        <div class="card card2">bool1</div>
+        <div class="card card3">True2 False2</div>
+        <div class="card card4">bool2</div>
+    </div>
 
-	<script>
-		let currentIndex = 0;
-		const cards = document.querySelectorAll('.card');
+    <script>
+        let currentIndex = 0;
+        const cards = document.querySelectorAll('.card');
 
-		function swipe(direction) {
-			if (direction === 'left' && currentIndex === 0) {
-				cards[currentIndex].style.transform = 'translateX(-100%)';
-				cards[currentIndex + 1].style.transform = 'translateX(0)';
-				currentIndex++;
-			} else if (direction === 'right' && currentIndex === 1) {
-				cards[currentIndex].style.transform = 'translateX(100%)';
-				cards[currentIndex - 1].style.transform = 'translateX(0)';
-				currentIndex--;
-			}
-		}
+        function showCard(index) {
+            cards.forEach((card, i) => {
+                card.classList.remove('active', 'prev'); // Убираем классы
+                if (i === index) {
+                    card.classList.add('active'); // Делаем текущую карточку активной
+                } else if (i === index - 1) {
+                    card.classList.add('prev'); // Делаем предыдущую карточку
+                }
+            });
+        }
 
-		// Обработка жестов на трекпаде
-		let touchStartX = 0;
-		let touchCount = 0;
+        function swipe(direction) {
+            if (direction === 'left' && currentIndex < cards.length - 1) {
+                cards[currentIndex].style.transform = 'translateX(-100%)'; // Убираем текущую карточку влево
+                currentIndex++;
+                showCard(currentIndex); // Показываем новую карточку
+            } else if (direction === 'right' && currentIndex > 0) {
+                cards[currentIndex].style.transform = 'translateX(100%)'; // Убираем текущую карточку вправо
+                currentIndex--;
+                showCard(currentIndex); // Показываем новую карточку
+            }
+        }
 
-		document.addEventListener('touchstart', (e) => {
-			touchStartX = e.touches[0].clientX;
-			touchCount = e.touches.length; // Количество касаний
-		});
+        // Обработка нажатий клавиш
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowLeft') {
+                swipe('right'); // Показываем предыдущую карточку
+            } else if (event.key === 'ArrowRight') {
+                swipe('left'); // Показываем следующую карточку
+            }
+        });
 
-		document.addEventListener('touchend', (e) => {
-			const touchEndX = e.changedTouches[0].clientX;
-			const swipeDistance = touchEndX - touchStartX;
+        // Автоматическая смена карточек каждые 3 секунды
+        setInterval(() => {
+            if (currentIndex < cards.length - 1) {
+                swipe('left'); // Свайп влево для переключения на следующую карточку
+            } else {
+                // Сбрасываем обратно на первую карточку после последней
+                currentIndex = 0;
+                showCard(currentIndex);
+            }
+        }, 2000); // 3000 миллисекунд = 3 секунды
 
-			// Проверяем, что жест выполнен двумя пальцами
-			if (touchCount === 2) {
-				if (swipeDistance > 50) {
-					swipe('right');
-				} else if (swipeDistance < -50) {
-					swipe('left');
-				}
-			}
-		});
+        // Инициализируем отображение первой карточки
+        showCard(currentIndex);
+    </script>
 
-		// Автоматическая смена карточек каждые 3 секунды
-		setInterval(() => {
-			if (currentIndex === 0) {
-				swipe('left'); // Свайп влево для переключения на вторую карточку
-			} else if (currentIndex === 1) {
-				swipe('right'); // Свайп вправо для переключения на первую карточку
-			}
-		}, 3000); // 3000 миллисекунд = 3 секунды
-	</script>
-
-</body></html>
+</body>
+</html>
