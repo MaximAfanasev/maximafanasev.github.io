@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Swipe Cards</title>
+    <title>Python</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -69,26 +69,19 @@
 
     // Обработка жестов на трекпаде
     let touchStartX = 0;
-    let touchStartY = 0;
-    let touchCount = 0;
 
     document.addEventListener('touchstart', (e) => {
         touchStartX = e.touches[0].clientX;
-        touchStartY = e.touches[0].clientY;
-        touchCount = e.touches.length; // Количество касаний
     });
 
     document.addEventListener('touchend', (e) => {
         const touchEndX = e.changedTouches[0].clientX;
         const swipeDistance = touchEndX - touchStartX;
 
-        // Проверяем, что жест выполнен двумя пальцами
-        if (touchCount === 2) {
-            if (swipeDistance > 50) {
-                swipe('right');
-            } else if (swipeDistance < -50) {
-                swipe('left');
-            }
+        if (swipeDistance > 50) {
+            swipe('right');
+        } else if (swipeDistance < -50) {
+            swipe('left');
         }
     });
 </script>
