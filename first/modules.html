@@ -34,8 +34,8 @@ return random.choice(places)
 
 		<div class="a h">
 			<div class="wrap">
-				<pre>counter</pre>
-				<div class="s c">Подсчет</div>
+				<pre>Подсчет</pre>
+				<div class="s c">from collections import Counter<br> Counter([1,2,3])</div>
 			</div>
 
 			<div class="b-w">
@@ -46,8 +46,8 @@ return random.choice(places)
 
 		<div class="a h">
 			<div class="wrap">
-				<pre>orderedDict</pre>
-				<div class="s c">вывод ключей объекта по порядку</div>
+				<pre>вывод ключей объекта</pre>
+				<div class="s c">from collections import OrderedDict</div>
 			</div>
 
 			<div class="b-w">
@@ -58,8 +58,8 @@ return random.choice(places)
 
 		<div class="a h">
 			<div class="wrap">
-				<pre>deque</pre>
-				<div class="s c">очередь</div>
+				<pre>очередь</pre>
+				<div class="s c">from collections import deque</div>
 			</div>
 
 			<div class="b-w">
@@ -70,7 +70,7 @@ return random.choice(places)
 
 		<div class="a h">
 			<div class="wrap">
-				<pre>itertools
+				<pre>import itertools
 .chain
 .cycle 
 .accumulate</pre>
@@ -85,7 +85,7 @@ return random.choice(places)
 
 		<div class="a h">
 			<div class="wrap">
-				<pre>pprint</pre>
+				<pre>import pprint</pre>
 				<div class="s c">красивый вывод {}</div>
 			</div>
 
@@ -97,7 +97,7 @@ return random.choice(places)
 
 		<div class="a h">
 			<div class="wrap">
-				<pre>random
+				<pre>import random
 .choice
 .sample
 .randint
@@ -113,7 +113,7 @@ return random.choice(places)
 
 		<div class="a h">
 			<div class="wrap">
-				<pre>randrange</pre>
+				<pre>import randrange</pre>
 				<div class="s c">с шагом</div>
 			</div>
 
@@ -149,7 +149,7 @@ return random.choice(places)
 
 		<div class="a h">
 			<div class="wrap">
-				<pre>re
+				<pre>import re
 .match
 .search
 .findall
@@ -193,6 +193,162 @@ return random.choice(places)
 r w x a
 </pre>
 				<div class="s c">чтение, запись, если не сущ., данные</div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+
+		<div class="a h">
+			<div class="wrap">
+				<pre>
+x = open()
+y = x.read
+x.close
+</pre>
+				<div class="s c">Чтение</div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+
+		<div class="a h">
+			<div class="wrap">
+				<pre>
+Автоматически закрыть
+</pre>
+				<div class="s c">with open</div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+
+		<div class="a h">
+			<div class="wrap">
+				<pre>
+Проверка сущ-я
+</pre>
+				<div class="s c">import os<br> os.path.exists('1.txt')</div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+
+		<div class="a h">
+			<div class="wrap">
+				<pre>
+Тип файла
+</pre>
+				<div class="s c">os.path.isfile()</div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+
+		<div class="a h">
+			<div class="wrap">
+				<pre>
+Копия
+</pre>
+				<div class="s c">import shutil<br> shutil.copy('1.txt', '2.txt')</div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+
+		<div class="a h">
+			<div class="wrap">
+				<pre>
+Проверка папки
+</pre>
+				<div class="s c">.isdir(x)</div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+
+		<div class="a h">
+			<div class="wrap">
+				<pre>
+Переименование
+</pre>
+				<div class="s c">os.rename('1.txt')</div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+
+		<div class="a h">
+			<div class="wrap">
+				<pre>
+Доступ к файлу
+</pre>
+				<div class="s c">os.chmod('1.txt', 0o400)</div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+
+		<div class="a h">
+			<div class="wrap">
+				<pre>
+Удалить файл
+</pre>
+				<div class="s c">os.remove('1.txt')</div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+
+		<div class="a h">
+			<div class="wrap">
+				<pre>
+Создание папки
+</pre>
+				<div class="s c">os.mldir('new')</div>
+			</div>
+
+			<div class="b-w">
+				<button class="btn check">✓</button>
+			</div>
+		</div>
+
+
+		<div class="a h">
+			<div class="wrap">
+				<pre>
+Содержание папки
+</pre>
+				<div class="s c">os.listdir()</div>
 			</div>
 
 			<div class="b-w">
