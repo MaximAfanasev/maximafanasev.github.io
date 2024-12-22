@@ -186,3 +186,11 @@ ul li {
 	text-align: center;
 	margin-bottom: 20px;
 }
+
+.card-counter {
+	margin-top: 40px;
+	color: gold;
+	display: flex;
+	justify-content: center;
+	font-family: sans-serif;
+}

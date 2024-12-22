@@ -8,6 +8,7 @@ const totalQuestions = document.querySelectorAll('.a').length;
 const blocks = document.querySelectorAll('.a');
 let currentIndex = 0; // Индекс текущей карточки
 const checkButtons = document.querySelectorAll('.check');
+const cardCountDisplayOff = document.querySelector('.card-counter');
 
 // Функция для отображения текущей карточки
 function showCurrentBlock() {
@@ -44,6 +45,7 @@ function updateProgress() {
     coin.style.left = `${correctPercentage}%`;
 
     if (correctCount + incorrectCount === totalQuestions) {
+			cardCountDisplayOff.style.display = 'none';
         finalizeTest();
     }
 }

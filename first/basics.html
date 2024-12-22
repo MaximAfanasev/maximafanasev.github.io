@@ -16,7 +16,11 @@
 			<div class="progress" id="correctProgress" style="width: 0%;"></div>
 			<div class="coin" id="coin" style="">$</div>
 		</div>
-
+		
+		<div class="card-counter">
+			<span id="cardCount">0</span>&nbsp;&nbsp;/&nbsp;&nbsp;<span id="totalCards">0</span>
+		</div>
+		
 		<div class="a">
 			<div class="wrap">
 				<div>True False</div>
@@ -33,7 +37,6 @@
 				<div>1</div>
 				<div class="s c">int</div>
 			</div>
-			
 
 			<div class="b-w">
 				<button class="btn check">✓</button>
@@ -397,16 +400,17 @@
 	</main>
 
 	<div class="message" id="finalMessage">
-	<div class="container">
-		<img src="../img/trophy.png" class="first" alt="">
-		<img src="../img/trophy2.png" class="second" alt="">
-		<img src="../img/trophy3.png" class="three" alt="">
-		<img src="../img/trophy4.png" class="four" alt="">
-		<img src="../img/trophy5.png" class="five" alt="">
-	</div><br>
+		<div class="container">
+			<img src="../img/trophy.png" class="first" alt="">
+			<img src="../img/trophy2.png" class="second" alt="">
+			<img src="../img/trophy3.png" class="three" alt="">
+			<img src="../img/trophy4.png" class="four" alt="">
+			<img src="../img/trophy5.png" class="five" alt="">
+		</div><br>
 		<span id="countdown" style="display: none;"></span>
 	</div>
 
 	<script src="../js/game.js"></script>
+	<script src="../js/cards.js"></script>
 
 </body></html>
