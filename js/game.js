@@ -1,6 +1,5 @@
 // Переменные для работы с тестом
 const finalMessage = document.getElementById('finalMessage');
-const countdownDiv = document.getElementById('countdown');
 const correctProgressContainer = document.getElementById('correctProgressContainer');
 
 let correctCount = 0;
@@ -60,12 +59,9 @@ function finalizeTest() {
 
 function startRedirectCountdown() {
     let countdown = 5; // Начинаем с 1 секунд
-    countdownDiv.style.display = 'block'; // Отображаем блок обратного отсчета
-    countdownDiv.innerHTML = `Переход на главную через <span>${countdown}</span> сек.`;
 
     const intervalId = setInterval(() => {
         countdown--;
-        countdownDiv.querySelector('span').textContent = countdown;
 
         if (countdown <= 0) {
             clearInterval(intervalId);
