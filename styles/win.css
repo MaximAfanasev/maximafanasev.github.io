@@ -9,7 +9,7 @@
 	overflow: hidden;
 }
 
-img {
+.message img {
 	width: 50px;
 	position: absolute;
 	transform: scale(0);

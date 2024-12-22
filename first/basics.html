@@ -16,20 +16,19 @@
 			<div class="progress" id="correctProgress" style="width: 0%;"></div>
 			<div class="coin" id="coin" style="">$</div>
 		</div>
-		
+
 		<div class="card-counter">
 			<span id="cardCount">0</span>&nbsp;&nbsp;/&nbsp;&nbsp;<span id="totalCards">0</span>
 		</div>
-		
+
+		<div class="repeat" id="repeatList">Повторить: </div>
+
 		<div class="a">
 			<div class="wrap">
 				<div>True False</div>
 				<div class="s c">bool</div>
 			</div>
-
-			<div class="b-w">
-				<button class="btn check">✓</button>
-			</div>
+				<input type="checkbox" class="card-checkbox" data-card-number="1">
 		</div>
 
 		<div class="a h">
@@ -37,10 +36,7 @@
 				<div>1</div>
 				<div class="s c">int</div>
 			</div>
-
-			<div class="b-w">
-				<button class="btn check">✓</button>
-			</div>
+				<input type="checkbox" class="card-checkbox"  data-card-number="2">
 		</div>
 
 		<div class="a h">
@@ -48,10 +44,7 @@
 				<div>1.1</div>
 				<div class="s c">float</div>
 			</div>
-
-			<div class="b-w">
-				<button class="btn check">✓</button>
-			</div>
+				<input type="checkbox" class="card-checkbox"  data-card-number="3">
 		</div>
 
 		<div class="a h">
@@ -59,10 +52,7 @@
 				<div>3j</div>
 				<div class="s c">complex</div>
 			</div>
-
-			<div class="b-w">
-				<button class="btn check">✓</button>
-			</div>
+				<input type="checkbox" class="card-checkbox" data-card-number="4">
 		</div>
 
 		<div class="a h">
@@ -70,10 +60,7 @@
 				<div>'a'</div>
 				<div class="s c">str</div>
 			</div>
-
-			<div class="b-w">
-				<button class="btn check">✓</button>
-			</div>
+				<input type="checkbox" class="card-checkbox" data-card-number="5">
 		</div>
 
 		<div class="a h">
@@ -81,10 +68,7 @@
 				<div>[1,2]</div>
 				<div class="s c">list</div>
 			</div>
-
-			<div class="b-w">
-				<button class="btn check">✓</button>
-			</div>
+				<input type="checkbox" class="card-checkbox" data-card-number="6">
 		</div>
 
 		<div class="a h">
@@ -92,10 +76,7 @@
 				<div>(1,2)</div>
 				<div class="s c">tuple - кортеж</div>
 			</div>
-
-			<div class="b-w">
-				<button class="btn check">✓</button>
-			</div>
+				<input type="checkbox" class="card-checkbox" data-card-number="7">
 		</div>
 
 		<div class="a h r">
@@ -103,10 +84,7 @@
 				<div>b'ab\xff'</div>
 				<div class="s c">bytes</div>
 			</div>
-
-			<div class="b-w">
-				<button class="btn check">✓</button>
-			</div>
+				<input type="checkbox" class="card-checkbox" data-card-number="8">
 		</div>
 
 		<div class="a h">
@@ -114,10 +92,7 @@
 				<div>bytearray(..)</div>
 				<div class="s c">bytearray</div>
 			</div>
-
-			<div class="b-w">
-				<button class="btn check">✓</button>
-			</div>
+				<input type="checkbox" class="card-checkbox" data-card-number="9">
 		</div>
 
 		<div class="a h">
@@ -125,10 +100,7 @@
 				<div>set([1,2])</div>
 				<div class="s c">set</div>
 			</div>
-
-			<div class="b-w">
-				<button class="btn check">✓</button>
-			</div>
+				<input type="checkbox" class="card-checkbox" data-card-number="10">
 		</div>
 
 		<div class="a h">
@@ -136,10 +108,7 @@
 				<div>frozenset([1,2])</div>
 				<div class="s c">frozenset</div>
 			</div>
-
-			<div class="b-w">
-				<button class="btn check">✓</button>
-			</div>
+				<input type="checkbox" class="card-checkbox" data-card-number="11">
 		</div>
 
 		<div class="a h">
@@ -147,10 +116,7 @@
 				<div>{'a':'1'}</div>
 				<div class="s c">dict</div>
 			</div>
-
-			<div class="b-w">
-				<button class="btn check">✓</button>
-			</div>
+				<input type="checkbox" class="card-checkbox" data-card-number="12">
 		</div>
 
 		<div class="a h">
@@ -158,10 +124,7 @@
 				<div>type(1)</div>
 				<div class="s c">class 'int'</div>
 			</div>
-
-			<div class="b-w">
-				<button class="btn check">✓</button>
-			</div>
+				<input type="checkbox" class="card-checkbox" data-card-number="13">
 		</div>
 
 		<div class="a h">
@@ -169,10 +132,7 @@
 				<div>Names</div>
 				<div class="s c">a z A Z 0 9 _</div>
 			</div>
-
-			<div class="b-w">
-				<button class="btn check">✓</button>
-			</div>
+				<input type="checkbox" class="card-checkbox" data-card-number="14">
 		</div>
 
 		<div class="a h">
@@ -181,10 +141,7 @@
 				<div>a? b? c?</div>
 				<div class="s c">2 2 2</div>
 			</div>
-
-			<div class="b-w">
-				<button class="btn check">✓</button>
-			</div>
+				<input type="checkbox" class="card-checkbox" data-card-number="15">
 		</div>
 
 		<div class="a h">
@@ -196,10 +153,7 @@
 				<div class="c"></div>
 				<div class="s c">x = 29 y = 5</div>
 			</div>
-
-			<div class="b-w">
-				<button class="btn check">✓</button>
-			</div>
+				<input type="checkbox" class="card-checkbox" data-card-number="16">
 		</div>
 
 		<div class="a h">
@@ -208,10 +162,7 @@
 				<div>0 -> False</div>
 				<div class="s c">bool(1) bool(0)</div>
 			</div>
-
-			<div class="b-w">
-				<button class="btn check">✓</button>
-			</div>
+				<input type="checkbox" class="card-checkbox" data-card-number="17">
 		</div>
 
 		<div class="a h">
@@ -222,10 +173,7 @@
 				<div>a?</div>
 				<div class="s c">3</div>
 			</div>
-
-			<div class="b-w">
-				<button class="btn check">✓</button>
-			</div>
+				<input type="checkbox" class="card-checkbox" data-card-number="18">
 		</div>
 
 		<div class="a h">
@@ -236,21 +184,16 @@
 				<div>a?</div>
 				<div class="s c">3</div>
 			</div>
-
-			<div class="b-w">
-				<button class="btn check">✓</button>
-			</div>
+				<input type="checkbox" class="card-checkbox" data-card-number="19">
 		</div>
+
 		<div class="a h">
 			<div class="wrap">
 				<div>if True:</div>
 				<div>&nbsp;&nbsp;print('True')</div>
 				<div class="s c">True</div>
 			</div>
-
-			<div class="b-w">
-				<button class="btn check">✓</button>
-			</div>
+				<input type="checkbox" class="card-checkbox" data-card-number="20">
 		</div>
 
 		<div class="a h">
@@ -262,10 +205,7 @@
 				<div>&nbsp;&nbsp;print('a')</div>
 				<div class="s c">a</div>
 			</div>
-
-			<div class="b-w">
-				<button class="btn check">✓</button>
-			</div>
+				<input type="checkbox" class="card-checkbox" data-card-number="21">
 		</div>
 
 		<div class="a h">
@@ -274,10 +214,7 @@
 				<div>print((a&#60;7) and (a&#60;10))</div>
 				<div class="s c">True</div>
 			</div>
-
-			<div class="b-w">
-				<button class="btn check">✓</button>
-			</div>
+				<input type="checkbox" class="card-checkbox" data-card-number="22">
 		</div>
 
 		<div class="a h">
@@ -287,10 +224,7 @@
 				<div>print('it"s vowel')</div>
 				<div class="s c">it"s vowel</div>
 			</div>
-
-			<div class="b-w">
-				<button class="btn check">✓</button>
-			</div>
+				<input type="checkbox" class="card-checkbox" data-card-number="23">
 		</div>
 
 		<div class="a h">
@@ -300,10 +234,7 @@
 				<div>print('yeah')</div>
 				<div class="s c">yeah</div>
 			</div>
-
-			<div class="b-w">
-				<button class="btn check">✓</button>
-			</div>
+				<input type="checkbox" class="card-checkbox" data-card-number="24">
 		</div>
 
 		<div class="a h">
@@ -313,11 +244,9 @@
 				<div>print(a, 'yeah')</div>
 				<div class="s c">o, yeah</div>
 			</div>
-
-			<div class="b-w">
-				<button class="btn check">✓</button>
-			</div>
+				<input type="checkbox" class="card-checkbox" data-card-number="25">
 		</div>
+
 		<div class="a h">
 			<div class="wrap">
 				<div>a = 10</div>
@@ -327,11 +256,9 @@
 				<div>else: print('no')</div>
 				<div class="s c">yes</div>
 			</div>
-
-			<div class="b-w">
-				<button class="btn check">✓</button>
-			</div>
+				<input type="checkbox" class="card-checkbox" data-card-number="26">
 		</div>
+
 		<div class="a h">
 			<div class="wrap">
 				<div>c = 1</div>
@@ -340,10 +267,7 @@
 				<div>c += 1</div>
 				<div class="s c">1 2</div>
 			</div>
-
-			<div class="b-w">
-				<button class="btn check">✓</button>
-			</div>
+				<input type="checkbox" class="card-checkbox" data-card-number="27">
 		</div>
 
 		<div class="a h">
@@ -353,10 +277,7 @@
 				<div>print(x)</div>
 				<div class="s c">a b c</div>
 			</div>
-
-			<div class="b-w">
-				<button class="btn check">✓</button>
-			</div>
+				<input type="checkbox" class="card-checkbox" data-card-number="28">
 		</div>
 
 		<div class="a h">
@@ -366,10 +287,7 @@
 				<div>print(x)</div>
 				<div class="s c">0 1 2</div>
 			</div>
-
-			<div class="b-w">
-				<button class="btn check">✓</button>
-			</div>
+				<input type="checkbox" class="card-checkbox" data-card-number="29">
 		</div>
 
 		<div class="a h">
@@ -379,10 +297,7 @@
 				<div>print(x)</div>
 				<div class="s c">('a',)</div>
 			</div>
-
-			<div class="b-w">
-				<button class="btn check">✓</button>
-			</div>
+				<input type="checkbox" class="card-checkbox" data-card-number="30">
 		</div>
 
 		<div class="a h">
@@ -392,9 +307,13 @@
 				<div>print(a)</div>
 				<div class="s c">'a'</div>
 			</div>
+				<input type="checkbox" class="card-checkbox" data-card-number="31">
+		</div>
 
-			<div class="b-w">
-				<button class="btn check">✓</button>
+		<div class="b-w">
+			<button class="btn check">✓</button>
+			<div class="filter-controller">
+				<input type="checkbox" id="blurToggle">
 			</div>
 		</div>
 	</main>
