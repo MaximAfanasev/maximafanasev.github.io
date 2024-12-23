@@ -23,20 +23,12 @@
 				<div>bool(True)</div>
 				<div class="s c">True</div>
 			</div>
-
-			<div class="b-w">
-				<button class="btn check">✓</button>
-			</div>
 		</div>
 
 		<div class="a">
 			<div class="wrap">
 				<div>bool(1)</div>
 				<div class="s c">True</div>
-			</div>
-
-			<div class="b-w">
-				<button class="btn check">✓</button>
 			</div>
 		</div>
 
@@ -45,10 +37,6 @@
 				<div>bool(45)</div>
 				<div class="s c">True</div>
 			</div>
-
-			<div class="b-w">
-				<button class="btn check">✓</button>
-			</div>
 		</div>
 
 		<div class="a">
@@ -56,20 +44,12 @@
 				<div>bool()</div>
 				<div class="s c">False</div>
 			</div>
-
-			<div class="b-w">
-				<button class="btn check">✓</button>
-			</div>
 		</div>
 
 		<div class="a">
 			<div class="wrap">
 				<div>bool(0)</div>
 				<div class="s c">False</div>
-			</div>
-
-			<div class="b-w">
-				<button class="btn check">✓</button>
 			</div>
 		</div>
 
@@ -79,9 +59,6 @@
 				<div class="s c">False</div>
 			</div>
 
-			<div class="b-w">
-				<button class="btn check">✓</button>
-			</div>
 		</div>
 
 		<div class="a">
@@ -90,9 +67,6 @@
 				<div class="s c">False</div>
 			</div>
 
-			<div class="b-w">
-				<button class="btn check">✓</button>
-			</div>
 		</div>
 
 		<div class="a">
@@ -101,9 +75,6 @@
 				<div class="s c">1</div>
 			</div>
 
-			<div class="b-w">
-				<button class="btn check">✓</button>
-			</div>
 		</div>
 
 		<div class="a">
@@ -112,9 +83,6 @@
 				<div class="s c">int(True)</div>
 			</div>
 
-			<div class="b-w">
-				<button class="btn check">✓</button>
-			</div>
 		</div>
 
 		<div class="a h">
@@ -123,9 +91,6 @@
 				<div class="s c">int(98.6)</div>
 			</div>
 
-			<div class="b-w">
-				<button class="btn check">✓</button>
-			</div>
 		</div>
 
 		<div class="a h">
@@ -134,9 +99,6 @@
 				<div class="s c">int('99')</div>
 			</div>
 
-			<div class="b-w">
-				<button class="btn check">✓</button>
-			</div>
 		</div>
 
 		<div class="a h">
@@ -145,9 +107,6 @@
 				<div class="s c">int('10', 2)</div>
 			</div>
 
-			<div class="b-w">
-				<button class="btn check">✓</button>
-			</div>
 		</div>
 
 		<div class="a h">
@@ -156,9 +115,6 @@
 				<div class="s c">2</div>
 			</div>
 
-			<div class="b-w">
-				<button class="btn check">✓</button>
-			</div>
 		</div>
 
 		<div class="a h">
@@ -167,9 +123,6 @@
 				<div class="s c">45.0</div>
 			</div>
 
-			<div class="b-w">
-				<button class="btn check">✓</button>
-			</div>
 		</div>
 
 		<div class="a h">
@@ -178,9 +131,6 @@
 				<div class="s c">0.0</div>
 			</div>
 
-			<div class="b-w">
-				<button class="btn check">✓</button>
-			</div>
 		</div>
 
 		<div class="a h">
@@ -189,9 +139,6 @@
 				<div class="s c">invalid</div>
 			</div>
 
-			<div class="b-w">
-				<button class="btn check">✓</button>
-			</div>
 		</div>
 
 		<div class="a h r">
@@ -200,9 +147,6 @@
 				<div class="s c">(1, 4)</div>
 			</div>
 
-			<div class="b-w">
-				<button class="btn check">✓</button>
-			</div>
 		</div>
 
 		<div class="a h">
@@ -211,9 +155,6 @@
 				<div class="s c">8</div>
 			</div>
 
-			<div class="b-w">
-				<button class="btn check">✓</button>
-			</div>
 		</div>
 
 		<div class="a h">
@@ -237,9 +178,6 @@
 				<div class="s c">2я 8я 16я</div>
 			</div>
 
-			<div class="b-w">
-				<button class="btn check">✓</button>
-			</div>
 		</div>
 
 		<div class="a h">
@@ -248,9 +186,6 @@
 				<div class="s c">A</div>
 			</div>
 
-			<div class="b-w">
-				<button class="btn check">✓</button>
-			</div>
 		</div>
 
 		<div class="a h">
@@ -259,8 +194,16 @@
 				<div class="s c">65</div>
 			</div>
 
-			<div class="b-w">
-				<button class="btn check">✓</button>
+		</div>
+
+		<div class="b-w">
+			<button class="btn check">✓</button>
+			<div class="filter-controller">
+				<label for="blurToggle" class="custom-checkbox" id="blurLabel">
+					<img class="eye" src="../img/eye.png" alt="Toggle Blur">
+					<img class="eye2" src="../img/eye2.png" alt="Toggle Blur">
+				</label>
+				<input type="checkbox" id="blurToggle" style="display: none;">
 			</div>
 		</div>
 	</main>
@@ -277,5 +220,6 @@
 	</div>
 
 	<script src="../js/game.js"></script>
+	<script src="../js/cards.js"></script>
 
 </body></html>
