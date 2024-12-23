@@ -194,7 +194,7 @@ ul li {
 }
 
 .repeat {
-	margin-top: -20px;    padding: 0 20px;
+	margin-top: 10px;    padding: 0 20px;line-height: 30px;
 	color: gold;
 	display: flex;
 	justify-content: center;
@@ -221,4 +221,30 @@ ul li {
 	width: 70px;
 	height: 60px;
 }
+.custom-checkbox {
+    cursor: pointer;
+}
+.eye {
+	
+	display: block;
+}
 
+.eye2 {
+	display: none;
+}
+
+.custom-checkbox img {
+    width: 70px; /* Установите нужный размер изображения */
+}
+
+.active .eye {
+	display: none;
+}
+
+.active .eye2 {
+	display: block;
+}
+
+.active img{
+		filter: blur(3px);
+}

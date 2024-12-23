@@ -72,5 +72,9 @@ function startRedirectCountdown() {
     }, 1000); // Каждую секунду
 }
 
+document.getElementById('blurLabel').addEventListener('click', function() {
+    this.classList.toggle('active'); // Добавляет или удаляет класс 'active' при клике
+});
+
 // Инициализируем показ первой карточки
 showCurrentBlock();
