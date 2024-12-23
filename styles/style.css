@@ -214,13 +214,6 @@ ul li {
 	display: block;
 }
 
-.a input {
-	position: absolute;
-	bottom: 20px;
-	right: 0;
-	width: 70px;
-	height: 60px;
-}
 .custom-checkbox {
     cursor: pointer;
 }
@@ -247,4 +240,15 @@ ul li {
 
 .active img{
 		filter: blur(3px);
+}
+
+.card-checkbox {
+	display: none;
+}
+
+.card-label img {
+	width: 50px;
+	position: absolute;
+	bottom: 30px;
+	right: 20px;
 }
