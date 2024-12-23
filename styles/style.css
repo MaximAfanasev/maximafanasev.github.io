@@ -25,7 +25,7 @@ canvas {
 }
 
 button {
-	padding: 15px 30px;
+	padding: 10px 26px;
 	font-size: 24px;
 	color: white;
 	text-shadow: 2px 4px 2px #000;
@@ -218,8 +218,8 @@ ul li {
     cursor: pointer;
 }
 .eye {
-	
 	display: block;
+	border-radius: 50px;
 }
 
 .eye2 {
