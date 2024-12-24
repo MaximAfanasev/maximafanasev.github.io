@@ -28,7 +28,7 @@
 		<div class="a h">
 			<div class="wrap">
 				<div>a = b = c = 2</div>
-				<div>a? b? c?</div>
+				<div>print(a, b, c)</div>
 				<div class="s c">2 2 2</div>
 			</div>
 		</div>
@@ -38,9 +38,9 @@
 				<div>x = 5</div>
 				<div>y = x</div>
 				<div>x = 29</div>
-				<div>x? y?</div>
+				<div>print(x, y)</div>
 				<div class="c"></div>
-				<div class="s c">x = 29 y = 5</div>
+				<div class="s c">29 5</div>
 			</div>
 		</div>
 
@@ -48,7 +48,7 @@
 			<div class="wrap">
 				<div>1 -> True</div>
 				<div>0 -> False</div>
-				<div class="s c">bool(1) bool(0)</div>
+				<div class="s c">bool(1)<br> bool(0)</div>
 			</div>
 		</div>
 
@@ -57,7 +57,7 @@
 				<div>a = 0</div>
 				<div>a = 1 + \</div>
 				<div>2</div>
-				<div>a?</div>
+				<div>print(a)</div>
 				<div class="s c">3</div>
 			</div>
 		</div>
@@ -67,7 +67,7 @@
 				<div>a = 0</div>
 				<div>a = (1 +</div>
 				<div>2)</div>
-				<div>a?</div>
+				<div>print(a)</div>
 				<div class="s c">3</div>
 			</div>
 		</div>
@@ -103,7 +103,7 @@
 			<div class="wrap">
 				<div>a = 'o'</div>
 				<div>if a == 'o' or a == 'a':</div>
-				<div>print('it"s vowel')</div>
+				<div>&nbsp;&nbsp;print('it"s vowel')</div>
 				<div class="s c">it"s vowel</div>
 			</div>
 		</div>
@@ -112,7 +112,7 @@
 			<div class="wrap">
 				<div>vw = 'aoeui'</div>
 				<div>if a in vw:</div>
-				<div>print('yeah')</div>
+				<div>&nbsp;&nbsp;print('yeah')</div>
 				<div class="s c">yeah</div>
 			</div>
 		</div>
@@ -121,7 +121,7 @@
 			<div class="wrap">
 				<div>vw = 'aoeui'</div>
 				<div>if a in vw:</div>
-				<div>print(a, 'yeah')</div>
+				<div>&nbsp;&nbsp;print(a, 'yeah')</div>
 				<div class="s c">o, yeah</div>
 			</div>
 		</div>
@@ -131,7 +131,7 @@
 				<div>a = 10</div>
 				<div>b = 'b'*a</div>
 				<div>if c := a - len(b) >= 0:</div>
-				<div>print('yes')</div>
+				<div>&nbsp;&nbsp;print('yes')</div>
 				<div>else: print('no')</div>
 				<div class="s c">yes</div>
 			</div>
@@ -141,8 +141,8 @@
 			<div class="wrap">
 				<div>c = 1</div>
 				<div>while c &#60;= 2:</div>
-				<div>print(c)</div>
-				<div>c += 1</div>
+				<div>&nbsp;&nbsp;print(c)</div>
+				<div>&nbsp;&nbsp;c += 1</div>
 				<div class="s c">1 2</div>
 			</div>
 		</div>
@@ -151,7 +151,7 @@
 			<div class="wrap">
 				<div>for x in 'abc':
 				</div>
-				<div>print(x)</div>
+				<div>&nbsp;&nbsp;print(x)</div>
 				<div class="s c">a b c</div>
 			</div>
 		</div>
@@ -160,7 +160,7 @@
 			<div class="wrap">
 				<div>for x in range(0,3):
 				</div>
-				<div>print(x)</div>
+				<div>&nbsp;&nbsp;print(x)</div>
 				<div class="s c">0 1 2</div>
 			</div>
 		</div>
