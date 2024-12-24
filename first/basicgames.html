@@ -87,18 +87,62 @@
             <div id="options1"></div>
             <div id="message1"></div>
         </div>
-        <div class="question-container" id="question2" style="display: none;">
+        <div class="question-container" id="question2">
             <h1>Какой тип данных возвращает выражение print(type(1))?</h1>
             <div id="options2"></div>
             <div id="message2"></div>
         </div>
-        <div class="question-container" id="question3" style="display: none;">
+        <div class="question-container" id="question3">
             <h1>Какой тип данных возвращает выражение print(type(1.1))?</h1>
             <div id="options3"></div>
             <div id="message3"></div>
         </div>
+        <div class="question-container" id="question4">
+            <h1>Какой тип данных возвращает выражение print(type(3j))?</h1>
+            <div id="options4"></div>
+            <div id="message4"></div>
+        </div>
+        <div class="question-container" id="question5">
+            <h1>Какой тип данных возвращает выражение print(type('a'))?</h1>
+            <div id="options5"></div>
+            <div id="message5"></div>
+        </div>
+        <div class="question-container" id="question6">
+            <h1>Какой тип данных возвращает выражение print(type([1, 2]))?</h1>
+            <div id="options6"></div>
+            <div id="message6"></div>
+        </div>
+        <div class="question-container" id="question7">
+            <h1>Какой тип данных возвращает выражение print(type((1, 2)))?</h1>
+            <div id="options7"></div>
+            <div id="message7"></div>
+        </div>
+        <div class="question-container" id="question8">
+            <h1>Какой тип данных возвращает выражение print(type(b'ab\\xff'))?</h1>
+            <div id="options8"></div>
+            <div id="message8"></div>
+        </div>
+        <div class="question-container" id="question9">
+            <h1>Какой тип данных возвращает выражение print(type(bytearray([1, 2])))?</h1>
+            <div id="options9"></div>
+            <div id="message9"></div>
+        </div>
+        <div class="question-container" id="question10">
+            <h1>Какой тип данных возвращает выражение print(type(set([1, 2])))?</h1>
+            <div id="options10"></div>
+            <div id="message10"></div>
+        </div>
+        <div class="question-container" id="question11">
+            <h1>Какой тип данных возвращает выражение print(type(frozenset([1, 2])))?</h1>
+            <div id="options11"></div>
+            <div id="message11"></div>
+        </div>
+        <div class="question-container" id="question12">
+            <h1>Какой тип данных возвращает выражение print(type({'a': '1'}))?</h1>
+            <div id="options12"></div>
+            <div id="message12"></div>
+        </div>
     </div>
-
     <script>
         const questions = [
             {
@@ -133,6 +177,105 @@
                 ],
                 messageContainerId: "message3",
                 optionsContainerId: "options3"
+            },
+            {
+                question: "Какой тип данных возвращает выражение print(type(3j))?",
+                options: [
+                    { text: "<class 'str'>", correct: false },
+                    { text: "<class 'int'>", correct: false },
+                    { text: "<class 'complex'>", correct: true },
+                    { text: "<class 'list'>", correct: false }
+                ],
+                messageContainerId: "message4",
+                optionsContainerId: "options4"
+            },
+            {
+                question: "Какой тип данных возвращает выражение print(type('a'))?",
+                options: [
+                    { text: "<class 'str'>", correct: true },
+                    { text: "<class 'int'>", correct: false },
+                    { text: "<class 'bool'>", correct: false },
+                    { text: "<class 'list'>", correct: false }
+                ],
+                messageContainerId: "message5",
+                optionsContainerId: "options5"
+            },
+            {
+                question: "Какой тип данных возвращает выражение print(type([1, 2]))?",
+                options: [
+                    { text: "<class 'str'>", correct: false },
+                    { text: "<class 'list'>", correct: true },
+                    { text: "<class 'bool'>", correct: false },
+                    { text: "<class 'int'>", correct: false }
+                ],
+                messageContainerId: "message6",
+                optionsContainerId: "options6"
+            },
+            {
+                question: "Какой тип данных возвращает выражение print(type((1, 2)))?",
+                options: [
+                    { text: "<class 'str'>", correct: false },
+                    { text: "<class 'tuple'>", correct: true },
+                    { text: "<class 'bool'>", correct: false },
+                    { text: "<class 'int'>", correct: false }
+                ],
+                messageContainerId: "message7",
+                optionsContainerId: "options7"
+            },
+            {
+                question: "Какой тип данных возвращает выражение print(type(b'ab\\xff'))?",
+                options: [
+                    { text: "<class 'str'>", correct: false },
+                    { text: "<class 'bytes'>", correct: true },
+                    { text: "<class 'bool'>", correct: false },
+                    { text: "<class 'int'>", correct: false }
+                ],
+                messageContainerId: "message8",
+                optionsContainerId: "options8"
+            },
+            {
+                question: "Какой тип данных возвращает выражение print(type(bytearray([1, 2])))?",
+                options: [
+                    { text: "<class 'str'>", correct: false },
+                    { text: "<class 'bytearray'>", correct: true },
+                    { text: "<class 'bool'>", correct: false },
+                    { text: "<class 'int'>", correct: false }
+                ],
+                messageContainerId: "message9",
+                optionsContainerId: "options9"
+            },
+            {
+                question: "Какой тип данных возвращает выражение print(type(set([1, 2])))?",
+                options: [
+                    { text: "<class 'str'>", correct: false },
+                    { text: "<class 'set'>", correct: true },
+                    { text: "<class 'bool'>", correct: false },
+                    { text: "<class 'int'>", correct: false }
+                ],
+                messageContainerId: "message10",
+                optionsContainerId: "options10"
+            },
+            {
+                question: "Какой тип данных возвращает выражение print(type(frozenset([1, 2])))?",
+                options: [
+                    { text: "<class 'str'>", correct: false },
+                    { text: "<class 'frozenset'>", correct: true },
+                    { text: "<class 'bool'>", correct: false },
+                    { text: "<class 'int'>", correct: false }
+                ],
+                messageContainerId: "message11",
+                optionsContainerId: "options11"
+            },
+            {
+                question: "Какой тип данных возвращает выражение print(type({'a': '1'}))?",
+                options: [
+                    { text: "<class 'str'>", correct: false },
+                    { text: "<class 'dict'>", correct: true },
+                    { text: "<class 'bool'>", correct: false },
+                    { text: "<class 'int'>", correct: false }
+                ],
+                messageContainerId: "message12",
+                optionsContainerId: "options12"
             }
         ];
 
