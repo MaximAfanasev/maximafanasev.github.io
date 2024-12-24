@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -13,8 +12,17 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background: linear-gradient(to bottom, #a2d5f2, #ff9c9c);
-            color: #333;
+            background: linear-gradient(270deg, #ff9c9c, #a2d5f2);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            25% { background-position: 50% 50%; }
+            50% { background-position: 100% 50%; }
+            75% { background-position: 50% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .quiz-container {
@@ -60,6 +68,12 @@
             color: white;
         }
 
+        #message {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
         @keyframes slideIn {
             from {
                 opacity: 0;
@@ -70,15 +84,8 @@
                 transform: translateY(0);
             }
         }
-
-        #message {
-            margin-top: 20px;
-            font-size: 20px;
-            font-weight: bold;
-        }
     </style>
 </head>
-
 <body>
     <div class="quiz-container">
         <h1>Какой тип данных возвращает функция type() для значения True?</h1>
@@ -114,5 +121,4 @@
         }
     </script>
 </body>
-
 </html>
