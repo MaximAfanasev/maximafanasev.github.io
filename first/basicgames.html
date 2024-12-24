@@ -16,7 +16,6 @@
             background-size: 400% 400%;
             animation: gradientAnimation 15s ease infinite;
         }
-
         @keyframes gradientAnimation {
             0% { background-position: 0% 50%; }
             25% { background-position: 50% 50%; }
@@ -24,7 +23,6 @@
             75% { background-position: 50% 50%; }
             100% { background-position: 0% 50%; }
         }
-
         .quiz-container {
             padding: 30px;
             border-radius: 15px;
@@ -35,12 +33,10 @@
             max-width: 400px;
             animation: slideIn 0.5s ease-in-out;
         }
-
         h1 {
             font-size: 24px;
             margin-bottom: 20px;
         }
-
         button {
             margin: 5px;
             padding: 15px 25px;
@@ -53,27 +49,22 @@
             color: #111;
             border: 1px solid #a88734;
         }
-
         button:hover {
             transform: scale(1.05);
         }
-
         button.correct {
             background-color: #4caf50;
             color: white;
         }
-
         button.wrong {
             background-color: #f44336;
             color: white;
         }
-
         #message {
             margin-top: 20px;
             font-size: 20px;
             font-weight: bold;
         }
-
         @keyframes slideIn {
             from {
                 opacity: 0;
@@ -83,6 +74,9 @@
                 opacity: 1;
                 transform: translateY(0);
             }
+        }
+        .question-container {
+            display: none;
         }
     </style>
 </head>
@@ -97,6 +91,11 @@
             <h1>Какой тип данных возвращает выражение print(type(1))?</h1>
             <div id="options2"></div>
             <div id="message2"></div>
+        </div>
+        <div class="question-container" id="question3" style="display: none;">
+            <h1>Какой тип данных возвращает выражение print(type(1.1))?</h1>
+            <div id="options3"></div>
+            <div id="message3"></div>
         </div>
     </div>
 
@@ -123,6 +122,17 @@
                 ],
                 messageContainerId: "message2",
                 optionsContainerId: "options2"
+            },
+            {
+                question: "Какой тип данных возвращает выражение print(type(1.1))?",
+                options: [
+                    { text: "<class 'str'>", correct: false },
+                    { text: "<class 'int'>", correct: false },
+                    { text: "<class 'float'>", correct: true },
+                    { text: "<class 'list'>", correct: false }
+                ],
+                messageContainerId: "message3",
+                optionsContainerId: "options3"
             }
         ];
 
