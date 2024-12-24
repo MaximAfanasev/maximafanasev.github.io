@@ -45,7 +45,7 @@ function updateProgress() {
     coin.style.left = `${correctPercentage}%`;
 
     if (correctCount + incorrectCount === totalQuestions) {
-			cardCountDisplayOff.style.display = 'none';
+
         finalizeTest();
     }
 }

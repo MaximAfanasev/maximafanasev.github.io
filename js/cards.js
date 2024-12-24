@@ -1,17 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
     const totalCards = document.querySelectorAll('.a').length; // Общее количество карточек
-    const cardCountDisplay = document.getElementById('cardCount'); // Элемент для отображения текущего количества
+ // Элемент для отображения текущего количества
     const totalCardsDisplay = document.getElementById('totalCards'); // Элемент для отображения общего количества
     const repeatList = document.getElementById('repeatList'); // Элемент для отображения номеров карточек
     const blurToggle = document.getElementById('blurToggle'); // Чекбокс для размытия
     
     let cardCount = 1; // Начальное количество пройденных карточек
-
-    // Обновляем отображение счётчика
-    function updateCardCount() {
-        cardCountDisplay.textContent = cardCount;
-        totalCardsDisplay.textContent = totalCards;
-    }
 
     // Находим все кнопки и добавляем обработчик событий
     const buttons = document.querySelectorAll('.btn.check');
@@ -19,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', () => {
             if (cardCount < totalCards) {
                 cardCount++; // Увеличиваем количество пройденных карточек
-                updateCardCount(); // Обновляем отображение
             }
         });
     });
@@ -47,6 +40,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Инициализируем отображение
-    updateCardCount();
 });
