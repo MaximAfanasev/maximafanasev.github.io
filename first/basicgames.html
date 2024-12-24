@@ -87,38 +87,80 @@
     </style>
 </head>
 <body>
-    <div class="quiz-container">
-        <h1>Какой тип данных возвращает функция type() для значения True?</h1>
-        <div id="options"></div>
-        <div id="message"></div>
+    <div class="quiz-container" id="quiz-container">
+        <div class="question-container" id="question1">
+            <h1>Какой тип данных возвращает функция type() для значения True?</h1>
+            <div id="options1"></div>
+            <div id="message1"></div>
+        </div>
+        <div class="question-container" id="question2" style="display: none;">
+            <h1>Какой тип данных возвращает выражение print(type(1))?</h1>
+            <div id="options2"></div>
+            <div id="message2"></div>
+        </div>
     </div>
+
     <script>
-        const options = [
-            { text: "<class 'str'>", correct: false },
-            { text: "<class 'int'>", correct: false },
-            { text: "<class 'bool'>", correct: true },
-            { text: "<class 'list'>", correct: false }
+        const questions = [
+            {
+                question: "Какой тип данных возвращает функция type() для значения True?",
+                options: [
+                    { text: "<class 'str'>", correct: false },
+                    { text: "<class 'int'>", correct: false },
+                    { text: "<class 'bool'>", correct: true },
+                    { text: "<class 'list'>", correct: false }
+                ],
+                messageContainerId: "message1",
+                optionsContainerId: "options1"
+            },
+            {
+                question: "Какой тип данных возвращает выражение print(type(1))?",
+                options: [
+                    { text: "<class 'str'>", correct: false },
+                    { text: "<class 'int'>", correct: true },
+                    { text: "<class 'bool'>", correct: false },
+                    { text: "<class 'list'>", correct: false }
+                ],
+                messageContainerId: "message2",
+                optionsContainerId: "options2"
+            }
         ];
 
-        const optionsContainer = document.getElementById('options');
-        const messageContainer = document.getElementById('message');
+        function displayQuestion(index) {
+            const questionContainer = document.getElementById(`question${index + 1}`);
+            questionContainer.style.display = "block";
+            const optionsContainer = document.getElementById(`options${index + 1}`);
+            const messageContainer = document.getElementById(`message${index + 1}`);
+            optionsContainer.innerHTML = ''; // Очистить предыдущие варианты
 
-        options.forEach(option => {
-            const button = document.createElement('button');
-            button.textContent = option.text;
-            button.addEventListener('click', () => checkAnswer(option.correct, button));
-            optionsContainer.appendChild(button);
-        });
+            questions[index].options.forEach(option => {
+                const button = document.createElement('button');
+                button.textContent = option.text;
+                button.addEventListener('click', () => checkAnswer(option.correct, button, index));
+                optionsContainer.appendChild(button);
+            });
+        }
 
-        function checkAnswer(isCorrect, button) {
+        function checkAnswer(isCorrect, button, questionIndex) {
+            const messageContainer = document.getElementById(`message${questionIndex + 1}`);
             if (isCorrect) {
                 button.classList.add('correct');
                 messageContainer.textContent = "Правильно! Вы выбрали правильный ответ!";
+                // Показать следующий вопрос
+                if (questionIndex < questions.length - 1) {
+                    setTimeout(() => {
+                        document.getElementById(`question${questionIndex + 1}`).style.display = "none";
+                        displayQuestion(questionIndex + 1);
+                    }, 2000); // Задержка 2 секунды перед показом следующего вопроса
+                }
             } else {
                 button.classList.add('wrong');
                 messageContainer.textContent = "Неправильно. Попробуйте еще раз!";
             }
         }
+
+        // Показать первую карточку
+        displayQuestion(0);
     </script>
 </body>
 </html>
