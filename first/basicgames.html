@@ -2,31 +2,117 @@
 <html lang="ru">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-	<title>PYTHON</title>
-	<link rel="stylesheet" href="../styles/style.css">
-	<link rel="stylesheet" href="../styles/win.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Игра: Выбор ответа</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(to bottom, #a2d5f2, #ff9c9c);
+            color: #333;
+        }
+
+        .quiz-container {
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            background: white;
+            width: 90%;
+            max-width: 400px;
+            animation: slideIn 0.5s ease-in-out;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            margin: 5px;
+            padding: 15px 25px;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            background-color: #f0c14b;
+            color: #111;
+            border: 1px solid #a88734;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        button.correct {
+            background-color: #4caf50;
+            color: white;
+        }
+
+        button.wrong {
+            background-color: #f44336;
+            color: white;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        #message {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body>
+    <div class="quiz-container">
+        <h1>Какой тип данных возвращает функция type() для значения True?</h1>
+        <div id="options"></div>
+        <div id="message"></div>
+    </div>
+    <script>
+        const options = [
+            { text: "<class 'str'>", correct: false },
+            { text: "<class 'int'>", correct: false },
+            { text: "<class 'bool'>", correct: true },
+            { text: "<class 'list'>", correct: false }
+        ];
 
-	<main class="basics">
-	
-	</main>
+        const optionsContainer = document.getElementById('options');
+        const messageContainer = document.getElementById('message');
 
-	<div class="message" id="finalMessage">
-		<div class="container">
-			<img src="../img/trophy.png" class="first" alt="">
-			<img src="../img/trophy2.png" class="second" alt="">
-			<img src="../img/trophy3.png" class="three" alt="">
-			<img src="../img/trophy4.png" class="four" alt="">
-			<img src="../img/trophy5.png" class="five" alt="">
-		</div><br>
-		<span id="countdown" style="display: none;"></span>
-	</div>
+        options.forEach(option => {
+            const button = document.createElement('button');
+            button.textContent = option.text;
+            button.addEventListener('click', () => checkAnswer(option.correct, button));
+            optionsContainer.appendChild(button);
+        });
 
-	<script src="../js/game.js"></script>
-	<script src="../js/cards.js"></script>
+        function checkAnswer(isCorrect, button) {
+            if (isCorrect) {
+                button.classList.add('correct');
+                messageContainer.textContent = "Правильно! Вы выбрали правильный ответ!";
+            } else {
+                button.classList.add('wrong');
+                messageContainer.textContent = "Неправильно. Попробуйте еще раз!";
+            }
+        }
+    </script>
+</body>
 
-</body></html>
+</html>
