@@ -64,7 +64,7 @@ textarea {
 	width: 100%;
 	max-width: 350px;
 	position: absolute;
-	top: 50%;
+	top: 53%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 }
