@@ -78,6 +78,16 @@
         .question-container {
             display: none;
         }
+        .congratulations {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .trophy {
+            width: 100px;
+            height: auto;
+            margin: 20px auto;
+        }
     </style>
 </head>
 <body>
@@ -118,7 +128,7 @@
             <div id="message7"></div>
         </div>
         <div class="question-container" id="question8">
-            <h1>Какой тип данных возвращает выражение print(type(b'ab\\xff'))?</h1>
+            <h1>Какой тип данных возвращает выражение print(type(b'ab\xff'))?</h1>
             <div id="options8"></div>
             <div id="message8"></div>
         </div>
@@ -141,6 +151,10 @@
             <h1>Какой тип данных возвращает выражение print(type({'a': '1'}))?</h1>
             <div id="options12"></div>
             <div id="message12"></div>
+        </div>
+        <div class="congratulations" id="congratulations">
+            <h1>Поздравляем! Вы прошли все вопросы!</h1>
+            <img src="../img/trophy.png" class="trophy" alt="Trophy">
         </div>
     </div>
     <script>
@@ -299,12 +313,20 @@
             if (isCorrect) {
                 button.classList.add('correct');
                 messageContainer.textContent = "Правильно! Вы выбрали правильный ответ!";
-                // Показать следующий вопрос
+                
+                // Показать следующий вопрос или поздравления, если это последний вопрос
                 if (questionIndex < questions.length - 1) {
                     setTimeout(() => {
                         document.getElementById(`question${questionIndex + 1}`).style.display = "none";
                         displayQuestion(questionIndex + 1);
                     }, 2000); // Задержка 2 секунды перед показом следующего вопроса
+                } else {
+                    // Показать поздравления
+                    setTimeout(() => {
+                        document.getElementById("quiz-container").style.display = "none";
+                        document.getElementById("congratulations").style.display = "block";
+                        window.location.href = "index.html";
+                    }, 2000); // Задержка 2 секунды перед показом поздравления
                 }
             } else {
                 button.classList.add('wrong');
