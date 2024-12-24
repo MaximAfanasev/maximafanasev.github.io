@@ -185,7 +185,7 @@ ul li {
 	margin-bottom: 20px;
 }
 
-.card-counter{
+.card-counter {
 	margin-top: 40px;
 	color: gold;
 	display: flex;
@@ -194,7 +194,9 @@ ul li {
 }
 
 .repeat {
-	margin-top: 10px;    padding: 0 20px;line-height: 30px;
+	margin-top: 10px;
+	padding: 0 20px;
+	line-height: 30px;
 	color: gold;
 	display: flex;
 	justify-content: center;
@@ -215,8 +217,9 @@ ul li {
 }
 
 .custom-checkbox {
-    cursor: pointer;
+	cursor: pointer;
 }
+
 .eye {
 	display: block;
 	border-radius: 50px;
@@ -227,7 +230,7 @@ ul li {
 }
 
 .custom-checkbox img {
-    width: 70px;
+	width: 70px;
 }
 
 .active .eye {
@@ -238,8 +241,8 @@ ul li {
 	display: block;
 }
 
-.active img{
-		filter: blur(3px);
+.active img {
+	filter: blur(3px);
 }
 
 .card-checkbox {
@@ -251,4 +254,24 @@ ul li {
 	position: absolute;
 	bottom: 30px;
 	right: 20px;
+}
+
+.done {
+	position: relative;
+}
+
+.done a {
+	background: lightgreen;
+	color: #000;
+	font-weight: bold;
+	border: 2px solid green;
+}
+
+.date {
+	position: absolute;
+	bottom: -20px;
+	left: 50%;
+	transform: translate(-50%);
+	font-size: 10px;
+	color: lightgoldenrodyellow;
 }
