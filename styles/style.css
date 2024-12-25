@@ -11,14 +11,15 @@ body {
 	font-family: monospace;
 	font-size: 20px;
 	line-height: 2.5;
-	height: 100vh;
+	padding: 50px 10px;
 }
 
 canvas {
-	background-color: #263238;
+	background-color: none;
 	width: 300px;
 	height: 400px;
 	position: absolute;
+	z-index: -1;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
@@ -58,15 +59,6 @@ textarea {
 
 .b-w button {
 	margin-right: 30px;
-}
-
-.wrap {
-	width: 100%;
-	max-width: 350px;
-	position: absolute;
-	top: 53%;
-	left: 50%;
-	transform: translate(-50%, -50%);
 }
 
 .a {
