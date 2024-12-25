@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Проверка букв</title>
+    <title>Проверка типа данных</title>
     <style>
         body {
             display: flex;
@@ -13,25 +13,19 @@
             height: 100vh;
             margin: 0;
             font-family: Arial, sans-serif;
-            color: #fff;
-            overflow: hidden;
             background: linear-gradient(45deg, #ff6b6b, #f06595, #eece4e, #4bc0c8);
             background-size: 400% 400%;
             animation: gradientAnimation 10s ease infinite;
         }
-
         @keyframes gradientAnimation {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-
-        h1 {
+        h1, h2 {
             margin-bottom: 20px;
-            font-size: 36px;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+            text-align: center;
         }
-
         input {
             width: 50px;
             height: 50px;
@@ -42,13 +36,7 @@
             border-radius: 10px;
             outline: none;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-            transition: background-color 0.3s;
         }
-
-        input:focus {
-            background-color: rgba(255, 255, 255, 0.3);
-        }
-
         button {
             margin-top: 20px;
             padding: 10px 20px;
@@ -58,53 +46,129 @@
             cursor: pointer;
             background-color: #4bc0c8;
             color: #fff;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            transition: background-color 0.3s, transform 0.2s;
+            display: block;
         }
-
-        button:hover {
-            background-color: #36a9a0;
-            transform: scale(1.05);
-        }
-
         .message {
             margin-top: 20px;
             font-size: 24px;
-            text-shadow: 6px 3px 5px rgba(0, 0, 0, 0.6);
+            text-align: center;
+        }
+        .question {
+            display: none;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
         }
     </style>
 </head>
 <body>
 
-    <h1>Тип данных</h1>
-    <div>
-        <input type="text" maxlength="1" id="letter1" required>
-        <input type="text" maxlength="1" id="letter2" required>
-        <input type="text" maxlength="1" id="letter3" required>
-        <input type="text" maxlength="1" id="letter4" required>
-    </div>
+<h1>type(True)</h1>
+<div>
+    <input type="text" maxlength="1" id="letter1" required>
+    <input type="text" maxlength="1" id="letter2" required>
+    <input type="text" maxlength="1" id="letter3" required>
+    <input type="text" maxlength="1" id="letter4" required>
+</div>
+<div class="button-container">
     <button onclick="checkLetters()">Проверить</button>
-    <div class="message" id="message"></div>
+</div>
+<div class="message" id="message"></div>
 
-    <script>
-        function checkLetters() {
-            const letter1 = document.getElementById('letter1').value;
-            const letter2 = document.getElementById('letter2').value;
-            const letter3 = document.getElementById('letter3').value;
-            const letter4 = document.getElementById('letter4').value;
+<div class="question" id="secondQuestion">
+    <h2>type(1)</h2>
+    <div>
+        <input type="text" maxlength="1" id="letter5" required>
+        <input type="text" maxlength="1" id="letter6" required>
+        <input type="text" maxlength="1" id="letter7" required>
+    </div>
+    <div class="button-container">
+        <button onclick="checkSecondQuestion()">Проверить</button>
+    </div>
+    <div class="message" id="secondMessage"></div>
+</div>
 
-            const correctLetters = 'bool';
-            const userInput = letter1 + letter2 + letter3 + letter4;
+<div class="question" id="thirdQuestion">
+    <h2>type(1.1)</h2>
+    <div>
+        <input type="text" maxlength="1" id="letter8" required>
+        <input type="text" maxlength="1" id="letter9" required>
+        <input type="text" maxlength="1" id="letter10" required>
+        <input type="text" maxlength="1" id="letter11" required>
+        <input type="text" maxlength="1" id="letter12" required>
+    </div>
+    <div class="button-container">
+        <button onclick="checkThirdQuestion()">Проверить</button>
+    </div>
+    <div class="message" id="thirdMessage"></div>
+</div>
 
-            const messageContainer = document.getElementById('message');
-            if (userInput === correctLetters) {
-                messageContainer.textContent = 'Все верно!';
-                messageContainer.style.color = 'white';
-            } else {
-                messageContainer.textContent = 'Неправильно. Попробуйте еще раз.';
-                messageContainer.style.color = 'red';
-            }
+<script>
+    function checkLetters() {
+        const letter1 = document.getElementById('letter1').value;
+        const letter2 = document.getElementById('letter2').value;
+        const letter3 = document.getElementById('letter3').value;
+        const letter4 = document.getElementById('letter4').value;
+
+        const correctLetters = 'bool'; // Правильное слово
+        const userInput = letter1 + letter2 + letter3 + letter4;
+
+        const messageContainer = document.getElementById('message');
+        if (userInput === correctLetters) {
+            messageContainer.textContent = 'Все верно!';
+            messageContainer.style.color = 'green';
+
+            setTimeout(() => {
+                document.getElementById('secondQuestion').style.display = 'block';
+            }, 3000); // 3 секунды
+        } else {
+            messageContainer.textContent = 'Неправильно. Попробуйте еще раз.';
+            messageContainer.style.color = 'red';
         }
-    </script>
+    }
+
+    function checkSecondQuestion() {
+        const letter5 = document.getElementById('letter5').value;
+        const letter6 = document.getElementById('letter6').value;
+        const letter7 = document.getElementById('letter7').value;
+
+        const correctSecondLetters = 'int'; // правильное слово "int"
+        const userSecondInput = letter5 + letter6 + letter7;
+
+        const secondMessageContainer = document.getElementById('secondMessage');
+        if (userSecondInput === correctSecondLetters) {
+            secondMessageContainer.textContent = 'Все верно!';
+            secondMessageContainer.style.color = 'green';
+            setTimeout(() => {
+                document.getElementById('thirdQuestion').style.display = 'block';
+            }, 3000); // 3 секунды
+        } else {
+            secondMessageContainer.textContent = 'Неправильно. Попробуйте еще раз.';
+            secondMessageContainer.style.color = 'red';
+        }
+    }
+
+    function checkThirdQuestion() {
+        const letter8 = document.getElementById('letter8').value;
+        const letter9 = document.getElementById('letter9').value;
+        const letter10 = document.getElementById('letter10').value;
+        const letter11 = document.getElementById('letter11').value;
+        const letter12 = document.getElementById('letter12').value;
+
+        const correctThirdLetters = 'float'; // правильное слово "float"
+        const userThirdInput = letter8 + letter9 + letter10 + letter11 + letter12;
+
+        const thirdMessageContainer = document.getElementById('thirdMessage');
+        if (userThirdInput === correctThirdLetters) {
+            thirdMessageContainer.textContent = 'Все верно!';
+            thirdMessageContainer.style.color = 'green';
+        } else {
+            thirdMessageContainer.textContent = 'Неправильно. Попробуйте еще раз.';
+            thirdMessageContainer.style.color = 'red';
+        }
+    }
+</script>
 </body>
 </html>
