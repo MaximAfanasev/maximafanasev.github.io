@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Календарь</title>
+	<style>
+		body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			background-color: #f0f0f0;
+		}
+
+		.calendar {
+			display: grid;
+			grid-template-columns: repeat(7, 50px);
+			gap: 5px;
+		}
+
+		.day {
+			width: 50px;
+			height: 50px;
+			background-color: #ffffff;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			cursor: pointer;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			transition: background-color 0.3s;
+		}
+
+		.day.selected {
+			background-color: gold;
+		}
+
+		.day.empty {
+			background-color: transparent;
+			cursor: default;
+		}
+
+		.calendar {
+			display: grid;
+			grid-template-columns: repeat(7, 20px);
+			/* 7 колонок (дней) */
+			gap: 5px;
+			/* расстояние между кубиками */
+		}
+
+		.day {
+			width: 20px;
+			height: 20px;
+			background-color: #e0e0e0;
+			/* цвет по умолчанию */
+			border-radius: 3px;
+			transition: background-color 0.3s;
+		}
+
+		.day:hover {
+			background-color: #b0b0b0;
+			/* цвет при наведении */
+		}
+
+		.day.active {
+			background-color: #4caf50;
+			color: #fff;
+		}
+
+		.day.empty {
+			background-color: #263238;
+		}
+
+		.day {
+			color: #222;
+			font-weight: bolder;
+			font-size: 14px;
+			line-height: 22px;
+			text-align: center;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="calendar" id="calendar">
+		<div class="day empty"></div>
+		<div class="day empty"></div>
+		<div class="day empty"></div>
+		<div class="day empty"></div>
+		<div class="day empty"></div>
+		<div class="day empty"></div>
+		<div class="day">1</div>
+		<div class="day">2</div>
+		<div class="day">3</div>
+		<div class="day">4</div>
+		<div class="day">5</div>
+		<div class="day">6</div>
+		<div class="day">7</div>
+		<div class="day">8</div>
+		<div class="day">9</div>
+		<div class="day">10</div>
+		<div class="day">11</div>
+		<div class="day">12</div>
+		<div class="day">13</div>
+		<div class="day">14</div>
+		<div class="day">15</div>
+		<div class="day">16</div>
+		<div class="day">17</div>
+		<div class="day">18</div>
+		<div class="day">19</div>
+		<div class="day">20</div>
+		<div class="day">21</div>
+		<div class="day">22</div>
+		<div class="day active">23</div>
+		<div class="day active">24</div>
+		<div class="day active">25</div>
+		<div class="day active">26</div>
+		<div class="day">27</div>
+		<div class="day">28</div>
+		<div class="day">29</div>
+		<div class="day">30</div>
+		<div class="day">31</div>
+	</div>
+
+	<script>
+		const calendarElement = document.getElementById('calendar');
+
+		// Создаем массив для хранения состояния выбранных дней.
+		let selectedDays = JSON.parse(localStorage.getItem('selectedDays')) || [];
+
+		// Функция для обновления ячеек на основании состояния из localStorage
+		function loadCalendarState() {
+			selectedDays.forEach(day => {
+				const dayElement = Array.from(calendarElement.children).find(d => d.textContent === day);
+				if (dayElement) {
+					dayElement.classList.add('selected');
+				}
+			});
+		}
+
+		// Добавляем обработчик кликов на каждую ячейку календаря
+		Array.from(calendarElement.children).forEach(dayElement => {
+			if (!dayElement.classList.contains('empty')) {
+				dayElement.addEventListener('click', () => {
+					dayElement.classList.toggle('selected');
+					updateLocalStorage();
+				});
+			}
+		});
+
+		// Обновляем localStorage на основании выбранных ячеек
+		function updateLocalStorage() {
+			selectedDays = Array.from(calendarElement.querySelectorAll('.day.selected')).map(day => day.textContent);
+			localStorage.setItem('selectedDays', JSON.stringify(selectedDays));
+		}
+
+		// Загружаем состояние при загрузке страницы
+		loadCalendarState();
+	</script>
+
+</body></html>

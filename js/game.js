@@ -67,7 +67,7 @@ function startRedirectCountdown() {
 
         if (countdown <= 0) {
             clearInterval(intervalId);
-            window.location.href = '../first/index.html'; // Переход на главную страницу
+            window.location.href = '../index.html'; // Переход на главную страницу
         }
     }, 1000); // Каждую секунду
 }
