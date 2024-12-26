@@ -1,68 +1,61 @@
+.calendar {
+	display: grid;
+	grid-template-columns: repeat(7, 50px);
+	gap: 5px;
+}
 
+.day {
+	width: 50px;
+	height: 50px;
+	background-color: #ffffff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	border-radius: 5px;
+	transition: background-color 0.3s;
+}
 
-		.calendar {
-			display: grid;
-			grid-template-columns: repeat(7, 50px);
-			gap: 5px;
-		}
+.day.selected {
+	background-color: darkgreen;
+	color: #fff;
+}
 
-		.day {
-			width: 50px;
-			height: 50px;
-			background-color: #ffffff;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			cursor: pointer;
-			border-radius: 5px;
-			transition: background-color 0.3s;
-		}
+.day.empty {
+	background-color: transparent;
+	cursor: default;
+}
 
-		.day.selected {
-			background-color: darkgreen;
-			color: #fff;
-		}
+.calendar {
+	display: grid;
+	grid-template-columns: repeat(7, 20px);
+	/* 7 колонок (дней) */
+	gap: 5px;
+	/* расстояние между кубиками */
+}
 
-		.day.empty {
-			background-color: transparent;
-			cursor: default;
-		}
+.day {
+	width: 20px;
+	height: 20px;
+	background-color: #e0e0e0;
+	/* цвет по умолчанию */
+	border-radius: 3px;
+	transition: background-color 0.3s;
+}
 
-		.calendar {
-			display: grid;
-			grid-template-columns: repeat(7, 20px);
-			/* 7 колонок (дней) */
-			gap: 5px;
-			/* расстояние между кубиками */
-		}
+.day.active, .day:hover {
+	background-color: #4caf50;
+	color: #fff;
+}
 
-		.day {
-			width: 20px;
-			height: 20px;
-			background-color: #e0e0e0;
-			/* цвет по умолчанию */
-			border-radius: 3px;
-			transition: background-color 0.3s;
-		}
+.day.empty {
+	background-color: #263238;
+}
 
-		.day:hover {
-			background-color: #b0b0b0;
-			/* цвет при наведении */
-		}
-
-		.day.active {
-			background-color: #4caf50;
-			color: #fff;
-		}
-
-		.day.empty {
-			background-color: #263238;
-		}
-
-		.day {
-			color: #222;
-			font-weight: bolder;
-			font-size: 14px;
-			line-height: 22px;
-			text-align: center;
-		}
+.day {
+	color: #222;
+	font-weight: bolder;
+	font-size: 14px;
+	line-height: 22px;
+	text-align: center;
+}
