@@ -17,7 +17,7 @@
 }
 
 .day.selected {
-	background-color: darkgreen;
+	background-color: #4caf50;
 	color: #fff;
 }
 
@@ -43,7 +43,7 @@
 	transition: background-color 0.3s;
 }
 
-.day.active, .day:hover {
+.day.active, .day:hover, .day:active {
 	background-color: #4caf50;
 	color: #fff;
 }
