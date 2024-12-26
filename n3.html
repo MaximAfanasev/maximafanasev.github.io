@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Игра: Угадай ответ</title>
+	<link rel="stylesheet" href="styles.css">
+</head>
+<style>
+	body {
+		font-family: Arial, sans-serif;
+		background-color: #f0f0f0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100vh;
+		margin: 0;
+	}
+
+	#game-container {
+		background-color: white;
+		border-radius: 8px;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+		padding: 20px;
+		text-align: center;
+	}
+
+	input {
+		padding: 10px;
+		width: 80%;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+	}
+
+	button {
+		padding: 10px 15px;
+		border: none;
+		border-radius: 4px;
+		background-color: #28a745;
+		color: white;
+		cursor: pointer;
+		margin-top: 10px;
+	}
+
+	button:hover {
+		background-color: #218838;
+	}
+
+	#result {
+		margin-top: 20px;
+		font-size: 18px;
+		color: #333;
+	}
+</style>
+
+<body>
+	<div id="game-container">
+		<h1>Угадай ответ!</h1>
+		<div id="question"></div>
+		<input type="text" id="answer" placeholder="Введите ваш ответ...">
+		<button id="submit">Отправить</button>
+		<div id="result"></div>
+	</div>
+	<script>
+		document.addEventListener("DOMContentLoaded", () => {
+			const questions = [{
+					question: "chr(65)",
+					answer: "A"
+				},
+				{
+					question: "ord('A')",
+					answer: "65"
+				},
+				{
+					question: "int(True)",
+					answer: "1"
+				},
+				{
+					question: "int(False)",
+					answer: "0"
+				},
+				{
+					question: "int(98.6)",
+					answer: "98"
+				},
+				{
+					question: "int('99')",
+					answer: "99"
+				},
+				{
+					question: "int('10', 2)",
+					answer: "2"
+				}
+			];
+
+			// Функция для перемешивания массива
+			function shuffle(array) {
+				for (let i = array.length - 1; i > 0; i--) {
+					const j = Math.floor(Math.random() * (i + 1));
+					[array[i], array[j]] = [array[j], array[i]];
+				}
+			}
+
+			shuffle(questions); // Перемешиваем вопросы
+
+			let questionIndex = 0;
+			const questionElement = document.getElementById("question");
+			const answerInput = document.getElementById("answer");
+			const resultElement = document.getElementById("result");
+			const submitButton = document.getElementById("submit");
+
+			// Функция для отображения вопроса
+			function displayQuestion() {
+				if (questionIndex < questions.length) {
+					questionElement.textContent = questions[questionIndex].question;
+				} else {
+					questionElement.textContent = "Игра окончена!";
+					answerInput.style.display = "none";
+					submitButton.style.display = "none";
+				}
+			}
+
+			// Обработка клика по кнопке
+			submitButton.addEventListener("click", () => {
+				const userAnswer = answerInput.value.trim();
+				const currentAnswer = questions[questionIndex].answer;
+
+				if (userAnswer === currentAnswer) {
+					resultElement.textContent = "Правильно!";
+					questionIndex++;
+					answerInput.value = "";
+					displayQuestion();
+				} else {
+					resultElement.textContent = "Попробуйте еще раз.";
+				}
+			});
+
+			// Отображаем первый вопрос
+			displayQuestion();
+		});
+	</script>
+</body></html>
