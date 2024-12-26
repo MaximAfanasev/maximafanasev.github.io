@@ -1,164 +1,148 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Календарь</title>
-	<style>
-		body {
-			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			height: 100vh;
-			background-color: #f0f0f0;
-		}
-
-		.calendar {
-			display: grid;
-			grid-template-columns: repeat(7, 50px);
-			gap: 5px;
-		}
-
-		.day {
-			width: 50px;
-			height: 50px;
-			background-color: #ffffff;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			cursor: pointer;
-			border: 1px solid #ccc;
-			border-radius: 5px;
-			transition: background-color 0.3s;
-		}
-
-		.day.selected {
-			background-color: gold;
-		}
-
-		.day.empty {
-			background-color: transparent;
-			cursor: default;
-		}
-
-		.calendar {
-			display: grid;
-			grid-template-columns: repeat(7, 20px);
-			/* 7 колонок (дней) */
-			gap: 5px;
-			/* расстояние между кубиками */
-		}
-
-		.day {
-			width: 20px;
-			height: 20px;
-			background-color: #e0e0e0;
-			/* цвет по умолчанию */
-			border-radius: 3px;
-			transition: background-color 0.3s;
-		}
-
-		.day:hover {
-			background-color: #b0b0b0;
-			/* цвет при наведении */
-		}
-
-		.day.active {
-			background-color: #4caf50;
-			color: #fff;
-		}
-
-		.day.empty {
-			background-color: #263238;
-		}
-
-		.day {
-			color: #222;
-			font-weight: bolder;
-			font-size: 14px;
-			line-height: 22px;
-			text-align: center;
-		}
-	</style>
-</head>
-
-<body>
-
-	<div class="calendar" id="calendar">
-		<div class="day empty"></div>
-		<div class="day empty"></div>
-		<div class="day empty"></div>
-		<div class="day empty"></div>
-		<div class="day empty"></div>
-		<div class="day empty"></div>
-		<div class="day">1</div>
-		<div class="day">2</div>
-		<div class="day">3</div>
-		<div class="day">4</div>
-		<div class="day">5</div>
-		<div class="day">6</div>
-		<div class="day">7</div>
-		<div class="day">8</div>
-		<div class="day">9</div>
-		<div class="day">10</div>
-		<div class="day">11</div>
-		<div class="day">12</div>
-		<div class="day">13</div>
-		<div class="day">14</div>
-		<div class="day">15</div>
-		<div class="day">16</div>
-		<div class="day">17</div>
-		<div class="day">18</div>
-		<div class="day">19</div>
-		<div class="day">20</div>
-		<div class="day">21</div>
-		<div class="day">22</div>
-		<div class="day active">23</div>
-		<div class="day active">24</div>
-		<div class="day active">25</div>
-		<div class="day active">26</div>
-		<div class="day">27</div>
-		<div class="day">28</div>
-		<div class="day">29</div>
-		<div class="day">30</div>
-		<div class="day">31</div>
-	</div>
-
-	<script>
-		const calendarElement = document.getElementById('calendar');
-
-		// Создаем массив для хранения состояния выбранных дней.
-		let selectedDays = JSON.parse(localStorage.getItem('selectedDays')) || [];
-
-		// Функция для обновления ячеек на основании состояния из localStorage
-		function loadCalendarState() {
-			selectedDays.forEach(day => {
-				const dayElement = Array.from(calendarElement.children).find(d => d.textContent === day);
-				if (dayElement) {
-					dayElement.classList.add('selected');
-				}
-			});
-		}
-
-		// Добавляем обработчик кликов на каждую ячейку календаря
-		Array.from(calendarElement.children).forEach(dayElement => {
-			if (!dayElement.classList.contains('empty')) {
-				dayElement.addEventListener('click', () => {
-					dayElement.classList.toggle('selected');
-					updateLocalStorage();
-				});
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag and Drop Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+            height: 100vh;
+            background: linear-gradient(to bottom, #ff7e5f, #feb47b); /* Градиент заката */
+            color: #000;
+        }
+			
+			h1 {
+				text-align: center;
+				color: #222;
 			}
-		});
 
-		// Обновляем localStorage на основании выбранных ячеек
-		function updateLocalStorage() {
-			selectedDays = Array.from(calendarElement.querySelectorAll('.day.selected')).map(day => day.textContent);
-			localStorage.setItem('selectedDays', JSON.stringify(selectedDays));
-		}
+        .container {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            margin-bottom: 20px;
+        }
 
-		// Загружаем состояние при загрузке страницы
-		loadCalendarState();
-	</script>
+        .column {
+            width: 150px;
+            height: 340px;
+            border: 2px solid #ccc;
+            border-radius: 20px; /* Скругление углов */
+            background: rgba(255, 255, 255, 0.1);
+            position: relative;
+            padding: 10px;
+        }
 
-</body></html>
+        .column h2 {
+            text-align: center;
+			} 
+
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .card {
+            width: 100px;
+            padding: 15px; /* Увеличиваем padding */
+            margin: 5px;
+            background-color: rgba(255, 255, 255, 0.8); /* Полупрозрачный белый */
+            border-radius: 15px; /* Скругление углов */
+            text-align: center;
+            cursor: move;
+            user-select: none;
+            transition: transform 0.2s; /* Плавный эффект при наведении */
+					color: #000;
+					font-weight: bold;
+        }
+
+        .card:hover {
+            transform: scale(1.05); /* Увеличение карточки при наведении */
+        }
+
+        .card.green {
+            background-color: green;
+					color: #fff;
+					padding: 5px;border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+   <h1>КАКИЕ ТИПЫ ДАННЫХ ИЗМЕНЯЕМЫЕ</h1>
+    <div class="container">
+        <div class="column" id="yes-column" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <h2>ДА</h2>
+        </div>
+        <div class="column" id="no-column" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <h2>НЕТ</h2>
+        </div>
+    </div>
+    <div class="cards" id="card-container">
+        <div class="card" draggable="true" ondragstart="drag(event)">list</div>
+        <div class="card" draggable="true" ondragstart="drag(event)">bytearray</div>
+        <div class="card" draggable="true" ondragstart="drag(event)">set</div>
+        <div class="card" draggable="true" ondragstart="drag(event)">dict</div>
+        <div class="card" draggable="true" ondragstart="drag(event)">bool</div>
+        <div class="card" draggable="true" ondragstart="drag(event)">int</div>
+        <div class="card" draggable="true" ondragstart="drag(event)">float</div>
+        <div class="card" draggable="true" ondragstart="drag(event)">complex</div>
+        <div class="card" draggable="true" ondragstart="drag(event)">str</div>
+        <div class="card" draggable="true" ondragstart="drag(event)">tuple</div>
+        <div class="card" draggable="true" ondragstart="drag(event)">bytes</div>
+        <div class="card" draggable="true" ondragstart="drag(event)">frozenset</div>
+    </div>
+
+    <script>
+        function allowDrop(event) {
+            event.preventDefault();
+        }
+
+        function drag(event) {
+            event.dataTransfer.setData("text", event.target.innerHTML);
+        }
+
+        function drop(event) {
+            event.preventDefault();
+            const data = event.dataTransfer.getData("text");
+            const validYes = ['list', 'bytearray', 'set', 'dict'];
+            const validNo = ['bool', 'int', 'float', 'complex', 'str', 'tuple', 'bytes', 'frozenset'];
+
+            const dropzoneId = event.target.id;
+
+            if (dropzoneId === "yes-column" && validYes.includes(data)) {
+                addCardToColumn(data, event.target);
+            } else if (dropzoneId === "no-column" && validNo.includes(data)) {
+                addCardToColumn(data, event.target);
+            } else {
+                alert("Неверное место для этой карточки!");
+            }
+        }
+
+        function addCardToColumn(data, column) {
+            const card = document.createElement("div");
+            card.className = "card green";
+            card.innerHTML = data;
+            column.appendChild(card);
+            removeCard(data);
+        }
+
+        function removeCard(cardContent) {
+            const cards = document.getElementById("card-container").children;
+            for (let i = 0; i < cards.length; i++) {
+                if (cards[i].innerHTML === cardContent) {
+                    cards[i].remove();
+                    break; // Прерываем цикл после удаления
+                }
+            }
+        }
+    </script>
+</body>
+</html>
