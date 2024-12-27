@@ -1,9 +1,12 @@
 .calendar {
+	margin: 0 auto;
+	width: fit-content;
+}
+
+.c-w {
 	display: grid;
 	grid-template-columns: repeat(7, 50px);
 	gap: 5px;
-	margin: 0 auto;
-	width: fit-content;
 }
 
 .day {
@@ -18,12 +21,17 @@
 	transition: background-color 0.3s;
 }
 
+
+.day.empty {
+	background-color: transparent;
+}
+
 .day.selected {
 	background-color: #4caf50;
 	color: #fff;
 }
 
-.calendar {
+.c-w {
 	display: grid;
 	grid-template-columns: repeat(7, 20px);
 	/* 7 колонок (дней) */
@@ -44,9 +52,6 @@
 	color: #fff;
 }
 
-.day.empty {
-	background-color: transparent;
-}
 
 .day {
 	color: #222;
