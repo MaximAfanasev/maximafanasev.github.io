@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Вопросы по строкам</title>
+</head>
+<style>body {
+	font-family: Arial, sans-serif;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	margin: 0;
+	background: linear-gradient(270deg, #ff9c9c, #a2d5f2);
+	background-size: 400% 400%;
+	animation: gradientAnimation 15s ease infinite;
+}
+
+@keyframes gradientAnimation {
+	0% {
+		background-position: 0% 50%;
+	}
+
+	25% {
+		background-position: 50% 50%;
+	}
+
+	50% {
+		background-position: 100% 50%;
+	}
+
+	75% {
+		background-position: 50% 50%;
+	}
+
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+#game-container {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    text-align: center;
+}
+
+input {
+    padding: 10px;
+    width: 80%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: #28a745;
+    color: white;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+#result {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #333;
+}
+
+</style>
+
+<body>
+	<div id="game-container">
+		<h1>Вопросы по строкам</h1>
+		<div id="question"></div>
+		<input type="text" id="answer" placeholder="Введите ваш ответ...">
+		<button id="submit">Отправить</button>
+		<div id="result"></div>
+	</div>
+	<script>
+		document.addEventListener("DOMContentLoaded", () => {
+			const questions = [{
+					question: "Вопрос 3 вида строк",
+					answer: "'a' \"a\" '''a'''"
+				},
+				{
+					question: "из числа 98.6 в строку",
+					answer: "str(98.6)"
+				},
+				{
+					question: "как сложить строки",
+					answer: "'a' + 'a'"
+				},
+				{
+					question: "как умножить строки",
+					answer: "'a' * 4"
+				},
+				{
+					question: "как извлечь первый символ строки",
+					answer: "'ab'[0]"
+				},
+				{
+					question: "как получить срез строки",
+					answer: "'abc'[:]"
+				},
+				{
+					question: "как получить часть строки со второго символа",
+					answer: "'abc'[1:]"
+				},
+				{
+					question: "как получить последние 2 символа",
+					answer: "'abc'[-2:]"
+				},
+				{
+					question: "как получить каждый 2й символ",
+					answer: "'abc'[::2]"
+				},
+				{
+					question: "как измерить длину строки",
+					answer: "len('str')"
+				},
+				{
+					question: "как перевести массив в строку",
+					answer: "join"
+				},
+				{
+					question: "как заменить символ",
+					answer: "replace"
+				},
+				{
+					question: "удалить лишние пробелы",
+					answer: "strip"
+				},
+				{
+					question: "проверка начала строки",
+					answer: "startswith"
+				},
+				{
+					question: "проверка конца строки",
+					answer: "endswith"
+				},
+				{
+					question: "добавить пробелов",
+					answer: "center"
+				},
+				{
+					question: "добавить пробелов слева",
+					answer: "ljust"
+				},
+				{
+					question: "добавить пробелов справа",
+					answer: "rjust"
+				},
+				{
+					question: "%s % 42",
+					answer: "42"
+				},
+				{
+					question: "'{}'.format('str')",
+					answer: "str"
+				},
+				{
+					question: "a='b' f'{a}'",
+					answer: "'b'"
+				}
+			];
+
+			let questionIndex = 0;
+			const questionElement = document.getElementById("question");
+			const answerInput = document.getElementById("answer");
+			const resultElement = document.getElementById("result");
+			const submitButton = document.getElementById("submit");
+
+			function displayQuestion() {
+				if (questionIndex < questions.length) {
+					questionElement.textContent = questions[questionIndex].question;
+				} else {
+					questionElement.textContent = "Игра окончена!";
+					answerInput.style.display = "none";
+					submitButton.style.display = "none";
+				}
+			}
+
+			submitButton.addEventListener("click", () => {
+				const userAnswer = answerInput.value.trim();
+				const currentAnswer = questions[questionIndex].answer;
+
+				if (userAnswer === currentAnswer) {
+					resultElement.textContent = "Правильно!";
+					questionIndex++;
+					answerInput.value = "";
+					displayQuestion();
+				} else {
+					resultElement.textContent = "Попробуйте еще раз.";
+				}
+			});
+
+			displayQuestion();
+		});
+
+	</script>
+</body>
+
+</html>

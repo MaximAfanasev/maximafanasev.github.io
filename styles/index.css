@@ -6,12 +6,13 @@
 
 body {
 	position: relative;
-	background-color: #263238;
+	background-color: #121619;
 	color: #e0e0e0;
 	font-family: monospace;
 	font-size: 20px;
 	line-height: 2.5;
 	padding: 20px;
+	z-index: 20;
 }
 
 canvas {
@@ -26,13 +27,14 @@ canvas {
 }
 
 h1 {
-	color: gold;
+	color: #cc2836;
 	text-align: center;
 }
 
 h2 {
-	color: orange;
+	color: #cc2836;
 	margin-top: 50px;
+	font-size: 20px;
 }
 
 .done {
@@ -41,9 +43,8 @@ h2 {
 
 .done a {
 	background: lightgreen;
-	color: #000;
 	font-weight: bold;
-	border: 2px solid green;
+	border: 1px solid green;
 }
 
 ul {
@@ -55,14 +56,9 @@ ul {
 }
 
 ul li a {
-	color: gold;
+	color: #cc2836;
 	text-decoration: none;
-	border: 2px solid;
-	padding: 10px 20px;
+	border: 1px solid #cc2836;
+	padding: 5px 10px;
 	border-radius: 10px;
-}
-
-ul li {
-	text-align: center;
-	margin-bottom: 20px;
 }
