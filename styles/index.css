@@ -15,6 +15,11 @@ body {
 	z-index: 20;
 }
 
+main {
+	max-width: 500px;
+	margin: 0 auto;
+}
+
 canvas {
 	background-color: none;
 	width: 300px;
