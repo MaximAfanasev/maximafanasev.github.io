@@ -1,43 +1,45 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Игра: Угадай ответ</title>
 </head>
-<style>body {
-	font-family: Arial, sans-serif;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
-	margin: 0;
-	background: linear-gradient(270deg, #ff9c9c, #a2d5f2);
-	background-size: 400% 400%;
-	animation: gradientAnimation 15s ease infinite;
-}
-
-@keyframes gradientAnimation {
-	0% {
-		background-position: 0% 50%;
+<style>
+	body {
+		font-family: Arial, sans-serif;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100vh;
+		margin: 0;
+		background: linear-gradient(270deg, #ff9c9c, #a2d5f2);
+		background-size: 400% 400%;
+		animation: gradientAnimation 15s ease infinite;
 	}
 
-	25% {
-		background-position: 50% 50%;
-	}
+	@keyframes gradientAnimation {
+		0% {
+			background-position: 0% 50%;
+		}
 
-	50% {
-		background-position: 100% 50%;
-	}
+		25% {
+			background-position: 50% 50%;
+		}
 
-	75% {
-		background-position: 50% 50%;
-	}
+		50% {
+			background-position: 100% 50%;
+		}
 
-	100% {
-		background-position: 0% 50%;
+		75% {
+			background-position: 50% 50%;
+		}
+
+		100% {
+			background-position: 0% 50%;
+		}
 	}
-}
 
 	#game-container {
 		background-color: white;
@@ -73,6 +75,7 @@
 		font-size: 18px;
 		color: #333;
 	}
+
 </style>
 
 <body>
@@ -125,6 +128,7 @@
 					questionElement.textContent = "Игра окончена!";
 					answerInput.style.display = "none";
 					submitButton.style.display = "none";
+					window.location.href = '../str/str1.html';
 				}
 			}
 
@@ -146,5 +150,8 @@
 			// Отображаем первый вопрос
 			displayQuestion();
 		});
+
 	</script>
-</body></html>
+</body>
+
+</html>
