@@ -13,6 +13,7 @@
 		}
 
 		body {
+			height: 100vh;
 			position: relative;
 			background-color: #121619;
 			color: #e0e0e0;
@@ -28,16 +29,6 @@
 			margin: 0 auto;
 		}
 
-		canvas {
-			background-color: none;
-			width: 300px;
-			height: 400px;
-			position: absolute;
-			z-index: -1;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-		}
 
 		h1 {
 			color: #cc2836;
@@ -79,7 +70,6 @@
 	<style>
 		.calendar {
 			margin: 0 auto;
-			margin-bottom: 500px;
 			width: fit-content;
 		}
 
@@ -142,28 +132,36 @@
 			text-align: center;
 		}
 	</style>
-	<style>
-		.lines {
-			position: absolute;
-			left: 0;
-			top: 0;
-			display: flex;
-			justify-content: space-around;
-			/* Расположение линий с равными промежутками */
-			align-items: center;
-			/* Выравнивание по вертикали */
-			height: 100%;
-			/* Высота на весь экран */
-			width: 100%;
-			z-index: -1;
-		}
+	<style>.lines {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: space-around; /* Расположение линий с равными промежутками */
+    align-items: center; /* Выравнивание по вертикали */
+    height: 100%; /* Высота на весь экран */
+    width: 100%; /* Ширина на весь экран */
+    z-index: -1;
+}
 
-		.line {
-			width: 1px;
-			height: 100%;
-			background-color: #222;
-			z-index: 0;
-		}
+.line {
+    width: 1px;
+    height: 100%;
+    background-color: #222; /* Цвет линии */
+    z-index: 0;
+    box-shadow: 0 0 10px red; /* Начальное состояние тени */
+    animation: pulsate 1.5s infinite; /* Анимация пульсации */
+}
+
+/* Анимация пульсации */
+@keyframes pulsate {
+    0%, 100% {
+        box-shadow: 0 0 2px red, 0 0 20px red, 0 0 30px red; /* Начальная и конечная тень */
+    }
+    50% {
+        box-shadow: 0 0 5px red, 0 0 40px red, 0 0 50px red; /* Состояние в середине анимации */
+    }
+}
 	</style>
 </head>
 
@@ -178,7 +176,6 @@
 </div>
 
 <body>
-	<canvas id="gameCanvas" width="300" height="400"></canvas>
 	<main class="content">
 		<div class="calendar" id="calendar">
 			Dec
@@ -224,26 +221,5 @@
 		</div>
 
 		<a href=type/1.html>START</a>
-
-		<h2>Num</h2>
-		<div class="wrap">
-			<ul>
-				<li class="don"><a href=n1.html target="_blank">bool</a></li>
-				<li class="don"><a href=n2.html target="_blank">* ** // / %</a></li>
-				<li class="don"><a href=n3.html target="_blank">int</a></li>
-			</ul>
-		</div>
-		<h2>If else</h2>
-		<div class="wrap">
-			<ul>
-				<li class="don"><a href=n1.html target="_blank">1</a></li>
-			</ul>
-		</div>
-		<h2>Str</h2>
-		<div class="wrap">
-			<ul>
-				<li class="don"><a href=str1.html target="_blank">1</a></li>
-			</ul>
-		</div>
 	</main>
 </body></html>
