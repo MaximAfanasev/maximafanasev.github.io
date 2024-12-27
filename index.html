@@ -13,7 +13,6 @@
 		}
 
 		body {
-			height: 100vh;
 			position: relative;
 			background-color: #121619;
 			color: #e0e0e0;
@@ -21,6 +20,7 @@
 			font-size: 20px;
 			line-height: 2.5;
 			padding: 20px;
+			padding-bottom: 200px;
 			z-index: 20;
 		}
 
@@ -132,59 +132,115 @@
 			text-align: center;
 		}
 	</style>
-	<style>.lines {
-    position: absolute;
-    left: 0;
-    top: 0;
-    display: flex;
-    justify-content: space-around; /* Расположение линий с равными промежутками */
-    align-items: center; /* Выравнивание по вертикали */
-    height: 100%; /* Высота на весь экран */
-    width: 100%; /* Ширина на весь экран */
-    z-index: -1;
-}
+	<style>
+		.lines {
+			position: absolute;
+			left: 0;
+			top: 0;
+			display: flex;
+			justify-content: space-around;
+			/* Расположение линий с равными промежутками */
+			align-items: center;
+			/* Выравнивание по вертикали */
+			height: 100%;
+			/* Высота на весь экран */
+			width: 100%;
+			/* Ширина на весь экран */
+			z-index: -1;
+		}
 
-.line {
-    width: 1px;
-    height: 100%;
-    background-color: #222; /* Цвет линии */
-    z-index: 0;
-    box-shadow: 0 0 10px red; /* Начальное состояние тени */
-    animation: pulsate 1.5s infinite; /* Анимация пульсации */
-}
+		.line {
+			width: 1px;
+			height: 100%;
+			background-color: #222;
+			/* Цвет линии */
+			z-index: 0;
+			box-shadow: 0 0 10px red;
+			/* Начальное состояние тени */
+			animation: pulsate 1.5s infinite;
+			/* Анимация пульсации */
+		}
 
-/* Анимация пульсации */
-@keyframes pulsate {
-    0%, 100% {
-        box-shadow: 0 0 2px red, 0 0 20px red, 0 0 30px red; /* Начальная и конечная тень */
-    }
-    50% {
-        box-shadow: 0 0 5px red, 0 0 40px red, 0 0 50px red; /* Состояние в середине анимации */
-    }
-}
+		/* Анимация пульсации */
+		@keyframes pulsate {
+
+			0%,
+			100% {
+				box-shadow: 0 0 2px red, 0 0 20px red, 0 0 30px red;
+				/* Начальная и конечная тень */
+			}
+
+			50% {
+				box-shadow: 0 0 5px red, 0 0 40px red, 0 0 50px red;
+				/* Состояние в середине анимации */
+			}
+		}
 	</style>
 	<style>
+		.start-button {
+			display: block;
+			width: fit-content;
+			padding: 0px 20px;
+			color: #fff;
+			background-color: #e63946;
+			/* Красный цвет */
+			border: none;
+			border-radius: 15px;
+			margin: 0 auto;
+			margin-top: 50px;
+			text-decoration: none;
+			transition: background-color 0.3s, transform 0.3s;
+		}
 
-.start-button {
-    display: block;
-	width: fit-content;
-    padding: 0px 20px;
-    color: #fff;
-    background-color: #e63946; /* Красный цвет */
-    border: none;
-    border-radius: 15px;
-	margin: 0 auto;
-	margin-top: 50px;
-    text-decoration: none;
-    transition: background-color 0.3s, transform 0.3s;
-}
+		.start-button:hover {
+			background-color: #d62839;
+			/* Темнее при наведении */
+			transform: scale(1.05);
+		}
+	</style>
+	<style>
+		.container {
+			text-align: center;
+			padding: 20px;
+			margin-top: 40px;
+			border-radius: 8px;
+		}
 
-.start-button:hover {
-    background-color: #d62839; /* Темнее при наведении */
-    transform: scale(1.05);
-}</style>
+		.input-group {
+			display: flex;
+			justify-content: center;
+			margin-bottom: 20px;
+		}
+
+		.pin-input {
+			width: 40px;
+			height: 40px;
+			font-size: 24px;
+			text-align: center;
+			margin: 0 5px;
+			border: 2px solid #ccc;
+			border-radius: 4px;
+			outline: none;
+		}
+
+		.pin-input:focus {
+			border-color: #007bff;
+		}
+
+		.hidden {
+			display: none;
+		}
+
+		#result ul {
+			display: flex;
+			flex-wrap: wrap;
+			margin-top: 20px;
+		}
+	</style>
 </head>
 
+
+<body>
 <div class="lines">
 	<div class="line"></div>
 	<div class="line"></div>
@@ -194,11 +250,10 @@
 	<div class="line"></div>
 	<div class="line"></div>
 </div>
-
-<body>
 	<main class="content">
 		<div class="calendar" id="calendar">
-			Dec
+			График сверки<br>
+			Декабрь
 			<div class="c-w">
 				<div class="day empty"></div>
 				<div class="day empty"></div>
@@ -240,6 +295,50 @@
 			</div>
 		</div>
 
-        <a href="type/1.html" class="start-button">START</a>
+		<a href="type/1.html" class="start-button">START</a>
+		<div class="container">
+			<h1>Введите Пин-код</h1>
+			<p>Чтобы увидеть все меню</p>
+			<div class="input-group">
+				<input type="password" maxlength="1" class="pin-input" id="pin1">
+				<input type="password" maxlength="1" class="pin-input" id="pin2">
+				<input type="password" maxlength="1" class="pin-input" id="pin3">
+				<input type="password" maxlength="1" class="pin-input" id="pin4">
+			</div>
+			<div id="result" class="hidden">
+				<ul>
+					<li>type<br> <a href="type/1.html">1</a> <a href="type/2.html">2</a> <a href="type/3.html">3</a> <a href="type/4.html">4</a> <a href="type/5.html">5</a></li>
+					<li>num<br><a href="num/n1.html">1</a> <a href="num/n2.html">2</a> <a href="num/n3.html">3</a></li>
+					<li>if<br><a href="if/if1.html">1</a></li>
+					<li>str<br><a href="str/str1.html">1</a></li>
+				</ul>
+			</div>
+		</div>
 	</main>
+
+	<script>
+		const correctPin = '1234'; // Правильный пин-код
+		const inputs = document.querySelectorAll('.pin-input');
+
+		inputs.forEach((input, index) => {
+			input.addEventListener('input', (event) => {
+				// Переключение на следующий инпут
+				if (event.target.value.length >= 1) {
+					if (index < inputs.length - 1) {
+						inputs[index + 1].focus();
+					} else {
+						// Проверка пин-кода после ввода последнего символа
+						const userPin = Array.from(inputs).map(input => input.value).join('');
+						if (userPin === correctPin) {
+							document.getElementById('result').classList.remove('hidden');
+						} else {
+							alert('Неправильный пин-код, попробуйте снова.');
+							inputs.forEach(input => input.value = '');
+							inputs[0].focus(); // Снова фокус на первом инпуте
+						}
+					}
+				}
+			});
+		});
+	</script>
 </body></html>
