@@ -5,17 +5,14 @@
     display: flex;
     justify-content: space-around; /* Расположение линий с равными промежутками */
     align-items: center; /* Выравнивание по вертикали */
-    height: 100vh; /* Высота на весь экран */
-	width: 100vw;
+    height: 100%; /* Высота на весь экран */
+	width: 100%;
 	z-index: -1	;
 }
 
 .line {
 	width: 1px;
-	/* Толщина линии */
 	height: 100%;
-	/* Высота линии */
 	background-color: #222;
-	/* Цвет линии */
 	z-index: 0;
 }

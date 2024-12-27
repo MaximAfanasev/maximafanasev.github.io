@@ -2,6 +2,8 @@
 	display: grid;
 	grid-template-columns: repeat(7, 50px);
 	gap: 5px;
+	margin: 0 auto;
+	width: fit-content;
 }
 
 .day {
@@ -21,11 +23,6 @@
 	color: #fff;
 }
 
-.day.empty {
-	background-color: transparent;
-	cursor: default;
-}
-
 .calendar {
 	display: grid;
 	grid-template-columns: repeat(7, 20px);
@@ -38,7 +35,6 @@
 	width: 20px;
 	height: 20px;
 	background-color: #e0e0e0;
-	/* цвет по умолчанию */
 	border-radius: 3px;
 	transition: background-color 0.3s;
 }
@@ -49,7 +45,7 @@
 }
 
 .day.empty {
-	background-color: #263238;
+	background-color: transparent;
 }
 
 .day {
