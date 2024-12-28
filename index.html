@@ -241,15 +241,15 @@
 
 
 <body>
-<div class="lines">
-	<div class="line"></div>
-	<div class="line"></div>
-	<div class="line"></div>
-	<div class="line"></div>
-	<div class="line"></div>
-	<div class="line"></div>
-	<div class="line"></div>
-</div>
+	<div class="lines">
+		<div class="line"></div>
+		<div class="line"></div>
+		<div class="line"></div>
+		<div class="line"></div>
+		<div class="line"></div>
+		<div class="line"></div>
+		<div class="line"></div>
+	</div>
 	<main class="content">
 		<div class="calendar" id="calendar">
 			December
@@ -298,17 +298,31 @@
 		<div class="container">
 			<h1>1234</h1>
 			<div class="input-group">
-				<input type="password" maxlength="1" class="pin-input" id="pin1">
-				<input type="password" maxlength="1" class="pin-input" id="pin2">
-				<input type="password" maxlength="1" class="pin-input" id="pin3">
+				<input type="password" maxlength="1" class="pin-input" id="pin1" oninput="moveToNextInput('pin2')">
+				<input type="password" maxlength="1" class="pin-input" id="pin2" oninput="moveToNextInput('pin3')">
+				<input type="password" maxlength="1" class="pin-input" id="pin3" oninput="moveToNextInput('pin4')">
 				<input type="password" maxlength="1" class="pin-input" id="pin4">
 			</div>
 			<div id="result" class="hidden">
 				<ul>
-					<li>type<br> <a href="type/1.html">1</a> <a href="type/2.html">2</a> <a href="type/3.html">3</a> <a href="type/4.html">4</a> <a href="type/5.html">5</a></li>
-					<li>num<br><a href="num/n1.html">1</a> <a href="num/n2.html">2</a> <a href="num/n3.html">3</a></li>
-					<li>if<br><a href="if/if1.html">1</a></li>
-					<li>str<br><a href="str/str1.html">1</a></li>
+					<li>type<br>
+						<a href="type/1.html" target="_blank">1</a>
+						<a href="type/2.html" target="_blank">2</a>
+						<a href="type/3.html" target="_blank">3</a>
+						<a href="type/4.html" target="_blank">4</a>
+						<a href="type/5.html" target="_blank">5</a>
+					</li>
+					<li>num<br>
+						<a href="num/1.html" target="_blank">1</a>
+						<a href="num/2.html" target="_blank">2</a>
+						<a href="num/3.html" target="_blank">3</a>
+					</li>
+					<li>if<br>
+						<a href="if/1.html" target="_blank">1</a>
+					</li>
+					<li>str<br>
+						<a href="str/1.html" target="_blank">1</a>
+					</li>
 				</ul>
 			</div>
 		</div>
