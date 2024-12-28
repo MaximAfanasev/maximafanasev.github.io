@@ -6,80 +6,84 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Вопросы по строкам</title>
 </head>
-<style>body {
-	font-family: Arial, sans-serif;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
-	margin: 0;
-	background: linear-gradient(270deg, #ff9c9c, #a2d5f2);
-	background-size: 400% 400%;
-	animation: gradientAnimation 15s ease infinite;
-}
-
-@keyframes gradientAnimation {
-	0% {
-		background-position: 0% 50%;
+<style>
+	body {
+		font-family: Arial, sans-serif;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100vh;
+		margin: 0;
+		background: linear-gradient(270deg, #ff9c9c, #a2d5f2);
+		background-size: 400% 400%;
+		animation: gradientAnimation 15s ease infinite;
 	}
 
-	25% {
-		background-position: 50% 50%;
+	@keyframes gradientAnimation {
+		0% {
+			background-position: 0% 50%;
+		}
+
+		25% {
+			background-position: 50% 50%;
+		}
+
+		50% {
+			background-position: 100% 50%;
+		}
+
+		75% {
+			background-position: 50% 50%;
+		}
+
+		100% {
+			background-position: 0% 50%;
+		}
 	}
 
-	50% {
-		background-position: 100% 50%;
+	#game-container {
+		background-color: white;
+		border-radius: 8px;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+		padding: 20px;
+		text-align: center;
 	}
 
-	75% {
-		background-position: 50% 50%;
+	input {
+		padding: 10px;
+		width: 80%;
+		border: 1px solid #ccc;
+		border-radius: 4px;
 	}
 
-	100% {
-		background-position: 0% 50%;
+	button {
+		padding: 10px 15px;
+		border: none;
+		border-radius: 4px;
+		background-color: #28a745;
+		color: white;
+		cursor: pointer;
+		margin-top: 10px;
 	}
-}
 
-#game-container {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    padding: 20px;
-    text-align: center;
-}
+	button:hover {
+		background-color: #218838;
+	}
 
-input {
-    padding: 10px;
-    width: 80%;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
+	#result {
+		margin-top: 20px;
+		font-size: 18px;
+		color: #333;
+	}
 
-button {
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    background-color: #28a745;
-    color: white;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-button:hover {
-    background-color: #218838;
-}
-
-#result {
-    margin-top: 20px;
-    font-size: 18px;
-    color: #333;
-}
-
+	#question {
+		padding-bottom: 30px;
+		font-size: 30px;
+	}
 </style>
 
 <body>
 	<div id="game-container">
-		<h1>Вопросы по строкам</h1>
 		<div id="question"></div>
 		<input type="text" id="answer" placeholder="Введите ваш ответ...">
 		<button id="submit">Отправить</button>
@@ -88,7 +92,7 @@ button:hover {
 	<script>
 		document.addEventListener("DOMContentLoaded", () => {
 			const questions = [{
-					question: "Вопрос 3 вида строк",
+					question: "3 вида строк",
 					answer: "'a' \"a\" '''a'''"
 				},
 				{
@@ -205,8 +209,5 @@ button:hover {
 
 			displayQuestion();
 		});
-
 	</script>
-</body>
-
-</html>
+</body></html>
