@@ -257,16 +257,16 @@
 			{
 				question: "Какой тип данных возвращает выражение print(type(3j))?",
 				options: [{
-						text: "<class 'str'>",
-						correct: false
+						text: "<class 'complex'>",
+						correct: true
 					},
 					{
 						text: "<class 'int'>",
 						correct: false
 					},
 					{
-						text: "<class 'complex'>",
-						correct: true
+						text: "<class 'str'>",
+						correct: false
 					},
 					{
 						text: "<class 'list'>",
@@ -279,8 +279,8 @@
 			{
 				question: "Какой тип данных возвращает выражение print(type('a'))?",
 				options: [{
-						text: "<class 'str'>",
-						correct: true
+						text: "<class 'list'>",
+						correct: false
 					},
 					{
 						text: "<class 'int'>",
@@ -291,8 +291,8 @@
 						correct: false
 					},
 					{
-						text: "<class 'list'>",
-						correct: false
+						text: "<class 'str'>",
+						correct: true
 					}
 				],
 				messageContainerId: "message5",
@@ -327,12 +327,12 @@
 						correct: false
 					},
 					{
-						text: "<class 'tuple'>",
-						correct: true
-					},
-					{
 						text: "<class 'bool'>",
 						correct: false
+					},
+					{
+						text: "<class 'tuple'>",
+						correct: true
 					},
 					{
 						text: "<class 'int'>",
@@ -345,12 +345,12 @@
 			{
 				question: "Какой тип данных возвращает выражение print(type(b'ab\\xff'))?",
 				options: [{
-						text: "<class 'str'>",
-						correct: false
-					},
-					{
 						text: "<class 'bytes'>",
 						correct: true
+					},
+					{
+						text: "<class 'str'>",
+						correct: false
 					},
 					{
 						text: "<class 'bool'>",
@@ -371,16 +371,16 @@
 						correct: false
 					},
 					{
-						text: "<class 'bytearray'>",
-						correct: true
+						text: "<class 'int'>",
+						correct: false
 					},
 					{
 						text: "<class 'bool'>",
 						correct: false
 					},
 					{
-						text: "<class 'int'>",
-						correct: false
+						text: "<class 'bytearray'>",
+						correct: true
 					}
 				],
 				messageContainerId: "message9",
@@ -415,12 +415,12 @@
 						correct: false
 					},
 					{
-						text: "<class 'frozenset'>",
-						correct: true
-					},
-					{
 						text: "<class 'bool'>",
 						correct: false
+					},
+					{
+						text: "<class 'frozenset'>",
+						correct: true
 					},
 					{
 						text: "<class 'int'>",

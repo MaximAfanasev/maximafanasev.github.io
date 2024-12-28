@@ -86,25 +86,19 @@
 
 	<h1>type(True)</h1>
 	<div>
-		<input type="text" maxlength="1" id="letter1" oninput="moveToNextInput('letter2', 4)" required>
-		<input type="text" maxlength="1" id="letter2" oninput="moveToNextInput('letter3', 4)" required>
-		<input type="text" maxlength="1" id="letter3" oninput="moveToNextInput('letter4', 4)" required>
-		<input type="text" maxlength="1" id="letter4" oninput="checkAllInputs('checkLetters')" required>
-	</div>
-	<div class="button-container">
-		<button onclick="checkLetters()">Проверить</button>
-	</div>
-	<div class="message" id="message"></div>
+    <input type="text" maxlength="1" id="letter1" oninput="moveToNextInput('letter2', 4)" required>
+    <input type="text" maxlength="1" id="letter2" oninput="moveToNextInput('letter3', 4)" required>
+    <input type="text" maxlength="1" id="letter3" oninput="moveToNextInput('letter4', 4)" required>
+    <input type="text" maxlength="1" id="letter4" oninput="checkLetters()" required>
+</div>
+<div id="message"></div>
 
 	<div class="question" id="secondQuestion">
 		<h2>type(1)</h2>
 		<div>
 			<input type="text" maxlength="1" id="letter5" oninput="moveToNextInput('letter6', 3)" required>
 			<input type="text" maxlength="1" id="letter6" oninput="moveToNextInput('letter7', 3)" required>
-			<input type="text" maxlength="1" id="letter7" oninput="checkAllInputs('checkSecondQuestion')" required>
-		</div>
-		<div class="button-container">
-			<button onclick="checkSecondQuestion()">Проверить</button>
+			<input type="text" maxlength="1" id="letter7" oninput="checkSecondQuestion()" required>
 		</div>
 		<div class="message" id="secondMessage"></div>
 	</div>
@@ -116,10 +110,7 @@
 			<input type="text" maxlength="1" id="letter9" oninput="moveToNextInput('letter10', 5)" required>
 			<input type="text" maxlength="1" id="letter10" oninput="moveToNextInput('letter11', 5)" required>
 			<input type="text" maxlength="1" id="letter11" oninput="moveToNextInput('letter12', 5)" required>
-			<input type="text" maxlength="1" id="letter12" required oninput="checkAllInputs('checkThirdQuestion')">
-		</div>
-		<div class="button-container">
-			<button onclick="checkThirdQuestion()">Проверить</button>
+			<input type="text" maxlength="1" id="letter12" required oninput="checkThirdQuestion()">
 		</div>
 		<div class="message" id="thirdMessage"></div>
 	</div>
@@ -133,10 +124,7 @@
 			<input type="text" maxlength="1" id="letter16" oninput="moveToNextInput('letter17', 7)" required>
 			<input type="text" maxlength="1" id="letter17" oninput="moveToNextInput('letter18', 7)" required>
 			<input type="text" maxlength="1" id="letter18" oninput="moveToNextInput('letter19', 7)" required>
-			<input type="text" maxlength="1" id="letter19" oninput="checkAllInputs('checkFourthQuestion')" required>
-		</div>
-		<div class="button-container">
-			<button onclick="checkFourthQuestion()">Проверить</button>
+			<input type="text" maxlength="1" id="letter19" oninput="checkFourthQuestion()" required>
 		</div>
 		<div class="message" id="fourthMessage"></div>
 	</div>
@@ -146,10 +134,7 @@
 		<div>
 			<input type="text" maxlength="1" id="letter20" oninput="moveToNextInput('letter21', 3)" required>
 			<input type="text" maxlength="1" id="letter21" oninput="moveToNextInput('letter22', 3)" required>
-			<input type="text" maxlength="1" id="letter22" oninput="checkAllInputs('checkFifthQuestion')" required>
-		</div>
-		<div class="button-container">
-			<button onclick="checkFifthQuestion()">Проверить</button>
+			<input type="text" maxlength="1" id="letter22" oninput="checkFifthQuestion()" required>
 		</div>
 		<div class="message" id="fifthMessage"></div>
 	</div>
@@ -160,10 +145,7 @@
 			<input type="text" maxlength="1" id="letter23" oninput="moveToNextInput('letter24', 4)" required>
 			<input type="text" maxlength="1" id="letter24" oninput="moveToNextInput('letter25', 4)" required>
 			<input type="text" maxlength="1" id="letter25" oninput="moveToNextInput('letter255', 4)" required>
-			<input type="text" maxlength="1" id="letter255" oninput="checkAllInputs('checkSixthQuestion')" required>
-		</div>
-		<div class="button-container">
-			<button onclick="checkSixthQuestion()">Проверить</button>
+			<input type="text" maxlength="1" id="letter255" oninput="checkSixthQuestion()" required>
 		</div>
 		<div class="message" id="sixthMessage"></div>
 	</div>
@@ -175,10 +157,7 @@
 			<input type="text" maxlength="1" id="letter27" oninput="moveToNextInput('letter28', 5)" required>
 			<input type="text" maxlength="1" id="letter28" oninput="moveToNextInput('letter288', 5)" required>
 			<input type="text" maxlength="1" id="letter288" oninput="moveToNextInput('letter289', 5)" required>
-			<input type="text" maxlength="1" id="letter289" oninput="checkAllInputs('checkSeventhQuestion')" required>
-		</div>
-		<div class="button-container">
-			<button onclick="checkSeventhQuestion()">Проверить</button>
+			<input type="text" maxlength="1" id="letter289" oninput="checkSeventhQuestion()" required>
 		</div>
 		<div class="message" id="seventhMessage"></div>
 	</div>
@@ -190,10 +169,7 @@
 			<input type="text" maxlength="1" id="letter30" oninput="moveToNextInput('letter31', 5)" required>
 			<input type="text" maxlength="1" id="letter31" oninput="moveToNextInput('letter318', 5)" required>
 			<input type="text" maxlength="1" id="letter318" oninput="moveToNextInput('letter319', 5)" required>
-			<input type="text" maxlength="1" id="letter319" oninput="checkAllInputs('checkEighthQuestion')" required>
-		</div>
-		<div class="button-container">
-			<button onclick="checkEighthQuestion()">Проверить</button>
+			<input type="text" maxlength="1" id="letter319" oninput="checkEighthQuestion()" required>
 		</div>
 		<div class="message" id="eighthMessage"></div>
 	</div>
@@ -209,10 +185,7 @@
 			<input type="text" maxlength="1" id="letter344" oninput="moveToNextInput('letter345', 5)" required>
 			<input type="text" maxlength="1" id="letter345" oninput="moveToNextInput('letter346', 5)" required>
 			<input type="text" maxlength="1" id="letter346" oninput="moveToNextInput('letter347', 5)" required>
-			<input type="text" maxlength="1" id="letter347" oninput="checkAllInputs('checkNinthQuestion')" required>
-		</div>
-		<div class="button-container">
-			<button onclick="checkNinthQuestion()">Проверить</button>
+			<input type="text" maxlength="1" id="letter347" oninput="checkNinthQuestion()" required>
 		</div>
 		<div class="message" id="ninthMessage"></div>
 	</div>
@@ -222,10 +195,7 @@
 		<div>
 			<input type="text" maxlength="1" id="letter35" oninput="moveToNextInput('letter36', 3)" required>
 			<input type="text" maxlength="1" id="letter36" oninput="moveToNextInput('letter366', 3)" required>
-			<input type="text" maxlength="1" id="letter366" oninput="checkAllInputs('checkTenthQuestion')" required>
-		</div>
-		<div class="button-container">
-			<button onclick="checkTenthQuestion()">Проверить</button>
+			<input type="text" maxlength="1" id="letter366" oninput="checkTenthQuestion()" required>
 		</div>
 		<div class="message" id="tenthMessage"></div>
 	</div>
@@ -241,10 +211,7 @@
 			<input type="text" maxlength="1" id="letter384" oninput="moveToNextInput('letter385', 4)" required>
 			<input type="text" maxlength="1" id="letter385" oninput="moveToNextInput('letter386', 4)" required>
 			<input type="text" maxlength="1" id="letter386" oninput="moveToNextInput('letter387', 4)" required>
-			<input type="text" maxlength="1" id="letter387" oninput="checkAllInputs('checkEleventhQuestion')" required>
-		</div>
-		<div class="button-container">
-			<button onclick="checkEleventhQuestion()">Проверить</button>
+			<input type="text" maxlength="1" id="letter387" oninput="checkEleventhQuestion()" required>
 		</div>
 		<div class="message" id="eleventhMessage"></div>
 	</div>
@@ -255,67 +222,53 @@
 			<input type="text" maxlength="1" id="letter39" oninput="moveToNextInput('letter40', 4)" required>
 			<input type="text" maxlength="1" id="letter40" oninput="moveToNextInput('letter401', 4)" required>
 			<input type="text" maxlength="1" id="letter401" oninput="moveToNextInput('letter402', 4)" required>
-			<input type="text" maxlength="1" id="letter402" oninput="checkAllInputs('checkTwelfthQuestion')" required>
-		</div>
-		<div class="button-container">
-			<button onclick="checkTwelfthQuestion()">Проверить</button>
+			<input type="text" maxlength="1" id="letter402" oninput="checkTwelfthQuestion()" required>
 		</div>
 		<div class="message" id="twelfthMessage"></div>
 	</div>
 
 	<script>
-		window.onload = function() {
-			document.getElementById('letter1').focus();
-		};
+	window.onload = function() {
+    document.getElementById('letter1').focus();
+};
 
-		function moveToNextInput(nextInputId, totalInputs) {
-			const nextInput = document.getElementById(nextInputId);
-			if (nextInput) {
-				nextInput.focus();
-			}
-		}
+function moveToNextInput(nextInputId, totalInputs) {
+    const nextInput = document.getElementById(nextInputId);
+    if (nextInput) {
+        nextInput.focus();
+    }
+}
 
-		function checkAllInputs(checkFunction) {
-			const inputs = document.querySelectorAll('input[type="text"]');
-			let allFilled = true;
+function checkLetters() {
+    const letter1 = document.getElementById('letter1').value;
+    const letter2 = document.getElementById('letter2').value;
+    const letter3 = document.getElementById('letter3').value;
+    const letter4 = document.getElementById('letter4').value;
 
-			inputs.forEach(input => {
-				if (input.value.length === 0) {
-					allFilled = false;
-				}
-			});
+    const correctLetters = 'bool'; // Правильное слово
+    const userInput = letter1 + letter2 + letter3 + letter4;
 
-			if (allFilled) {
-				const button = document.querySelector(`button[onclick="${checkFunction}()"]`);
-				if (button) {
-					button.focus();
-				}
-			}
-		}
+    const messageContainer = document.getElementById('message');
+    if (userInput === correctLetters) {
+        messageContainer.textContent = 'Все верно!';
+        messageContainer.style.color = 'green';
 
-		function checkLetters() {
-			const letter1 = document.getElementById('letter1').value;
-			const letter2 = document.getElementById('letter2').value;
-			const letter3 = document.getElementById('letter3').value;
-			const letter4 = document.getElementById('letter4').value;
-
-			const correctLetters = 'bool'; // Правильное слово
-			const userInput = letter1 + letter2 + letter3 + letter4;
-
-			const messageContainer = document.getElementById('message');
-			if (userInput === correctLetters) {
-				messageContainer.textContent = 'Все верно!';
-				messageContainer.style.color = 'green';
-
-				setTimeout(() => {
-					document.getElementById('secondQuestion').style.display = 'block';
-					document.getElementById('letter5').focus();
-				}, 1000); // 3 секунды
-			} else {
-				messageContainer.textContent = 'Неправильно. Попробуйте еще раз.';
-				messageContainer.style.color = 'red';
-			}
-		}
+        setTimeout(() => {
+            // Есть ли второй вопрос? Убедитесь, что этот элемент существует.
+            const secondQuestion = document.getElementById('secondQuestion');
+            if (secondQuestion) {
+                secondQuestion.style.display = 'block';
+                const letter5 = document.getElementById('letter5');
+                if (letter5) {
+                    letter5.focus();
+                }
+            }
+        }, 1000); // Задержка 1 секунда
+    } else {
+        messageContainer.textContent = 'Неправильно. Попробуйте еще раз.';
+        messageContainer.style.color = 'red';
+    }
+}
 
 		function checkSecondQuestion() {
 			const letter5 = document.getElementById('letter5').value;
