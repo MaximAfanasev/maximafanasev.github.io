@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Игра: Угадай ответ</title>
+	<title>Вопросы по строкам</title>
 </head>
 <style>
 	body {
@@ -76,7 +76,6 @@
 		color: #333;
 	}
 
-	
 	#question {
 		padding-bottom: 30px;
 		font-size: 30px;
@@ -86,35 +85,95 @@
 <body>
 	<div id="game-container">
 		<div id="question"></div>
-		<input type="text" id="answer" placeholder="Введите ваш ответ...">
+		<input type="text" id="answer" placeholder="...">
 		<button id="submit">Отправить</button>
 		<div id="result"></div>
 	</div>
 	<script>
 		document.addEventListener("DOMContentLoaded", () => {
 			const questions = [{
-					question: "a = 1 + \\ 2",
-					answer: "3"
+					question: "3 вида строк",
+					answer: "'a' \"a\" '''a'''"
 				},
 				{
-					question: "a = (1 + 2)",
-					answer: "3"
+					question: "из числа 98.6 в строку",
+					answer: "str(98.6)"
 				},
 				{
-					question: "a = 5; a == 7",
-					answer: "False"
+					question: "как сложить строки",
+					answer: "'a' + 'a'"
 				},
 				{
-					question: "5 < a and a < 10",
-					answer: "False"
+					question: "как умножить строки",
+					answer: "'a' * 4"
 				},
 				{
-					question: "a = 'aoiu'; 'a' in a",
-					answer: "True"
+					question: "как извлечь первый символ строки",
+					answer: "'ab'[0]"
 				},
 				{
-					question: "c := a - len(b) >= 0",
-					answer: "wtf"
+					question: "как получить срез строки",
+					answer: "'abc'[:]"
+				},
+				{
+					question: "как получить часть строки со второго символа",
+					answer: "'abc'[1:]"
+				},
+				{
+					question: "как получить последние 2 символа",
+					answer: "'abc'[-2:]"
+				},
+				{
+					question: "как получить каждый 2й символ",
+					answer: "'abc'[::2]"
+				},
+				{
+					question: "как измерить длину строки",
+					answer: "len('str')"
+				},
+				{
+					question: "как перевести массив в строку",
+					answer: "join"
+				},
+				{
+					question: "как заменить символ",
+					answer: "replace"
+				},
+				{
+					question: "удалить лишние пробелы",
+					answer: "strip"
+				},
+				{
+					question: "проверка начала строки",
+					answer: "startswith"
+				},
+				{
+					question: "проверка конца строки",
+					answer: "endswith"
+				},
+				{
+					question: "добавить пробелов",
+					answer: "center"
+				},
+				{
+					question: "добавить пробелов слева",
+					answer: "ljust"
+				},
+				{
+					question: "добавить пробелов справа",
+					answer: "rjust"
+				},
+				{
+					question: "%s % 42",
+					answer: "42"
+				},
+				{
+					question: "'{}'.format('str')",
+					answer: "str"
+				},
+				{
+					question: "a='b' f'{a}'",
+					answer: "'b'"
 				}
 			];
 
@@ -124,7 +183,6 @@
 			const resultElement = document.getElementById("result");
 			const submitButton = document.getElementById("submit");
 
-			// Функция для отображения вопроса
 			function displayQuestion() {
 				if (questionIndex < questions.length) {
 					questionElement.textContent = questions[questionIndex].question;
@@ -132,11 +190,10 @@
 					questionElement.textContent = "Игра окончена!";
 					answerInput.style.display = "none";
 					submitButton.style.display = "none";
-					window.location.href = '../str/str1.html';
+					window.location.href = '../index.html';
 				}
 			}
 
-			// Обработка клика по кнопке
 			submitButton.addEventListener("click", () => {
 				const userAnswer = answerInput.value.trim();
 				const currentAnswer = questions[questionIndex].answer;
@@ -151,11 +208,7 @@
 				}
 			});
 
-			// Отображаем первый вопрос
 			displayQuestion();
 		});
-
 	</script>
-</body>
-
-</html>
+</body></html>
