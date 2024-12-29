@@ -4,6 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+	<link rel="stylesheet" href="../style/win.css">
 	<title>PYTHON</title>
 </head>
 
@@ -123,11 +124,15 @@
 		border-radius: 10px;
 		cursor: progress;
 		transition: 0.2s;
-		filter: blur(0px);
+		filter: blur(6px);
 	}
 
 	.s:hover {
 		filter: blur(0px) !important;
+	}
+	
+	.s.active {
+		filter: blur(0px);
 	}
 
 	.c1 {
@@ -203,7 +208,6 @@
 		display: none;
 	}
 
-
 	.card-counter {
 		margin-top: 40px;
 		color: gold;
@@ -246,6 +250,7 @@
 
 	.eye2 {
 		display: none;
+		filter: blur(0px);
 	}
 
 	.custom-checkbox img {
@@ -258,11 +263,14 @@
 
 	.active .eye2 {
 		display: block;
+		filter: blur(0px);
 	}
 
-	.active img {
+	.eye {
 		filter: blur(3px);
 	}
+	
+	
 
 	.card-checkbox {
 		display: none;
@@ -284,249 +292,6 @@
 		height: 100vh;
 		background-color: #121619;
 		overflow: hidden;
-	}
-
-	.message img {
-		width: 50px;
-		position: absolute;
-		transform: scale(0);
-	}
-
-	.first {
-		transform: scale(1);
-		animation: first 2s infinite alternate;
-	}
-
-	.second {
-		animation: second 12s infinite alternate;
-	}
-
-	.three {
-		perspective: 1000px;
-		animation: three 5s infinite alternate;
-	}
-
-	.four {
-		animation: four 8s infinite alternate;
-	}
-
-	.five {
-		animation: five 10s infinite alternate;
-	}
-
-
-	@keyframes first {
-		0% {
-			transform: translateY(0);
-		}
-
-		50% {
-			transform: translateY(-20px);
-		}
-
-		100% {
-			transform: translateY(0);
-		}
-	}
-
-	@keyframes second {
-		0% {
-			transform: translateY(0) scale(0);
-		}
-
-		10% {
-			transform: translate(-100px, -100px) scale(3);
-		}
-
-
-		20% {
-			transform: translate(-100px, -120px);
-		}
-
-		30% {
-			transform: translate(-100px, -100px);
-		}
-
-
-
-		40% {
-			transform: translate(-100px, -120px);
-		}
-
-		50% {
-			transform: translate(-100px, -100px);
-		}
-
-
-
-		60% {
-			transform: translate(-100px, -120px);
-		}
-
-		70% {
-			transform: translate(-100px, -100px);
-		}
-
-
-
-		80% {
-			transform: translate(-100px, -120px);
-		}
-
-		90% {
-			transform: translate(-100px, -100px);
-		}
-
-
-
-		100% {
-			opacity: 1;
-			transform: translate(-100px, -100px);
-		}
-	}
-
-	@keyframes three {
-		0% {
-			transform: translateY(0) rotateY(-500deg);
-		}
-
-		20% {
-			transform: translate(100px, -100px) rotateY(700deg);
-		}
-
-		30% {
-			transform: translate(100px, -100px) rotateY(-180deg);
-		}
-
-		40% {
-			transform: translate(100px, -100px) rotateY(180deg);
-		}
-
-		50% {
-			transform: translate(100px, -100px) rotateY(-180deg);
-		}
-
-		100% {
-			transform: translate(100px, -100px);
-		}
-	}
-
-	@keyframes four {
-		0% {
-			transform: translateY(0) scale(0);
-		}
-
-		20% {
-			transform: translate(-100px, 100px) scale(2);
-		}
-
-		30% {
-			transform: translate(-100px, 100px) scale(1);
-		}
-
-
-		40% {
-			transform: translate(-100px, 100px) scale(2);
-		}
-
-		50% {
-			transform: translate(-100px, 100px) scale(1.3);
-		}
-
-		60% {
-			transform: translate(-100px, 100px) scale(1);
-		}
-
-		70% {
-			transform: translate(-100px, 100px) scale(3);
-		}
-
-		80% {
-			transform: translate(-100px, 100px) scale(1);
-		}
-
-		90% {
-			transform: translate(-100px, 100px) scale(2);
-		}
-
-		100% {
-			transform: translate(-100px, 100px) scale(1);
-		}
-	}
-
-	@keyframes five {
-		0% {
-			transform: translateY(0) scale(0);
-		}
-
-		10% {
-			transform: translate(100px, 100px) scale(2);
-		}
-
-
-
-		20% {
-			transform: translate(100px, 120px);
-		}
-
-		30% {
-			transform: translate(100px, 100px);
-		}
-
-
-
-		40% {
-			transform: translate(100px, 120px);
-		}
-
-		50% {
-			transform: translate(100px, 100px);
-		}
-
-
-
-		60% {
-			transform: translate(100px, 120px);
-		}
-
-		70% {
-			transform: translate(100px, 100px);
-		}
-
-
-
-		80% {
-			transform: translate(100px, 120px);
-		}
-
-		90% {
-			transform: translate(100px, 100px);
-		}
-
-
-		100% {
-			transform: translate(100px, 100px);
-		}
-	}
-
-	.first {
-		animation-delay: 1s, 5s;
-	}
-
-	.second {
-		animation-delay: 1s, 5s;
-	}
-
-	.three {
-		animation-delay: 1.5s, 5s;
-	}
-
-	.four {
-		animation-delay: 2s, 5s;
-	}
-
-	.five {
-		animation-delay: 2.5s, 5s;
 	}
 </style>
 
@@ -622,13 +387,12 @@
 			</div>
 		</div>
 
-
 		<div class="b-w">
 			<button class="btn check">✓</button>
 			<div class="filter-controller">
 				<label for="blurToggle" class="custom-checkbox" id="blurLabel">
-					<img class="eye" src="../img/eye.png" alt="Toggle Blur">
-					<img class="eye2" src="../img/eye2.png" alt="Toggle Blur">
+					<img class="eye2" src="../img/eye.png" alt="Toggle Blur">
+					<img class="eye" src="../img/eye2.png" alt="Toggle Blur">
 				</label>
 				<input type="checkbox" id="blurToggle" style="display: none;">
 			</div>
@@ -762,11 +526,7 @@
 			blurToggle.addEventListener('change', () => {
 				const sElements = document.querySelectorAll('.s'); // Находим все элементы с классом .s
 				sElements.forEach(element => {
-					if (blurToggle.checked) {
-						element.style.filter = 'blur(6px)'; // Устанавливаем размытие
-					} else {
-						element.style.filter = 'blur(0px)'; // Убираем размытие
-					}
+					element.classList.toggle('active')
 				});
 			});
 
