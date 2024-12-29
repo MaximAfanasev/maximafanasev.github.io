@@ -60,6 +60,7 @@ input[type="text"] {
 	border-radius: 5px;
 	border: 1px solid #ccc;
 	transition: border 0.3s;
+	font-size: 20px;
 }
 
 input[type="text"]:focus {
