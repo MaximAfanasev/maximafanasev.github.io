@@ -18,76 +18,80 @@
 	<script>
 		document.addEventListener("DOMContentLoaded", () => {
 			const questions = [{
-					question: "3 вида кавычек",
-					answer: "'' \"\" ''''''"
+					question: "3 types",
+					answer: "' \" '''"
 				},
 				{
-					question: "98.6 '98.6'",
+					question: "98.6->'98.6'",
 					answer: "str(98.6)"
 				},
 				{
-					question: "как сложить строки",
-					answer: "'a' + 'a'"
+					question: "'a' 'b'->'ab'",
+					answer: "'a'+'b'"
 				},
 				{
-					question: "как умножить строки",
-					answer: "'a' * 4"
+					question: "'a'->'aaaa'",
+					answer: "'a'*4"
 				},
 				{
-					question: "как извлечь первый символ строки",
+					question: "'ab'->'a'",
 					answer: "'ab'[0]"
 				},
 				{
-					question: "как получить срез строки",
+					question: "'abc'->'abc'",
 					answer: "'abc'[:]"
 				},
 				{
-					question: "как получить часть строки со второго символа",
+					question: "'abc'->'bc'",
 					answer: "'abc'[1:]"
 				},
 				{
-					question: "как получить последние 2 символа",
+					question: "'abc'->'bc' use -",
 					answer: "'abc'[-2:]"
 				},
 				{
-					question: "как получить каждый 2й символ",
-					answer: "'abc'[::2]"
+					question: "'abcdefj'->'acej'",
+					answer: "'abcdefj'[::2]"
 				},
 				{
-					question: "как измерить длину строки",
-					answer: "len('str')"
+					question: "'abc'->3",
+					answer: "len('abc')"
 				},
 				{
-					question: "как перевести массив в строку",
-					answer: "join"
+					question: "['a','b']->'ab'",
+					answer: "''.join(['a','b'])"
 				},
 				{
-					question: "как заменить символ",
-					answer: "replace"
+					question: "['a','b']->'a,b'",
+					answer: "','.join(['a','b'])"
 				},
 				{
-					question: "удалить лишние пробелы",
-					answer: "strip"
+					question: "'ab'->'cb'",
+					answer: "'ab'.replace('a','c')"
 				},
 				{
-					question: "проверка начала строки",
-					answer: "startswith"
+					question: "'  abc  '->'abc'",
+					answer: "' abc '.strip()"
 				},
 				{
-					question: "проверка конца строки",
-					answer: "endswith"
+					question: "'a'-> start with 'a'",
+					answer: "'a'.startswith('a')"
 				},
 				{
-					question: "добавить пробелов",
-					answer: "center"
+					question: "'a'-> end with 'a'",
+					answer: "'a'.endswith('a')"
 				},
 				{
-					question: "добавить пробелов слева",
-					answer: "ljust"
+					question: "'a'->' a '",
+					answer: "'a'.center(3)"
 				},
 				{
-					question: "добавить пробелов справа",
-					answer: "rjust"
+					question: "'a'->'a  '",
+					answer: "'a'.ljust(2)"
+				},
+				{
+					question: "'a'->'  a'",
+					answer: "'a'.rjust(2)"
 				},
 				{
 					question: "%s % 42",
@@ -125,13 +129,10 @@
 				const currentAnswer = questions[questionIndex].answer;
 
 				if (userAnswer === currentAnswer) {
-					resultElement.textContent = "Правильно!";
 					questionIndex++;
 					answerInput.value = "";
 					displayQuestion();
-				} else {
-					resultElement.textContent = "Попробуйте еще раз.";
-				}
+				} 
 			});
 
 			displayQuestion();
