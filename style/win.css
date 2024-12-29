@@ -1,3 +1,11 @@
+.message {
+	text-align: center;
+	margin-top: 20px;
+	font-size: 24px;
+	color: gold;
+	display: none;
+}
+
 .message img {
 	width: 50px;
 	position: absolute;

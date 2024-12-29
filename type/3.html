@@ -5,18 +5,19 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Проверка типа данных</title>
+	<link rel="stylesheet" href="../style/win.css">
 	<style>
 		body {
 			display: flex;
 			flex-direction: column;
 			align-items: center;
 			justify-content: center;
+			animation: gradientAnimation 10s ease infinite;
 			height: 100vh;
 			margin: 0;
 			font-family: Arial, sans-serif;
 			background: linear-gradient(45deg, #ff6b6b, #f06595, #eece4e, #4bc0c8);
 			background-size: 400% 400%;
-			animation: gradientAnimation 10s ease infinite;
 		}
 
 		@keyframes gradientAnimation {
@@ -62,12 +63,6 @@
 			color: #fff;
 		}
 
-		.message {
-			margin-top: 20px;
-			font-size: 24px;
-			text-align: center;
-		}
-
 		.question {
 			display: none;
 			margin-top: 20px;
@@ -83,15 +78,15 @@
 </head>
 
 <body>
-
+	<div id="all">
 	<h1>type(True)</h1>
 	<div>
-    <input type="text" maxlength="1" id="letter1" oninput="moveToNextInput('letter2', 4)" required>
-    <input type="text" maxlength="1" id="letter2" oninput="moveToNextInput('letter3', 4)" required>
-    <input type="text" maxlength="1" id="letter3" oninput="moveToNextInput('letter4', 4)" required>
-    <input type="text" maxlength="1" id="letter4" oninput="checkLetters()" required>
-</div>
-<div id="message"></div>
+		<input type="text" maxlength="1" id="letter1" oninput="moveToNextInput('letter2', 4)" required>
+		<input type="text" maxlength="1" id="letter2" oninput="moveToNextInput('letter3', 4)" required>
+		<input type="text" maxlength="1" id="letter3" oninput="moveToNextInput('letter4', 4)" required>
+		<input type="text" maxlength="1" id="letter4" oninput="checkLetters()" required>
+	</div>
+	<div id="message"></div>
 
 	<div class="question" id="secondQuestion">
 		<h2>type(1)</h2>
@@ -226,49 +221,59 @@
 		</div>
 		<div class="message" id="twelfthMessage"></div>
 	</div>
+</div>
+	<div class="message" id="finalMessage">
+		<div class="container">
+			<img src="../img/trophy.png" class="first" alt="">
+			<img src="../img/trophy2.png" class="second" alt="">
+			<img src="../img/trophy3.png" class="three" alt="">
+			<img src="../img/trophy4.png" class="four" alt="">
+			<img src="../img/trophy5.png" class="five" alt="">
+		</div>
+	</div>
 
 	<script>
-	window.onload = function() {
-    document.getElementById('letter1').focus();
-};
+		window.onload = function() {
+			document.getElementById('letter1').focus();
+		};
 
-function moveToNextInput(nextInputId, totalInputs) {
-    const nextInput = document.getElementById(nextInputId);
-    if (nextInput) {
-        nextInput.focus();
-    }
-}
+		function moveToNextInput(nextInputId, totalInputs) {
+			const nextInput = document.getElementById(nextInputId);
+			if (nextInput) {
+				nextInput.focus();
+			}
+		}
 
-function checkLetters() {
-    const letter1 = document.getElementById('letter1').value;
-    const letter2 = document.getElementById('letter2').value;
-    const letter3 = document.getElementById('letter3').value;
-    const letter4 = document.getElementById('letter4').value;
+		function checkLetters() {
+			const letter1 = document.getElementById('letter1').value;
+			const letter2 = document.getElementById('letter2').value;
+			const letter3 = document.getElementById('letter3').value;
+			const letter4 = document.getElementById('letter4').value;
 
-    const correctLetters = 'bool'; // Правильное слово
-    const userInput = letter1 + letter2 + letter3 + letter4;
+			const correctLetters = 'bool'; // Правильное слово
+			const userInput = letter1 + letter2 + letter3 + letter4;
 
-    const messageContainer = document.getElementById('message');
-    if (userInput === correctLetters) {
-        messageContainer.textContent = 'Все верно!';
-        messageContainer.style.color = 'green';
+			const messageContainer = document.getElementById('message');
+			if (userInput === correctLetters) {
+				messageContainer.textContent = 'Все верно!';
+				messageContainer.style.color = 'green';
 
-        setTimeout(() => {
-            // Есть ли второй вопрос? Убедитесь, что этот элемент существует.
-            const secondQuestion = document.getElementById('secondQuestion');
-            if (secondQuestion) {
-                secondQuestion.style.display = 'block';
-                const letter5 = document.getElementById('letter5');
-                if (letter5) {
-                    letter5.focus();
-                }
-            }
-        }, 1000); // Задержка 1 секунда
-    } else {
-        messageContainer.textContent = 'Неправильно. Попробуйте еще раз.';
-        messageContainer.style.color = 'red';
-    }
-}
+				setTimeout(() => {
+					// Есть ли второй вопрос? Убедитесь, что этот элемент существует.
+					const secondQuestion = document.getElementById('secondQuestion');
+					if (secondQuestion) {
+						secondQuestion.style.display = 'block';
+						const letter5 = document.getElementById('letter5');
+						if (letter5) {
+							letter5.focus();
+						}
+					}
+				}, 1000); // Задержка 1 секунда
+			} else {
+				messageContainer.textContent = 'Неправильно. Попробуйте еще раз.';
+				messageContainer.style.color = 'red';
+			}
+		}
 
 		function checkSecondQuestion() {
 			const letter5 = document.getElementById('letter5').value;
@@ -537,7 +542,12 @@ function checkLetters() {
 			if (userTwelfthInput === correctTwelfthLetters) {
 				twelfthMessageContainer.textContent = 'Все верно!';
 				twelfthMessageContainer.style.color = 'green';
-				window.location.href = "4.html";
+
+				document.getElementById('all').style.display = "none";
+				document.getElementById("finalMessage").style.display = "block";
+				setTimeout(() => {
+						window.location.href = "4.html";
+					}, 5000); 
 			} else {
 				twelfthMessageContainer.textContent = 'Неправильно. Попробуйте еще раз.';
 				twelfthMessageContainer.style.color = 'red';

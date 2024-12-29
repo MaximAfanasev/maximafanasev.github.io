@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 	<title>Игра: Выбор ответа</title>
+	<link rel="stylesheet" href="../style/win.css">
 
 </head>
 
@@ -118,6 +119,7 @@
 		height: auto;
 		margin: 20px auto;
 	}
+	
 </style>
 
 <body>
@@ -185,6 +187,16 @@
 		<div class="congratulations" id="congratulations">
 			<h1>Поздравляем! Вы прошли все вопросы!</h1>
 			<img src="../img/trophy.png" class="trophy" alt="Trophy">
+		</div>
+	</div>
+
+	<div class="message" id="finalMessage">
+		<div class="container">
+			<img src="../img/trophy.png" class="first" alt="">
+			<img src="../img/trophy2.png" class="second" alt="">
+			<img src="../img/trophy3.png" class="three" alt="">
+			<img src="../img/trophy4.png" class="four" alt="">
+			<img src="../img/trophy5.png" class="five" alt="">
 		</div>
 	</div>
 	<script>
@@ -483,12 +495,12 @@
 					}, 300); // Задержка 2 секунды перед показом следующего вопроса
 				} else {
 					// Показать поздравления
-					setTimeout(() => {
 						document.getElementById("quiz-container").style.display = "none";
-						document.getElementById("congratulations").style.display = "block";
+						document.getElementById("finalMessage").style.display = "block";
+					setTimeout(() => {
 						window.location.href = "3.html";
 						startRedirectCountdown()
-					}, 2000); // Задержка 2 секунды перед показом поздравления
+					}, 5000); // Задержка 2 секунды перед показом поздравления
 				}
 			} else {
 				button.classList.add('wrong');
@@ -506,8 +518,9 @@
 					clearInterval(intervalId);
 					window.location.href = '3.html'; // Переход на главную страницу
 				}
-			}, 1000); // Каждую секунду
+			}, 5000); // Каждую секунду
 		}
+		
 		// Показать первую карточку
 		displayQuestion(0);
 	</script>
