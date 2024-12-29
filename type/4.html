@@ -1,152 +1,113 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Проверка ответа</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            background: linear-gradient(45deg, #2F80ED, #56B7B3, #F6D64C);
-            background-size: 300% 300%;
-            animation: gradient 15s ease infinite;
-        }
-
-        @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .container {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            width: 400px;
-        }
-
-        h2, h3 {
-            color: #333;
-            margin: 0;
-        }
-
-        input[type="text"] {
-            padding: 10px;
-            width: calc(100% - 20px);
-            margin-top: 10px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            transition: border 0.3s;
-        }
-
-        input[type="text"]:focus {
-            border-color: #56B7B3;
-            outline: none;
-        }
-
-        button {
-            padding: 12px 20px;
-            background-color: #2F80ED;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 10px;
-            font-size: 16px;
-            transition: background-color 0.3s, transform 0.2s;
-        }
-
-        button:hover {
-            background-color: #56B7B3;
-            transform: scale(1.05);
-        }
-
-        button:active {
-            transform: scale(0.95);
-        }
-
-        .result {
-            margin-top: 20px;
-            font-weight: bold;
-        }
-    </style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Проверка ответа</title>
+	<link rel="stylesheet" href="../style/style.css">
 </head>
+
 <body>
 
-<div class="container">
-    <h2>Вопрос:</h2>
-    <p id="question"></p>
-    
-    <input type="text" id="userInput" placeholder="..." autocomplete="off">
-    <button onclick="checkAnswer()">Проверить ответ</button>
-    <div class="result" id="result"></div>
-</div>
+	<div id="game-container">
+		<p id="question"></p>
 
-<script>
-    const questions = [
-        { question: "print(type(True))", answer: "<class 'bool'>" },
-        { question: "print(type(1))", answer: "<class 'int'>" },
-        { question: "print(type(1.1))", answer: "<class 'float'>" },
-        { question: "print(type(3j))", answer: "<class 'complex'>" },
-        { question: "print(type('a'))", answer: "<class 'str'>" },
-        { question: "print(type([1,2]))", answer: "<class 'list'>" },
-        { question: "print(type((1,2)))", answer: "<class 'tuple'>" },
-        { question: "print(type(b'ab\\xff'))", answer: "<class 'bytes'>" },
-        { question: "print(type(bytearray([1,2])))", answer: "<class 'bytearray'>" },
-        { question: "print(type(set([1,2])))", answer: "<class 'set'>" },
-        { question: "print(type(frozenset([1,2])))", answer: "<class 'frozenset'>" },
-        { question: "print(type({'a':'1'}))", answer: "<class 'dict'>" }
-    ];
+		<input type="text" id="userInput" autocomplete="off">
+		<button onclick="checkAnswer()">Check</button>
+		<div class="result" id="result"></div>
+	</div>
 
-    let currentQuestionIndex = 0;
+	<script>
+		const questions = [{
+				question: "print(type(True))",
+				answer: "<class 'bool'>"
+			},
+			{
+				question: "print(type(1))",
+				answer: "<class 'int'>"
+			},
+			{
+				question: "print(type(1.1))",
+				answer: "<class 'float'>"
+			},
+			{
+				question: "print(type(3j))",
+				answer: "<class 'complex'>"
+			},
+			{
+				question: "print(type('a'))",
+				answer: "<class 'str'>"
+			},
+			{
+				question: "print(type([1,2]))",
+				answer: "<class 'list'>"
+			},
+			{
+				question: "print(type((1,2)))",
+				answer: "<class 'tuple'>"
+			},
+			{
+				question: "print(type(b'ab\\xff'))",
+				answer: "<class 'bytes'>"
+			},
+			{
+				question: "print(type(bytearray([1,2])))",
+				answer: "<class 'bytearray'>"
+			},
+			{
+				question: "print(type(set([1,2])))",
+				answer: "<class 'set'>"
+			},
+			{
+				question: "print(type(frozenset([1,2])))",
+				answer: "<class 'frozenset'>"
+			},
+			{
+				question: "print(type({'a':'1'}))",
+				answer: "<class 'dict'>"
+			}
+		];
 
-    function displayQuestion() {
-        const questionObj = questions[currentQuestionIndex];
-        document.getElementById('question').textContent = questionObj.question;
-        document.getElementById('answer').textContent = questionObj.answer;
-        document.getElementById('userInput').value = '';
-        document.getElementById('result').textContent = '';
-    }
+		let currentQuestionIndex = 0;
 
-    function checkAnswer() {
-        const userInput = document.getElementById('userInput').value.trim();
-        const correctAnswer = questions[currentQuestionIndex].answer;
-        const resultDiv = document.getElementById('result');
+		function displayQuestion() {
+			const questionObj = questions[currentQuestionIndex];
+			document.getElementById('question').textContent = questionObj.question;
+			document.getElementById('answer').textContent = questionObj.answer;
+			document.getElementById('userInput').value = '';
+			document.getElementById('result').textContent = '';
+		}
 
-        if (userInput === correctAnswer) {
-            resultDiv.textContent = "Правильно! Ответ верный.";
-            resultDiv.style.color = "green";
-            currentQuestionIndex++;
+		function checkAnswer() {
+			const userInput = document.getElementById('userInput').value.trim();
+			const correctAnswer = questions[currentQuestionIndex].answer;
+			const resultDiv = document.getElementById('result');
 
-            if (currentQuestionIndex < questions.length) {
-                setTimeout(() => {
-                    displayQuestion();
-                }, 1500);
-            } else {
-                resultDiv.textContent += " Вы ответили на все вопросы!";
-                document.getElementById('userInput').disabled = true;
-                document.querySelector("button").disabled = true;
-								window.location.href = "5.html";
-            }
-        } else {
-            resultDiv.textContent = "Неправильно. Попробуйте еще раз.";
-            resultDiv.style.color = "red";
-        }
+			if (userInput === correctAnswer) {
+				resultDiv.textContent = "Правильно! Ответ верный.";
+				resultDiv.style.color = "green";
+				currentQuestionIndex++;
 
-        // Очищаем поле ввода после проверки
-        document.getElementById('userInput').value = '';
-    }
+				if (currentQuestionIndex < questions.length) {
+					setTimeout(() => {
+						displayQuestion();
+					}, 1500);
+				} else {
+					resultDiv.textContent += " Вы ответили на все вопросы!";
+					document.getElementById('userInput').disabled = true;
+					document.querySelector("button").disabled = true;
+					window.location.href = "5.html";
+				}
+			} else {
+				resultDiv.textContent = "Неправильно. Попробуйте еще раз.";
+				resultDiv.style.color = "red";
+			}
 
-    // Отображаем первый вопрос при загрузке страницы
-    displayQuestion();
-</script>
-</body>
-</html>
+			// Очищаем поле ввода после проверки
+			document.getElementById('userInput').value = '';
+		}
+
+		// Отображаем первый вопрос при загрузке страницы
+		displayQuestion();
+	</script>
+</body></html>

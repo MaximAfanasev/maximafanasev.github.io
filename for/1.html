@@ -2,121 +2,103 @@
 <html lang="ru">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Тренажер запоминания кода</title>
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(45deg, #ff6b6b, #f06595, #eece4e, #4bc0c8);
-            background-size: 400% 400%;
-            animation: gradientAnimation 10s ease infinite;
-        }
-
-        @keyframes gradientAnimation {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        .container {
-            background: white;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            border-radius: 20px;
-            display: none; /* Скрываем изначально контейнеры */
-        }
-
-        .code-block {
-            background-color: #eee;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            overflow-x: auto;
-            white-space: pre-wrap;
-            text-align: left;
-        }
-
-        textarea {
-            border-radius: 10px;
-            padding: 10px;
-        }
-    </style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Тренажер запоминания кода</title>
+	<link rel="stylesheet" href="../style/style.css">
+	<style>
+		.container {
+			background: white;
+			padding: 20px;
+			border-radius: 5px;
+			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+			text-align: center;
+			border-radius: 20px;
+			display: none;
+		}
+	</style>
 </head>
 
 <body>
-    <div class="container" id="container-1">
-        <pre class="code-block" id="code-block-1">
+	<div class="container" id="container-1">
+		<pre class="code-block" id="code-block-1">
 count = 1
 while count &#60;= 5:
   print(count)
   count += 1</pre>
-        <textarea id="user-input" cols="30" rows="4" placeholder="Введите ваш код здесь..."></textarea>
-        <button id="check-btn">Проверить</button>
-        <p id="result"></p>
-    </div>
-    <div class="container" id="container-2">
-        <pre class="code-block" id="code-block-2">
+		<textarea id="user-input" cols="30" rows="4"></textarea>
+		<button id="check-btn">Check</button>
+		<p id="result"></p>
+	</div>
+	<div class="container" id="container-2">
+		<pre class="code-block" id="code-block-2">
 while True:
-a = input('send q to quit: ')
-if a == 'q':
-  break
+a = input('send q tu quit: ')
+  if a == 'q':
+    continue
+  if a == 'qq':
+    break
   print(a)</pre>
-        <textarea id="user-input-2" cols="30" rows="4" placeholder="Введите ваш код здесь..."></textarea>
-        <button id="check-btn-2">Проверить</button>
-        <p id="result-2"></p>
-    </div>
+		<textarea id="user-input-2" cols="30" rows="7" placeholder="Введите ваш код здесь..."></textarea>
+		<button id="check-btn-2">Проверить</button>
+		<p id="result-2"></p>
+	</div>
+	<div class="container" id="container-3">
+		<pre class="code-block" id="code-block-3">
+for x in 'abc':
+  print(x)</pre>
+		<textarea id="user-input-3" cols="30" rows="7" placeholder="Введите ваш код здесь..."></textarea>
+		<button id="check-btn-3">Проверить</button>
+		<p id="result-3"></p>
+	</div>
 
-    <script>
-        // Показ первого контейнера
-        document.getElementById('container-1').style.display = 'block';
+	<script>
+		// Показ первого контейнера
+		document.getElementById('container-1').style.display = 'block';
 
-        document.getElementById('check-btn').addEventListener('click', function () {
-            const correctCode = `count = 1\nwhile count <= 5:\n  print(count)\n  count += 1`;
-            const userInput = document.getElementById('user-input').value.trim();
+		document.getElementById('check-btn').addEventListener('click', function() {
+			const correctCode = `count = 1\nwhile count <= 5:\n  print(count)\n  count += 1`;
+			const userInput = document.getElementById('user-input').value.trim();
 
-            if (userInput === correctCode) {
-                document.getElementById('result').textContent = 'Правильно!';
-                document.getElementById('result').style.color = 'green';
+			if (userInput === correctCode) {
+				document.getElementById('result').textContent = 'Правильно!';
+				document.getElementById('result').style.color = 'green';
 
-                // Скрываем первый контейнер и показываем второй
-                document.getElementById('container-1').style.display = 'none';
-                document.getElementById('container-2').style.display = 'block';
-            } else {
-                document.getElementById('result').textContent = 'Попробуйте еще раз.';
-                document.getElementById('result').style.color = 'red';
-            }
-        });
+				// Скрываем первый контейнер и показываем второй
+				document.getElementById('container-1').style.display = 'none';
+				document.getElementById('container-2').style.display = 'block';
+			} else {
+				document.getElementById('result').textContent = 'Попробуйте еще раз.';
+				document.getElementById('result').style.color = 'red';
+			}
+		});
 
-        // Обработчик для второго блока
-        document.getElementById('check-btn-2').addEventListener('click', function () {
-            const correctCode = `while True:\na = input('send q to quit: ')\nif a == 'q':\n  break\n  print(a)`;
-            const userInput = document.getElementById('user-input-2').value.trim();
+		// Обработчик для второго блока
+		document.getElementById('check-btn-2').addEventListener('click', function() {
+			const correctCode = `while True:\na = input('send q tu quit: ')\n  if a == 'q':\n    continue\n  if a == 'qq':\n    break\n  print(a)`;
+			const userInput = document.getElementById('user-input-2').value.trim();
 
-            if (userInput === correctCode) {
-                document.getElementById('result-2').textContent = 'Правильно!';
-                document.getElementById('result-2').style.color = 'green';
-            } else {
-                document.getElementById('result-2').textContent = 'Попробуйте еще раз.';
-                document.getElementById('result-2').style.color = 'red';
-            }
-        });
-    </script>
-</body>
-</html>
+			if (userInput === correctCode) {
+				document.getElementById('result-2').textContent = 'Правильно!';
+				document.getElementById('result-2').style.color = 'green';
+			} else {
+				document.getElementById('result-2').textContent = 'Попробуйте еще раз.';
+				document.getElementById('result-2').style.color = 'red';
+			}
+		});
+
+		// Обработчик для второго блока
+		document.getElementById('check-btn-3').addEventListener('click', function() {
+			const correctCode = `for x in 'abc':\n  print(x)`;
+			const userInput = document.getElementById('user-input-3').value.trim();
+
+			if (userInput === correctCode) {
+				document.getElementById('result-3').textContent = 'Правильно!';
+				document.getElementById('result-3').style.color = 'green';
+			} else {
+				document.getElementById('result-3').textContent = 'Попробуйте еще раз.';
+				document.getElementById('result-3').style.color = 'red';
+			}
+		});
+	</script>
+</body></html>

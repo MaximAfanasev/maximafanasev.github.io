@@ -1,0 +1,110 @@
+body {
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	margin: 0;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+	background: linear-gradient(45deg, #2F80ED, #56B7B3, #F6D64C);
+	background-size: 300% 300%;
+	animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+
+	50% {
+		background-position: 100% 50%;
+	}
+
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+#game-container {
+	background-color: white;
+	border-radius: 20px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+	padding: 20px;
+	padding-top: 40px;
+	text-align: center;
+}
+
+input {
+	padding: 10px;
+	width: 80%;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+
+#result {
+	margin-top: 20px;
+	font-size: 18px;
+	color: #333;
+}
+
+#question {
+	padding-bottom: 30px;
+	font-size: 30px;
+}
+
+
+input[type="text"] {
+	padding: 10px;
+	width: calc(100% - 20px);
+	margin-top: 10px;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	transition: border 0.3s;
+}
+
+input[type="text"]:focus {
+	border-color: #56B7B3;
+	outline: none;
+}
+
+button {
+	padding: 12px 20px;
+	background-color: #2F80ED;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	margin-top: 30px;
+	font-size: 16px;
+	transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+	background-color: #56B7B3;
+	transform: scale(1.05);
+}
+
+button:active {
+	transform: scale(0.95);
+}
+
+.result {
+	margin-top: 20px;
+	font-weight: bold;
+}
+
+
+.code-block {
+	background-color: #eee;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 10px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	text-align: left;
+}
+
+textarea {
+	border-radius: 10px;
+	padding: 10px;
+}
