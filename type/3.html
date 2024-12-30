@@ -93,7 +93,6 @@
 			<input type="text" maxlength="1" id="letter3" oninput="moveToNextInput('letter4', 4)" required>
 			<input type="text" maxlength="1" id="letter4" oninput="checkLetters()" required>
 		</div>
-		<div id="message"></div>
 
 		<div class="question" id="secondQuestion">
 			<h2>type(1)</h2>
@@ -102,7 +101,6 @@
 				<input type="text" maxlength="1" id="letter6" oninput="moveToNextInput('letter7', 3)" required>
 				<input type="text" maxlength="1" id="letter7" oninput="checkSecondQuestion()" required>
 			</div>
-			<div class="message" id="secondMessage"></div>
 		</div>
 
 		<div class="question" id="thirdQuestion">
@@ -114,7 +112,6 @@
 				<input type="text" maxlength="1" id="letter11" oninput="moveToNextInput('letter12', 5)" required>
 				<input type="text" maxlength="1" id="letter12" required oninput="checkThirdQuestion()">
 			</div>
-			<div class="message" id="thirdMessage"></div>
 		</div>
 
 		<div class="question" id="fourthQuestion">
@@ -128,7 +125,6 @@
 				<input type="text" maxlength="1" id="letter18" oninput="moveToNextInput('letter19', 7)" required>
 				<input type="text" maxlength="1" id="letter19" oninput="checkFourthQuestion()" required>
 			</div>
-			<div class="message" id="fourthMessage"></div>
 		</div>
 
 		<div class="question" id="fifthQuestion">
@@ -138,7 +134,6 @@
 				<input type="text" maxlength="1" id="letter21" oninput="moveToNextInput('letter22', 3)" required>
 				<input type="text" maxlength="1" id="letter22" oninput="checkFifthQuestion()" required>
 			</div>
-			<div class="message" id="fifthMessage"></div>
 		</div>
 
 		<div class="question" id="sixthQuestion">
@@ -149,7 +144,6 @@
 				<input type="text" maxlength="1" id="letter25" oninput="moveToNextInput('letter255', 4)" required>
 				<input type="text" maxlength="1" id="letter255" oninput="checkSixthQuestion()" required>
 			</div>
-			<div class="message" id="sixthMessage"></div>
 		</div>
 
 		<div class="question" id="seventhQuestion">
@@ -161,7 +155,6 @@
 				<input type="text" maxlength="1" id="letter288" oninput="moveToNextInput('letter289', 5)" required>
 				<input type="text" maxlength="1" id="letter289" oninput="checkSeventhQuestion()" required>
 			</div>
-			<div class="message" id="seventhMessage"></div>
 		</div>
 
 		<div class="question" id="eighthQuestion">
@@ -173,7 +166,6 @@
 				<input type="text" maxlength="1" id="letter318" oninput="moveToNextInput('letter319', 5)" required>
 				<input type="text" maxlength="1" id="letter319" oninput="checkEighthQuestion()" required>
 			</div>
-			<div class="message" id="eighthMessage"></div>
 		</div>
 
 		<div class="question" id="ninthQuestion">
@@ -189,7 +181,6 @@
 				<input type="text" maxlength="1" id="letter346" oninput="moveToNextInput('letter347', 5)" required>
 				<input type="text" maxlength="1" id="letter347" oninput="checkNinthQuestion()" required>
 			</div>
-			<div class="message" id="ninthMessage"></div>
 		</div>
 
 		<div class="question" id="tenthQuestion">
@@ -199,7 +190,6 @@
 				<input type="text" maxlength="1" id="letter36" oninput="moveToNextInput('letter366', 3)" required>
 				<input type="text" maxlength="1" id="letter366" oninput="checkTenthQuestion()" required>
 			</div>
-			<div class="message" id="tenthMessage"></div>
 		</div>
 
 		<div class="question" id="eleventhQuestion">
@@ -215,7 +205,6 @@
 				<input type="text" maxlength="1" id="letter386" oninput="moveToNextInput('letter387', 4)" required>
 				<input type="text" maxlength="1" id="letter387" oninput="checkEleventhQuestion()" required>
 			</div>
-			<div class="message" id="eleventhMessage"></div>
 		</div>
 
 		<div class="question" id="twelfthQuestion">
@@ -226,7 +215,6 @@
 				<input type="text" maxlength="1" id="letter401" oninput="moveToNextInput('letter402', 4)" required>
 				<input type="text" maxlength="1" id="letter402" oninput="checkTwelfthQuestion()" required>
 			</div>
-			<div class="message" id="twelfthMessage"></div>
 		</div>
 	</div>
 	
@@ -261,11 +249,7 @@
 			const correctLetters = 'bool'; // Правильное слово
 			const userInput = letter1 + letter2 + letter3 + letter4;
 
-			const messageContainer = document.getElementById('message');
 			if (userInput === correctLetters) {
-				messageContainer.textContent = 'Все верно!';
-				messageContainer.style.color = 'green';
-
 				setTimeout(() => {
 					// Есть ли второй вопрос? Убедитесь, что этот элемент существует.
 					const secondQuestion = document.getElementById('secondQuestion');
@@ -277,10 +261,7 @@
 						}
 					}
 				}, 1000); // Задержка 1 секунда
-			} else {
-				messageContainer.textContent = 'Неправильно. Попробуйте еще раз.';
-				messageContainer.style.color = 'red';
-			}
+			} 
 		}
 
 		function checkSecondQuestion() {
@@ -291,18 +272,13 @@
 			const correctSecondLetters = 'int'; // Правильное слово
 			const userSecondInput = letter5 + letter6 + letter7;
 
-			const secondMessageContainer = document.getElementById('secondMessage');
 			if (userSecondInput === correctSecondLetters) {
-				secondMessageContainer.textContent = 'Все верно!';
-				secondMessageContainer.style.color = 'green';
 
 				setTimeout(() => {
 					document.getElementById('thirdQuestion').style.display = 'block';
 					document.getElementById('letter8').focus();
 				}, 1000); // 3 секунды
 			} else {
-				secondMessageContainer.textContent = 'Неправильно. Попробуйте снова.';
-				secondMessageContainer.style.color = 'red';
 			}
 		}
 
@@ -316,18 +292,13 @@
 			const correctThirdLetters = 'float'; // Правильное слово
 			const userThirdInput = letter8 + letter9 + letter10 + letter11 + letter12;
 
-			const thirdMessageContainer = document.getElementById('thirdMessage');
 			if (userThirdInput === correctThirdLetters) {
-				thirdMessageContainer.textContent = 'Все верно!';
-				thirdMessageContainer.style.color = 'green';
 
 				setTimeout(() => {
 					document.getElementById('fourthQuestion').style.display = 'block';
 					document.getElementById('letter13').focus();
 				}, 1000); // 3 секунды
 			} else {
-				thirdMessageContainer.textContent = 'Неправильно. Попробуйте еще раз.';
-				thirdMessageContainer.style.color = 'red';
 			}
 		}
 
@@ -343,18 +314,13 @@
 			const correctFourthLetters = 'complex'; // Правильное слово
 			const userFourthInput = letter13 + letter14 + letter15 + letter16 + letter17 + letter18 + letter19;
 
-			const fourthMessageContainer = document.getElementById('fourthMessage');
 			if (userFourthInput === correctFourthLetters) {
-				fourthMessageContainer.textContent = 'Все верно!';
-				fourthMessageContainer.style.color = 'green';
 
 				setTimeout(() => {
 					document.getElementById('fifthQuestion').style.display = 'block';
 					document.getElementById('letter20').focus();
 				}, 1000); // 3 секунды
 			} else {
-				fourthMessageContainer.textContent = 'Неправильно. Попробуйте еще раз.';
-				fourthMessageContainer.style.color = 'red';
 			}
 		}
 
@@ -367,18 +333,13 @@
 			const correctFifthLetters = 'str'; // Правильное слово
 			const userFifthInput = letter20 + letter21 + letter22;
 
-			const fifthMessageContainer = document.getElementById('fifthMessage');
 			if (userFifthInput === correctFifthLetters) {
-				fifthMessageContainer.textContent = 'Все верно!';
-				fifthMessageContainer.style.color = 'green';
 
 				setTimeout(() => {
 					document.getElementById('sixthQuestion').style.display = 'block';
 					document.getElementById('letter23').focus();
 				}, 1000); // 3 секунды
 			} else {
-				fifthMessageContainer.textContent = 'Неправильно. Попробуйте еще раз.';
-				fifthMessageContainer.style.color = 'red';
 			}
 		}
 
@@ -391,18 +352,13 @@
 			const correctSixthLetters = 'list'; // Правильное слово
 			const userSixthInput = letter23 + letter24 + letter25 + letter255;
 
-			const sixthMessageContainer = document.getElementById('sixthMessage');
 			if (userSixthInput === correctSixthLetters) {
-				sixthMessageContainer.textContent = 'Все верно!';
-				sixthMessageContainer.style.color = 'green';
 
 				setTimeout(() => {
 					document.getElementById('seventhQuestion').style.display = 'block';
 					document.getElementById('letter26').focus();
 				}, 1000); // 3 секунды
 			} else {
-				sixthMessageContainer.textContent = 'Неправильно. Попробуйте еще раз.';
-				sixthMessageContainer.style.color = 'red';
 			}
 		}
 
@@ -416,18 +372,13 @@
 			const correctSeventhLetters = 'tuple'; // Правильное слово
 			const userSeventhInput = letter26 + letter27 + letter28 + letter288 + letter289;
 
-			const seventhMessageContainer = document.getElementById('seventhMessage');
 			if (userSeventhInput === correctSeventhLetters) {
-				seventhMessageContainer.textContent = 'Все верно!';
-				seventhMessageContainer.style.color = 'green';
 
 				setTimeout(() => {
 					document.getElementById('eighthQuestion').style.display = 'block';
 					document.getElementById('letter29').focus();
 				}, 1000); // 3 секунды
 			} else {
-				seventhMessageContainer.textContent = 'Неправильно. Попробуйте еще раз.';
-				seventhMessageContainer.style.color = 'red';
 			}
 		}
 
@@ -441,18 +392,13 @@
 			const correctEighthLetters = 'bytes'; // Правильное слово
 			const userEighthInput = letter29 + letter30 + letter31 + letter318 + letter319;
 
-			const eighthMessageContainer = document.getElementById('eighthMessage');
 			if (userEighthInput === correctEighthLetters) {
-				eighthMessageContainer.textContent = 'Все верно!';
-				eighthMessageContainer.style.color = 'green';
 
 				setTimeout(() => {
 					document.getElementById('ninthQuestion').style.display = 'block';
 					document.getElementById('letter32').focus();
 				}, 1000); // 3 секунды
 			} else {
-				eighthMessageContainer.textContent = 'Неправильно. Попробуйте еще раз.';
-				eighthMessageContainer.style.color = 'red';
 			}
 		}
 
@@ -470,18 +416,13 @@
 			const correctNinthLetters = 'bytearray'; // Правильное слово
 			const userNinthInput = letter32 + letter33 + letter341 + letter342 + letter343 + letter344 + letter345 + letter346 + letter347;
 
-			const ninthMessageContainer = document.getElementById('ninthMessage');
 			if (userNinthInput === correctNinthLetters) {
-				ninthMessageContainer.textContent = 'Все верно!';
-				ninthMessageContainer.style.color = 'green';
 
 				setTimeout(() => {
 					document.getElementById('tenthQuestion').style.display = 'block';
 					document.getElementById('letter35').focus();
 				}, 1000); // 3 секунды
 			} else {
-				ninthMessageContainer.textContent = 'Неправильно. Попробуйте еще раз.';
-				ninthMessageContainer.style.color = 'red';
 			}
 		}
 
@@ -493,18 +434,12 @@
 			const correctTenthLetters = 'set'; // Правильное слово
 			const userTenthInput = letter35 + letter36 + letter366;
 
-			const tenthMessageContainer = document.getElementById('tenthMessage');
 			if (userTenthInput === correctTenthLetters) {
-				tenthMessageContainer.textContent = 'Все верно!';
-				tenthMessageContainer.style.color = 'green';
-
 				setTimeout(() => {
 					document.getElementById('eleventhQuestion').style.display = 'block';
 					document.getElementById('letter37').focus();
 				}, 1000); // 3 секунды
 			} else {
-				tenthMessageContainer.textContent = 'Неправильно. Попробуйте еще раз.';
-				tenthMessageContainer.style.color = 'red';
 			}
 		}
 
@@ -522,18 +457,12 @@
 			const correctEleventhLetters = 'frozenset'; // Правильное слово
 			const userEleventhInput = letter37 + letter38 + letter381 + letter382 + letter383 + letter384 + letter385 + letter386 + letter387;
 
-			const eleventhMessageContainer = document.getElementById('eleventhMessage');
 			if (userEleventhInput === correctEleventhLetters) {
-				eleventhMessageContainer.textContent = 'Все верно!';
-				eleventhMessageContainer.style.color = 'green';
-
 				setTimeout(() => {
 					document.getElementById('twelfthQuestion').style.display = 'block';
 					document.getElementById('letter39').focus();
 				}, 1000); // 3 секунды
 			} else {
-				eleventhMessageContainer.textContent = 'Неправильно. Попробуйте еще раз.';
-				eleventhMessageContainer.style.color = 'red';
 			}
 		}
 
@@ -546,19 +475,13 @@
 			const correctTwelfthLetters = 'dict'; // Правильное слово
 			const userTwelfthInput = letter39 + letter40 + letter401 + letter402;
 
-			const twelfthMessageContainer = document.getElementById('twelfthMessage');
 			if (userTwelfthInput === correctTwelfthLetters) {
-				twelfthMessageContainer.textContent = 'Все верно!';
-				twelfthMessageContainer.style.color = 'green';
-
 				document.getElementById('all').style.display = "none";
 				document.getElementById("finalMessage").style.display = "block";
 				setTimeout(() => {
 					window.location.href = "4.html";
 				}, 5000);
 			} else {
-				twelfthMessageContainer.textContent = 'Неправильно. Попробуйте еще раз.';
-				twelfthMessageContainer.style.color = 'red';
 			}
 		}
 

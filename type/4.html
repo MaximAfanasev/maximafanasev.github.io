@@ -95,8 +95,6 @@
 			const resultDiv = document.getElementById('result');
 
 			if (userInput === correctAnswer) {
-				resultDiv.textContent = "Правильно! Ответ верный.";
-				resultDiv.style.color = "green";
 				currentQuestionIndex++;
 
 				if (currentQuestionIndex < questions.length) {
@@ -115,8 +113,6 @@
 					}, 5000);
 				}
 			} else {
-				resultDiv.textContent = "Неправильно. Попробуйте еще раз.";
-				resultDiv.style.color = "red";
 			}
 
 			// Очищаем поле ввода после проверки

@@ -88,12 +88,10 @@
 				const currentAnswer = questions[questionIndex].answer;
 
 				if (userAnswer === currentAnswer) {
-					resultElement.textContent = "Правильно!";
 					questionIndex++;
 					answerInput.value = "";
 					displayQuestion();
 				} else {
-					resultElement.textContent = "Попробуйте еще раз.";
 				}
 			});
 
