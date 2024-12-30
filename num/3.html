@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Игра: Угадай ответ</title>
 	<link rel="stylesheet" href="../style/style.css">
+	<link rel="stylesheet" href="../style/win.css">
 </head>
 
 <body>
@@ -13,6 +14,16 @@
 		<input type="text" id="answer">
 		<button id="submit">Check</button>
 		<div id="result"></div>
+	</div>
+	
+	<div class="message" id="finalMessage">
+		<div class="container">
+			<img src="../img/trophy.png" class="first" alt="">
+			<img src="../img/trophy2.png" class="second" alt="">
+			<img src="../img/trophy3.png" class="three" alt="">
+			<img src="../img/trophy4.png" class="four" alt="">
+			<img src="../img/trophy5.png" class="five" alt="">
+		</div>
 	</div>
 	<script>
 		document.addEventListener("DOMContentLoaded", () => {
@@ -70,7 +81,12 @@
 					questionElement.textContent = "Игра окончена!";
 					answerInput.style.display = "none";
 					submitButton.style.display = "none";
+
+					document.getElementById('game-container').style.display = "none";
+					document.getElementById("finalMessage").style.display = "block";
+					setTimeout(() => {
 					window.location.href = '../if/1.html';
+					}, 5000);
 				}
 			}
 

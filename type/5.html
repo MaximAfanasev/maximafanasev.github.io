@@ -18,7 +18,7 @@
 			background: linear-gradient(to bottom, #ff7e5f, #feb47b);
 			color: #000;
 		}
-		
+
 		#all {
 			display: flex;
 			flex-direction: column;
@@ -92,31 +92,31 @@
 </head>
 
 <body>
-<div id="all">
-	<h1>MAY VARY</h1>
-	<div class="container">
-		<div class="column" id="yes-column" ondrop="drop(event)" ondragover="allowDrop(event)">
-			<h2>YES</h2>
+	<div id="all">
+		<h1>MAY VARY</h1>
+		<div class="container">
+			<div class="column" id="yes-column" ondrop="drop(event)" ondragover="allowDrop(event)">
+				<h2>YES</h2>
+			</div>
+			<div class="column" id="no-column" ondrop="drop(event)" ondragover="allowDrop(event)">
+				<h2>NO</h2>
+			</div>
 		</div>
-		<div class="column" id="no-column" ondrop="drop(event)" ondragover="allowDrop(event)">
-			<h2>NO</h2>
+		<div class="cards" id="card-container">
+			<div class="card" draggable="true" ondragstart="drag(event)">list</div>
+			<div class="card" draggable="true" ondragstart="drag(event)">bytearray</div>
+			<div class="card" draggable="true" ondragstart="drag(event)">set</div>
+			<div class="card" draggable="true" ondragstart="drag(event)">dict</div>
+			<div class="card" draggable="true" ondragstart="drag(event)">bool</div>
+			<div class="card" draggable="true" ondragstart="drag(event)">int</div>
+			<div class="card" draggable="true" ondragstart="drag(event)">float</div>
+			<div class="card" draggable="true" ondragstart="drag(event)">complex</div>
+			<div class="card" draggable="true" ondragstart="drag(event)">str</div>
+			<div class="card" draggable="true" ondragstart="drag(event)">tuple</div>
+			<div class="card" draggable="true" ondragstart="drag(event)">bytes</div>
+			<div class="card" draggable="true" ondragstart="drag(event)">frozenset</div>
 		</div>
 	</div>
-	<div class="cards" id="card-container">
-		<div class="card" draggable="true" ondragstart="drag(event)">list</div>
-		<div class="card" draggable="true" ondragstart="drag(event)">bytearray</div>
-		<div class="card" draggable="true" ondragstart="drag(event)">set</div>
-		<div class="card" draggable="true" ondragstart="drag(event)">dict</div>
-		<div class="card" draggable="true" ondragstart="drag(event)">bool</div>
-		<div class="card" draggable="true" ondragstart="drag(event)">int</div>
-		<div class="card" draggable="true" ondragstart="drag(event)">float</div>
-		<div class="card" draggable="true" ondragstart="drag(event)">complex</div>
-		<div class="card" draggable="true" ondragstart="drag(event)">str</div>
-		<div class="card" draggable="true" ondragstart="drag(event)">tuple</div>
-		<div class="card" draggable="true" ondragstart="drag(event)">bytes</div>
-		<div class="card" draggable="true" ondragstart="drag(event)">frozenset</div>
-	</div>
-</div>
 
 	<div class="message" id="finalMessage">
 		<div class="container">
@@ -190,7 +190,7 @@
 				document.getElementById('all').style.display = "none";
 				document.getElementById("finalMessage").style.display = "block";
 				setTimeout(() => {
-					window.location.href = "n1.html";
+					window.location.href = "../num/1.html";
 				}, 5000);
 			}
 		}
