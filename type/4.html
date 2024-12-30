@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Проверка ответа</title>
 	<link rel="stylesheet" href="../style/style.css">
+	<link rel="stylesheet" href="../style/win.css">
 </head>
 
 <body>
@@ -15,6 +16,16 @@
 		<input type="text" id="userInput" autocomplete="off">
 		<button onclick="checkAnswer()">Check</button>
 		<div class="result" id="result"></div>
+	</div>
+
+	<div class="message" id="finalMessage">
+		<div class="container">
+			<img src="../img/trophy.png" class="first" alt="">
+			<img src="../img/trophy2.png" class="second" alt="">
+			<img src="../img/trophy3.png" class="three" alt="">
+			<img src="../img/trophy4.png" class="four" alt="">
+			<img src="../img/trophy5.png" class="five" alt="">
+		</div>
 	</div>
 
 	<script>
@@ -96,7 +107,12 @@
 					resultDiv.textContent += " Вы ответили на все вопросы!";
 					document.getElementById('userInput').disabled = true;
 					document.querySelector("button").disabled = true;
-					window.location.href = "5.html";
+					
+				document.getElementById('game-container').style.display = "none";
+				document.getElementById("finalMessage").style.display = "block";
+					setTimeout(() => {
+						window.location.href = "5.html";
+					}, 5000);
 				}
 			} else {
 				resultDiv.textContent = "Неправильно. Попробуйте еще раз.";

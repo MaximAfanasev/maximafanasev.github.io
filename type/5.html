@@ -4,18 +4,26 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Drag and Drop Example</title>
+	<link rel="stylesheet" href="../style/win.css">
 	<style>
 		body {
 			font-family: Arial, sans-serif;
 			display: flex;
 			flex-direction: column;
 			align-items: center;
+			justify-content: center;
 			margin: 0;
 			padding: 20px;
 			height: 100vh;
 			background: linear-gradient(to bottom, #ff7e5f, #feb47b);
-			/* Градиент заката */
 			color: #000;
+		}
+		
+		#all {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
 		}
 
 		h1 {
@@ -35,7 +43,6 @@
 			height: 340px;
 			border: 2px solid #ccc;
 			border-radius: 20px;
-			/* Скругление углов */
 			background: rgba(255, 255, 255, 0.1);
 			position: relative;
 			padding: 10px;
@@ -85,6 +92,7 @@
 </head>
 
 <body>
+<div id="all">
 	<h1>MAY VARY</h1>
 	<div class="container">
 		<div class="column" id="yes-column" ondrop="drop(event)" ondragover="allowDrop(event)">
@@ -108,7 +116,17 @@
 		<div class="card" draggable="true" ondragstart="drag(event)">bytes</div>
 		<div class="card" draggable="true" ondragstart="drag(event)">frozenset</div>
 	</div>
+</div>
 
+	<div class="message" id="finalMessage">
+		<div class="container">
+			<img src="../img/trophy.png" class="first" alt="">
+			<img src="../img/trophy2.png" class="second" alt="">
+			<img src="../img/trophy3.png" class="three" alt="">
+			<img src="../img/trophy4.png" class="four" alt="">
+			<img src="../img/trophy5.png" class="five" alt="">
+		</div>
+	</div>
 	<script>
 		let totalCardsYes = 4; // Общее количество карточек для столбца "ДА"
 		let totalCardsNo = 7; // Общее количество карточек для столбца "НЕТ"
@@ -169,7 +187,11 @@
 			// Проверка, что все карточки размещены по столбцам
 			if (yesColumnCards === totalCardsYes && noColumnCards === totalCardsNo) {
 				console.log("Все карточки размещены, выполняем редирект...");
-				window.location.href = '../num/n1.html';
+				document.getElementById('all').style.display = "none";
+				document.getElementById("finalMessage").style.display = "block";
+				setTimeout(() => {
+					window.location.href = "n1.html";
+				}, 5000);
 			}
 		}
 	</script>

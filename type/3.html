@@ -20,6 +20,13 @@
 			background-size: 400% 400%;
 		}
 
+		#all {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
+
 		@keyframes gradientAnimation {
 			0% {
 				background-position: 0% 50%;
@@ -79,149 +86,150 @@
 
 <body>
 	<div id="all">
-	<h1>type(True)</h1>
-	<div>
-		<input type="text" maxlength="1" id="letter1" oninput="moveToNextInput('letter2', 4)" required>
-		<input type="text" maxlength="1" id="letter2" oninput="moveToNextInput('letter3', 4)" required>
-		<input type="text" maxlength="1" id="letter3" oninput="moveToNextInput('letter4', 4)" required>
-		<input type="text" maxlength="1" id="letter4" oninput="checkLetters()" required>
-	</div>
-	<div id="message"></div>
-
-	<div class="question" id="secondQuestion">
-		<h2>type(1)</h2>
+		<h1>type(True)</h1>
 		<div>
-			<input type="text" maxlength="1" id="letter5" oninput="moveToNextInput('letter6', 3)" required>
-			<input type="text" maxlength="1" id="letter6" oninput="moveToNextInput('letter7', 3)" required>
-			<input type="text" maxlength="1" id="letter7" oninput="checkSecondQuestion()" required>
+			<input type="text" maxlength="1" id="letter1" oninput="moveToNextInput('letter2', 4)" required>
+			<input type="text" maxlength="1" id="letter2" oninput="moveToNextInput('letter3', 4)" required>
+			<input type="text" maxlength="1" id="letter3" oninput="moveToNextInput('letter4', 4)" required>
+			<input type="text" maxlength="1" id="letter4" oninput="checkLetters()" required>
 		</div>
-		<div class="message" id="secondMessage"></div>
-	</div>
+		<div id="message"></div>
 
-	<div class="question" id="thirdQuestion">
-		<h2>type(1.1)</h2>
-		<div>
-			<input type="text" maxlength="1" id="letter8" oninput="moveToNextInput('letter9', 5)" required>
-			<input type="text" maxlength="1" id="letter9" oninput="moveToNextInput('letter10', 5)" required>
-			<input type="text" maxlength="1" id="letter10" oninput="moveToNextInput('letter11', 5)" required>
-			<input type="text" maxlength="1" id="letter11" oninput="moveToNextInput('letter12', 5)" required>
-			<input type="text" maxlength="1" id="letter12" required oninput="checkThirdQuestion()">
+		<div class="question" id="secondQuestion">
+			<h2>type(1)</h2>
+			<div>
+				<input type="text" maxlength="1" id="letter5" oninput="moveToNextInput('letter6', 3)" required>
+				<input type="text" maxlength="1" id="letter6" oninput="moveToNextInput('letter7', 3)" required>
+				<input type="text" maxlength="1" id="letter7" oninput="checkSecondQuestion()" required>
+			</div>
+			<div class="message" id="secondMessage"></div>
 		</div>
-		<div class="message" id="thirdMessage"></div>
-	</div>
 
-	<div class="question" id="fourthQuestion">
-		<h2>type(3j)</h2>
-		<div>
-			<input type="text" maxlength="1" id="letter13" oninput="moveToNextInput('letter14', 7)" required>
-			<input type="text" maxlength="1" id="letter14" oninput="moveToNextInput('letter15', 7)" required>
-			<input type="text" maxlength="1" id="letter15" oninput="moveToNextInput('letter16', 7)" required>
-			<input type="text" maxlength="1" id="letter16" oninput="moveToNextInput('letter17', 7)" required>
-			<input type="text" maxlength="1" id="letter17" oninput="moveToNextInput('letter18', 7)" required>
-			<input type="text" maxlength="1" id="letter18" oninput="moveToNextInput('letter19', 7)" required>
-			<input type="text" maxlength="1" id="letter19" oninput="checkFourthQuestion()" required>
+		<div class="question" id="thirdQuestion">
+			<h2>type(1.1)</h2>
+			<div>
+				<input type="text" maxlength="1" id="letter8" oninput="moveToNextInput('letter9', 5)" required>
+				<input type="text" maxlength="1" id="letter9" oninput="moveToNextInput('letter10', 5)" required>
+				<input type="text" maxlength="1" id="letter10" oninput="moveToNextInput('letter11', 5)" required>
+				<input type="text" maxlength="1" id="letter11" oninput="moveToNextInput('letter12', 5)" required>
+				<input type="text" maxlength="1" id="letter12" required oninput="checkThirdQuestion()">
+			</div>
+			<div class="message" id="thirdMessage"></div>
 		</div>
-		<div class="message" id="fourthMessage"></div>
-	</div>
 
-	<div class="question" id="fifthQuestion">
-		<h2>type('a')</h2>
-		<div>
-			<input type="text" maxlength="1" id="letter20" oninput="moveToNextInput('letter21', 3)" required>
-			<input type="text" maxlength="1" id="letter21" oninput="moveToNextInput('letter22', 3)" required>
-			<input type="text" maxlength="1" id="letter22" oninput="checkFifthQuestion()" required>
+		<div class="question" id="fourthQuestion">
+			<h2>type(3j)</h2>
+			<div>
+				<input type="text" maxlength="1" id="letter13" oninput="moveToNextInput('letter14', 7)" required>
+				<input type="text" maxlength="1" id="letter14" oninput="moveToNextInput('letter15', 7)" required>
+				<input type="text" maxlength="1" id="letter15" oninput="moveToNextInput('letter16', 7)" required>
+				<input type="text" maxlength="1" id="letter16" oninput="moveToNextInput('letter17', 7)" required>
+				<input type="text" maxlength="1" id="letter17" oninput="moveToNextInput('letter18', 7)" required>
+				<input type="text" maxlength="1" id="letter18" oninput="moveToNextInput('letter19', 7)" required>
+				<input type="text" maxlength="1" id="letter19" oninput="checkFourthQuestion()" required>
+			</div>
+			<div class="message" id="fourthMessage"></div>
 		</div>
-		<div class="message" id="fifthMessage"></div>
-	</div>
 
-	<div class="question" id="sixthQuestion">
-		<h2>type([1,2])</h2>
-		<div>
-			<input type="text" maxlength="1" id="letter23" oninput="moveToNextInput('letter24', 4)" required>
-			<input type="text" maxlength="1" id="letter24" oninput="moveToNextInput('letter25', 4)" required>
-			<input type="text" maxlength="1" id="letter25" oninput="moveToNextInput('letter255', 4)" required>
-			<input type="text" maxlength="1" id="letter255" oninput="checkSixthQuestion()" required>
+		<div class="question" id="fifthQuestion">
+			<h2>type('a')</h2>
+			<div>
+				<input type="text" maxlength="1" id="letter20" oninput="moveToNextInput('letter21', 3)" required>
+				<input type="text" maxlength="1" id="letter21" oninput="moveToNextInput('letter22', 3)" required>
+				<input type="text" maxlength="1" id="letter22" oninput="checkFifthQuestion()" required>
+			</div>
+			<div class="message" id="fifthMessage"></div>
 		</div>
-		<div class="message" id="sixthMessage"></div>
-	</div>
 
-	<div class="question" id="seventhQuestion">
-		<h2>type((1,2))</h2>
-		<div>
-			<input type="text" maxlength="1" id="letter26" oninput="moveToNextInput('letter27', 5)" required>
-			<input type="text" maxlength="1" id="letter27" oninput="moveToNextInput('letter28', 5)" required>
-			<input type="text" maxlength="1" id="letter28" oninput="moveToNextInput('letter288', 5)" required>
-			<input type="text" maxlength="1" id="letter288" oninput="moveToNextInput('letter289', 5)" required>
-			<input type="text" maxlength="1" id="letter289" oninput="checkSeventhQuestion()" required>
+		<div class="question" id="sixthQuestion">
+			<h2>type([1,2])</h2>
+			<div>
+				<input type="text" maxlength="1" id="letter23" oninput="moveToNextInput('letter24', 4)" required>
+				<input type="text" maxlength="1" id="letter24" oninput="moveToNextInput('letter25', 4)" required>
+				<input type="text" maxlength="1" id="letter25" oninput="moveToNextInput('letter255', 4)" required>
+				<input type="text" maxlength="1" id="letter255" oninput="checkSixthQuestion()" required>
+			</div>
+			<div class="message" id="sixthMessage"></div>
 		</div>
-		<div class="message" id="seventhMessage"></div>
-	</div>
 
-	<div class="question" id="eighthQuestion">
-		<h2>type(b'ab\\xff')</h2>
-		<div>
-			<input type="text" maxlength="1" id="letter29" oninput="moveToNextInput('letter30', 5)" required>
-			<input type="text" maxlength="1" id="letter30" oninput="moveToNextInput('letter31', 5)" required>
-			<input type="text" maxlength="1" id="letter31" oninput="moveToNextInput('letter318', 5)" required>
-			<input type="text" maxlength="1" id="letter318" oninput="moveToNextInput('letter319', 5)" required>
-			<input type="text" maxlength="1" id="letter319" oninput="checkEighthQuestion()" required>
+		<div class="question" id="seventhQuestion">
+			<h2>type((1,2))</h2>
+			<div>
+				<input type="text" maxlength="1" id="letter26" oninput="moveToNextInput('letter27', 5)" required>
+				<input type="text" maxlength="1" id="letter27" oninput="moveToNextInput('letter28', 5)" required>
+				<input type="text" maxlength="1" id="letter28" oninput="moveToNextInput('letter288', 5)" required>
+				<input type="text" maxlength="1" id="letter288" oninput="moveToNextInput('letter289', 5)" required>
+				<input type="text" maxlength="1" id="letter289" oninput="checkSeventhQuestion()" required>
+			</div>
+			<div class="message" id="seventhMessage"></div>
 		</div>
-		<div class="message" id="eighthMessage"></div>
-	</div>
 
-	<div class="question" id="ninthQuestion">
-		<h2>type(bytearray([1,2]))</h2>
-		<div>
-			<input type="text" maxlength="1" id="letter32" oninput="moveToNextInput('letter33', 5)" required>
-			<input type="text" maxlength="1" id="letter33" oninput="moveToNextInput('letter341', 5)" required>
-			<input type="text" maxlength="1" id="letter341" oninput="moveToNextInput('letter342', 5)" required>
-			<input type="text" maxlength="1" id="letter342" oninput="moveToNextInput('letter343', 5)" required>
-			<input type="text" maxlength="1" id="letter343" oninput="moveToNextInput('letter344', 5)" required>
-			<input type="text" maxlength="1" id="letter344" oninput="moveToNextInput('letter345', 5)" required>
-			<input type="text" maxlength="1" id="letter345" oninput="moveToNextInput('letter346', 5)" required>
-			<input type="text" maxlength="1" id="letter346" oninput="moveToNextInput('letter347', 5)" required>
-			<input type="text" maxlength="1" id="letter347" oninput="checkNinthQuestion()" required>
+		<div class="question" id="eighthQuestion">
+			<h2>type(b'ab\\xff')</h2>
+			<div>
+				<input type="text" maxlength="1" id="letter29" oninput="moveToNextInput('letter30', 5)" required>
+				<input type="text" maxlength="1" id="letter30" oninput="moveToNextInput('letter31', 5)" required>
+				<input type="text" maxlength="1" id="letter31" oninput="moveToNextInput('letter318', 5)" required>
+				<input type="text" maxlength="1" id="letter318" oninput="moveToNextInput('letter319', 5)" required>
+				<input type="text" maxlength="1" id="letter319" oninput="checkEighthQuestion()" required>
+			</div>
+			<div class="message" id="eighthMessage"></div>
 		</div>
-		<div class="message" id="ninthMessage"></div>
-	</div>
 
-	<div class="question" id="tenthQuestion">
-		<h2>type(set([1,2]))</h2>
-		<div>
-			<input type="text" maxlength="1" id="letter35" oninput="moveToNextInput('letter36', 3)" required>
-			<input type="text" maxlength="1" id="letter36" oninput="moveToNextInput('letter366', 3)" required>
-			<input type="text" maxlength="1" id="letter366" oninput="checkTenthQuestion()" required>
+		<div class="question" id="ninthQuestion">
+			<h2>type(bytearray([1,2]))</h2>
+			<div>
+				<input type="text" maxlength="1" id="letter32" oninput="moveToNextInput('letter33', 5)" required>
+				<input type="text" maxlength="1" id="letter33" oninput="moveToNextInput('letter341', 5)" required>
+				<input type="text" maxlength="1" id="letter341" oninput="moveToNextInput('letter342', 5)" required>
+				<input type="text" maxlength="1" id="letter342" oninput="moveToNextInput('letter343', 5)" required>
+				<input type="text" maxlength="1" id="letter343" oninput="moveToNextInput('letter344', 5)" required>
+				<input type="text" maxlength="1" id="letter344" oninput="moveToNextInput('letter345', 5)" required>
+				<input type="text" maxlength="1" id="letter345" oninput="moveToNextInput('letter346', 5)" required>
+				<input type="text" maxlength="1" id="letter346" oninput="moveToNextInput('letter347', 5)" required>
+				<input type="text" maxlength="1" id="letter347" oninput="checkNinthQuestion()" required>
+			</div>
+			<div class="message" id="ninthMessage"></div>
 		</div>
-		<div class="message" id="tenthMessage"></div>
-	</div>
 
-	<div class="question" id="eleventhQuestion">
-		<h2>type(frozenset([1,2]))</h2>
-		<div>
-			<input type="text" maxlength="1" id="letter37" oninput="moveToNextInput('letter38', 4)" required>
-			<input type="text" maxlength="1" id="letter38" oninput="moveToNextInput('letter381', 4)" required>
-			<input type="text" maxlength="1" id="letter381" oninput="moveToNextInput('letter382', 4)" required>
-			<input type="text" maxlength="1" id="letter382" oninput="moveToNextInput('letter383', 4)" required>
-			<input type="text" maxlength="1" id="letter383" oninput="moveToNextInput('letter384', 4)" required>
-			<input type="text" maxlength="1" id="letter384" oninput="moveToNextInput('letter385', 4)" required>
-			<input type="text" maxlength="1" id="letter385" oninput="moveToNextInput('letter386', 4)" required>
-			<input type="text" maxlength="1" id="letter386" oninput="moveToNextInput('letter387', 4)" required>
-			<input type="text" maxlength="1" id="letter387" oninput="checkEleventhQuestion()" required>
+		<div class="question" id="tenthQuestion">
+			<h2>type(set([1,2]))</h2>
+			<div>
+				<input type="text" maxlength="1" id="letter35" oninput="moveToNextInput('letter36', 3)" required>
+				<input type="text" maxlength="1" id="letter36" oninput="moveToNextInput('letter366', 3)" required>
+				<input type="text" maxlength="1" id="letter366" oninput="checkTenthQuestion()" required>
+			</div>
+			<div class="message" id="tenthMessage"></div>
 		</div>
-		<div class="message" id="eleventhMessage"></div>
-	</div>
 
-	<div class="question" id="twelfthQuestion">
-		<h2>type({'a':'1'})</h2>
-		<div>
-			<input type="text" maxlength="1" id="letter39" oninput="moveToNextInput('letter40', 4)" required>
-			<input type="text" maxlength="1" id="letter40" oninput="moveToNextInput('letter401', 4)" required>
-			<input type="text" maxlength="1" id="letter401" oninput="moveToNextInput('letter402', 4)" required>
-			<input type="text" maxlength="1" id="letter402" oninput="checkTwelfthQuestion()" required>
+		<div class="question" id="eleventhQuestion">
+			<h2>type(frozenset([1,2]))</h2>
+			<div>
+				<input type="text" maxlength="1" id="letter37" oninput="moveToNextInput('letter38', 4)" required>
+				<input type="text" maxlength="1" id="letter38" oninput="moveToNextInput('letter381', 4)" required>
+				<input type="text" maxlength="1" id="letter381" oninput="moveToNextInput('letter382', 4)" required>
+				<input type="text" maxlength="1" id="letter382" oninput="moveToNextInput('letter383', 4)" required>
+				<input type="text" maxlength="1" id="letter383" oninput="moveToNextInput('letter384', 4)" required>
+				<input type="text" maxlength="1" id="letter384" oninput="moveToNextInput('letter385', 4)" required>
+				<input type="text" maxlength="1" id="letter385" oninput="moveToNextInput('letter386', 4)" required>
+				<input type="text" maxlength="1" id="letter386" oninput="moveToNextInput('letter387', 4)" required>
+				<input type="text" maxlength="1" id="letter387" oninput="checkEleventhQuestion()" required>
+			</div>
+			<div class="message" id="eleventhMessage"></div>
 		</div>
-		<div class="message" id="twelfthMessage"></div>
+
+		<div class="question" id="twelfthQuestion">
+			<h2>type({'a':'1'})</h2>
+			<div>
+				<input type="text" maxlength="1" id="letter39" oninput="moveToNextInput('letter40', 4)" required>
+				<input type="text" maxlength="1" id="letter40" oninput="moveToNextInput('letter401', 4)" required>
+				<input type="text" maxlength="1" id="letter401" oninput="moveToNextInput('letter402', 4)" required>
+				<input type="text" maxlength="1" id="letter402" oninput="checkTwelfthQuestion()" required>
+			</div>
+			<div class="message" id="twelfthMessage"></div>
+		</div>
 	</div>
-</div>
+	
 	<div class="message" id="finalMessage">
 		<div class="container">
 			<img src="../img/trophy.png" class="first" alt="">
@@ -546,8 +554,8 @@
 				document.getElementById('all').style.display = "none";
 				document.getElementById("finalMessage").style.display = "block";
 				setTimeout(() => {
-						window.location.href = "4.html";
-					}, 5000); 
+					window.location.href = "4.html";
+				}, 5000);
 			} else {
 				twelfthMessageContainer.textContent = 'Неправильно. Попробуйте еще раз.';
 				twelfthMessageContainer.style.color = 'red';
