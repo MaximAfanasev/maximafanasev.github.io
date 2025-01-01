@@ -28,7 +28,7 @@
 
 <body>
 	<div id="game-container">
-		<h2>12 types b i f c s l t b b s f d</h2>
+		<h2>12 types b b b c d f f i l t s s</h2>
 		<textarea id="user-input" placeholder="new row!" rows="12" cols="20"></textarea>
 		<button id="check-btn">Проверить</button>
 		<p id="result"></p>
@@ -46,17 +46,17 @@
 	<script>
 		const correctWords = [
 			"bool",
-			"int",
-			"float",
-			"complex",
-			"str",
-			"list",
-			"tuple",
 			"bytes",
 			"bytearray",
-			"set",
+			"complex",
+			"dict",
+			"float",
 			"frozenset",
-			"dict"
+			"int",
+			"list",
+			"tuple",
+			"set",
+			"str",
 		];
 
 		document.getElementById('check-btn').addEventListener('click', function() {
