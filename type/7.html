@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>M</title>
+	<link rel="icon" type="image/x-icon" href="/img/favicon.png">
+	<link rel="stylesheet" href="../style/style.css">
+	<link rel="stylesheet" href="../style/win.css">
+	<style>
+		#game-container {
+			background: white;
+			padding: 20px;
+			border-radius: 10px;
+			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+			text-align: center;
+		}
+
+		textarea {
+			width: calc(100% - 20px);
+			height: 200px;
+			border-radius: 10px;
+			padding: 10px;
+			margin-bottom: 10px;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="game-container">
+		<h2>12 types</h2>
+		<textarea id="user-input" placeholder="" rows="12" cols="20"></textarea>
+		<button id="check-btn">Проверить</button>
+		<p id="result"></p>
+	</div>
+
+	<div class="message" id="finalMessage">
+		<div class="container">
+			<img src="../img/trophy.png" class="first" alt="">
+			<img src="../img/trophy2.png" class="second" alt="">
+			<img src="../img/trophy3.png" class="three" alt="">
+			<img src="../img/trophy4.png" class="four" alt="">
+			<img src="../img/trophy5.png" class="five" alt="">
+		</div>
+	</div>
+	<script>
+		const correctWords = [
+			"b b b c d f f i l t s s",
+		];
+
+		document.getElementById('check-btn').addEventListener('click', function() {
+			const userInput = document.getElementById('user-input').value.trim();
+			const userWords = userInput.split(/\r?\n/).map(word => word.trim());
+
+			if (userWords.every(word => correctWords.includes(word))) {
+
+				document.getElementById('game-container').style.display = "none";
+				document.getElementById("finalMessage").style.display = "block";
+				setTimeout(() => {
+					window.location.href = '../index.html';
+				}, 5000);
+			} else {
+				document.getElementById('result').textContent = 'Ошибка! Убедитесь, что введены все 12 слов на новой строке.';
+				document.getElementById('result').style.color = 'red';
+			}
+		});
+	</script>
+</body></html>
