@@ -120,7 +120,6 @@
 		height: auto;
 		margin: 20px auto;
 	}
-	
 </style>
 
 <body>
@@ -469,8 +468,8 @@
 					}, 300); // Задержка 2 секунды перед показом следующего вопроса
 				} else {
 					// Показать поздравления
-						document.getElementById("quiz-container").style.display = "none";
-						document.getElementById("finalMessage").style.display = "block";
+					document.getElementById("quiz-container").style.display = "none";
+					document.getElementById("finalMessage").style.display = "block";
 					setTimeout(() => {
 						window.location.href = "3.html";
 						startRedirectCountdown()
@@ -490,11 +489,11 @@
 
 				if (countdown <= 0) {
 					clearInterval(intervalId);
-					window.location.href = '3.html'; // Переход на главную страницу
+					window.location.href = '../index.html';
 				}
 			}, 5000); // Каждую секунду
 		}
-		
+
 		// Показать первую карточку
 		displayQuestion(0);
 	</script>

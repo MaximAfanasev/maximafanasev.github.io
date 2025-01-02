@@ -17,7 +17,7 @@
 		<button id="submit">Check</button>
 		<div id="result"></div>
 	</div>
-	
+
 	<div class="message" id="finalMessage">
 		<div class="container">
 			<img src="../img/trophy.png" class="first" alt="">
@@ -73,7 +73,7 @@
 					document.getElementById('game-container').style.display = "none";
 					document.getElementById("finalMessage").style.display = "block";
 					setTimeout(() => {
-					window.location.href = '../str/1.html';
+						window.location.href = '../index.html';
 					}, 5000);
 				}
 			}
@@ -87,15 +87,11 @@
 					questionIndex++;
 					answerInput.value = "";
 					displayQuestion();
-				} else {
-				}
+				} else {}
 			});
 
 			// Отображаем первый вопрос
 			displayQuestion();
 		});
-
 	</script>
-</body>
-
-</html>
+</body></html>
