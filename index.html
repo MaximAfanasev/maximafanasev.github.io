@@ -223,6 +223,13 @@
 			border: 2px solid #ccc;
 			border-radius: 4px;
 			outline: none;
+
+			font-size: 20px;
+			text-align: center;
+			margin: 0 5px;
+			opacity: 0;
+			/* Скрыто изначально */
+			transition: opacity 0.5s ease;
 		}
 
 		.pin-input:focus {
@@ -353,7 +360,7 @@
 
 		<div class="container">
 			<div class="pin">
-				<h1>1234</h1>
+				<h1 id="pinHeader"></h1>
 				<div class="input-group">
 					<input type="password" maxlength="1" class="pin-input" id="pin1">
 					<input type="password" maxlength="1" class="pin-input" id="pin2">
@@ -433,6 +440,42 @@
 					}
 				}
 			});
+		});
+	</script>
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+			const pinCode = '1234';
+			const pinHeader = document.getElementById('pinHeader');
+			const inputs = document.querySelectorAll('.pin-input');
+
+			// Функция для отображения анимации
+			function showPinAndInputs() {
+				let delay = 0;
+
+				// Показ цифр
+				for (let i = 0; i < pinCode.length; i++) {
+					setTimeout(() => {
+						pinHeader.innerText += pinCode[i];
+					}, delay);
+					delay += 300; // Задержка 500 мс между цифрами
+				}
+
+				// Показ инпутов
+				setTimeout(() => {
+					for (let input of inputs) {
+						input.style.display = 'inline-block';
+					}
+					delay = 0;
+					for (let input of inputs) {
+						setTimeout(() => {
+							input.style.opacity = 1; // Появление инпута
+						}, delay);
+						delay += 300; // Задержка 500 мс между инпутами
+					}
+				}, pinCode.length * 300 + 500); // Ждем, пока появятся все цифры, затем показываем инпуты
+			}
+
+			showPinAndInputs();
 		});
 	</script>
 </body></html>
