@@ -235,6 +235,10 @@
 			transition: opacity 0.5s ease;
 		}
 
+		.pin-input.fade-out {
+			opacity: 0;
+		}
+
 		.pin-input:focus {
 			border-color: #007bff;
 		}
@@ -433,6 +437,7 @@
 		const correctPin = '1234'; // Правильный пин-код
 		const inputs = document.querySelectorAll('.pin-input');
 		const calendarsContainer = document.querySelector('.calendars');
+		let userPin = "";
 
 		const listItems = document.querySelectorAll('#imageList li');
 		let delay = 0;
@@ -447,7 +452,7 @@
 						// Проверка пин-кода после ввода последнего символа
 						const userPin = Array.from(inputs).map(input => input.value).join('');
 						if (userPin === correctPin) {
-
+							fadeOutInputs();
 							// Сначала показываем контейнер, затем каждые 500 мс показываем календарь
 							setTimeout(() => {
 								calendarsContainer.classList.remove('hidden'); // Показываем контейнер с календарями
@@ -486,9 +491,9 @@
 											behavior: 'smooth'
 										});
 									}, delay); // Устанавливаем время задержки после всех элементов
-								}, delay + 2100); // Время появления list будет после всех календари + 500 мс
+								}, delay + 1100); // Время появления list будет после всех календари + 500 мс
 
-							}, 700);
+							}, 1300);
 
 							const days = document.querySelectorAll('.day.n');
 							let delay = 0;
@@ -503,7 +508,6 @@
 							document.getElementById('result').classList.remove('hidden');
 							document.querySelector('.lines').classList.add('hidden');
 							document.querySelector('.calendars').classList.remove('hidden');
-							document.querySelector('.pin').classList.add('hidden');
 						} else {
 							alert('Неправильный пин-код, попробуйте снова.');
 							inputs.forEach(input => input.value = '');
@@ -513,6 +517,47 @@
 				}
 			});
 		});
+
+		// Функция для исчезновения инпутов и цифр
+		function fadeOutInputs() {
+			let delay = 0;
+
+			// Исчезновение инпутов
+			inputs.forEach((input) => {
+				setTimeout(() => {
+					input.style.opacity = 0; // Устанавливаем opacity в 0 для исчезновения
+					input.value = ""; // Очищаем значение инпута
+				}, delay);
+				delay += 300; // Задержка между исчезновением инпутов
+			});
+
+			// Исчезновение цифр "1234" в обратном порядке
+			setTimeout(() => {
+				fadeOutNumbers();
+			}, delay); // Вызываем после исчезновения инпутов
+		}
+
+		// Функция для исчезновения цифр в заголовке
+		function fadeOutNumbers() {
+			const header = document.getElementById('pinHeader');
+			const group = document.querySelector('.input-group');
+			const numbers = '1234';
+			let delay = 0;
+
+			// Обратный порядок для исчезновения
+			numbers.split('').reverse().forEach((number) => {
+				setTimeout(() => {
+					header.style.display = 'none'; 
+					group.style.display = 'none'; 
+				}, delay);
+				delay += 300; // Задержка между исчезновением цифр
+			});
+
+			// После последнего числа можно очистить заголовок
+			setTimeout(() => {
+				header.textContent = ''; // Полностью очищаем заголовок
+			}, delay);
+		}
 	</script>
 	<script>
 		document.addEventListener('DOMContentLoaded', () => {
