@@ -28,8 +28,9 @@
 			<pre class="code-block" id="code-block-1">
 def a():
   print('a')
-a()</pre>
-			<textarea id="user-input" cols="30" rows="4"></textarea>
+a()
+???</pre>
+			<textarea id="user-input" cols="30" rows="7" placeholder="..."></textarea>
 			<button id="check-btn">Check</button>
 		</div>
 		
@@ -37,8 +38,9 @@ a()</pre>
 			<pre class="code-block" id="code-block-2">
 def b(a):
   return print(a + ' ' + a)
-b('a')</pre>
-			<textarea id="user-input-2" cols="30" rows="7" placeholder="Введите ваш код здесь..."></textarea>
+b('a')
+???</pre>
+			<textarea id="user-input-2" cols="30" rows="7" placeholder="..."></textarea>
 			<button id="check-btn-2">Проверить</button>
 		</div>
 
@@ -46,8 +48,9 @@ b('a')</pre>
 			<pre class="code-block" id="code-block-3">
 c = None
 if c:
-  print('a')</pre>
-			<textarea id="user-input-3" cols="30" rows="2" placeholder="Введите ваш код здесь..."></textarea>
+  print('a')
+???</pre>
+			<textarea id="user-input-3" cols="30" rows="7" placeholder="..."></textarea>
 			<button id="check-btn-3">Проверить</button>
 		</div>
 
@@ -55,8 +58,9 @@ if c:
 			<pre class="code-block" id="code-block-4">
 def d(a,b):
   return print({'x': a, 'y': b})
-d('c','d')</pre>
-			<textarea id="user-input-4" cols="30" rows="2" placeholder="Введите ваш код здесь..."></textarea>
+d('c','d')
+???</pre>
+			<textarea id="user-input-4" cols="30" rows="7" placeholder="..."></textarea>
 			<button id="check-btn-4">Проверить</button>
 		</div>
 
@@ -66,8 +70,9 @@ def e():
   print(42)
 def f():
   e()
-f()</pre>
-			<textarea id="user-input-5" cols="30" rows="2" placeholder="Введите ваш код здесь..."></textarea>
+f()
+???</pre>
+			<textarea id="user-input-5" cols="30" rows="7" placeholder="..."></textarea>
 			<button id="check-btn-5">Проверить</button>
 		</div>
 
@@ -82,8 +87,9 @@ def l(x):
 j(a,l)
 
 j(a, lambda x: x.capitalize() + '!')
+???
 </pre>
-			<textarea id="user-input-6" cols="30" rows="2" placeholder="Введите ваш код здесь..."></textarea>
+			<textarea id="user-input-6" cols="30" rows="7" placeholder="..."></textarea>
 			<button id="check-btn-6">Проверить</button>
 		</div>
 	</div>
@@ -103,7 +109,7 @@ j(a, lambda x: x.capitalize() + '!')
 		document.getElementById('container-1').style.display = 'block';
 
 		document.getElementById('check-btn').addEventListener('click', function() {
-			const correctCode = `def a():\n  print('a')\na()`;
+			const correctCode = `def a():\n  print('a')\na()\na`;
 			const userInput = document.getElementById('user-input').value.trim();
 
 			if (userInput === correctCode) {
@@ -114,7 +120,7 @@ j(a, lambda x: x.capitalize() + '!')
 		});
 
 		document.getElementById('check-btn-2').addEventListener('click', function() {
-			const correctCode = `def b(a):\n  return print(a + ' ' + a)\nb('a')`;
+			const correctCode = `def b(a):\n  return print(a + ' ' + a)\nb('a')\na a`;
 			const userInput = document.getElementById('user-input-2').value.trim();
 
 			if (userInput === correctCode) {
@@ -134,7 +140,7 @@ j(a, lambda x: x.capitalize() + '!')
 		});
 
 		document.getElementById('check-btn-4').addEventListener('click', function() {
-			const correctCode = `def d(a,b):\n  return print({'x': a, 'y': b})\nd('c','d')`;
+			const correctCode = `def d(a,b):\n  return print({'x': a, 'y': b})\nd('c','d')\n{'x': 'c', 'y': 'd'}`;
 			const userInput = document.getElementById('user-input-4').value.trim();
 
 			if (userInput === correctCode) {
@@ -144,7 +150,7 @@ j(a, lambda x: x.capitalize() + '!')
 		});
 
 		document.getElementById('check-btn-5').addEventListener('click', function() {
-			const correctCode = `def e():\n  print(42)\ndef f():\n  e()\nf()`;
+			const correctCode = `def e():\n  print(42)\ndef f():\n  e()\nf()\n42`;
 			const userInput = document.getElementById('user-input-5').value.trim();
 
 			if (userInput === correctCode) {
@@ -154,7 +160,7 @@ j(a, lambda x: x.capitalize() + '!')
 		});
 
 		document.getElementById('check-btn-6').addEventListener('click', function() {
-			const correctCode = `def j(a,b):\n  for x in a:\n    print(b(x))\na = ['a','b','c']\ndef l(x):\n  return x.capitalize() + '!'\nj(a,l)\n\nj(a, lambda x: x.capitalize() + '!')`;
+			const correctCode = `def j(a,b):\n  for x in a:\n    print(b(x))\na = ['a','b','c']\ndef l(x):\n  return x.capitalize() + '!'\nj(a,l)\n\nj(a, lambda x: x.capitalize() + '!')\nA!B!C!`;
 			const userInput = document.getElementById('user-input-6').value.trim();
 
 			if (userInput === correctCode) {
