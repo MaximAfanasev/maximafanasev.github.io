@@ -108,6 +108,7 @@
 
 		.day.empty {
 			background-color: transparent;
+			opacity: 0;
 		}
 
 		.day.selected {
@@ -118,9 +119,7 @@
 		.c-w {
 			display: grid;
 			grid-template-columns: repeat(7, 20px);
-			/* 7 колонок (дней) */
 			gap: 5px;
-			/* расстояние между кубиками */
 		}
 
 		.day {
@@ -171,18 +170,15 @@
 			transition: opacity 0.5s ease;
 		}
 
-		/* Анимация пульсации */
 		@keyframes pulsate {
 
 			0%,
 			100% {
 				box-shadow: 0 0 2px red, 0 0 20px red, 0 0 30px red;
-				/* Начальная и конечная тень */
 			}
 
 			50% {
 				box-shadow: 0 0 5px red, 0 0 40px red, 0 0 50px red;
-				/* Состояние в середине анимации */
 			}
 		}
 	</style>
@@ -193,7 +189,6 @@
 			padding: 0px 20px;
 			color: #fff;
 			background-color: #e63946;
-			/* Красный цвет */
 			border: none;
 			border-radius: 15px;
 			margin: 0 auto;
@@ -305,37 +300,37 @@
 					<div class="day empty"></div>
 					<div class="day empty"></div>
 					<div class="day empty"></div>
-					<div class="day active">1</div>
-					<div class="day active">2</div>
-					<div class="day active">3</div>
-					<div class="day active">4</div>
-					<div class="day active">5</div>
-					<div class="day active">6</div>
-					<div class="day active">7</div>
-					<div class="day active">8</div>
-					<div class="day active">9</div>
-					<div class="day active">10</div>
-					<div class="day active">11</div>
-					<div class="day active">12</div>
-					<div class="day active">13</div>
-					<div class="day active">14</div>
-					<div class="day active">15</div>
-					<div class="day active">16</div>
-					<div class="day active">17</div>
-					<div class="day active">18</div>
-					<div class="day active">19</div>
-					<div class="day active">20</div>
-					<div class="day active">21</div>
-					<div class="day active">22</div>
-					<div class="day active">23</div>
-					<div class="day active">24</div>
-					<div class="day active">25</div>
-					<div class="day active">26</div>
-					<div class="day active">27</div>
-					<div class="day active">28</div>
-					<div class="day active">29</div>
-					<div class="day active">30</div>
-					<div class="day active">31</div>
+					<div class="day n active">1</div>
+					<div class="day n active">2</div>
+					<div class="day n active">3</div>
+					<div class="day n active">4</div>
+					<div class="day n active">5</div>
+					<div class="day n active">6</div>
+					<div class="day n active">7</div>
+					<div class="day n active">8</div>
+					<div class="day n active">9</div>
+					<div class="day n active">10</div>
+					<div class="day n active">11</div>
+					<div class="day n active">12</div>
+					<div class="day n active">13</div>
+					<div class="day n active">14</div>
+					<div class="day n active">15</div>
+					<div class="day n active">16</div>
+					<div class="day n active">17</div>
+					<div class="day n active">18</div>
+					<div class="day n active">19</div>
+					<div class="day n active">20</div>
+					<div class="day n active">21</div>
+					<div class="day n active">22</div>
+					<div class="day n active">23</div>
+					<div class="day n active">24</div>
+					<div class="day n active">25</div>
+					<div class="day n active">26</div>
+					<div class="day n active">27</div>
+					<div class="day n active">28</div>
+					<div class="day n active">29</div>
+					<div class="day n active">30</div>
+					<div class="day n active">31</div>
 				</div>
 			</div>
 			<div class="calendar" id="calendar">
@@ -343,37 +338,37 @@
 				<div class="c-w">
 					<div class="day empty"></div>
 					<div class="day empty"></div>
-					<div class="day active">1</div>
-					<div class="day active">2</div>
-					<div class="day active">3</div>
-					<div class="day">4</div>
-					<div class="day">5</div>
-					<div class="day">6</div>
-					<div class="day">7</div>
-					<div class="day">8</div>
-					<div class="day">9</div>
-					<div class="day">10</div>
-					<div class="day">11</div>
-					<div class="day">12</div>
-					<div class="day">13</div>
-					<div class="day">14</div>
-					<div class="day">15</div>
-					<div class="day">16</div>
-					<div class="day">17</div>
-					<div class="day">18</div>
-					<div class="day">19</div>
-					<div class="day">20</div>
-					<div class="day">21</div>
-					<div class="day">22</div>
-					<div class="day">23</div>
-					<div class="day">24</div>
-					<div class="day">25</div>
-					<div class="day">26</div>
-					<div class="day">27</div>
-					<div class="day">28</div>
-					<div class="day">29</div>
-					<div class="day">30</div>
-					<div class="day">31</div>
+					<div class="day n active">1</div>
+					<div class="day n active">2</div>
+					<div class="day n active">3</div>
+					<div class="day n">4</div>
+					<div class="day n">5</div>
+					<div class="day n">6</div>
+					<div class="day n">7</div>
+					<div class="day n">8</div>
+					<div class="day n">9</div>
+					<div class="day n">10</div>
+					<div class="day n">11</div>
+					<div class="day n">12</div>
+					<div class="day n">13</div>
+					<div class="day n">14</div>
+					<div class="day n">15</div>
+					<div class="day n">16</div>
+					<div class="day n">17</div>
+					<div class="day n">18</div>
+					<div class="day n">19</div>
+					<div class="day n">20</div>
+					<div class="day n">21</div>
+					<div class="day n">22</div>
+					<div class="day n">23</div>
+					<div class="day n">24</div>
+					<div class="day n">25</div>
+					<div class="day n">26</div>
+					<div class="day n">27</div>
+					<div class="day n">28</div>
+					<div class="day n">29</div>
+					<div class="day n">30</div>
+					<div class="day n">31</div>
 				</div>
 			</div>
 		</div>
@@ -465,7 +460,7 @@
 
 							}, 700);
 							
-							const days = document.querySelectorAll('.day');
+							const days = document.querySelectorAll('.day.n');
 							let delay = 0;
 
 							days.forEach((day) => {
