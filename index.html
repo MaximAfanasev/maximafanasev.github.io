@@ -59,6 +59,12 @@
 			gap: 20px;
 		}
 
+
+		ul li {
+			opacity: 0;
+			transition: opacity 0.5s;
+		}
+
 		ul li a {
 			display: block;
 			width: fit-content;
@@ -76,11 +82,6 @@
 		.calendar {
 			margin: 0 auto;
 			width: fit-content;
-			opacity: 0;
-			transition: opacity 0.5s ease;
-		}
-
-		.list {
 			opacity: 0;
 			transition: opacity 0.5s ease;
 		}
@@ -131,7 +132,6 @@
 		}
 
 		.day.active,
-		.day:hover,
 		.day:active {
 			background-color: #4caf50;
 			color: #fff;
@@ -375,25 +375,35 @@
 
 		<div class="container list">
 			<div id="result" class="hidden">
-				<ul>
+				<ul id="imageList">
 					<li>
 						<a href="type/1.html" target="_blank"><img src="img/1.png" alt=""></a>
-
+					</li>
+					<li>
 						<a href="type/2.html" target="_blank"><img src="img/2.png" alt=""></a>
-
+					</li>
+					<li>
 						<a href="type/3.html" target="_blank"><img src="img/3.png" alt=""></a>
-
+					</li>
+					<li>
 						<a href="type/4.html" target="_blank"><img src="img/4.png" alt=""></a>
-
+					</li>
+					<li>
 						<a href="type/5.html" target="_blank"><img src="img/5.png" alt=""></a>
-
+					</li>
+					<li>
 						<a href="type/6.html" target="_blank"><img src="img/6.png" alt=""></a>
-
+					</li>
+					<li>
 						<a href="type/7.html" target="_blank"><img src="img/7.png" alt=""></a>
 					</li>
 					<li>
 						<a href="num/1.html" target="_blank"><img src="img/n1.png" alt=""></a>
+					</li>
+					<li>
 						<a href="num/2.html" target="_blank"><img src="img/n2.png" alt=""></a>
+					</li>
+					<li>
 						<a href="num/3.html" target="_blank"><img src="img/n3.png" alt=""></a>
 					</li>
 					<li>
@@ -424,6 +434,9 @@
 		const inputs = document.querySelectorAll('.pin-input');
 		const calendarsContainer = document.querySelector('.calendars');
 
+		const listItems = document.querySelectorAll('#imageList li');
+		let delay = 0;
+
 		inputs.forEach((input, index) => {
 			input.addEventListener('input', (event) => {
 				// Переключение на следующий инпут
@@ -451,15 +464,32 @@
 
 								// Добавляем таймаут для появления элемента list
 								setTimeout(() => {
-									const listElement = document.querySelector('.list'); // Находим элемент list
-									if (listElement) {
-										listElement.style.opacity = 1; // Устанавливаем opacity для показа элемента
-										listElement.classList.remove('hidden'); // Убираем класс hidden, если он есть
-									}
-								}, delay + 500); // Время появления list будет после всех календари + 500 мс
+
+									listItems.forEach((item) => {
+										setTimeout(() => {
+											item.style.opacity = 1; // Устанавливаем легкость видимости элемента
+
+											// Прокручиваем к текущему элементу
+											item.scrollIntoView({
+												behavior: 'smooth',
+												block: 'center'
+											});
+										}, delay);
+
+										delay += 500; // Увеличиваем задержку на 500 мс для следующего элемента
+									});
+
+									// После показа всех элементов прокручиваем в верхнюю часть страницы
+									setTimeout(() => {
+										window.scrollTo({
+											top: 0,
+											behavior: 'smooth'
+										});
+									}, delay); // Устанавливаем время задержки после всех элементов
+								}, delay + 2100); // Время появления list будет после всех календари + 500 мс
 
 							}, 700);
-							
+
 							const days = document.querySelectorAll('.day.n');
 							let delay = 0;
 
@@ -532,5 +562,7 @@
 				delay += 250; // Задержка на 500 мс между линиями
 			});
 		});
+	</script>
+	<script>
 	</script>
 </body></html>
