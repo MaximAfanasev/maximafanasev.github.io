@@ -20,8 +20,6 @@
 			font-size: 20px;
 			line-height: 2.5;
 			padding: 20px;
-			padding-bottom: 300px;
-			z-index: 20;
 		}
 
 		main {
@@ -31,8 +29,10 @@
 
 
 		h1 {
+			position: relative;
 			color: #cc2836;
 			text-align: center;
+			z-index: 200;
 		}
 
 		h2 {
@@ -143,14 +143,10 @@
 			top: 0;
 			display: flex;
 			justify-content: space-around;
-			/* Расположение линий с равными промежутками */
 			align-items: center;
-			/* Выравнивание по вертикали */
-			height: 100%;
-			/* Высота на весь экран */
-			width: 100%;
-			/* Ширина на весь экран */
-			z-index: -1;
+			height: 100vh;
+			width: 100vw;
+			z-index: 100;
 		}
 
 		.line {
@@ -158,7 +154,7 @@
 			height: 100%;
 			background-color: #222;
 			/* Цвет линии */
-			z-index: 0;
+			z-index: 100;
 			box-shadow: 0 0 10px red;
 			/* Начальное состояние тени */
 			animation: pulsate 1.5s infinite;
@@ -211,9 +207,11 @@
 		}
 
 		.input-group {
+			position: relative;
 			display: flex;
 			justify-content: center;
 			margin-bottom: 20px;
+			z-index: 200;
 		}
 
 		.pin-input {
@@ -255,17 +253,22 @@
 </head>
 
 
-<body>
+<div class="lines">
+	<div class="line"></div>
+	<div class="line"></div>
+	<div class="line"></div>
+	<div class="line"></div>
+	<div class="line"></div>
+	<div class="line"></div>
+	<div class="line"></div>
+	<div class="line"></div>
+</div>
 
+<body>
 	<a href="https://pay.cloudtips.ru/p/aa6258b0" hidden class="tips">❤️‍🔥</a>
 
-	<div class="lines">
-		<div class="line"></div>
-		<div class="line"></div>
-	</div>
-
 	<main class="content">
-		<div class="calendars">
+		<div class="calendars  hidden">
 			<div class="calendar" id="calendar">
 				December 🎄 🎆
 				<div class="c-w">
@@ -349,12 +352,14 @@
 		</div>
 
 		<div class="container">
-			<h1>1234</h1>
-			<div class="input-group">
-				<input type="password" maxlength="1" class="pin-input" id="pin1">
-				<input type="password" maxlength="1" class="pin-input" id="pin2">
-				<input type="password" maxlength="1" class="pin-input" id="pin3">
-				<input type="password" maxlength="1" class="pin-input" id="pin4">
+			<div class="pin">
+				<h1>1234</h1>
+				<div class="input-group">
+					<input type="password" maxlength="1" class="pin-input" id="pin1">
+					<input type="password" maxlength="1" class="pin-input" id="pin2">
+					<input type="password" maxlength="1" class="pin-input" id="pin3">
+					<input type="password" maxlength="1" class="pin-input" id="pin4">
+				</div>
 			</div>
 			<div id="result" class="hidden">
 				<ul>
@@ -394,6 +399,9 @@
 					<li>
 						<a href="dict/1.html" target="_blank"><img src="img/dict1.png" alt=""></a>
 					</li>
+					<li>
+						<a href="def/1.html" target="_blank"><img src="img/def1.png" alt=""></a>
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -414,6 +422,9 @@
 						const userPin = Array.from(inputs).map(input => input.value).join('');
 						if (userPin === correctPin) {
 							document.getElementById('result').classList.remove('hidden');
+							document.querySelector('.lines').classList.add('hidden');
+							document.querySelector('.calendars').classList.remove('hidden');
+							document.querySelector('.pin').classList.add('hidden');
 						} else {
 							alert('Неправильный пин-код, попробуйте снова.');
 							inputs.forEach(input => input.value = '');
