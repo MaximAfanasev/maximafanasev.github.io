@@ -79,7 +79,7 @@
 			opacity: 0;
 			transition: opacity 0.5s ease;
 		}
-		
+
 		.list {
 			opacity: 0;
 			transition: opacity 0.5s ease;
@@ -101,6 +101,9 @@
 			cursor: pointer;
 			border-radius: 5px;
 			transition: background-color 0.3s;
+			opacity: 0;
+			transition: opacity 0.5s ease-in-out;
+		}
 		}
 
 		.day.empty {
@@ -439,28 +442,39 @@
 
 							// Сначала показываем контейнер, затем каждые 500 мс показываем календарь
 							setTimeout(() => {
-    calendarsContainer.classList.remove('hidden'); // Показываем контейнер с календарями
+								calendarsContainer.classList.remove('hidden'); // Показываем контейнер с календарями
 
-    const calendars = document.querySelectorAll('.calendar');
-    let delay = 0;
+								const calendars = document.querySelectorAll('.calendar');
+								let delay = 0;
 
-    calendars.forEach((calendar) => {
-        setTimeout(() => {
-            calendar.style.opacity = 1; // Заменяем opacity на 1 для показа календаря
-        }, delay);
-        delay += 700; // Задержка 700 мс между появлениями календарей
-    });
+								calendars.forEach((calendar) => {
+									setTimeout(() => {
+										calendar.style.opacity = 1; // Заменяем opacity на 1 для показа календаря
+									}, delay);
+									delay += 700; // Задержка 700 мс между появлениями календарей
+								});
 
-    // Добавляем таймаут для появления элемента list
-    setTimeout(() => {
-        const listElement = document.querySelector('.list'); // Находим элемент list
-        if (listElement) {
-            listElement.style.opacity = 1; // Устанавливаем opacity для показа элемента
-            listElement.classList.remove('hidden'); // Убираем класс hidden, если он есть
-        }
-    }, delay + 500); // Время появления list будет после всех календари + 500 мс
+								// Добавляем таймаут для появления элемента list
+								setTimeout(() => {
+									const listElement = document.querySelector('.list'); // Находим элемент list
+									if (listElement) {
+										listElement.style.opacity = 1; // Устанавливаем opacity для показа элемента
+										listElement.classList.remove('hidden'); // Убираем класс hidden, если он есть
+									}
+								}, delay + 500); // Время появления list будет после всех календари + 500 мс
 
-}, 700); // Начальный таймаут для показа контейнера
+							}, 700);
+							
+							const days = document.querySelectorAll('.day');
+							let delay = 0;
+
+							days.forEach((day) => {
+								setTimeout(() => {
+									day.style.opacity = 1; // Устанавливаем opacity в 1 для появления
+								}, delay);
+
+								delay += 70; // Увеличиваем задержку на 300 мс для следующего дня
+							});
 							document.getElementById('result').classList.remove('hidden');
 							document.querySelector('.lines').classList.add('hidden');
 							document.querySelector('.calendars').classList.remove('hidden');
