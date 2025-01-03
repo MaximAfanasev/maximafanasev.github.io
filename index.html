@@ -70,11 +70,19 @@
 		.calendars {
 			display: flex;
 			flex-wrap: wrap;
+			gap: 20px;
 		}
 
 		.calendar {
 			margin: 0 auto;
 			width: fit-content;
+			opacity: 0;
+			transition: opacity 0.5s ease;
+		}
+		
+		.list {
+			opacity: 0;
+			transition: opacity 0.5s ease;
 		}
 
 		.c-w {
@@ -193,7 +201,6 @@
 
 		.start-button:hover {
 			background-color: #d62839;
-			/* Темнее при наведении */
 			transform: scale(1.05);
 		}
 	</style>
@@ -227,7 +234,6 @@
 			text-align: center;
 			margin: 0 5px;
 			opacity: 0;
-			/* Скрыто изначально */
 			transition: opacity 0.5s ease;
 		}
 
@@ -258,6 +264,7 @@
 	</style>
 </head>
 
+<a href="https://pay.cloudtips.ru/p/aa6258b0" hidden class="tips">❤️‍🔥</a>
 
 <div class="lines">
 	<div class="line"></div>
@@ -272,8 +279,17 @@
 	<div class="line"></div>
 </div>
 
+<div class="pin">
+	<h1 id="pinHeader"></h1>
+	<div class="input-group">
+		<input type="password" maxlength="1" class="pin-input" id="pin1">
+		<input type="password" maxlength="1" class="pin-input" id="pin2">
+		<input type="password" maxlength="1" class="pin-input" id="pin3">
+		<input type="password" maxlength="1" class="pin-input" id="pin4">
+	</div>
+</div>
+
 <body>
-	<a href="https://pay.cloudtips.ru/p/aa6258b0" hidden class="tips">❤️‍🔥</a>
 
 	<main class="content">
 		<div class="calendars  hidden">
@@ -359,16 +375,7 @@
 			</div>
 		</div>
 
-		<div class="container">
-			<div class="pin">
-				<h1 id="pinHeader"></h1>
-				<div class="input-group">
-					<input type="password" maxlength="1" class="pin-input" id="pin1">
-					<input type="password" maxlength="1" class="pin-input" id="pin2">
-					<input type="password" maxlength="1" class="pin-input" id="pin3">
-					<input type="password" maxlength="1" class="pin-input" id="pin4">
-				</div>
-			</div>
+		<div class="container list">
 			<div id="result" class="hidden">
 				<ul>
 					<li>
@@ -386,7 +393,6 @@
 
 						<a href="type/7.html" target="_blank"><img src="img/7.png" alt=""></a>
 					</li>
-
 					<li>
 						<a href="num/1.html" target="_blank"><img src="img/n1.png" alt=""></a>
 						<a href="num/2.html" target="_blank"><img src="img/n2.png" alt=""></a>
@@ -418,6 +424,7 @@
 	<script>
 		const correctPin = '1234'; // Правильный пин-код
 		const inputs = document.querySelectorAll('.pin-input');
+		const calendarsContainer = document.querySelector('.calendars');
 
 		inputs.forEach((input, index) => {
 			input.addEventListener('input', (event) => {
@@ -429,6 +436,31 @@
 						// Проверка пин-кода после ввода последнего символа
 						const userPin = Array.from(inputs).map(input => input.value).join('');
 						if (userPin === correctPin) {
+
+							// Сначала показываем контейнер, затем каждые 500 мс показываем календарь
+							setTimeout(() => {
+    calendarsContainer.classList.remove('hidden'); // Показываем контейнер с календарями
+
+    const calendars = document.querySelectorAll('.calendar');
+    let delay = 0;
+
+    calendars.forEach((calendar) => {
+        setTimeout(() => {
+            calendar.style.opacity = 1; // Заменяем opacity на 1 для показа календаря
+        }, delay);
+        delay += 700; // Задержка 700 мс между появлениями календарей
+    });
+
+    // Добавляем таймаут для появления элемента list
+    setTimeout(() => {
+        const listElement = document.querySelector('.list'); // Находим элемент list
+        if (listElement) {
+            listElement.style.opacity = 1; // Устанавливаем opacity для показа элемента
+            listElement.classList.remove('hidden'); // Убираем класс hidden, если он есть
+        }
+    }, delay + 500); // Время появления list будет после всех календари + 500 мс
+
+}, 700); // Начальный таймаут для показа контейнера
 							document.getElementById('result').classList.remove('hidden');
 							document.querySelector('.lines').classList.add('hidden');
 							document.querySelector('.calendars').classList.remove('hidden');
