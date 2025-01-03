@@ -153,12 +153,11 @@
 			width: 1px;
 			height: 100%;
 			background-color: #222;
-			/* Цвет линии */
 			z-index: 100;
+			opacity: 0;
 			box-shadow: 0 0 10px red;
-			/* Начальное состояние тени */
 			animation: pulsate 1.5s infinite;
-			/* Анимация пульсации */
+			transition: opacity 0.5s ease;
 		}
 
 		/* Анимация пульсации */
@@ -261,6 +260,8 @@
 
 
 <div class="lines">
+	<div class="line"></div>
+	<div class="line"></div>
 	<div class="line"></div>
 	<div class="line"></div>
 	<div class="line"></div>
@@ -476,6 +477,19 @@
 			}
 
 			showPinAndInputs();
+		});
+	</script>
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+			const lines = document.querySelectorAll('.line');
+			let delay = 0;
+
+			lines.forEach((line, index) => {
+				setTimeout(() => {
+					line.style.opacity = 1; // Показ линии
+				}, delay);
+				delay += 250; // Задержка на 500 мс между линиями
+			});
 		});
 	</script>
 </body></html>
