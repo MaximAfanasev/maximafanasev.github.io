@@ -465,19 +465,6 @@
 			startRedirectCountdown(); // Запускаем обратный отсчет
 		}
 
-		function startRedirectCountdown() {
-			let countdown = 5; // Начинаем с 1 секунд
-
-			const intervalId = setInterval(() => {
-				countdown--;
-
-				if (countdown <= 0) {
-					clearInterval(intervalId);
-					window.location.href = '../index.html'; // Переход на главную страницу
-				}
-			}, 1000); // Каждую секунду
-		}
-
 		document.getElementById('blurLabel').addEventListener('click', function() {
 			this.classList.toggle('active'); // Добавляет или удаляет класс 'active' при клике
 		});

@@ -481,20 +481,6 @@
 			}
 		}
 
-		function startRedirectCountdown() {
-			let countdown = 5; // Начинаем с 1 секунд
-
-			const intervalId = setInterval(() => {
-				countdown--;
-
-				if (countdown <= 0) {
-					clearInterval(intervalId);
-					window.location.href = '../index.html';
-				}
-			}, 5000); // Каждую секунду
-		}
-
-		// Показать первую карточку
 		displayQuestion(0);
 	</script>
 </body></html>
