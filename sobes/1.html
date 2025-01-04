@@ -79,6 +79,7 @@ while x &#60; 5:
 произвольное количество 
 аргументов с помощью *args и *kwargs.
 </pre>
+	<textarea cols="30" rows="7"></textarea>
 	<pre>
 Как обрабатывать исключения
 
@@ -87,6 +88,7 @@ try:
   except ZeroDivisionError:
     print("Деление на ноль!")
 </pre>
+	<textarea cols="30" rows="7"></textarea>
 	<pre>
 Разница между списками и кортежами, 
 множества и словари.
@@ -96,6 +98,7 @@ set - неупорядоченный изменяемый нет дублика�
 dict - неупорядоченный изменяемый
 ключи не повторяются а значения да
 </pre>
+	<textarea cols="30" rows="7"></textarea>
 	<pre>
 Списковые включения (List Comprehensions)
 new_list = [xx for yy in list if aa]
@@ -109,6 +112,7 @@ squares_of_evens =
 [n**2 for n in numbers if n % 2 == 0]
 print(squares_of_evens)  # Вывод: [4, 16, 36]
 </pre>
+	<textarea cols="30" rows="7"></textarea>
 	<pre>
 Генераторы — это итераторы, 
 которые создают последовательности 
@@ -132,6 +136,7 @@ gen_exp = (n**2 for n in range(6) if n % 2 == 0)
 for value in gen_exp:
     print(value)  # Вывод: 0, 4, 16
 </pre>
+	<textarea cols="30" rows="7"></textarea>
 	<pre>
 Локальная область видимости
 def a():
@@ -140,6 +145,7 @@ def a():
   a()  # Вывод: 10
 print(x)  # Ошибка: NameError
 </pre>
+	<textarea cols="30" rows="7"></textarea>
 	<pre>
 Функциональная область видимости
 def outer_function():
@@ -149,6 +155,7 @@ def outer_function():
   inner_function()  # Вывод: 20
 outer_function()
 </pre>
+	<textarea cols="30" rows="7"></textarea>
 	<pre>
 Глобальная область видимости
 z = 30  # Глобальная переменная
@@ -158,10 +165,12 @@ def my_function():
 my_function()
 print(z)  # Вывод: 40
 </pre>
+	<textarea cols="30" rows="7"></textarea>
 	<pre>
 Встроенная область видимости: 
 print, len ...
 </pre>
+	<textarea cols="30" rows="7"></textarea>
 	<pre>
 Замыкание — это функция, 
 которая "запоминает" окружение
@@ -177,4 +186,5 @@ closure = outer_function(10)  # x теперь равен 10
 print(closure(5))  # Вывод: 15
 print(closure(20))  # Вывод: 30
 	</pre>
+	<textarea cols="30" rows="7"></textarea>
 </body></html>
