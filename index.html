@@ -688,6 +688,7 @@
 		function fadeOutNumbers() {
 			const header = document.getElementById('pinHeader');
 			const group = document.querySelector('.input-group');
+			const wrappers = document.querySelector('.wrapper-s');
 			const numbers = '1234';
 			let delay = 0;
 
@@ -696,6 +697,8 @@
 				setTimeout(() => {
 					header.style.display = 'none';
 					group.style.display = 'none';
+					wrappers.style.display = 'none';
+					
 				}, delay);
 				delay += 300; // Задержка между исчезновением цифр
 			});
