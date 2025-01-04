@@ -26,10 +26,10 @@
 	<div id="all">
 		<div class="container1" id="container-1">
 			<pre class="code-block" id="code-block-1">
-count = 1
-while count &#60;= 5:
-  print(count)
-  count += 1</pre>
+a = 1
+while a &#60;= 5:
+  print(a)
+  a += 1</pre>
 			<textarea id="user-input" cols="30" rows="4"></textarea>
 			<button id="check-btn">Check</button>
 		</div>
@@ -93,7 +93,7 @@ a = 10
 		document.getElementById('container-1').style.display = 'block';
 
 		document.getElementById('check-btn').addEventListener('click', function() {
-			const correctCode = `count = 1\nwhile count <= 5:\n  print(count)\n  count += 1`;
+			const correctCode = `a = 1\nwhile a <= 5:\n  print(a)\n  a += 1`;
 			const userInput = document.getElementById('user-input').value.trim();
 
 			if (userInput === correctCode) {

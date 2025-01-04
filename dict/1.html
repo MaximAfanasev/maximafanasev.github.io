@@ -31,34 +31,34 @@
 		document.addEventListener("DOMContentLoaded", () => {
 			const questions = [{
 					question: "empty dict",
-					answer: "a = {}"
+					answer: "{}"
 				},
 				{
 					question: "a = {'a':1,'b':2}->1",
 					answer: "a['a']"
 				},
 				{
-					question: "a = {'a':1,'b':2}->1",
+					question: "a = {'a':1,'b':2}->1 (g)",
 					answer: "a.get('a')"
 				},
 				{
-					question: "a = {'a':1,'b':2}->1",
+					question: "a = {'a':1,'b':2}->1 (p)",
 					answer: "a.pop('a')"
 				},
 				{
-					question: "a = [['a',1],['b',2]]->{'a': 1, 'b': 2}",
+					question: "a = [['a',1],['b',2]]->\n{'a': 1, 'b': 2}",
 					answer: "dict(a)"
 				},
 				{
-					question: "a = {'a':1,'b':2}->dict_keys(['a', 'b'])",
+					question: "a = {'a':1,'b':2}->\ndict_keys(['a', 'b'])",
 					answer: "a.keys()"
 				},
 				{
-					question: "a = {'a':1,'b':2}->dict_values([1, 2])",
+					question: "a = {'a':1,'b':2}->\ndict_values([1, 2])",
 					answer: "a.values()"
 				},
 				{
-					question: "a = {'a':1,'b':2}->dict_items([('a', 1), ('b', 2)])",
+					question: "a = {'a':1,'b':2}->\ndict_items([('a', 1), ('b', 2)])",
 					answer: "a.items()"
 				},
 				{
@@ -66,11 +66,11 @@
 					answer: "len(a)"
 				},
 				{
-					question: "a = {'a':1,'b':2} b = {'c':3,'d':4}->{'a': 1, 'b': 2, 'c': 3, 'd': 4}",
+					question: "a = {'a':1,'b':2} b = {'c':3,'d':4}->\n{'a': 1, 'b': 2, 'c': 3, 'd': 4}",
 					answer: "{**a,**b}"
 				},
 				{
-					question: "a = {'c':3,'d':4} b = {'a':1,'b':2}->{'c': 3, 'd': 4, 'a': 1, 'b': 2}",
+					question: "a = {'c':3,'d':4}\nb = {'a':1,'b':2}->\n{'c': 3, 'd': 4, 'a': 1, 'b': 2}",
 					answer: "a.update(b)"
 				},
 				{
