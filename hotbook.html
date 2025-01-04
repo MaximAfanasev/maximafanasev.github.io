@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -19,12 +20,12 @@
 			font-family: monospace;
 			font-size: 20px;
 			line-height: 2.5;
-			padding: 20px;
 		}
 
 		main {
 			max-width: 500px;
 			margin: 0 auto;
+			height: 100vh;
 		}
 
 		h1 {
@@ -81,12 +82,15 @@
 			padding: 0;
 			margin-bottom: 20px;
 		}
+
 	</style>
 	<style>
 		.calendars {
+			position: relative;
 			display: flex;
 			flex-wrap: wrap;
 			gap: 20px;
+			z-index: 100;
 		}
 
 		.calendar {
@@ -155,6 +159,7 @@
 			line-height: 22px;
 			text-align: center;
 		}
+
 	</style>
 	<style>
 		.lines {
@@ -170,7 +175,7 @@
 		}
 
 		.line {
-			width: 1px;
+			width: 2px;
 			height: 100%;
 			background-color: #222;
 			z-index: 100;
@@ -191,6 +196,7 @@
 				box-shadow: 0 0 5px red, 0 0 40px red, 0 0 50px red;
 			}
 		}
+
 	</style>
 	<style>
 		.start-button {
@@ -211,6 +217,7 @@
 			background-color: #d62839;
 			transform: scale(1.05);
 		}
+
 	</style>
 	<style>
 		.container {
@@ -273,6 +280,7 @@
 			width: 300px;
 			border-radius: 20px;
 		}
+
 	</style>
 	<style>
 		.wrapper-s {
@@ -342,100 +350,38 @@
 				rotate: y -1turn;
 			}
 		}
+
+	</style>
+	<style>
+		#webgl-canvas {
+			position: fixed;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			overflow: hidden;
+		}
+
 	</style>
 </head>
 
 <a href="https://pay.cloudtips.ru/p/aa6258b0" hidden class="tips">❤️‍🔥</a>
 
-<div class="lines">
-	<div class="line"></div>
-	<div class="line"></div>
-	<div class="line"></div>
-	<div class="line"></div>
-	<div class="line"></div>
-	<div class="line"></div>
-	<div class="line"></div>
-	<div class="line"></div>
-	<div class="line"></div>
-	<div class="line"></div>
-	<div class="line"></div>
-	<div class="line"></div>
-	<div class="line"></div>
-</div>
-
-<div class="pin">
-	<h1 id="pinHeader"></h1>
-	<div class="input-group">
-		<input type="password" maxlength="1" class="pin-input" id="pin1">
-		<input type="password" maxlength="1" class="pin-input" id="pin2">
-		<input type="password" maxlength="1" class="pin-input" id="pin3">
-		<input type="password" maxlength="1" class="pin-input" id="pin4">
-	</div>
-	<div class="wrapper-s">
-		<div class="scene">
-			<div class="texts">
-				<div class="text" style="--text: 0;">
-					<span style="--i: 0;">W</span>
-					<span style="--i: 1.25;">E</span>
-					<span style="--i: 2.5;">L</span>
-					<span style="--i: 4.5;">C</span>
-					<span style="--i: 5.5;">O</span>
-					<span style="--i: 7;">M</span>
-					<span style="--i: 8;">E</span>
-					<span style="--i: 9;">T</span>
-					<span style="--i: 10;">O</span>
-					<span style="--i: 11;">H</span>
-					<span style="--i: 12;">E</span>
-					<span style="--i: 13;">L</span>
-				</div>
-				<div class="text" style="--text: 1;">
-					<span style="--i: 0;">C</span>
-					<span style="--i: 1.25;">S</span>
-					<span style="--i: 2.5;">S</span>
-					<span style="--i: 4.5;">i</span>
-					<span style="--i: 5.5;">s</span>
-					<span style="--i: 7;">a</span>
-					<span style="--i: 8;">w</span>
-					<span style="--i: 9;">e</span>
-					<span style="--i: 10;">s</span>
-					<span style="--i: 11;">o</span>
-					<span style="--i: 12;">m</span>
-					<span style="--i: 13;">e</span>
-				</div>
-				<div class="text" style="--text: 2;">
-					<span style="--i: 0;">C</span>
-					<span style="--i: 1.25;">S</span>
-					<span style="--i: 2.5;">S</span>
-					<span style="--i: 4.5;">i</span>
-					<span style="--i: 5.5;">s</span>
-					<span style="--i: 7;">a</span>
-					<span style="--i: 8;">w</span>
-					<span style="--i: 9;">e</span>
-					<span style="--i: 10;">s</span>
-					<span style="--i: 11;">o</span>
-					<span style="--i: 12;">m</span>
-					<span style="--i: 13;">e</span>
-				</div>
-				<div class="text" style="--text: 3;">
-					<span style="--i: 0;">C</span>
-					<span style="--i: 1.25;">S</span>
-					<span style="--i: 2.5;">S</span>
-					<span style="--i: 4.5;">i</span>
-					<span style="--i: 5.5;">s</span>
-					<span style="--i: 7;">a</span>
-					<span style="--i: 8;">w</span>
-					<span style="--i: 9;">e</span>
-					<span style="--i: 10;">s</span>
-					<span style="--i: 11;">o</span>
-					<span style="--i: 12;">m</span>
-					<span style="--i: 13;">e</span>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
 
 <body>
+	<div id="app">
+		<canvas id="webgl-canvas"></canvas>
+
+		<div class="pin">
+			<h1 id="pinHeader"></h1>
+			<div class="input-group">
+				<input type="password" maxlength="1" class="pin-input" id="pin1">
+				<input type="password" maxlength="1" class="pin-input" id="pin2">
+				<input type="password" maxlength="1" class="pin-input" id="pin3">
+				<input type="password" maxlength="1" class="pin-input" id="pin4">
+			</div>
+		</div>
+
 	<main class="content">
 		<div class="calendars  hidden">
 			<div class="calendar" id="calendar">
@@ -570,8 +516,8 @@
 					</li>
 					<li class="done">
 						<a href="def/1.html" target="_blank"><img src="img/def1.png" alt=""></a>
-					</li class="done">
-					<li>
+					</li>
+					<li class="done">
 						<a href="sobes/1.html" target="_blank"><img src="img/s1.png" alt=""></a>
 					</li>
 				</ul>
@@ -579,6 +525,7 @@
 		</div>
 	</main>
 
+	</div>
 	<script>
 		const correctPin = '1234'; // Правильный пин-код
 		const inputs = document.querySelectorAll('.pin-input');
@@ -651,8 +598,6 @@
 
 								delay += 70; // Увеличиваем задержку на 300 мс для следующего дня
 							});
-							document.getElementById('result').classList.remove('hidden');
-							document.querySelector('.lines').classList.add('hidden');
 							document.querySelector('.calendars').classList.remove('hidden');
 						} else {
 							confirm('GERARAHER MAN');
@@ -707,6 +652,7 @@
 				header.textContent = ''; // Полностью очищаем заголовок
 			}, delay);
 		}
+
 	</script>
 	<script>
 		document.addEventListener('DOMContentLoaded', () => {
@@ -743,6 +689,7 @@
 
 			showPinAndInputs();
 		});
+
 	</script>
 	<script>
 		document.addEventListener('DOMContentLoaded', () => {
@@ -756,7 +703,31 @@
 				delay += 250; // Задержка на 500 мс между линиями
 			});
 		});
+
 	</script>
-	<script>
+	<script type="module">
+		import Grid2Background from 'https://cdn.jsdelivr.net/npm/threejs-components@0.0.17/build/backgrounds/grid2.cdn.min.js'
+
+		const bg = Grid2Background(document.getElementById('webgl-canvas'))
+		
+		
+		let canChangeColor = true;
+		document.body.addEventListener('click', () => {
+			if (canChangeColor) {
+				bg.grid.setColors([0xffffff * Math.random(), 0xffffff * Math.random(), 0xffffff * Math.random()]);
+				bg.grid.light1.color.set(0xffffff * Math.random());
+				bg.grid.light1.intensity = 500 + Math.random() * 1000;
+				bg.grid.light2.color.set(0xffffff * Math.random());
+				bg.grid.light2.intensity = 250 + Math.random() * 250;
+				canChangeColor = false;
+
+				setTimeout(() => {
+					canChangeColor = true;
+				}, 1000); // Изменение цвета не чаще раза в секунду
+			}
+		});
+
 	</script>
-</body></html>
+</body>
+
+</html>
