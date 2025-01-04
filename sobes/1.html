@@ -91,11 +91,16 @@ try:
 	<textarea cols="30" rows="7"></textarea>
 	<pre>
 Разница между списками и кортежами, 
-множества и словари.
-list - упорядоченный изменяемый  с дубликатами
-tuple - упорядоченный не изменяемый с дубликатами
-set - неупорядоченный изменяемый нет дубликатов
-dict - неупорядоченный изменяемый
+множества и словари
+
+list - 
+упорядоченный изменяемый  с дубликатами
+tuple - 
+упорядоченный не изменяемый с дубликатами
+set - 
+неупорядоченный изменяемый нет дубликатов
+dict - 
+неупорядоченный изменяемый
 ключи не повторяются а значения да
 </pre>
 	<textarea cols="30" rows="7"></textarea>
@@ -110,7 +115,8 @@ aa - для фильтрации элементов
 numbers = [1, 2, 3, 4, 5, 6]
 squares_of_evens = 
 [n**2 for n in numbers if n % 2 == 0]
-print(squares_of_evens)  # Вывод: [4, 16, 36]
+print(squares_of_evens)  
+# Вывод: [4, 16, 36]
 </pre>
 	<textarea cols="30" rows="7"></textarea>
 	<pre>
@@ -123,16 +129,18 @@ print(squares_of_evens)  # Вывод: [4, 16, 36]
 
 
 def my_generator():
-    yield 1
-    yield 2
-    yield 3
+ yield 1
+ yield 2
+ yield 3
 
 gen = my_generator()
 for value in gen:
-    print(value)  # Вывод: 1, затем 2, затем 3
+ print(value)  
+ # Вывод: 1, затем 2, затем 3
 
 
-gen_exp = (n**2 for n in range(6) if n % 2 == 0)
+gen_exp = 
+(n**2 for n in range(6) if n % 2 == 0)
 for value in gen_exp:
     print(value)  # Вывод: 0, 4, 16
 </pre>
@@ -149,10 +157,11 @@ print(x)  # Ошибка: NameError
 	<pre>
 Функциональная область видимости
 def outer_function():
-  y = 20  # Переменная внешней функции
+ y = 20  # Переменная внешней функции
   def inner_function():
-    print(y)  # Доступ к переменной внешней функции
-  inner_function()  # Вывод: 20
+   print(y)  
+   # Доступ к переменной внешней функции
+ inner_function()  # Вывод: 20
 outer_function()
 </pre>
 	<textarea cols="30" rows="7"></textarea>
@@ -176,15 +185,18 @@ print, len ...
 которая "запоминает" окружение
 
 def outer_function(x):
-    def inner_function(y):
-        return x + y  
-        # inner_function "замыкает" x
-    return inner_function  
-    # Возвращаем ссылку на inner_function
+ def inner_function(y):
+  return x + y  
+  # inner_function "замыкает" x
+ return inner_function  
+ # Возвращаем ссылку на inner_function
 
-closure = outer_function(10)  # x теперь равен 10
-print(closure(5))  # Вывод: 15
-print(closure(20))  # Вывод: 30
+closure = outer_function(10)  
+# x теперь равен 10
+print(closure(5))  
+# Вывод: 15
+print(closure(20))  
+# Вывод: 30
 	</pre>
 	<textarea cols="30" rows="7"></textarea>
 </body></html>
