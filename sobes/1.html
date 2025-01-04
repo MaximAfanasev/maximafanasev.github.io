@@ -11,11 +11,14 @@
 
 	<style>
 		body {
+			display: flex;
+			flex-direction: column;
 			overflow: auto;
 			height: 100%;
 			padding-top: 100px;
 			padding-bottom: 100px;
 		}
+
 		.container1 {
 			padding: 20px;
 			border-radius: 5px;
@@ -23,9 +26,20 @@
 			text-align: center;
 			border-radius: 20px;
 		}
+
 		pre {
+			background: #fff;
+			padding: 20px;
+			border-radius: 20px;
 			color: #000;
 			font-size: 16px;
+			border: 2px solid #000;
+			box-shadow: 0 0 15px gray, 0 0 20px #000;
+		}
+
+		textarea {
+			width: 350px;
+			box-shadow: 0 0 15px gray, 0 0 20px #000;
 		}
 	</style>
 </head>
@@ -37,55 +51,52 @@
 в зависимости от условий
 
 a = 10
-   if a > 0:
-       print("Число положительное")
-   elif a &#60; 0:
-       print("Число отрицательное")
-   else:
-       print("Число равно нулю")
-       
-       
-       
-Циклы в Python 
+if a > 0:
+ print('+')
+elif a &#60; 0:
+ print('-')
+else:
+ print('0')
+</pre>
+	<textarea cols="30" rows="7"></textarea>
+	<pre>Циклы в Python 
 выполнять один и тот же 
 блок кода несколько раз
 
-# Цикл for
-   for i in range(5):
-       print(i)
+for x in range(5):
+ print(x)
 
-# Цикл while
-count = 0
-while count &#60; 5:
-	 print(count)
-	 count += 1
-	 
-
-
+x = 0
+while x &#60; 5:
+ print(x)
+ x += 1
+</pre>
+	<textarea cols="30" rows="7"></textarea>
+	<pre>
 Функции принимают 
 аргументы с значениями 
 по умолчанию и 
 произвольное количество 
 аргументов с помощью *args и *kwargs.
-
-
+</pre>
+	<pre>
 Как обрабатывать исключения
 
 try:
     result = 10 / 0
   except ZeroDivisionError:
     print("Деление на ноль!")
-    
-    
+</pre>
+	<pre>
 Разница между списками и кортежами, 
 множества и словари.
 list - упорядоченный изменяемый  с дубликатами
 tuple - упорядоченный не изменяемый с дубликатами
 set - неупорядоченный изменяемый нет дубликатов
-словарь - неупорядоченный изменяемый
+dict - неупорядоченный изменяемый
 ключи не повторяются а значения да
-
-
+</pre>
+	<pre>
 Списковые включения (List Comprehensions)
 new_list = [expression for item in iterable if condition]
 expression — вычисляется для каждого элемента
@@ -96,10 +107,8 @@ condition - для фильтрации элементов
 numbers = [1, 2, 3, 4, 5, 6]
 squares_of_evens = [n**2 for n in numbers if n % 2 == 0]
 print(squares_of_evens)  # Вывод: [4, 16, 36]
-
-
-
-
+</pre>
+	<pre>
 Генераторы — это итераторы, 
 которые создают последовательности 
 значений по мере необходимости. 
@@ -121,26 +130,25 @@ for value in gen:
 gen_exp = (n**2 for n in range(6) if n % 2 == 0)
 for value in gen_exp:
     print(value)  # Вывод: 0, 4, 16
-    
-
-
+</pre>
+	<pre>
 Локальная область видимости
 def a():
       x = 10  # Локальная переменная
       print(x)
   a()  # Вывод: 10
 print(x)  # Ошибка: NameError, так как x не доступна здесь
-
-
-Область видимости функции
+</pre>
+	<pre>
+Функциональная область видимости
 def outer_function():
   y = 20  # Переменная внешней функции
   def inner_function():
     print(y)  # Доступ к переменной внешней функции
   inner_function()  # Вывод: 20
 outer_function()
-
-
+</pre>
+	<pre>
 Глобальная область видимости
 z = 30  # Глобальная переменная
 def my_function():
@@ -148,12 +156,12 @@ def my_function():
 		z += 10  # Изменение глобальной переменной
 my_function()
 print(z)  # Вывод: 40
-
-
+</pre>
+	<pre>
 Встроенная область видимости: 
 print, len ...
-
-
+</pre>
+	<pre>
 Замыкание — это функция, 
 которая "запоминает" окружение
 
@@ -165,189 +173,5 @@ def outer_function(x):
 closure = outer_function(10)  # x теперь равен 10
 print(closure(5))  # Вывод: 15
 print(closure(20))  # Вывод: 30
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	</pre>
 </body></html>

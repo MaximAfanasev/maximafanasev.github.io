@@ -274,6 +274,76 @@
 			border-radius: 20px;
 		}
 	</style>
+	<style>
+		.wrapper-s {
+			position:
+				relative;
+			font-family: Roboto, sans-serif;
+			background-color: #000;
+			color: #fff;
+			min-height: 100vh;
+			display: grid;
+			place-items: center;
+			overflow: hidden;
+			perspective: 600px;
+			top: -200px;
+
+			* {
+				transform-style: preserve-3d;
+			}
+		}
+
+		.scene {
+			position: relative;
+
+			* {
+				position: absolute;
+			}
+		}
+
+		.texts {
+			font-size: 6vmin;
+			animation: texts 12s infinite linear;
+
+			&::after {
+				content: '';
+				position: absolute;
+				inset: -7.5em -1.5em;
+				background-image: linear-gradient(to right, transparent, 10%, black, 90%, transparent);
+			}
+		}
+
+		.text {
+			animation: text 8s calc(var(--text) * -2s) infinite linear;
+			color: hsl(calc(var(--text) * 90) 75% 75%);
+
+			span {
+				inset: -1em;
+				display: grid;
+				place-items: center;
+				font-weight: 700;
+				user-select: none;
+				transform:
+					translateY(calc((var(--i) - 6) * 0.6em)) rotateY(calc(var(--i) * 20deg)) translateZ(1.5em) rotateZ(-40deg);
+			}
+		}
+
+		@keyframes texts {
+			from {
+				transform: rotateZ(0deg) rotateX(20deg) rotateZ(360deg);
+			}
+
+			to {
+				transform: rotateZ(360deg) rotateX(20deg) rotateZ(0deg);
+			}
+		}
+
+		@keyframes text {
+			to {
+				rotate: y -1turn;
+			}
+		}
+	</style>
 </head>
 
 <a href="https://pay.cloudtips.ru/p/aa6258b0" hidden class="tips">❤️‍🔥</a>
@@ -301,6 +371,68 @@
 		<input type="password" maxlength="1" class="pin-input" id="pin2">
 		<input type="password" maxlength="1" class="pin-input" id="pin3">
 		<input type="password" maxlength="1" class="pin-input" id="pin4">
+	</div>
+	<div class="wrapper-s">
+		<div class="scene">
+			<div class="texts">
+				<div class="text" style="--text: 0;">
+					<span style="--i: 0;">W</span>
+					<span style="--i: 1.25;">E</span>
+					<span style="--i: 2.5;">L</span>
+					<span style="--i: 4.5;">C</span>
+					<span style="--i: 5.5;">O</span>
+					<span style="--i: 7;">M</span>
+					<span style="--i: 8;">E</span>
+					<span style="--i: 9;">T</span>
+					<span style="--i: 10;">O</span>
+					<span style="--i: 11;">H</span>
+					<span style="--i: 12;">E</span>
+					<span style="--i: 13;">L</span>
+				</div>
+				<div class="text" style="--text: 1;">
+					<span style="--i: 0;">C</span>
+					<span style="--i: 1.25;">S</span>
+					<span style="--i: 2.5;">S</span>
+					<span style="--i: 4.5;">i</span>
+					<span style="--i: 5.5;">s</span>
+					<span style="--i: 7;">a</span>
+					<span style="--i: 8;">w</span>
+					<span style="--i: 9;">e</span>
+					<span style="--i: 10;">s</span>
+					<span style="--i: 11;">o</span>
+					<span style="--i: 12;">m</span>
+					<span style="--i: 13;">e</span>
+				</div>
+				<div class="text" style="--text: 2;">
+					<span style="--i: 0;">C</span>
+					<span style="--i: 1.25;">S</span>
+					<span style="--i: 2.5;">S</span>
+					<span style="--i: 4.5;">i</span>
+					<span style="--i: 5.5;">s</span>
+					<span style="--i: 7;">a</span>
+					<span style="--i: 8;">w</span>
+					<span style="--i: 9;">e</span>
+					<span style="--i: 10;">s</span>
+					<span style="--i: 11;">o</span>
+					<span style="--i: 12;">m</span>
+					<span style="--i: 13;">e</span>
+				</div>
+				<div class="text" style="--text: 3;">
+					<span style="--i: 0;">C</span>
+					<span style="--i: 1.25;">S</span>
+					<span style="--i: 2.5;">S</span>
+					<span style="--i: 4.5;">i</span>
+					<span style="--i: 5.5;">s</span>
+					<span style="--i: 7;">a</span>
+					<span style="--i: 8;">w</span>
+					<span style="--i: 9;">e</span>
+					<span style="--i: 10;">s</span>
+					<span style="--i: 11;">o</span>
+					<span style="--i: 12;">m</span>
+					<span style="--i: 13;">e</span>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
 
@@ -408,6 +540,12 @@
 						<a href="type/5.html" target="_blank"><img src="img/5.png" alt=""></a>
 					</li>
 					<li class="done">
+						<a href="type/6.html" target="_blank"><img src="img/6.png" alt=""></a>
+					</li>
+					<li class="done">
+						<a href="type/7.html" target="_blank"><img src="img/7.png" alt=""></a>
+					</li>
+					<li class="done">
 						<a href="if/1.html" target="_blank"><img src="img/if1.png" alt=""></a>
 					</li>
 					<li class="done">
@@ -419,17 +557,8 @@
 					<li class="done">
 						<a href="num/3.html" target="_blank"><img src="img/n3.png" alt=""></a>
 					</li>
-					<li>
-						<a href="type/6.html" target="_blank"><img src="img/6.png" alt=""></a>
-					</li>
-					<li>
-						<a href="type/7.html" target="_blank"><img src="img/7.png" alt=""></a>
-					</li>
-					<li>
+					<li class="done">
 						<a href="str/1.html" target="_blank"><img src="img/str1.png" alt=""></a>
-					</li>
-					<li>
-						<a href="for/1.html" target="_blank"><img src="img/for1.png" alt=""></a>
 					</li>
 					<li>
 						<a href="list/1.html" target="_blank"><img src="img/list1.png" alt=""></a>
@@ -438,7 +567,13 @@
 						<a href="dict/1.html" target="_blank"><img src="img/dict1.png" alt=""></a>
 					</li>
 					<li>
+						<a href="for/1.html" target="_blank"><img src="img/for1.png" alt=""></a>
+					</li>
+					<li>
 						<a href="def/1.html" target="_blank"><img src="img/def1.png" alt=""></a>
+					</li>
+					<li>
+						<a href="sobes/1.html" target="_blank"><img src="img/s1.png" alt=""></a>
 					</li>
 				</ul>
 			</div>
