@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>M</title>
+	<link rel="icon" type="image/x-icon" href="/img/favicon.png">
+	<link rel="stylesheet" href="../style/style.css">
+	<link rel="stylesheet" href="../style/win.css">
+
+	<style>
+		body {
+			overflow: auto;
+			height: 100%;
+			padding-top: 100px;
+			padding-bottom: 100px;
+		}
+		.container1 {
+			padding: 20px;
+			border-radius: 5px;
+			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+			text-align: center;
+			border-radius: 20px;
+		}
+		pre {
+			color: #000;
+			font-size: 16px;
+		}
+	</style>
+</head>
+
+<body>
+	<pre>
+Условные конструкции
+выполняют различные блоки
+в зависимости от условий
+
+a = 10
+   if a > 0:
+       print("Число положительное")
+   elif a &#60; 0:
+       print("Число отрицательное")
+   else:
+       print("Число равно нулю")
+       
+       
+       
+Циклы в Python 
+выполнять один и тот же 
+блок кода несколько раз
+
+# Цикл for
+   for i in range(5):
+       print(i)
+
+# Цикл while
+count = 0
+while count &#60; 5:
+	 print(count)
+	 count += 1
+	 
+
+
+Функции могут принимать 
+аргументы с значениями 
+по умолчанию и 
+произвольное количество 
+аргументов с помощью args и *kwargs.
+
+
+Как обрабатывать исключения в Python
+
+try:
+    result = 10 / 0
+  except ZeroDivisionError:
+    print("Деление на ноль!")
+    
+    
+Разница между списками и кортежами, 
+множества и словари.
+list - упорядоченный изменяемый  с дубликатами
+tuple - упорядоченный не изменяемый с дубликатами
+set - неупорядоченный изменяемый нет дубликатов
+словарь - неупорядоченный
+ключи не повторяются а значения да
+
+
+Списковые включения (List Comprehensions)
+new_list = [expression for item in iterable if condition]
+expression — вычисляется для каждого элемента
+item — текущий элемент
+iterable — любой объект
+condition - для фильтрации элементов
+
+
+numbers = [1, 2, 3, 4, 5, 6]
+squares_of_evens = [n**2 for n in numbers if n % 2 == 0]
+print(squares_of_evens)  # Вывод: [4, 16, 36]
+
+
+Генераторы — это итераторы, которые создают последовательности значений по мере необходимости. 
+Они позволяют экономить память, так как не нужно хранить все значения в памяти. 
+Генераторы создаются с помощью функции, содержащей оператор yield, 
+или с помощью генераторов выражений.
+
+
+def my_generator():
+    yield 1
+    yield 2
+    yield 3
+
+gen = my_generator()
+for value in gen:
+    print(value)  # Вывод: 1, затем 2, затем 3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</pre>
+</body></html>

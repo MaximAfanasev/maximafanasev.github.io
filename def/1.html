@@ -92,6 +92,17 @@ j(a, lambda x: x.capitalize() + '!')
 			<textarea id="user-input-6" cols="30" rows="7" placeholder="..."></textarea>
 			<button id="check-btn-6">Проверить</button>
 		</div>
+
+		<div class="container1" id="container-7">
+			<pre class="code-block" id="code-block-7">
+def a(*args):
+  return sum(args)
+print(a(1, 2, 3, 4))
+???
+</pre>
+			<textarea id="user-input-7" cols="30" rows="7" placeholder="..."></textarea>
+			<button id="check-btn-7">Проверить</button>
+		</div>
 	</div>
 
 	<div class="message" id="finalMessage">
@@ -162,6 +173,16 @@ j(a, lambda x: x.capitalize() + '!')
 		document.getElementById('check-btn-6').addEventListener('click', function() {
 			const correctCode = `def j(a,b):\n  for x in a:\n    print(b(x))\na = ['a','b','c']\ndef l(x):\n  return x.capitalize() + '!'\nj(a,l)\n\nj(a, lambda x: x.capitalize() + '!')\nA!B!C!`;
 			const userInput = document.getElementById('user-input-6').value.trim();
+
+			if (userInput === correctCode) {
+				document.getElementById('container-6').style.display = 'none';
+				document.getElementById('container-7').style.display = 'block';
+			}
+		});
+
+		document.getElementById('check-btn-7').addEventListener('click', function() {
+			const correctCode = `def a(*args):\n  return sum(args)\nprint(a(1, 2, 3, 4))\n10`;
+			const userInput = document.getElementById('user-input-7').value.trim();
 
 			if (userInput === correctCode) {
 				document.getElementById('all').style.display = "none";
