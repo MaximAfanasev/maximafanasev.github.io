@@ -19,12 +19,20 @@
 			border-radius: 20px;
 			display: none;
 		}
+		pre {
+			filter: blur(3px);
+		}
+		pre:hover {
+			filter: blur(0);
+			cursor:wait;
+		}
 	</style>
 </head>
 
 <body>
 	<div id="all">
 		<div class="container1" id="container-1">
+		def a print 'a'
 			<pre class="code-block" id="code-block-1">
 def a():
   print('a')
@@ -35,6 +43,7 @@ a()
 		</div>
 		
 		<div class="container1" id="container-2">
+		def b -> 'a a'
 			<pre class="code-block" id="code-block-2">
 def b(a):
   return print(a + ' ' + a)
@@ -45,6 +54,7 @@ b('a')
 		</div>
 
 		<div class="container1" id="container-3">
+			None
 			<pre class="code-block" id="code-block-3">
 c = None
 if c:
@@ -55,6 +65,7 @@ if c:
 		</div>
 
 		<div class="container1" id="container-4">
+		return {'x': ..., 'y': ...}
 			<pre class="code-block" id="code-block-4">
 def d(a,b):
   return print({'x': a, 'y': b})
@@ -65,6 +76,7 @@ d('c','d')
 		</div>
 
 		<div class="container1" id="container-5">
+		2 def print 42
 			<pre class="code-block" id="code-block-5">
 def e():
   print(42)
@@ -77,6 +89,7 @@ f()
 		</div>
 
 		<div class="container1" id="container-6">
+		def for print ['a','b','c']->A!B!C! capitalize + ! 2 lambda 
 			<pre class="code-block" id="code-block-6">
 def j(a,b):
   for x in a:
@@ -94,6 +107,7 @@ j(a, lambda x: x.capitalize() + '!')
 		</div>
 
 		<div class="container1" id="container-7">
+		**args
 			<pre class="code-block" id="code-block-7">
 def a(*args):
   return sum(args)

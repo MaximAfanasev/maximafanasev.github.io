@@ -19,22 +19,31 @@
 			border-radius: 20px;
 			display: none;
 		}
+		pre {
+			filter: blur(3px);
+		}
+		pre:hover {
+			filter: blur(0);
+			cursor:wait;
+		}
 	</style>
 </head>
 
 <body>
 	<div id="all">
 		<div class="container1" id="container-1">
+		while 1 2 3 4 5
 			<pre class="code-block" id="code-block-1">
-a = 1
-while a &#60;= 5:
-  print(a)
-  a += 1</pre>
+x = 1
+while x &#60;= 5:
+  print(x)
+  x += 1</pre>
 			<textarea id="user-input" cols="30" rows="4"></textarea>
 			<button id="check-btn">Check</button>
 		</div>
 
 		<div class="container1" id="container-2">
+		for in 'abc' -> print a b c
 			<pre class="code-block" id="code-block-2">
 for x in 'abc':
   print(x)</pre>
@@ -43,36 +52,37 @@ for x in 'abc':
 		</div>
 
 		<div class="container1" id="container-3">
+		for range 10 break = 5
 			<pre class="code-block" id="code-block-3">
-# выходим из цикла, когда i равно 5
-for i in range(10):
-  if i == 5:
+for x in range(10):
+  if x == 5:
     break
-  print(i)</pre>
+  print(x)</pre>
 			<textarea id="user-input-3" cols="30" rows="7" placeholder=""></textarea>
 			<button id="check-btn-3">Проверить</button>
 		</div>
 
 		<div class="container1" id="container-4">
+		%2 = 0 range 10
 			<pre class="code-block" id="code-block-4">
-# пропускаем четные числа
-for i in range(10):
-  if i % 2 == 0:
+for x in range(10):
+  if x % 2 == 0:
     continue
-  print(i)</pre>
+  print(x)</pre>
 			<textarea id="user-input-4" cols="30" rows="7" placeholder=""></textarea>
 			<button id="check-btn-4">Проверить</button>
 		</div>
 		
 		<div class="container1" id="container-5">
+		x > &#60; = 0
 			<pre class="code-block" id="code-block-5">
-a = 10
-  if a > 0:
-    print("Число положительное")
-  elif a &#60; 0:
-    print("Число отрицательное")
+x = 10
+  if x > 0:
+    print("+")
+  elif x &#60; 0:
+    print("-")
   else:
-    print("Число равно нулю")</pre>
+    print("0")</pre>
 			<textarea id="user-input-5" cols="30" rows="7" placeholder=""></textarea>
 			<button id="check-btn-5">Проверить</button>
 		</div>
@@ -93,7 +103,7 @@ a = 10
 		document.getElementById('container-1').style.display = 'block';
 
 		document.getElementById('check-btn').addEventListener('click', function() {
-			const correctCode = `a = 1\nwhile a <= 5:\n  print(a)\n  a += 1`;
+			const correctCode = `x = 1\nwhile x <= 5:\n  print(x)\n  x += 1`;
 			const userInput = document.getElementById('user-input').value.trim();
 
 			if (userInput === correctCode) {
@@ -113,7 +123,7 @@ a = 10
 		});
 
 		document.getElementById('check-btn-3').addEventListener('click', function() {
-			const correctCode = `for i in range(10):\n  if i == 5:\n    break\n  print(i)`;
+			const correctCode = `for x in range(10):\n  if x == 5:\n    break\n  print(x)`;
 			const userInput = document.getElementById('user-input-3').value.trim();
 
 			if (userInput === correctCode) {
@@ -124,7 +134,7 @@ a = 10
 		});
 
 		document.getElementById('check-btn-4').addEventListener('click', function() {
-			const correctCode = `for i in range(10):\n  if i % 2 == 0:\n    continue\n  print(i)`;
+			const correctCode = `for x in range(10):\n  if x % 2 == 0:\n    continue\n  print(x)`;
 			const userInput = document.getElementById('user-input-4').value.trim();
 
 			if (userInput === correctCode) {
@@ -135,7 +145,7 @@ a = 10
 		});
 
 		document.getElementById('check-btn-5').addEventListener('click', function() {
-			const correctCode = `a = 10\n  if a > 0:\n    print("Число положительное")\n  elif a < 0:\n    print("Число отрицательное")\n  else:\n    print("Число равно нулю")`;
+			const correctCode = `x = 10\n  if x > 0:\n    print("+")\n  elif x < 0:\n    print("-")\n  else:\n    print("0")`;
 			const userInput = document.getElementById('user-input-5').value.trim();
 
 			if (userInput === correctCode) {
