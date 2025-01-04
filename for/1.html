@@ -32,29 +32,49 @@ while count &#60;= 5:
   count += 1</pre>
 			<textarea id="user-input" cols="30" rows="4"></textarea>
 			<button id="check-btn">Check</button>
-			<p id="result"></p>
 		</div>
+
 		<div class="container1" id="container-2">
 			<pre class="code-block" id="code-block-2">
-while True:
-a = input('send q tu quit: ')
-  if a == 'q':
-    continue
-  if a == 'qq':
-    break
-  print(a)</pre>
-			<textarea id="user-input-2" cols="30" rows="7" placeholder="Введите ваш код здесь..."></textarea>
+for x in 'abc':
+  print(x)</pre>
+			<textarea id="user-input-2" cols="30" rows="2" placeholder=""></textarea>
 			<button id="check-btn-2">Проверить</button>
-			<p id="result-2"></p>
 		</div>
 
 		<div class="container1" id="container-3">
 			<pre class="code-block" id="code-block-3">
-for x in 'abc':
-  print(x)</pre>
-			<textarea id="user-input-3" cols="30" rows="2" placeholder="Введите ваш код здесь..."></textarea>
+# выходим из цикла, когда i равно 5
+for i in range(10):
+  if i == 5:
+    break
+  print(i)</pre>
+			<textarea id="user-input-3" cols="30" rows="7" placeholder=""></textarea>
 			<button id="check-btn-3">Проверить</button>
-			<p id="result-3"></p>
+		</div>
+
+		<div class="container1" id="container-4">
+			<pre class="code-block" id="code-block-4">
+# пропускаем четные числа
+for i in range(10):
+  if i % 2 == 0:
+    continue
+  print(i)</pre>
+			<textarea id="user-input-4" cols="30" rows="7" placeholder=""></textarea>
+			<button id="check-btn-4">Проверить</button>
+		</div>
+		
+		<div class="container1" id="container-5">
+			<pre class="code-block" id="code-block-5">
+a = 10
+  if a > 0:
+    print("Число положительное")
+  elif a &#60; 0:
+    print("Число отрицательное")
+  else:
+    print("Число равно нулю")</pre>
+			<textarea id="user-input-5" cols="30" rows="7" placeholder=""></textarea>
+			<button id="check-btn-5">Проверить</button>
 		</div>
 	</div>
 
@@ -77,50 +97,53 @@ for x in 'abc':
 			const userInput = document.getElementById('user-input').value.trim();
 
 			if (userInput === correctCode) {
-				document.getElementById('result').textContent = 'Правильно!';
-				document.getElementById('result').style.color = 'green';
-
-				// Скрываем первый контейнер и показываем второй
 				document.getElementById('container-1').style.display = 'none';
 				document.getElementById('container-2').style.display = 'block';
-			} else {
-				document.getElementById('result').textContent = 'Попробуйте еще раз.';
-				document.getElementById('result').style.color = 'red';
 			}
 		});
 
 		document.getElementById('check-btn-2').addEventListener('click', function() {
-			const correctCode = `while True:\na = input('send q tu quit: ')\n  if a == 'q':\n    continue\n  if a == 'qq':\n    break\n  print(a)`;
+			const correctCode = `for x in 'abc':\n  print(x)`;
 			const userInput = document.getElementById('user-input-2').value.trim();
 
 			if (userInput === correctCode) {
 				document.getElementById('container-2').style.display = 'none';
 				document.getElementById('container-3').style.display = 'block';
-				document.getElementById('result-2').textContent = 'Правильно!';
-				document.getElementById('result-2').style.color = 'green';
-			} else {
-				document.getElementById('result-2').textContent = 'Попробуйте еще раз.';
-				document.getElementById('result-2').style.color = 'red';
 			}
 		});
 
 		document.getElementById('check-btn-3').addEventListener('click', function() {
-			const correctCode = `for x in 'abc':\n  print(x)`;
+			const correctCode = `for i in range(10):\n  if i == 5:\n    break\n  print(i)`;
 			const userInput = document.getElementById('user-input-3').value.trim();
 
 			if (userInput === correctCode) {
-				document.getElementById('result-3').textContent = 'Правильно!';
-				document.getElementById('result-3').style.color = 'green';
+				document.getElementById('container-3').style.display = 'none';
+				document.getElementById('container-4').style.display = 'block';
+			} else {
+			}
+		});
 
+		document.getElementById('check-btn-4').addEventListener('click', function() {
+			const correctCode = `for i in range(10):\n  if i % 2 == 0:\n    continue\n  print(i)`;
+			const userInput = document.getElementById('user-input-4').value.trim();
 
+			if (userInput === correctCode) {
+				document.getElementById('container-4').style.display = 'none';
+				document.getElementById('container-5').style.display = 'block';
+			} else {
+			}
+		});
+
+		document.getElementById('check-btn-5').addEventListener('click', function() {
+			const correctCode = `a = 10\n  if a > 0:\n    print("Число положительное")\n  elif a < 0:\n    print("Число отрицательное")\n  else:\n    print("Число равно нулю")`;
+			const userInput = document.getElementById('user-input-5').value.trim();
+
+			if (userInput === correctCode) {
 				document.getElementById('all').style.display = "none";
 				document.getElementById("finalMessage").style.display = "block";
 				setTimeout(() => {
 					window.location.href = '../index.html';
 				}, 5000);
-			} else {
-				document.getElementById('result-3').textContent = 'Попробуйте еще раз.';
-				document.getElementById('result-3').style.color = 'red';
 			}
 		});
 	</script>
