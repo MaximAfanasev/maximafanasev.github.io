@@ -1,94 +1,117 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>M</title>
 	<link rel="icon" type="image/x-icon" href="/img/favicon.png">
 	<link rel="stylesheet" href="../style/style.css">
 	<link rel="stylesheet" href="../style/win.css">
 </head>
+<body class="base">
+    <pre>
+a = 1 + \ 2 
+3
+ 
+a = (1 + 2) 
+3
+ 
+a = 5 a == 7 
+False
+ 
+5 &#60; a and a &#60; 10 
+False
+ 
+a = 'aoiu'; 'a' in a 
+True
+</pre>
 
-<body>
-	<div id="game-container">
-		<div id="question"></div>
-		<input type="text" id="answer">
-		<button id="submit">Check</button>
-		<div id="result"></div>
-	</div>
+    <button id="start-button">Start</button>
 
-	<div class="message" id="finalMessage">
-		<div class="container">
-			<img src="../img/trophy.png" class="first" alt="">
-			<img src="../img/trophy2.png" class="second" alt="">
-			<img src="../img/trophy3.png" class="three" alt="">
-			<img src="../img/trophy4.png" class="four" alt="">
-			<img src="../img/trophy5.png" class="five" alt="">
-		</div>
-	</div>
-	<script>
-		document.addEventListener("DOMContentLoaded", () => {
-			const questions = [{
-					question: "a = 1 + \\ 2",
-					answer: "3"
-				},
-				{
-					question: "a = (1 + 2)",
-					answer: "3"
-				},
-				{
-					question: "a = 5; a == 7",
-					answer: "False"
-				},
-				{
-					question: "5 < a and a < 10",
-					answer: "False"
-				},
-				{
-					question: "a = 'aoiu'; 'a' in a",
-					answer: "True"
-				},
-				{
-					question: "c := a - len(b) >= 0",
-					answer: "wtf"
-				}
-			];
+    <div id="game-container">
+        <div id="question"></div>
+        <input type="text" id="answer" placeholder="">
+        <button id="submit">Проверить</button>
+        <div id="result"></div>
+    </div>
 
-			let questionIndex = 0;
-			const questionElement = document.getElementById("question");
-			const answerInput = document.getElementById("answer");
-			const resultElement = document.getElementById("result");
-			const submitButton = document.getElementById("submit");
+    <div class="message" id="finalMessage">
+        <div class="container">
+            <img src="../img/trophy.png" class="first" alt="Трофей 1">
+            <img src="../img/trophy2.png" class="second" alt="Трофей 2">
+            <img src="../img/trophy3.png" class="three" alt="Трофей 3">
+            <img src="../img/trophy4.png" class="four" alt="Трофей 4">
+            <img src="../img/trophy5.png" class="five" alt="Трофей 5">
+        </div>
+    </div>
 
-			// Функция для отображения вопроса
-			function displayQuestion() {
-				if (questionIndex < questions.length) {
-					questionElement.textContent = questions[questionIndex].question;
-				} else {
-					questionElement.textContent = "Игра окончена!";
-					answerInput.style.display = "none";
-					submitButton.style.display = "none";
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const questions = [
+                {
+                    question: "a = 1 + \\ 2",
+                    answer: "3"
+                },
+                {
+                    question: "a = (1 + 2)",
+                    answer: "3"
+                },
+                {
+                    question: "a = 5 a == 7",
+                    answer: "False"
+                },
+                {
+                    question: "5 < a and a < 10",
+                    answer: "False"
+                },
+                {
+                    question: "a = 'aoiu' 'a' in a",
+                    answer: "True"
+                }
+            ];
 
-					document.getElementById('game-container').style.display = "none";
-					document.getElementById("finalMessage").style.display = "block";
-				}
-			}
+            let questionIndex = 0;
+            const questionElement = document.getElementById("question");
+            const answerInput = document.getElementById("answer");
+            const resultElement = document.getElementById("result");
+            const submitButton = document.getElementById("submit");
+            const startButton = document.getElementById("start-button");
+            const gameContainer = document.getElementById("game-container");
 
-			// Обработка клика по кнопке
-			submitButton.addEventListener("click", () => {
-				const userAnswer = answerInput.value.trim();
-				const currentAnswer = questions[questionIndex].answer;
+            // Отображение вопроса
+            function displayQuestion() {
+                if (questionIndex < questions.length) {
+                    questionElement.textContent = questions[questionIndex].question;
+                    resultElement.textContent = ""; // Сброс результата
+                } else {
+                    questionElement.textContent = "";
+                    answerInput.style.display = "none";
+                    gameContainer.style.display = "none";
+                    document.getElementById('finalMessage').style.display = "block";
+                }
+            }
 
-				if (userAnswer === currentAnswer) {
-					questionIndex++;
-					answerInput.value = "";
-					displayQuestion();
-				} else {}
-			});
+            // Обработка клика по кнопке "Начать"
+            startButton.addEventListener("click", () => {
+                document.querySelector('pre').style.display = 'none'; // Скрыть блок вопросов и ответов
+                startButton.style.display = 'none'; // Скрыть кнопку "Начать"
+                gameContainer.style.display = 'block'; // Показать контейнер игры
+                displayQuestion(); // Отобразить первый вопрос
+            });
 
-			// Отображаем первый вопрос
-			displayQuestion();
-		});
-	</script>
-</body></html>
+            submitButton.addEventListener("click", () => {
+                const userAnswer = answerInput.value.trim();
+                const currentAnswer = questions[questionIndex].answer;
+
+                if (userAnswer === currentAnswer) {
+                    questionIndex++;
+                    answerInput.value = "";
+                    displayQuestion();
+                } else {
+                    resultElement.textContent = "Неправильно! Попробуйте еще раз.";
+                }
+            });
+        });
+    </script>
+</body>
+</html>

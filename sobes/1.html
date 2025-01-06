@@ -18,29 +18,6 @@
 			padding-top: 100px;
 			padding-bottom: 100px;
 		}
-
-		.container1 {
-			padding: 20px;
-			border-radius: 5px;
-			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-			text-align: center;
-			border-radius: 20px;
-		}
-
-		pre {
-			background: #fff;
-			padding: 20px;
-			border-radius: 20px;
-			color: #000;
-			font-size: 16px;
-			border: 2px solid #000;
-			box-shadow: 0 0 15px gray, 0 0 20px #000;
-		}
-
-		textarea {
-			width: 350px;
-			box-shadow: 0 0 15px gray, 0 0 20px #000;
-		}
 	</style>
 </head>
 
@@ -218,7 +195,8 @@ print(result)  # Вывод: [1, 2, 3, 4, 5]
 Фильтрация списка
 
 def filter_even_numbers(lst):
-    return [num for num in lst if num % 2 == 0]
+    return [num for num in lst 
+    if num % 2 == 0]
 
 # Пример использования
 sample_list = [1, 2, 3, 4, 5, 6]
@@ -266,7 +244,8 @@ def bubble_sort(lst):
     for i in range(n):
         for j in range(0, n-i-1):
             if lst[j] > lst[j+1]:
-                lst[j], lst[j+1] = lst[j+1], lst[j]
+                lst[j], lst[j+1] = 
+                lst[j+1], lst[j]
 return lst
 
 # Пример использования
@@ -285,7 +264,8 @@ def quick_sort(lst):
     left = [x for x in lst if x &#60; pivot]
     middle = [x for x in lst if x == pivot]
     right = [x for x in lst if x > pivot]
-    return quick_sort(left) + middle + quick_sort(right)
+    return quick_sort(left) + 
+    middle + quick_sort(right)
 
 # Пример использования
 sample_list = [3, 6, 8, 10, 1, 2, 1]
@@ -349,10 +329,13 @@ def replace_word(text, old_word, new_word):
     return re.sub(pattern, new_word, text)
 
 # Пример использования
-input_text = "Hello world. The world is beautiful."
-result = replace_word(input_text, "world", "universe")
+input_text = "Hello world. 
+The world is beautiful."
+result = replace_word(input_text, 
+"world", "universe")
 print(result)  
-# Вывод: "Hello universe. The universe is beautiful."
+# Вывод: "Hello universe. 
+The universe is beautiful."
 	</pre>
 	<pre>
 Удаление всех пробелов из строки
@@ -371,7 +354,8 @@ print(result)
 
 def count_vowels(s):
     vowels = "aeiouAEIOU"
-    return sum(1 for char in s if char in vowels)
+    return sum(1 for char in s 
+    if char in vowels)
 
 # Пример использования
 input_string = "Hello, world!"
@@ -433,7 +417,8 @@ def write_to_csv(filename, rows):
         в CSV файл {filename}: {e}")
 
 # Пример использования
-data = [['Имя', 'Возраст'], ['Alice', 30], ['Bob', 25]]
+data = [['Имя', 'Возраст'], 
+['Alice', 30], ['Bob', 25]]
 write_to_csv('data.csv', data)
 	</pre>
 	<pre>
@@ -497,8 +482,10 @@ class Animal:
 
     def speak(self):  
        # метод
-        raise NotImplementedError("Метод speak() 
-        должен быть переопределен в подклассе.")
+        raise NotImplementedError(
+        "Метод speak() 
+        должен быть переопределен 
+        в подклассе.")
 
 # Наследуемый класс
 class Dog(Animal):
@@ -513,8 +500,10 @@ class Cat(Animal):
 dog = Dog("Рекс")
 cat = Cat("Мурка")
 
-print(dog.speak())  # Вывод: Рекс говорит: Гав!
-print(cat.speak())  # Вывод: Мурка говорит: Мяу!
+print(dog.speak())  
+# Вывод: Рекс говорит: Гав!
+print(cat.speak())  
+# Вывод: Мурка говорит: Мяу!
 	</pre>
 	<pre>
 Инкапсуляция
@@ -522,7 +511,8 @@ print(cat.speak())  # Вывод: Мурка говорит: Мяу!
 class BankAccount:
     def __init__(self, owner, balance=0):
         self.owner = owner
-        self.__balance = balance  # приватный атрибут
+        self.__balance = balance  
+        # приватный атрибут
 
     def deposit(self, amount):
         if amount > 0:
@@ -542,15 +532,18 @@ class BankAccount:
             print("Недостаточно средств 
             или неверная сумма.")
 
-    def get_balance(self):  # метод доступа
+    def get_balance(self):  
+       # метод доступа
         return self.__balance
 
 # Пример использования
 account = BankAccount("Иван", 100)
 account.deposit(50)  # Депозит: 50. 
 Текущий баланс: 150
-account.withdraw(20)  # Снятие: 20. Текущий баланс: 130
-print(account.get_balance())  # Вывод: 130
+account.withdraw(20)  
+# Снятие: 20. Текущий баланс: 130
+print(account.get_balance())  
+# Вывод: 130
 	</pre>
 	<pre>
 Полиморфизм
@@ -559,8 +552,10 @@ class Bird(Animal):
     def speak(self):
         return f"{self.name} говорит: Чирик!"
 
-# Пример использования списка с полиморфизмом
-animals = [Dog("Беня"), Cat("Киса"), Bird("Попугай")]
+# Пример использования списка 
+с полиморфизмом
+animals = [Dog("Беня"), Cat("Киса"), 
+Bird("Попугай")]
 for animal in animals:
     print(animal.speak())
 	</pre>
@@ -572,15 +567,19 @@ now = datetime.datetime.now()
 print("Сейчас:", now)
 
 # Создание даты
-specific_date = datetime.datetime(2023, 10, 1, 12, 30)
+specific_date = datetime.datetime(
+2023, 10, 1, 12, 30)
 print("Специфичная дата:", specific_date)
 
 # Форматирование даты
-formatted_date = now.strftime("%Y-%m-%d %H:%M:%S")
-print("Отформатированная дата:", formatted_date)
+formatted_date = now.strftime(
+"%Y-%m-%d %H:%M:%S")
+print("Отформатированная дата:", 
+formatted_date)
 	</pre>
 	<pre>
-from collections import defaultdict, namedtuple
+from collections import defaultdict, 
+namedtuple
 
 # defaultdict
 d = defaultdict(int)
@@ -599,12 +598,14 @@ print(p)  # Вывод: Point(x=10, y=20)
 import itertools
 
 # Создание комбинаций
-combinations = list(itertools.combinations([1, 2, 3], 2))
+combinations = list(
+itertools.combinations([1, 2, 3], 2))
 print("Комбинации:", combinations)  
 # Вывод: Комбинации: [(1, 2), (1, 3), (2, 3)]
 
 # Создание пермутаций
-permutations = list(itertools.permutations([1, 2, 3]))
+permutations = list(
+itertools.permutations([1, 2, 3]))
 print("Пермутации:", permutations)  
 # Вывод: Пермутации: 
 [(1, 2, 3), (1, 3, 2), (2, 1, 3), 
@@ -619,7 +620,8 @@ print("Массив NumPy:", array)
 
 # Операции с массивами
 array_squared = array ** 2
-print("Квадраты элементов массива:", array_squared)
+print("Квадраты элементов массива:", 
+array_squared)
 
 # Создание матриц
 matrix = np.array([[1, 2, 3], [4, 5, 6]])
@@ -637,7 +639,8 @@ df = pd.DataFrame(data)
 print("DataFrame:\n", df)
 
 # Основные операции с DataFrame
-print("Средний возраст:", df['Возраст'].mean())
+print("Средний возраст:", 
+df['Возраст'].mean())
 
 # Фильтрация данных
 filtered_df = df[df['Возраст'] > 28]
@@ -647,7 +650,8 @@ print("Фильтрация:\n", filtered_df)
 import requests
 
 # Выполнение GET-запроса
-response = requests.get('https://jsonplaceholder.
+response = requests.get(
+'https://jsonplaceholder.
 typicode.com/posts')
 print("Статус код:", response.status_code)
 
@@ -692,7 +696,8 @@ class TestMathOperations(unittest.TestCase):
         self.assertEqual(add(0, 0), 0)
 
     def test_add_with_floats(self):
-        self.assertAlmostEqual(add(0.1, 0.2), 0.3)
+        self.assertAlmostEqual(
+        add(0.1, 0.2), 0.3)
 
 if __name__ == '__main__':
     unittest.main()
@@ -707,9 +712,11 @@ def test_add():
     assert add(0, 0) == 0
 
 def test_add_with_floats():
-    assert add(0.1, 0.2) == pytest.approx(0.3)
+    assert add(0.1, 0.2) == 
+    pytest.approx(0.3)
 
-# Чтобы запустить тесты, используйте команду в терминале:
+# Чтобы запустить тесты, 
+используйте команду в терминале:
 # pytest имя_файла.py
 	</pre>
 	<pre>
