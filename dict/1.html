@@ -153,6 +153,47 @@ a2.copy()
 				},
 			];
 
+			let questionIndex = 0;
+			const questionElement = document.getElementById("question");
+			const answerInput = document.getElementById("answer");
+			const resultElement = document.getElementById("result");
+			const submitButton = document.getElementById("submit");
+			const startButton = document.getElementById("start-button");
+			const gameContainer = document.getElementById("game-container");
+
+			// Отображение вопроса
+			function displayQuestion() {
+				if (questionIndex < questions.length) {
+					questionElement.textContent = questions[questionIndex].question;
+					resultElement.textContent = ""; // Сброс результата
+				} else {
+					questionElement.textContent = "";
+					answerInput.style.display = "none";
+					gameContainer.style.display = "none";
+					document.getElementById('finalMessage').style.display = "block";
+				}
+			}
+
+			// Обработка клика по кнопке "Начать"
+			startButton.addEventListener("click", () => {
+				document.querySelector('pre').style.display = 'none'; // Скрыть блок вопросов и ответов
+				startButton.style.display = 'none'; // Скрыть кнопку "Начать"
+				gameContainer.style.display = 'block'; // Показать контейнер игры
+				displayQuestion(); // Отобразить первый вопрос
+			});
+
+			submitButton.addEventListener("click", () => {
+				const userAnswer = answerInput.value.trim();
+				const currentAnswer = questions[questionIndex].answer;
+
+				if (userAnswer === currentAnswer) {
+					questionIndex++;
+					answerInput.value = "";
+					displayQuestion();
+				} else {
+					resultElement.textContent = "Неправильно! Попробуйте еще раз.";
+				}
+			});
 		});
 	</script>
 </body></html>
