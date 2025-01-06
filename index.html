@@ -605,7 +605,6 @@
 								delay += 70; // Увеличиваем задержку на 300 мс для следующего дня
 							});
 							document.getElementById('result').classList.remove('hidden');
-							document.querySelector('.lines').classList.add('hidden');
 							document.querySelector('.calendars').classList.remove('hidden');
 						} else {
 							confirm('GERARAHER MAN');
@@ -640,7 +639,6 @@
 		function fadeOutNumbers() {
 			const header = document.getElementById('pinHeader');
 			const group = document.querySelector('.input-group');
-			const wrappers = document.querySelector('.wrapper-s');
 			const numbers = '1234';
 			let delay = 0;
 
@@ -649,7 +647,6 @@
 				setTimeout(() => {
 					header.style.display = 'none';
 					group.style.display = 'none';
-					wrappers.style.display = 'none';
 
 				}, delay);
 				delay += 300; // Задержка между исчезновением цифр
