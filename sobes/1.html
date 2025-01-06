@@ -58,7 +58,6 @@ elif a &#60; 0:
 else:
  print('0')
 </pre>
-	<textarea cols="30" rows="7"></textarea>
 	<pre>Циклы в Python 
 выполнять один и тот же 
 блок кода несколько раз
@@ -71,7 +70,6 @@ while x &#60; 5:
  print(x)
  x += 1
 </pre>
-	<textarea cols="30" rows="7"></textarea>
 	<pre>
 Функции принимают 
 аргументы с значениями 
@@ -79,7 +77,6 @@ while x &#60; 5:
 произвольное количество 
 аргументов с помощью *args и *kwargs.
 </pre>
-	<textarea cols="30" rows="7"></textarea>
 	<pre>
 Как обрабатывать исключения
 
@@ -88,7 +85,6 @@ try:
   except ZeroDivisionError:
     print("Деление на ноль!")
 </pre>
-	<textarea cols="30" rows="7"></textarea>
 	<pre>
 Разница между списками и кортежами, 
 множества и словари
@@ -103,7 +99,6 @@ dict -
 неупорядоченный изменяемый
 ключи не повторяются а значения да
 </pre>
-	<textarea cols="30" rows="7"></textarea>
 	<pre>
 Списковые включения (List Comprehensions)
 new_list = [xx for yy in list if aa]
@@ -118,7 +113,6 @@ squares_of_evens =
 print(squares_of_evens)  
 # Вывод: [4, 16, 36]
 </pre>
-	<textarea cols="30" rows="7"></textarea>
 	<pre>
 Генераторы — это итераторы, 
 которые создают последовательности 
@@ -144,7 +138,6 @@ gen_exp =
 for value in gen_exp:
     print(value)  # Вывод: 0, 4, 16
 </pre>
-	<textarea cols="30" rows="7"></textarea>
 	<pre>
 Локальная область видимости
 def a():
@@ -153,7 +146,6 @@ def a():
   a()  # Вывод: 10
 print(x)  # Ошибка: NameError
 </pre>
-	<textarea cols="30" rows="7"></textarea>
 	<pre>
 Функциональная область видимости
 def outer_function():
@@ -164,7 +156,6 @@ def outer_function():
  inner_function()  # Вывод: 20
 outer_function()
 </pre>
-	<textarea cols="30" rows="7"></textarea>
 	<pre>
 Глобальная область видимости
 z = 30  # Глобальная переменная
@@ -174,12 +165,10 @@ def my_function():
 my_function()
 print(z)  # Вывод: 40
 </pre>
-	<textarea cols="30" rows="7"></textarea>
 	<pre>
 Встроенная область видимости: 
 print, len ...
 </pre>
-	<textarea cols="30" rows="7"></textarea>
 	<pre>
 Замыкание — это функция, 
 которая "запоминает" окружение
@@ -198,7 +187,6 @@ print(closure(5))
 print(closure(20))  
 # Вывод: 30
 	</pre>
-	<textarea cols="30" rows="7"></textarea>
 	<pre>
 Удаление дубликатов из списка
 
@@ -214,7 +202,6 @@ sample_list = [1, 2, 2, 3, 4, 4, 5]
 result = remove_duplicates(sample_list)
 print(result)  # Вывод: [1, 2, 3, 4, 5]
 	</pre>
-	<textarea cols="30" rows="7"></textarea>
 	<pre>
 Отсортировать список чисел 
 в порядке возрастания
@@ -227,7 +214,6 @@ sample_list = [5, 2, 3, 1, 4]
 result = sort_list(sample_list)
 print(result)  # Вывод: [1, 2, 3, 4, 5]
 	</pre>
-	<textarea cols="30" rows="7"></textarea>
 	<pre>
 Фильтрация списка
 
@@ -239,7 +225,6 @@ sample_list = [1, 2, 3, 4, 5, 6]
 result = filter_even_numbers(sample_list)
 print(result)  # Вывод: [2, 4, 6]
 	</pre>
-	<textarea cols="30" rows="7"></textarea>
 	<pre>
 Подсчет количества 
 элементов в словаре
@@ -261,7 +246,6 @@ print(result)
 # Вывод: 
 {'apple': 3, 'banana': 2, 'orange': 1}
 	</pre>
-	<textarea cols="30" rows="7"></textarea>
 	<pre>
 Объединение множеств
 
@@ -274,7 +258,6 @@ set_b = {3, 4, 5}
 result = union_sets(set_a, set_b)
 print(result)  # Вывод: {1, 2, 3, 4, 5}
 	</pre>
-	<textarea cols="30" rows="7"></textarea>
 	<pre>
 Пузырьковая сортировка
 
@@ -292,7 +275,6 @@ result = bubble_sort(sample_list)
 print(result)  
 # Вывод: [11, 12, 22, 25, 34, 64, 90]
 	</pre>
-	<textarea cols="30" rows="7"></textarea>
 	<pre>
 Быстрая сортировка
 
@@ -310,7 +292,6 @@ sample_list = [3, 6, 8, 10, 1, 2, 1]
 result = quick_sort(sample_list)
 print(result)  # Вывод: [1, 1, 2, 3, 6, 8, 10]
 	</pre>
-	<textarea cols="30" rows="7"></textarea>
 	<pre>
 Сортировка вставками
 
@@ -330,7 +311,6 @@ result = insertion_sort(sample_list)
 print(result)  
 # Вывод: [5, 6, 11, 12, 13]
 	</pre>
-	<textarea cols="30" rows="7"></textarea>
 	<pre>
 Реверс строки
 
@@ -343,7 +323,6 @@ result = reverse_string(input_string)
 print(result)  
 # Вывод: "!dlrow ,olleH"
 	</pre>
-	<textarea cols="30" rows="7"></textarea>
 	<pre>
 Проверка на палиндром
 
@@ -358,7 +337,6 @@ result = is_palindrome(input_string)
 print(result)  
 # Вывод: True
 	</pre>
-	<textarea cols="30" rows="7"></textarea>
 	<pre>
 Поиск и замена с помощью регулярных выражений
 
@@ -376,7 +354,6 @@ result = replace_word(input_text, "world", "universe")
 print(result)  
 # Вывод: "Hello universe. The universe is beautiful."
 	</pre>
-	<textarea cols="30" rows="7"></textarea>
 	<pre>
 Удаление всех пробелов из строки
 
@@ -389,7 +366,6 @@ result = remove_spaces(input_string)
 print(result)  
 # Вывод: "HelloWorld!"
 	</pre>
-	<textarea cols="30" rows="7"></textarea>
 	<pre>
 Подсчет количества гласных в строке
 
@@ -402,7 +378,6 @@ input_string = "Hello, world!"
 result = count_vowels(input_string)
 print(result)  # Вывод: 3
 	</pre>
-	<textarea cols="30" rows="7"></textarea>
 	<pre>
 Чтение и запись в текстовые файлы
 
@@ -419,7 +394,6 @@ def write_to_file(filename, content):
 # Пример использования
 write_to_file('example.txt', 'Hello, world!')
 	</pre>
-	<textarea cols="30" rows="7"></textarea>
 	<pre>
 Чтение из файла
 
@@ -441,7 +415,6 @@ content = read_from_file('example.txt')
 if content is not None:
     print(content)
 	</pre>
-	<textarea cols="30" rows="7"></textarea>
 	<pre>
 Работа с CSV файлами
 
@@ -463,7 +436,6 @@ def write_to_csv(filename, rows):
 data = [['Имя', 'Возраст'], ['Alice', 30], ['Bob', 25]]
 write_to_csv('data.csv', data)
 	</pre>
-	<textarea cols="30" rows="7"></textarea>
 	<pre>
 Работа с JSON файлами
 
@@ -488,7 +460,6 @@ data = {
 }
 write_to_json('data.json', data)
 	</pre>
-	<textarea cols="30" rows="7"></textarea>
 	<pre>
 Основы ООП
 1. Классы
@@ -518,7 +489,6 @@ write_to_json('data.json', data)
  Это может быть достигнуто с помощью 
  перегрузки методов или интерфейсов.
 	</pre>
-	<textarea cols="30" rows="7"></textarea>
 	<pre>
 class Animal:
     # Конструктор (инициализация)
@@ -546,7 +516,6 @@ cat = Cat("Мурка")
 print(dog.speak())  # Вывод: Рекс говорит: Гав!
 print(cat.speak())  # Вывод: Мурка говорит: Мяу!
 	</pre>
-	<textarea cols="30" rows="7"></textarea>
 	<pre>
 Инкапсуляция
 
@@ -583,7 +552,6 @@ account.deposit(50)  # Депозит: 50.
 account.withdraw(20)  # Снятие: 20. Текущий баланс: 130
 print(account.get_balance())  # Вывод: 130
 	</pre>
-	<textarea cols="30" rows="7"></textarea>
 	<pre>
 Полиморфизм
 
@@ -596,7 +564,6 @@ animals = [Dog("Беня"), Cat("Киса"), Bird("Попугай")]
 for animal in animals:
     print(animal.speak())
 	</pre>
-	<textarea cols="30" rows="7"></textarea>
 	<pre>
 import datetime
 
@@ -612,7 +579,6 @@ print("Специфичная дата:", specific_date)
 formatted_date = now.strftime("%Y-%m-%d %H:%M:%S")
 print("Отформатированная дата:", formatted_date)
 	</pre>
-	<textarea cols="30" rows="7"></textarea>
 	<pre>
 from collections import defaultdict, namedtuple
 
@@ -629,7 +595,6 @@ Point = namedtuple('Point', ['x', 'y'])
 p = Point(10, 20)
 print(p)  # Вывод: Point(x=10, y=20)
 	</pre>
-	<textarea cols="30" rows="7"></textarea>
 	<pre>
 import itertools
 
@@ -645,7 +610,6 @@ print("Пермутации:", permutations)
 [(1, 2, 3), (1, 3, 2), (2, 1, 3), 
 (2, 3, 1), (3, 1, 2), (3, 2, 1)]
 	</pre>
-	<textarea cols="30" rows="7"></textarea>
 	<pre>
 import numpy as np
 
@@ -661,7 +625,6 @@ print("Квадраты элементов массива:", array_squared)
 matrix = np.array([[1, 2, 3], [4, 5, 6]])
 print("Матрица:\n", matrix)
 	</pre>
-	<textarea cols="30" rows="7"></textarea>
 	<pre>
 import pandas as pd
 
@@ -680,7 +643,6 @@ print("Средний возраст:", df['Возраст'].mean())
 filtered_df = df[df['Возраст'] > 28]
 print("Фильтрация:\n", filtered_df)
 	</pre>
-	<textarea cols="30" rows="7"></textarea>
 	<pre>
 import requests
 
@@ -693,7 +655,6 @@ print("Статус код:", response.status_code)
 data = response.json()
 print("Первый пост:", data[0])
 	</pre>
-	<textarea cols="30" rows="7"></textarea>
 	<pre>
 def sum_elements(arr):
     total = 0
@@ -708,7 +669,6 @@ O(n) — нам нужно пройти через
 O(1) — мы используем только 
 одну дополнительную переменную (total).
 	</pre>
-	<textarea cols="30" rows="7"></textarea>
 	<pre>
 def sum_elements(arr):
     return sum(arr)
@@ -718,7 +678,6 @@ def sum_elements(arr):
 таких как C, и могут быть оптимизированы 
 для лучшей производительности.
 	</pre>
-	<textarea cols="30" rows="7"></textarea>
 	<pre>
 import unittest
 
@@ -738,7 +697,6 @@ class TestMathOperations(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 	</pre>
-	<textarea cols="30" rows="7"></textarea>
 	<pre>
 def add(a, b):
     return a + b
@@ -754,7 +712,6 @@ def test_add_with_floats():
 # Чтобы запустить тесты, используйте команду в терминале:
 # pytest имя_файла.py
 	</pre>
-	<textarea cols="30" rows="7"></textarea>
 	<pre>
 import requests
 from bs4 import BeautifulSoup
@@ -781,7 +738,6 @@ if __name__ == '__main__':
     # Замените на реальный URL
     fetch_news(news_url)
 	</pre>
-	<textarea cols="30" rows="7"></textarea>
 	<pre>
 def generate_report(sales_data):
     report = "Ежемесячный отчет о продажах\n"
@@ -810,5 +766,4 @@ if __name__ == '__main__':
     save_report(report, 'sales_report.txt')
     print("Отчет сохранён в sales_report.txt")
 	</pre>
-	<textarea cols="30" rows="7"></textarea>
 </body></html>
