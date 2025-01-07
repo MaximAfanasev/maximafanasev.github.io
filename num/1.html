@@ -11,6 +11,23 @@
 
 <body class="base">
 	<pre>
+a = 1 + \ 
+2 
+3
+ 
+a = (1 + 
+2) 
+3
+ 
+a = 5 a == 7 
+False
+ 
+5 &#60; 5 and 5 &#60; 10 
+False
+ 
+a = 'aoiu'; 'a' in a 
+True
+
 bool(True)
 True
 
@@ -90,6 +107,25 @@ int('10', 2)
 	<script>
 		document.addEventListener("DOMContentLoaded", () => {
 			const questions = [{
+					question: "a = 1 + \\ 2",
+					answer: "3"
+				},
+				{
+					question: "a = (1 + 2)",
+					answer: "3"
+				},
+				{
+					question: "a = 5 a == 7",
+					answer: "False"
+				},
+				{
+					question: "5 < 5 and 5 < 10",
+					answer: "False"
+				},
+				{
+					question: "a = 'aoiu' 'a' in a",
+					answer: "True"
+				}, {
 					question: "bool(True)",
 					answer: "True"
 				},
@@ -116,7 +152,7 @@ int('10', 2)
 				{
 					question: "bool(0.0)",
 					answer: "False"
-				},{
+				}, {
 					question: "2 * 4",
 					answer: "8"
 				},
@@ -135,7 +171,7 @@ int('10', 2)
 				{
 					question: "2 ** 3",
 					answer: "8"
-				},{
+				}, {
 					question: "chr(65)",
 					answer: "A"
 				},

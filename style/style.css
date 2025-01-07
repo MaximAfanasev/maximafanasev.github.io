@@ -176,9 +176,6 @@ pre {
 	flex-direction: column;
 }
 
-pre {
-	margin-bottom: 40px;
-}
 
 .blur pre {
 	filter: blur(3px);
