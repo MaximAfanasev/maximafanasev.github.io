@@ -234,7 +234,7 @@
 			margin-bottom: 20px;
 			z-index: 200;
 		}
-		
+
 		.pin {
 			height: 100vh;
 		}
@@ -375,7 +375,7 @@
 <body>
 	<div id="app">
 		<canvas id="webgl-canvas"></canvas>
-		<div class="pin" >
+		<div class="pin">
 			<h1 id="pinHeader"></h1>
 			<div class="input-group">
 				<input type="password" maxlength="1" class="pin-input" id="pin1">
@@ -474,6 +474,9 @@
 			<div id="result" class="hidden">
 				<ul id="imageList">
 					<li class="done">
+						<a href="0a/1.html" target="_blank"><img src="img/0.png" alt=""></a>
+					</li>
+					<li class="done">
 						<a href="0type/1.html" target="_blank"><img src="img/1.png" alt=""></a>
 					</li>
 					<li class="done">
@@ -538,7 +541,7 @@
 						if (userPin === correctPin) {
 							document.querySelector('.pin').style.display = 'none';
 							document.querySelector('.content').style.display = 'block';
-							
+
 							fadeOutInputs();
 							// Сначала показываем контейнер, затем каждые 500 мс показываем календарь
 							setTimeout(() => {
@@ -645,6 +648,7 @@
 				header.textContent = ''; // Полностью очищаем заголовок
 			}, delay);
 		}
+
 	</script>
 	<script>
 		document.addEventListener('DOMContentLoaded', () => {
@@ -681,13 +685,14 @@
 
 			showPinAndInputs();
 		});
+
 	</script>
 	<script type="module">
 		import Grid2Background from 'https://cdn.jsdelivr.net/npm/threejs-components@0.0.17/build/backgrounds/grid2.cdn.min.js'
 
 		const bg = Grid2Background(document.getElementById('webgl-canvas'))
-		
-		
+
+
 		let canChangeColor = true;
 		document.body.addEventListener('click', () => {
 			if (canChangeColor) {

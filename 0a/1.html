@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>M</title>
+	<link rel="icon" type="image/x-icon" href="/img/favicon.png">
+	<link rel="stylesheet" href="../style/style.css">
+	<link rel="stylesheet" href="../style/win.css">
+</head>
+
+<body class="base">
+<pre>
+Дорогой дневник, мне не передать словами всю боль...
+</pre>
+	<pre>
+10.11.2025
+Как я боролся с selenium + macbook m1
+
+В попытке запустить код, понадобилась установка 
+selenium на комп.
+pip3 install selenium
+
+создал файл selenium.py написал код:
+
+</pre>
+<pre>
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
+import time
+
+chrome_options = Options()
+# chrome_options.add_argument("--headless")  
+# Если нужно запустить в безголовом режиме
+
+service = Service('/opt/homebrew/bin/chromedriver')  
+# Укажите полный путь к chromedriver
+driver = webdriver.Chrome(service=service, 
+options=chrome_options)
+
+try:
+    driver.get("https://www.google.com")
+    time.sleep(2)  
+    # Ждем 2 секунды для загрузки страницы
+    print(driver.title)  
+    # Должен вывести "Google"
+except Exception as e:
+    print(f"An error occurred: {e}")
+finally:
+    driver.quit()
+</pre>
+<pre>
+Этот кусок запускался с ошибкой, оказалось нельзя
+назвать файл как пакет, питон тянет пакет из этого же
+файла..
+Переименовал.
+Нашел ссылку где можно стянуть chromedriver
+https://chromedriver.storage.googleapis.
+com/index.html?path=79.0.3945.36/
+
+Версия оказалось стара как мир
+Обновил хром до 131 версии
+Нашел свежий chromedriver
+Указал путь в .py файле до него /Users/test/... 
+не сработало, так как мак не доверял файлу
+
+установил с brew uninstall chromedriver
+добавил ему прав
+chmod +x /opt/homebrew/bin/chromedriver
+
+иииии все запустилось с ошибкой
+Traceback (most recent call last):
+  File "/Users/test/Documents/maximafanasev.github.io
+  /py/ttt.py", 
+   line 10, in module
+    driver = webdriver.Chrome(service=service,
+    options=chrome_options)
+  File "/Library/Frameworks/Python.framework/Versions
+  /3.13/lib
+   /python3.13/site-
+   packages/selenium/webdriver/chrome/webdriver.py", 
+   line 45, in __init__
+    super().__init__(
+</pre>
+<pre>
+Увидимся с ним завтра...
+</pre>
+</body></html>
