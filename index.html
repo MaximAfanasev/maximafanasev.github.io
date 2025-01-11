@@ -82,7 +82,6 @@
 			padding: 0;
 			margin-bottom: 20px;
 		}
-
 	</style>
 	<style>
 		.calendars {
@@ -159,7 +158,6 @@
 			line-height: 22px;
 			text-align: center;
 		}
-
 	</style>
 	<style>
 		.lines {
@@ -196,7 +194,6 @@
 				box-shadow: 0 0 5px red, 0 0 40px red, 0 0 50px red;
 			}
 		}
-
 	</style>
 	<style>
 		.start-button {
@@ -217,7 +214,6 @@
 			background-color: #d62839;
 			transform: scale(1.05);
 		}
-
 	</style>
 	<style>
 		.container {
@@ -268,6 +264,46 @@
 			display: none;
 		}
 
+		.start {
+			position: relative;
+			z-index: 200;
+		}
+
+
+		.carbon-button {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%,-50%);
+			width: 150px;
+			height: 150px;
+			border-radius: 50%;
+			/* Круглая форма */
+			background: linear-gradient(145deg, #3a3a3a, #1f1f1f);
+			/* Градиент */
+			box-shadow: 6px 6px 12px #1a1a1a, -6px -6px 12px #4f4f4f;
+			/* Тень */
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			color: #ffffff;
+			/* Цвет текста */
+			font-size: 20px;
+			text-align: center;
+			cursor: pointer;
+			transition: all 0.3s ease;
+			border: 2px solid red;
+			/* Плавный переход */
+		}
+
+		.carbon-button:hover {
+			background: linear-gradient(145deg, #4f4f4f, #2c2c2c);
+			/* Изменение цвета при наведении */
+			box-shadow: 4px 4px 8px #1a1a1a, -4px -4px 8px #4f4f4f;
+			/* Изменение тени при наведении */
+		}
+
+
 		#result ul {
 			display: flex;
 			flex-direction: column;
@@ -284,7 +320,6 @@
 			width: 300px;
 			border-radius: 20px;
 		}
-
 	</style>
 	<style>
 		.wrapper-s {
@@ -354,7 +389,6 @@
 				rotate: y -1turn;
 			}
 		}
-
 	</style>
 	<style>
 		#webgl-canvas {
@@ -365,7 +399,6 @@
 			left: 0;
 			overflow: hidden;
 		}
-
 	</style>
 </head>
 
@@ -376,12 +409,8 @@
 	<div id="app">
 		<canvas id="webgl-canvas"></canvas>
 		<div class="pin">
-			<h1 id="pinHeader"></h1>
-			<div class="input-group">
-				<input type="password" maxlength="1" class="pin-input" id="pin1">
-				<input type="password" maxlength="1" class="pin-input" id="pin2">
-				<input type="password" maxlength="1" class="pin-input" id="pin3">
-				<input type="password" maxlength="1" class="pin-input" id="pin4">
+			<div class="start carbon-button">
+				START
 			</div>
 		</div>
 	</div>
@@ -521,110 +550,71 @@
 	</main>
 
 	<script>
-		const correctPin = '1234'; // Правильный пин-код
-		const inputs = document.querySelectorAll('.pin-input');
 		const calendarsContainer = document.querySelector('.calendars');
-		let userPin = "";
+		const Start = document.querySelector('.start');
 
 		const listItems = document.querySelectorAll('#imageList li');
 		let delay = 0;
 
-		inputs.forEach((input, index) => {
-			input.addEventListener('input', (event) => {
-				// Переключение на следующий инпут
-				if (event.target.value.length >= 1) {
-					if (index < inputs.length - 1) {
-						inputs[index + 1].focus();
-					} else {
-						// Проверка пин-кода после ввода последнего символа
-						const userPin = Array.from(inputs).map(input => input.value).join('');
-						if (userPin === correctPin) {
-							document.querySelector('.pin').style.display = 'none';
-							document.querySelector('.content').style.display = 'block';
+		Start.addEventListener('click', () => {
+			document.querySelector('.pin').style.display = 'none';
+			document.querySelector('.content').style.display = 'block';
 
-							fadeOutInputs();
-							// Сначала показываем контейнер, затем каждые 500 мс показываем календарь
-							setTimeout(() => {
-								calendarsContainer.classList.remove('hidden'); // Показываем контейнер с календарями
+			// Сначала показываем контейнер, затем каждые 500 мс показываем календарь
+			setTimeout(() => {
+				calendarsContainer.classList.remove('hidden'); // Показываем контейнер с календарями
 
-								const calendars = document.querySelectorAll('.calendar');
-								let delay = 0;
+				const calendars = document.querySelectorAll('.calendar');
+				let delay = 0;
 
-								calendars.forEach((calendar) => {
-									setTimeout(() => {
-										calendar.style.opacity = 1; // Заменяем opacity на 1 для показа календаря
-									}, delay);
-									delay += 700; // Задержка 700 мс между появлениями календарей
-								});
+				calendars.forEach((calendar) => {
+					setTimeout(() => {
+						calendar.style.opacity = 1; // Заменяем opacity на 1 для показа календаря
+					}, delay);
+					delay += 700; // Задержка 700 мс между появлениями календарей
+				});
 
-								// Добавляем таймаут для появления элемента list
-								setTimeout(() => {
+				// Добавляем таймаут для появления элемента list
+				setTimeout(() => {
 
-									listItems.forEach((item) => {
-										setTimeout(() => {
-											item.style.opacity = 1; // Устанавливаем легкость видимости элемента
+					listItems.forEach((item) => {
+						setTimeout(() => {
+							item.style.opacity = 1; // Устанавливаем легкость видимости элемента
 
-											// Прокручиваем к текущему элементу
-											item.scrollIntoView({
-												behavior: 'smooth',
-												block: 'center'
-											});
-										}, delay);
-
-										delay += 500; // Увеличиваем задержку на 500 мс для следующего элемента
-									});
-
-									// После показа всех элементов прокручиваем в верхнюю часть страницы
-									setTimeout(() => {
-										window.scrollTo({
-											top: 0,
-											behavior: 'smooth'
-										});
-									}, delay); // Устанавливаем время задержки после всех элементов
-								}, delay + 1100); // Время появления list будет после всех календари + 500 мс
-
-							}, 1300);
-
-							const days = document.querySelectorAll('.day.n');
-							let delay = 0;
-
-							days.forEach((day) => {
-								setTimeout(() => {
-									day.style.opacity = 1; // Устанавливаем opacity в 1 для появления
-								}, delay);
-
-								delay += 70; // Увеличиваем задержку на 300 мс для следующего дня
+							// Прокручиваем к текущему элементу
+							item.scrollIntoView({
+								behavior: 'smooth',
+								block: 'center'
 							});
-							document.getElementById('result').classList.remove('hidden');
-							document.querySelector('.calendars').classList.remove('hidden');
-						} else {
-							confirm('GERARAHER MAN');
-							inputs.forEach(input => input.value = '');
-							inputs[0].focus(); // Снова фокус на первом инпуте
-						}
-					}
-				}
-			});
-		});
+						}, delay);
 
-		// Функция для исчезновения инпутов и цифр
-		function fadeOutInputs() {
+						delay += 500; // Увеличиваем задержку на 500 мс для следующего элемента
+					});
+
+					// После показа всех элементов прокручиваем в верхнюю часть страницы
+					setTimeout(() => {
+						window.scrollTo({
+							top: 0,
+							behavior: 'smooth'
+						});
+					}, delay); // Устанавливаем время задержки после всех элементов
+				}, delay + 1100); // Время появления list будет после всех календари + 500 мс
+
+			}, 1300);
+
+			const days = document.querySelectorAll('.day.n');
 			let delay = 0;
 
-			// Исчезновение инпутов
-			inputs.forEach((input) => {
+			days.forEach((day) => {
 				setTimeout(() => {
-					input.style.opacity = 0; // Устанавливаем opacity в 0 для исчезновения
-					input.value = ""; // Очищаем значение инпута
+					day.style.opacity = 1; // Устанавливаем opacity в 1 для появления
 				}, delay);
-				delay += 300; // Задержка между исчезновением инпутов
-			});
 
-			// Исчезновение цифр "1234" в обратном порядке
-			setTimeout(() => {
-				fadeOutNumbers();
-			}, delay); // Вызываем после исчезновения инпутов
-		}
+				delay += 70; // Увеличиваем задержку на 300 мс для следующего дня
+			});
+			document.getElementById('result').classList.remove('hidden');
+			document.querySelector('.calendars').classList.remove('hidden');
+		})
 
 		// Функция для исчезновения цифр в заголовке
 		function fadeOutNumbers() {
@@ -648,44 +638,6 @@
 				header.textContent = ''; // Полностью очищаем заголовок
 			}, delay);
 		}
-
-	</script>
-	<script>
-		document.addEventListener('DOMContentLoaded', () => {
-			const pinCode = '1234';
-			const pinHeader = document.getElementById('pinHeader');
-			const inputs = document.querySelectorAll('.pin-input');
-
-			// Функция для отображения анимации
-			function showPinAndInputs() {
-				let delay = 0;
-
-				// Показ цифр
-				for (let i = 0; i < pinCode.length; i++) {
-					setTimeout(() => {
-						pinHeader.innerText += pinCode[i];
-					}, delay);
-					delay += 300; // Задержка 500 мс между цифрами
-				}
-
-				// Показ инпутов
-				setTimeout(() => {
-					for (let input of inputs) {
-						input.style.display = 'inline-block';
-					}
-					delay = 0;
-					for (let input of inputs) {
-						setTimeout(() => {
-							input.style.opacity = 1; // Появление инпута
-						}, delay);
-						delay += 300; // Задержка 500 мс между инпутами
-					}
-				}, pinCode.length * 300 + 500); // Ждем, пока появятся все цифры, затем показываем инпуты
-			}
-
-			showPinAndInputs();
-		});
-
 	</script>
 	<script type="module">
 		import Grid2Background from 'https://cdn.jsdelivr.net/npm/threejs-components@0.0.17/build/backgrounds/grid2.cdn.min.js'
@@ -708,8 +660,5 @@
 				}, 1000); // Изменение цвета не чаще раза в секунду
 			}
 		});
-
 	</script>
-</body>
-
-</html>
+</body></html>
