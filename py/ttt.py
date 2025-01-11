@@ -4,9 +4,9 @@ from selenium.webdriver.chrome.options import Options
 import time
 
 chrome_options = Options()
-# chrome_options.add_argument("--headless")  # Если нужно запустить в безголовом режиме
+chrome_options.add_argument("--headless")  # Если нужно запустить в безголовом режиме
 
-service = Service('/opt/homebrew/bin/chromedriver')  # Укажите полный путь к chromedriver
+service = Service('/opt/homebrew/bin/node_modules/chromedriver/bin/chromedriver')  # Укажите полный путь к chromedriver
 driver = webdriver.Chrome(service=service, options=chrome_options)
 
 try:
