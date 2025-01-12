@@ -62,7 +62,7 @@
 			box-shadow: 0 0 15px green, 0 0 4px blue;
 		}
 
-		ul {
+		#imageList {
 			list-style: none;
 			margin: 0;
 			padding: 0;
@@ -71,16 +71,20 @@
 		}
 
 
-		ul li {
+		#imageList li {
 			opacity: 0;
 			transition: opacity 0.5s;
 		}
 
-		ul li a {
+		#imageList li a {
 			display: block;
 			width: fit-content;
 			padding: 0;
 			margin-bottom: 20px;
+			color: #fff;
+			text-decoration: none;
+			font-size: 15px;
+			font-weight: 500;
 		}
 	</style>
 	<style>
@@ -219,7 +223,6 @@
 		.container {
 			text-align: center;
 			padding: 20px;
-			margin-top: 40px;
 			border-radius: 8px;
 		}
 
@@ -274,7 +277,7 @@
 			position: absolute;
 			left: 50%;
 			top: 50%;
-			transform: translate(-50%,-50%);
+			transform: translate(-50%, -50%);
 			width: 150px;
 			height: 150px;
 			border-radius: 50%;
@@ -404,7 +407,6 @@
 
 <a href="https://pay.cloudtips.ru/p/aa6258b0" hidden class="tips">❤️‍🔥</a>
 
-
 <body>
 	<div id="app">
 		<canvas id="webgl-canvas"></canvas>
@@ -417,48 +419,6 @@
 
 	<main class="content" style="display: none">
 		<div class="calendars  hidden">
-			<div class="calendar" id="calendar">
-				December 🎄 🎆
-				<div class="c-w">
-					<div class="day empty"></div>
-					<div class="day empty"></div>
-					<div class="day empty"></div>
-					<div class="day empty"></div>
-					<div class="day empty"></div>
-					<div class="day empty"></div>
-					<div class="day n active">1</div>
-					<div class="day n active">2</div>
-					<div class="day n active">3</div>
-					<div class="day n active">4</div>
-					<div class="day n active">5</div>
-					<div class="day n active">6</div>
-					<div class="day n active">7</div>
-					<div class="day n active">8</div>
-					<div class="day n active">9</div>
-					<div class="day n active">10</div>
-					<div class="day n active">11</div>
-					<div class="day n active">12</div>
-					<div class="day n active">13</div>
-					<div class="day n active">14</div>
-					<div class="day n active">15</div>
-					<div class="day n active">16</div>
-					<div class="day n active">17</div>
-					<div class="day n active">18</div>
-					<div class="day n active">19</div>
-					<div class="day n active">20</div>
-					<div class="day n active">21</div>
-					<div class="day n active">22</div>
-					<div class="day n active">23</div>
-					<div class="day n active">24</div>
-					<div class="day n active">25</div>
-					<div class="day n active">26</div>
-					<div class="day n active">27</div>
-					<div class="day n active">28</div>
-					<div class="day n active">29</div>
-					<div class="day n active">30</div>
-					<div class="day n active">31</div>
-				</div>
-			</div>
 			<div class="calendar" id="calendar">
 				January 🎊 🍾
 				<div class="c-w">
@@ -503,19 +463,19 @@
 			<div id="result" class="hidden">
 				<ul id="imageList">
 					<li class="done">
-						<a href="0type/1.html" target="_blank"><img src="img/1.png" alt=""></a>
+						<a href="0type/1.html" target="_blank"><img src="img/1.png" alt="">пройден: 12.01.2025</a>
 					</li>
 					<li class="done">
-						<a href="0type/2.html" target="_blank"><img src="img/2.png" alt=""></a>
+						<a href="0type/2.html" target="_blank"><img src="img/2.png" alt="">пройден: 12.01.2025</a>
 					</li>
 					<li class="done">
-						<a href="0type/3.html" target="_blank"><img src="img/3.png" alt=""></a>
+						<a href="0type/3.html" target="_blank"><img src="img/3.png" alt="">пройден: 12.01.2025</a>
 					</li>
 					<li class="done">
-						<a href="0type/4.html" target="_blank"><img src="img/5.png" alt=""></a>
+						<a href="0type/4.html" target="_blank"><img src="img/5.png" alt="">пройден: 12.01.2025</a>
 					</li>
 					<li class="done">
-						<a href="0type/5.html" target="_blank"><img src="img/6.png" alt=""></a>
+						<a href="0type/5.html" target="_blank"><img src="img/6.png" alt="">пройден: 12.01.2025</a>
 					</li>
 					<li class="done">
 						<a href="1num/1.html" target="_blank"><img src="img/num.png" alt=""></a>
