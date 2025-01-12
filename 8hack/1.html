@@ -112,20 +112,39 @@ if __name__ == '__main__':
 </pre>
 	<pre>
 async
+
+import asyncio
+
+async def say_hello(name):
+    print(f"Hello, {name}!")
+    await asyncio.sleep(1)  # Имитация долгой операции
+    print(f"Goodbye, {name}!")
+
+async def main():
+    # Создание и запуск нескольких асинхронных функций
+    await asyncio.gather(
+        say_hello("Alice"),
+        say_hello("Bob"),
+        say_hello("Charlie")
+    )
+
+# Запуск главной асинхронной функции
+asyncio.run(main())
 </pre>
 	<pre>
 оптимизация i/o
+высокопроизводительных приложений, 
+особенно когда они требуют доступа к 
+внешним ресурсам, таким как файловая система, 
+базы данных или сетевые сервисы
+
+with open('output.txt', 'w') as f:
+    f.write('\n'.join(data_list))  # Запись всех данных сразу
 </pre>
 	<pre>
 requests
-</pre>
-	<pre>
 Selenium
-</pre>
-	<pre>
 BeautifulSoup
-</pre>
-	<pre>
 lxml
 </pre>
 	<pre>
@@ -141,6 +160,10 @@ Cloudflare
 fingerprinting
 с помощью специализированных 
 сервисов или алгоритмов
+
+сервисы, как 2Captcha или Anti-Captcha, 
+предоставляют возможность отправить 
+изображение CAPTCHA и получить ответ
 </pre>
 	<pre>
 веб-приложения 
