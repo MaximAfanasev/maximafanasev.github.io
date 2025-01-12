@@ -48,12 +48,84 @@ IP-адреса реальных устройств
 	<pre>
 Python 
 threading
+Создание потоков:
+
+можете создавать, запускать и 
+синхронизировать потоки, что позволяет 
+улучшать производительность ваших приложений
+
+import threading
+import time
+
+# Функция, которую будет выполнять поток
+def worker(thread_number):
+    print(f"Поток {thread_number} начал работу")
+    time.sleep(2)  # Имитация долгой работы
+    print(f"Поток {thread_number} завершил работу")
+
+# Создаём список потоков
+threads = []
+
+# Запускаем 5 потоков
+for i in range(5):
+    thread = threading.Thread(target=worker, args=(i,))
+    threads.append(thread)
+    thread.start()
+
+# Ожидаем завершения всех потоков
+for thread in threads:
+    thread.join()
+
+print("Все потоки завершили работу")
+</pre>
+	<pre>
 multiprocessing 
+
+полезно для CPU-bound задач, 
+где необходимо использовать 
+многоядерные процессоры
+
+import multiprocessing
+import time
+
+# Функция, которую будет выполнять каждый процесс
+def worker(process_number):
+    print(f"Процесс {process_number} начал работу.")
+    time.sleep(2)  # Имитация долгой работы
+    print(f"Процесс {process_number} завершил работу.")
+
+if __name__ == '__main__':
+    processes = []
+
+    # Создаем 5 процессов
+    for i in range(5):
+        process = multiprocessing.Process(target=worker,
+         args=(i,))
+        processes.append(process)
+        process.start()  # Запускаем процесс
+
+    # Ожидаем завершения всех процессов
+    for process in processes:
+        process.join()
+
+    print("Все процессы завершили работу.")
+</pre>
+	<pre>
 async
+</pre>
+	<pre>
 оптимизация i/o
+</pre>
+	<pre>
 requests
+</pre>
+	<pre>
 Selenium
+</pre>
+	<pre>
 BeautifulSoup
+</pre>
+	<pre>
 lxml
 </pre>
 	<pre>
