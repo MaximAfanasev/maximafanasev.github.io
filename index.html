@@ -461,56 +461,56 @@
 
 		<div class="container list">
 			<div id="result" class="hidden">
-				<ul id="imageList">
-					<li class="done">
-						<a href="0type/1.html" target="_blank"><img src="img/1.png" alt="">done: 14.01.2025</a>
-					</li>
-					<li class="done">
-						<a href="0type/2.html" target="_blank"><img src="img/2.png" alt="">done: 14.01.2025</a>
-					</li>
-					<li class="done">
-						<a href="0type/22.html" target="_blank"><img src="img/22.png" alt="">done: 14.01.2025</a>
-					</li>
-					<li class="done">
-						<a href="0type/3.html" target="_blank"><img src="img/3.png" alt="">done: 14.01.2025</a>
-					</li>
-					<li class="done">
-						<a href="0type/4.html" target="_blank"><img src="img/5.png" alt="">done: 14.01.2025</a>
-					</li>
-					<li class="done">
-						<a href="0type/41.html" target="_blank"><img src="img/41.png" alt="">done: 14.01.2025</a>
-					</li>
-					<li class="done">
-						<a href="0type/5.html" target="_blank"><img src="img/6.png" alt="">done: 14.01.2025</a>
-					</li>
-					<li class="done">
-						<a href="1num/1.html" target="_blank"><img src="img/num.png" alt="">done: 14.01.2025</a>
-					</li>
-					<li class="done">
-						<a href="2str/1.html" target="_blank"><img src="img/str.png" alt="">done: 14.01.2025</a>
-					</li>
-					<li class="done">
-						<a href="3list/1.html" target="_blank"><img src="img/list.png" alt="">done: 14.01.2025</a>
-					</li>
-					<li class="done">
-						<a href="4dict/1.html" target="_blank"><img src="img/dict.png" alt="">done: 14.01.2025</a>
-					</li>
-					<li class="done">
-						<a href="5def/1.html" target="_blank"><img src="img/sobes.png" alt="">done: 14.01.2025</a>
-					</li>
-					<li class="done">
-						<a href="6math/1.html" target="_blank"><img src="img/math.png" alt="">done: 14.01.2025</a>
-					</li>
-					<li class="done">
-						<a href="7inf/1.html" target="_blank"><img src="img/inf.png" alt="">done: 14.01.2025</a>
-					</li>
-					<li class="done">
-						<a href="8hack/1.html" target="_blank"><img src="img/hack.png" alt="">done: 14.01.2025</a>
-					</li>
-					<li class="done">
-						<a href="9autotest/1.html" target="_blank"><img src="img/auto.png" alt="">done: 14.01.2025</a>
-					</li>
-				</ul>
+    <ul id="imageList">
+        <li class="done">
+            <a href="0type/1.html" target="_blank"><img src="img/1.png" alt="">done: <span class="dynamic-date"></span></a>
+        </li>
+        <li class="done">
+            <a href="0type/2.html" target="_blank"><img src="img/2.png" alt="">done: <span class="dynamic-date"></span></a>
+        </li>
+        <li class="done">
+            <a href="0type/22.html" target="_blank"><img src="img/22.png" alt="">done: <span class="dynamic-date"></span></a>
+        </li>
+        <li class="done">
+            <a href="0type/3.html" target="_blank"><img src="img/3.png" alt="">done: <span class="dynamic-date"></span></a>
+        </li>
+        <li class="done">
+            <a href="0type/4.html" target="_blank"><img src="img/5.png" alt="">done: <span class="dynamic-date"></span></a>
+        </li>
+        <li class="done">
+            <a href="0type/41.html" target="_blank"><img src="img/41.png" alt="">done: <span class="dynamic-date"></span></a>
+        </li>
+        <li class="done">
+            <a href="0type/5.html" target="_blank"><img src="img/6.png" alt="">done: <span class="dynamic-date"></span></a>
+        </li>
+        <li class="done">
+            <a href="1num/1.html" target="_blank"><img src="img/num.png" alt="">done: <span class="dynamic-date"></span></a>
+        </li>
+        <li class="done">
+            <a href="2str/1.html" target="_blank"><img src="img/str.png" alt="">done: <span class="dynamic-date"></span></a>
+        </li>
+        <li class="done">
+            <a href="3list/1.html" target="_blank"><img src="img/list.png" alt="">done: <span class="dynamic-date"></span></a>
+        </li>
+        <li class="done">
+            <a href="4dict/1.html" target="_blank"><img src="img/dict.png" alt="">done: <span class="dynamic-date"></span></a>
+        </li>
+        <li class="done">
+            <a href="5def/1.html" target="_blank"><img src="img/sobes.png" alt="">done: <span class="dynamic-date"></span></a>
+        </li>
+        <li class="done">
+            <a href="6math/1.html" target="_blank"><img src="img/math.png" alt="">done: <span class="dynamic-date"></span></a>
+        </li>
+        <li class="done">
+            <a href="7inf/1.html" target="_blank"><img src="img/inf.png" alt="">done: <span class="dynamic-date"></span></a>
+        </li>
+        <li class="done">
+            <a href="8hack/1.html" target="_blank"><img src="img/hack.png" alt="">done: <span class="dynamic-date"></span></a>
+        </li>
+        <li class="done">
+            <a href="9autotest/1.html" target="_blank"><img src="img/auto.png" alt="">done: <span class="dynamic-date"></span></a>
+        </li>
+    </ul>
 			</div>
 		</div>
 	</main>
@@ -627,4 +627,21 @@
 			}
 		});
 	</script>
+	<script>function updateDate() {
+    const today = new Date();
+    const day = String(today.getDate()).padStart(2, '0');
+    const month = String(today.getMonth() + 1).padStart(2, '0'); // Месяцы начинаются с 0
+    const year = today.getFullYear();
+
+    const formattedDate = `${day}.${month}.${year}`;
+    
+    // Получаем все элементы с классом "dynamic-date" и устанавливаем в них дату
+    const dateElements = document.querySelectorAll('.dynamic-date');
+    dateElements.forEach(element => {
+        element.textContent = formattedDate;
+    });
+}
+
+// Вызываем функцию обновления даты
+updateDate();</script>
 </body></html>
