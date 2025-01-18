@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>M</title>
+	<link rel="icon" type="image/x-icon" href="/img/favicon.png">
+	<link rel="stylesheet" href="../../style/style.css">
+	<link rel="stylesheet" href="../../style/win.css">
+</head>
+
+<body class="base">
+	<pre>
+import pyautogui
+import time
+
+# Задержка перед началом, чтобы вы успели подготовиться
+time.sleep(5)
+
+# Получаем текущие координаты мыши
+x, y = pyautogui.position()
+
+# Двигаем мышь влево и вправо 2 раза
+for _ in range(2):
+    pyautogui.moveTo(x - 100, y, duration=1)  # Двигаем влево
+    pyautogui.moveTo(x + 100, y, duration=1)  # Двигаем вправо 
+
+</pre>
+</body></html>
