@@ -45,10 +45,6 @@ h2 {
 	position: relative;
 }
 
-.done a {
-	box-shadow: 0 0 15px green;
-}
-
 #imageList {
 	list-style: none;
 	margin: 0;
