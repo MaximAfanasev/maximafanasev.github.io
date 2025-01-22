@@ -34,7 +34,6 @@
 	animation: five 10s infinite alternate;
 }
 
-
 @keyframes first {
 	0% {
 		transform: translateY(0);
