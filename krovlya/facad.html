@@ -1,82 +1,160 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Мобильный сайт</title>
-	<style>
-		body {
-			margin: 0;
-			padding: 0;
-			background-color: black;
-			color: white;
-			font-family: Arial, sans-serif;
-		}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мобильный сайт</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #121212; /* Темный фон */
+            color: white;
+            font-family: Arial, sans-serif;
+        }
 
-		.header {
-			display: flex;
-			justify-content: space-between;
-			padding: 10px;
-			background-color: #333;
-		}
+        .wrapper {
+            display: flex;
+            justify-content: space-between;
+            max-width: 350px;
+            margin: 0 auto;
+        }
 
-		.phone,
-		.telegram {
-			color: white;
-			text-decoration: none;
-		}
+        .header {
+            background-color: #1e1e1e;
+            padding: 20px;
+        }
 
-		.slider {
-			overflow: hidden;
-			position: relative;
-			height: 300px;
-		}
+        .phone,
+        .telegram {
+            color: white;
+            text-decoration: none;
+            font-size: 34px; /* Размер шрифта уменьшен для компактности */
+            line-height: 20px;
+        }
 
-		.slider img {
-			width: 320px;
-			height: auto;
-			display: none;
-			position: absolute;
-		}
+        .slider {
+            overflow: hidden;
+            position: relative;
+            height: 500px;
+            max-width: 350px;
+            margin: 20px auto; /* Уменьшен отступ сверху */
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Тень для слайдера */
+        }
 
-		.slider img.active {
-			display: block;
-		}
+        .slider img {
+            width: 350px;
+            height: auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
 
-		.services {
-			padding: 20px;
-		}
-	</style>
+        .slider img.active {
+            opacity: 1;
+        }
+
+        .services {
+            padding: 20px;
+            text-align: center; /* Центрирование текста раздела услуг */
+        }
+
+        /* Стили для таблицы */
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 90%; /* Ширина таблицы */
+            max-width: 600px; /* Максимальная ширина таблицы */
+            background-color: #1e1e2f; /* Цвет фона таблицы */
+            border-radius: 8px;
+            overflow: hidden; /* Скрыть округленные углы */
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ff5722; /* Оранжевая линия между строками */
+        }
+
+        th {
+            background-color: #ff5722; /* Оранжевый цвет заголовка таблицы */
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #2c2c2c; /* Цвет для четных строк */
+        }
+
+        tr:hover {
+            background-color: #3f3f3f; /* Цвет строки при наведении */
+        }
+    </style>
 </head>
 
 <body>
-	<header class="header">
-		<a href="tel:+789616845033" class="phone">89616845033</a>
-		<a href="https://t.me/maxim_afanasev" class="telegram" target="_blank">📱</a>
-	</header>
-	<div class="slider">
-		<img src="../img/krovlya/1.png" alt="Слайд 1">
-		<img src="../img/krovlya/2.png" alt="Слайд 2">
-		<img src="../img/krovlya/3.png" alt="Слайд 3">
-	</div>
-	<section class="services">
-		<h2>Прайс-лист</h2>
-		<p>Монтаж фасада из фасадных панелей - от 1 200 ₽ за м²</p>
-		<p>Утепление фасадов - от 350 ₽ за м²</p>
-		<p>Откосы - 1 500 ₽ за м²</p>
-		<p>Очистка фасадов - 200 ₽ за м²</p>
-		<p>Монтаж фасадов из винилового сайдинга - от 1 000 ₽ за м²</p>
-		<p>Монтаж гидроветрозащиты - от 50 ₽ за м²</p>
-	</section>
-	<script>
-		const slides = document.querySelectorAll('.slider img');
-		let currentSlide = 0;
-		slides[currentSlide].classList.add('active');
+    <header class="header">
+        <div class="wrapper">
+            <a href="tel:+789616845033" class="phone"><img src="../img/call.png" alt="" width="30"> 8 961 684 5033</a>
+            <a href="https://t.me/maxim_afanasev" class="telegram" target="_blank"><img src="../img/tg.png" alt="" width="30"></a>
+        </div>
+    </header>
+    <div class="slider">
+        <img src="../img/krovlya/1.png" alt="Слайд 1" class="active">
+        <img src="../img/krovlya/2.png" alt="Слайд 2">
+        <img src="../img/krovlya/3.png" alt="Слайд 3">
+    </div>
+    
+    <section class="services">
+        <h2>Прайс-лист</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Услуга</th>
+                    <th>Цена (₽ за м²)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Монтаж фасада из фасадных панелей</td>
+                    <td>от 1 200</td>
+                </tr>
+                <tr>
+                    <td>Утепление фасадов</td>
+                    <td>от 350</td>
+                </tr>
+                <tr>
+                    <td>Откосы</td>
+                    <td>1 500</td>
+                </tr>
+                <tr>
+                    <td>Очистка фасадов</td>
+                    <td>200</td>
+                </tr>
+                <tr>
+                    <td>Монтаж фасадов из винилового сайдинга</td>
+                    <td>от 1 000</td>
+                </tr>
+                <tr>
+                    <td>Монтаж гидроветрозащиты</td>
+                    <td>от 50</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    
+    <script>
+        const slides = document.querySelectorAll('.slider img');
+        let currentSlide = 0;
+        slides[currentSlide].classList.add('active');
 
-		setInterval(() => {
-			slides[currentSlide].classList.remove('active');
-			currentSlide = (currentSlide + 1) % slides.length;
-			slides[currentSlide].classList.add('active');
-		}, 2000);
-	</script>
-</body></html>
+        setInterval(() => {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }, 2000);
+    </script>
+</body>
+</html>
