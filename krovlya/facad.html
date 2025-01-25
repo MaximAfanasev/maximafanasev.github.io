@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Мобильный сайт</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: black;
+			color: white;
+			font-family: Arial, sans-serif;
+		}
+
+		.header {
+			display: flex;
+			justify-content: space-between;
+			padding: 10px;
+			background-color: #333;
+		}
+
+		.phone,
+		.telegram {
+			color: white;
+			text-decoration: none;
+		}
+
+		.slider {
+			overflow: hidden;
+			position: relative;
+			height: 300px;
+		}
+
+		.slider img {
+			width: 320px;
+			height: auto;
+			display: none;
+			position: absolute;
+		}
+
+		.slider img.active {
+			display: block;
+		}
+
+		.services {
+			padding: 20px;
+		}
+	</style>
+</head>
+
+<body>
+	<header class="header">
+		<a href="tel:+789616845033" class="phone">89616845033</a>
+		<a href="https://t.me/maxim_afanasev" class="telegram" target="_blank">📱</a>
+	</header>
+	<div class="slider">
+		<img src="../img/krovlya/1.png" alt="Слайд 1">
+		<img src="../img/krovlya/2.png" alt="Слайд 2">
+		<img src="../img/krovlya/3.png" alt="Слайд 3">
+	</div>
+	<section class="services">
+		<h2>Прайс-лист</h2>
+		<p>Монтаж фасада из фасадных панелей - от 1 200 ₽ за м²</p>
+		<p>Утепление фасадов - от 350 ₽ за м²</p>
+		<p>Откосы - 1 500 ₽ за м²</p>
+		<p>Очистка фасадов - 200 ₽ за м²</p>
+		<p>Монтаж фасадов из винилового сайдинга - от 1 000 ₽ за м²</p>
+		<p>Монтаж гидроветрозащиты - от 50 ₽ за м²</p>
+	</section>
+	<script>
+		const slides = document.querySelectorAll('.slider img');
+		let currentSlide = 0;
+		slides[currentSlide].classList.add('active');
+
+		setInterval(() => {
+			slides[currentSlide].classList.remove('active');
+			currentSlide = (currentSlide + 1) % slides.length;
+			slides[currentSlide].classList.add('active');
+		}, 2000);
+	</script>
+</body></html>
