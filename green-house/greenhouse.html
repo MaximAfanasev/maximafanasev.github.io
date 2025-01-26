@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Green House Ivanova Natalia</title>
+	<link rel="icon" type="image/x-icon" href="../img/greenhouse/favicon-32x32.png">
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #121212;
+			color: white;
+			font-family: Arial, sans-serif;
+		}
+
+		.wrapper {
+			display: flex;
+			justify-content: space-between;
+			max-width: 350px;
+			margin: 0 auto;
+		}
+
+		.header {
+			padding: 20px;
+		}
+		
+		h2 {
+			text-align: center;
+		}
+
+		.phone,
+		.telegram {
+			color: white;
+			text-decoration: none;
+			font-size: 34px;
+			line-height: 20px;
+		}
+
+		.slider {
+			overflow: hidden;
+			position: relative;
+			height: 400px;
+			max-width: 350px;
+			margin: 20px auto;
+			border-radius: 10px;
+			box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+		}
+
+		.slider img {
+			width: 350px;
+			height: auto;
+			position: absolute;
+			top: 0;
+			left: 0;
+			opacity: 0;
+			transition: opacity 1s ease-in-out;
+		}
+
+		.slider img.active {
+			opacity: 1;
+		}
+
+		.services {
+			padding: 20px;
+			text-align: center;
+		}
+
+		/* Стили для таблицы */
+		table {
+			margin: 20px auto;
+			border-collapse: collapse;
+			width: 90%;
+			max-width: 600px;
+			background-color: #1e1e2f;
+			border-radius: 8px;
+			overflow: hidden;
+		}
+
+		th,
+		td {
+			padding: 15px;
+			text-align: left;
+			border-bottom: 1px solid #ff5722;
+		}
+
+		th {
+			background-color: #ff5722;
+			color: white;
+		}
+
+		tr:nth-child(even) {
+			background-color: #2c2c2c;
+		}
+
+		tr:hover {
+			background-color: #3f3f3f;
+		}
+	</style>
+</head>
+
+<body>
+	<header class="header">
+		<div class="wrapper">
+			<a href="tel:+789033722272" class="phone"><img src="../img/call.png" alt="" width="30"> 8 903 372 22 72</a>
+			<a href="https://t.me/Ivanovanata83" class="telegram" target="_blank"><img src="../img/tg.png" alt="" width="30"></a>
+		</div>
+	</header>
+
+	<!-- Первый слайдер -->
+	<div class="slider" id="slider1">
+		<img src="../img/greenhouse/tyi/1.png" alt="Слайд 1" class="active">
+		<img src="../img/greenhouse/tyi/2.png" alt="Слайд 1">
+		<img src="../img/greenhouse/tyi/3.png" alt="Слайд 1">
+		<img src="../img/greenhouse/tyi/4.png" alt="Слайд 1">
+	</div>
+	
+	<h2>Туя смарагд 250₽</h2>
+
+	<div class="slider" id="slider2">
+		<img src="../img/greenhouse/biota/1.png" alt="Слайд 1" class="active">
+		<img src="../img/greenhouse/biota/2.png" alt="Слайд 1">
+	</div>
+	<h2>Туя Восточная 150₽</h2>
+
+	<div class="slider" id="slider3">
+		<img src="../img/greenhouse/golubika/1.png" alt="Слайд 1" class="active">
+		<img src="../img/greenhouse/golubika/2.png" alt="Слайд 1">
+		<img src="../img/greenhouse/golubika/3.png" alt="Слайд 1">
+		<img src="../img/greenhouse/golubika/4.png" alt="Слайд 1">
+	</div>
+	<h2>Ягоды Голубики 500₽ за кг</h2>
+
+	<div class="slider" id="slider4">
+		<img src="../img/greenhouse/kysti/1.png" alt="Слайд 1" class="active">
+		<img src="../img/greenhouse/kysti/2.png" alt="Слайд 1">
+		<img src="../img/greenhouse/kysti/3.png" alt="Слайд 1">
+		<img src="../img/greenhouse/kysti/4.png" alt="Слайд 1">
+	</div>
+	<h2>3х летние Саженцы 5000₽</h2>
+
+	<section class="services">
+		<table>
+			<thead>
+				<tr>
+					<th>Услуга</th>
+					<th>от</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Доставка по городу</td>
+					<td>1500₽</td>
+				</tr>
+		</table>
+	</section>
+
+	<script>
+		// Функция для переключения слайдов
+		function startSlider(sliderId) {
+			const slides = document.querySelectorAll(`#${sliderId} img`);
+			let currentSlide = 0;
+			slides[currentSlide].classList.add('active');
+
+			setInterval(() => {
+				slides[currentSlide].classList.remove('active');
+				currentSlide = (currentSlide + 1) % slides.length;
+				slides[currentSlide].classList.add('active');
+			}, 2000);
+		}
+
+		// Запускаем оба слайдера
+		startSlider('slider1');
+		startSlider('slider2');
+		startSlider('slider3');
+		startSlider('slider4');
+	</script>
+</body></html>
