@@ -10,7 +10,6 @@ body {
 	padding: 100px 20px;
 }
 
-
 @keyframes gradientAnimation {
 	0% {
 		background-position: 0% 50%;
