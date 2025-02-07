@@ -5,13 +5,38 @@ body {
 	line-height: 2rem;
 }
 
+* {
+	outline: 1px solid #333;
+}
+
+h1, h2 {
+	text-align: center
+}
+
 ul {
 	list-style: none;
 	margin: 0;
 	padding: 0;
 }
 
+li {
+	margin: 0 auto;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	justify-content: center;
+	align-content: center;
+	background: #000;
+	width: fit-content;
+	gap: 30px;
+	margin-bottom: 30px;
+}
+
 a {
 	color: #fff;
-	text-decoration: none;
+}
+
+img {
+	max-width: 300px;
+	margin: 0 auto;
 }
