@@ -1,0 +1,17 @@
+body {
+	background: #000;
+	color: #fff;
+	font-family: monospace;
+	line-height: 2rem;
+}
+
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	color: #fff;
+	text-decoration: none;
+}
