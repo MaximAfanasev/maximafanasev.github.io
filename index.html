@@ -1,42 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-	<meta charset="UTF-8">
-	<link rel="stylesheet" href="style.css">
-	<title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Анимация Треугольника</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #f0f0f0;
+            margin: 0;
+        }
+        
+        .triangle-container {
+            position: relative;
+            width: 0;
+            height: 0;
+            margin-left: 100px;
+        }
+
+        .line {
+            position: absolute;
+            width: 150px; /* длина стороны */
+            height: 5px; /* толщина линии */
+            background-color: #3498db;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .line1 {
+            animation: draw 1s forwards;
+        }
+
+        .line2 {
+            animation: draw 1s forwards 1s; /* задержка на 1 секунду */
+            transform: rotate(60deg);
+            transform-origin: left;
+        }
+
+        .line3 {
+            animation: draw 1s forwards 2s; /* задержка на 2 секунды */
+            transform: rotate(120deg) translate(-80px, -130px);
+            transform-origin: left;
+        }
+
+        @keyframes draw {
+            from {
+                width: 0;
+                opacity: 0;
+            }
+            to {
+                width: 150px; /* окончательная длина линии */
+                opacity: 1;
+            }
+        }
+
+    </style>
 </head>
-
 <body>
-	<h1>Разработка сайтов</h1>
-
-	<h2>Наши работы</h2>
-	<ul>
-		<li>
-			<img src="2.png" alt="">
-
-			<div class="descr">
-				<a href="https://greenhousevlz.ru/" target="_blank">greenhousevlz</a><br>
-				Сайт по продаже кустов голубики и туй
-			</div>
-		</li>
-
-
-		<li>
-			<img src="3.png" alt="">
-
-			<div class="descr">
-				<a href="http://teplovdomvlz.ru/" target="_blank">teplovdomvlz</a><br>
-				Сайт по утеплению домов и украшению фасадов
-			</div>
-
-		</li>
-		<li>
-			<img src="1.png" alt="">
-
-			<div class="descr">
-				<a href="http://www.learnandtest.ru/" target="_blank">learnandtest</a><br>
-				Сайт по разработке тестов для обучения
-			</div>
-		</li>
-	</ul>
-</body></html>
+    <div class="triangle-container">
+        <div class="line line1"></div>
+        <div class="line line2"></div>
+        <div class="line line3"></div>
+    </div>
+</body>
+</html>
