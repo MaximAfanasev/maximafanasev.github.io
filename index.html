@@ -10,7 +10,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: #f0f0f0;
+            background: #000;
             margin: 0;
         }
         
@@ -18,42 +18,71 @@
             position: relative;
             width: 0;
             height: 0;
-            margin-left: 100px;
         }
 
         .line {
             position: absolute;
             width: 150px; /* длина стороны */
             height: 5px; /* толщина линии */
-            background-color: #3498db;
+            background-color: #fff;
             opacity: 0;
             transition: opacity 0.5s ease;
+					color: #fff;
+					font-size: 40px;
         }
 
         .line1 {
-            animation: draw 1s forwards;
+            animation: draw1 1s forwards;
         }
 
         .line2 {
-            animation: draw 1s forwards 1s; /* задержка на 1 секунду */
-            transform: rotate(60deg);
+            animation: draw2 1s forwards 1s; /* задержка на 1 секунду */
+            transform: rotate(60deg) translate(-75px, -130px);
             transform-origin: left;
         }
 
         .line3 {
-            animation: draw 1s forwards 2s; /* задержка на 2 секунды */
-            transform: rotate(120deg) translate(-80px, -130px);
+            animation: draw3 1s forwards 2s; /* задержка на 2 секунды */
             transform-origin: left;
+            transform: rotate(-60deg);
         }
 
-        @keyframes draw {
+        @keyframes draw1 {
             from {
                 width: 0;
                 opacity: 0;
+							transform: translate(-100px);
             }
             to {
                 width: 150px; /* окончательная длина линии */
                 opacity: 1;
+							transform: translate(0);
+            }
+        }
+
+        @keyframes draw2 {
+            from {
+                width: 0;
+                opacity: 0;
+            transform: rotate(60deg) translate(-375px, -130px);
+            }
+            to {
+                width: 150px; /* окончательная длина линии */
+                opacity: 1;
+            transform: rotate(60deg) translate(-75px, -130px);
+            }
+        }
+
+        @keyframes draw3 {
+            from {
+                width: 0;
+                opacity: 0;
+            transform: rotate(60deg) translate(-375px, -130px);
+            }
+            to {
+                width: 150px; /* окончательная длина линии */
+                opacity: 1;
+            transform: rotate(-60deg);
             }
         }
 
