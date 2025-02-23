@@ -156,7 +156,7 @@
 <body>
 
 	<div class="timer-container">
-		<div id="timer">15</div>
+		<div id="timer">10</div>
 		<svg class="progress-ring" width="120" height="120">
 			<circle class="progress-ring__circle" stroke="blue" stroke-width="4" fill="transparent" r="52" cx="60" cy="60" />
 		</svg>
@@ -489,12 +489,12 @@
 
 		let currentQuestionIndex = 0;
 		let lives = 5; // Начальное количество жизней
-		let timeLeft = 15;
+		let timeLeft = 10;
 
 		const timerInterval = setInterval(() => {
 			const seconds = timeLeft % 60;
 			timerElement.textContent = String(seconds).padStart(2);
-			setProgress((timeLeft / 15) * 100);
+			setProgress((timeLeft / 10) * 100);
 
 			if (timeLeft > 0) {
 				timeLeft--;

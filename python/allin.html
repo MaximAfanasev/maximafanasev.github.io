@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+	<link rel="stylesheet" href="../style/win.css">
+	<link rel="stylesheet" href="../style/timer.css">
+	<title>1 Level</title>
+	<link rel="icon" type="image/x-icon" href="/img/logo.png">
+	<link rel="stylesheet" href="style/style.css">
+</head>
+
+<style>
+	body {
+		flex-direction: column;
+		height: auto;
+		overflow: auto;
+	}
+</style>
+
+<body>
+	<h2>Type</h2>
+	<ul>
+		<li>True</li>
+		<li>1</li>
+		<li>1.1</li>
+		<li>3j</li>
+		<li>'a'</li>
+		<li>[1,2]</li>
+		<li>(1,2)</li>
+		<li>(b'axb')</li>
+		<li>bytearray</li>
+		<li>set</li>
+		<li>frozenset</li>
+		<li>dict</li>
+	</ul>
+	
+	<h2>12 букв</h2>
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+		<li>6</li>
+		<li>7</li>
+		<li>8</li>
+		<li>9</li>
+		<li>10</li>
+		<li>11</li>
+		<li>12</li>
+	</ul>
+	
+	<h2>12 типов</h2>
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+		<li>6</li>
+		<li>7</li>
+		<li>8</li>
+		<li>9</li>
+		<li>10</li>
+		<li>11</li>
+		<li>12</li>
+	</ul>
+	
+	<h2>4 БУКВЫ изменяемых и 8 БУКВ не изменяемых </h2>
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+		<li>6</li>
+		<li>7</li>
+		<li>8</li>
+	</ul>
+	
+	<h2>4 изменяемых и 8 не изменяемых </h2>
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+		<li>6</li>
+		<li>7</li>
+		<li>8</li>
+	</ul>
+	
+	<h2>4исла</h2>
+	<pre>
+a = 1 + \ 
+2 
+ 
+a = (1 + 
+2) 
+ 
+a = 5 a == 7 
+ 
+5 &#60; 5 and 5 &#60; 10 
+ 
+a = 'aoiu'; 'a' in a 
+
+bool(True)
+
+bool(1)
+
+bool(45)
+
+bool(-45)
+
+bool(False)
+
+bool(0)
+
+bool(0.0)
+
+2 * 4
+
+7 / 2
+
+9 // 5
+
+7 % 3
+
+2 ** 3
+
+chr(65)
+
+ord('A')
+
+int(True)
+
+int(False)
+
+int(98.6)
+
+int('99')
+
+int('10', 2)
+	</pre>
+	
+	<div>
+	ответы
+3
+3
+False
+False
+True
+True
+True
+True
+True
+False
+False
+False
+8
+3.5
+1
+1
+8
+A
+65
+0
+98
+99
+2
+	</div>
+	
+	<h2>'Строки'</h2>
+	
+	<pre>
+3 types
+
+98.6
+'98.6'
+
+'a' 'b'
+'ab'
+
+'a'
+'aaaa'
+
+'ab'
+'a'
+
+'abc'
+'abc'
+
+'abc'
+'bc'
+
+'abc'
+'bc' use -
+
+'abcdefj'
+'acej'
+
+'abc'
+3
+
+['a','b']
+'ab'
+
+['a','b']
+'a,b'
+
+'ab'
+'cb'
+
+'  abc  '
+'abc'
+
+'a'
+start with 'a'
+
+'a'
+end with 'a'
+
+'a'
+' a '
+
+'a'
+'a  '
+
+'a'
+'  a'
+
+%s % 42
+42
+
+'{}'.format('str')
+str
+
+a='b' 
+f'{a}'
+</pre>
+
+<div>Ответы 
+' \" '''
+str(98.6)
+'a'+'b'
+'a'*4
+'ab'[0]
+'abc'[:]
+'abc'[1:]
+'abc'[-2:]
+'abcdefj'[::2]
+len('abc')
+''.join(['a','b'])
+','.join(['a','b'])
+'ab'.replace('a','c')
+' abc '.strip()
+'a'.startswith('a')
+'a'.endswith('a')
+'a'.center(3)
+'a'.ljust(2)
+'a'.rjust(2)
+'b'
+</div>
+
+<h2>[Arr]</h2>
+	<pre>
+a = []
+
+a = [] (l)
+
+'abc'
+['a',' 'b', 'c'] (l)
+
+'a,b,c'
+['a', 'b', 'c']
+
+[1,2,3]
+1 ([])
+
+[1,2,3]
+[1,2,3,4] (a)
+
+[1]
+[1,1,1]
+
+[1] [2]
+[1, 2]
+
+[1,2,3,4]
+[1,5,6,4]
+
+[1,2,3]
+[1,3] (r)
+
+[1,2,3]
+3 (p)
+
+[1,2,3]
+[]
+
+[1,2]
+2 = 1 (i)
+
+1 in [1,2]
+True
+
+[1,1,1]
+3 (c)
+
+[3,2,1]
+[1,2,3]
+
+[1,2,3] [4,5,6]
+(1,4) (2,5) (3,6)
+</pre>
+
+<div>
+	Ответы
+	
+a = []
+a = list()
+list('abc')
+'a,b,c'.split(',')
+[1,2,3][0]
+[1,2,3].append(4)
+[1]*3
+[1]+[2]
+[1,2,3,4][1:3]=[5,6]
+[1,2,3].remove(2)
+[1,2,3].pop()
+[1,2,3].clear()
+[1,2].index(2)
+if 1 in [1,2]
+[1,1,1].count(1)
+[3,2,1].sort()
+for _ in zip([1,2,3],[4,5,6])
+</div>
+
+
+	<pre>
+empty dict
+
+a = {'a':1,'b':2}
+1
+
+a = {'a':1,'b':2}
+1 (g)
+
+a = {'a':1,'b':2}
+1 (p)
+
+a = [['a',1],['b',2]]
+{'a': 1, 'b': 2}
+
+a = {'a':1,'b':2}
+dict_keys(['a', 'b'])
+
+a = {'a':1,'b':2}
+dict_values([1, 2])
+
+a = {'a':1,'b':2}
+dict_items([('a', 1), ('b', 2)])
+
+a = {'a':1,'b':2}
+2
+
+"a = {'a':1,'b':2} b = {'c':3,'d':4}
+{'a': 1, 'b': 2, 'c': 3, 'd': 4}
+
+a = {'c':3,'d':4}
+b = {'a':1,'b':2}
+{'c': 3, 'd': 4, 'a': 1, 'b': 2}
+
+a = {'a':1,'b':2}
+{'b': 2}
+
+a = {'a':1,'b':2}
+{}
+
+a = {'a':1,'b':2}
+True
+
+a2 = a
+</pre>
+
+<div>Ответы
+
+{}
+a['a']
+a.get('a')
+a.pop('a')
+dict(a)
+a.keys()
+a.values()
+a.items()
+len(a)
+{**a,**b}
+a.update(b)
+del a['a']
+a.clear()
+'a' in a
+a2.copy()
+</div>
+</body></html>
