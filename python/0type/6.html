@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M</title>
+    <link rel="icon" type="image/x-icon" href="/img/favicon.png">
+    <link rel="stylesheet" href="../style/style.css">
+	<link rel="stylesheet" href="../style/win.css">
+</head>
+
+<style>
+    #input-container {
+        max-width: 500px;
+    }
+
+    input[type="text"] {
+        width: 30px;
+        height: 30px;
+        font-size: 24px;
+        text-align: center;
+        margin: 5px;
+        border: none;
+        border-radius: 10px;
+        outline: none;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+</style>
+
+<body>
+    <div id="game-container" style="display: block">
+        <h2>12 types *** * * ** * * * **</h2>
+        <div id="input-container">
+            <!-- Создаем 12 полей ввода -->
+            <input type="text" maxlength="1" class="letter-input" />
+            <input type="text" maxlength="1" class="letter-input" />
+            <input type="text" maxlength="1" class="letter-input" />
+            <input type="text" maxlength="1" class="letter-input" />
+            <input type="text" maxlength="1" class="letter-input" />
+            <input type="text" maxlength="1" class="letter-input" />
+            <input type="text" maxlength="1" class="letter-input" />
+            <input type="text" maxlength="1" class="letter-input" />
+            <input type="text" maxlength="1" class="letter-input" />
+            <input type="text" maxlength="1" class="letter-input" />
+            <input type="text" maxlength="1" class="letter-input" />
+            <input type="text" maxlength="1" class="letter-input" />
+        </div>
+        <p id="result"></p>
+    </div>
+
+    <div class="message" id="finalMessage" style="display:none;">
+        <div class="container">
+            <img src="../../img/trophy.png" class="first" alt="">
+            <img src="../../img/trophy2.png" class="second" alt="">
+            <img src="../../img/trophy3.png" class="three" alt="">
+            <img src="../../img/trophy4.png" class="four" alt="">
+            <img src="../../img/trophy5.png" class="five" alt="">
+        </div>
+    </div>
+
+    <script>
+        const correctSequence = "bbbcdffiltss"; // Правильная последовательность символов
+
+        // Функция для автоматического перехода на следующее поле ввода
+        const letterInputs = document.querySelectorAll('.letter-input');
+        letterInputs.forEach((input, index) => {
+            input.addEventListener('input', function() {
+                // Проверяем, есть ли введенный символ
+                if (this.value.length === 1) {
+                    // Переходим к следующему полю
+                    if (index < letterInputs.length - 1) {
+                        letterInputs[index + 1].focus();
+                    } else {
+                        // Проверка после ввода последней буквы
+                        checkInput();
+                    }
+                } else {
+                    // Если пользователем удален символ, фокусируемся на текущем поле
+                    this.focus();
+                }
+            });
+        });
+
+        function checkInput() {
+            let userInput = '';
+            letterInputs.forEach(input => userInput += input.value.trim());
+
+            // Проверяем, совпадают ли введенные символы с правильной последовательностью
+            if (userInput.length === 12 && userInput === correctSequence) {
+                document.getElementById('game-container').style.display = "none";
+                document.getElementById("finalMessage").style.display = "block";
+            } else {
+                document.getElementById('result').textContent = 'Попробуйте снова!'; // Сообщение об ошибке
+            }
+        }
+    </script>
+</body>
+
+</html>

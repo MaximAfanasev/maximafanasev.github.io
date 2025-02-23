@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+	<title>Тесты</title>
+	<link rel="icon" type="image/x-icon" href="/img/logo.png">
+	<link rel="stylesheet" href="style/index.css">
+	<style>
+		/* Стили для успешного прохождения */
+		/* Стили для кнопки сброса прогресса */
+		.reset-button {
+			margin-top: 20px;
+			padding: 10px 20px;
+			font-size: 16px;
+			background-color: #f44336;
+			color: white;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+
+		.reset-button:hover {
+			background-color: #d32f2f;
+		}
+
+		.reset-button:disabled {
+			background-color: #ccc;
+			cursor: not-allowed;
+		}
+
+		/* Стили для инпутов */
+		.password-inputs {
+			display: flex;
+			gap: 10px;
+			margin-top: 20px;
+		}
+
+		.password-inputs input {
+			width: 40px;
+			height: 40px;
+			text-align: center;
+			font-size: 18px;
+			border: 2px solid #ccc;
+			border-radius: 5px;
+		}
+
+		.password-inputs input:focus {
+			border-color: #f44336;
+			outline: none;
+		}
+
+		input::placeholder {
+			color: #ddd;
+		}
+	</style>
+</head>
+
+<body>
+	<main>
+		<h2>Типы</h2>
+		<ul>
+			<li id="test1">
+				<a href="0type/1.html">1</a>
+			</li>
+			<li id="test2">
+				<a href="0type/2.html">2</a>
+			</li>
+			<li>
+				<a href="0type/3.html">3</a>
+			</li>
+			<li>
+				<a href="0type/6.html">4</a>
+			</li>
+			<li>
+				<a href="0type/5.html">5</a>
+			</li>
+		</ul>
+
+		<h2>Изменяемость</h2>
+		<ul>
+			<li>
+				<a href="0type/4.html">1</a>
+			</li>
+			<li>
+				<a href="1type/2.html">2</a>
+			</li>
+			<li>
+				<a href="1type/1.html">3</a>
+			</li>
+			<li>
+				<a href="1type/3.html">4</a>
+			</li>
+		</ul>
+
+		<h2>4исла</h2>
+		<ul>
+			<li>
+				<a href="1num/1.html">1</a>
+			</li>
+		</ul>
+
+		<h2>'Строки'</h2>
+		<ul>
+			<li>
+				<a href="2str/1.html">1</a>
+			</li>
+		</ul>
+
+		<h2>[Массивы]</h2>
+		<ul>
+			<li>
+				<a href="3list/1.html">1</a>
+			</li>
+		</ul>
+
+		<h2>{Словари}</h2>
+		<ul>
+			<li>
+				<a href="4dict/1.html">1</a>
+			</li>
+		</ul>
+
+		<!-- Контейнер для инпутов пароля -->
+		<div class="password-inputs">
+			<input type="text" maxlength="1" id="input1" placeholder="1">
+			<input type="text" maxlength="1" id="input2" placeholder="2">
+			<input type="text" maxlength="1" id="input3" placeholder="3">
+			<input type="text" maxlength="1" id="input4" placeholder="4">
+		</div>
+
+		<!-- Кнопка сброса прогресса -->
+		<button class="reset-button" onclick="resetProgress()" disabled>Сбросить прогресс</button>
+	</main>
+	<script>
+		// Проверяем, пройден ли тест 1
+		if (localStorage.getItem('test_1_done') === 'true') {
+			const test1Link = document.getElementById('test1');
+			if (test1Link) {
+				test1Link.classList.add('done');
+				test1Link.classList.remove('lose');
+			}
+		}
+
+		// Проверяем, проиграли ли тест 1
+		if (localStorage.getItem('test_1_lose') === 'true') {
+			const test1Link = document.getElementById('test1');
+			if (test1Link) {
+				test1Link.classList.add('lose');
+				test1Link.classList.remove('done');
+			}
+		}
+
+		// Проверяем, пройден ли тест 2
+		if (localStorage.getItem('test2_done') === 'true') {
+			const test2Link = document.getElementById('test2');
+			if (test2Link) {
+				test2Link.classList.add('done');
+				test2Link.classList.remove('lose');
+			}
+		}
+
+		// Проверяем, проиграли ли тест 2
+		if (localStorage.getItem('test2_lose') === 'true') {
+			const test2Link = document.getElementById('test2');
+			if (test2Link) {
+				test2Link.classList.add('lose');
+				test2Link.classList.remove('done');
+			}
+		}
+
+		// Функция для сброса прогресса (успешное прохождение и проигрыш)
+		function resetProgress() {
+			localStorage.removeItem('test_1_done'); // Удаляем запись о успешном прохождении
+			localStorage.removeItem('test_1_lose'); // Удаляем запись о проигрыше
+			localStorage.removeItem('test2_done'); // Удаляем запись о успешном прохождении
+			localStorage.removeItem('test2_lose'); // Удаляем запись о проигрыше
+			window.location.reload(); // Перезагружаем страницу
+		}
+
+		// Логика для инпутов пароля
+		const inputs = document.querySelectorAll('.password-inputs input');
+		const resetButton = document.querySelector('.reset-button');
+
+		inputs.forEach((input, index) => {
+			input.addEventListener('input', (e) => {
+				if (e.target.value.length === 1) {
+					if (index < inputs.length - 1) {
+						inputs[index + 1].focus(); // Переключаемся на следующий инпут
+					}
+				}
+
+				// Проверяем, все ли инпуты заполнены
+				const password = Array.from(inputs).map(input => input.value).join('');
+				if (password === '1234') {
+					resetButton.disabled = false; // Активируем кнопку
+				} else {
+					resetButton.disabled = true; // Деактивируем кнопку
+				}
+			});
+
+			input.addEventListener('keydown', (e) => {
+				if (e.key === 'Backspace' && index > 0 && !e.target.value) {
+					inputs[index - 1].focus(); // Переключаемся на предыдущий инпут
+				}
+			});
+		});
+	</script>
+</body></html>

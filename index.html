@@ -1,98 +1,59 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Анимация Треугольника</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: #000;
-            margin: 0;
-        }
-        
-        .triangle-container {
-            position: relative;
-            width: 0;
-            height: 0;
-        }
-
-        .line {
-            position: absolute;
-            width: 150px; /* длина стороны */
-            height: 5px; /* толщина линии */
-            background-color: #fff;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-					color: #fff;
-					font-size: 40px;
-        }
-
-        .line1 {
-            animation: draw1 1s forwards;
-        }
-
-        .line2 {
-            animation: draw2 1s forwards 1s; /* задержка на 1 секунду */
-            transform: rotate(60deg) translate(-75px, -130px);
-            transform-origin: left;
-        }
-
-        .line3 {
-            animation: draw3 1s forwards 2s; /* задержка на 2 секунды */
-            transform-origin: left;
-            transform: rotate(-60deg);
-        }
-
-        @keyframes draw1 {
-            from {
-                width: 0;
-                opacity: 0;
-							transform: translate(-100px);
-            }
-            to {
-                width: 150px; /* окончательная длина линии */
-                opacity: 1;
-							transform: translate(0);
-            }
-        }
-
-        @keyframes draw2 {
-            from {
-                width: 0;
-                opacity: 0;
-            transform: rotate(60deg) translate(-375px, -130px);
-            }
-            to {
-                width: 150px; /* окончательная длина линии */
-                opacity: 1;
-            transform: rotate(60deg) translate(-75px, -130px);
-            }
-        }
-
-        @keyframes draw3 {
-            from {
-                width: 0;
-                opacity: 0;
-            transform: rotate(60deg) translate(-375px, -130px);
-            }
-            to {
-                width: 150px; /* окончательная длина линии */
-                opacity: 1;
-            transform: rotate(-60deg);
-            }
-        }
-
-    </style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+	<title>Языки программирования за 20 минут</title>
+	<link rel="icon" type="image/x-icon" href="/img/logo.png">
+	<link rel="stylesheet" href="style/index.css">
 </head>
+
 <body>
-    <div class="triangle-container">
-        <div class="line line1"></div>
-        <div class="line line2"></div>
-        <div class="line line3"></div>
-    </div>
-</body>
-</html>
+	<main>
+		<h1>Python, Javascript 20 минут в день</h1>
+
+		<div class="wrap">
+			<a href="python/index.html">Python</a>
+			<a href="javascript/index.html">Javascript</a>
+		</div>
+
+		<h1>Таблица лидеров</h1>
+		<table class="leaderboard">
+			<thead>
+				<tr>
+					<th>Имя</th>
+					<th class="date">Дата прохождения</th>
+					<th class="tests">Количество тестов (из 13)</th>
+					<th class="tests">%</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><span class="gold">admin</span></td>
+					<td class="date"><span class="gold">15.02.2025</span></td>
+					<td class="tests"><span class="gold">10</span></td>
+					<td class="tests"><span class="gold">76%</span></td>
+				</tr>
+				<tr>
+					<td>anonimus</td>
+					<td class="date">15.02.2025</td>
+					<td class="tests">13</td>
+					<td class="tests">100%</td>
+				</tr>
+				<tr>
+					<td><span class="gold">admin</span></td>
+					<td class="date"><span class="gold">16.02.2025</span></td>
+					<td class="tests"><span class="gold">3</span></td>
+					<td class="tests"><span class="gold">23%</span></td>
+				</tr>
+				<tr>
+					<td>anonimus</td>
+					<td class="date">16.02.2025</td>
+					<td class="tests">13</td>
+					<td class="tests">100%</td>
+				</tr>
+			</tbody>
+		</table>
+	</main>
+</body></html>
