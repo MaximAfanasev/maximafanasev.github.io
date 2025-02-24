@@ -112,3 +112,58 @@ main {
 	border-radius: 30px;
 	cursor: pointer;
 }
+
+.reset-button {
+	margin-top: 20px;
+	padding: 10px 20px;
+	font-size: 16px;
+	background-color: #f44336;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.reset-button:hover {
+	background-color: #d32f2f;
+}
+
+.reset-button:disabled {
+	background-color: #ccc;
+	cursor: not-allowed;
+}
+
+/* Стили для инпутов */
+.password-inputs {
+	display: flex;
+	gap: 10px;
+	margin-top: 20px;
+}
+
+.password-inputs input {
+	width: 40px;
+	height: 40px;
+	text-align: center;
+	font-size: 18px;
+	border: 2px solid #ccc;
+	border-radius: 5px;
+}
+
+.password-inputs input:focus {
+	border-color: #f44336;
+	outline: none;
+}
+
+input::placeholder {
+	color: #ddd;
+}
+
+input {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	margin-right: 3px;
+	text-align: center;
+	border: 2px solid #ccc;
+	border-radius: 4px;
+}

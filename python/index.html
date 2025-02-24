@@ -7,81 +7,35 @@
 	<title>Тесты</title>
 	<link rel="icon" type="image/x-icon" href="/img/logo.png">
 	<link rel="stylesheet" href="style/index.css">
-	<style>
-		/* Стили для успешного прохождения */
-		/* Стили для кнопки сброса прогресса */
-		.reset-button {
-			margin-top: 20px;
-			padding: 10px 20px;
-			font-size: 16px;
-			background-color: #f44336;
-			color: white;
-			border: none;
-			border-radius: 5px;
-			cursor: pointer;
-		}
-
-		.reset-button:hover {
-			background-color: #d32f2f;
-		}
-
-		.reset-button:disabled {
-			background-color: #ccc;
-			cursor: not-allowed;
-		}
-
-		/* Стили для инпутов */
-		.password-inputs {
-			display: flex;
-			gap: 10px;
-			margin-top: 20px;
-		}
-
-		.password-inputs input {
-			width: 40px;
-			height: 40px;
-			text-align: center;
-			font-size: 18px;
-			border: 2px solid #ccc;
-			border-radius: 5px;
-		}
-
-		.password-inputs input:focus {
-			border-color: #f44336;
-			outline: none;
-		}
-
-		input::placeholder {
-			color: #ddd;
-		}
-	</style>
 </head>
 
 <body>
 	<main>
-		<h2>Типы</h2>
 		<ul>
 			<li>
-				<a href="0type/6.html">1</a>
+				<a href="0type/1.html"><input type="text"><input type="text"><input type="text"></a>
 			</li>
 			<li id="test1">
-				<a href="0type/1.html">2 🃏</a>
+				<a href="0type/2.html">🃏</a>
 			</li>
 			<li id="test2">
-				<a href="0type/2.html">3</a>
+				<a href="0type/3.html">💗 
+		</a>
 			</li>
 			<li>
-				<a href="0type/3.html">4</a>
+				<a href="0type/4.html">4</a>
 			</li>
 			<li>
 				<a href="0type/5.html">5</a>
 			</li>
+			<li>
+				<a href="0type/6.html">6</a>
+			</li>
 		</ul>
 
-		<h2>Изменяемость</h2>
 		<ul>
 			<li>
-				<a href="0type/4.html">1</a>
+				<a href="1type/4.html">1</a>
 			</li>
 			<li>
 				<a href="1type/2.html">2</a>
@@ -94,31 +48,29 @@
 			</li>
 		</ul>
 
-		<h2>4исла</h2>
+		
 		<ul>
 			<li>
-				<a href="1num/1.html">1</a>
+				<a href="1num/1.html">4исла</a>
 			</li>
 		</ul>
 
-		<h2>'Строки'</h2>
 		<ul>
 			<li>
-				<a href="2str/1.html">1</a>
+				<a href="2str/1.html">'Строки'</a>
 			</li>
 		</ul>
 
-		<h2>[Массивы]</h2>
+		<h2></h2>
 		<ul>
 			<li>
-				<a href="3list/1.html">1</a>
+				<a href="3list/1.html">[Массивы]</a>
 			</li>
 		</ul>
 
-		<h2>{Словари}</h2>
 		<ul>
 			<li>
-				<a href="4dict/1.html">1</a>
+				<a href="4dict/1.html">{Словари}</a>
 			</li>
 		</ul>
 
@@ -156,8 +108,8 @@
 		if (localStorage.getItem('test2_done') === 'true') {
 			const test2Link = document.getElementById('test2');
 			if (test2Link) {
-				test2Link.classList.add('done');
 				test2Link.classList.remove('lose');
+				test2Link.classList.add('done');
 			}
 		}
 
@@ -165,8 +117,8 @@
 		if (localStorage.getItem('test2_lose') === 'true') {
 			const test2Link = document.getElementById('test2');
 			if (test2Link) {
-				test2Link.classList.add('lose');
 				test2Link.classList.remove('done');
+				test2Link.classList.add('lose');
 			}
 		}
 

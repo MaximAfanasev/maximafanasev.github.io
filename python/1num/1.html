@@ -11,6 +11,40 @@
 
 <body class="base">
 	<pre>
+a = 7
+print(a)
+7
+
+b = a
+print(b)
+7
+
+a z A Z 0 9 _
+
++
+-
+*
+/
+//
+%
+**
+
+7/2 3.5
+7//2 3
+9 // 5 1
+7%3 1
+9%5 4
+2**3 8
+
+05 Error
+
+123 123
++123 123
+5+9 14
+5/0 Error
+
+
+
 a = 1 + \ 
 2 
 3
@@ -24,69 +58,32 @@ False
  
 5 &#60; 5 and 5 &#60; 10 
 False
- 
-a = 'aoiu'; 'a' in a 
-True
 
-bool(True)
-True
 
-bool(1)
-True
+bool(True) True
+bool(1) True
+bool(45) True
+bool(-45) True
+bool(False) False
+bool(0) False
+bool(0.0) False
 
-bool(45)
-True
 
-bool(-45)
-True
+chr(65) A
+ord('A') 65
 
-bool(False)
-False
 
-bool(0)
-False
+int(True) 1
+int(False) 0
+int(98.6) 98
+int('99') 99
+int('10', 2) 2
 
-bool(0.0)
-False
+float(True) 1.0
 
-2 * 4
-8
-
-7 / 2
-3.5
-
-9 // 5
-1
-
-7 % 3
-1
-
-2 ** 3
-8
-
-chr(65)
-A
-
-ord('A')
-65
-
-int(True)
-1
-
-int(False)
-0
-
-int(98.6)
-98
-
-int('99')
-99
-
-int('10', 2)
-2
 </pre>
 
-	<button id="start-button">Start</button>
+	<button id="start-button" hidden>Start</button>
 	<div id="game-container">
 		<div id="question"></div>
 		<input type="text" id="answer" placeholder="">
