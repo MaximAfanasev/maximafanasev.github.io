@@ -12,13 +12,13 @@
 <body>
 	<main>
 		<ul>
-			<li>
+			<li id="test1">
 				<a href="0type/1.html"><input type="text">&nbsp;<input type="text">&nbsp;<input type="text"></a>
 			</li>
-			<li id="test1">
+			<li id="test2">
 				<a href="0type/2.html">🃏</a>
 			</li>
-			<li id="test2">
+			<li  id="test3">
 				<a href="0type/3.html">💗 
 		</a>
 			</li>
@@ -68,39 +68,27 @@
 			const test1Link = document.getElementById('test1');
 			if (test1Link) {
 				test1Link.classList.add('done');
-				test1Link.classList.remove('lose');
 			}
 		}
 
-		if (localStorage.getItem('test_1_lose') === 'true') {
-			const test1Link = document.getElementById('test1');
-			if (test1Link) {
-				test1Link.classList.add('lose');
-				test1Link.classList.remove('done');
-			}
-		}
-
-		if (localStorage.getItem('test2_done') === 'true') {
+		if (localStorage.getItem('test_2_done') === 'true') {
 			const test2Link = document.getElementById('test2');
 			if (test2Link) {
-				test2Link.classList.remove('lose');
 				test2Link.classList.add('done');
 			}
 		}
 
-		if (localStorage.getItem('test2_lose') === 'true') {
-			const test2Link = document.getElementById('test2');
+		if (localStorage.getItem('test_3_done') === 'true') {
+			const test2Link = document.getElementById('test3');
 			if (test2Link) {
-				test2Link.classList.remove('done');
-				test2Link.classList.add('lose');
+				test2Link.classList.add('done');
 			}
 		}
 
 		function resetProgress() {
 			localStorage.removeItem('test_1_done');
-			localStorage.removeItem('test_1_lose');
-			localStorage.removeItem('test2_done');
-			localStorage.removeItem('test2_lose');
+			localStorage.removeItem('test_2_done');
+			localStorage.removeItem('test_3_done');
 			window.location.reload();
 		}
 

@@ -486,7 +486,7 @@
 		];
 
 		let currentQuestionIndex = 0;
-		let lives = 3; // Начальное количество жизней
+		let lives = 3;
 		let timeLeft = 10;
 
 		const timerInterval = setInterval(() => {
@@ -498,10 +498,8 @@
 				timeLeft--;
 			} else {
 				clearInterval(timerInterval);
-				// Вызов функции failTest() или другого действия по завершении таймера
 
-				localStorage.setItem('test2_lose', 'true'); // Добавляем запись в localStorage
-				localStorage.removeItem('test2_done', 'true'); // Добавляем запись в 
+				localStorage.removeItem('test_3_done', 'true'); // Добавляем запись в 
 				window.location.href = "../index.html";
 			}
 		}, 1000);
@@ -542,16 +540,14 @@
 						document.getElementById(`question${questionIndex + 1}`).style.display = "none";
 						currentQuestionIndex++;
 						displayQuestion(currentQuestionIndex);
-					}, 300); // Задержка 0.3 секунды перед показом следующего вопроса
+					}, 300);
 				} else {
-					// Показать поздравления
 					document.getElementById("quiz-container").style.display = "none";
 					document.querySelector(".progress-container").style.display = "none";
 					document.getElementById("finalMessage").style.display = "block";
 					document.getElementById('lives').style.display = 'none';
 					document.querySelector('.timer-container').style.display = 'none'
-					localStorage.setItem('test2_done', 'true'); // Добавляем запись в localStorage
-					localStorage.removeItem('test2_lose', 'true'); // Добавляем запись в localStorage
+					localStorage.setItem('test_3_done', 'true');
 					setTimeout(() => {
 						window.location.href = "../index.html";
 					}, 5000); // Задержка 5 секунд перед показом поздравления
@@ -573,8 +569,6 @@
 			// Если жизни закончились
 			if (lives === 0) {
 				timerElement.style.display = 'none';
-				localStorage.setItem('test2_lose', 'true'); // Добавляем запись в localStorage
-				localStorage.removeItem('test2_done', 'true'); // Добавляем запись в localStorage
 				setTimeout(() => {
 					window.location.href = "../index.html"; // Редирект на главную страницу
 				}, 1000); // Задержка 1 секунда перед редиректом

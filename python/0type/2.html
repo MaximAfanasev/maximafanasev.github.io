@@ -491,8 +491,7 @@
 			finalMessage.style.display = 'block';
 
 			// Сохраняем в localStorage, что тест пройден
-			localStorage.setItem('test_1_done', 'true');
-			localStorage.removeItem('test_1_lose', 'true');
+			localStorage.setItem('test_2_done', 'true');
 			document.querySelector('.timer-container').style.display = 'none'
 
 			setTimeout(() => {
@@ -509,8 +508,7 @@
 			loseMessage.style.display = 'block';
 			timerElement.style.display = 'none';
 			document.querySelector('.b-w').style.display = 'none'
-			localStorage.setItem('test_1_lose', 'true');
-			localStorage.removeItem('test_1_done', 'true');
+			localStorage.removeItem('test_2_done', 'true');
 
 			setTimeout(() => {
 				window.location.href = "../index.html";
