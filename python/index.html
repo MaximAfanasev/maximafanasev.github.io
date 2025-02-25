@@ -13,7 +13,7 @@
 	<main>
 		<ul>
 			<li>
-				<a href="0type/1.html"><input type="text"><input type="text"><input type="text"></a>
+				<a href="0type/1.html"><input type="text">&nbsp;<input type="text">&nbsp;<input type="text"></a>
 			</li>
 			<li id="test1">
 				<a href="0type/2.html">🃏</a>
@@ -23,58 +23,40 @@
 		</a>
 			</li>
 			<li>
-				<a href="0type/4.html">4</a>
+				<a href="0type/4.html">🟥 🟥 🟥 🟥</a>
 			</li>
 			<li>
-				<a href="0type/5.html">5</a>
-			</li>
-			<li>
-				<a href="0type/6.html">6</a>
+				<a href="0type/5.html">🧌</a>
 			</li>
 		</ul>
 
 		<ul>
 			<li>
-				<a href="1type/4.html">1</a>
+				<a href="1type/4.html">🫳🏻</a>
 			</li>
 			<li>
-				<a href="1type/2.html">2</a>
+				<a href="1type/2.html">🆕</a>
 			</li>
 			<li>
-				<a href="1type/1.html">3</a>
+				<a href="1type/1.html">‼️</a>
 			</li>
 			<li>
-				<a href="1type/3.html">4</a>
+				<a href="1type/3.html">⁉️</a>
+			</li>
+			<li>
+				<a href="1num/1.html">🔢</a>
+			</li>
+			<li>
+				<a href="2str/1.html">📶</a>
+			</li>
+			<li>
+				<a href="3list/1.html">📁</a>
+			</li>
+			<li>
+				<a href="4dict/1.html">🗄</a>
 			</li>
 		</ul>
 
-		
-		<ul>
-			<li>
-				<a href="1num/1.html">4исла</a>
-			</li>
-		</ul>
-
-		<ul>
-			<li>
-				<a href="2str/1.html">'Строки'</a>
-			</li>
-		</ul>
-
-		<h2></h2>
-		<ul>
-			<li>
-				<a href="3list/1.html">[Массивы]</a>
-			</li>
-		</ul>
-
-		<ul>
-			<li>
-				<a href="4dict/1.html">{Словари}</a>
-			</li>
-		</ul>
-
-		<!-- Контейнер для инпутов пароля -->
 		<div class="password-inputs">
 			<input type="text" maxlength="1" id="input1" placeholder="1">
 			<input type="text" maxlength="1" id="input2" placeholder="2">
@@ -82,11 +64,9 @@
 			<input type="text" maxlength="1" id="input4" placeholder="4">
 		</div>
 
-		<!-- Кнопка сброса прогресса -->
 		<button class="reset-button" onclick="resetProgress()" disabled>Сбросить прогресс</button>
 	</main>
 	<script>
-		// Проверяем, пройден ли тест 1
 		if (localStorage.getItem('test_1_done') === 'true') {
 			const test1Link = document.getElementById('test1');
 			if (test1Link) {
@@ -95,7 +75,6 @@
 			}
 		}
 
-		// Проверяем, проиграли ли тест 1
 		if (localStorage.getItem('test_1_lose') === 'true') {
 			const test1Link = document.getElementById('test1');
 			if (test1Link) {
@@ -104,7 +83,6 @@
 			}
 		}
 
-		// Проверяем, пройден ли тест 2
 		if (localStorage.getItem('test2_done') === 'true') {
 			const test2Link = document.getElementById('test2');
 			if (test2Link) {
@@ -113,7 +91,6 @@
 			}
 		}
 
-		// Проверяем, проиграли ли тест 2
 		if (localStorage.getItem('test2_lose') === 'true') {
 			const test2Link = document.getElementById('test2');
 			if (test2Link) {
@@ -122,16 +99,14 @@
 			}
 		}
 
-		// Функция для сброса прогресса (успешное прохождение и проигрыш)
 		function resetProgress() {
-			localStorage.removeItem('test_1_done'); // Удаляем запись о успешном прохождении
-			localStorage.removeItem('test_1_lose'); // Удаляем запись о проигрыше
-			localStorage.removeItem('test2_done'); // Удаляем запись о успешном прохождении
-			localStorage.removeItem('test2_lose'); // Удаляем запись о проигрыше
-			window.location.reload(); // Перезагружаем страницу
+			localStorage.removeItem('test_1_done');
+			localStorage.removeItem('test_1_lose');
+			localStorage.removeItem('test2_done');
+			localStorage.removeItem('test2_lose');
+			window.location.reload();
 		}
 
-		// Логика для инпутов пароля
 		const inputs = document.querySelectorAll('.password-inputs input');
 		const resetButton = document.querySelector('.reset-button');
 
@@ -139,22 +114,21 @@
 			input.addEventListener('input', (e) => {
 				if (e.target.value.length === 1) {
 					if (index < inputs.length - 1) {
-						inputs[index + 1].focus(); // Переключаемся на следующий инпут
+						inputs[index + 1].focus();
 					}
 				}
 
-				// Проверяем, все ли инпуты заполнены
 				const password = Array.from(inputs).map(input => input.value).join('');
 				if (password === '1234') {
-					resetButton.disabled = false; // Активируем кнопку
+					resetButton.disabled = false;
 				} else {
-					resetButton.disabled = true; // Деактивируем кнопку
+					resetButton.disabled = true;
 				}
 			});
 
 			input.addEventListener('keydown', (e) => {
 				if (e.key === 'Backspace' && index > 0 && !e.target.value) {
-					inputs[index - 1].focus(); // Переключаемся на предыдущий инпут
+					inputs[index - 1].focus();
 				}
 			});
 		});

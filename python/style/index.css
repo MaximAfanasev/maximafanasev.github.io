@@ -51,6 +51,7 @@ ul {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	flex-direction: column;
 	flex-wrap: wrap;
 	margin-top: 40px;
 	list-style: none;
@@ -59,14 +60,12 @@ ul {
 	gap: 20px;
 }
 
-
 ul li a {
 	padding: 10px 20px;
 	border: 2px solid gold;
 	border-radius: 20px;
 	color: #fff;
 	text-decoration: none;
-
 }
 
 main {
@@ -133,7 +132,6 @@ main {
 	cursor: not-allowed;
 }
 
-/* Стили для инпутов */
 .password-inputs {
 	display: flex;
 	gap: 10px;
