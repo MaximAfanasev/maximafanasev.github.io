@@ -156,7 +156,7 @@
 <body>
 
 	<div class="timer-container">
-		<div id="timer">10</div>
+		<div id="timer">16</div>
 		<svg class="progress-ring" width="120" height="120">
 			<circle class="progress-ring__circle" stroke="blue" stroke-width="4" fill="transparent" r="52" cx="60" cy="60" />
 		</svg>
@@ -487,19 +487,17 @@
 
 		let currentQuestionIndex = 0;
 		let lives = 3;
-		let timeLeft = 10;
+		let timeLeft = 15;
 
 		const timerInterval = setInterval(() => {
 			const seconds = timeLeft % 60;
 			timerElement.textContent = String(seconds).padStart(2);
-			setProgress((timeLeft / 10) * 100);
+			setProgress((timeLeft / 15) * 100);
 
 			if (timeLeft > 0) {
 				timeLeft--;
 			} else {
 				clearInterval(timerInterval);
-
-				localStorage.removeItem('test_3_done', 'true'); // Добавляем запись в 
 				window.location.href = "../index.html";
 			}
 		}, 1000);
@@ -532,7 +530,6 @@
 		function checkAnswer(isCorrect, button, questionIndex) {
 			if (isCorrect) {
 				button.classList.add('correct');
-				timeLeft++;
 
 				// Показать следующий вопрос или поздравления, если это последний вопрос
 				if (questionIndex < questions.length - 1) {
