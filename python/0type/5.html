@@ -2,19 +2,38 @@
 <html lang="ru">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>5</title>
-	<link rel="icon" type="image/x-icon" href="/img/logo.png">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 	<link rel="stylesheet" href="../style/style.css">
 	<link rel="stylesheet" href="../style/win.css">
+	<title>2</title>
+	<link rel="icon" type="image/x-icon" href="/img/logo.png">
+	<style>
+		body {
+			overflow: scroll;
+		}
+
+		h2 {
+			text-align: center;
+		}
+
+		input {
+			display: block;
+			margin: 10px auto;
+		}
+	</style>
 </head>
 
 <body>
-	<div id="game-container" style="display: block">
-		<h2>12 types b b b c d f f i l t s s</h2>
-		<textarea id="user-input" placeholder="new row!" rows="12" cols="20"></textarea>
-		<button id="check-btn">Проверить</button>
-		<p id="result"></p>
+	<div id="container">
+		<div class="column">
+			<h2>May Vary</h2>
+			<input type="text" placeholder="">
+		</div>
+		<div class="column">
+			<h2>Can't Vary</h2>
+			<input type="text" placeholder="">
+		</div>
+		<button id="checkButton">Проверить</button>
 	</div>
 
 	<div class="message" id="finalMessage">
@@ -27,30 +46,33 @@
 		</div>
 	</div>
 	<script>
-		const correctWords = [
-			"bool",
-			"bytearray",
-			"bytes",
-			"complex",
-			"dict",
-			"float",
-			"frozenset",
-			"int",
-			"list",
-			"tuple",
-			"set",
-			"str",
-		];
+		const correctMayVary = ["bdls"];
+		const correctCantVary = ["bbcffits"];
 
-		document.getElementById('check-btn').addEventListener('click', function() {
-			const userInput = document.getElementById('user-input').value.trim();
-			const userWords = userInput.split(/\r?\n/).map(word => word.trim());
+		document.getElementById('checkButton').addEventListener('click', () => {
+			const mayVaryInputs = document.querySelectorAll('.column:first-child input');
+			const cantVaryInputs = document.querySelectorAll('.column:last-child input');
 
-			if (userWords.length === 12 && userWords.every(word => correctWords.includes(word))) {
+			let mayVaryCorrect = true;
+			let cantVaryCorrect = true;
 
-				document.getElementById('game-container').style.display = "none";
+			mayVaryInputs.forEach((input, index) => {
+				if (input.value !== correctMayVary[index]) {
+					mayVaryCorrect = false;
+				}
+			});
+
+			cantVaryInputs.forEach((input, index) => {
+				if (input.value !== correctCantVary[index]) {
+					cantVaryCorrect = false;
+				}
+			});
+
+			if (mayVaryCorrect && cantVaryCorrect) {
+
+				document.getElementById('container').style.display = "none";
 				document.getElementById("finalMessage").style.display = "block";
-			} 
+			}
 		});
 	</script>
 </body></html>

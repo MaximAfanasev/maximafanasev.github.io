@@ -2,100 +2,98 @@
 <html lang="ru">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>1</title>
 	<link rel="icon" type="image/x-icon" href="/img/logo.png">
-    <link rel="stylesheet" href="../style/style.css">
+	<link rel="stylesheet" href="../style/style.css">
 	<link rel="stylesheet" href="../style/win.css">
 </head>
 
 <style>
-    #input-container {
-        max-width: 500px;
-    }
+	#input-container {
+		max-width: 500px;
+	}
 
-    input[type="text"] {
-        width: 30px;
-        height: 30px;
-        font-size: 24px;
-        text-align: center;
-        margin: 5px;
-        border: none;
-        border-radius: 10px;
-        outline: none;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    }
+	input[type="text"] {
+		width: 30px;
+		height: 30px;
+		font-size: 24px;
+		text-align: center;
+		margin: 5px;
+		border: none;
+		border-radius: 10px;
+		outline: none;
+		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+	}
 </style>
 
 <body>
-    <div id="game-container" style="display: block">
-        <h2>12 types *** * * ** * * * **</h2>
-        <div id="input-container">
-            <input type="text" maxlength="1" class="letter-input" />
-            <input type="text" maxlength="1" class="letter-input" />
-            <input type="text" maxlength="1" class="letter-input" /><br>
-            <input type="text" maxlength="1" class="letter-input" /><br>
-            <input type="text" maxlength="1" class="letter-input" /><br>
-            <input type="text" maxlength="1" class="letter-input" />
-            <input type="text" maxlength="1" class="letter-input" /><br>
-            <input type="text" maxlength="1" class="letter-input" /><br>
-            <input type="text" maxlength="1" class="letter-input" /><br>
-            <input type="text" maxlength="1" class="letter-input" /><br>
-            <input type="text" maxlength="1" class="letter-input" />
-            <input type="text" maxlength="1" class="letter-input" />
-        </div>
-        <p id="result"></p>
-    </div>
+	<div id="game-container" style="display: block">
+		<h2>12 types *** * * ** * * * **</h2>
+		<div id="input-container">
+			<input type="text" maxlength="1" class="letter-input" />
+			<input type="text" maxlength="1" class="letter-input" />
+			<input type="text" maxlength="1" class="letter-input" /><br>
+			<input type="text" maxlength="1" class="letter-input" /><br>
+			<input type="text" maxlength="1" class="letter-input" /><br>
+			<input type="text" maxlength="1" class="letter-input" />
+			<input type="text" maxlength="1" class="letter-input" /><br>
+			<input type="text" maxlength="1" class="letter-input" /><br>
+			<input type="text" maxlength="1" class="letter-input" /><br>
+			<input type="text" maxlength="1" class="letter-input" /><br>
+			<input type="text" maxlength="1" class="letter-input" />
+			<input type="text" maxlength="1" class="letter-input" />
+		</div>
+		<p id="result"></p>
+	</div>
 
-    <div class="message" id="finalMessage" style="display:none;">
-        <div class="container">
-            <img src="../../img/trophy.png" class="first" alt="">
-            <img src="../../img/trophy2.png" class="second" alt="">
-            <img src="../../img/trophy3.png" class="three" alt="">
-            <img src="../../img/trophy4.png" class="four" alt="">
-            <img src="../../img/trophy5.png" class="five" alt="">
-        </div>
-    </div>
+	<div class="message" id="finalMessage" style="display:none;">
+		<div class="container">
+			<img src="../../img/trophy.png" class="first" alt="">
+			<img src="../../img/trophy2.png" class="second" alt="">
+			<img src="../../img/trophy3.png" class="three" alt="">
+			<img src="../../img/trophy4.png" class="four" alt="">
+			<img src="../../img/trophy5.png" class="five" alt="">
+		</div>
+	</div>
 
-    <script>
-        const correctSequence = "bbbcdffiltss"; 
+	<script>
+		const correctSequence = "bbbcdffiltss";
 
-        const letterInputs = document.querySelectorAll('.letter-input');
-        letterInputs.forEach((input, index) => {
-            input.addEventListener('input', function() {
-                if (this.value.length === 1) {
-                    // Перех
-                    if (index < letterInputs.length - 1) {
-                        letterInputs[index + 1].focus();
-                    } else {
-                        checkInput();
-                    }
-                } else {
-                    this.focus();
-                }
-            });
-        });
+		const letterInputs = document.querySelectorAll('.letter-input');
+		letterInputs.forEach((input, index) => {
+			input.addEventListener('input', function() {
+				if (this.value.length === 1) {
+					// Перех
+					if (index < letterInputs.length - 1) {
+						letterInputs[index + 1].focus();
+					} else {
+						checkInput();
+					}
+				} else {
+					this.focus();
+				}
+			});
+		});
 
-        function checkInput() {
-            let userInput = '';
-            letterInputs.forEach(input => userInput += input.value.trim());
+		function checkInput() {
+			let userInput = '';
+			letterInputs.forEach(input => userInput += input.value.trim());
 
-            if (userInput.length === 12 && userInput === correctSequence) {
-                document.getElementById('game-container').style.display = "none";
-                document.getElementById("finalMessage").style.display = "block";
-							
-			localStorage.setItem('test_1_done', 'true');
-			localStorage.removeItem('test_1_lose', 'true');
+			if (userInput.length === 12 && userInput === correctSequence) {
+				document.getElementById('game-container').style.display = "none";
+				document.getElementById("finalMessage").style.display = "block";
 
-			setTimeout(() => {
-				window.location.href = "../index.html";
-			}, 3000);
-            } else {
-                document.getElementById('result').textContent = 'Попробуйте снова!'; // Сообщение об ошибке
-            }
-        }
-    </script>
-</body>
+				localStorage.setItem('test_1_done', 'true');
+				localStorage.removeItem('test_1_lose', 'true');
 
-</html>
+				setTimeout(() => {
+					window.location.href = "../index.html";
+				}, 3000);
+			} else {
+				document.getElementById('result').textContent = 'Попробуйте снова!'; // Сообщение об ошибке
+			}
+		}
+	</script>
+</body></html>

@@ -501,37 +501,29 @@
 				window.location.href = "../index.html";
 			}
 		}, 1000);
-		// Функция для отображения вопросов
 		function displayQuestion(index) {
 			const questionContainer = document.getElementById(`question${index + 1}`);
 			questionContainer.style.display = "block";
 			const optionsContainer = document.getElementById(`options${index + 1}`);
-			optionsContainer.innerHTML = ''; // Очистить предыдущие варианты
-
+			optionsContainer.innerHTML = '';
 			questions[index].options.forEach(option => {
 				const button = document.createElement('button');
 				button.textContent = option.text;
 				button.addEventListener('click', () => checkAnswer(option.correct, button, index));
 				optionsContainer.appendChild(button);
 			});
-
-			// Обновляем прогресс-бар
 			updateProgress();
 		}
 
-		// Функция для обновления прогресс-бара
 		function updateProgress() {
 			const progress = document.getElementById('progress');
 			const progressPercentage = ((currentQuestionIndex + 1) / questions.length) * 100;
 			progress.style.width = progressPercentage + '%';
 		}
 
-		// Функция для проверки ответа
 		function checkAnswer(isCorrect, button, questionIndex) {
 			if (isCorrect) {
 				button.classList.add('correct');
-
-				// Показать следующий вопрос или поздравления, если это последний вопрос
 				if (questionIndex < questions.length - 1) {
 					setTimeout(() => {
 						document.getElementById(`question${questionIndex + 1}`).style.display = "none";
@@ -547,32 +539,29 @@
 					localStorage.setItem('test_3_done', 'true');
 					setTimeout(() => {
 						window.location.href = "../index.html";
-					}, 5000); // Задержка 5 секунд перед показом поздравления
+					}, 5000);
 				}
 			} else {
 				button.classList.add('wrong');
-				loseLife(); // Уменьшаем количество жизней
+				loseLife();
 			}
 		}
 
-		// Функция для уменьшения жизней
 		function loseLife() {
 			lives--;
 			const hearts = document.querySelectorAll("#lives .heart");
 			if (lives >= 0) {
-				hearts[lives].style.display = "none"; // Скрываем одно сердечко
+				hearts[lives].style.display = "none";
 			}
 
-			// Если жизни закончились
 			if (lives === 0) {
 				timerElement.style.display = 'none';
 				setTimeout(() => {
-					window.location.href = "../index.html"; // Редирект на главную страницу
-				}, 1000); // Задержка 1 секунда перед редиректом
+					window.location.href = "../index.html";
+				}, 1000);
 			}
 		}
 
-		// Отображаем первый вопрос
 		displayQuestion(currentQuestionIndex);
 	</script>
 </body></html>
