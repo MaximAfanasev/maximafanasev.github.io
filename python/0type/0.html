@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>1</title>
+	<link rel="icon" type="image/x-icon" href="/img/logo.png">
+	<link rel="stylesheet" href="../style/style.css">
+	<link rel="stylesheet" href="../style/win.css">
+	<style>
+		.wrapper	{
+		padding: 50px;
+			background: #fff;
+			border-radius: 20px;
+			border: 3px solid #000;
+
+		}
+		.letters {
+			font-size: 34px;
+			font-family: monospace;
+			line-height: 1.5;
+		}
+
+		.word {
+			opacity: 1;
+			transition: opacity 1s ease-in-out;
+		}
+
+		.letter {
+			font-weight: bold;
+			color: #007bff;
+		}
+
+		/* Анимация исчезновения */
+		@keyframes fadeOut {
+			from {
+				opacity: 1;
+			}
+
+			to {
+				opacity: 0;
+			}
+		}
+
+		.fade-out {
+			animation: fadeOut 1s forwards;
+		}
+
+		/* Стили для отображения только букв */
+		.letters.only-letters .letters {
+			display: none;
+			/* Скрываем текст */
+		}
+
+		.word {
+			display: inline-block;
+			margin-right: 10px;
+			opacity: 1 !important;
+			/* Буквы остаются видимыми */
+		}
+
+		.word:nth-child(1),
+		.word:nth-child(2),
+		.word:nth-child(3) {
+			display: inline-block;
+		}
+
+		.word:nth-child(4) {
+			display: block;
+			margin-left: 50px;
+		}
+
+		.word:nth-child(5) {
+			display: block;
+			margin-left: 50px;
+		}
+
+		.word:nth-child(6) {
+			margin-left: 25px;
+		}
+
+		.word:nth-child(6),
+		.word:nth-child(7) {
+			display: inline-block;
+		}
+
+		.word:nth-child(8) {
+			display: block;
+			margin-left: 50px;
+		}
+
+		.word:nth-child(9) {
+			display: block;
+			margin-left: 50px;
+		}
+
+		.word:nth-child(10) {
+			display: block;
+			margin-left: 50px;
+		}
+
+		.word:nth-child(11) {
+			margin-left: 25px;
+		}
+
+		.word:nth-child(11),
+		.word:nth-child(12) {
+			display: inline-block;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="wrapper letters">
+		<div class="word"><span class="letter">b</span><span class="letters">ool</span></div>
+		<div class="word"><span class="letter">b</span><span class="letters">ytearray</span></div>
+		<div class="word"><span class="letter">b</span><span class="letters">ytes</span></div>
+		<div class="word"><span class="letter">c</span><span class="letters">omplex</span></div>
+		<div class="word"><span class="letter">d</span><span class="letters">ict</span></div>
+		<div class="word"><span class="letter">f</span><span class="letters">loat</span></div>
+		<div class="word"><span class="letter">f</span><span class="letters">rozenset</span></div>
+		<div class="word"><span class="letter">i</span><span class="letters">nt</span></div>
+		<div class="word"><span class="letter">l</span><span class="letters">ist</span></div>
+		<div class="word"><span class="letter">t</span><span class="letters">uple</span></div>
+		<div class="word"><span class="letter">s</span><span class="letters">et</span></div>
+		<div class="word"><span class="letter">s</span><span class="letters">tr</span></div>
+	</div>
+
+	<script>
+		// Функция для скрытия текста и отображения только букв
+		setTimeout(function() {
+			const lettersContainer = document.querySelector('.letters');
+
+			// Добавляем анимацию исчезновения для текста (span.letters)
+			lettersContainer.querySelectorAll('.letters').forEach(span => {
+				span.classList.add('fade-out');
+			});
+
+			// После завершения анимации скрываем текст и оставляем только буквы
+			setTimeout(() => {
+				lettersContainer.classList.add('only-letters');
+			}, 1000); // 1000 миллисекунд = 1 секунда (длительность анимации)
+		}, 5000); // 5000 миллисекунд = 5 секунд
+	</script>
+</body></html>
