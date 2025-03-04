@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>1</title>
+	<link rel="icon" type="image/x-icon" href="/img/logo.png">
+	<link rel="stylesheet" href="../style/win.css">
+</head>
+
+<style>
+	html {
+		height: 100%;
+	}
+	body {
+		flex-direction: column;
+		gap: 20px;
+		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background: linear-gradient(45deg, #ff6b6b, #f06595, #eece4e, #4bc0c8);
+		padding: 50px 20px;
+	}
+
+	#game-container {
+		background-color: white;
+		border-radius: 20px;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+		padding: 20px;
+		text-align: center;
+	}
+
+	input[type="text"] {
+		width: 30px;
+		height: 30px;
+		font-size: 24px;
+		text-align: center;
+		margin: 5px;
+		border: none;
+		border-radius: 10px;
+		outline: none;
+		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+	}
+
+	.letters {
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		gap: 10px;
+	}
+
+	.letter {
+		cursor: pointer;
+		padding: 15px;
+		border: 1px solid #ccc;
+		border-radius: 15px;
+		background-color: #f9f9f9;
+		user-select: none;
+		font-size: 25px;
+	}
+
+	.letter:hover {
+		background-color: #e0e0e0;
+	}
+</style>
+
+<body>
+	<div class="letters">
+		<div class="letter">b</div>
+		<div class="letter">c</div>
+		<div class="letter">d</div>
+		<div class="letter">f</div>
+		<div class="letter">i</div>
+		<div class="letter">l</div>
+		<div class="letter">t</div>
+		<div class="letter">s</div>
+	</div>
+	<div id="game-container" style="display: block">
+		<div id="input-container">
+			<input type="text" maxlength="1" class="letter-input" />
+			<input type="text" maxlength="1" class="letter-input" />
+			<input type="text" maxlength="1" class="letter-input" /><br>
+			<input type="text" maxlength="1" class="letter-input" /><br>
+			<input type="text" maxlength="1" class="letter-input" /><br>
+			<input type="text" maxlength="1" class="letter-input" />
+			<input type="text" maxlength="1" class="letter-input" /><br>
+			<input type="text" maxlength="1" class="letter-input" /><br>
+			<input type="text" maxlength="1" class="letter-input" /><br>
+			<input type="text" maxlength="1" class="letter-input" /><br>
+			<input type="text" maxlength="1" class="letter-input" />
+			<input type="text" maxlength="1" class="letter-input" />
+		</div>
+	</div>
+
+	<div class="message" id="finalMessage" style="display:none;">
+		<div class="container">
+			<img src="../../img/trophy.png" class="first" alt="">
+			<img src="../../img/trophy2.png" class="second" alt="">
+			<img src="../../img/trophy3.png" class="three" alt="">
+			<img src="../../img/trophy4.png" class="four" alt="">
+			<img src="../../img/trophy5.png" class="five" alt="">
+		</div>
+	</div>
+
+	<script>
+		const correctSequence = "bbbcdffiltss";
+
+		const letterInputs = document.querySelectorAll('.letter-input');
+		const letters = document.querySelectorAll('.letter');
+		let currentInputIndex = 0;
+
+		letters.forEach(letter => {
+			letter.addEventListener('click', () => {
+				if (currentInputIndex < letterInputs.length) {
+					letterInputs[currentInputIndex].value = letter.textContent;
+					currentInputIndex++;
+					if (currentInputIndex === letterInputs.length) {
+						checkInput();
+					}
+				}
+			});
+		});
+
+		function checkInput() {
+			let userInput = '';
+			letterInputs.forEach(input => userInput += input.value.trim());
+
+			if (userInput.length === 12 && userInput === correctSequence) {
+				document.getElementById('game-container').style.display = "none";
+				document.getElementById("finalMessage").style.display = "block";
+
+				localStorage.setItem('test_1_done', 'true');
+
+				setTimeout(() => {
+					window.location.href = "../index.html";
+				}, 3000);
+			} else {
+				document.getElementById('result').textContent = 'Попробуйте снова!'; // Сообщение об ошибке
+			}
+		}
+	</script>
+</body></html>
