@@ -13,19 +13,19 @@
 	<main>
 		<ul>
 			<li id="test0">
-				<a href="0type/0.html">👀</a>
+				<a href="0type/0.html">0 👀</a>
 			</li>
 			<li id="test1">
-				<a href="0type/1.html">❓</a>
+				<a href="0type/1.html">1 ❓</a>
 			</li>
 			<li id="test2">
-				<a href="0type/2.html">✅</a>
+				<a href="0type/2.html">2 ✅</a>
 			</li>
 			<li id="test3">
-				<a href="0type/3.html">❤️</a>
+				<a href="0type/3.html">3 ❤️</a>
 			</li>
 			<li>
-				<a href="0type/4.html">⁉️</a>
+				<a href="0type/4.html">4 ⁉️</a>
 			</li>
 			<li>
 				<a href="0type/5.html">🆕</a>
@@ -54,6 +54,12 @@
 		<button class="reset-button" onclick="resetProgress()" disabled>Сбросить прогресс</button>
 	</main>
 	<script>
+		if (localStorage.getItem('test_0_done') === 'true') {
+			const test1Link = document.getElementById('test0');
+			if (test1Link) {
+				test1Link.classList.add('done');
+			}
+		}
 		if (localStorage.getItem('test_1_done') === 'true') {
 			const test1Link = document.getElementById('test1');
 			if (test1Link) {
@@ -76,6 +82,7 @@
 		}
 
 		function resetProgress() {
+			localStorage.removeItem('test_0_done');
 			localStorage.removeItem('test_1_done');
 			localStorage.removeItem('test_2_done');
 			localStorage.removeItem('test_3_done');
