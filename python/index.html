@@ -84,14 +84,22 @@
 		}
 
 		li.done {
-			
-			background: lightgreen; /* Серый цвет для завершенных элементов */
-			border-color: #999; /* Темно-серый цвет границы */
+			background: lightgreen;
+			border-color: #4bc0c8;
 			pointer-events: none; /* Отключаем клики */
 		}
 
 		li.done a {
 			color: #666; /* Серый цвет текста */
+		}
+
+		li.disabled {
+			background: #ccc; /* Серый цвет для заблокированных элементов */
+			pointer-events: none; /* Отключаем клики */
+		}
+
+		li.disabled a {
+			color: #999; /* Серый цвет текста для заблокированных элементов */
 		}
 
 		.password-inputs {
@@ -164,14 +172,14 @@
 			<li id="test2">
 				<a href="0type/2.html">2 ❓</a>
 			</li>
+			<li id="test5">
+				<a href="0type/3.html">3 ⁉️</a>
+			</li>
 			<li id="test3">
-				<a href="0type/3.html">3 ✅</a>
+				<a href="0type/4.html">4 ✅</a>
 			</li>
 			<li id="test4">
-				<a href="0type/4.html">4 ❤️</a>
-			</li>
-			<li id="test5">
-				<a href="0type/5.html">5 ⁉️</a>
+				<a href="0type/5.html">5 ❤️</a>
 			</li>
 			<li>
 				<a href="0type/6.html">🆕</a>
@@ -234,47 +242,38 @@
 
 		window.addEventListener('load', loadItemsSequentially);
 
-		if (localStorage.getItem('test_0_done') === 'true') {
-			const test1Link = document.getElementById('test0');
-			if (test1Link) {
-				test1Link.classList.add('done');
+		// Функция для блокировки всех элементов, кроме первого
+		function initializeItems() {
+			const items = document.querySelectorAll('ul li');
+			items.forEach((item, index) => {
+				if (index !== 0) {
+					item.classList.add('disabled'); // Блокируем все элементы, кроме первого
+				}
+			});
+		}
+
+		// Функция для разблокировки следующего элемента
+		function unlockNextItem(currentItem) {
+			const nextItem = currentItem.nextElementSibling;
+			if (nextItem && nextItem.classList.contains('disabled')) {
+				nextItem.classList.remove('disabled'); // Разблокируем следующий элемент
 			}
 		}
 
-		if (localStorage.getItem('test_1_done') === 'true') {
-			const test1Link = document.getElementById('test1');
-			if (test1Link) {
-				test1Link.classList.add('done');
-			}
+		// Проверка состояния прогресса
+		function checkProgress() {
+			const items = document.querySelectorAll('ul li');
+			items.forEach((item, index) => {
+				if (localStorage.getItem(`test_${index}_done`) === 'true') {
+					item.classList.add('done');
+					unlockNextItem(item); // Разблокируем следующий элемент
+				}
+			});
 		}
 
-		if (localStorage.getItem('test_2_done') === 'true') {
-			const test2Link = document.getElementById('test2');
-			if (test2Link) {
-				test2Link.classList.add('done');
-			}
-		}
-
-		if (localStorage.getItem('test_3_done') === 'true') {
-			const test3Link = document.getElementById('test3');
-			if (test3Link) {
-				test3Link.classList.add('done');
-			}
-		}
-
-		if (localStorage.getItem('test_4_done') === 'true') {
-			const test3Link = document.getElementById('test4');
-			if (test3Link) {
-				test3Link.classList.add('done');
-			}
-		}
-
-		if (localStorage.getItem('test_5_done') === 'true') {
-			const test3Link = document.getElementById('test5');
-			if (test3Link) {
-				test3Link.classList.add('done');
-			}
-		}
+		// Инициализация
+		initializeItems();
+		checkProgress();
 
 		function resetProgress() {
 			localStorage.removeItem('test_0_done');
