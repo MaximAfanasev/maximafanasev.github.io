@@ -7,20 +7,22 @@
 	<title>0</title>
 	<link rel="icon" type="image/x-icon" href="/img/logo.png">
 	<style>
-		/* Основные стили */
-		body {
-			flex-direction: column;
-			gap: 40px;
-			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		html, body {
+			min-height: 100%;
 			margin: 0;
+			padding: 0;
+		}
+
+		body {
 			display: flex;
+			flex-direction: column;
 			justify-content: center;
 			align-items: center;
-			min-height: 100vh;
-			/* Растягиваем на всю высоту экрана */
+			gap: 40px;
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 			background: linear-gradient(45deg, #ff6b6b, #f06595, #eece4e, #4bc0c8);
-			background: -webkit-linear-gradient(45deg, #ff6b6b, #f06595, #eece4e, #4bc0c8);
-			/* Для Safari */
+			background: -webkit-linear-gradient(45deg, #ff6b6b, #f06595, #eece4e, #4bc0c8); /* Для Safari */
+			background-attachment: fixed; /* Фиксируем градиент */
 			padding: 50px 20px;
 		}
 
@@ -161,4 +163,6 @@
 			localStorage.setItem('test_0_done', 'true');
 		});
 	</script>
-</body></html>
+</body>
+
+</html>
