@@ -86,21 +86,26 @@
 		li.done {
 			background: lightgreen;
 			border-color: #4bc0c8;
-			pointer-events: none; /* Отключаем клики */
+			pointer-events: none;
+			/* Отключаем клики */
 		}
 
 		li.done a {
-			color: #666; /* Серый цвет текста */
+			color: #666;
+			/* Серый цвет текста */
 		}
 
 		li.disabled {
-			background: #ccc; /* Серый цвет для заблокированных элементов */
-			pointer-events: none; /* Отключаем клики */
+			background: #ccc;
+			/* Серый цвет для заблокированных элементов */
+			pointer-events: none;
+			/* Отключаем клики */
 			cursor: wait;
 		}
 
 		li.disabled a {
-			color: #999; /* Серый цвет текста для заблокированных элементов */
+			color: #999;
+			/* Серый цвет текста для заблокированных элементов */
 		}
 
 		.password-inputs {
@@ -161,6 +166,7 @@
 		}
 	</style>
 </head>
+
 <body>
 	<main>
 		<ul>
@@ -168,10 +174,10 @@
 				<a href="0type/0.html">0 👀</a>
 			</li>
 			<li id="test1">
-				<a href="0type/1.html">1 ❓</a>
+				<a href="0type/1.html">1❓</a>
 			</li>
 			<li id="test2">
-				<a href="0type/2.html">2 ❓</a>
+				<a href="0type/2.html">2❓</a>
 			</li>
 			<li id="test3">
 				<a href="0type/3.html">3 ⁉️</a>
@@ -182,20 +188,20 @@
 			<li id="test5">
 				<a href="0type/5.html">5 ❤️</a>
 			</li>
-			<li  id="test6">
-				<a href="0type/6.html">🆕</a>
+			<li id="test6">
+				<a href="0type/6.html">6 🆕</a>
 			</li>
 			<li>
-				<a href="1num/1.html">🔢</a>
+				<a href="1num/1.html">7 🔢</a>
 			</li>
 			<li>
-				<a href="2str/1.html">📶</a>
+				<a href="2str/1.html">8 📶</a>
 			</li>
 			<li>
-				<a href="3list/1.html">📁</a>
+				<a href="3list/1.html">9 📁</a>
 			</li>
 			<li>
-				<a href="4dict/1.html">🗄</a>
+				<a href="4dict/1.html">10 🗄</a>
 			</li>
 		</ul>
 
@@ -219,7 +225,10 @@
 				setTimeout(() => {
 					item.classList.add('visible');
 					if (!localStorage.getItem('animationPlayed')) {
-						item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+						item.scrollIntoView({
+							behavior: 'smooth',
+							block: 'center'
+						});
 					}
 				}, index * 300);
 			});
@@ -283,6 +292,7 @@
 			localStorage.removeItem('test_3_done');
 			localStorage.removeItem('test_4_done');
 			localStorage.removeItem('test_5_done');
+			localStorage.removeItem('test_6_done');
 			localStorage.removeItem('animationPlayed'); // Сбрасываем флаг анимации
 			window.location.href = "../index.html";
 		}
@@ -325,13 +335,14 @@
 			});
 
 			if (nextUncompleted) {
-				nextUncompleted.scrollIntoView({ behavior: 'smooth', block: 'center' });
+				nextUncompleted.scrollIntoView({
+					behavior: 'smooth',
+					block: 'center'
+				});
 			}
 		}
 
 		// Вызов функции прокрутки после загрузки страницы
 		window.addEventListener('load', scrollToNextUncompleted);
 	</script>
-</body>
-
-</html>
+</body></html>
