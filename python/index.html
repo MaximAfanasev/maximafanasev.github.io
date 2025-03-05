@@ -6,7 +6,127 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 	<title>Python roadmap</title>
 	<link rel="icon" type="image/x-icon" href="/img/logo.png">
-	<link rel="stylesheet" href="style/index.css">
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			padding-top: 50px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			min-height: 100vh;
+			background: linear-gradient(45deg, #ff6b6b, #f06595, #eece4e, #4bc0c8);
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		}
+
+		main {
+			width: 100%;
+			max-width: 600px;
+			padding: 20px;
+		}
+
+		ul {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			position: relative;
+		}
+
+		li {
+			position: relative;
+			text-align: center;
+			padding: 10px;
+			background: #fff;
+			border-radius: 10px;
+			border: 2px solid #000;
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+			margin-bottom: 40px;
+			opacity: 0;
+			transform: translateY(20px);
+			transition: opacity 0.5s ease, transform 0.5s ease;
+		}
+
+		li.visible {
+			opacity: 1;
+			transform: translateY(0);
+		}
+
+		li:last-child {
+			margin-bottom: 0;
+		}
+
+		li a {
+			text-decoration: none;
+			color: #000;
+			font-size: 18px;
+			font-weight: bold;
+		}
+
+		li::after {
+			content: '';
+			position: absolute;
+			background: repeating-linear-gradient(to bottom,
+					transparent,
+					transparent 5px,
+					#000 5px,
+					#000 10px);
+			width: 2px;
+			height: 40px;
+			top: 100%;
+			left: 50%;
+			transform: translateX(-50%);
+			z-index: -1;
+		}
+
+		li:last-child::after {
+			display: none;
+		}
+
+		li.done {
+			background: #4bc0c8;
+			border-color: #4bc0c8;
+		}
+
+		li.done a {
+			color: #fff;
+		}
+
+		.password-inputs {
+			display: flex;
+			justify-content: center;
+			gap: 10px;
+			margin-top: 20px;
+		}
+
+		.password-inputs input {
+			width: 40px;
+			height: 40px;
+			text-align: center;
+			font-size: 18px;
+			border: 2px solid #000;
+			border-radius: 5px;
+		}
+
+		.reset-button {
+			display: block;
+			margin: 20px auto;
+			padding: 10px 20px;
+			font-size: 16px;
+			background: #ff6b6b;
+			color: #fff;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+
+		.reset-button:disabled {
+			background: #ccc;
+			cursor: not-allowed;
+		}
+	</style>
 </head>
 
 <body>
@@ -57,13 +177,24 @@
 		<button class="reset-button" onclick="resetProgress()" disabled>Сбросить прогресс</button>
 	</main>
 	<script>
+		function loadItemsSequentially() {
+			const items = document.querySelectorAll('ul li');
+			items.forEach((item, index) => {
+				setTimeout(() => {
+					item.classList.add('visible');
+				}, index * 300);
+			});
+		}
+
+		window.addEventListener('load', loadItemsSequentially);
+
 		if (localStorage.getItem('test_0_done') === 'true') {
 			const test1Link = document.getElementById('test0');
 			if (test1Link) {
 				test1Link.classList.add('done');
 			}
 		}
-		
+
 		if (localStorage.getItem('test_1_done') === 'true') {
 			const test1Link = document.getElementById('test1');
 			if (test1Link) {
@@ -119,4 +250,6 @@
 			});
 		});
 	</script>
-</body></html>
+</body>
+
+</html>
