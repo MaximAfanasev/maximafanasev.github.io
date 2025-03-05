@@ -293,7 +293,7 @@
 <body>
 
 	<div class="timer-container">
-		<div id="timer">21</div>
+		<div id="timer">41</div>
 		<svg class="progress-ring" width="120" height="120">
 			<circle class="progress-ring__circle" stroke="blue" stroke-width="4" fill="transparent" r="52" cx="60" cy="60" />
 		</svg>
@@ -306,85 +306,85 @@
 
 		<div class="a">
 			<div class="wrap">
-				<div>print(type(True))</div>
-				<div class="s c">&#60;class 'bool'></div>
+				<div>True</div>
+				<div class="s c">bool</div>
 			</div>
 		</div>
 
 		<div class="a h">
 			<div class="wrap">
-				<div>print(type(1))</div>
-				<div class="s c">&#60;class 'int'></div>
+				<div>1</div>
+				<div class="s c">int</div>
 			</div>
 		</div>
 
 		<div class="a h">
 			<div class="wrap">
-				<div>print(type(1.1))</div>
-				<div class="s c">&#60;class 'float'></div>
+				<div>1.1</div>
+				<div class="s c">float</div>
 			</div>
 		</div>
 
 		<div class="a h">
 			<div class="wrap">
-				<div>print(type(3j))</div>
-				<div class="s c">&#60;class 'complex'></div>
+				<div>3j</div>
+				<div class="s c">complex</div>
 			</div>
 		</div>
 
 		<div class="a h">
 			<div class="wrap">
-				<div>print(type('a'))</div>
-				<div class="s c">&#60;class 'str'></div>
+				<div>'a'</div>
+				<div class="s c">str</div>
 			</div>
 		</div>
 
 		<div class="a h">
 			<div class="wrap">
-				<div>print(type([1,2]))</div>
-				<div class="s c">&#60;class 'list'></div>
+				<div>[1,2]</div>
+				<div class="s c">list</div>
 			</div>
 		</div>
 
 		<div class="a h">
 			<div class="wrap">
-				<div>print(type((1,2)))</div>
-				<div class="s c">&#60;class 'tuple'></div>
+				<div>(1,2)</div>
+				<div class="s c">tuple</div>
 			</div>
 		</div>
 
 		<div class="a h r">
 			<div class="wrap">
-				<div>print(type(b'ab\xff'))</div>
-				<div class="s c">&#60;class 'bytes'></div>
+				<div>b'ab\xff'</div>
+				<div class="s c">bytes</div>
 			</div>
 		</div>
 
 		<div class="a h">
 			<div class="wrap">
-				<div>print(type(bytearray([1,2])))</div>
-				<div class="s c">&#60;class 'bytearray'></div>
+				<div>bytearray([1,2])</div>
+				<div class="s c">bytearray</div>
 			</div>
 		</div>
 
 		<div class="a h">
 			<div class="wrap">
-				<div>print(type(set([1,2])))</div>
-				<div class="s c">&#60;class 'bytearray'></div>
+				<div>set([1,2])</div>
+				<div class="s c">bytearray</div>
 			</div>
 		</div>
 
 		<div class="a h">
 			<div class="wrap">
-				<div>print(type(frozenset([1,2])))</div>
-				<div class="s c">&#60;class 'set'></div>
+				<div>frozenset([1,2])</div>
+				<div class="s c">set</div>
 			</div>
 		</div>
 
 		<div class="a h">
 			<div class="wrap">
-				<div>print(type({'a':'1'}))</div>
-				<div class="s c">&#60;class 'dict'></div>
+				<div>{'a':'1'}</div>
+				<div class="s c">dict</div>
 			</div>
 		</div>
 
@@ -417,7 +417,7 @@
 	<script>
 		const finalMessage = document.getElementById('finalMessage');
 		const correctProgressContainer = document.getElementById('correctProgressContainer');
-		let timeLeft = 20;
+		let timeLeft = 40;
 
 		let correctCount = 0;
 		let incorrectCount = 0;
@@ -431,7 +431,7 @@
 		const timerInterval = setInterval(() => {
 			const seconds = timeLeft % 60;
 			timerElement.textContent = String(seconds).padStart(2);
-			setProgress((timeLeft / 20) * 100);
+			setProgress((timeLeft / 40) * 100);
 
 			if (timeLeft > 0) {
 				timeLeft--;

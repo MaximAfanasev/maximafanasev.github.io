@@ -87,7 +87,7 @@
 
 <body>
 	<div id="all">
-		<h1>type(True)</h1>
+		<h1>True</h1>
 		<div>
 			<input type="text" maxlength="1" id="letter1" oninput="moveToNextInput('letter2', 4)" required>
 			<input type="text" maxlength="1" id="letter2" oninput="moveToNextInput('letter3', 4)" required>
@@ -96,7 +96,7 @@
 		</div>
 
 		<div class="question" id="secondQuestion">
-			<h2>type(1)</h2>
+			<h2>1</h2>
 			<div>
 				<input type="text" maxlength="1" id="letter5" oninput="moveToNextInput('letter6', 3)" required>
 				<input type="text" maxlength="1" id="letter6" oninput="moveToNextInput('letter7', 3)" required>
@@ -105,7 +105,7 @@
 		</div>
 
 		<div class="question" id="thirdQuestion">
-			<h2>type(1.1)</h2>
+			<h2>1.1</h2>
 			<div>
 				<input type="text" maxlength="1" id="letter8" oninput="moveToNextInput('letter9', 5)" required>
 				<input type="text" maxlength="1" id="letter9" oninput="moveToNextInput('letter10', 5)" required>
@@ -116,7 +116,7 @@
 		</div>
 
 		<div class="question" id="fourthQuestion">
-			<h2>type(3j)</h2>
+			<h2>3j</h2>
 			<div>
 				<input type="text" maxlength="1" id="letter13" oninput="moveToNextInput('letter14', 7)" required>
 				<input type="text" maxlength="1" id="letter14" oninput="moveToNextInput('letter15', 7)" required>
@@ -129,7 +129,7 @@
 		</div>
 
 		<div class="question" id="fifthQuestion">
-			<h2>type('a')</h2>
+			<h2>'a'</h2>
 			<div>
 				<input type="text" maxlength="1" id="letter20" oninput="moveToNextInput('letter21', 3)" required>
 				<input type="text" maxlength="1" id="letter21" oninput="moveToNextInput('letter22', 3)" required>
@@ -138,7 +138,7 @@
 		</div>
 
 		<div class="question" id="sixthQuestion">
-			<h2>type([1,2])</h2>
+			<h2>[1,2]</h2>
 			<div>
 				<input type="text" maxlength="1" id="letter23" oninput="moveToNextInput('letter24', 4)" required>
 				<input type="text" maxlength="1" id="letter24" oninput="moveToNextInput('letter25', 4)" required>
@@ -148,7 +148,7 @@
 		</div>
 
 		<div class="question" id="seventhQuestion">
-			<h2>type((1,2))</h2>
+			<h2>(1,2)</h2>
 			<div>
 				<input type="text" maxlength="1" id="letter26" oninput="moveToNextInput('letter27', 5)" required>
 				<input type="text" maxlength="1" id="letter27" oninput="moveToNextInput('letter28', 5)" required>
@@ -159,7 +159,7 @@
 		</div>
 
 		<div class="question" id="eighthQuestion">
-			<h2>type(b'ab\\xff')</h2>
+			<h2>b'ab\\xff'</h2>
 			<div>
 				<input type="text" maxlength="1" id="letter29" oninput="moveToNextInput('letter30', 5)" required>
 				<input type="text" maxlength="1" id="letter30" oninput="moveToNextInput('letter31', 5)" required>
@@ -170,7 +170,7 @@
 		</div>
 
 		<div class="question" id="ninthQuestion">
-			<h2>type(bytearray([1,2]))</h2>
+			<h2>bytearray([1,2])</h2>
 			<div>
 				<input type="text" maxlength="1" id="letter32" oninput="moveToNextInput('letter33', 5)" required>
 				<input type="text" maxlength="1" id="letter33" oninput="moveToNextInput('letter341', 5)" required>
@@ -185,7 +185,7 @@
 		</div>
 
 		<div class="question" id="tenthQuestion">
-			<h2>type(set([1,2]))</h2>
+			<h2>set([1,2])</h2>
 			<div>
 				<input type="text" maxlength="1" id="letter35" oninput="moveToNextInput('letter36', 3)" required>
 				<input type="text" maxlength="1" id="letter36" oninput="moveToNextInput('letter366', 3)" required>
@@ -194,7 +194,7 @@
 		</div>
 
 		<div class="question" id="eleventhQuestion">
-			<h2>type(frozenset([1,2]))</h2>
+			<h2>frozenset([1,2])</h2>
 			<div>
 				<input type="text" maxlength="1" id="letter37" oninput="moveToNextInput('letter38', 4)" required>
 				<input type="text" maxlength="1" id="letter38" oninput="moveToNextInput('letter381', 4)" required>
@@ -209,7 +209,7 @@
 		</div>
 
 		<div class="question" id="twelfthQuestion">
-			<h2>type({'a':'1'})</h2>
+			<h2>{'a':'1'}</h2>
 			<div>
 				<input type="text" maxlength="1" id="letter39" oninput="moveToNextInput('letter40', 4)" required>
 				<input type="text" maxlength="1" id="letter40" oninput="moveToNextInput('letter401', 4)" required>
@@ -468,8 +468,12 @@
 
 			if (userTwelfthInput === correctTwelfthLetters) {
 				document.getElementById('all').style.display = "none";
-				document.getElementById("finalMessage").style.display = "block";
-			} else {}
+				document.getElementById("finalMessage").style.display = "block";localStorage.setItem('test_5_done', 'true');
+					setTimeout(() => {
+						window.location.href = "../index.html";
+					}, 3000);
+				}
+			else {}
 		}
 
 	</script>

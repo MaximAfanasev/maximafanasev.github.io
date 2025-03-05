@@ -168,7 +168,7 @@
 			<li id="test4">
 				<a href="0type/4.html">4 ❤️</a>
 			</li>
-			<li>
+			<li id="test5">
 				<a href="0type/5.html">5 ⁉️</a>
 			</li>
 			<li>
@@ -268,12 +268,20 @@
 			}
 		}
 
+		if (localStorage.getItem('test_5_done') === 'true') {
+			const test3Link = document.getElementById('test5');
+			if (test3Link) {
+				test3Link.classList.add('done');
+			}
+		}
+
 		function resetProgress() {
 			localStorage.removeItem('test_0_done');
 			localStorage.removeItem('test_1_done');
 			localStorage.removeItem('test_2_done');
 			localStorage.removeItem('test_3_done');
 			localStorage.removeItem('test_4_done');
+			localStorage.removeItem('test_5_done');
 			localStorage.removeItem('animationPlayed'); // Сбрасываем флаг анимации
 			window.scrollTo({ top: 0, behavior: 'smooth' }); // Прокрутка наверх
 			window.location.reload();

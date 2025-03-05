@@ -7,45 +7,11 @@
 	<link rel="icon" type="image/x-icon" href="/img/logo.png">
 	<link rel="stylesheet" href="../style/win.css">
 	<link rel="stylesheet" href="../style/timer.css">
+	<link rel="stylesheet" href="../style/style.css">
 
 </head>
 
 <style>
-	body {
-		font-family: Arial, sans-serif;
-		display: flex;
-		justify-content: center;
-		flex-direction: column;
-		align-items: center;
-		height: 100vh;
-		margin: 0;
-		background: linear-gradient(270deg, #ff9c9c, #a2d5f2);
-		background-size: 400% 400%;
-		animation: gradientAnimation 15s ease infinite;
-	}
-
-	@keyframes gradientAnimation {
-		0% {
-			background-position: 0% 50%;
-		}
-
-		25% {
-			background-position: 50% 50%;
-		}
-
-		50% {
-			background-position: 100% 50%;
-		}
-
-		75% {
-			background-position: 50% 50%;
-		}
-
-		100% {
-			background-position: 0% 50%;
-		}
-	}
-
 	.quiz-container {
 		padding: 30px;
 		border-radius: 15px;
@@ -156,7 +122,7 @@
 <body>
 
 	<div class="timer-container">
-		<div id="timer">21</div>
+		<div id="timer">41</div>
 		<svg class="progress-ring" width="120" height="120">
 			<circle class="progress-ring__circle" stroke="blue" stroke-width="4" fill="transparent" r="52" cx="60" cy="60" />
 		</svg>
@@ -171,51 +137,51 @@
 	</div>
 	<div class="quiz-container" id="quiz-container">
 		<div class="question-container" id="question1">
-			<h1>print(type(True))</h1>
+			<h1>True</h1>
 			<div id="options1"></div>
 		</div>
 		<div class="question-container" id="question2">
-			<h1>print(type(1))</h1>
+			<h1>1</h1>
 			<div id="options2"></div>
 		</div>
 		<div class="question-container" id="question3">
-			<h1>print(type(1.1))</h1>
+			<h1>1.1</h1>
 			<div id="options3"></div>
 		</div>
 		<div class="question-container" id="question4">
-			<h1>print(type(3j))</h1>
+			<h1>3j</h1>
 			<div id="options4"></div>
 		</div>
 		<div class="question-container" id="question5">
-			<h1>print(type('a'))</h1>
+			<h1>'a'</h1>
 			<div id="options5"></div>
 		</div>
 		<div class="question-container" id="question6">
-			<h1>print(type([1,2]))</h1>
+			<h1>[1,2]</h1>
 			<div id="options6"></div>
 		</div>
 		<div class="question-container" id="question7">
-			<h1>print(type((1,2)))</h1>
+			<h1>(1,2)</h1>
 			<div id="options7"></div>
 		</div>
 		<div class="question-container" id="question8">
-			<h1>print(type(b'ab\xff'))</h1>
+			<h1>b'ab\xff'</h1>
 			<div id="options8"></div>
 		</div>
 		<div class="question-container" id="question9">
-			<h1>print(type(bytearray([1,2])))</h1>
+			<h1>bytearray([1,2])</h1>
 			<div id="options9"></div>
 		</div>
 		<div class="question-container" id="question10">
-			<h1>print(type(set([1,2])))</h1>
+			<h1>set([1,2])</h1>
 			<div id="options10"></div>
 		</div>
 		<div class="question-container" id="question11">
-			<h1>print(type(frozenset([1,2])))</h1>
+			<h1>frozenset([1,2])</h1>
 			<div id="options11"></div>
 		</div>
 		<div class="question-container" id="question12">
-			<h1>print(type({'a':'1'}))</h1>
+			<h1>{'a':'1'}</h1>
 			<div id="options12"></div>
 		</div>
 	</div>
@@ -234,19 +200,19 @@
 		const questions = [{
 				question: "print(type(True))",
 				options: [{
-						text: "<class 'str'>",
+						text: "str",
 						correct: false
 					},
 					{
-						text: "<class 'int'>",
+						text: "int",
 						correct: false
 					},
 					{
-						text: "<class 'bool'>",
+						text: "bool",
 						correct: true
 					},
 					{
-						text: "<class 'list'>",
+						text: "list",
 						correct: false
 					}
 				],
@@ -255,19 +221,19 @@
 			{
 				question: "Какой тип данных возвращает выражение print(type(1))?",
 				options: [{
-						text: "<class 'str'>",
+						text: "str",
 						correct: false
 					},
 					{
-						text: "<class 'int'>",
+						text: "int",
 						correct: true
 					},
 					{
-						text: "<class 'bool'>",
+						text: "bool",
 						correct: false
 					},
 					{
-						text: "<class 'list'>",
+						text: "list",
 						correct: false
 					}
 				],
@@ -276,19 +242,19 @@
 			{
 				question: "Какой тип данных возвращает выражение print(type(1.1))?",
 				options: [{
-						text: "<class 'str'>",
+						text: "str",
 						correct: false
 					},
 					{
-						text: "<class 'int'>",
+						text: "int",
 						correct: false
 					},
 					{
-						text: "<class 'float'>",
+						text: "float",
 						correct: true
 					},
 					{
-						text: "<class 'list'>",
+						text: "list",
 						correct: false
 					}
 				],
@@ -297,19 +263,19 @@
 			{
 				question: "Какой тип данных возвращает выражение print(type(3j))?",
 				options: [{
-						text: "<class 'complex'>",
+						text: "complex",
 						correct: true
 					},
 					{
-						text: "<class 'int'>",
+						text: "int",
 						correct: false
 					},
 					{
-						text: "<class 'str'>",
+						text: "str",
 						correct: false
 					},
 					{
-						text: "<class 'list'>",
+						text: "list",
 						correct: false
 					}
 				],
@@ -318,19 +284,19 @@
 			{
 				question: "Какой тип данных возвращает выражение print(type('a'))?",
 				options: [{
-						text: "<class 'list'>",
+						text: "list",
 						correct: false
 					},
 					{
-						text: "<class 'int'>",
+						text: "int",
 						correct: false
 					},
 					{
-						text: "<class 'bool'>",
+						text: "bool",
 						correct: false
 					},
 					{
-						text: "<class 'str'>",
+						text: "str",
 						correct: true
 					}
 				],
@@ -339,19 +305,19 @@
 			{
 				question: "Какой тип данных возвращает выражение print(type([1, 2]))?",
 				options: [{
-						text: "<class 'str'>",
+						text: "str",
 						correct: false
 					},
 					{
-						text: "<class 'list'>",
+						text: "list",
 						correct: true
 					},
 					{
-						text: "<class 'bool'>",
+						text: "bool",
 						correct: false
 					},
 					{
-						text: "<class 'int'>",
+						text: "int",
 						correct: false
 					}
 				],
@@ -360,19 +326,19 @@
 			{
 				question: "Какой тип данных возвращает выражение print(type((1, 2)))?",
 				options: [{
-						text: "<class 'str'>",
+						text: "str",
 						correct: false
 					},
 					{
-						text: "<class 'bool'>",
+						text: "bool",
 						correct: false
 					},
 					{
-						text: "<class 'tuple'>",
+						text: "tuple",
 						correct: true
 					},
 					{
-						text: "<class 'int'>",
+						text: "int",
 						correct: false
 					}
 				],
@@ -381,19 +347,19 @@
 			{
 				question: "Какой тип данных возвращает выражение print(type(b'ab\\xff'))?",
 				options: [{
-						text: "<class 'bytes'>",
+						text: "bytes",
 						correct: true
 					},
 					{
-						text: "<class 'str'>",
+						text: "str",
 						correct: false
 					},
 					{
-						text: "<class 'bool'>",
+						text: "bool",
 						correct: false
 					},
 					{
-						text: "<class 'int'>",
+						text: "int",
 						correct: false
 					}
 				],
@@ -402,19 +368,19 @@
 			{
 				question: "Какой тип данных возвращает выражение print(type(bytearray([1, 2])))?",
 				options: [{
-						text: "<class 'str'>",
+						text: "str",
 						correct: false
 					},
 					{
-						text: "<class 'int'>",
+						text: "int",
 						correct: false
 					},
 					{
-						text: "<class 'bool'>",
+						text: "bool",
 						correct: false
 					},
 					{
-						text: "<class 'bytearray'>",
+						text: "bytearray",
 						correct: true
 					}
 				],
@@ -423,19 +389,19 @@
 			{
 				question: "Какой тип данных возвращает выражение print(type(set([1, 2])))?",
 				options: [{
-						text: "<class 'str'>",
+						text: "str",
 						correct: false
 					},
 					{
-						text: "<class 'set'>",
+						text: "set",
 						correct: true
 					},
 					{
-						text: "<class 'bool'>",
+						text: "bool",
 						correct: false
 					},
 					{
-						text: "<class 'int'>",
+						text: "int",
 						correct: false
 					}
 				],
@@ -444,19 +410,19 @@
 			{
 				question: "Какой тип данных возвращает выражение print(type(frozenset([1, 2])))?",
 				options: [{
-						text: "<class 'str'>",
+						text: "str",
 						correct: false
 					},
 					{
-						text: "<class 'bool'>",
+						text: "bool",
 						correct: false
 					},
 					{
-						text: "<class 'frozenset'>",
+						text: "frozenset",
 						correct: true
 					},
 					{
-						text: "<class 'int'>",
+						text: "int",
 						correct: false
 					}
 				],
@@ -465,19 +431,19 @@
 			{
 				question: "Какой тип данных возвращает выражение print(type({'a': '1'}))?",
 				options: [{
-						text: "<class 'str'>",
+						text: "str",
 						correct: false
 					},
 					{
-						text: "<class 'dict'>",
+						text: "dict",
 						correct: true
 					},
 					{
-						text: "<class 'bool'>",
+						text: "bool",
 						correct: false
 					},
 					{
-						text: "<class 'int'>",
+						text: "int",
 						correct: false
 					}
 				],
@@ -487,12 +453,12 @@
 
 		let currentQuestionIndex = 0;
 		let lives = 3;
-		let timeLeft = 20;
+		let timeLeft = 40;
 
 		const timerInterval = setInterval(() => {
 			const seconds = timeLeft % 60;
 			timerElement.textContent = String(seconds).padStart(2);
-			setProgress((timeLeft / 20) * 100);
+			setProgress((timeLeft / 40) * 100);
 
 			if (timeLeft > 0) {
 				timeLeft--;
@@ -540,7 +506,7 @@
 					localStorage.setItem('test_4_done', 'true');
 					setTimeout(() => {
 						window.location.href = "../index.html";
-					}, 5000);
+					}, 3000);
 				}
 			} else {
 				button.classList.add('wrong');

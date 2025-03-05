@@ -65,6 +65,7 @@
 </style>
 
 <body>
+<h2 class="title">Наберите 12 первых букв типов данных Python</h2>
 	<div id="game-container" style="display: block">
 		<div id="input-container">
 			<input type="text" maxlength="1" class="letter-input" />
@@ -128,6 +129,7 @@
 			if (userInput.length === 12 && userInput === correctSequence) {
 				document.getElementById('game-container').style.display = "none";
 				document.querySelector('.letters').style.display = "none";
+				document.querySelector('.title').style.display = "none";
 				document.getElementById("finalMessage").style.display = "block";
 
 				localStorage.setItem('test_1_done', 'true');

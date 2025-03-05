@@ -1,14 +1,16 @@
-body {
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-	margin: 0;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background: linear-gradient(45deg, #ff6b6b, #f06595, #eece4e, #4bc0c8);
-	background-size: 400% 400%;
-	padding-top: 50px;
-}
 
+		body {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			gap: 10px;
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			background: linear-gradient(45deg, #ff6b6b, #f06595, #eece4e, #4bc0c8);
+			background: -webkit-linear-gradient(45deg, #ff6b6b, #f06595, #eece4e, #4bc0c8);
+			background-attachment: fixed;
+			padding: 50px 20px;
+		}
 @keyframes gradientAnimation {
 	0% {
 		background-position: 0% 50%;
@@ -21,6 +23,19 @@ body {
 	100% {
 		background-position: 0% 50%;
 	}
+}
+
+h1,
+h2 {
+	text-align: center;
+}
+
+h1 {
+	margin-bottom: 50px;
+}
+
+h2 {
+	margin-bottom: 0;
 }
 
 #game-container {
