@@ -58,7 +58,7 @@
 			let cantVaryCorrect = true;
 
 			mayVaryInputs.forEach((input, index) => {
-				if (input.value !== correctMayVary[index]) {
+				if (input.value.toLowerCase() !== correctMayVary[index]) {
 					mayVaryCorrect = false;
 				}
 			});
