@@ -7,6 +7,7 @@
 	<title>0</title>
 	<link rel="icon" type="image/x-icon" href="/img/logo.png">
 	<style>
+		/* Основные стили */
 		body {
 			flex-direction: column;
 			gap: 40px;
@@ -15,14 +16,17 @@
 			display: flex;
 			justify-content: center;
 			align-items: center;
+			min-height: 100vh;
+			/* Растягиваем на всю высоту экрана */
 			background: linear-gradient(45deg, #ff6b6b, #f06595, #eece4e, #4bc0c8);
+			background: -webkit-linear-gradient(45deg, #ff6b6b, #f06595, #eece4e, #4bc0c8);
+			/* Для Safari */
 			padding: 50px 20px;
 		}
-		
-		h1 {
-			text-align: center
-		}
 
+		h1 {
+			text-align: center;
+		}
 
 		.wrapper {
 			padding: 30px;
@@ -43,7 +47,7 @@
 			font-size: 30px;
 			line-height: 40px;
 		}
-		
+
 		.word {
 			font-size: 28px;
 		}
@@ -69,7 +73,7 @@
 </head>
 
 <body>
-<h1>Типы данных в Python</h1>
+	<h1>Типы данных в Python</h1>
 	<div class="wrapper">
 		<div class="word">
 			<span class="letter">b</span>ool<span class="letters"></span>
@@ -79,34 +83,41 @@
 		</div>
 		<div class="word">
 			<span class="letter">b</span>ytes<span class="letters"></span>
-		</div></div>
+		</div>
+	</div>
 	<div class="wrapper">
 		<div class="word">
 			<span class="letter">c</span><span class="letters">omplex</span>
-		</div></div>
+		</div>
+	</div>
 	<div class="wrapper">
 		<div class="word">
 			<span class="letter">d</span>ict<span class="letters"></span>
-		</div></div>
+		</div>
+	</div>
 	<div class="wrapper">
 		<div class="word">
 			<span class="letter">f</span>loat<span class="letters"></span>
 		</div>
 		<div class="word">
 			<span class="letter">f</span>rozenset<span class="letters"></span>
-		</div></div>
+		</div>
+	</div>
 	<div class="wrapper">
 		<div class="word">
 			<span class="letter">i</span><span class="letters">nt</span>
-		</div></div>
+		</div>
+	</div>
 	<div class="wrapper">
 		<div class="word">
 			<span class="letter">l</span><span class="letters">ist</span>
-		</div></div>
+		</div>
+	</div>
 	<div class="wrapper">
 		<div class="word">
 			<span class="letter">t</span>uple<span class="letters"></span>
-		</div></div>
+		</div>
+	</div>
 	<div class="wrapper">
 		<div class="word">
 			<span class="letter">s</span><span class="letters">et</span>
@@ -116,19 +127,26 @@
 		</div>
 	</div>
 	<div class="wrapper wrapper-letters">
-		<div class="line">b b b</div></div>
+		<div class="line">b b b</div>
+	</div>
 	<div class="wrapper wrapper-letters">
-		<div class="line">c</div></div>
+		<div class="line">c</div>
+	</div>
 	<div class="wrapper wrapper-letters">
-		<div class="line">d</div></div>
+		<div class="line">d</div>
+	</div>
 	<div class="wrapper wrapper-letters">
-		<div class="line">f f</div></div>
+		<div class="line">f f</div>
+	</div>
 	<div class="wrapper wrapper-letters">
-		<div class="line">i</div></div>
+		<div class="line">i</div>
+	</div>
 	<div class="wrapper wrapper-letters">
-		<div class="line">l</div></div>
+		<div class="line">l</div>
+	</div>
 	<div class="wrapper wrapper-letters">
-		<div class="line">t</div></div>
+		<div class="line">t</div>
+	</div>
 	<div class="wrapper wrapper-letters">
 		<div class="line">s s</div>
 	</div>
