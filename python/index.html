@@ -227,7 +227,6 @@
 			setTimeout(() => {
 				resetButton.classList.add('visible');
 				if (!localStorage.getItem('animationPlayed')) {
-					window.scrollTo({ top: 0, behavior: 'smooth' });
 					localStorage.setItem('animationPlayed', 'true');
 				}
 			}, (items.length * 300) + (inputs.length * 100) + 300);
@@ -285,8 +284,7 @@
 			localStorage.removeItem('test_4_done');
 			localStorage.removeItem('test_5_done');
 			localStorage.removeItem('animationPlayed'); // Сбрасываем флаг анимации
-			window.scrollTo({ top: 0, behavior: 'smooth' }); // Прокрутка наверх
-			window.location.reload();
+			window.location.href = "../index.html";
 		}
 
 		const inputs = document.querySelectorAll('.password-inputs input');
