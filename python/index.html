@@ -157,22 +157,22 @@
 				<a href="0type/0.html">0 👀</a>
 			</li>
 			<li id="test1">
-				<a href="0type/01.html">1 ❓</a>
-			</li>
-			<li id="test1">
-				<a href="0type/1.html">2 ❓</a>
+				<a href="0type/1.html">1 ❓</a>
 			</li>
 			<li id="test2">
-				<a href="0type/2.html">3 ✅</a>
+				<a href="0type/2.html">2 ❓</a>
 			</li>
 			<li id="test3">
-				<a href="0type/3.html">4 ❤️</a>
+				<a href="0type/3.html">3 ✅</a>
+			</li>
+			<li id="test4">
+				<a href="0type/4.html">4 ❤️</a>
 			</li>
 			<li>
-				<a href="0type/4.html">5 ⁉️</a>
+				<a href="0type/5.html">5 ⁉️</a>
 			</li>
 			<li>
-				<a href="0type/5.html">🆕</a>
+				<a href="0type/6.html">🆕</a>
 			</li>
 			<li>
 				<a href="1num/1.html">🔢</a>
@@ -261,11 +261,19 @@
 			}
 		}
 
+		if (localStorage.getItem('test_4_done') === 'true') {
+			const test3Link = document.getElementById('test4');
+			if (test3Link) {
+				test3Link.classList.add('done');
+			}
+		}
+
 		function resetProgress() {
 			localStorage.removeItem('test_0_done');
 			localStorage.removeItem('test_1_done');
 			localStorage.removeItem('test_2_done');
 			localStorage.removeItem('test_3_done');
+			localStorage.removeItem('test_4_done');
 			localStorage.removeItem('animationPlayed'); // Сбрасываем флаг анимации
 			window.scrollTo({ top: 0, behavior: 'smooth' }); // Прокрутка наверх
 			window.location.reload();

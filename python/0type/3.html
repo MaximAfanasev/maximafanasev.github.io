@@ -1,224 +1,404 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-	<title>3</title>
-	<link rel="icon" type="image/x-icon" href="/img/logo.png">
 	<link rel="stylesheet" href="../style/win.css">
 	<link rel="stylesheet" href="../style/timer.css">
-
+	<title>2</title>
+	<link rel="icon" type="image/x-icon" href="/img/logo.png">
 </head>
 
 <style>
-	body {
-		font-family: Arial, sans-serif;
-		display: flex;
-		justify-content: center;
-		flex-direction: column;
-		align-items: center;
-		height: 100vh;
+	* {
 		margin: 0;
-		background: linear-gradient(270deg, #ff9c9c, #a2d5f2);
-		background-size: 400% 400%;
-		animation: gradientAnimation 15s ease infinite;
+		padding: 0;
+		box-sizing: border-box;
 	}
 
-	@keyframes gradientAnimation {
-		0% {
-			background-position: 0% 50%;
-		}
-
-		25% {
-			background-position: 50% 50%;
-		}
-
-		50% {
-			background-position: 100% 50%;
-		}
-
-		75% {
-			background-position: 50% 50%;
-		}
-
-		100% {
-			background-position: 0% 50%;
-		}
+	body {
+		position: relative;
+		background-color: #121619;
+		color: #e0e0e0;
+		font-family: monospace;
+		font-size: 20px;
+		line-height: 2.5;
+		padding: 20px;
+		z-index: 20;
+		height: 100vh;
 	}
 
-	.quiz-container {
-		padding: 30px;
-		border-radius: 15px;
-		box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-		text-align: center;
-		background: white;
-		width: 90%;
-		max-width: 400px;
-		animation: slideIn 0.5s ease-in-out;
+	main {
+		max-width: 500px;
+		margin: 0 auto;
+	}
+
+	canvas {
+		background-color: none;
+		width: 300px;
+		height: 400px;
+		position: absolute;
+		z-index: -1;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
 	}
 
 	h1 {
-		font-size: 24px;
-		margin-bottom: 20px;
+		color: #cc2836;
+		text-align: center;
+	}
+
+	h2 {
+		color: #cc2836;
+		margin-top: 50px;
+		font-size: 20px;
+	}
+
+	.done {
+		position: relative;
+	}
+
+	.done a {
+		background: lightgreen;
+		font-weight: bold;
+		border: 1px solid green;
+	}
+
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		gap: 20px;
+	}
+
+	ul li a {
+		color: #cc2836;
+		text-decoration: none;
+		border: 1px solid #cc2836;
+		padding: 5px 10px;
+		border-radius: 10px;
 	}
 
 	button {
-		margin: 5px;
-		padding: 15px 25px;
-		font-size: 18px;
+		padding: 10px 26px;
+		font-size: 24px;
+		color: white;
+		text-shadow: 2px 4px 2px #000;
+		background-color: #77cc00;
 		border: none;
-		border-radius: 10px;
+		border-radius: 30px;
 		cursor: pointer;
-		transition: background-color 0.3s, transform 0.2s;
-		background-color: #f0c14b;
-		color: #111;
-		border: 1px solid #a88734;
+		box-shadow: 3px 3px 3px #000;
+		transition: background-color 0.3s, transform 0.3s;
 	}
 
-	button:hover {
-		transform: scale(1.05);
+	.b-w {
+		position: absolute;
+		left: 50%;
+		transform: translate(-50%);
+		bottom: 20px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 
-	button.correct {
-		background-color: #4caf50;
-		color: white;
+	.b-w button {
+		margin-right: 30px;
 	}
 
-	button.wrong {
-		background-color: #f44336;
-		color: white;
+	.a {
+		padding: 60px;
+		border-radius: 15px;
+		width: 100%;
 	}
 
-	#message {
-		margin-top: 20px;
-		font-size: 20px;
-		font-weight: bold;
+	.c {
+		color: gold;
 	}
 
-	@keyframes slideIn {
-		from {
-			opacity: 0;
-			transform: translateY(-30px);
-		}
-
-		to {
-			opacity: 1;
-			transform: translateY(0);
-		}
+	.s {
+		margin-top: 50px;
+		border: 1px solid gold;
+		padding: 10px 20px;
+		border-radius: 10px;
+		cursor: progress;
+		transition: 0.2s;
+		filter: blur(6px);
 	}
 
-	.question-container {
-		display: none;
+	.s:hover {
+		filter: blur(0px) !important;
 	}
 
-	.congratulations {
-		display: none;
-		text-align: center;
-		margin-top: 20px;
+	.s.active {
+		filter: blur(0px);
 	}
 
-	.trophy {
+	.c1 {
+		position: relative;
+	}
+
+	.c1::before {
+		content: '0 1 2';
+		position: absolute;
 		width: 100px;
-		height: auto;
-		margin: 20px auto;
+		height: 20px;
+		top: -50px;
+		left: 13px;
+		letter-spacing: 5.5px;
+		color: gray;
 	}
 
 	.progress-container {
-		width: calc(100% - 20px);
-		background-color: #ddd;
-		border-radius: 5px;
-		overflow: hidden;
-		margin-bottom: 20px;
+		width: 80%;
+		background: #222;
+		margin: 10px auto;
+		border-radius: 25px;
+		position: relative;
+	}
+
+	.progress-container::after {
+		position: absolute;
+		content: '💰';
+		right: -20px;
+		top: -5px;
+		font-size: 30px;
 	}
 
 	.progress {
-		height: 10px;
-		background-color: #4CAF50;
-		width: 0;
-		transition: width 0.3s ease;
+		height: 5px;
+		background: gold;
+		transition: width 0.3s;
+		border-radius: 25px;
 	}
 
-	#lives {
+	.coin {
+		position: absolute;
+		top: 20px;
+		background: gold;
+		border-radius: 50%;
+		border: 2px solid #000;
+		width: 25px;
+		height: 25px;
 		display: flex;
 		justify-content: center;
-		gap: 10px;
-		margin-bottom: 20px;
+		align-items: center;
+		animation: rotateCoin 2s infinite cubic-bezier(0.1, 0.7, 1.0, 0.1);
+		color: #000;
+		font-weight: bolder;
+		font-family: sans-serif;
 	}
 
-	.heart {
-		width: 30px;
-		height: 30px;
-		background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="red"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>');
-		background-size: cover;
+	@keyframes rotateCoin {
+		from {
+			transform: rotateY(0deg);
+		}
+
+		to {
+			transform: rotateY(360deg);
+		}
+	}
+
+
+	.card-counter {
+		margin-top: 40px;
+		color: gold;
+		display: flex;
+		justify-content: center;
+		font-family: sans-serif;
+	}
+
+	.repeat {
+		margin-top: 10px;
+		padding: 0 20px;
+		line-height: 30px;
+		color: gold;
+		display: flex;
+		justify-content: center;
+		font-family: sans-serif;
+	}
+
+	.filter-controller input {
+		width: 78px;
+		height: 58px;
+		display: block;
+	}
+
+	.b-w input {
+		width: 78px;
+		height: 58px;
+		border-radius: 30px;
+		display: block;
+	}
+
+	.custom-checkbox {
+		cursor: pointer;
+	}
+
+	.eye {
+		display: block;
+		border-radius: 50px;
+	}
+
+	.eye2 {
+		display: none;
+		filter: blur(0px);
+	}
+
+	.custom-checkbox img {
+		width: 70px;
+	}
+
+	.active .eye {
+		display: none;
+	}
+
+	.active .eye2 {
+		display: block;
+		filter: blur(0px);
+	}
+
+	.eye {
+		filter: blur(3px);
+	}
+
+
+
+	.card-checkbox {
+		display: none;
+	}
+
+	.card-label img {
+		width: 50px;
+		position: absolute;
+		bottom: 30px;
+		right: 20px;
+	}
+
+	.container {
+		position: relative;
+		margin: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100vh;
+		background-color: #121619;
+		overflow: hidden;
 	}
 </style>
 
 <body>
 
 	<div class="timer-container">
-		<div id="timer">16</div>
+		<div id="timer">21</div>
 		<svg class="progress-ring" width="120" height="120">
 			<circle class="progress-ring__circle" stroke="blue" stroke-width="4" fill="transparent" r="52" cx="60" cy="60" />
 		</svg>
 	</div>
-	<div id="lives">
-		<div class="heart"></div>
-		<div class="heart"></div>
-		<div class="heart"></div>
-	</div>
-	<div class="progress-container">
-		<div class="progress" id="progress"></div>
-	</div>
-	<div class="quiz-container" id="quiz-container">
-		<div class="question-container" id="question1">
-			<h1>print(type(True))</h1>
-			<div id="options1"></div>
+	<main class="basics">
+		<div class="progress-container" id="correctProgressContainer">
+			<div class="progress" id="correctProgress" style="width: 0%;"></div>
+			<div class="coin" id="coin" style="">$</div>
 		</div>
-		<div class="question-container" id="question2">
-			<h1>print(type(1))</h1>
-			<div id="options2"></div>
+
+		<div class="a">
+			<div class="wrap">
+				<div>print(type(True))</div>
+				<div class="s c">&#60;class 'bool'></div>
+			</div>
 		</div>
-		<div class="question-container" id="question3">
-			<h1>print(type(1.1))</h1>
-			<div id="options3"></div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>print(type(1))</div>
+				<div class="s c">&#60;class 'int'></div>
+			</div>
 		</div>
-		<div class="question-container" id="question4">
-			<h1>print(type(3j))</h1>
-			<div id="options4"></div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>print(type(1.1))</div>
+				<div class="s c">&#60;class 'float'></div>
+			</div>
 		</div>
-		<div class="question-container" id="question5">
-			<h1>print(type('a'))</h1>
-			<div id="options5"></div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>print(type(3j))</div>
+				<div class="s c">&#60;class 'complex'></div>
+			</div>
 		</div>
-		<div class="question-container" id="question6">
-			<h1>print(type([1,2]))</h1>
-			<div id="options6"></div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>print(type('a'))</div>
+				<div class="s c">&#60;class 'str'></div>
+			</div>
 		</div>
-		<div class="question-container" id="question7">
-			<h1>print(type((1,2)))</h1>
-			<div id="options7"></div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>print(type([1,2]))</div>
+				<div class="s c">&#60;class 'list'></div>
+			</div>
 		</div>
-		<div class="question-container" id="question8">
-			<h1>print(type(b'ab\xff'))</h1>
-			<div id="options8"></div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>print(type((1,2)))</div>
+				<div class="s c">&#60;class 'tuple'></div>
+			</div>
 		</div>
-		<div class="question-container" id="question9">
-			<h1>print(type(bytearray([1,2])))</h1>
-			<div id="options9"></div>
+
+		<div class="a h r">
+			<div class="wrap">
+				<div>print(type(b'ab\xff'))</div>
+				<div class="s c">&#60;class 'bytes'></div>
+			</div>
 		</div>
-		<div class="question-container" id="question10">
-			<h1>print(type(set([1,2])))</h1>
-			<div id="options10"></div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>print(type(bytearray([1,2])))</div>
+				<div class="s c">&#60;class 'bytearray'></div>
+			</div>
 		</div>
-		<div class="question-container" id="question11">
-			<h1>print(type(frozenset([1,2])))</h1>
-			<div id="options11"></div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>print(type(set([1,2])))</div>
+				<div class="s c">&#60;class 'bytearray'></div>
+			</div>
 		</div>
-		<div class="question-container" id="question12">
-			<h1>print(type({'a':'1'}))</h1>
-			<div id="options12"></div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>print(type(frozenset([1,2])))</div>
+				<div class="s c">&#60;class 'set'></div>
+			</div>
 		</div>
-	</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>print(type({'a':'1'}))</div>
+				<div class="s c">&#60;class 'dict'></div>
+			</div>
+		</div>
+
+		<div class="b-w">
+			<button class="btn check">✓</button>
+			<div class="filter-controller">
+				<label for="blurToggle" class="custom-checkbox" id="blurLabel">
+					<img class="eye2" src="../../img/eye.png" alt="Toggle Blur">
+					<img class="eye" src="../../img/eye2.png" alt="Toggle Blur">
+				</label>
+				<input type="checkbox" id="blurToggle" style="display: none;">
+			</div>
+		</div>
+	</main>
 
 	<div class="message" id="finalMessage">
 		<div class="container">
@@ -229,339 +409,158 @@
 			<img src="../../img/trophy5.png" class="five" alt="">
 		</div>
 	</div>
+
+	<div class="message game-over" id="loseMessage">
+		GAME OVER 💀
+	</div>
 	<script src="../js/timer.js"></script>
 	<script>
-		const questions = [{
-				question: "print(type(True))",
-				options: [{
-						text: "<class 'str'>",
-						correct: false
-					},
-					{
-						text: "<class 'int'>",
-						correct: false
-					},
-					{
-						text: "<class 'bool'>",
-						correct: true
-					},
-					{
-						text: "<class 'list'>",
-						correct: false
-					}
-				],
-				optionsContainerId: "options1"
-			},
-			{
-				question: "Какой тип данных возвращает выражение print(type(1))?",
-				options: [{
-						text: "<class 'str'>",
-						correct: false
-					},
-					{
-						text: "<class 'int'>",
-						correct: true
-					},
-					{
-						text: "<class 'bool'>",
-						correct: false
-					},
-					{
-						text: "<class 'list'>",
-						correct: false
-					}
-				],
-				optionsContainerId: "options2"
-			},
-			{
-				question: "Какой тип данных возвращает выражение print(type(1.1))?",
-				options: [{
-						text: "<class 'str'>",
-						correct: false
-					},
-					{
-						text: "<class 'int'>",
-						correct: false
-					},
-					{
-						text: "<class 'float'>",
-						correct: true
-					},
-					{
-						text: "<class 'list'>",
-						correct: false
-					}
-				],
-				optionsContainerId: "options3"
-			},
-			{
-				question: "Какой тип данных возвращает выражение print(type(3j))?",
-				options: [{
-						text: "<class 'complex'>",
-						correct: true
-					},
-					{
-						text: "<class 'int'>",
-						correct: false
-					},
-					{
-						text: "<class 'str'>",
-						correct: false
-					},
-					{
-						text: "<class 'list'>",
-						correct: false
-					}
-				],
-				optionsContainerId: "options4"
-			},
-			{
-				question: "Какой тип данных возвращает выражение print(type('a'))?",
-				options: [{
-						text: "<class 'list'>",
-						correct: false
-					},
-					{
-						text: "<class 'int'>",
-						correct: false
-					},
-					{
-						text: "<class 'bool'>",
-						correct: false
-					},
-					{
-						text: "<class 'str'>",
-						correct: true
-					}
-				],
-				optionsContainerId: "options5"
-			},
-			{
-				question: "Какой тип данных возвращает выражение print(type([1, 2]))?",
-				options: [{
-						text: "<class 'str'>",
-						correct: false
-					},
-					{
-						text: "<class 'list'>",
-						correct: true
-					},
-					{
-						text: "<class 'bool'>",
-						correct: false
-					},
-					{
-						text: "<class 'int'>",
-						correct: false
-					}
-				],
-				optionsContainerId: "options6"
-			},
-			{
-				question: "Какой тип данных возвращает выражение print(type((1, 2)))?",
-				options: [{
-						text: "<class 'str'>",
-						correct: false
-					},
-					{
-						text: "<class 'bool'>",
-						correct: false
-					},
-					{
-						text: "<class 'tuple'>",
-						correct: true
-					},
-					{
-						text: "<class 'int'>",
-						correct: false
-					}
-				],
-				optionsContainerId: "options7"
-			},
-			{
-				question: "Какой тип данных возвращает выражение print(type(b'ab\\xff'))?",
-				options: [{
-						text: "<class 'bytes'>",
-						correct: true
-					},
-					{
-						text: "<class 'str'>",
-						correct: false
-					},
-					{
-						text: "<class 'bool'>",
-						correct: false
-					},
-					{
-						text: "<class 'int'>",
-						correct: false
-					}
-				],
-				optionsContainerId: "options8"
-			},
-			{
-				question: "Какой тип данных возвращает выражение print(type(bytearray([1, 2])))?",
-				options: [{
-						text: "<class 'str'>",
-						correct: false
-					},
-					{
-						text: "<class 'int'>",
-						correct: false
-					},
-					{
-						text: "<class 'bool'>",
-						correct: false
-					},
-					{
-						text: "<class 'bytearray'>",
-						correct: true
-					}
-				],
-				optionsContainerId: "options9"
-			},
-			{
-				question: "Какой тип данных возвращает выражение print(type(set([1, 2])))?",
-				options: [{
-						text: "<class 'str'>",
-						correct: false
-					},
-					{
-						text: "<class 'set'>",
-						correct: true
-					},
-					{
-						text: "<class 'bool'>",
-						correct: false
-					},
-					{
-						text: "<class 'int'>",
-						correct: false
-					}
-				],
-				optionsContainerId: "options10"
-			},
-			{
-				question: "Какой тип данных возвращает выражение print(type(frozenset([1, 2])))?",
-				options: [{
-						text: "<class 'str'>",
-						correct: false
-					},
-					{
-						text: "<class 'bool'>",
-						correct: false
-					},
-					{
-						text: "<class 'frozenset'>",
-						correct: true
-					},
-					{
-						text: "<class 'int'>",
-						correct: false
-					}
-				],
-				optionsContainerId: "options11"
-			},
-			{
-				question: "Какой тип данных возвращает выражение print(type({'a': '1'}))?",
-				options: [{
-						text: "<class 'str'>",
-						correct: false
-					},
-					{
-						text: "<class 'dict'>",
-						correct: true
-					},
-					{
-						text: "<class 'bool'>",
-						correct: false
-					},
-					{
-						text: "<class 'int'>",
-						correct: false
-					}
-				],
-				optionsContainerId: "options12"
-			}
-		];
+		const finalMessage = document.getElementById('finalMessage');
+		const correctProgressContainer = document.getElementById('correctProgressContainer');
+		let timeLeft = 20;
 
-		let currentQuestionIndex = 0;
-		let lives = 3;
-		let timeLeft = 15;
+		let correctCount = 0;
+		let incorrectCount = 0;
+		const totalQuestions = document.querySelectorAll('.a').length;
+		const blocks = document.querySelectorAll('.a');
+		let currentIndex = 0; // Индекс текущей карточки
+		const checkButtons = document.querySelectorAll('.check');
+		const cardCountDisplayOff = document.querySelector('.counters');
+
 
 		const timerInterval = setInterval(() => {
 			const seconds = timeLeft % 60;
 			timerElement.textContent = String(seconds).padStart(2);
-			setProgress((timeLeft / 15) * 100);
+			setProgress((timeLeft / 20) * 100);
 
 			if (timeLeft > 0) {
 				timeLeft--;
 			} else {
 				clearInterval(timerInterval);
-				window.location.href = "../index.html";
+				// Вызов функции failTest() или другого действия по завершении таймера
+				failTest();
 			}
 		}, 1000);
-		function displayQuestion(index) {
-			const questionContainer = document.getElementById(`question${index + 1}`);
-			questionContainer.style.display = "block";
-			const optionsContainer = document.getElementById(`options${index + 1}`);
-			optionsContainer.innerHTML = '';
-			questions[index].options.forEach(option => {
-				const button = document.createElement('button');
-				button.textContent = option.text;
-				button.addEventListener('click', () => checkAnswer(option.correct, button, index));
-				optionsContainer.appendChild(button);
+		// Функция для отображения текущей карточки
+		function showCurrentBlock() {
+			blocks.forEach((block, index) => {
+				block.style.display = index === currentIndex ? 'block' : 'none';
 			});
-			updateProgress();
 		}
+
+		// Показать первую карточку при загрузке
+		showCurrentBlock();
+
+		// Обработчики для кнопок проверки
+		checkButtons.forEach((button, index) => {
+			button.addEventListener('click', () => {
+				correctCount++;
+				updateProgress();
+
+				// Переходим к следующей карточке
+				currentIndex++;
+				if (currentIndex < totalQuestions) {
+					showCurrentBlock();
+				} else {
+					finalizeTest();
+				}
+			});
+		});
 
 		function updateProgress() {
-			const progress = document.getElementById('progress');
-			const progressPercentage = ((currentQuestionIndex + 1) / questions.length) * 100;
-			progress.style.width = progressPercentage + '%';
-		}
+			const correctPercentage = (correctCount / totalQuestions) * 100;
+			const correctProgress = document.getElementById('correctProgress');
+			const coin = document.getElementById('coin');
 
-		function checkAnswer(isCorrect, button, questionIndex) {
-			if (isCorrect) {
-				button.classList.add('correct');
-				if (questionIndex < questions.length - 1) {
-					setTimeout(() => {
-						document.getElementById(`question${questionIndex + 1}`).style.display = "none";
-						currentQuestionIndex++;
-						displayQuestion(currentQuestionIndex);
-					}, 300);
-				} else {
-					document.getElementById("quiz-container").style.display = "none";
-					document.querySelector(".progress-container").style.display = "none";
-					document.getElementById("finalMessage").style.display = "block";
-					document.getElementById('lives').style.display = 'none';
-					document.querySelector('.timer-container').style.display = 'none'
-					localStorage.setItem('test_3_done', 'true');
-					setTimeout(() => {
-						window.location.href = "../index.html";
-					}, 5000);
-				}
-			} else {
-				button.classList.add('wrong');
-				loseLife();
+			correctProgress.style.width = `${correctPercentage}%`;
+			coin.style.left = `${correctPercentage}%`;
+
+			if (correctCount + incorrectCount === totalQuestions) {
+
+				finalizeTest();
 			}
 		}
 
-		function loseLife() {
-			lives--;
-			const hearts = document.querySelectorAll("#lives .heart");
-			if (lives >= 0) {
-				hearts[lives].style.display = "none";
+		function finalizeTest() {
+			for (const block of blocks) {
+				correctProgressContainer.style.display = 'none';
+				block.style.display = 'none';
 			}
+			finalMessage.style.display = 'block';
 
-			if (lives === 0) {
-				timerElement.style.display = 'none';
-				setTimeout(() => {
-					window.location.href = "../index.html";
-				}, 1000);
-			}
+			// Сохраняем в localStorage, что тест пройден
+			localStorage.setItem('test_3_done', 'true');
+			document.querySelector('.timer-container').style.display = 'none'
+
+			setTimeout(() => {
+				window.location.href = "../index.html";
+			}, 3000); // Редирект через 3 секунды
+			clearInterval(timerInterval);
 		}
 
-		displayQuestion(currentQuestionIndex);
+		function failTest() {
+			for (const block of blocks) {
+				correctProgressContainer.style.display = 'none';
+				block.style.display = 'none';
+			}
+			loseMessage.style.display = 'block';
+			timerElement.style.display = 'none';
+			document.querySelector('.b-w').style.display = 'none'
+			localStorage.removeItem('test_3_done', 'true');
+
+			setTimeout(() => {
+				window.location.href = "../index.html";
+			}, 3000);
+			clearInterval(timerInterval);
+		}
+
+		document.getElementById('blurLabel').addEventListener('click', function() {
+			this.classList.toggle('active'); // Добавляет или удаляет класс 'active' при клике
+		});
+
+		// Инициализируем показ первой карточки
+		showCurrentBlock();
 	</script>
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+			const totalCards = document.querySelectorAll('.a').length; // Общее количество карточек
+			// Элемент для отображения текущего количества
+			const totalCardsDisplay = document.getElementById('totalCards'); // Элемент для отображения общего количества
+			const repeatList = document.getElementById('repeatList'); // Элемент для отображения номеров карточек
+			const blurToggle = document.getElementById('blurToggle'); // Чекбокс для размытия
+
+			let cardCount = 1; // Начальное количество пройденных карточек
+
+			// Находим все кнопки и добавляем обработчик событий
+			const buttons = document.querySelectorAll('.btn.check');
+			buttons.forEach(button => {
+				button.addEventListener('click', () => {
+					if (cardCount < totalCards) {
+						cardCount++; // Увеличиваем количество пройденных карточек
+					}
+				});
+			});
+
+			// Находим все чекбоксы и добавляем обработчик событий
+			const checkboxes = document.querySelectorAll('.card-checkbox');
+			checkboxes.forEach(checkbox => {
+				checkbox.addEventListener('change', () => {
+					const checkedCards = Array.from(checkboxes)
+						.filter(cb => cb.checked)
+						.map(cb => cb.getAttribute('data-card-number'));
+					repeatList.textContent = 'Повторить: ' + checkedCards.join(', ');
+				});
+			});
+
+			// Обработчик события для чекбокса размытия
+			blurToggle.addEventListener('change', () => {
+				const sElements = document.querySelectorAll('.s'); // Находим все элементы с классом .s
+				sElements.forEach(element => {
+					element.classList.toggle('active')
+				});
+			});
+
+		});
+	</script>
+
 </body></html>

@@ -1,39 +1,222 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-	<link rel="stylesheet" href="../style/style.css">
-	<link rel="stylesheet" href="../style/win.css">
-	<title>2</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>4</title>
 	<link rel="icon" type="image/x-icon" href="/img/logo.png">
+	<link rel="stylesheet" href="../style/win.css">
 	<style>
 		body {
-			overflow: scroll;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			animation: gradientAnimation 10s ease infinite;
+			height: 100vh;
+			margin: 0;
+			font-family: Arial, sans-serif;
+			background: linear-gradient(45deg, #ff6b6b, #f06595, #eece4e, #4bc0c8);
+			background-size: 400% 400%;
 		}
 
+		#all {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
+
+		@keyframes gradientAnimation {
+			0% {
+				background-position: 0% 50%;
+			}
+
+			50% {
+				background-position: 100% 50%;
+			}
+
+			100% {
+				background-position: 0% 50%;
+			}
+		}
+
+		h1,
 		h2 {
+			margin-bottom: 20px;
 			text-align: center;
 		}
 
 		input {
-			display: block;
-			margin: 10px auto;
+			width: 50px;
+			height: 50px;
+			font-size: 24px;
+			text-align: center;
+			margin: 5px;
+			border: none;
+			border-radius: 10px;
+			outline: none;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 		}
+
+		button {
+			margin-top: 20px;
+			padding: 10px 20px;
+			font-size: 20px;
+			border: none;
+			border-radius: 10px;
+			cursor: pointer;
+			background-color: #4bc0c8;
+			color: #fff;
+		}
+
+		.question {
+			display: none;
+			margin-top: 20px;
+		}
+
+		.button-container {
+			display: flex;
+			justify-content: center;
+			width: 100%;
+		}
+
 	</style>
 </head>
 
 <body>
-	<div id="container">
-		<div class="column">
-			<h2>May Vary</h2>
-			<input type="text" placeholder="">
+	<div id="all">
+		<h1>type(True)</h1>
+		<div>
+			<input type="text" maxlength="1" id="letter1" oninput="moveToNextInput('letter2', 4)" required>
+			<input type="text" maxlength="1" id="letter2" oninput="moveToNextInput('letter3', 4)" required>
+			<input type="text" maxlength="1" id="letter3" oninput="moveToNextInput('letter4', 4)" required>
+			<input type="text" maxlength="1" id="letter4" oninput="checkLetters()" required>
 		</div>
-		<div class="column">
-			<h2>Can't Vary</h2>
-			<input type="text" placeholder="">
+
+		<div class="question" id="secondQuestion">
+			<h2>type(1)</h2>
+			<div>
+				<input type="text" maxlength="1" id="letter5" oninput="moveToNextInput('letter6', 3)" required>
+				<input type="text" maxlength="1" id="letter6" oninput="moveToNextInput('letter7', 3)" required>
+				<input type="text" maxlength="1" id="letter7" oninput="checkSecondQuestion()" required>
+			</div>
 		</div>
-		<button id="checkButton">Проверить</button>
+
+		<div class="question" id="thirdQuestion">
+			<h2>type(1.1)</h2>
+			<div>
+				<input type="text" maxlength="1" id="letter8" oninput="moveToNextInput('letter9', 5)" required>
+				<input type="text" maxlength="1" id="letter9" oninput="moveToNextInput('letter10', 5)" required>
+				<input type="text" maxlength="1" id="letter10" oninput="moveToNextInput('letter11', 5)" required>
+				<input type="text" maxlength="1" id="letter11" oninput="moveToNextInput('letter12', 5)" required>
+				<input type="text" maxlength="1" id="letter12" required oninput="checkThirdQuestion()">
+			</div>
+		</div>
+
+		<div class="question" id="fourthQuestion">
+			<h2>type(3j)</h2>
+			<div>
+				<input type="text" maxlength="1" id="letter13" oninput="moveToNextInput('letter14', 7)" required>
+				<input type="text" maxlength="1" id="letter14" oninput="moveToNextInput('letter15', 7)" required>
+				<input type="text" maxlength="1" id="letter15" oninput="moveToNextInput('letter16', 7)" required>
+				<input type="text" maxlength="1" id="letter16" oninput="moveToNextInput('letter17', 7)" required>
+				<input type="text" maxlength="1" id="letter17" oninput="moveToNextInput('letter18', 7)" required>
+				<input type="text" maxlength="1" id="letter18" oninput="moveToNextInput('letter19', 7)" required>
+				<input type="text" maxlength="1" id="letter19" oninput="checkFourthQuestion()" required>
+			</div>
+		</div>
+
+		<div class="question" id="fifthQuestion">
+			<h2>type('a')</h2>
+			<div>
+				<input type="text" maxlength="1" id="letter20" oninput="moveToNextInput('letter21', 3)" required>
+				<input type="text" maxlength="1" id="letter21" oninput="moveToNextInput('letter22', 3)" required>
+				<input type="text" maxlength="1" id="letter22" oninput="checkFifthQuestion()" required>
+			</div>
+		</div>
+
+		<div class="question" id="sixthQuestion">
+			<h2>type([1,2])</h2>
+			<div>
+				<input type="text" maxlength="1" id="letter23" oninput="moveToNextInput('letter24', 4)" required>
+				<input type="text" maxlength="1" id="letter24" oninput="moveToNextInput('letter25', 4)" required>
+				<input type="text" maxlength="1" id="letter25" oninput="moveToNextInput('letter255', 4)" required>
+				<input type="text" maxlength="1" id="letter255" oninput="checkSixthQuestion()" required>
+			</div>
+		</div>
+
+		<div class="question" id="seventhQuestion">
+			<h2>type((1,2))</h2>
+			<div>
+				<input type="text" maxlength="1" id="letter26" oninput="moveToNextInput('letter27', 5)" required>
+				<input type="text" maxlength="1" id="letter27" oninput="moveToNextInput('letter28', 5)" required>
+				<input type="text" maxlength="1" id="letter28" oninput="moveToNextInput('letter288', 5)" required>
+				<input type="text" maxlength="1" id="letter288" oninput="moveToNextInput('letter289', 5)" required>
+				<input type="text" maxlength="1" id="letter289" oninput="checkSeventhQuestion()" required>
+			</div>
+		</div>
+
+		<div class="question" id="eighthQuestion">
+			<h2>type(b'ab\\xff')</h2>
+			<div>
+				<input type="text" maxlength="1" id="letter29" oninput="moveToNextInput('letter30', 5)" required>
+				<input type="text" maxlength="1" id="letter30" oninput="moveToNextInput('letter31', 5)" required>
+				<input type="text" maxlength="1" id="letter31" oninput="moveToNextInput('letter318', 5)" required>
+				<input type="text" maxlength="1" id="letter318" oninput="moveToNextInput('letter319', 5)" required>
+				<input type="text" maxlength="1" id="letter319" oninput="checkEighthQuestion()" required>
+			</div>
+		</div>
+
+		<div class="question" id="ninthQuestion">
+			<h2>type(bytearray([1,2]))</h2>
+			<div>
+				<input type="text" maxlength="1" id="letter32" oninput="moveToNextInput('letter33', 5)" required>
+				<input type="text" maxlength="1" id="letter33" oninput="moveToNextInput('letter341', 5)" required>
+				<input type="text" maxlength="1" id="letter341" oninput="moveToNextInput('letter342', 5)" required>
+				<input type="text" maxlength="1" id="letter342" oninput="moveToNextInput('letter343', 5)" required>
+				<input type="text" maxlength="1" id="letter343" oninput="moveToNextInput('letter344', 5)" required>
+				<input type="text" maxlength="1" id="letter344" oninput="moveToNextInput('letter345', 5)" required>
+				<input type="text" maxlength="1" id="letter345" oninput="moveToNextInput('letter346', 5)" required>
+				<input type="text" maxlength="1" id="letter346" oninput="moveToNextInput('letter347', 5)" required>
+				<input type="text" maxlength="1" id="letter347" oninput="checkNinthQuestion()" required>
+			</div>
+		</div>
+
+		<div class="question" id="tenthQuestion">
+			<h2>type(set([1,2]))</h2>
+			<div>
+				<input type="text" maxlength="1" id="letter35" oninput="moveToNextInput('letter36', 3)" required>
+				<input type="text" maxlength="1" id="letter36" oninput="moveToNextInput('letter366', 3)" required>
+				<input type="text" maxlength="1" id="letter366" oninput="checkTenthQuestion()" required>
+			</div>
+		</div>
+
+		<div class="question" id="eleventhQuestion">
+			<h2>type(frozenset([1,2]))</h2>
+			<div>
+				<input type="text" maxlength="1" id="letter37" oninput="moveToNextInput('letter38', 4)" required>
+				<input type="text" maxlength="1" id="letter38" oninput="moveToNextInput('letter381', 4)" required>
+				<input type="text" maxlength="1" id="letter381" oninput="moveToNextInput('letter382', 4)" required>
+				<input type="text" maxlength="1" id="letter382" oninput="moveToNextInput('letter383', 4)" required>
+				<input type="text" maxlength="1" id="letter383" oninput="moveToNextInput('letter384', 4)" required>
+				<input type="text" maxlength="1" id="letter384" oninput="moveToNextInput('letter385', 4)" required>
+				<input type="text" maxlength="1" id="letter385" oninput="moveToNextInput('letter386', 4)" required>
+				<input type="text" maxlength="1" id="letter386" oninput="moveToNextInput('letter387', 4)" required>
+				<input type="text" maxlength="1" id="letter387" oninput="checkEleventhQuestion()" required>
+			</div>
+		</div>
+
+		<div class="question" id="twelfthQuestion">
+			<h2>type({'a':'1'})</h2>
+			<div>
+				<input type="text" maxlength="1" id="letter39" oninput="moveToNextInput('letter40', 4)" required>
+				<input type="text" maxlength="1" id="letter40" oninput="moveToNextInput('letter401', 4)" required>
+				<input type="text" maxlength="1" id="letter401" oninput="moveToNextInput('letter402', 4)" required>
+				<input type="text" maxlength="1" id="letter402" oninput="checkTwelfthQuestion()" required>
+			</div>
+		</div>
 	</div>
 
 	<div class="message" id="finalMessage">
@@ -45,34 +228,249 @@
 			<img src="../../img/trophy5.png" class="five" alt="">
 		</div>
 	</div>
+
 	<script>
-		const correctMayVary = ["bdls"];
-		const correctCantVary = ["bbcffits"];
+		window.onload = function() {
+			document.getElementById('letter1').focus();
+		};
 
-		document.getElementById('checkButton').addEventListener('click', () => {
-			const mayVaryInputs = document.querySelectorAll('.column:first-child input');
-			const cantVaryInputs = document.querySelectorAll('.column:last-child input');
-
-			let mayVaryCorrect = true;
-			let cantVaryCorrect = true;
-
-			mayVaryInputs.forEach((input, index) => {
-				if (input.value !== correctMayVary[index]) {
-					mayVaryCorrect = false;
-				}
-			});
-
-			cantVaryInputs.forEach((input, index) => {
-				if (input.value !== correctCantVary[index]) {
-					cantVaryCorrect = false;
-				}
-			});
-
-			if (mayVaryCorrect && cantVaryCorrect) {
-
-				document.getElementById('container').style.display = "none";
-				document.getElementById("finalMessage").style.display = "block";
+		function moveToNextInput(nextInputId, totalInputs) {
+			const nextInput = document.getElementById(nextInputId);
+			if (nextInput) {
+				nextInput.focus();
 			}
-		});
+		}
+
+		function checkLetters() {
+			const letter1 = document.getElementById('letter1').value;
+			const letter2 = document.getElementById('letter2').value;
+			const letter3 = document.getElementById('letter3').value;
+			const letter4 = document.getElementById('letter4').value;
+
+			const correctLetters = 'bool'; // Правильное слово
+			const userInput = letter1 + letter2 + letter3 + letter4;
+
+			if (userInput === correctLetters) {
+				setTimeout(() => {
+					// Есть ли второй вопрос? Убедитесь, что этот элемент существует.
+					const secondQuestion = document.getElementById('secondQuestion');
+					if (secondQuestion) {
+						secondQuestion.style.display = 'block';
+						const letter5 = document.getElementById('letter5');
+						if (letter5) {
+							letter5.focus();
+						}
+					}
+				}, 300); // Задержка 1 секунда
+			}
+		}
+
+		function checkSecondQuestion() {
+			const letter5 = document.getElementById('letter5').value;
+			const letter6 = document.getElementById('letter6').value;
+			const letter7 = document.getElementById('letter7').value;
+
+			const correctSecondLetters = 'int'; // Правильное слово
+			const userSecondInput = letter5 + letter6 + letter7;
+
+			if (userSecondInput === correctSecondLetters) {
+
+				setTimeout(() => {
+					document.getElementById('thirdQuestion').style.display = 'block';
+					document.getElementById('letter8').focus();
+				}, 300); // 3 секунды
+			} else {}
+		}
+
+		function checkThirdQuestion() {
+			const letter8 = document.getElementById('letter8').value;
+			const letter9 = document.getElementById('letter9').value;
+			const letter10 = document.getElementById('letter10').value;
+			const letter11 = document.getElementById('letter11').value;
+			const letter12 = document.getElementById('letter12').value;
+
+			const correctThirdLetters = 'float'; // Правильное слово
+			const userThirdInput = letter8 + letter9 + letter10 + letter11 + letter12;
+
+			if (userThirdInput === correctThirdLetters) {
+
+				setTimeout(() => {
+					document.getElementById('fourthQuestion').style.display = 'block';
+					document.getElementById('letter13').focus();
+				}, 300); // 3 секунды
+			} else {}
+		}
+
+		function checkFourthQuestion() {
+			const letter13 = document.getElementById('letter13').value;
+			const letter14 = document.getElementById('letter14').value;
+			const letter15 = document.getElementById('letter15').value;
+			const letter16 = document.getElementById('letter16').value;
+			const letter17 = document.getElementById('letter17').value;
+			const letter18 = document.getElementById('letter18').value;
+			const letter19 = document.getElementById('letter19').value;
+
+			const correctFourthLetters = 'complex'; // Правильное слово
+			const userFourthInput = letter13 + letter14 + letter15 + letter16 + letter17 + letter18 + letter19;
+
+			if (userFourthInput === correctFourthLetters) {
+
+				setTimeout(() => {
+					document.getElementById('fifthQuestion').style.display = 'block';
+					document.getElementById('letter20').focus();
+				}, 300); // 3 секунды
+			} else {}
+		}
+
+		// Функции проверки для новых карточек
+		function checkFifthQuestion() {
+			const letter20 = document.getElementById('letter20').value;
+			const letter21 = document.getElementById('letter21').value;
+			const letter22 = document.getElementById('letter22').value;
+
+			const correctFifthLetters = 'str'; // Правильное слово
+			const userFifthInput = letter20 + letter21 + letter22;
+
+			if (userFifthInput === correctFifthLetters) {
+
+				setTimeout(() => {
+					document.getElementById('sixthQuestion').style.display = 'block';
+					document.getElementById('letter23').focus();
+				}, 300); // 3 секунды
+			} else {}
+		}
+
+		function checkSixthQuestion() {
+			const letter23 = document.getElementById('letter23').value;
+			const letter24 = document.getElementById('letter24').value;
+			const letter25 = document.getElementById('letter25').value;
+			const letter255 = document.getElementById('letter255').value;
+
+			const correctSixthLetters = 'list'; // Правильное слово
+			const userSixthInput = letter23 + letter24 + letter25 + letter255;
+
+			if (userSixthInput === correctSixthLetters) {
+
+				setTimeout(() => {
+					document.getElementById('seventhQuestion').style.display = 'block';
+					document.getElementById('letter26').focus();
+				}, 300); // 3 секунды
+			} else {}
+		}
+
+		function checkSeventhQuestion() {
+			const letter26 = document.getElementById('letter26').value;
+			const letter27 = document.getElementById('letter27').value;
+			const letter28 = document.getElementById('letter28').value;
+			const letter288 = document.getElementById('letter288').value;
+			const letter289 = document.getElementById('letter289').value;
+
+			const correctSeventhLetters = 'tuple'; // Правильное слово
+			const userSeventhInput = letter26 + letter27 + letter28 + letter288 + letter289;
+
+			if (userSeventhInput === correctSeventhLetters) {
+
+				setTimeout(() => {
+					document.getElementById('eighthQuestion').style.display = 'block';
+					document.getElementById('letter29').focus();
+				}, 300); // 3 секунды
+			} else {}
+		}
+
+		function checkEighthQuestion() {
+			const letter29 = document.getElementById('letter29').value;
+			const letter30 = document.getElementById('letter30').value;
+			const letter31 = document.getElementById('letter31').value;
+			const letter318 = document.getElementById('letter318').value;
+			const letter319 = document.getElementById('letter319').value;
+
+			const correctEighthLetters = 'bytes'; // Правильное слово
+			const userEighthInput = letter29 + letter30 + letter31 + letter318 + letter319;
+
+			if (userEighthInput === correctEighthLetters) {
+
+				setTimeout(() => {
+					document.getElementById('ninthQuestion').style.display = 'block';
+					document.getElementById('letter32').focus();
+				}, 300); // 3 секунды
+			} else {}
+		}
+
+		function checkNinthQuestion() {
+			const letter32 = document.getElementById('letter32').value;
+			const letter33 = document.getElementById('letter33').value;
+			const letter341 = document.getElementById('letter341').value;
+			const letter342 = document.getElementById('letter342').value;
+			const letter343 = document.getElementById('letter343').value;
+			const letter344 = document.getElementById('letter344').value;
+			const letter345 = document.getElementById('letter345').value;
+			const letter346 = document.getElementById('letter346').value;
+			const letter347 = document.getElementById('letter347').value;
+
+			const correctNinthLetters = 'bytearray'; // Правильное слово
+			const userNinthInput = letter32 + letter33 + letter341 + letter342 + letter343 + letter344 + letter345 + letter346 + letter347;
+
+			if (userNinthInput === correctNinthLetters) {
+
+				setTimeout(() => {
+					document.getElementById('tenthQuestion').style.display = 'block';
+					document.getElementById('letter35').focus();
+				}, 300); // 3 секунды
+			} else {}
+		}
+
+		function checkTenthQuestion() {
+			const letter35 = document.getElementById('letter35').value;
+			const letter36 = document.getElementById('letter36').value;
+			const letter366 = document.getElementById('letter366').value;
+
+			const correctTenthLetters = 'set'; // Правильное слово
+			const userTenthInput = letter35 + letter36 + letter366;
+
+			if (userTenthInput === correctTenthLetters) {
+				setTimeout(() => {
+					document.getElementById('eleventhQuestion').style.display = 'block';
+					document.getElementById('letter37').focus();
+				}, 300); // 3 секунды
+			} else {}
+		}
+
+		function checkEleventhQuestion() {
+			const letter37 = document.getElementById('letter37').value;
+			const letter38 = document.getElementById('letter38').value;
+			const letter381 = document.getElementById('letter381').value;
+			const letter382 = document.getElementById('letter382').value;
+			const letter383 = document.getElementById('letter383').value;
+			const letter384 = document.getElementById('letter384').value;
+			const letter385 = document.getElementById('letter385').value;
+			const letter386 = document.getElementById('letter386').value;
+			const letter387 = document.getElementById('letter387').value;
+
+			const correctEleventhLetters = 'frozenset'; // Правильное слово
+			const userEleventhInput = letter37 + letter38 + letter381 + letter382 + letter383 + letter384 + letter385 + letter386 + letter387;
+
+			if (userEleventhInput === correctEleventhLetters) {
+				setTimeout(() => {
+					document.getElementById('twelfthQuestion').style.display = 'block';
+					document.getElementById('letter39').focus();
+				}, 300); // 3 секунды
+			} else {}
+		}
+
+		function checkTwelfthQuestion() {
+			const letter39 = document.getElementById('letter39').value;
+			const letter40 = document.getElementById('letter40').value;
+			const letter401 = document.getElementById('letter401').value;
+			const letter402 = document.getElementById('letter402').value;
+
+			const correctTwelfthLetters = 'dict'; // Правильное слово
+			const userTwelfthInput = letter39 + letter40 + letter401 + letter402;
+
+			if (userTwelfthInput === correctTwelfthLetters) {
+				document.getElementById('all').style.display = "none";
+				document.getElementById("finalMessage").style.display = "block";
+			} else {}
+		}
+
 	</script>
-</body></html>
+</body>
