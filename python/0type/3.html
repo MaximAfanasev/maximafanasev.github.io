@@ -265,8 +265,6 @@
 		filter: blur(3px);
 	}
 
-
-
 	.card-checkbox {
 		display: none;
 	}
@@ -415,6 +413,20 @@
 	</div>
 	<script src="../js/timer.js"></script>
 	<script>
+		// Функция для перемешивания массива
+		function shuffleArray(array) {
+			for (let i = array.length - 1; i > 0; i--) {
+				const j = Math.floor(Math.random() * (i + 1));
+				[array[i], array[j]] = [array[j], array[i]];
+			}
+			return array;
+		}
+
+		// Перемешиваем блоки с заданиями
+		const blocksContainer = document.querySelector('main.basics');
+		const blocks = Array.from(document.querySelectorAll('.a'));
+	shuffleArray(blocks).forEach(block => blocksContainer.appendChild(block));
+
 		const finalMessage = document.getElementById('finalMessage');
 		const correctProgressContainer = document.getElementById('correctProgressContainer');
 		let timeLeft = 40;
@@ -422,11 +434,9 @@
 		let correctCount = 0;
 		let incorrectCount = 0;
 		const totalQuestions = document.querySelectorAll('.a').length;
-		const blocks = document.querySelectorAll('.a');
 		let currentIndex = 0; // Индекс текущей карточки
 		const checkButtons = document.querySelectorAll('.check');
 		const cardCountDisplayOff = document.querySelector('.counters');
-
 
 		const timerInterval = setInterval(() => {
 			const seconds = timeLeft % 60;
@@ -437,10 +447,10 @@
 				timeLeft--;
 			} else {
 				clearInterval(timerInterval);
-				// Вызов функции failTest() или другого действия по завершении таймера
 				failTest();
 			}
 		}, 1000);
+
 		// Функция для отображения текущей карточки
 		function showCurrentBlock() {
 			blocks.forEach((block, index) => {
@@ -476,7 +486,6 @@
 			coin.style.left = `${correctPercentage}%`;
 
 			if (correctCount + incorrectCount === totalQuestions) {
-
 				finalizeTest();
 			}
 		}

@@ -87,14 +87,7 @@
 		</div>
 	</div>
 	<div class="letters">
-		<div class="letter">b</div>
-		<div class="letter">c</div>
-		<div class="letter">d</div>
-		<div class="letter">f</div>
-		<div class="letter">i</div>
-		<div class="letter">l</div>
-		<div class="letter">t</div>
-		<div class="letter">s</div>
+		<!-- Буквы будут добавлены с помощью JavaScript -->
 	</div>
 
 	<div class="message" id="finalMessage" style="display:none;">
@@ -111,7 +104,7 @@
 		const correctSequence = "bbbcdffiltss";
 
 		const letterInputs = document.querySelectorAll('.letter-input');
-		const letters = document.querySelectorAll('.letter');
+		const lettersContainer = document.querySelector('.letters');
 		let currentInputIndex = 0;
 
 		// Объект для отслеживания количества оставшихся букв
@@ -126,9 +119,32 @@
 			's': 2
 		};
 
-		letters.forEach(letter => {
-			letter.addEventListener('click', () => {
-				const letterValue = letter.textContent;
+		const lettersArray = ['b', 'c', 'd', 'f',  'i', 'l', 't', 's'];
+
+		// Функция для перемешивания массива
+		function shuffleArray(array) {
+			for (let i = array.length - 1; i > 0; i--) {
+				const j = Math.floor(Math.random() * (i + 1));
+				[array[i], array[j]] = [array[j], array[i]];
+			}
+			return array;
+		}
+
+		// Перемешиваем буквы
+		const shuffledLetters = shuffleArray(lettersArray);
+
+		// Добавляем перемешанные буквы в контейнер
+		shuffledLetters.forEach(letter => {
+			const letterDiv = document.createElement('div');
+			letterDiv.classList.add('letter');
+			letterDiv.textContent = letter;
+			lettersContainer.appendChild(letterDiv);
+		});
+
+		// Обработчик клика по букве
+		lettersContainer.addEventListener('click', (event) => {
+			if (event.target.classList.contains('letter')) {
+				const letterValue = event.target.textContent;
 
 				// Проверяем, можно ли использовать эту букву
 				if (letterCounts[letterValue] > 0 && correctSequence[currentInputIndex] === letterValue) {
@@ -141,7 +157,7 @@
 
 					// Если буква больше не нужна, скрываем её
 					if (letterCounts[letterValue] === 0) {
-						letter.classList.add('disabled');
+						event.target.classList.add('disabled');
 					}
 
 					// Проверяем, заполнены ли все поля
@@ -149,7 +165,7 @@
 						checkInput();
 					}
 				}
-			});
+			}
 		});
 
 		function checkInput() {
