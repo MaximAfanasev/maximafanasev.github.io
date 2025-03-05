@@ -270,7 +270,7 @@
 							letter5.focus();
 						}
 					}
-				}, 300); // Задержка 1 секунда
+				}, 300);
 			}
 		}
 
@@ -279,7 +279,7 @@
 			const letter6 = document.getElementById('letter6').value;
 			const letter7 = document.getElementById('letter7').value;
 
-			const correctSecondLetters = 'int'; // Правильное слово
+			const correctSecondLetters = 'int';
 			const userSecondInput = letter5 + letter6 + letter7;
 
 			if (userSecondInput.toLowerCase() === correctSecondLetters) {
@@ -287,7 +287,7 @@
 				setTimeout(() => {
 					document.getElementById('thirdQuestion').style.display = 'block';
 					document.getElementById('letter8').focus();
-				}, 300); // 3 секунды
+				}, 300);
 			} else {}
 		}
 
@@ -298,7 +298,7 @@
 			const letter11 = document.getElementById('letter11').value;
 			const letter12 = document.getElementById('letter12').value;
 
-			const correctThirdLetters = 'float'; // Правильное слово
+			const correctThirdLetters = 'float';
 			const userThirdInput = letter8 + letter9 + letter10 + letter11 + letter12;
 
 			if (userThirdInput.toLowerCase() === correctThirdLetters) {
@@ -306,7 +306,7 @@
 				setTimeout(() => {
 					document.getElementById('fourthQuestion').style.display = 'block';
 					document.getElementById('letter13').focus();
-				}, 300); // 3 секунды
+				}, 300);
 			} else {}
 		}
 
@@ -319,7 +319,7 @@
 			const letter18 = document.getElementById('letter18').value;
 			const letter19 = document.getElementById('letter19').value;
 
-			const correctFourthLetters = 'complex'; // Правильное слово
+			const correctFourthLetters = 'complex'; 
 			const userFourthInput = letter13 + letter14 + letter15 + letter16 + letter17 + letter18 + letter19;
 
 			if (userFourthInput.toLowerCase() === correctFourthLetters) {
@@ -327,17 +327,16 @@
 				setTimeout(() => {
 					document.getElementById('fifthQuestion').style.display = 'block';
 					document.getElementById('letter20').focus();
-				}, 300); // 3 секунды
+				}, 300); 
 			} else {}
 		}
 
-		// Функции проверки для новых карточек
 		function checkFifthQuestion() {
 			const letter20 = document.getElementById('letter20').value;
 			const letter21 = document.getElementById('letter21').value;
 			const letter22 = document.getElementById('letter22').value;
 
-			const correctFifthLetters = 'str'; // Правильное слово
+			const correctFifthLetters = 'str';
 			const userFifthInput = letter20 + letter21 + letter22;
 
 			if (userFifthInput.toLowerCase() === correctFifthLetters) {
@@ -345,7 +344,7 @@
 				setTimeout(() => {
 					document.getElementById('sixthQuestion').style.display = 'block';
 					document.getElementById('letter23').focus();
-				}, 300); // 3 секунды
+				}, 300);
 			} else {}
 		}
 
@@ -355,7 +354,7 @@
 			const letter25 = document.getElementById('letter25').value;
 			const letter255 = document.getElementById('letter255').value;
 
-			const correctSixthLetters = 'list'; // Правильное слово
+			const correctSixthLetters = 'list';
 			const userSixthInput = letter23 + letter24 + letter25 + letter255;
 
 			if (userSixthInput.toLowerCase() === correctSixthLetters) {
@@ -363,7 +362,7 @@
 				setTimeout(() => {
 					document.getElementById('seventhQuestion').style.display = 'block';
 					document.getElementById('letter26').focus();
-				}, 300); // 3 секунды
+				}, 300);
 			} else {}
 		}
 
@@ -374,7 +373,7 @@
 			const letter288 = document.getElementById('letter288').value;
 			const letter289 = document.getElementById('letter289').value;
 
-			const correctSeventhLetters = 'tuple'; // Правильное слово
+			const correctSeventhLetters = 'tuple';
 			const userSeventhInput = letter26 + letter27 + letter28 + letter288 + letter289;
 
 			if (userSeventhInput.toLowerCase() === correctSeventhLetters) {
@@ -382,7 +381,7 @@
 				setTimeout(() => {
 					document.getElementById('eighthQuestion').style.display = 'block';
 					document.getElementById('letter29').focus();
-				}, 300); // 3 секунды
+				}, 300);
 			} else {}
 		}
 
@@ -393,7 +392,7 @@
 			const letter318 = document.getElementById('letter318').value;
 			const letter319 = document.getElementById('letter319').value;
 
-			const correctEighthLetters = 'bytes'; // Правильное слово
+			const correctEighthLetters = 'bytes';
 			const userEighthInput = letter29 + letter30 + letter31 + letter318 + letter319;
 
 			if (userEighthInput.toLowerCase() === correctEighthLetters) {
@@ -401,7 +400,7 @@
 				setTimeout(() => {
 					document.getElementById('ninthQuestion').style.display = 'block';
 					document.getElementById('letter32').focus();
-				}, 300); // 3 секунды
+				}, 300);
 			} else {}
 		}
 
@@ -416,7 +415,7 @@
 			const letter346 = document.getElementById('letter346').value;
 			const letter347 = document.getElementById('letter347').value;
 
-			const correctNinthLetters = 'bytearray'; // Правильное слово
+			const correctNinthLetters = 'bytearray'; 
 			const userNinthInput = letter32 + letter33 + letter341 + letter342 + letter343 + letter344 + letter345 + letter346 + letter347;
 
 			if (userNinthInput.toLowerCase() === correctNinthLetters) {
@@ -424,7 +423,7 @@
 				setTimeout(() => {
 					document.getElementById('tenthQuestion').style.display = 'block';
 					document.getElementById('letter35').focus();
-				}, 300); // 3 секунды
+				}, 300);
 			} else {}
 		}
 
@@ -433,14 +432,14 @@
 			const letter36 = document.getElementById('letter36').value;
 			const letter366 = document.getElementById('letter366').value;
 
-			const correctTenthLetters = 'set'; // Правильное слово
+			const correctTenthLetters = 'set';
 			const userTenthInput = letter35 + letter36 + letter366;
 
 			if (userTenthInput.toLowerCase() === correctTenthLetters) {
 				setTimeout(() => {
 					document.getElementById('eleventhQuestion').style.display = 'block';
 					document.getElementById('letter37').focus();
-				}, 300); // 3 секунды
+				}, 300);
 			} else {}
 		}
 
@@ -455,14 +454,14 @@
 			const letter386 = document.getElementById('letter386').value;
 			const letter387 = document.getElementById('letter387').value;
 
-			const correctEleventhLetters = 'frozenset'; // Правильное слово
+			const correctEleventhLetters = 'frozenset';
 			const userEleventhInput = letter37 + letter38 + letter381 + letter382 + letter383 + letter384 + letter385 + letter386 + letter387;
 
 			if (userEleventhInput.toLowerCase() === correctEleventhLetters) {
 				setTimeout(() => {
 					document.getElementById('twelfthQuestion').style.display = 'block';
 					document.getElementById('letter39').focus();
-				}, 300); // 3 секунды
+				}, 300);
 			} else {}
 		}
 
@@ -472,7 +471,7 @@
 			const letter401 = document.getElementById('letter401').value;
 			const letter402 = document.getElementById('letter402').value;
 
-			const correctTwelfthLetters = 'dict'; // Правильное слово
+			const correctTwelfthLetters = 'dict';
 			const userTwelfthInput = letter39 + letter40 + letter401 + letter402;
 
 			if (userTwelfthInput.toLowerCase() === correctTwelfthLetters) {

@@ -74,7 +74,6 @@
 		letterInputs.forEach((input, index) => {
 			input.addEventListener('input', function() {
 				if (this.value.length === 1) {
-					// Перех
 					if (index < letterInputs.length - 1) {
 						letterInputs[index + 1].focus();
 					} else {
@@ -88,9 +87,7 @@
 
 		function checkInput() {
 			let userInput = '';
-			letterInputs.forEach(input => userInput += input.value.trim().toLowerCase()); // Преобразование в нижний регистр
-
-			// Сравнение с правильной последовательностью в нижнем регистре
+			letterInputs.forEach(input => userInput += input.value.trim().toLowerCase());
 			if (userInput.length === 12 && userInput === correctSequence.toLowerCase()) {
 				document.getElementById('game-container').style.display = "none";
 				
@@ -103,7 +100,7 @@
 					window.location.href = "../index.html";
 				}, 3000);
 			} else {
-				document.getElementById('result').textContent = 'Попробуйте снова!'; // Сообщение об ошибке
+				document.getElementById('result').textContent = 'Попробуйте снова!';
 			}
 		}
 	</script>

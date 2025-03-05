@@ -64,7 +64,7 @@
 	}
 
 	.letter.disabled {
-		display: none; /* Скрываем букву после её использования */
+		display: none;
 	}
 </style>
 
@@ -107,7 +107,6 @@
 		const lettersContainer = document.querySelector('.letters');
 		let currentInputIndex = 0;
 
-		// Объект для отслеживания количества оставшихся букв
 		const letterCounts = {
 			'b': 3,
 			'c': 1,
@@ -121,7 +120,6 @@
 
 		const lettersArray = ['b', 'c', 'd', 'f',  'i', 'l', 't', 's'];
 
-		// Функция для перемешивания массива
 		function shuffleArray(array) {
 			for (let i = array.length - 1; i > 0; i--) {
 				const j = Math.floor(Math.random() * (i + 1));
@@ -130,10 +128,8 @@
 			return array;
 		}
 
-		// Перемешиваем буквы
 		const shuffledLetters = shuffleArray(lettersArray);
 
-		// Добавляем перемешанные буквы в контейнер
 		shuffledLetters.forEach(letter => {
 			const letterDiv = document.createElement('div');
 			letterDiv.classList.add('letter');
@@ -141,26 +137,20 @@
 			lettersContainer.appendChild(letterDiv);
 		});
 
-		// Обработчик клика по букве
 		lettersContainer.addEventListener('click', (event) => {
 			if (event.target.classList.contains('letter')) {
 				const letterValue = event.target.textContent;
 
-				// Проверяем, можно ли использовать эту букву
 				if (letterCounts[letterValue] > 0 && correctSequence[currentInputIndex] === letterValue) {
-					// Заполняем поле ввода
 					letterInputs[currentInputIndex].value = letterValue;
 					currentInputIndex++;
 
-					// Уменьшаем счётчик оставшихся букв
 					letterCounts[letterValue]--;
 
-					// Если буква больше не нужна, скрываем её
 					if (letterCounts[letterValue] === 0) {
 						event.target.classList.add('disabled');
 					}
 
-					// Проверяем, заполнены ли все поля
 					if (currentInputIndex === letterInputs.length) {
 						checkInput();
 					}
@@ -184,7 +174,7 @@
 					window.location.href = "../index.html";
 				}, 3000);
 			} else {
-				alert('Попробуйте снова!'); // Сообщение об ошибке
+				alert('Попробуйте снова!');
 			}
 		}
 	</script>

@@ -413,7 +413,6 @@
 	</div>
 	<script src="../js/timer.js"></script>
 	<script>
-		// Функция для перемешивания массива
 		function shuffleArray(array) {
 			for (let i = array.length - 1; i > 0; i--) {
 				const j = Math.floor(Math.random() * (i + 1));
@@ -422,7 +421,6 @@
 			return array;
 		}
 
-		// Перемешиваем блоки с заданиями
 		const blocksContainer = document.querySelector('main.basics');
 		const blocks = Array.from(document.querySelectorAll('.a'));
 	shuffleArray(blocks).forEach(block => blocksContainer.appendChild(block));
@@ -434,7 +432,7 @@
 		let correctCount = 0;
 		let incorrectCount = 0;
 		const totalQuestions = document.querySelectorAll('.a').length;
-		let currentIndex = 0; // Индекс текущей карточки
+		let currentIndex = 0;
 		const checkButtons = document.querySelectorAll('.check');
 		const cardCountDisplayOff = document.querySelector('.counters');
 
@@ -451,23 +449,19 @@
 			}
 		}, 1000);
 
-		// Функция для отображения текущей карточки
 		function showCurrentBlock() {
 			blocks.forEach((block, index) => {
 				block.style.display = index === currentIndex ? 'block' : 'none';
 			});
 		}
 
-		// Показать первую карточку при загрузке
 		showCurrentBlock();
 
-		// Обработчики для кнопок проверки
 		checkButtons.forEach((button, index) => {
 			button.addEventListener('click', () => {
 				correctCount++;
 				updateProgress();
 
-				// Переходим к следующей карточке
 				currentIndex++;
 				if (currentIndex < totalQuestions) {
 					showCurrentBlock();
@@ -497,13 +491,12 @@
 			}
 			finalMessage.style.display = 'block';
 
-			// Сохраняем в localStorage, что тест пройден
 			localStorage.setItem('test_3_done', 'true');
 			document.querySelector('.timer-container').style.display = 'none'
 
 			setTimeout(() => {
 				window.location.href = "../index.html";
-			}, 3000); // Редирект через 3 секунды
+			}, 3000);
 			clearInterval(timerInterval);
 		}
 
@@ -524,33 +517,28 @@
 		}
 
 		document.getElementById('blurLabel').addEventListener('click', function() {
-			this.classList.toggle('active'); // Добавляет или удаляет класс 'active' при клике
+			this.classList.toggle('active'); 
 		});
 
-		// Инициализируем показ первой карточки
 		showCurrentBlock();
 	</script>
 	<script>
 		document.addEventListener('DOMContentLoaded', () => {
-			const totalCards = document.querySelectorAll('.a').length; // Общее количество карточек
-			// Элемент для отображения текущего количества
-			const totalCardsDisplay = document.getElementById('totalCards'); // Элемент для отображения общего количества
-			const repeatList = document.getElementById('repeatList'); // Элемент для отображения номеров карточек
-			const blurToggle = document.getElementById('blurToggle'); // Чекбокс для размытия
+			const totalCards = document.querySelectorAll('.a').length; 
+			const totalCardsDisplay = document.getElementById('totalCards');
+			const repeatList = document.getElementById('repeatList');
+			const blurToggle = document.getElementById('blurToggle');
 
-			let cardCount = 1; // Начальное количество пройденных карточек
-
-			// Находим все кнопки и добавляем обработчик событий
+			let cardCount = 1;
 			const buttons = document.querySelectorAll('.btn.check');
 			buttons.forEach(button => {
 				button.addEventListener('click', () => {
 					if (cardCount < totalCards) {
-						cardCount++; // Увеличиваем количество пройденных карточек
+						cardCount++; 
 					}
 				});
 			});
 
-			// Находим все чекбоксы и добавляем обработчик событий
 			const checkboxes = document.querySelectorAll('.card-checkbox');
 			checkboxes.forEach(checkbox => {
 				checkbox.addEventListener('change', () => {
@@ -561,9 +549,8 @@
 				});
 			});
 
-			// Обработчик события для чекбокса размытия
 			blurToggle.addEventListener('change', () => {
-				const sElements = document.querySelectorAll('.s'); // Находим все элементы с классом .s
+				const sElements = document.querySelectorAll('.s');
 				sElements.forEach(element => {
 					element.classList.toggle('active')
 				});
