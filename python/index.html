@@ -84,12 +84,14 @@
 		}
 
 		li.done {
-			background: lightgreen;
-			border-color: #4bc0c8;
+			
+			background: lightgreen; /* Серый цвет для завершенных элементов */
+			border-color: #999; /* Темно-серый цвет границы */
+			pointer-events: none; /* Отключаем клики */
 		}
 
 		li.done a {
-			color: #000;
+			color: #666; /* Серый цвет текста */
 		}
 
 		.password-inputs {
@@ -312,6 +314,25 @@
 				}
 			});
 		});
+
+		// Функция для прокрутки к следующему незавершенному блоку
+		function scrollToNextUncompleted() {
+			const items = document.querySelectorAll('ul li');
+			let nextUncompleted = null;
+
+			items.forEach(item => {
+				if (!item.classList.contains('done') && !nextUncompleted) {
+					nextUncompleted = item;
+				}
+			});
+
+			if (nextUncompleted) {
+				nextUncompleted.scrollIntoView({ behavior: 'smooth', block: 'center' });
+			}
+		}
+
+		// Вызов функции прокрутки после загрузки страницы
+		window.addEventListener('load', scrollToNextUncompleted);
 	</script>
 </body>
 
