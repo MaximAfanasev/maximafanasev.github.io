@@ -10,6 +10,20 @@
 	<link rel="stylesheet" href="../style/win.css">
 </head>
 
+<style>
+	button {
+		font-size: 80px;
+		text-decoration: none;
+		background: none;
+		cursor: pointer;
+		border: none;
+		transition: 0.3s;
+	}
+
+	button:hover {
+		background: none;
+	}
+</style>
 <body class="base">
 	<pre>
 3 types
@@ -28,8 +42,6 @@ str(True) 'True'
 print('A man.\n P')
 A man.
 P
-
-
 
 'a' 'b'
 'ab'
@@ -79,9 +91,6 @@ a = 'aoiu'; 'a' in a
 True
 
 
-
-
-
 'ab'
 'cb'
 'ab'.replace('a','c')
@@ -120,4 +129,14 @@ a='b'
 f'{a}'
 'b'
 </pre>
+	<button id="saveButton" href="../index.html">✅</button>
+
+	<script>
+		const saveButton = document.getElementById('saveButton');
+
+		saveButton.addEventListener('click', function() {
+			window.location.href = "../index.html";
+			localStorage.setItem('test_8_done', 'true');
+		});
+	</script>
 </body></html>
