@@ -18,16 +18,17 @@
 			flex-direction: column;
 			justify-content: center;
 			align-items: center;
-			gap: 40px;
+			gap: 10px;
 			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 			background: linear-gradient(45deg, #ff6b6b, #f06595, #eece4e, #4bc0c8);
-			background: -webkit-linear-gradient(45deg, #ff6b6b, #f06595, #eece4e, #4bc0c8); /* Для Safari */
-			background-attachment: fixed; /* Фиксируем градиент */
+			background: -webkit-linear-gradient(45deg, #ff6b6b, #f06595, #eece4e, #4bc0c8);
+			background-attachment: fixed;
 			padding: 50px 20px;
 		}
 
 		h1 {
 			text-align: center;
+			margin-bottom: 50px;
 		}
 
 		.wrapper {
@@ -60,7 +61,8 @@
 		}
 
 		button {
-			font-size: 50px;
+			margin-top: 40px;
+			font-size: 80px;
 			text-decoration: none;
 			background: none;
 			cursor: pointer;
@@ -75,7 +77,7 @@
 </head>
 
 <body>
-	<h1>Типы данных в Python</h1>
+	<h1>Types</h1>
 	<div class="wrapper">
 		<div class="word">
 			<span class="letter">b</span>ool<span class="letters"></span>
@@ -153,7 +155,7 @@
 		<div class="line">s s</div>
 	</div>
 
-	<button id="saveButton" href="../index.html">☑️</button>
+	<button id="saveButton" href="../index.html">✅</button>
 
 	<script>
 		const saveButton = document.getElementById('saveButton');
