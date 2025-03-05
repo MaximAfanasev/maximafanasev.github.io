@@ -10,7 +10,6 @@
 		body {
 			margin: 0;
 			padding: 0;
-			padding-top: 50px;
 			display: flex;
 			justify-content: center;
 			align-items: center;
@@ -68,11 +67,7 @@
 		li::after {
 			content: '';
 			position: absolute;
-			background: repeating-linear-gradient(to bottom,
-					transparent,
-					transparent 5px,
-					#000 5px,
-					#000 10px);
+			background: repeating-linear-gradient(to bottom, transparent, transparent 5px, #000 5px, #000 10px);
 			width: 2px;
 			height: 40px;
 			top: 100%;
@@ -99,6 +94,14 @@
 			justify-content: center;
 			gap: 10px;
 			margin-top: 20px;
+			opacity: 0;
+			transform: translateY(20px);
+			transition: opacity 0.5s ease, transform 0.5s ease;
+		}
+
+		.password-inputs.visible {
+			opacity: 1;
+			transform: translateY(0);
 		}
 
 		.password-inputs input {
@@ -108,6 +111,14 @@
 			font-size: 18px;
 			border: 2px solid #000;
 			border-radius: 5px;
+			opacity: 0;
+			transform: translateY(20px);
+			transition: opacity 0.5s ease, transform 0.5s ease;
+		}
+
+		.password-inputs input.visible {
+			opacity: 1;
+			transform: translateY(0);
 		}
 
 		.reset-button {
@@ -120,6 +131,14 @@
 			border: none;
 			border-radius: 5px;
 			cursor: pointer;
+			opacity: 0;
+			transform: translateY(20px);
+			transition: opacity 0.5s ease, transform 0.5s ease;
+		}
+
+		.reset-button.visible {
+			opacity: 1;
+			transform: translateY(0);
 		}
 
 		.reset-button:disabled {
@@ -179,11 +198,30 @@
 	<script>
 		function loadItemsSequentially() {
 			const items = document.querySelectorAll('ul li');
+			const inputs = document.querySelectorAll('.password-inputs input');
+			const passwordInputsContainer = document.querySelector('.password-inputs');
+			const resetButton = document.querySelector('.reset-button');
+
 			items.forEach((item, index) => {
 				setTimeout(() => {
 					item.classList.add('visible');
+					item.scrollIntoView({ behavior: 'smooth', block: 'center' });
 				}, index * 300);
 			});
+
+			setTimeout(() => {
+				passwordInputsContainer.classList.add('visible');
+				inputs.forEach((input, index) => {
+					setTimeout(() => {
+						input.classList.add('visible');
+					}, index * 100);
+				});
+			}, items.length * 300);
+
+			setTimeout(() => {
+				resetButton.classList.add('visible');
+				window.scrollTo({ top: 0, behavior: 'smooth' });
+			}, (items.length * 300) + (inputs.length * 100) + 300);
 		}
 
 		window.addEventListener('load', loadItemsSequentially);
