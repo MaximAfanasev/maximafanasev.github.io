@@ -20,6 +20,16 @@
 			display: block;
 			margin: 10px auto;
 		}
+		input::placeholder {
+			color: #aaa;
+		}
+		button {
+			margin-bottom: 40px;
+		}
+		p {
+			color: #aaa;
+			margin: 0;
+		}
 	</style>
 </head>
 
@@ -28,14 +38,16 @@
 	<div id="container">
 		<div class="column">
 			<h2>Могут изменяться</h2>
-			<input type="text" placeholder="">
+			<input type="text" placeholder="****">
 		</div>
 		<div class="column">
 			<h2>Не могут изменяться</h2>
-			<input type="text" placeholder="">
+			<input type="text" placeholder="********">
 		</div>
 		<button id="checkButton">Проверить</button>
 	</div>
+<p id="p1">bytearray dict list set</p>
+<p id="p2">bool bytes complex float frozenset int tuple str</p>
 
 	<div class="message" id="finalMessage">
 		<div class="container">
@@ -73,6 +85,8 @@
 
 				document.getElementById('container').style.display = "none";
 				document.getElementById('title').style.display = "none";
+				document.getElementById('p1').style.display = "none";
+				document.getElementById('p2').style.display = "none";
 				document.getElementById("finalMessage").style.display = "block";
 				
 					localStorage.setItem('test_6_done', 'true');

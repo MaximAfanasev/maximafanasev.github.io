@@ -14,7 +14,7 @@
 	html {
 		height: 100%;
 	}
-	
+
 	body {
 		flex-direction: column;
 		gap: 20px;
@@ -62,10 +62,14 @@
 	.letter:hover {
 		background-color: #e0e0e0;
 	}
+
+	.letter.disabled {
+		display: none; /* Скрываем букву после её использования */
+	}
 </style>
 
 <body>
-<h2 class="title">Наберите 12 первых букв типов данных Python</h2>
+	<h2 class="title">Наберите 12 первых букв типов данных Python</h2>
 	<div id="game-container" style="display: block">
 		<div id="input-container">
 			<input type="text" maxlength="1" class="letter-input" />
@@ -110,11 +114,37 @@
 		const letters = document.querySelectorAll('.letter');
 		let currentInputIndex = 0;
 
+		// Объект для отслеживания количества оставшихся букв
+		const letterCounts = {
+			'b': 3,
+			'c': 1,
+			'd': 1,
+			'f': 2,
+			'i': 1,
+			'l': 1,
+			't': 1,
+			's': 2
+		};
+
 		letters.forEach(letter => {
 			letter.addEventListener('click', () => {
-				if (currentInputIndex < letterInputs.length) {
-					letterInputs[currentInputIndex].value = letter.textContent;
+				const letterValue = letter.textContent;
+
+				// Проверяем, можно ли использовать эту букву
+				if (letterCounts[letterValue] > 0 && correctSequence[currentInputIndex] === letterValue) {
+					// Заполняем поле ввода
+					letterInputs[currentInputIndex].value = letterValue;
 					currentInputIndex++;
+
+					// Уменьшаем счётчик оставшихся букв
+					letterCounts[letterValue]--;
+
+					// Если буква больше не нужна, скрываем её
+					if (letterCounts[letterValue] === 0) {
+						letter.classList.add('disabled');
+					}
+
+					// Проверяем, заполнены ли все поля
 					if (currentInputIndex === letterInputs.length) {
 						checkInput();
 					}
@@ -138,8 +168,10 @@
 					window.location.href = "../index.html";
 				}, 3000);
 			} else {
-				document.getElementById('result').textContent = 'Попробуйте снова!'; // Сообщение об ошибке
+				alert('Попробуйте снова!'); // Сообщение об ошибке
 			}
 		}
 	</script>
-</body></html>
+</body>
+
+</html>
