@@ -249,6 +249,17 @@
 				}
 			}, (items.length * 300) + (inputs.length * 100) + 300);
 		}
+		
+		if (!localStorage.getItem('animationPlayed')) {
+			
+			setTimeout(() => {
+				window.scrollTo({
+					top: 0,
+					behavior: 'smooth'
+				});
+
+			}, 5000);
+		}
 
 		window.addEventListener('load', loadItemsSequentially);
 
