@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>1</title>
 	<link rel="icon" type="image/x-icon" href="/img/logo.png">
+	<link rel="stylesheet" href="../style/style.css">
 	<link rel="stylesheet" href="../style/win.css">
 </head>
 
@@ -26,11 +27,7 @@
 	}
 
 	#game-container {
-		background-color: white;
-		border-radius: 20px;
-		box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 		padding: 20px;
-		text-align: center;
 	}
 
 	input[type="text"] {
@@ -130,6 +127,7 @@
 
 			if (userInput.length === 12 && userInput === correctSequence) {
 				document.getElementById('game-container').style.display = "none";
+				document.querySelector('.letters').style.display = "none";
 				document.getElementById("finalMessage").style.display = "block";
 
 				localStorage.setItem('test_1_done', 'true');

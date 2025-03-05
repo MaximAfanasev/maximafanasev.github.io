@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-	<title>Python roadmap</title>
+	<title>Python</title>
 	<link rel="icon" type="image/x-icon" href="/img/logo.png">
 	<style>
 		body {
@@ -150,7 +150,6 @@
 		}
 	</style>
 </head>
-
 <body>
 	<main>
 		<ul>
@@ -208,7 +207,9 @@
 			items.forEach((item, index) => {
 				setTimeout(() => {
 					item.classList.add('visible');
-					item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+					if (!localStorage.getItem('animationPlayed')) {
+						item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+					}
 				}, index * 300);
 			});
 
@@ -223,7 +224,10 @@
 
 			setTimeout(() => {
 				resetButton.classList.add('visible');
-				window.scrollTo({ top: 0, behavior: 'smooth' });
+				if (!localStorage.getItem('animationPlayed')) {
+					window.scrollTo({ top: 0, behavior: 'smooth' });
+					localStorage.setItem('animationPlayed', 'true');
+				}
 			}, (items.length * 300) + (inputs.length * 100) + 300);
 		}
 
@@ -262,6 +266,8 @@
 			localStorage.removeItem('test_1_done');
 			localStorage.removeItem('test_2_done');
 			localStorage.removeItem('test_3_done');
+			localStorage.removeItem('animationPlayed'); // Сбрасываем флаг анимации
+			window.scrollTo({ top: 0, behavior: 'smooth' }); // Прокрутка наверх
 			window.location.reload();
 		}
 
