@@ -464,7 +464,7 @@
 				timeLeft--;
 			} else {
 				clearInterval(timerInterval);
-			localStorage.removeItem('test_4_done', 'true');
+			localStorage.removeItem('test_5_done', 'true');
 				window.location.href = "../index.html";
 			}
 		}, 1000);
@@ -503,7 +503,7 @@
 					document.getElementById("finalMessage").style.display = "block";
 					document.getElementById('lives').style.display = 'none';
 					document.querySelector('.timer-container').style.display = 'none'
-					localStorage.setItem('test_4_done', 'true');
+					localStorage.setItem('test_5_done', 'true');
 					setTimeout(() => {
 						window.location.href = "../index.html";
 					}, 3000);
@@ -521,7 +521,7 @@
 				hearts[lives].style.display = "none";
 			}
 
-			localStorage.removeItem('test_4_done', 'true');
+			localStorage.removeItem('test_5_done', 'true');
 			if (lives === 0) {
 				timerElement.style.display = 'none';
 				setTimeout(() => {
