@@ -1,363 +1,194 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="ru">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-	<title>Python</title>
-	<link rel="icon" type="image/x-icon" href="/img/logo.png">
-	<style>
-		body {
-			margin: 0;
-			padding: 0;
-			padding-top: 50px;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			min-height: 100vh;
-			background: linear-gradient(45deg, #ff6b6b, #f06595, #eece4e, #4bc0c8);
-			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-		}
-
-		main {
-			width: 100%;
-			max-width: 600px;
-			padding: 20px;
-		}
-
-		ul {
-			list-style: none;
-			padding: 0;
-			margin: 0;
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			position: relative;
-		}
-
-		li {
-			position: relative;
-			text-align: center;
-			background: #fff;
-			border-radius: 20px;
-			border: 2px solid #000;
-			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-			margin-bottom: 40px;
-			opacity: 0;
-			transform: translateY(20px);
-			transition: opacity 0.5s ease, transform 0.5s ease;
-		}
-
-		li.visible {
-			opacity: 1;
-			transform: translateY(0);
-		}
-
-		li:last-child {
-			margin-bottom: 0;
-		}
-
-		li a {
-			border-radius: 20px;
-			display: block;
-			padding: 30px;
-			text-decoration: none;
-			color: #000;
-			font-size: 48px;
-			font-weight: bold;
-		}
-
-		li::after {
-			content: '';
-			position: absolute;
-			background: repeating-linear-gradient(to bottom, transparent, transparent 5px, #000 5px, #000 10px);
-			width: 2px;
-			height: 40px;
-			top: 100%;
-			left: 50%;
-			transform: translateX(-50%);
-			z-index: -1;
-		}
-
-		li:last-child::after {
-			display: none;
-		}
-
-		li.done {
-			background: lightgreen;
-			border-color: #4bc0c8;
-			pointer-events: none;
-			/* Отключаем клики */
-		}
-
-		li.done a {
-			color: #666;
-			/* Серый цвет текста */
-		}
-
-		li.disabled {
-			background: #ccc;
-			/* Серый цвет для заблокированных элементов */
-			pointer-events: none;
-			/* Отключаем клики */
-			cursor: wait;
-		}
-
-		li.disabled a {
-			color: #999;
-			/* Серый цвет текста для заблокированных элементов */
-		}
-
-		.password-inputs {
-			display: flex;
-			justify-content: center;
-			gap: 10px;
-			margin-top: 20px;
-			opacity: 0;
-			transform: translateY(20px);
-			transition: opacity 0.5s ease, transform 0.5s ease;
-		}
-
-		.password-inputs.visible {
-			opacity: 1;
-			transform: translateY(0);
-		}
-
-		.password-inputs input {
-			width: 40px;
-			height: 40px;
-			text-align: center;
-			font-size: 18px;
-			border: 2px solid #000;
-			border-radius: 5px;
-			opacity: 0;
-			transform: translateY(20px);
-			transition: opacity 0.5s ease, transform 0.5s ease;
-		}
-
-		.password-inputs input.visible {
-			opacity: 1;
-			transform: translateY(0);
-		}
-
-		.reset-button {
-			display: block;
-			margin: 20px auto;
-			padding: 10px 20px;
-			font-size: 16px;
-			background: #ff6b6b;
-			color: #fff;
-			border: none;
-			border-radius: 5px;
-			cursor: pointer;
-			opacity: 0;
-			transform: translateY(20px);
-			transition: opacity 0.5s ease, transform 0.5s ease;
-		}
-
-		.reset-button.visible {
-			opacity: 1;
-			transform: translateY(0);
-		}
-
-		.reset-button:disabled {
-			background: #ccc;
-			cursor: not-allowed;
-		}
-	</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Проверка знаний типов данных</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 600px;
+            color: #333;
+            margin-top: 80px; /* Отступ для финального времени */
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: #6a11cb;
+        }
+        p {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            transition: border-color 0.3s ease;
+        }
+        input:focus, textarea:focus {
+            border-color: #6a11cb;
+            outline: none;
+        }
+        textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+        .correct {
+            color: #28a745;
+            font-weight: bold;
+        }
+        .incorrect {
+            color: #dc3545;
+            font-weight: bold;
+        }
+        .question {
+            margin-bottom: 30px;
+        }
+        .question:last-child {
+            margin-bottom: 0;
+        }
+        .feedback {
+            margin-top: 10px;
+            font-size: 16px;
+        }
+        .final-time {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 20px;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            display: none; /* Скрыто по умолчанию */
+        }
+    </style>
 </head>
-
 <body>
-	<main>
-		<ul>
-			<li id="test0">
-				<a href="0type/0.html">0 👀</a>
-			</li>
-			<li id="test1">
-				<a href="0type/1.html">1❓</a>
-			</li>
-			<li id="test2">
-				<a href="0type/2.html">2❓</a>
-			</li>
-			<li id="test4">
-				<a href="0type/3.html">3 ✅</a>
-			</li>
-			<li id="test3">
-				<a href="0type/4.html">4 ⁉️</a>
-			</li>
-			<li id="test5">
-				<a href="0type/5.html">5 ❤️</a>
-			</li>
-			<li id="test6">
-				<a href="0type/6.html">6 🆕</a>
-			</li>
-			<li>
-				<a href="1num/1.html">7 🔢</a>
-			</li>
-			<li>
-				<a href="2str/1.html">8 📶</a>
-			</li>
-			<li>
-				<a href="3list/1.html">9 📁</a>
-			</li>
-			<li>
-				<a href="4dict/1.html">10 🗄</a>
-			</li>
-		</ul>
 
-		<div class="password-inputs">
-			<input type="text" maxlength="1" id="input1" placeholder="1">
-			<input type="text" maxlength="1" id="input2" placeholder="2">
-			<input type="text" maxlength="1" id="input3" placeholder="3">
-			<input type="text" maxlength="1" id="input4" placeholder="4">
-		</div>
+<div class="final-time" id="finalTime"></div>
 
-		<button class="reset-button" onclick="resetProgress()" disabled>Сбросить прогресс</button>
-	</main>
-	<script>
-		function loadItemsSequentially() {
-			const items = document.querySelectorAll('ul li');
-			const inputs = document.querySelectorAll('.password-inputs input');
-			const passwordInputsContainer = document.querySelector('.password-inputs');
-			const resetButton = document.querySelector('.reset-button');
+<div class="container">
+    <h1>Проверка знаний типов данных</h1>
 
-			items.forEach((item, index) => {
-				setTimeout(() => {
-					item.classList.add('visible');
-					if (!localStorage.getItem('animationPlayed')) {
-						item.scrollIntoView({
-							behavior: 'smooth',
-							block: 'center'
-						});
-					}
-				}, index * 300);
-			});
+    <div id="question1" class="question">
+        <p>Напишите первые буквы типов данных:</p>
+        <input type="text" id="input1" maxlength="12">
+        <p id="feedback1" class="feedback"></p>
+    </div>
 
-			setTimeout(() => {
-				passwordInputsContainer.classList.add('visible');
-				inputs.forEach((input, index) => {
-					setTimeout(() => {
-						input.classList.add('visible');
-					}, index * 100);
-				});
-			}, items.length * 300);
+    <div id="question2" class="question" style="display: none;">
+        <p>Напишите 12 типов данных:</p>
+        <textarea id="input2" rows="12"></textarea>
+        <p id="feedback2" class="feedback"></p>
+    </div>
 
-			setTimeout(() => {
-				resetButton.classList.add('visible');
-				if (!localStorage.getItem('animationPlayed')) {
-					localStorage.setItem('animationPlayed', 'true');
-				}
-			}, (items.length * 300) + (inputs.length * 100) + 300);
-		}
-		
-		if (!localStorage.getItem('animationPlayed')) {
-			
-			setTimeout(() => {
-				window.scrollTo({
-					top: 0,
-					behavior: 'smooth'
-				});
+    <div id="question3" class="question" style="display: none;">
+        <p>Напишите 4 типа изменяемых данных и 8 неизменяемых:</p>
+        <textarea id="input3" rows="12"></textarea>
+        <p id="feedback3" class="feedback"></p>
+    </div>
+</div>
 
-			}, 5000);
-		}
+<script>
+    const correctAnswer1 = "bbbcdffiltss";
+    const correctAnswer2 = [
+        "bool", "bytearray", "bytes", "complex", "dict", "float", 
+        "frozenset", "int", "list", "tuple", "set", "str"
+    ];
+    const correctAnswer3 = [
+        "bytearray", "dict", "list", "set", 
+        "bool", "bytes", "complex", "float", "frozenset", "int", "tuple", "str"
+    ];
 
-		window.addEventListener('load', loadItemsSequentially);
+    const input1 = document.getElementById('input1');
+    const feedback1 = document.getElementById('feedback1');
+    const question2 = document.getElementById('question2');
+    const input2 = document.getElementById('input2');
+    const feedback2 = document.getElementById('feedback2');
+    const question3 = document.getElementById('question3');
+    const input3 = document.getElementById('input3');
+    const feedback3 = document.getElementById('feedback3');
+    const finalTime = document.getElementById('finalTime');
 
-		// Функция для блокировки всех элементов, кроме первого
-		function initializeItems() {
-			const items = document.querySelectorAll('ul li');
-			items.forEach((item, index) => {
-				if (index !== 0) {
-					item.classList.add('disabled'); // Блокируем все элементы, кроме первого
-				}
-			});
-		}
+    let startTime;
+    let endTime;
 
-		// Функция для разблокировки следующего элемента
-		function unlockNextItem(currentItem) {
-			const nextItem = currentItem.nextElementSibling;
-			if (nextItem && nextItem.classList.contains('disabled')) {
-				nextItem.classList.remove('disabled'); // Разблокируем следующий элемент
-			}
-		}
+    // Запуск таймера при загрузке страницы
+    startTime = new Date();
 
-		// Проверка состояния прогресса
-		function checkProgress() {
-			const items = document.querySelectorAll('ul li');
-			items.forEach((item, index) => {
-				if (localStorage.getItem(`test_${index}_done`) === 'true') {
-					item.classList.add('done');
-					unlockNextItem(item); // Разблокируем следующий элемент
-				}
-			});
-		}
+    input1.addEventListener('input', function() {
+        if (input1.value.length === 12) {
+            if (input1.value === correctAnswer1) {
+                feedback1.textContent = "Правильно!";
+                feedback1.className = "correct";
+                question2.style.display = "block";
+            } else {
+                feedback1.textContent = "Неправильно, попробуйте еще раз.";
+                feedback1.className = "incorrect";
+            }
+        }
+    });
 
-		// Инициализация
-		initializeItems();
-		checkProgress();
+    input2.addEventListener('input', function() {
+        const lines = input2.value.split('\n').filter(line => line.trim() !== "");
+        if (lines.length === 12) {
+            const isCorrect = lines.every((line, index) => line.trim() === correctAnswer2[index]);
+            if (isCorrect) {
+                feedback2.textContent = "Правильно!";
+                feedback2.className = "correct";
+                question3.style.display = "block";
+            } else {
+                feedback2.textContent = "Неправильно, попробуйте еще раз.";
+                feedback2.className = "incorrect";
+            }
+        }
+    });
 
-		function resetProgress() {
-			localStorage.removeItem('test_0_done');
-			localStorage.removeItem('test_1_done');
-			localStorage.removeItem('test_2_done');
-			localStorage.removeItem('test_3_done');
-			localStorage.removeItem('test_4_done');
-			localStorage.removeItem('test_5_done');
-			localStorage.removeItem('test_6_done');
-			localStorage.removeItem('test_7_done');
-			localStorage.removeItem('test_8_done');
-			localStorage.removeItem('test_9_done');
-			localStorage.removeItem('test_10_done');
-			localStorage.removeItem('animationPlayed'); // Сбрасываем флаг анимации
-			window.location.href = "../index.html";
-		}
+    input3.addEventListener('input', function() {
+        const lines = input3.value.split('\n').filter(line => line.trim() !== "");
+        if (lines.length === 12) {
+            const isCorrect = lines.every((line, index) => line.trim() === correctAnswer3[index]);
+            if (isCorrect) {
+                feedback3.textContent = "Правильно!";
+                feedback3.className = "correct";
 
-		const inputs = document.querySelectorAll('.password-inputs input');
-		const resetButton = document.querySelector('.reset-button');
+                // Завершение таймера и вывод времени
+                endTime = new Date();
+                const timeDiff = (endTime - startTime) / 1000; // Время в секундах
+                finalTime.textContent = `Финальное время: ${timeDiff.toFixed(2)} секунд`;
+                finalTime.style.display = "block";
+            } else {
+                feedback3.textContent = "Неправильно, попробуйте еще раз.";
+                feedback3.className = "incorrect";
+            }
+        }
+    });
+</script>
 
-		inputs.forEach((input, index) => {
-			input.addEventListener('input', (e) => {
-				if (e.target.value.length === 1) {
-					if (index < inputs.length - 1) {
-						inputs[index + 1].focus();
-					}
-				}
-
-				const password = Array.from(inputs).map(input => input.value).join('');
-				if (password === '1234') {
-					resetButton.disabled = false;
-				} else {
-					resetButton.disabled = true;
-				}
-			});
-
-			input.addEventListener('keydown', (e) => {
-				if (e.key === 'Backspace' && index > 0 && !e.target.value) {
-					inputs[index - 1].focus();
-				}
-			});
-		});
-
-		// Функция для прокрутки к следующему незавершенному блоку
-		function scrollToNextUncompleted() {
-			const items = document.querySelectorAll('ul li');
-			let nextUncompleted = null;
-
-			items.forEach(item => {
-				if (!item.classList.contains('done') && !nextUncompleted) {
-					nextUncompleted = item;
-				}
-			});
-
-			if (nextUncompleted) {
-				nextUncompleted.scrollIntoView({
-					behavior: 'smooth',
-					block: 'center'
-				});
-			}
-		}
-
-		// Вызов функции прокрутки после загрузки страницы
-		window.addEventListener('load', scrollToNextUncompleted);
-	</script>
-</body></html>
+</body>
+</html>
