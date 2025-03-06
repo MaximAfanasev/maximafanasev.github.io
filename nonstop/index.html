@@ -24,7 +24,7 @@
             width: 100%;
             max-width: 600px;
             color: #333;
-            margin-top: 80px; /* Отступ для финального времени */
+            margin-top: 80px; /* Отступ для таймера */
         }
         h1 {
             text-align: center;
@@ -72,9 +72,22 @@
             margin-top: 10px;
             font-size: 16px;
         }
-        .final-time {
+        .timer {
             position: fixed;
             top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+        }
+        .final-time {
+            position: fixed;
+            top: 70px; /* Ниже основного таймера */
             left: 50%;
             transform: translateX(-50%);
             font-size: 20px;
@@ -90,6 +103,7 @@
 </head>
 <body>
 
+<div class="timer" id="timer">0:00:00</div>
 <div class="final-time" id="finalTime"></div>
 
 <div class="container">
@@ -133,13 +147,27 @@
     const question3 = document.getElementById('question3');
     const input3 = document.getElementById('input3');
     const feedback3 = document.getElementById('feedback3');
+    const timer = document.getElementById('timer');
     const finalTime = document.getElementById('finalTime');
 
     let startTime;
-    let endTime;
+    let timerInterval;
+
+    // Функция для форматирования времени в формат 0:00:00
+    function formatTime(seconds) {
+        const hours = Math.floor(seconds / 3600);
+        const minutes = Math.floor((seconds % 3600) / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${hours}:${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+    }
 
     // Запуск таймера при загрузке страницы
-    startTime = new Date();
+    startTime = Date.now();
+    timerInterval = setInterval(() => {
+        const currentTime = Date.now();
+        const elapsedTime = (currentTime - startTime) / 1000; // Время в секундах
+        timer.textContent = formatTime(elapsedTime);
+    }, 1000);
 
     input1.addEventListener('input', function() {
         if (input1.value.length === 12) {
@@ -177,10 +205,10 @@
                 feedback3.textContent = "Правильно!";
                 feedback3.className = "correct";
 
-                // Завершение таймера и вывод времени
-                endTime = new Date();
-                const timeDiff = (endTime - startTime) / 1000; // Время в секундах
-                finalTime.textContent = `Финальное время: ${timeDiff.toFixed(2)} секунд`;
+                // Остановка таймера и вывод финального времени
+                clearInterval(timerInterval);
+                const elapsedTime = (Date.now() - startTime) / 1000;
+                finalTime.textContent = `Финальное время: ${formatTime(elapsedTime)}`;
                 finalTime.style.display = "block";
             } else {
                 feedback3.textContent = "Неправильно, попробуйте еще раз.";
