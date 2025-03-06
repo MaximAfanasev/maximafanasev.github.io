@@ -87,8 +87,22 @@ main {
 	background-color: #4CAF50;
 }
 
+ul li {
+	margin-bottom: 30px;
+	list-style: none;
+	line-height: 37px;
+}
+
+span {
+	font-size: 14px;
+	color: gold;
+}
 
 .wrap {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 	margin: 0 auto;
 	width: fit-content;
 	margin-bottom: 40px;
