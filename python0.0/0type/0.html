@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Types</title>
+	<link rel="icon" type="image/x-icon" href="/img/logo.png">
+	<style>
+		html,
+		body {
+			min-height: 100%;
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			gap: 10px;
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			background: linear-gradient(45deg, #ff6b6b, #f06595, #eece4e, #4bc0c8);
+			background: -webkit-linear-gradient(45deg, #ff6b6b, #f06595, #eece4e, #4bc0c8);
+			background-attachment: fixed;
+			padding: 50px 20px;
+		}
+
+		h1,
+		h2 {
+			text-align: center;
+		}
+
+		h1 {
+			margin-bottom: 50px;
+		}
+
+		h2 {
+			margin-bottom: 0;
+		}
+
+
+		.wrapper {
+			padding: 30px;
+			background: #fff;
+			border-radius: 20px;
+			border: 3px solid #000;
+			font-size: 20px;
+			font-family: monospace;
+		}
+
+		.wrapper-letters {
+			color: rebeccapurple;
+			font-weight: bold;
+			display: flex;
+			flex-direction: column;
+			align-content: center;
+			align-items: center;
+			font-size: 30px;
+			line-height: 40px;
+		}
+
+		.word {
+			font-size: 28px;
+		}
+
+		.letter {
+			color: rebeccapurple;
+			font-weight: bold;
+		}
+
+		button {
+			font-size: 80px;
+			text-decoration: none;
+			background: none;
+			cursor: pointer;
+			border: none;
+			transition: 0.3s;
+		}
+
+		button:hover {
+			background: none;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Типы данных в Python</h1>
+	<div class="wrapper">
+		<div class="word">
+			<span class="letter">b</span>ool<span class="letters"></span>
+		</div>
+		<div class="word">
+			<span class="letter">b</span>ytearray<span class="letters"></span>
+		</div>
+		<div class="word">
+			<span class="letter">b</span>ytes<span class="letters"></span>
+		</div>
+	</div>
+	<div class="wrapper">
+		<div class="word">
+			<span class="letter">c</span><span class="letters">omplex</span>
+		</div>
+	</div>
+	<div class="wrapper">
+		<div class="word">
+			<span class="letter">d</span>ict<span class="letters"></span>
+		</div>
+	</div>
+	<div class="wrapper">
+		<div class="word">
+			<span class="letter">f</span>loat<span class="letters"></span>
+		</div>
+		<div class="word">
+			<span class="letter">f</span>rozenset<span class="letters"></span>
+		</div>
+	</div>
+	<div class="wrapper">
+		<div class="word">
+			<span class="letter">i</span><span class="letters">nt</span>
+		</div>
+	</div>
+	<div class="wrapper">
+		<div class="word">
+			<span class="letter">l</span><span class="letters">ist</span>
+		</div>
+	</div>
+	<div class="wrapper">
+		<div class="word">
+			<span class="letter">t</span>uple<span class="letters"></span>
+		</div>
+	</div>
+	<div class="wrapper">
+		<div class="word">
+			<span class="letter">s</span><span class="letters">et</span>
+		</div>
+		<div class="word">
+			<span class="letter">s</span><span class="letters">tr</span>
+		</div>
+	</div>
+	<h2>12 букв (запомни их наизусть)</h2>
+	<div class="wrapper wrapper-letters">
+		<div class="line">bbb c d ff i l t ss</div>
+	</div>
+
+	<h2>Если запомнили нажмите на галочку</h2>
+
+	<button id="saveButton" href="../index.html">✅</button>
+
+	<script>
+		const saveButton = document.getElementById('saveButton');
+
+		saveButton.addEventListener('click', function() {
+			window.location.href = "../index.html";
+			localStorage.setItem('test_0_done', 'true');
+		});
+	</script>
+</body></html>

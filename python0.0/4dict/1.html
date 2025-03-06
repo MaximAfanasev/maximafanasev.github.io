@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Dict</title>
+	<link rel="icon" type="image/x-icon" href="/img/logo.png">
+	<link rel="stylesheet" href="../style/style.css">
+	<link rel="stylesheet" href="../style/win.css">
+</head>
+
+<style>
+	button {
+		font-size: 80px;
+		text-decoration: none;
+		background: none;
+		cursor: pointer;
+		border: none;
+		transition: 0.3s;
+	}
+
+	button:hover {
+		background: none;
+	}
+</style>
+<body class="base">
+	<pre>
+empty dict
+{}
+
+a = {'a':1,'b':2}
+1
+a['a']
+
+a = {'a':1,'b':2}
+1 (g)
+a.get('a')
+
+a = {'a':1,'b':2}
+1 (p)
+a.pop('a')
+
+a = [['a',1],['b',2]]
+{'a': 1, 'b': 2}
+dict(a)
+
+a = {'a':1,'b':2}
+dict_keys(['a', 'b'])
+a.keys()
+
+a = {'a':1,'b':2}
+dict_values([1, 2])
+a.values()
+
+a = {'a':1,'b':2}
+dict_items([('a', 1), ('b', 2)])
+a.items()
+
+a = {'a':1,'b':2}
+2
+len(a)
+
+"a = {'a':1,'b':2} b = {'c':3,'d':4}
+{'a': 1, 'b': 2, 'c': 3, 'd': 4}
+{**a,**b}
+
+a = {'c':3,'d':4}
+b = {'a':1,'b':2}
+{'c': 3, 'd': 4, 'a': 1, 'b': 2}
+a.update(b)
+
+a = {'a':1,'b':2}
+{'b': 2}
+del a['a']
+
+a = {'a':1,'b':2}
+{}
+a.clear()
+
+a = {'a':1,'b':2}
+True
+'a' in a
+
+a2 = a
+a2.copy()
+</pre>
+	<button id="saveButton" href="../index.html">✅</button>
+
+	<script>
+		const saveButton = document.getElementById('saveButton');
+
+		saveButton.addEventListener('click', function() {
+			window.location.href = "../index.html";
+			localStorage.setItem('test_10_done', 'true');
+		});
+	</script>
+</body></html>

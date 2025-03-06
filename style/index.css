@@ -93,8 +93,13 @@ ul li {
 	line-height: 37px;
 }
 
+.load a {
+	background: #777;
+	cursor: progress;
+}
+
 span {
-	font-size: 14px;
+	font-size: 11px;
 	color: gold;
 }
 

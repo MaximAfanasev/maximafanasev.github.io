@@ -1,0 +1,36 @@
+
+
+	.timer-container {
+		position: relative;
+		width: 120px;
+		height: 120px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin: 0 auto;
+		margin-bottom: 30px;
+		opacity: 1;
+		animation: show 4s;
+	}
+
+	#timer {
+		font-size: 2rem;
+		font-weight: bold;
+		color: #fff;
+		position: absolute;
+	}
+	
+	@keyframes show {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+
+	.progress-ring__circle {
+		transition: stroke-dashoffset 0.35s;
+		transform: rotate(-90deg);
+		transform-origin: 50% 50%;
+	}
