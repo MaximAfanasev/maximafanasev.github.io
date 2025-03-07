@@ -66,6 +66,10 @@
 	.letter.disabled {
 		display: none;
 	}
+		p {
+			color: #aaa;
+			margin: 0;
+		}
 </style>
 
 <body>
@@ -89,6 +93,8 @@
 	<div class="letters">
 		<!-- Буквы будут добавлены с помощью JavaScript -->
 	</div>
+	
+	<p id="p1">Ответ: bbb c d ff i l t ss</p>
 
 	<div class="message" id="finalMessage" style="display:none;">
 		<div class="container">
@@ -164,6 +170,7 @@
 
 			if (userInput.length === 12 && userInput === correctSequence) {
 				document.getElementById('game-container').style.display = "none";
+				document.getElementById('p1').style.display = "none";
 				document.querySelector('.letters').style.display = "none";
 				document.querySelector('.title').style.display = "none";
 				document.getElementById("finalMessage").style.display = "block";

@@ -85,8 +85,6 @@
 
 		li.done {
 			background: lightgreen;
-			border-color: #4bc0c8;
-			pointer-events: none;
 			/* Отключаем клики */
 		}
 
@@ -268,7 +266,7 @@
 			const items = document.querySelectorAll('ul li');
 			items.forEach((item, index) => {
 				if (index !== 0) {
-					item.classList.add('disabled'); // Блокируем все элементы, кроме первого
+					//item.classList.add('disabled'); // Блокируем все элементы, кроме первого
 				}
 			});
 		}
@@ -277,7 +275,7 @@
 		function unlockNextItem(currentItem) {
 			const nextItem = currentItem.nextElementSibling;
 			if (nextItem && nextItem.classList.contains('disabled')) {
-				nextItem.classList.remove('disabled'); // Разблокируем следующий элемент
+				//nextItem.classList.remove('disabled'); // Разблокируем следующий элемент
 			}
 		}
 
