@@ -1,222 +1,240 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Проверка знаний типов данных</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #6a11cb, #2575fc);
-            color: #fff;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-        .container {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            width: 100%;
-            max-width: 600px;
-            color: #333;
-            margin-top: 80px; /* Отступ для таймера */
-        }
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 28px;
-            color: #6a11cb;
-        }
-        p {
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
-        input, textarea {
-            width: 100%;
-            padding: 12px;
-            margin-top: 10px;
-            margin-bottom: 20px;
-            font-size: 16px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            transition: border-color 0.3s ease;
-        }
-        input:focus, textarea:focus {
-            border-color: #6a11cb;
-            outline: none;
-        }
-        textarea {
-            resize: vertical;
-            min-height: 150px;
-        }
-        .correct {
-            color: #28a745;
-            font-weight: bold;
-        }
-        .incorrect {
-            color: #dc3545;
-            font-weight: bold;
-        }
-        .question {
-            margin-bottom: 30px;
-        }
-        .question:last-child {
-            margin-bottom: 0;
-        }
-        .feedback {
-            margin-top: 10px;
-            font-size: 16px;
-        }
-        .timer {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 24px;
-            color: #fff;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 10px 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            z-index: 1000;
-        }
-        .final-time {
-            position: fixed;
-            top: 70px; /* Ниже основного таймера */
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 20px;
-            color: #fff;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 10px 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            z-index: 1000;
-            display: none; /* Скрыто по умолчанию */
-        }
-    </style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Проверка знаний типов данных</title>
+	<style>
+		body {
+			font-family: 'Arial', sans-serif;
+			background: linear-gradient(135deg, #6a11cb, #2575fc);
+			color: #fff;
+			margin: 0;
+			padding: 0 10px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			min-height: 100vh;
+		}
+
+		.container {
+			background: rgba(255, 255, 255, 0.9);
+			padding: 30px;
+			border-radius: 15px;
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+			width: 100%;
+			max-width: 600px;
+			color: #333;
+			margin-top: 80px;
+			/* Отступ для таймера */
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 20px;
+			font-size: 28px;
+			color: #6a11cb;
+		}
+
+		p {
+			font-size: 18px;
+			margin-bottom: 10px;
+		}
+
+		input,
+		textarea {
+			width: calc(100% - 40px);
+			padding: 12px;
+			margin-top: 10px;
+			margin-bottom: 20px;
+			font-size: 16px;
+			border: 2px solid #ddd;
+			border-radius: 8px;
+			transition: border-color 0.3s ease;
+		}
+
+		input:focus,
+		textarea:focus {
+			border-color: #6a11cb;
+			outline: none;
+		}
+
+		textarea {
+			resize: vertical;
+			min-height: 150px;
+		}
+
+		.correct {
+			color: #28a745;
+			font-weight: bold;
+		}
+
+		.incorrect {
+			color: #dc3545;
+			font-weight: bold;
+		}
+
+		.question {
+			margin-bottom: 30px;
+		}
+
+		.question:last-child {
+			margin-bottom: 0;
+		}
+
+		.feedback {
+			margin-top: 10px;
+			font-size: 16px;
+		}
+
+		.timer {
+			position: fixed;
+			top: 20px;
+			left: 50%;
+			transform: translateX(-50%);
+			font-size: 24px;
+			color: #fff;
+			background: rgba(0, 0, 0, 0.7);
+			padding: 10px 20px;
+			border-radius: 10px;
+			box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+			z-index: 1000;
+		}
+
+		.final-time {
+			position: fixed;
+			top: 70px;
+			/* Ниже основного таймера */
+			left: 50%;
+			transform: translateX(-50%);
+			font-size: 20px;
+			color: #fff;
+			background: rgba(0, 0, 0, 0.7);
+			padding: 10px 20px;
+			border-radius: 10px;
+			box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+			z-index: 1000;
+			display: none;
+			/* Скрыто по умолчанию */
+		}
+	</style>
 </head>
+
 <body>
 
-<div class="timer" id="timer">0:00:00</div>
-<div class="final-time" id="finalTime"></div>
+	<div class="timer" id="timer">0:00:00</div>
+	<div class="final-time" id="finalTime"></div>
 
-<div class="container">
-    <h1>Проверка знаний типов данных</h1>
+	<div class="container">
+		<h1>Проверка знаний типов данных</h1>
 
-    <div id="question1" class="question">
-        <p>Напишите первые буквы типов данных:</p>
-        <input type="text" id="input1" maxlength="12">
-        <p id="feedback1" class="feedback"></p>
-    </div>
+		<div id="question1" class="question">
+			<p>Напишите первые буквы типов данных:</p>
+			<input type="text" id="input1" maxlength="12">
+			<p id="feedback1" class="feedback"></p>
+		</div>
 
-    <div id="question2" class="question" style="display: none;">
-        <p>Напишите 12 типов данных:</p>
-        <textarea id="input2" rows="12"></textarea>
-        <p id="feedback2" class="feedback"></p>
-    </div>
+		<div id="question2" class="question" style="display: none;">
+			<p>Напишите 12 типов данных:</p>
+			<textarea id="input2" rows="12"></textarea>
+			<p id="feedback2" class="feedback"></p>
+		</div>
 
-    <div id="question3" class="question" style="display: none;">
-        <p>Напишите 4 типа изменяемых данных и 8 неизменяемых:</p>
-        <textarea id="input3" rows="12"></textarea>
-        <p id="feedback3" class="feedback"></p>
-    </div>
-</div>
+		<div id="question3" class="question" style="display: none;">
+			<p>Напишите 4 типа изменяемых данных и 8 неизменяемых:</p>
+			<textarea id="input3" rows="12"></textarea>
+			<p id="feedback3" class="feedback"></p>
+		</div>
+	</div>
 
-<script>
-    const correctAnswer1 = "bbbcdffiltss";
-    const correctAnswer2 = [
-        "bool", "bytearray", "bytes", "complex", "dict", "float", 
-        "frozenset", "int", "list", "tuple", "set", "str"
-    ];
-    const correctAnswer3 = [
-        "bytearray", "dict", "list", "set", 
-        "bool", "bytes", "complex", "float", "frozenset", "int", "tuple", "str"
-    ];
+	<script>
+		const correctAnswer1 = "bbbcdffiltss";
+		const correctAnswer2 = [
+			"bool", "bytearray", "bytes", "complex", "dict", "float",
+			"frozenset", "int", "list", "tuple", "set", "str"
+		];
+		const correctAnswer3 = [
+			"bytearray", "dict", "list", "set",
+			"bool", "bytes", "complex", "float", "frozenset", "int", "tuple", "str"
+		];
 
-    const input1 = document.getElementById('input1');
-    const feedback1 = document.getElementById('feedback1');
-    const question2 = document.getElementById('question2');
-    const input2 = document.getElementById('input2');
-    const feedback2 = document.getElementById('feedback2');
-    const question3 = document.getElementById('question3');
-    const input3 = document.getElementById('input3');
-    const feedback3 = document.getElementById('feedback3');
-    const timer = document.getElementById('timer');
-    const finalTime = document.getElementById('finalTime');
+		const input1 = document.getElementById('input1');
+		const feedback1 = document.getElementById('feedback1');
+		const question2 = document.getElementById('question2');
+		const input2 = document.getElementById('input2');
+		const feedback2 = document.getElementById('feedback2');
+		const question3 = document.getElementById('question3');
+		const input3 = document.getElementById('input3');
+		const feedback3 = document.getElementById('feedback3');
+		const timer = document.getElementById('timer');
+		const finalTime = document.getElementById('finalTime');
 
-    let startTime;
-    let timerInterval;
+		let startTime;
+		let timerInterval;
 
-    // Функция для форматирования времени в формат 0:00:00
-    function formatTime(seconds) {
-        const hours = Math.floor(seconds / 3600);
-        const minutes = Math.floor((seconds % 3600) / 60);
-        const secs = Math.floor(seconds % 60);
-        return `${hours}:${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
-    }
+		// Функция для форматирования времени в формат 0:00:00
+		function formatTime(seconds) {
+			const hours = Math.floor(seconds / 3600);
+			const minutes = Math.floor((seconds % 3600) / 60);
+			const secs = Math.floor(seconds % 60);
+			return `${hours}:${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+		}
 
-    // Запуск таймера при загрузке страницы
-    startTime = Date.now();
-    timerInterval = setInterval(() => {
-        const currentTime = Date.now();
-        const elapsedTime = (currentTime - startTime) / 1000; // Время в секундах
-        timer.textContent = formatTime(elapsedTime);
-    }, 1000);
+		// Запуск таймера при загрузке страницы
+		startTime = Date.now();
+		timerInterval = setInterval(() => {
+			const currentTime = Date.now();
+			const elapsedTime = (currentTime - startTime) / 1000; // Время в секундах
+			timer.textContent = formatTime(elapsedTime);
+		}, 1000);
 
-    input1.addEventListener('input', function() {
-        if (input1.value.length === 12) {
-            if (input1.value === correctAnswer1) {
-                feedback1.textContent = "Правильно!";
-                feedback1.className = "correct";
-                question2.style.display = "block";
-            } else {
-                feedback1.textContent = "Неправильно, попробуйте еще раз.";
-                feedback1.className = "incorrect";
-            }
-        }
-    });
+		input1.addEventListener('input', function() {
+			if (input1.value.length === 12) {
+				if (input1.value === correctAnswer1) {
+					feedback1.textContent = "Правильно!";
+					feedback1.className = "correct";
+					question2.style.display = "block";
+				} else {
+					feedback1.textContent = "Неправильно, попробуйте еще раз.";
+					feedback1.className = "incorrect";
+				}
+			}
+		});
 
-    input2.addEventListener('input', function() {
-        const lines = input2.value.split('\n').filter(line => line.trim() !== "");
-        if (lines.length === 12) {
-            const isCorrect = lines.every((line, index) => line.trim() === correctAnswer2[index]);
-            if (isCorrect) {
-                feedback2.textContent = "Правильно!";
-                feedback2.className = "correct";
-                question3.style.display = "block";
-            } else {
-                feedback2.textContent = "Неправильно, попробуйте еще раз.";
-                feedback2.className = "incorrect";
-            }
-        }
-    });
+		input2.addEventListener('input', function() {
+			const lines = input2.value.split('\n').filter(line => line.trim() !== "");
+			if (lines.length === 12) {
+				const isCorrect = lines.every((line, index) => line.trim() === correctAnswer2[index]);
+				if (isCorrect) {
+					feedback2.textContent = "Правильно!";
+					feedback2.className = "correct";
+					question3.style.display = "block";
+				} else {
+					feedback2.textContent = "Неправильно, попробуйте еще раз.";
+					feedback2.className = "incorrect";
+				}
+			}
+		});
 
-    input3.addEventListener('input', function() {
-        const lines = input3.value.split('\n').filter(line => line.trim() !== "");
-        if (lines.length === 12) {
-            const isCorrect = lines.every((line, index) => line.trim() === correctAnswer3[index]);
-            if (isCorrect) {
-                feedback3.textContent = "Правильно!";
-                feedback3.className = "correct";
+		input3.addEventListener('input', function() {
+			const lines = input3.value.split('\n').filter(line => line.trim() !== "");
+			if (lines.length === 12) {
+				const isCorrect = lines.every((line, index) => line.trim() === correctAnswer3[index]);
+				if (isCorrect) {
+					feedback3.textContent = "Правильно!";
+					feedback3.className = "correct";
 
-                // Остановка таймера и вывод финального времени
-                clearInterval(timerInterval);
-                const elapsedTime = (Date.now() - startTime) / 1000;
-                finalTime.textContent = `Финальное время: ${formatTime(elapsedTime)}`;
-                finalTime.style.display = "block";
-            } else {
-                feedback3.textContent = "Неправильно, попробуйте еще раз.";
-                feedback3.className = "incorrect";
-            }
-        }
-    });
-</script>
+					// Остановка таймера и вывод финального времени
+					clearInterval(timerInterval);
+					const elapsedTime = (Date.now() - startTime) / 1000;
+					finalTime.textContent = `Финальное время: ${formatTime(elapsedTime)}`;
+					finalTime.style.display = "block";
+				} else {
+					feedback3.textContent = "Неправильно, попробуйте еще раз.";
+					feedback3.className = "incorrect";
+				}
+			}
+		});
+	</script>
 
-</body>
-</html>
+</body></html>
