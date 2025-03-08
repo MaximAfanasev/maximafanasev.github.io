@@ -123,10 +123,12 @@
 	<div class="final-time" id="finalTime"></div>
 
 	<div class="container">
-		<h1>Типы данных</h1>
+		<h1>Числа</h1>
 
 		<div id="question1" class="question">
-			<p>12 букв</p>
+			<p>
+a = 7<br>
+print(a)</p>
 			<input type="text" id="input1" maxlength="12">
 			<p id="feedback1" class="feedback"></p>
 		</div>
@@ -145,7 +147,7 @@
 	</div>
 
 	<script>
-		const correctAnswer1 = "bbbcdffiltss";
+		const correctAnswer1 = "7";
 		const correctAnswer2 = [
 			"bool", "bytearray", "bytes", "complex", "dict", "float",
 			"frozenset", "int", "list", "tuple", "set", "str"
@@ -184,7 +186,6 @@
 		}, 1000);
 
 		input1.addEventListener('input', function() {
-			if (input1.value.length === 12) {
 				if (input1.value === correctAnswer1) {
 					feedback1.textContent = "Правильно!";
 					feedback1.className = "correct";
@@ -193,7 +194,6 @@
 					feedback1.textContent = "Неправильно, попробуйте еще раз.";
 					feedback1.className = "incorrect";
 				}
-			}
 		});
 
 		input2.addEventListener('input', function() {

@@ -6,7 +6,6 @@
 	<title>Types</title>
 	<link rel="icon" type="image/x-icon" href="/img/logo.png">
 	<link rel="stylesheet" href="../style/win.css">
-	<link rel="stylesheet" href="../style/timer.css">
 	<link rel="stylesheet" href="../style/style.css">
 
 </head>
@@ -118,6 +117,43 @@
 		background-size: cover;
 	}
 </style>
+<style>
+	.timer-container {
+		position: relative;
+		width: 120px;
+		height: 120px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin: 0 auto;
+		margin-bottom: 30px;
+		opacity: 1;
+		animation: show 4s;
+	}
+
+	#timer {
+		font-size: 2rem;
+		font-weight: bold;
+		color: #fff;
+		position: absolute;
+	}
+
+	@keyframes show {
+		0% {
+			opacity: 0;
+		}
+
+		100% {
+			opacity: 1;
+		}
+	}
+
+	.progress-ring__circle {
+		transition: stroke-dashoffset 0.35s;
+		transform: rotate(-90deg);
+		transform-origin: 50% 50%;
+	}
+</style>
 
 <body>
 
@@ -195,7 +231,21 @@
 			<img src="../../img/trophy5.png" class="five" alt="">
 		</div>
 	</div>
-	<script src="../js/timer.js"></script>
+	<script>
+		const timerElement = document.getElementById('timer');
+		const circle = document.querySelector('.progress-ring__circle');
+		const radius = circle.r.baseVal.value;
+		const circumference = 2 * Math.PI * radius;
+
+		circle.style.strokeDasharray = `${circumference} ${circumference}`;
+		circle.style.strokeDashoffset = circumference;
+
+
+		const setProgress = (percent) => {
+			const offset = circumference - (percent / 100) * circumference;
+			circle.style.strokeDashoffset = offset;
+		};
+	</script>
 	<script>
 		const questions = [{
 				question: "print(type(True))",
@@ -464,10 +514,11 @@
 				timeLeft--;
 			} else {
 				clearInterval(timerInterval);
-			localStorage.removeItem('test_5_done', 'true');
+				localStorage.removeItem('test_5_done', 'true');
 				window.location.href = "../index.html";
 			}
 		}, 1000);
+
 		function displayQuestion(index) {
 			const questionContainer = document.getElementById(`question${index + 1}`);
 			questionContainer.style.display = "block";

@@ -9,16 +9,31 @@
 	<link rel="stylesheet" href="style/index.css">
 </head>
 
+<style>
+	.done a {
+		background: lightgreen;
+		color: #000;
+	}
+</style>
+
 <body>
 	<main>
 		<h1>Python</h1>
 
 		<ul class="wrap">
-			<li><a href="roadmap/index.html">Roadmap</a>
-			<li class="razr">Доступно</li>
-			<li class=""><a href="nonstop/index.html">Non-stop</a></li>
-			<li class="razr">Доступно</li>
-			<li class="load"><a href="">Hardcore</a></li>
+			<li id="lvl_1"><a href="roadmap/index.html">Types</a>
+			<li class="razr">easy</li>
+			<li id="lvl_2" class=""><a href="nonstop/index.html">Types</a></li>
+			<li class="razr">medium</li>
+			<li class=""><a href="numbers/index.html">Numbers</a></li>
+			<li class="razr">hardcore</li>
+			<li class="load"><a href="">Str</a></li>
+			<li class="razr">В разработке...</li>
+			<li class="load"><a href="">List</a></li>
+			<li class="razr">В разработке...</li>
+			<li class="load"><a href="">Dict</a></li>
+			<li class="razr">В разработке...</li>
+			<li class="load"><a href="">Functions</a></li>
 			<li class="razr">В разработке...</li>
 		</ul>
 
@@ -29,4 +44,12 @@
 		</ul>
 
 	</main>
+	<script>
+		if (localStorage.getItem(`lvl_1_done`) === 'true') {
+			document.getElementById('lvl_1').classList.add('done');
+		}
+		if (localStorage.getItem(`lvl_2_done`) === 'true') {
+			document.getElementById('lvl_2').classList.add('done');
+		}
+	</script>
 </body></html>

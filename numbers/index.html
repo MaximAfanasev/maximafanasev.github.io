@@ -1,4 +1,13 @@
-body {
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Numbers</title>
+	<link rel="icon" type="image/x-icon" href="/img/logo.png">
+</head>
+
+<style>body {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -24,29 +33,6 @@ body {
 		background-position: 0% 50%;
 	}
 }
-
-h1,
-h2 {
-	text-align: center;
-}
-
-h1 {
-	margin-bottom: 50px;
-}
-
-h2 {
-	margin-bottom: 0;
-}
-
-#game-container {
-	background-color: white;
-	border-radius: 20px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-	padding: 20px;
-	padding-top: 40px;
-	text-align: center;
-}
-
 .container {
 	position: relative;
 	display: flex;
@@ -113,25 +99,6 @@ button:active {
 	font-weight: bold;
 }
 
-
-
-.code-block {
-	background-color: #eee;
-	padding: 10px;
-	border: 1px solid #ccc;
-	border-radius: 10px;
-	overflow-x: auto;
-	white-space: pre-wrap;
-	text-align: left;
-}
-
-textarea {
-	border-radius: 10px;
-	padding: 10px;
-	width: calc(100% - 20px);
-	box-shadow: 0 0 0px gray, 0 0 5px #000;
-}
-
 pre {
 	background: #fff;
 	padding: 20px;
@@ -142,66 +109,97 @@ pre {
 	border: 2px solid #000;
 	box-shadow: 0 0 0px gray, 0 0 5px #000;
 }
+</style>
 
-.container1 {
-	padding: 20px;
-	border-radius: 5px;
-	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-	text-align: center;
-	border-radius: 20px;
-	background: white;
-	text-align: center;
-	border-radius: 20px;
-	display: none;
-}
+<body>
+	<pre>
+a = 7
+print(a)
+b = a
+print(b)
 
+print(123)
+print(1+1)
+print(1-1)
+print(1*2)
+print(+123)
+print(7/2)
+print(7//2)
+print(9//5)
+print(7%3)
+print(9%5)
+print(2**3)
 
-#game-container {
-	display: none;
-}
+print(1 + \
+2)
+print(1 + 
+2)
+ 
+c = 5 
+print(c == 7)
+ 
+print(5 &#60; 5 and 5 &#60; 10) 
 
-#question {
-	font-size: 1.5em;
-	margin-bottom: 20px;
-}
+print(bool(True))
+print(bool(1))
+print(bool(45))
+print(bool(-45))
+print(bool(False))
+print(bool(0))
+print(bool(0.0))
 
-#answer {
-	padding: 10px;
-	width: 80%;
-	border: 1px solid #ccc;
-	border-radius: 5px;
-	margin-bottom: 10px;
-}
+print(chr(65))
+print(ord('A'))
 
-#submit {
-	padding: 10px 15px;
-	color: white;
-	border: none;
-	border-radius: 5px;
-	cursor: pointer;
-}
+print(int(True))
+print(int(False))
+print(int(98.6))
+print(int('99'))
+print(int('10', 2))
 
-.message {
-	display: none;
-	text-align: center;
-	margin-top: 20px;
-}
+print(float(True))
+</pre>
+<pre>
+7
+7
+123
+2
+0
+2
+123
+3.5
+3
+1
+1
+4
+8
+3
+3
+False
+False
+True
+True
+True
+True
+False
+False
+False
+A
+65
+1
+0
+98
+99
+2
+1.0
+</pre>
 
-.base {
-	background-color: #f4f4f4;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin: 0;
-	overflow: auto;
-	flex-direction: column;
-}
+	<script>
+		const saveButton = document.getElementById('saveButton');
 
-.blur pre {
-	filter: blur(3px);
-}
-
-.blur pre:hover {
-	filter: blur(0);
-	cursor: wait;
-}
+		saveButton.addEventListener('click', function() {
+			window.location.href = "../index.html";
+			localStorage.setItem('test_7_done', 'true');
+		});
+	</script>
+</body></html>
