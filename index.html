@@ -28,8 +28,8 @@
 			<li class="razr lvl2time">1m 04s</li>
 			<li id="lvl_3" class=""><a href="numbers/index.html">Numbers</a></li>
 			<li class="razr lvl3time">0m 00s</li>
-			<li class="load"><a href="">Str</a></li>
-			<li class="razr">В разработке...</li>
+			<li id="lvl_4"><a href="">Str</a></li>
+			<li class="razr lvl4time">0m 00s</li>
 			<li class="load"><a href="">List</a></li>
 			<li class="razr">В разработке...</li>
 			<li class="load"><a href="">Dict</a></li>
@@ -55,11 +55,21 @@
 		if (localStorage.getItem(`lvl_3_done`) === 'true') {
 			document.getElementById('lvl_3').classList.add('done');
 		}
+		if (localStorage.getItem(`lvl_4_done`) === 'true') {
+			document.getElementById('lvl_4').classList.add('done');
+		}
 		const lvl3Time = localStorage.getItem('lvl_3_time');
 		if (lvl3Time) {
 			const razrElement = document.querySelector('.lvl3time');
 			if (razrElement) {
 				razrElement.textContent = lvl3Time; // Отображаем сохраненное время
+			}
+		}
+		const lvl4Time = localStorage.getItem('lvl_4_time');
+		if (lvl3Time) {
+			const razrElement = document.querySelector('.lvl4time');
+			if (razrElement) {
+				razrElement.textContent = lvl4Time; // Отображаем сохраненное время
 			}
 		}
 
