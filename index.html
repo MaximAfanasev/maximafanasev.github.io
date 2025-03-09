@@ -14,6 +14,7 @@
 		background: lightgreen;
 		color: #000;
 	}
+
 </style>
 
 <body>
@@ -22,11 +23,11 @@
 
 		<ul class="wrap">
 			<li id="lvl_1"><a href="roadmap/index.html">Types</a>
-			<li class="razr">3m 01s</li>
+			<li class="razr lvl1time">3m 01s</li>
 			<li id="lvl_2" class=""><a href="nonstop/index.html">Types</a></li>
-			<li class="razr">1m 04s</li>
+			<li class="razr lvl2time">1m 04s</li>
 			<li id="lvl_3" class=""><a href="numbers/index.html">Numbers</a></li>
-			<li class="razr">0m 53s</li>
+			<li class="razr lvl3time">0m 00s</li>
 			<li class="load"><a href="">Str</a></li>
 			<li class="razr">В разработке...</li>
 			<li class="load"><a href="">List</a></li>
@@ -54,5 +55,15 @@
 		if (localStorage.getItem(`lvl_3_done`) === 'true') {
 			document.getElementById('lvl_3').classList.add('done');
 		}
+		const lvl3Time = localStorage.getItem('lvl_3_time');
+		if (lvl3Time) {
+			const razrElement = document.querySelector('.lvl3time');
+			if (razrElement) {
+				razrElement.textContent = lvl3Time; // Отображаем сохраненное время
+			}
+		}
+
 	</script>
-</body></html>
+</body>
+
+</html>
