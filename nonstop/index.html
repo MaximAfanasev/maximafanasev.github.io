@@ -119,121 +119,142 @@
 
 <body>
 
-	<div class="timer" id="timer">0:00:00</div>
-	<div class="final-time" id="finalTime"></div>
+    <div class="timer" id="timer">0:00:00</div>
+    <div class="final-time" id="finalTime"></div>
 
-	<div class="container">
-		<h1>Типы данных</h1>
+    <div class="container">
+        <h1>Типы данных</h1>
 
-		<div id="question1" class="question">
-			<p>12 букв</p>
-			<input type="text" id="input1" maxlength="12">
-			<p id="feedback1" class="feedback"></p>
-		</div>
+        <div id="questions">
+            <!-- Вопросы будут добавлены динамически -->
+        </div>
+    </div>
 
-		<div id="question2" class="question" style="display: none;">
-			<p>Напишите 12 типов данных:</p>
-			<textarea id="input2" rows="12"></textarea>
-			<p id="feedback2" class="feedback"></p>
-		</div>
+    <script>
+        const questionsData = [
+            {
+                id: "question1",
+                questionText: "12 букв",
+                inputType: "text",
+                correctAnswer: "bbbcdffiltss",
+                feedbackText: "Правильно!",
+                nextQuestionId: "question2"
+            },
+            {
+                id: "question2",
+                questionText: "Напишите 12 типов данных:",
+                inputType: "textarea",
+                correctAnswer: [
+                    "bool", "bytearray", "bytes", "complex", "dict", "float",
+                    "frozenset", "int", "list", "tuple", "set", "str"
+                ],
+                feedbackText: "Правильно!",
+                nextQuestionId: "question3"
+            },
+            {
+                id: "question3",
+                questionText: "Напишите 4 типа изменяемых данных и 8 неизменяемых:",
+                inputType: "textarea",
+                correctAnswer: [
+                    "bytearray", "dict", "list", "set",
+                    "bool", "bytes", "complex", "float", "frozenset", "int", "tuple", "str"
+                ],
+                feedbackText: "Правильно!",
+                nextQuestionId: null
+            }
+        ];
 
-		<div id="question3" class="question" style="display: none;">
-			<p>Напишите 4 типа изменяемых данных и 8 неизменяемых:</p>
-			<textarea id="input3" rows="12"></textarea>
-			<p id="feedback3" class="feedback"></p>
-		</div>
-	</div>
+        const timer = document.getElementById('timer');
+        const finalTime = document.getElementById('finalTime');
+        const questionsContainer = document.getElementById('questions');
 
-	<script>
-		const correctAnswer1 = "bbbcdffiltss";
-		const correctAnswer2 = [
-			"bool", "bytearray", "bytes", "complex", "dict", "float",
-			"frozenset", "int", "list", "tuple", "set", "str"
-		];
-		const correctAnswer3 = [
-			"bytearray", "dict", "list", "set",
-			"bool", "bytes", "complex", "float", "frozenset", "int", "tuple", "str"
-		];
+        let startTime;
+        let timerInterval;
 
-		const input1 = document.getElementById('input1');
-		const feedback1 = document.getElementById('feedback1');
-		const question2 = document.getElementById('question2');
-		const input2 = document.getElementById('input2');
-		const feedback2 = document.getElementById('feedback2');
-		const question3 = document.getElementById('question3');
-		const input3 = document.getElementById('input3');
-		const feedback3 = document.getElementById('feedback3');
-		const timer = document.getElementById('timer');
-		const finalTime = document.getElementById('finalTime');
+        function formatTime(seconds) {
+            const hours = Math.floor(seconds / 3600);
+            const minutes = Math.floor((seconds % 3600) / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${hours}:${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+        }
 
-		let startTime;
-		let timerInterval;
+        function createQuestionElement(question) {
+            const div = document.createElement('div');
+            div.id = question.id;
+            div.className = 'question';
+            div.style.display = question.id === "question1" ? 'block' : 'none';
+            div.innerHTML = `
+                <p>${question.questionText}</p>
+                ${question.inputType === "textarea" ? 
+                    `<textarea id="input${question.id}" rows="12"></textarea>` :
+                    `<input type="text" id="input${question.id}" maxlength="12">`
+                }
+                <p id="feedback${question.id}" class="feedback"></p>
+            `;
+            return div;
+        }
 
-		function formatTime(seconds) {
-			const hours = Math.floor(seconds / 3600);
-			const minutes = Math.floor((seconds % 3600) / 60);
-			const secs = Math.floor(seconds % 60);
-			return `${hours}:${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
-		}
+        function checkAnswer(inputValue, correctAnswer) {
+            if (Array.isArray(correctAnswer)) {
+                const lines = inputValue.split('\n').filter(line => line.trim() !== "");
+                if (lines.length === correctAnswer.length) {
+                    return lines.every((line, index) => line.trim() === correctAnswer[index]);
+                }
+                return false;
+            } else {
+                return inputValue === correctAnswer;
+            }
+        }
 
-		startTime = Date.now();
-		timerInterval = setInterval(() => {
-			const currentTime = Date.now();
-			const elapsedTime = (currentTime - startTime) / 1000;
-			timer.textContent = formatTime(elapsedTime);
-		}, 1000);
+        function handleInput(inputElement, correctAnswer, feedbackElement, nextQuestionId) {
+            inputElement.addEventListener('input', function () {
+                const isCorrect = checkAnswer(inputElement.value, correctAnswer);
+                if (isCorrect) {
+                    feedbackElement.textContent = "Правильно!";
+                    feedbackElement.className = "correct";
+                    if (nextQuestionId) {
+                        document.getElementById(nextQuestionId).style.display = "block";
+                    } else {
+                        completeLevel();
+                    }
+                } else {
+                    feedbackElement.textContent = "Неправильно, попробуйте еще раз.";
+                    feedbackElement.className = "incorrect";
+                }
+            });
+        }
 
-		input1.addEventListener('input', function() {
-			if (input1.value.length === 12) {
-				if (input1.value === correctAnswer1) {
-					feedback1.textContent = "Правильно!";
-					feedback1.className = "correct";
-					question2.style.display = "block";
-				} else {
-					feedback1.textContent = "Неправильно, попробуйте еще раз.";
-					feedback1.className = "incorrect";
-				}
-			}
-		});
+        function completeLevel() {
+            clearInterval(timerInterval);
+            const elapsedTime = (Date.now() - startTime) / 1000;
+            finalTime.textContent = `Финальное время: ${formatTime(elapsedTime)}`;
+            finalTime.style.display = "block";
 
-		input2.addEventListener('input', function() {
-			const lines = input2.value.split('\n').filter(line => line.trim() !== "");
-			if (lines.length === 12) {
-				const isCorrect = lines.every((line, index) => line.trim() === correctAnswer2[index]);
-				if (isCorrect) {
-					feedback2.textContent = "Правильно!";
-					feedback2.className = "correct";
-					question3.style.display = "block";
-				} else {
-					feedback2.textContent = "Неправильно, попробуйте еще раз.";
-					feedback2.className = "incorrect";
-				}
-			}
-		});
+            localStorage.setItem('lvl_2_done', 'true');
+            localStorage.setItem('lvl_2_time', formatTime(elapsedTime));
 
-		input3.addEventListener('input', function() {
-			const lines = input3.value.split('\n').filter(line => line.trim() !== "");
-			if (lines.length === 12) {
-				const isCorrect = lines.every((line, index) => line.trim() === correctAnswer3[index]);
-				if (isCorrect) {
-					feedback3.textContent = "Правильно!";
-					feedback3.className = "correct";
+            setTimeout(() => {
+                window.location.href = "../index.html";
+            }, 3000);
+        }
 
-					clearInterval(timerInterval);
-					const elapsedTime = (Date.now() - startTime) / 1000;
-					finalTime.textContent = `Финальное время: ${formatTime(elapsedTime)}`;
-					finalTime.style.display = "block";
-					
-				localStorage.setItem('lvl_2_done', 'true');
-				setTimeout(() => {
-					window.location.href = "../index.html";
-				}, 3000);
-				} else {
-					feedback3.textContent = "Неправильно, попробуйте еще раз.";
-					feedback3.className = "incorrect";
-				}
-			}
-		});
-	</script>
+        function initializeQuestions() {
+            questionsData.forEach((question) => {
+                const questionElement = createQuestionElement(question);
+                questionsContainer.appendChild(questionElement);
 
-</body></html>
+                const inputElement = document.getElementById(`input${question.id}`);
+                const feedbackElement = document.getElementById(`feedback${question.id}`);
+                handleInput(inputElement, question.correctAnswer, feedbackElement, question.nextQuestionId);
+            });
+        }
+
+        startTime = Date.now();
+        timerInterval = setInterval(() => {
+            const currentTime = Date.now();
+            const elapsedTime = (currentTime - startTime) / 1000;
+            timer.textContent = formatTime(elapsedTime);
+        }, 1000);
+
+        initializeQuestions();
+    </script>
