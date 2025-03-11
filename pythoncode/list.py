@@ -47,3 +47,15 @@ p = [1,2,3]
 p.clear()
 print(p)
 
+print([1,2].index(2))
+
+print(1 in [1,2])
+
+print([1,1,1].count(1))
+
+q = [3,2,1]
+q.sort()
+print(q)
+
+for _ in zip([1,2,3],[4,5,6]):
+    print(_)
