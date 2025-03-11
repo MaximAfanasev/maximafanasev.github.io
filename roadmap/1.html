@@ -6,8 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Types</title>
 	<link rel="icon" type="image/x-icon" href="/img/logo.png">
-	<link rel="stylesheet" href="../style/style.css">
-	<link rel="stylesheet" href="../style/win.css">
+	<link rel="stylesheet" href="style.css">
 </head>
 
 <style>
@@ -96,16 +95,6 @@
 	
 	<p id="p1">Ответ: bbb c d ff i l t ss</p>
 
-	<div class="message" id="finalMessage" style="display:none;">
-		<div class="container">
-			<img src="../../img/trophy.png" class="first" alt="">
-			<img src="../../img/trophy2.png" class="second" alt="">
-			<img src="../../img/trophy3.png" class="three" alt="">
-			<img src="../../img/trophy4.png" class="four" alt="">
-			<img src="../../img/trophy5.png" class="five" alt="">
-		</div>
-	</div>
-
 	<script>
 		const correctSequence = "bbbcdffiltss";
 
@@ -173,12 +162,11 @@
 				document.getElementById('p1').style.display = "none";
 				document.querySelector('.letters').style.display = "none";
 				document.querySelector('.title').style.display = "none";
-				document.getElementById("finalMessage").style.display = "block";
-
+				
 				localStorage.setItem('test_1_done', 'true');
 
 				setTimeout(() => {
-					window.location.href = "../index.html";
+					window.location.href = "2.html";
 				}, 3000);
 			} else {
 				alert('Попробуйте снова!');

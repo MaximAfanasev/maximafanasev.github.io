@@ -14,7 +14,6 @@
 		background: lightgreen;
 		color: #000;
 	}
-
 </style>
 
 <body>
@@ -22,14 +21,14 @@
 		<h1>Python</h1>
 
 		<ul class="wrap">
-			<li id="lvl_1"><a href="roadmap/index.html">Types</a>
-			<li class="razr lvl1time">3m 01s</li>
+			<li id="lvl_1"><a href="roadmap/1.html">Types</a>
+			<li id="lvl1time" class="razr" style="display: none">win</li>
 			<li id="lvl_2" class=""><a href="nonstop/index.html">Types</a></li>
-			<li class="razr lvl2time">1m 04s</li>
+			<li id="lvl2time" class="razr lvl2time" style="display: none">1m 04s</li>
 			<li id="lvl_3" class=""><a href="numbers/index.html">Numbers</a></li>
-			<li class="razr lvl3time">0m 00s</li>
+			<li id="lvl3time" class="razr lvl3time" style="display: none">0m 00s</li>
 			<li id="lvl_4"><a href="str/index.html">Str</a></li>
-			<li class="razr lvl4time">0m 00s</li>
+			<li id="lvl4time" class="razr lvl4time" style="display: none">0m 00s</li>
 			<li class="load"><a href="">List</a></li>
 			<li class="razr">В разработке...</li>
 			<li class="load"><a href="">Dict</a></li>
@@ -42,21 +41,28 @@
 		<ul class="wrap">
 			<li class="load"><a href="" disabled>Javascript</a></li>
 			<li class="razr">В разработке...</li>
+			<li class="load">
+				<button class="reset-button" onclick="resetProgress()">Сбросить прогресс</button>
+			</li>
 		</ul>
 
 	</main>
 	<script>
 		if (localStorage.getItem(`lvl_1_done`) === 'true') {
 			document.getElementById('lvl_1').classList.add('done');
+			document.getElementById('lvl1time').style.display = 'block'
 		}
 		if (localStorage.getItem(`lvl_2_done`) === 'true') {
 			document.getElementById('lvl_2').classList.add('done');
+			document.getElementById('lvl2time').style.display = 'block'
 		}
 		if (localStorage.getItem(`lvl_3_done`) === 'true') {
 			document.getElementById('lvl_3').classList.add('done');
+			document.getElementById('lvl3time').style.display = 'block'
 		}
 		if (localStorage.getItem(`lvl_4_done`) === 'true') {
 			document.getElementById('lvl_4').classList.add('done');
+			document.getElementById('lvl4time').style.display = 'block'
 		}
 		const lvl3Time = localStorage.getItem('lvl_3_time');
 		if (lvl3Time) {
@@ -73,7 +79,22 @@
 			}
 		}
 
+		function resetProgress() {
+			localStorage.removeItem('test_0_done');
+			localStorage.removeItem('test_1_done');
+			localStorage.removeItem('test_2_done');
+			localStorage.removeItem('test_3_done');
+			localStorage.removeItem('test_4_done');
+			localStorage.removeItem('test_5_done');
+			localStorage.removeItem('test_6_done');
+			localStorage.removeItem('lvl_1_done');
+			localStorage.removeItem('lvl_2_done');
+			localStorage.removeItem('lvl_3_done');
+			localStorage.removeItem('lvl_4_done');
+			localStorage.removeItem('animationPlayed');
+			window.location.href = "../index.html";
+		}
 	</script>
-</body>
 
-</html>
+
+</body></html>
