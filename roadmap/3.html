@@ -123,12 +123,25 @@
         .message.active {
             display: block;
         }
+		.timer {
+			position: fixed;
+			top: 20px;
+			left: 50%;
+			transform: translateX(-50%);
+			font-size: 24px;
+			color: #fff;
+			background: rgba(0, 0, 0, 0.7);
+			padding: 10px 20px;
+			border-radius: 10px;
+			box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+			z-index: 1000;
+		}
     </style>
 </head>
 
 <body>
     <main class="basics">
-        <div class="timer" id="timer">0m 00s</div>
+        <div class="timer" id="timer"></div>
         <div class="progress-container" id="correctProgressContainer">
             <div class="progress" id="correctProgress" style="width: 0%;"></div>
             <div class="coin" id="coin" style=""></div>

@@ -81,12 +81,25 @@
 			width: 100%;
 		}
 
+		.timer {
+			position: fixed;
+			top: 20px;
+			left: 50%;
+			transform: translateX(-50%);
+			font-size: 24px;
+			color: #fff;
+			background: rgba(0, 0, 0, 0.7);
+			padding: 10px 20px;
+			border-radius: 10px;
+			box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+			z-index: 1000;
+		}
 	</style>
 </head>
 
 <body>
 	<div id="all">
-		<div class="timer" id="timer">0m 00s</div>
+		<div class="timer" id="timer"></div>
 		<h1>True</h1>
 		<div>
 			<input type="text" maxlength="1" id="letter1" oninput="moveToNextInput('letter2', 4)" required>
