@@ -32,11 +32,17 @@
 			color: #aaa;
 			margin: 0;
 		}
+
+		.timer {
+			text-align: center;
+			font-size: 24px;
+			margin-bottom: 20px;
+		}
 	</style>
 </head>
 
 <body>
-	<h1 id="title">Напиши первые буквы типов которые могут изменяться</h1>
+	<div class="timer" id="timer">0m 00s</div>
 	<div id="container">
 		<div class="column">
 			<h2>Могут изменяться</h2>
@@ -50,7 +56,33 @@
 	</div>
 	<p id="p1">bytearray dict list set</p>
 	<p id="p2">bool bytes complex float frozenset int tuple str</p>
+
 	<script>
+		let startTime;
+		let timerInterval;
+
+		// Функция для форматирования времени в "0m 00s"
+		function formatTime(seconds) {
+			const minutes = Math.floor(seconds / 60);
+			const secs = Math.floor(seconds % 60);
+			return `${minutes}m ${String(secs).padStart(2, '0')}s`;
+		}
+
+		// Восстановление времени из localStorage
+		const savedTime = localStorage.getItem('roadmap_elapsed_time');
+		if (savedTime) {
+			startTime = Date.now() - parseInt(savedTime, 10) * 1000; // Восстанавливаем время
+		} else {
+			startTime = Date.now(); // Начинаем с нуля
+		}
+
+		// Запуск таймера
+		timerInterval = setInterval(() => {
+			const currentTime = Date.now();
+			const elapsedTime = (currentTime - startTime) / 1000;
+			document.getElementById('timer').textContent = formatTime(elapsedTime);
+		}, 1000);
+
 		const correctMayVary = ["bdls"];
 		const correctCantVary = ["bbcffits"];
 
@@ -68,22 +100,32 @@
 			});
 
 			cantVaryInputs.forEach((input, index) => {
-				if (input.value !== correctCantVary[index]) {
+				if (input.value.toLowerCase() !== correctCantVary[index]) {
 					cantVaryCorrect = false;
 				}
 			});
 
 			if (mayVaryCorrect && cantVaryCorrect) {
-
 				document.getElementById('container').style.display = "none";
-				document.getElementById('title').style.display = "none";
+
 				document.getElementById('p1').style.display = "none";
 				document.getElementById('p2').style.display = "none";
 
+				// Сохраняем общее время прохождения
+				const elapsedTime = (Date.now() - startTime) / 1000;
+				localStorage.setItem('roadmap_complete', 'true');
 				localStorage.setItem('lvl_1_done', 'true');
+				localStorage.setItem('roadmap_time', formatTime(elapsedTime));
+				
+				// Очищаем сохраненное время для следующего прохождения
+				localStorage.removeItem('roadmap_elapsed_time');
+
+				// Переход на главную страницу
 				setTimeout(() => {
 					window.location.href = "../../index.html";
 				}, 300);
+			} else {
+				alert('Попробуйте снова!');
 			}
 		});
 	</script>

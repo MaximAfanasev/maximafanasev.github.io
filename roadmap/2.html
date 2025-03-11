@@ -2,90 +2,122 @@
 <html lang="ru">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Types</title>
-	<link rel="icon" type="image/x-icon" href="/img/logo.png">
-	<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Types</title>
+    <link rel="icon" type="image/x-icon" href="/img/logo.png">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <style>
-	body {
-		display: flex;
-		flex-direction: column;
-	}
+    body {
+        display: flex;
+        flex-direction: column;
+    }
 
-	h2 {
-		margin-bottom: 30px;
-	}
+    h2 {
+        margin-bottom: 30px;
+    }
 
-	#input-container {
-		max-width: 500px;
-	}
+    #input-container {
+        max-width: 500px;
+    }
 
-	input[type="text"] {
-		width: 30px;
-		height: 30px;
-		font-size: 24px;
-		text-align: center;
-		margin: 5px;
-		border: none;
-		border-radius: 10px;
-		outline: none;
-		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-	}
+    input[type="text"] {
+        width: 30px;
+        height: 30px;
+        font-size: 24px;
+        text-align: center;
+        margin: 5px;
+        border: none;
+        border-radius: 10px;
+        outline: none;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
 </style>
 
 <body>
-	<div id="game-container" style="display: block">
-		<div id="input-container">
-			<input type="text" maxlength="1" class="letter-input" />
-			<input type="text" maxlength="1" class="letter-input" />
-			<input type="text" maxlength="1" class="letter-input" /><br>
-			<input type="text" maxlength="1" class="letter-input" /><br>
-			<input type="text" maxlength="1" class="letter-input" /><br>
-			<input type="text" maxlength="1" class="letter-input" />
-			<input type="text" maxlength="1" class="letter-input" /><br>
-			<input type="text" maxlength="1" class="letter-input" /><br>
-			<input type="text" maxlength="1" class="letter-input" /><br>
-			<input type="text" maxlength="1" class="letter-input" /><br>
-			<input type="text" maxlength="1" class="letter-input" />
-			<input type="text" maxlength="1" class="letter-input" />
-		</div>
-		<p id="result"></p>
-	</div>
+    <div class="timer" id="timer">0m 00s</div>
+    <div id="game-container" style="display: block">
+        <div id="input-container">
+            <input type="text" maxlength="1" class="letter-input" />
+            <input type="text" maxlength="1" class="letter-input" />
+            <input type="text" maxlength="1" class="letter-input" /><br>
+            <input type="text" maxlength="1" class="letter-input" /><br>
+            <input type="text" maxlength="1" class="letter-input" /><br>
+            <input type="text" maxlength="1" class="letter-input" />
+            <input type="text" maxlength="1" class="letter-input" /><br>
+            <input type="text" maxlength="1" class="letter-input" /><br>
+            <input type="text" maxlength="1" class="letter-input" /><br>
+            <input type="text" maxlength="1" class="letter-input" /><br>
+            <input type="text" maxlength="1" class="letter-input" />
+            <input type="text" maxlength="1" class="letter-input" />
+        </div>
+        <p id="result"></p>
+    </div>
 
-	<script>
-		const correctSequence = "bbbcdffiltss";
+    <script>
+        let startTime;
+        let timerInterval;
 
-		const letterInputs = document.querySelectorAll('.letter-input');
-		letterInputs.forEach((input, index) => {
-			input.addEventListener('input', function() {
-				if (this.value.length === 1) {
-					if (index < letterInputs.length - 1) {
-						letterInputs[index + 1].focus();
-					} else {
-						checkInput();
-					}
-				} else {
-					this.focus();
-				}
-			});
-		});
+        // Функция для форматирования времени в "0m 00s"
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${minutes}m ${String(secs).padStart(2, '0')}s`;
+        }
 
-		function checkInput() {
-			let userInput = '';
-			letterInputs.forEach(input => userInput += input.value.trim().toLowerCase());
-			if (userInput.length === 12 && userInput === correctSequence.toLowerCase()) {
-				document.getElementById('game-container').style.display = "none";
-				
+        // Восстановление времени из localStorage
+        const savedTime = localStorage.getItem('roadmap_elapsed_time');
+        if (savedTime) {
+            startTime = Date.now() - parseInt(savedTime, 10) * 1000; // Восстанавливаем время
+        } else {
+            startTime = Date.now(); // Начинаем с нуля
+        }
 
-				setTimeout(() => {
-					window.location.href = "3.html";
-				}, 300);
-			} else {
-				document.getElementById('result').textContent = 'Попробуйте снова!';
-			}
-		}
-	</script>
-</body></html>
+        // Запуск таймера
+        timerInterval = setInterval(() => {
+            const currentTime = Date.now();
+            const elapsedTime = (currentTime - startTime) / 1000;
+            document.getElementById('timer').textContent = formatTime(elapsedTime);
+        }, 1000);
+
+        const correctSequence = "bbbcdffiltss";
+
+        const letterInputs = document.querySelectorAll('.letter-input');
+        letterInputs.forEach((input, index) => {
+            input.addEventListener('input', function () {
+                if (this.value.length === 1) {
+                    if (index < letterInputs.length - 1) {
+                        letterInputs[index + 1].focus();
+                    } else {
+                        checkInput();
+                    }
+                } else {
+                    this.focus();
+                }
+            });
+        });
+
+        function checkInput() {
+            let userInput = '';
+            letterInputs.forEach(input => userInput += input.value.trim().toLowerCase());
+
+            if (userInput.length === 12 && userInput === correctSequence.toLowerCase()) {
+                document.getElementById('game-container').style.display = "none";
+
+                // Сохраняем текущее время в localStorage перед переходом
+                const elapsedTime = (Date.now() - startTime) / 1000;
+                localStorage.setItem('roadmap_elapsed_time', elapsedTime);
+
+                // Переход на следующий уровень
+                setTimeout(() => {
+                    window.location.href = "3.html";
+                }, 300);
+            } else {
+                document.getElementById('result').textContent = 'Попробуйте снова!';
+            }
+        }
+    </script>
+</body>
+</html>

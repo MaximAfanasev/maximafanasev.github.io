@@ -2,175 +2,203 @@
 <html lang="ru">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Types</title>
-	<link rel="icon" type="image/x-icon" href="/img/logo.png">
-	<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Types</title>
+    <link rel="icon" type="image/x-icon" href="/img/logo.png">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <style>
-	html {
-		height: 100%;
-	}
+    html {
+        height: 100%;
+    }
 
-	body {
-		flex-direction: column;
-		gap: 20px;
-		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		background: linear-gradient(45deg, #ff6b6b, #f06595, #eece4e, #4bc0c8);
-		padding: 50px 20px;
-	}
+    body {
+        flex-direction: column;
+        gap: 20px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(45deg, #ff6b6b, #f06595, #eece4e, #4bc0c8);
+        padding: 50px 20px;
+    }
 
-	#game-container {
-		padding: 20px;
-	}
+    #game-container {
+        padding: 20px;
+    }
 
-	input[type="text"] {
-		width: 30px;
-		height: 30px;
-		font-size: 24px;
-		text-align: center;
-		margin: 5px;
-		border: none;
-		border-radius: 10px;
-		outline: none;
-		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-	}
+    input[type="text"] {
+        width: 30px;
+        height: 30px;
+        font-size: 24px;
+        text-align: center;
+        margin: 5px;
+        border: none;
+        border-radius: 10px;
+        outline: none;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
 
-	.letters {
-		display: flex;
-		justify-content: center;
-		flex-wrap: wrap;
-		gap: 10px;
-	}
+    .letters {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
 
-	.letter {
-		cursor: pointer;
-		padding: 15px;
-		border: 1px solid #ccc;
-		border-radius: 15px;
-		background-color: #f9f9f9;
-		user-select: none;
-		font-size: 25px;
-	}
+    .letter {
+        cursor: pointer;
+        padding: 15px;
+        border: 1px solid #ccc;
+        border-radius: 15px;
+        background-color: #f9f9f9;
+        user-select: none;
+        font-size: 25px;
+    }
 
-	.letter:hover {
-		background-color: #e0e0e0;
-	}
+    .letter:hover {
+        background-color: #e0e0e0;
+    }
 
-	.letter.disabled {
-		display: none;
-	}
-		p {
-			color: #aaa;
-			margin: 0;
-		}
+    .letter.disabled {
+        display: none;
+    }
+
+    p {
+        color: #aaa;
+        margin: 0;
+    }
 </style>
 
 <body>
-	<h2 class="title">Наберите 12 первых букв типов данных Python</h2>
-	<div id="game-container" style="display: block">
-		<div id="input-container">
-			<input type="text" maxlength="1" class="letter-input" />
-			<input type="text" maxlength="1" class="letter-input" />
-			<input type="text" maxlength="1" class="letter-input" />
-			<input type="text" maxlength="1" class="letter-input" />
-			<input type="text" maxlength="1" class="letter-input" />
-			<input type="text" maxlength="1" class="letter-input" />
-			<input type="text" maxlength="1" class="letter-input" />
-			<input type="text" maxlength="1" class="letter-input" />
-			<input type="text" maxlength="1" class="letter-input" />
-			<input type="text" maxlength="1" class="letter-input" />
-			<input type="text" maxlength="1" class="letter-input" />
-			<input type="text" maxlength="1" class="letter-input" />
-		</div>
-	</div>
-	<div class="letters">
-		<!-- Буквы будут добавлены с помощью JavaScript -->
-	</div>
-	
-	<p id="p1">Ответ: bbb c d ff i l t ss</p>
+    <div class="timer" id="timer">0m 00s</div>
+    <div id="game-container" style="display: block">
+        <div id="input-container">
+            <input type="text" maxlength="1" class="letter-input" />
+            <input type="text" maxlength="1" class="letter-input" />
+            <input type="text" maxlength="1" class="letter-input" />
+            <input type="text" maxlength="1" class="letter-input" />
+            <input type="text" maxlength="1" class="letter-input" />
+            <input type="text" maxlength="1" class="letter-input" />
+            <input type="text" maxlength="1" class="letter-input" />
+            <input type="text" maxlength="1" class="letter-input" />
+            <input type="text" maxlength="1" class="letter-input" />
+            <input type="text" maxlength="1" class="letter-input" />
+            <input type="text" maxlength="1" class="letter-input" />
+            <input type="text" maxlength="1" class="letter-input" />
+        </div>
+    </div>
+    <div class="letters">
+        <!-- Буквы будут добавлены с помощью JavaScript -->
+    </div>
 
-	<script>
-		const correctSequence = "bbbcdffiltss";
+    <p id="p1">Ответ: bbb c d ff i l t ss</p>
 
-		const letterInputs = document.querySelectorAll('.letter-input');
-		const lettersContainer = document.querySelector('.letters');
-		let currentInputIndex = 0;
+    <script>
+        let startTime;
+        let timerInterval;
 
-		const letterCounts = {
-			'b': 3,
-			'c': 1,
-			'd': 1,
-			'f': 2,
-			'i': 1,
-			'l': 1,
-			't': 1,
-			's': 2
-		};
+        // Функция для форматирования времени в "0m 00s"
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${minutes}m ${String(secs).padStart(2, '0')}s`;
+        }
 
-		const lettersArray = ['b', 'c', 'd', 'f',  'i', 'l', 't', 's'];
+        // Восстановление времени из localStorage
+        const savedTime = localStorage.getItem('roadmap_elapsed_time');
+        if (savedTime) {
+            startTime = Date.now() - parseInt(savedTime, 10) * 1000; // Восстанавливаем время
+        } else {
+            startTime = Date.now(); // Начинаем с нуля
+        }
 
-		function shuffleArray(array) {
-			for (let i = array.length - 1; i > 0; i--) {
-				const j = Math.floor(Math.random() * (i + 1));
-				[array[i], array[j]] = [array[j], array[i]];
-			}
-			return array;
-		}
+        // Запуск таймера
+        timerInterval = setInterval(() => {
+            const currentTime = Date.now();
+            const elapsedTime = (currentTime - startTime) / 1000;
+            document.getElementById('timer').textContent = formatTime(elapsedTime);
+        }, 1000);
 
-		const shuffledLetters = shuffleArray(lettersArray);
+        const correctSequence = "bbbcdffiltss";
 
-		shuffledLetters.forEach(letter => {
-			const letterDiv = document.createElement('div');
-			letterDiv.classList.add('letter');
-			letterDiv.textContent = letter;
-			lettersContainer.appendChild(letterDiv);
-		});
+        const letterInputs = document.querySelectorAll('.letter-input');
+        const lettersContainer = document.querySelector('.letters');
+        let currentInputIndex = 0;
 
-		lettersContainer.addEventListener('click', (event) => {
-			if (event.target.classList.contains('letter')) {
-				const letterValue = event.target.textContent;
+        const letterCounts = {
+            'b': 3,
+            'c': 1,
+            'd': 1,
+            'f': 2,
+            'i': 1,
+            'l': 1,
+            't': 1,
+            's': 2
+        };
 
-				if (letterCounts[letterValue] > 0 && correctSequence[currentInputIndex] === letterValue) {
-					letterInputs[currentInputIndex].value = letterValue;
-					currentInputIndex++;
+        const lettersArray = ['b', 'c', 'd', 'f', 'i', 'l', 't', 's'];
 
-					letterCounts[letterValue]--;
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
 
-					if (letterCounts[letterValue] === 0) {
-						event.target.classList.add('disabled');
-					}
+        const shuffledLetters = shuffleArray(lettersArray);
 
-					if (currentInputIndex === letterInputs.length) {
-						checkInput();
-					}
-				}
-			}
-		});
+        shuffledLetters.forEach(letter => {
+            const letterDiv = document.createElement('div');
+            letterDiv.classList.add('letter');
+            letterDiv.textContent = letter;
+            lettersContainer.appendChild(letterDiv);
+        });
 
-		function checkInput() {
-			let userInput = '';
-			letterInputs.forEach(input => userInput += input.value.trim());
+        lettersContainer.addEventListener('click', (event) => {
+            if (event.target.classList.contains('letter')) {
+                const letterValue = event.target.textContent;
 
-			if (userInput.length === 12 && userInput === correctSequence) {
-				document.getElementById('game-container').style.display = "none";
-				document.getElementById('p1').style.display = "none";
-				document.querySelector('.letters').style.display = "none";
-				document.querySelector('.title').style.display = "none";
-				
-				setTimeout(() => {
-					window.location.href = "2.html";
-				}, 300);
-			} else {
-				alert('Попробуйте снова!');
-			}
-		}
-	</script>
+                if (letterCounts[letterValue] > 0 && correctSequence[currentInputIndex] === letterValue) {
+                    letterInputs[currentInputIndex].value = letterValue;
+                    currentInputIndex++;
+
+                    letterCounts[letterValue]--;
+
+                    if (letterCounts[letterValue] === 0) {
+                        event.target.classList.add('disabled');
+                    }
+
+                    if (currentInputIndex === letterInputs.length) {
+                        checkInput();
+                    }
+                }
+            }
+        });
+
+        function checkInput() {
+            let userInput = '';
+            letterInputs.forEach(input => userInput += input.value.trim());
+
+            if (userInput.length === 12 && userInput === correctSequence) {
+                document.getElementById('game-container').style.display = "none";
+                document.getElementById('p1').style.display = "none";
+                document.querySelector('.letters').style.display = "none";
+
+                // Сохраняем текущее время в localStorage перед переходом
+                const elapsedTime = (Date.now() - startTime) / 1000;
+                localStorage.setItem('roadmap_elapsed_time', elapsedTime);
+
+                setTimeout(() => {
+                    window.location.href = "2.html"; // Переход на следующий уровень
+                }, 300);
+            } else {
+                alert('Попробуйте снова!');
+            }
+        }
+    </script>
 </body>
-
 </html>

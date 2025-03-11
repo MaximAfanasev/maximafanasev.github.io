@@ -86,6 +86,7 @@
 
 <body>
 	<div id="all">
+		<div class="timer" id="timer">0m 00s</div>
 		<h1>True</h1>
 		<div>
 			<input type="text" maxlength="1" id="letter1" oninput="moveToNextInput('letter2', 4)" required>
@@ -219,6 +220,31 @@
 	</div>
 
 	<script>
+		let startTime;
+		let timerInterval;
+
+		// Функция для форматирования времени в "0m 00s"
+		function formatTime(seconds) {
+			const minutes = Math.floor(seconds / 60);
+			const secs = Math.floor(seconds % 60);
+			return `${minutes}m ${String(secs).padStart(2, '0')}s`;
+		}
+
+		// Восстановление времени из localStorage
+		const savedTime = localStorage.getItem('roadmap_elapsed_time');
+		if (savedTime) {
+			startTime = Date.now() - parseInt(savedTime, 10) * 1000; // Восстанавливаем время
+		} else {
+			startTime = Date.now(); // Начинаем с нуля
+		}
+
+		// Запуск таймера
+		timerInterval = setInterval(() => {
+			const currentTime = Date.now();
+			const elapsedTime = (currentTime - startTime) / 1000;
+			document.getElementById('timer').textContent = formatTime(elapsedTime);
+		}, 1000);
+
 		window.onload = function() {
 			document.getElementById('letter1').focus();
 		};
@@ -229,7 +255,7 @@
 				nextInput.focus();
 			}
 		}
-		
+
 		function shuffleArray(array) {
 			for (let i = array.length - 1; i > 0; i--) {
 				const j = Math.floor(Math.random() * (i + 1));
@@ -246,7 +272,7 @@
 
 			const correctLetters = 'bool'; // Правильное слово
 			const userInput = letter1 + letter2 + letter3 + letter4;
-			
+
 
 			if (userInput.toLowerCase() === correctLetters) {
 				setTimeout(() => {
@@ -308,7 +334,7 @@
 			const letter18 = document.getElementById('letter18').value;
 			const letter19 = document.getElementById('letter19').value;
 
-			const correctFourthLetters = 'complex'; 
+			const correctFourthLetters = 'complex';
 			const userFourthInput = letter13 + letter14 + letter15 + letter16 + letter17 + letter18 + letter19;
 
 			if (userFourthInput.toLowerCase() === correctFourthLetters) {
@@ -316,7 +342,7 @@
 				setTimeout(() => {
 					document.getElementById('fifthQuestion').style.display = 'block';
 					document.getElementById('letter20').focus();
-				}, 300); 
+				}, 300);
 			} else {}
 		}
 
@@ -404,7 +430,7 @@
 			const letter346 = document.getElementById('letter346').value;
 			const letter347 = document.getElementById('letter347').value;
 
-			const correctNinthLetters = 'bytearray'; 
+			const correctNinthLetters = 'bytearray';
 			const userNinthInput = letter32 + letter33 + letter341 + letter342 + letter343 + letter344 + letter345 + letter346 + letter347;
 
 			if (userNinthInput.toLowerCase() === correctNinthLetters) {
@@ -465,12 +491,13 @@
 
 			if (userTwelfthInput.toLowerCase() === correctTwelfthLetters) {
 				document.getElementById('all').style.display = "none";
-				
-					setTimeout(() => {
-						window.location.href = "5.html";
-					}, 300);
-				}
-			else {}
+				const elapsedTime = (Date.now() - startTime) / 1000;
+				localStorage.setItem('roadmap_elapsed_time', elapsedTime);
+
+				setTimeout(() => {
+					window.location.href = "5.html";
+				}, 300);
+			} else {}
 		}
 
 	</script>
