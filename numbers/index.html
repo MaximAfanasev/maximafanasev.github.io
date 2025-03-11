@@ -299,14 +299,12 @@
 		let startTime;
 		let timerInterval;
 
-		// Функция для форматирования времени в формат "0m 00s"
 		function formatTime(seconds) {
 			const minutes = Math.floor(seconds / 60);
 			const secs = Math.floor(seconds % 60);
 			return `${minutes}m ${String(secs).padStart(2, '0')}s`;
 		}
 
-		// Функция для перемешивания массива (алгоритм Фишера-Йетса)
 		function shuffleArray(array) {
 			for (let i = array.length - 1; i > 0; i--) {
 				const j = Math.floor(Math.random() * (i + 1));
@@ -334,7 +332,6 @@
 					if (nextQuestion) {
 						nextQuestion.style.display = "block";
 
-						// Переводим фокус на следующий input
 						const nextInput = document.getElementById(`input${nextQuestionId}`);
 						if (nextInput) {
 							nextInput.focus();
@@ -345,16 +342,13 @@
 		}
 
 		function initializeQuestions() {
-			// Перемешиваем вопросы
 			const shuffledQuestions = shuffleArray(questions);
 
-			// Создаем элементы для перемешанных вопросов
 			shuffledQuestions.forEach((question, index) => {
 				const questionElement = createQuestionElement(question, index);
 				questionsContainer.appendChild(questionElement);
 			});
 
-			// Настраиваем обработчики событий для перемешанных вопросов
 			shuffledQuestions.forEach((_, index) => {
 				const input = document.getElementById(`input${index + 1}`);
 				if (input) {
@@ -362,7 +356,6 @@
 				}
 			});
 
-			// Обработка последнего вопроса
 			const lastInput = document.getElementById(`input${shuffledQuestions.length}`);
 			lastInput.addEventListener('input', function() {
 				if (lastInput.value === shuffledQuestions[shuffledQuestions.length - 1].answer) {
@@ -371,7 +364,6 @@
 					finalTime.textContent = `Финальное время: ${formatTime(elapsedTime)}`;
 					finalTime.style.display = "block";
 
-					// Сохраняем время в localStorage
 					localStorage.setItem('lvl_3_time', formatTime(elapsedTime));
 					localStorage.setItem('lvl_3_done', 'true');
 

@@ -243,22 +243,19 @@
         let startTime;
         let timerInterval;
 
-        // Функция для форматирования времени в "0m 00s"
         function formatTime(seconds) {
             const minutes = Math.floor(seconds / 60);
             const secs = Math.floor(seconds % 60);
             return `${minutes}m ${String(secs).padStart(2, '0')}s`;
         }
 
-        // Восстановление времени из localStorage
         const savedTime = localStorage.getItem('roadmap_elapsed_time');
         if (savedTime) {
-            startTime = Date.now() - parseInt(savedTime, 10) * 1000; // Восстанавливаем время
+            startTime = Date.now() - parseInt(savedTime, 10) * 1000;
         } else {
-            startTime = Date.now(); // Начинаем с нуля
+            startTime = Date.now();
         }
 
-        // Запуск таймера
         timerInterval = setInterval(() => {
             const currentTime = Date.now();
             const elapsedTime = (currentTime - startTime) / 1000;
@@ -324,11 +321,9 @@
         });
 
         rememberButton.addEventListener('click', () => {
-            // Сохраняем текущее время в localStorage перед переходом
             const elapsedTime = (Date.now() - startTime) / 1000;
             localStorage.setItem('roadmap_elapsed_time', elapsedTime);
 
-            // Переход на следующий уровень
             window.location.href = "4.html";
         });
     </script>

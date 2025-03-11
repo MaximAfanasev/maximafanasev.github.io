@@ -74,22 +74,19 @@
 		let startTime;
 		let timerInterval;
 
-		// Функция для форматирования времени в "0m 00s"
 		function formatTime(seconds) {
 			const minutes = Math.floor(seconds / 60);
 			const secs = Math.floor(seconds % 60);
 			return `${minutes}m ${String(secs).padStart(2, '0')}s`;
 		}
 
-		// Восстановление времени из localStorage
 		const savedTime = localStorage.getItem('roadmap_elapsed_time');
 		if (savedTime) {
-			startTime = Date.now() - parseInt(savedTime, 10) * 1000; // Восстанавливаем время
+			startTime = Date.now() - parseInt(savedTime, 10) * 1000;
 		} else {
-			startTime = Date.now(); // Начинаем с нуля
+			startTime = Date.now();
 		}
 
-		// Запуск таймера
 		timerInterval = setInterval(() => {
 			const currentTime = Date.now();
 			const elapsedTime = (currentTime - startTime) / 1000;
@@ -124,16 +121,13 @@
 				document.getElementById('p1').style.display = "none";
 				document.getElementById('p2').style.display = "none";
 
-				// Сохраняем общее время прохождения
 				const elapsedTime = (Date.now() - startTime) / 1000;
 				localStorage.setItem('roadmap_complete', 'true');
 				localStorage.setItem('lvl_1_done', 'true');
 				localStorage.setItem('roadmap_time', formatTime(elapsedTime));
 				
-				// Очищаем сохраненное время для следующего прохождения
 				localStorage.removeItem('roadmap_elapsed_time');
 
-				// Переход на главную страницу
 				setTimeout(() => {
 					window.location.href = "../../index.html";
 				}, 300);

@@ -1,163 +1,254 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Num-num-num</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #6a11cb, #2575fc);
-            color: #fff;
-            margin: 0;
-            padding: 0 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Num-num-num</title>
+	<style>
+		body {
+			font-family: 'Arial', sans-serif;
+			background: linear-gradient(135deg, #6a11cb, #2575fc);
+			color: #fff;
+			margin: 0;
+			padding: 0 10px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			min-height: 100vh;
+		}
 
-        .container {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            width: 100%;
-            max-width: 600px;
-            color: #333;
-            margin-top: 80px;
-        }
+		.container {
+			background: rgba(255, 255, 255, 0.9);
+			padding: 30px;
+			border-radius: 15px;
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+			width: 100%;
+			max-width: 600px;
+			color: #333;
+			margin-top: 80px;
+		}
 
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 28px;
-            color: #6a11cb;
-        }
+		h1 {
+			text-align: center;
+			margin-bottom: 20px;
+			font-size: 28px;
+			color: #6a11cb;
+		}
 
-        p {
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
+		p {
+			font-size: 18px;
+			margin-bottom: 10px;
+		}
 
-        input,
-        textarea {
-            width: calc(100% - 40px);
-            padding: 12px;
-            margin-top: 10px;
-            margin-bottom: 20px;
-            font-size: 16px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            transition: border-color 0.3s ease;
-        }
+		input,
+		textarea {
+			width: calc(100% - 40px);
+			padding: 12px;
+			margin-top: 10px;
+			margin-bottom: 20px;
+			font-size: 16px;
+			border: 2px solid #ddd;
+			border-radius: 8px;
+			transition: border-color 0.3s ease;
+		}
 
-        input:focus,
-        textarea:focus {
-            border-color: #6a11cb;
-            outline: none;
-        }
+		input:focus,
+		textarea:focus {
+			border-color: #6a11cb;
+			outline: none;
+		}
 
-        textarea {
-            resize: vertical;
-            min-height: 150px;
-        }
+		textarea {
+			resize: vertical;
+			min-height: 150px;
+		}
 
-        .correct {
-            color: #28a745;
-            font-weight: bold;
-        }
+		.correct {
+			color: #28a745;
+			font-weight: bold;
+		}
 
-        .incorrect {
-            color: #dc3545;
-            font-weight: bold;
-        }
+		.incorrect {
+			color: #dc3545;
+			font-weight: bold;
+		}
 
-        .question {
-            margin-bottom: 30px;
-        }
+		.question {
+			margin-bottom: 30px;
+		}
 
-        .question:last-child {
-            margin-bottom: 0;
-        }
+		.question:last-child {
+			margin-bottom: 0;
+		}
 
-        .feedback {
-            margin-top: 10px;
-            font-size: 16px;
-        }
+		.feedback {
+			margin-top: 10px;
+			font-size: 16px;
+		}
 
-        .timer {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 24px;
-            color: #fff;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 10px 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            z-index: 1000;
-        }
+		.timer {
+			position: fixed;
+			top: 20px;
+			left: 50%;
+			transform: translateX(-50%);
+			font-size: 24px;
+			color: #fff;
+			background: rgba(0, 0, 0, 0.7);
+			padding: 10px 20px;
+			border-radius: 10px;
+			box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+			z-index: 1000;
+		}
 
-        .final-time {
-            position: fixed;
-            top: 70px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 20px;
-            color: #fff;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 10px 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            z-index: 1000;
-            display: none;
-        }
-    </style>
+		.final-time {
+			position: fixed;
+			top: 70px;
+			left: 50%;
+			transform: translateX(-50%);
+			font-size: 20px;
+			color: #fff;
+			background: rgba(0, 0, 0, 0.7);
+			padding: 10px 20px;
+			border-radius: 10px;
+			box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+			z-index: 1000;
+			display: none;
+		}
+	</style>
 </head>
 
 <body>
 
-    <div class="timer" id="timer">0:00:00</div>
-    <div class="final-time" id="finalTime"></div>
+	<div class="timer" id="timer">0:00:00</div>
+	<div class="final-time" id="finalTime"></div>
 
-    <div class="container">
-        <h1>[Массивы]</h1>
+	<div class="container">
+		<h1>[Массивы]</h1>
 
-        <div id="questions">
-        </div>
-    </div>
+		<div id="questions">
+		</div>
+	</div>
 
-    <script>
-        const questions = [
-            { id: 1, question: "a = []<br>print(a)", answer: "[]" },
-            { id: 2, question: "b = list()<br>print(b)", answer: "[]" },
-            { id: 3, question: "print(list('abc'))", answer: "['a', 'b', 'c']" },
-            { id: 4, question: "print([1]*3)", answer: "[1, 1, 1]" },
-            { id: 5, question: "print([1]+[2])", answer: "[1, 2]" },
-            { id: 6, question: "print(['a','b','c'][1:])", answer: "['b', 'c']" },
-            { id: 7, question: "print(['a','b','c'][-1:])", answer: "['c']" },
-            { id: 8, question: "print(['a','b','c'][:1])", answer: "['a']" },
-            { id: 9, question: "print(['a','b','c'][:-2])", answer: "['a']" },
-            { id: 10, question: "print('a,b,c'.split(','))", answer: "['a', 'b', 'c']" },
-            { id: 11, question: "c = ['a','b']<br>c.remove('a')<br>print(c)", answer: "['b']" },
-            { id: 12, question: "d = [1,2,3]<br>d.append(4)<br>print(d)", answer: "[1, 2, 3, 4]" },
-            { id: 13, question: "e = [1]<br>f = [2]<br>e.extend(f)<br>print(e)", answer: "[1, 2]" },
-            { id: 14, question: "j = [1,2,3,4]<br>j[1:3]=[5,6]<br>print(j)", answer: "[1, 5, 6, 4]" },
-            { id: 15, question: "k = [1,2,3]<br>k.remove(2)<br>print(k)", answer: "[1, 3]" },
-            { id: 16, question: "l = [1,2,3]<br>l.pop()<br>print(l)", answer: "[1, 2]" },
-            { id: 17, question: "p = [1,2,3]<br>p.clear()<br>print(p)", answer: "[]" },
-            { id: 18, question: "print([1,2].index(2))", answer: "1" },
-            { id: 19, question: "print(1 in [1,2])", answer: "True" },
-            { id: 20, question: "print([1,1,1].count(1))", answer: "3" },
-            { id: 21, question: "q = [3,2,1]<br>q.sort()<br>print(q)", answer: "[1, 2, 3]" },
-            { id: 22, question: "for _ in zip([1,2,3],[4,5,6]):<br>print(_)", answer: "(1, 4)(2, 5)(3, 6)" },
-            { id: 22, question: "print(['a','b'][1])", answer: "b" },
-        ];
+	<script>
+		const questions = [{
+				id: 1,
+				question: "a = []<br>print(a)",
+				answer: "[]"
+			},
+			{
+				id: 2,
+				question: "b = list()<br>print(b)",
+				answer: "[]"
+			},
+			{
+				id: 3,
+				question: "print(list('abc'))",
+				answer: "['a', 'b', 'c']"
+			},
+			{
+				id: 4,
+				question: "print([1]*3)",
+				answer: "[1, 1, 1]"
+			},
+			{
+				id: 5,
+				question: "print([1]+[2])",
+				answer: "[1, 2]"
+			},
+			{
+				id: 6,
+				question: "print(['a','b','c'][1:])",
+				answer: "['b', 'c']"
+			},
+			{
+				id: 7,
+				question: "print(['a','b','c'][-1:])",
+				answer: "['c']"
+			},
+			{
+				id: 8,
+				question: "print(['a','b','c'][:1])",
+				answer: "['a']"
+			},
+			{
+				id: 9,
+				question: "print(['a','b','c'][:-2])",
+				answer: "['a']"
+			},
+			{
+				id: 10,
+				question: "print('a,b,c'.split(','))",
+				answer: "['a', 'b', 'c']"
+			},
+			{
+				id: 11,
+				question: "c = ['a','b']<br>c.remove('a')<br>print(c)",
+				answer: "['b']"
+			},
+			{
+				id: 12,
+				question: "d = [1,2,3]<br>d.append(4)<br>print(d)",
+				answer: "[1, 2, 3, 4]"
+			},
+			{
+				id: 13,
+				question: "e = [1]<br>f = [2]<br>e.extend(f)<br>print(e)",
+				answer: "[1, 2]"
+			},
+			{
+				id: 14,
+				question: "j = [1,2,3,4]<br>j[1:3]=[5,6]<br>print(j)",
+				answer: "[1, 5, 6, 4]"
+			},
+			{
+				id: 15,
+				question: "k = [1,2,3]<br>k.remove(2)<br>print(k)",
+				answer: "[1, 3]"
+			},
+			{
+				id: 16,
+				question: "l = [1,2,3]<br>l.pop()<br>print(l)",
+				answer: "[1, 2]"
+			},
+			{
+				id: 17,
+				question: "p = [1,2,3]<br>p.clear()<br>print(p)",
+				answer: "[]"
+			},
+			{
+				id: 18,
+				question: "print([1,2].index(2))",
+				answer: "1"
+			},
+			{
+				id: 19,
+				question: "print(1 in [1,2])",
+				answer: "True"
+			},
+			{
+				id: 20,
+				question: "print([1,1,1].count(1))",
+				answer: "3"
+			},
+			{
+				id: 21,
+				question: "q = [3,2,1]<br>q.sort()<br>print(q)",
+				answer: "[1, 2, 3]"
+			},
+			{
+				id: 22,
+				question: "for _ in zip([1,2,3],[4,5,6]):<br>print(_)",
+				answer: "(1, 4)(2, 5)(3, 6)"
+			},
+			{
+				id: 22,
+				question: "print(['a','b'][1])",
+				answer: "b"
+			},
+		];
 
 
- 
+
 		const timer = document.getElementById('timer');
 		const finalTime = document.getElementById('finalTime');
 		const questionsContainer = document.getElementById('questions');
@@ -165,14 +256,12 @@
 		let startTime;
 		let timerInterval;
 
-		// Функция для форматирования времени в формат "0m 00s"
 		function formatTime(seconds) {
 			const minutes = Math.floor(seconds / 60);
 			const secs = Math.floor(seconds % 60);
 			return `${minutes}m ${String(secs).padStart(2, '0')}s`;
 		}
 
-		// Функция для перемешивания массива (алгоритм Фишера-Йетса)
 		function shuffleArray(array) {
 			for (let i = array.length - 1; i > 0; i--) {
 				const j = Math.floor(Math.random() * (i + 1));
@@ -200,7 +289,6 @@
 					if (nextQuestion) {
 						nextQuestion.style.display = "block";
 
-						// Переводим фокус на следующий input
 						const nextInput = document.getElementById(`input${nextQuestionId}`);
 						if (nextInput) {
 							nextInput.focus();
@@ -211,16 +299,13 @@
 		}
 
 		function initializeQuestions() {
-			// Перемешиваем вопросы
 			const shuffledQuestions = shuffleArray(questions);
 
-			// Создаем элементы для перемешанных вопросов
 			shuffledQuestions.forEach((question, index) => {
 				const questionElement = createQuestionElement(question, index);
 				questionsContainer.appendChild(questionElement);
 			});
 
-			// Настраиваем обработчики событий для перемешанных вопросов
 			shuffledQuestions.forEach((_, index) => {
 				const input = document.getElementById(`input${index + 1}`);
 				if (input) {
@@ -228,7 +313,6 @@
 				}
 			});
 
-			// Обработка последнего вопроса
 			const lastInput = document.getElementById(`input${shuffledQuestions.length}`);
 			lastInput.addEventListener('input', function() {
 				if (lastInput.value === shuffledQuestions[shuffledQuestions.length - 1].answer) {
@@ -237,7 +321,6 @@
 					finalTime.textContent = `Финальное время: ${formatTime(elapsedTime)}`;
 					finalTime.style.display = "block";
 
-					// Сохраняем время в localStorage
 					localStorage.setItem('lvl_5_time', formatTime(elapsedTime));
 					localStorage.setItem('lvl_5_done', 'true');
 
@@ -256,7 +339,6 @@
 		}, 1000);
 
 		initializeQuestions();
-    </script>
+	</script>
 
-</body>
-</html>
+</body></html>

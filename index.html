@@ -2,201 +2,198 @@
 <html lang="ru">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Языки программирования за 20 минут</title>
-    <link rel="icon" type="image/x-icon" href="/img/logo.png">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+	<title>Языки программирования за 20 минут</title>
+	<link rel="icon" type="image/x-icon" href="/img/logo.png">
 </head>
 
 <style>
-    .done a {
-        background: lightgreen;
-        color: #000;
-    }
+	.done a {
+		background: lightgreen;
+		color: #000;
+	}
 
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
 
-    body {
-        position: relative;
-        background-color: #121619;
-        color: #e0e0e0;
-        font-family: monospace;
-        font-size: 20px;
-        line-height: 2.5;
-        padding: 20px;
-    }
+	body {
+		position: relative;
+		background-color: #121619;
+		color: #e0e0e0;
+		font-family: monospace;
+		font-size: 20px;
+		line-height: 2.5;
+		padding: 20px;
+	}
 
-    main {
-        max-width: 500px;
-        margin: 0 auto;
-        height: 100vh;
-    }
+	main {
+		max-width: 500px;
+		margin: 0 auto;
+		height: 100vh;
+	}
 
-    h1 {
-        position: relative;
-        color: #cc2836;
-        text-align: center;
-        z-index: 200;
-        margin-bottom: 60px;
+	h1 {
+		position: relative;
+		color: #cc2836;
+		text-align: center;
+		z-index: 200;
+		margin-bottom: 60px;
 
-        font-weight: bold;
-        line-height: 4rem;
+		font-weight: bold;
+		line-height: 4rem;
 
-        text-shadow:
-            1px 1px 0 rgba(255, 255, 255, 0.5),
-            2px 2px 0 rgba(255, 255, 255, 0.3),
-            3px 3px 0 rgba(255, 255, 255, 0.1),
-            4px 4px 0 rgba(0, 0, 0, 0.4);
-    }
+		text-shadow:
+			1px 1px 0 rgba(255, 255, 255, 0.5),
+			2px 2px 0 rgba(255, 255, 255, 0.3),
+			3px 3px 0 rgba(255, 255, 255, 0.1),
+			4px 4px 0 rgba(0, 0, 0, 0.4);
+	}
 
-    h2 {
-        color: #cc2836;
-        font-size: 20px;
-    }
+	h2 {
+		color: #cc2836;
+		font-size: 20px;
+	}
 
-    img {
-        border-radius: 20px;
-        max-width: 500px;
-        width: 100%;
-    }
+	img {
+		border-radius: 20px;
+		max-width: 500px;
+		width: 100%;
+	}
 
-    main {
-        max-width: 1200px;
-        margin: auto;
-        padding: 20px;
-    }
+	main {
+		max-width: 1200px;
+		margin: auto;
+		padding: 20px;
+	}
 
-    ul li {
-        margin-bottom: 30px;
-        list-style: none;
-    }
+	ul li {
+		margin-bottom: 30px;
+		list-style: none;
+	}
 
-    .load a {
-        background: #777;
-        cursor: progress;
-    }
+	.load a {
+		background: #777;
+		cursor: progress;
+	}
 
-    .razr {
-        font-size: 11px;
-        color: gold;
-        margin-top: -30px;
-    }
+	.razr {
+		font-size: 11px;
+		color: gold;
+		margin-top: -30px;
+	}
 
-    .wrap {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin: 0 auto;
-        width: fit-content;
-        margin-bottom: 40px;
-    }
+	.wrap {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		margin: 0 auto;
+		width: fit-content;
+		margin-bottom: 40px;
+	}
 
-    a {
-        text-decoration: none;
-        color: #fff;
-        background: #000;
-        padding: 15px 20px;
-        border-radius: 10px;
-        border: 1px solid gold;
-    }
+	a {
+		text-decoration: none;
+		color: #fff;
+		background: #000;
+		padding: 15px 20px;
+		border-radius: 10px;
+		border: 1px solid gold;
+	}
 
-    .reset-button {
-        background: #cc2836;
-        color: #fff;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 10px;
-        cursor: pointer;
-        font-size: 16px;
-    }
+	.reset-button {
+		background: #cc2836;
+		color: #fff;
+		padding: 10px 20px;
+		border: none;
+		border-radius: 10px;
+		cursor: pointer;
+		font-size: 16px;
+	}
 
-    .reset-button:hover {
-        background: #a02030;
-    }
+	.reset-button:hover {
+		background: #a02030;
+	}
 </style>
 
 <body>
-    <main>
-        <h1>Python</h1>
+	<main>
+		<h1>Python</h1>
 
-        <ul class="wrap">
-            <li><a href="time/index.html">Журнал прохождений</a></li>
-            <li class="razr">Best time</li>
-            <li id="lvl_1"><a href="roadmap/1.html">Types</a></li>
-            <li id="lvl1time" class="razr" style="display: none">win</li>
-            <li id="lvl_2"><a href="nonstop/index.html">Types</a></li>
-            <li id="lvl2time" class="razr lvl2time" style="display: none">1m 04s</li>
-            <li id="lvl_3"><a href="numbers/index.html">Numbers</a></li>
-            <li id="lvl3time" class="razr lvl3time" style="display: none">0m 00s</li>
-            <li id="lvl_4"><a href="str/index.html">Str</a></li>
-            <li id="lvl4time" class="razr lvl4time" style="display: none">0m 00s</li>
-            <li id="lvl_5"><a href="list/index.html">List</a></li>
-            <li id="lvl5time" class="razr lvl5time" style="display: none">0m 00s</li>
-            <li class="load"><a href="">Dict</a></li>
-            <li class="razr">В разработке...</li>
-            <li class="load"><a href="">Functions</a></li>
-            <li class="razr">В разработке...</li>
-        </ul>
+		<ul class="wrap">
+			<li><a href="time/index.html">Журнал прохождений</a></li>
+			<li class="razr">Best time</li>
+			<li id="lvl_1"><a href="roadmap/1.html">Types</a></li>
+			<li id="lvl1time" class="razr" style="display: none">win</li>
+			<li id="lvl_2"><a href="nonstop/index.html">Types</a></li>
+			<li id="lvl2time" class="razr lvl2time" style="display: none">1m 04s</li>
+			<li id="lvl_3"><a href="numbers/index.html">Numbers</a></li>
+			<li id="lvl3time" class="razr lvl3time" style="display: none">0m 00s</li>
+			<li id="lvl_4"><a href="str/index.html">Str</a></li>
+			<li id="lvl4time" class="razr lvl4time" style="display: none">0m 00s</li>
+			<li id="lvl_5"><a href="list/index.html">List</a></li>
+			<li id="lvl5time" class="razr lvl5time" style="display: none">0m 00s</li>
+			<li class="load"><a href="">Dict</a></li>
+			<li class="razr">В разработке...</li>
+			<li class="load"><a href="">Functions</a></li>
+			<li class="razr">В разработке...</li>
+		</ul>
 
-        <h1>Javascript</h1>
-        <ul class="wrap">
-            <li class="load"><a href="" disabled>Javascript</a></li>
-            <li class="razr">В разработке...</li>
-            <li class="load">
-                <button class="reset-button" onclick="resetProgress()">Сбросить прогресс</button>
-            </li>
-        </ul>
-    </main>
+		<h1>Javascript</h1>
+		<ul class="wrap">
+			<li class="load"><a href="" disabled>Javascript</a></li>
+			<li class="razr">В разработке...</li>
+			<li class="load">
+				<button class="reset-button" onclick="resetProgress()">Сбросить прогресс</button>
+			</li>
+		</ul>
+	</main>
 
-    <script>
-        function checkLevelStatus(levelNumber) {
-            const levelDone = localStorage.getItem(`lvl_${levelNumber}_done`) === 'true';
-            const levelTime = localStorage.getItem(`lvl_${levelNumber}_time`);
+	<script>
+		function checkLevelStatus(levelNumber) {
+			const levelDone = localStorage.getItem(`lvl_${levelNumber}_done`) === 'true';
+			const levelTime = localStorage.getItem(`lvl_${levelNumber}_time`);
 
-            if (levelDone) {
-                const levelElement = document.getElementById(`lvl_${levelNumber}`);
-                const timeElement = document.getElementById(`lvl${levelNumber}time`);
+			if (levelDone) {
+				const levelElement = document.getElementById(`lvl_${levelNumber}`);
+				const timeElement = document.getElementById(`lvl${levelNumber}time`);
 
-                if (levelElement) levelElement.classList.add('done');
-                if (timeElement) {
-                    timeElement.style.display = 'block';
-                    if (levelTime) timeElement.textContent = levelTime;
-                }
-            }
-        }
+				if (levelElement) levelElement.classList.add('done');
+				if (timeElement) {
+					timeElement.style.display = 'block';
+					if (levelTime) timeElement.textContent = levelTime;
+				}
+			}
+		}
 
-        for (let i = 1; i <= 5; i++) {
-            checkLevelStatus(i);
-        }
+		for (let i = 1; i <= 5; i++) {
+			checkLevelStatus(i);
+		}
 
-        function resetProgress() {
-            localStorage.removeItem('roadmap_complete');
-            localStorage.removeItem('roadmap_time');
-            localStorage.removeItem('roadmap_elapsed_time');
-            for (let i = 1; i <= 5; i++) {
-                localStorage.removeItem(`lvl_${i}_done`);
-                localStorage.removeItem(`lvl_${i}_time`);
-            }
-            location.reload();
-        }
-			
-			
-        const roadmapComplete = localStorage.getItem('roadmap_complete') === 'true';
-        const roadmapTime = localStorage.getItem('roadmap_time');
+		function resetProgress() {
+			localStorage.removeItem('roadmap_complete');
+			localStorage.removeItem('roadmap_time');
+			localStorage.removeItem('roadmap_elapsed_time');
+			for (let i = 1; i <= 5; i++) {
+				localStorage.removeItem(`lvl_${i}_done`);
+				localStorage.removeItem(`lvl_${i}_time`);
+			}
+			location.reload();
+		}
 
-        if (roadmapComplete && roadmapTime) {
-            const lvl1TimeElement = document.getElementById('lvl1time');
-            if (lvl1TimeElement) {
-                lvl1TimeElement.textContent = roadmapTime; // Отображаем сохраненное время
-                lvl1TimeElement.style.display = 'block';
-            }
-        }
-    </script>
-</body>
 
-</html>
+		const roadmapComplete = localStorage.getItem('roadmap_complete') === 'true';
+		const roadmapTime = localStorage.getItem('roadmap_time');
+
+		if (roadmapComplete && roadmapTime) {
+			const lvl1TimeElement = document.getElementById('lvl1time');
+			if (lvl1TimeElement) {
+				lvl1TimeElement.style.display = 'block';
+			}
+		}
+	</script>
+</body></html>

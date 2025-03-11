@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -114,75 +115,74 @@
 			z-index: 1000;
 			display: none;
 		}
+
 	</style>
 </head>
 
 <body>
 
-    <div class="timer" id="timer">0:00:00</div>
-    <div class="final-time" id="finalTime"></div>
+	<div class="timer" id="timer">0:00:00</div>
+	<div class="final-time" id="finalTime"></div>
 
-    <div class="container">
-        <h1>Типы данных</h1>
+	<div class="container">
+		<h1>Типы данных</h1>
 
-        <div id="questions">
-            <!-- Вопросы будут добавлены динамически -->
-        </div>
-    </div>
+		<div id="questions">
+		</div>
+	</div>
 
-    <script>
-        const questionsData = [
-            {
-                id: "question1",
-                questionText: "12 букв",
-                inputType: "text",
-                correctAnswer: "bbbcdffiltss",
-                feedbackText: "Правильно!",
-                nextQuestionId: "question2"
-            },
-            {
-                id: "question2",
-                questionText: "Напишите 12 типов данных:",
-                inputType: "textarea",
-                correctAnswer: [
-                    "bool", "bytearray", "bytes", "complex", "dict", "float",
-                    "frozenset", "int", "list", "tuple", "set", "str"
-                ],
-                feedbackText: "Правильно!",
-                nextQuestionId: "question3"
-            },
-            {
-                id: "question3",
-                questionText: "Напишите 4 типа изменяемых данных и 8 неизменяемых:",
-                inputType: "textarea",
-                correctAnswer: [
-                    "bytearray", "dict", "list", "set",
-                    "bool", "bytes", "complex", "float", "frozenset", "int", "tuple", "str"
-                ],
-                feedbackText: "Правильно!",
-                nextQuestionId: null
-            }
-        ];
+	<script>
+		const questionsData = [{
+				id: "question1",
+				questionText: "12 букв",
+				inputType: "text",
+				correctAnswer: "bbbcdffiltss",
+				feedbackText: "Правильно!",
+				nextQuestionId: "question2"
+			},
+			{
+				id: "question2",
+				questionText: "Напишите 12 типов данных:",
+				inputType: "textarea",
+				correctAnswer: [
+					"bool", "bytearray", "bytes", "complex", "dict", "float",
+					"frozenset", "int", "list", "tuple", "set", "str"
+				],
+				feedbackText: "Правильно!",
+				nextQuestionId: "question3"
+			},
+			{
+				id: "question3",
+				questionText: "Напишите 4 типа изменяемых данных и 8 неизменяемых:",
+				inputType: "textarea",
+				correctAnswer: [
+					"bytearray", "dict", "list", "set",
+					"bool", "bytes", "complex", "float", "frozenset", "int", "tuple", "str"
+				],
+				feedbackText: "Правильно!",
+				nextQuestionId: null
+			}
+		];
 
-        const timer = document.getElementById('timer');
-        const finalTime = document.getElementById('finalTime');
-        const questionsContainer = document.getElementById('questions');
+		const timer = document.getElementById('timer');
+		const finalTime = document.getElementById('finalTime');
+		const questionsContainer = document.getElementById('questions');
 
-        let startTime;
-        let timerInterval;
+		let startTime;
+		let timerInterval;
 
-        	function formatTime(seconds) {
+		function formatTime(seconds) {
 			const minutes = Math.floor(seconds / 60);
 			const secs = Math.floor(seconds % 60);
 			return `${minutes}m ${String(secs).padStart(2, '0')}s`;
 		}
 
-        function createQuestionElement(question) {
-            const div = document.createElement('div');
-            div.id = question.id;
-            div.className = 'question';
-            div.style.display = question.id === "question1" ? 'block' : 'none';
-            div.innerHTML = `
+		function createQuestionElement(question) {
+			const div = document.createElement('div');
+			div.id = question.id;
+			div.className = 'question';
+			div.style.display = question.id === "question1" ? 'block' : 'none';
+			div.innerHTML = `
                 <p>${question.questionText}</p>
                 ${question.inputType === "textarea" ? 
                     `<textarea id="input${question.id}" rows="12"></textarea>` :
@@ -190,70 +190,71 @@
                 }
                 <p id="feedback${question.id}" class="feedback"></p>
             `;
-            return div;
-        }
+			return div;
+		}
 
-        function checkAnswer(inputValue, correctAnswer) {
-            if (Array.isArray(correctAnswer)) {
-                const lines = inputValue.split('\n').filter(line => line.trim() !== "");
-                if (lines.length === correctAnswer.length) {
-                    return lines.every((line, index) => line.trim() === correctAnswer[index]);
-                }
-                return false;
-            } else {
-                return inputValue === correctAnswer;
-            }
-        }
+		function checkAnswer(inputValue, correctAnswer) {
+			if (Array.isArray(correctAnswer)) {
+				const lines = inputValue.split('\n').filter(line => line.trim() !== "");
+				if (lines.length === correctAnswer.length) {
+					return lines.every((line, index) => line.trim() === correctAnswer[index]);
+				}
+				return false;
+			} else {
+				return inputValue === correctAnswer;
+			}
+		}
 
-        function handleInput(inputElement, correctAnswer, feedbackElement, nextQuestionId) {
-            inputElement.addEventListener('input', function () {
-                const isCorrect = checkAnswer(inputElement.value, correctAnswer);
-                if (isCorrect) {
-                    feedbackElement.textContent = "Правильно!";
-                    feedbackElement.className = "correct";
-                    if (nextQuestionId) {
-                        document.getElementById(nextQuestionId).style.display = "block";
-                    } else {
-                        completeLevel();
-                    }
-                } else {
-                    feedbackElement.textContent = "Неправильно, попробуйте еще раз.";
-                    feedbackElement.className = "incorrect";
-                }
-            });
-        }
+		function handleInput(inputElement, correctAnswer, feedbackElement, nextQuestionId) {
+			inputElement.addEventListener('input', function() {
+				const isCorrect = checkAnswer(inputElement.value, correctAnswer);
+				if (isCorrect) {
+					feedbackElement.textContent = "Правильно!";
+					feedbackElement.className = "correct";
+					if (nextQuestionId) {
+						document.getElementById(nextQuestionId).style.display = "block";
+					} else {
+						completeLevel();
+					}
+				} else {
+					feedbackElement.textContent = "Неправильно, попробуйте еще раз.";
+					feedbackElement.className = "incorrect";
+				}
+			});
+		}
 
-        function completeLevel() {
-            clearInterval(timerInterval);
-            const elapsedTime = (Date.now() - startTime) / 1000;
-            finalTime.textContent = `Финальное время: ${formatTime(elapsedTime)}`;
-            finalTime.style.display = "block";
+		function completeLevel() {
+			clearInterval(timerInterval);
+			const elapsedTime = (Date.now() - startTime) / 1000;
+			finalTime.textContent = `Финальное время: ${formatTime(elapsedTime)}`;
+			finalTime.style.display = "block";
 
-            localStorage.setItem('lvl_2_done', 'true');
-            localStorage.setItem('lvl_2_time', formatTime(elapsedTime));
+			localStorage.setItem('lvl_2_done', 'true');
+			localStorage.setItem('lvl_2_time', formatTime(elapsedTime));
 
-            setTimeout(() => {
-                window.location.href = "../index.html";
-            }, 3000);
-        }
+			setTimeout(() => {
+				window.location.href = "../index.html";
+			}, 3000);
+		}
 
-        function initializeQuestions() {
-            questionsData.forEach((question) => {
-                const questionElement = createQuestionElement(question);
-                questionsContainer.appendChild(questionElement);
+		function initializeQuestions() {
+			questionsData.forEach((question) => {
+				const questionElement = createQuestionElement(question);
+				questionsContainer.appendChild(questionElement);
 
-                const inputElement = document.getElementById(`input${question.id}`);
-                const feedbackElement = document.getElementById(`feedback${question.id}`);
-                handleInput(inputElement, question.correctAnswer, feedbackElement, question.nextQuestionId);
-            });
-        }
+				const inputElement = document.getElementById(`input${question.id}`);
+				const feedbackElement = document.getElementById(`feedback${question.id}`);
+				handleInput(inputElement, question.correctAnswer, feedbackElement, question.nextQuestionId);
+			});
+		}
 
-        startTime = Date.now();
-        timerInterval = setInterval(() => {
-            const currentTime = Date.now();
-            const elapsedTime = (currentTime - startTime) / 1000;
-            timer.textContent = formatTime(elapsedTime);
-        }, 1000);
+		startTime = Date.now();
+		timerInterval = setInterval(() => {
+			const currentTime = Date.now();
+			const elapsedTime = (currentTime - startTime) / 1000;
+			timer.textContent = formatTime(elapsedTime);
+		}, 1000);
 
-        initializeQuestions();
-    </script>
+		initializeQuestions();
+
+	</script>
