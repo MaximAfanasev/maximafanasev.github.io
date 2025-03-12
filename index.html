@@ -158,7 +158,7 @@
 			<li id="lvl6time" class="razr lvl6time">best: 0m 46s</li>
 
 
-			<li id="lvl_7"><a href="4str/hard.html">"Str" hard</a></li>
+			<li id="lvl_7"><a href="4str/hard.html">'''Str''' hard</a></li>
 			<li id="lvl7time" class="razr lvl7time">best: 0m 13s</li>
 
 
@@ -170,7 +170,11 @@
 			<li id="lvl9time" class="razr lvl9time">best: 1m 10s</li>
 
 
-			<li class="load"><a href="6dict/index.html">{Dict}</a></li>
+			<li id="lvl_10"><a href="5list/hard.html">['List', 'hard']</a></li>
+			<li id="lvl9time" class="razr lvl9time">best: 1m 10s</li>
+
+
+			<li class="load"><a href="">{Dict}</a></li>
 			<li class="razr">В разработке...</li>
 
 
@@ -205,7 +209,7 @@
 			}
 		}
 
-		for (let i = 1; i <= 9; i++) {
+		for (let i = 1; i <= 11; i++) {
 			checkLevelStatus(i);
 		}
 
@@ -213,7 +217,7 @@
 			localStorage.removeItem('roadmap_complete');
 			localStorage.removeItem('roadmap_time');
 			localStorage.removeItem('roadmap_elapsed_time');
-			for (let i = 1; i <= 9; i++) {
+			for (let i = 1; i <= 11; i++) {
 				localStorage.removeItem(`lvl_${i}_done`);
 				localStorage.removeItem(`lvl_${i}_time`);
 			}
