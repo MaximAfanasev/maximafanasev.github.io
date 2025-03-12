@@ -129,163 +129,64 @@
 		</div>
 	</div>
 	<script>
-		const questions = [{
+		const questions = [
+			{
 				id: 1,
-				question: "a = 7<br>print(a)",
-				answer: "7"
-			},
-			{
-				id: 2,
-				question: "b = a<br>print(b)",
-				answer: "7"
-			},
-			{
-				id: 3,
-				question: "print(123)",
-				answer: "123"
-			},
-			{
-				id: 4,
-				question: "print(1+1)",
-				answer: "2"
-			},
-			{
-				id: 5,
-				question: "print(1-1)",
-				answer: "0"
-			},
-			{
-				id: 6,
-				question: "print(1*2)",
-				answer: "2"
-			},
-			{
-				id: 7,
-				question: "print(+123)",
-				answer: "123"
-			},
-			{
-				id: 8,
-				question: "print(7/2)",
-				answer: "3.5"
-			},
-			{
-				id: 9,
 				question: "print(7//2)",
 				answer: "3"
 			},
 			{
-				id: 10,
+				id: 2,
 				question: "print(9//5)",
 				answer: "1"
 			},
 			{
-				id: 11,
+				id: 3,
 				question: "print(7%3)",
 				answer: "1"
 			},
 			{
-				id: 12,
+				id: 4,
 				question: "print(9%5)",
 				answer: "4"
 			},
 			{
-				id: 13,
-				question: "print(2**3)",
-				answer: "8"
-			},
-			{
-				id: 14,
-				question: "print(1 + \\<br>2)",
-				answer: "3"
-			},
-			{
-				id: 15,
-				question: "print(1 + <br>2)",
-				answer: "3"
-			},
-			{
-				id: 16,
-				question: "c = 5 <br>print(c == 7)",
-				answer: "False"
-			},
-			{
-				id: 17,
-				question: "print(5 &#60; 5 and 5 &#60; 10)",
-				answer: "False"
-			},
-			{
-				id: 18,
-				question: "print(bool(True))",
-				answer: "True"
-			},
-			{
-				id: 19,
-				question: "print(bool(1))",
-				answer: "True"
-			},
-			{
-				id: 20,
-				question: "print(bool(45))",
-				answer: "True"
-			},
-			{
-				id: 21,
-				question: "print(bool(-45))",
-				answer: "True"
-			},
-			{
-				id: 22,
-				question: "print(bool(False))",
-				answer: "False"
-			},
-			{
-				id: 23,
-				question: "print(bool(0))",
-				answer: "False"
-			},
-			{
-				id: 24,
-				question: "print(bool(0.0))",
-				answer: "False"
-			},
-			{
-				id: 25,
+				id: 5,
 				question: "print(chr(65))",
 				answer: "A"
 			},
 			{
-				id: 26,
+				id: 6,
 				question: "print(ord('A'))",
 				answer: "65"
 			},
 			{
-				id: 27,
+				id: 7,
 				question: "print(int(True))",
 				answer: "1"
 			},
 			{
-				id: 28,
+				id: 8,
 				question: "print(int(False))",
 				answer: "0"
 			},
 			{
-				id: 29,
+				id: 9,
 				question: "print(int(98.6))",
 				answer: "98"
 			},
 			{
-				id: 30,
+				id: 10,
 				question: "print(int('99'))",
 				answer: "99"
 			},
 			{
-				id: 31,
+				id: 11,
 				question: "print(int('10', 2))",
 				answer: "2"
 			},
 			{
-				id: 32,
+				id: 12,
 				question: "print(float(True))",
 				answer: "1.0"
 			}
@@ -363,12 +264,12 @@
 					finalTime.textContent = `Финальное время: ${formatTime(elapsedTime)}`;
 					finalTime.style.display = "block";
 
-					localStorage.setItem('lvl_3_time', formatTime(elapsedTime));
-					localStorage.setItem('lvl_3_done', 'true');
+					localStorage.setItem('lvl_32_time', formatTime(elapsedTime));
+					localStorage.setItem('lvl_32_done', 'true');
 
 					setTimeout(() => {
 						window.location.href = "../index.html";
-					}, 3000);
+					}, 300);
 				}
 			});
 		}

@@ -83,12 +83,12 @@
 	.razr {
 		font-size: 11px;
 		line-height: 5px;
-		color: greenyellow;
+		color: lightgreen;
 		margin-top: -20px;
 	}
 
 	.lvl {
-		color: aquamarine;
+		color: coral;
 	}
 
 	.wrap {
@@ -106,8 +106,8 @@
 		color: #fff;
 		background: #000;
 		padding: 15px 20px;
-		border-radius: 10px;
-		border: 1px solid gold;
+		border-radius: 15px;
+		border: 1px solid #444;
 	}
 
 	.reset-button {
@@ -132,30 +132,39 @@
 		<ul class="wrap">
 
 
-			<li><a href="99time/index.html">Журнал прохождений</a></li>
-			<li class="razr">Best time</li>
+			<li><a href="99time/index.html">Best time</a></li>
 
 
 			<li id="lvl_1"><a href="1types/1.html">Types</a></li>
 			<li class="razr lvl">easy</li>
-			<li id="lvl1time" class="razr">best time: 0m 52s</li>
+			<li id="lvl1time" class="razr">best time: 0m 50s</li>
 
 
 			<li id="lvl_2"><a href="2types/index.html">Types</a></li>
 			<li class="razr lvl">medium</li>
-			<li id="lvl2time" class="razr lvl2time">best time: 0m 52s</li>
+			<li id="lvl2time" class="razr lvl2time">best: 0m 52s</li>
 
 
-			<li id="lvl_3"><a href="3num-num-num/index.html">Numbers</a></li>
-			<li id="lvl3time" class="razr lvl3time">best time: 0m 54s</li>
+			<li id="lvl_3"><a href="3num-num-num/easy.html">Numbers</a></li>
+			<li class="razr lvl">easy</li>
+			<li id="lvl3time" class="razr lvl3time">best: 0m 30s</li>
 
 
-			<li id="lvl_4"><a href="4str/index.html">Str</a></li>
-			<li id="lvl4time" class="razr lvl4time">best time: 1m 02s</li>
+			<li id="lvl_4"><a href="3num-num-num/medium.html">Numbers</a></li>
+			<li class="razr lvl">medium</li>
+			<li id="lvl4time" class="razr lvl4time">best: 0m 34s</li>
 
 
-			<li id="lvl_5"><a href="5list/index.html">List</a></li>
-			<li id="lvl5time" class="razr lvl5time">best time: 1m 53s</li>
+			<li id="lvl_5"><a href="4str/easy.html">Str</a></li>
+			<li id="lvl5time" class="razr lvl5time">best: 1m 02s</li>
+
+
+			<li id="lvl_6"><a href="4str/medium.html">Str</a></li>
+			<li id="lvl6time" class="razr lvl6time">best: 1m 02s</li>
+
+
+			<li id="lvl_7"><a href="5list/index.html">List</a></li>
+			<li id="lvl7time" class="razr lvl7time">best: 1m 53s</li>
 
 
 			<li class="load"><a href="6dict/index.html">Dict</a></li>
@@ -193,7 +202,7 @@
 			}
 		}
 
-		for (let i = 1; i <= 5; i++) {
+		for (let i = 1; i <= 7; i++) {
 			checkLevelStatus(i);
 		}
 
