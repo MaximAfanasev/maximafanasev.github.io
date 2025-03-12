@@ -130,138 +130,84 @@
 	</div>
 
 	<script>
-		const questions = [{
+		const questions = [
+			{
 				id: 1,
-				question: "print(type('a'))",
-				answer: "str"
-			},
-			{
-				id: 2,
-				question: "print(type(\"b\"))",
-				answer: "str"
-			},
-			{
-				id: 3,
-				question: "print(type('''c'''))",
-				answer: "str"
-			},
-			{
-				id: 4,
-				question: "print(str(98.6))",
-				answer: "\'98.6\'"
-			},
-			{
-				id: 5,
-				question: "print(str(1.0e4))",
-				answer: "10000.0"
-			},
-			{
-				id: 6,
-				question: "print(str(True))",
-				answer: "\'True\'"
-			},
-			{
-				id: 7,
-				question: "print('A man.\n P')",
-				answer: "A man. P"
-			},
-			{
-				id: 8,
-				question: "print('a'+'b')",
-				answer: "ab"
-			},
-			{
-				id: 9,
-				question: "print('a'*4)",
-				answer: "aaaa"
-			},
-			{
-				id: 10,
 				question: "print('ab'[0])",
 				answer: "a"
 			},
 			{
-				id: 11,
+				id: 2,
 				question: "print('abc'[:])",
 				answer: "abc"
 			},
 			{
-				id: 12,
+				id: 3,
 				question: "print('abc'[1:])",
 				answer: "bc"
 			},
 			{
-				id: 13,
+				id: 4,
 				question: "print('abc'[-2:])",
 				answer: "bc"
 			},
 			{
-				id: 14,
+				id: 5,
 				question: "print('abcdefj'[::2])",
 				answer: "acej"
 			},
 			{
-				id: 15,
-				question: "print(len('abc'))",
-				answer: "3"
-			},
-			{
-				id: 16,
+				id: 6,
 				question: "print(''.join(['a','b']))",
 				answer: "ab"
 			},
 			{
-				id: 17,
+				id: 7,
 				question: "print(','.join(['a','b']))",
 				answer: "a,b"
 			},
 			{
-				id: 18,
+				id: 8,
 				question: "print('abc'.split())",
 				answer: "['abc']"
 			},
 			{
-				id: 19,
-				question: "a = \'aoiu\';<br> print(\'a\' in a)",
-				answer: "True"
-			},
-			{
-				id: 20,
+				id: 9,
 				question: "print('ab'.replace('a','c'))",
 				answer: "ac"
 			},
 			{
-				id: 21,
+				id: 10,
 				question: "print(' abc '.strip())",
 				answer: "abc"
 			},
 			{
-				id: 22,
+				id: 11,
 				question: "print('a'.startswith('a'))",
 				answer: "True"
 			},
 			{
-				id: 23,
+				id: 12,
 				question: "print('a'.endswith('a'))",
 				answer: "True"
 			},
 			{
-				id: 24,
+				id: 13,
 				question: "print('a'.center(3))",
 				answer: " a "
 			},
 			{
-				id: 25,
+				id: 14,
 				question: "print('a'.ljust(2))",
 				answer: "a  "
 			},
 			{
-				id: 26,
+				id: 15,
 				question: "print('a'.rjust(2))",
 				answer: "  a"
 			},
 			{
-				id: 27,
+				id: 16,
 				question: "print('{}'.format('str'))",
 				answer: "str"
 			}

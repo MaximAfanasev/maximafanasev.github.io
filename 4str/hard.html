@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Num-num-num</title>
+	<title>Проверка знаний типов данных</title>
 	<style>
 		body {
 			font-family: 'Arial', sans-serif;
@@ -114,6 +115,7 @@
 			z-index: 1000;
 			display: none;
 		}
+
 	</style>
 </head>
 
@@ -123,70 +125,41 @@
 	<div class="final-time" id="finalTime"></div>
 
 	<div class="container">
-		<h1>'Строки'</h1>
+		<h1>Методы строк</h1>
 
 		<div id="questions">
 		</div>
 	</div>
 
 	<script>
-		const questions = [{
-				id: 1,
-				question: "print(type('a'))",
-				answer: "str"
+		const questionsData = [{
+				id: "question1",
+				questionText: "10 букв",
+				inputType: "text",
+				correctAnswer: "cefjlrrsss",
+				feedbackText: "Правильно!",
+				nextQuestionId: "question2"
 			},
 			{
-				id: 2,
-				question: "print(type(\"b\"))",
-				answer: "str"
-			},
-			{
-				id: 3,
-				question: "print(type('''c'''))",
-				answer: "str"
-			},
-			{
-				id: 4,
-				question: "print(str(98.6))",
-				answer: "\'98.6\'"
-			},
-			{
-				id: 5,
-				question: "print(str(1.0e4))",
-				answer: "10000.0"
-			},
-			{
-				id: 6,
-				question: "print(str(True))",
-				answer: "\'True\'"
-			},
-			{
-				id: 7,
-				question: "print('A man.\n P')",
-				answer: "A man. P"
-			},
-			{
-				id: 8,
-				question: "print('a'+'b')",
-				answer: "ab"
-			},
-			{
-				id: 9,
-				question: "print('a'*4)",
-				answer: "aaaa"
-			},
-			{
-				id: 10,
-				question: "print(len('abc'))",
-				answer: "3"
-			},
-			{
-				id: 11,
-				question: "a = \'aoiu\';<br> print(\'a\' in a)",
-				answer: "True"
+				id: "question2",
+				questionText: "методы",
+				inputType: "textarea",
+				correctAnswer: [
+					
+"center",
+"endswith",
+"format",
+"join",
+"ljust",
+"replace",
+"rjust",
+"split",
+"startswith",
+"strip"
+				],
+				feedbackText: "Правильно!"
 			}
 		];
-
 
 		const timer = document.getElementById('timer');
 		const finalTime = document.getElementById('finalTime');
@@ -201,72 +174,74 @@
 			return `${minutes}m ${String(secs).padStart(2, '0')}s`;
 		}
 
-		function shuffleArray(array) {
-			for (let i = array.length - 1; i > 0; i--) {
-				const j = Math.floor(Math.random() * (i + 1));
-				[array[i], array[j]] = [array[j], array[i]];
-			}
-			return array;
-		}
-
-		function createQuestionElement(question, index) {
+		function createQuestionElement(question) {
 			const div = document.createElement('div');
-			div.id = `question${index + 1}`;
+			div.id = question.id;
 			div.className = 'question';
-			div.style.display = index === 0 ? 'block' : 'none';
+			div.style.display = question.id === "question1" ? 'block' : 'none';
 			div.innerHTML = `
-                <p>${question.question}</p>
-                <input type="text" id="input${index + 1}" maxlength="12">
+                <p>${question.questionText}</p>
+                ${question.inputType === "textarea" ? 
+                    `<textarea id="input${question.id}" rows="12"></textarea>` :
+                    `<input type="text" id="input${question.id}" maxlength="12">`
+                }
+                <p id="feedback${question.id}" class="feedback"></p>
             `;
 			return div;
 		}
 
-		function setupInputListener(input, nextQuestionId) {
-			input.addEventListener('input', function() {
-				if (input.value === questions[nextQuestionId - 2].answer) {
-					const nextQuestion = document.getElementById(`question${nextQuestionId}`);
-					if (nextQuestion) {
-						nextQuestion.style.display = "block";
+		function checkAnswer(inputValue, correctAnswer) {
+			if (Array.isArray(correctAnswer)) {
+				const lines = inputValue.split('\n').filter(line => line.trim() !== "");
+				if (lines.length === correctAnswer.length) {
+					return lines.every((line, index) => line.trim() === correctAnswer[index]);
+				}
+				return false;
+			} else {
+				return inputValue === correctAnswer;
+			}
+		}
 
-						const nextInput = document.getElementById(`input${nextQuestionId}`);
-						if (nextInput) {
-							nextInput.focus();
-						}
+		function handleInput(inputElement, correctAnswer, feedbackElement, nextQuestionId) {
+			inputElement.addEventListener('input', function() {
+				const isCorrect = checkAnswer(inputElement.value, correctAnswer);
+				if (isCorrect) {
+					feedbackElement.textContent = "Правильно!";
+					feedbackElement.className = "correct";
+					if (nextQuestionId) {
+						document.getElementById(nextQuestionId).style.display = "block";
+					} else {
+						completeLevel();
 					}
+				} else {
+					feedbackElement.textContent = "Неправильно, попробуйте еще раз.";
+					feedbackElement.className = "incorrect";
 				}
 			});
 		}
 
+		function completeLevel() {
+			clearInterval(timerInterval);
+			const elapsedTime = (Date.now() - startTime) / 1000;
+			finalTime.textContent = `Финальное время: ${formatTime(elapsedTime)}`;
+			finalTime.style.display = "block";
+
+			localStorage.setItem('lvl_7_done', 'true');
+			localStorage.setItem('lvl_7_time', formatTime(elapsedTime));
+
+			setTimeout(() => {
+				window.location.href = "../index.html";
+			}, 3000);
+		}
+
 		function initializeQuestions() {
-			const shuffledQuestions = shuffleArray(questions);
-
-			shuffledQuestions.forEach((question, index) => {
-				const questionElement = createQuestionElement(question, index);
+			questionsData.forEach((question) => {
+				const questionElement = createQuestionElement(question);
 				questionsContainer.appendChild(questionElement);
-			});
 
-			shuffledQuestions.forEach((_, index) => {
-				const input = document.getElementById(`input${index + 1}`);
-				if (input) {
-					setupInputListener(input, index + 2);
-				}
-			});
-
-			const lastInput = document.getElementById(`input${shuffledQuestions.length}`);
-			lastInput.addEventListener('input', function() {
-				if (lastInput.value === shuffledQuestions[shuffledQuestions.length - 1].answer) {
-					clearInterval(timerInterval);
-					const elapsedTime = (Date.now() - startTime) / 1000;
-					finalTime.textContent = `Финальное время: ${formatTime(elapsedTime)}`;
-					finalTime.style.display = "block";
-
-					localStorage.setItem('lvl_5_time', formatTime(elapsedTime));
-					localStorage.setItem('lvl_5_done', 'true');
-
-					setTimeout(() => {
-						window.location.href = "../index.html";
-					}, 300);
-				}
+				const inputElement = document.getElementById(`input${question.id}`);
+				const feedbackElement = document.getElementById(`feedback${question.id}`);
+				handleInput(inputElement, question.correctAnswer, feedbackElement, question.nextQuestionId);
 			});
 		}
 
@@ -278,6 +253,5 @@
 		}, 1000);
 
 		initializeQuestions();
-	</script>
 
-</body></html>
+	</script>
