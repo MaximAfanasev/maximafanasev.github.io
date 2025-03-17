@@ -2,195 +2,196 @@
 <html lang="ru">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Types</title>
-    <link rel="icon" type="image/x-icon" href="/img/logo.png">
-    <link rel="stylesheet" href="style.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Types</title>
+	<link rel="icon" type="image/x-icon" href="/img/logo.png">
+	<link rel="stylesheet" href="style.css">
 </head>
 
 <style>
-    html {
-        height: 100%;
-    }
+	html {
+		height: 100%;
+	}
 
-    body {
-        flex-direction: column;
-        gap: 20px;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: linear-gradient(45deg, #ff6b6b, #f06595, #eece4e, #4bc0c8);
-        padding: 50px 20px;
-    }
+	body {
+		flex-direction: column;
+		gap: 20px;
+		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background: linear-gradient(45deg, #ff6b6b, #f06595, #eece4e, #4bc0c8);
+		padding: 50px 20px;
+	}
 
-    #game-container {
-        padding: 20px;
-    }
+	div#input-container {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
 
-    input[type="text"] {
-        width: 60px;
-        height: 60px;
-        font-size: 24px;
-        text-align: center;
-        margin: 5px;
-        border: none;
-        border-radius: 15px;
-        outline: none;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    }
+	input[type="text"] {
+		width: 60px;
+		height: 60px;
+		font-size: 24px;
+		text-align: center;
+		margin: 5px;
+		border: none;
+		border-radius: 15px;
+		outline: none;
+		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+	}
 
-    .letters {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 5px;
-    }
+	.letters {
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		gap: 5px;
+	}
 
-    .letter {
-        cursor: pointer;
-        padding: 15px 25px;
-        border: 1px solid #ccc;
-        border-radius: 15px;
-        background-color: #fff;
-        user-select: none;
-        font-size: 25px;
-    }
+	.letter {
+		cursor: pointer;
+		padding: 15px 25px;
+		border: 1px solid #ccc;
+		border-radius: 15px;
+		background-color: #fff;
+		user-select: none;
+		font-size: 25px;
+	}
 
-    .letter:hover {
-        background-color: #e0e0e0;
-    }
+	.letter:hover {
+		background-color: #e0e0e0;
+	}
 
-    .letter.disabled {
-        display: none;
-    }
+	.letter.disabled {
+		display: none;
+	}
 
-    p {
-        color: #aaa;
-        margin: 0;
-    }
+	p {
+		color: #aaa;
+		margin: 0;
+	}
 </style>
 
 <body>
-    <div id="game-container" style="display: block">
-        <div id="input-container">
-            <input type="text" maxlength="1" class="letter-input" />
-            <input type="text" maxlength="1" class="letter-input" />
-            <input type="text" maxlength="1" class="letter-input" />
-            <input type="text" maxlength="1" class="letter-input" />
-            <input type="text" maxlength="1" class="letter-input" />
-            <input type="text" maxlength="1" class="letter-input" />
-            <input type="text" maxlength="1" class="letter-input" />
-            <input type="text" maxlength="1" class="letter-input" />
-            <input type="text" maxlength="1" class="letter-input" />
-            <input type="text" maxlength="1" class="letter-input" />
-            <input type="text" maxlength="1" class="letter-input" />
-            <input type="text" maxlength="1" class="letter-input" />
-        </div>
-    </div>
-    <div class="letters">
-    </div>
+	<div id="game-container" style="display: block">
+		<div id="input-container">
+			<input type="text" maxlength="1" class="letter-input" />
+			<input type="text" maxlength="1" class="letter-input" />
+			<input type="text" maxlength="1" class="letter-input" />
+			<input type="text" maxlength="1" class="letter-input" />
+			<input type="text" maxlength="1" class="letter-input" />
+			<input type="text" maxlength="1" class="letter-input" />
+			<input type="text" maxlength="1" class="letter-input" />
+			<input type="text" maxlength="1" class="letter-input" />
+			<input type="text" maxlength="1" class="letter-input" />
+			<input type="text" maxlength="1" class="letter-input" />
+			<input type="text" maxlength="1" class="letter-input" />
+			<input type="text" maxlength="1" class="letter-input" />
+		</div>
+	</div>
+	<div class="letters">
+	</div>
 
-    <p id="p1">bbb c d ff i l t ss</p>
+	<p id="p1">bbb c d ff i l t ss</p>
 
-    <script>
-        let startTime;
-        let timerInterval;
+	<script>
+		let startTime;
+		let timerInterval;
 
-        function formatTime(seconds) {
-            const minutes = Math.floor(seconds / 60);
-            const secs = Math.floor(seconds % 60);
-            return `${minutes}m ${String(secs).padStart(2, '0')}s`;
-        }
+		function formatTime(seconds) {
+			const minutes = Math.floor(seconds / 60);
+			const secs = Math.floor(seconds % 60);
+			return `${minutes}m ${String(secs).padStart(2, '0')}s`;
+		}
 
-        const savedTime = localStorage.getItem('roadmap_elapsed_time');
-        if (savedTime) {
-            startTime = Date.now() - parseInt(savedTime, 10) * 1000;
-        } else {
-            startTime = Date.now();
-        }
+		const savedTime = localStorage.getItem('roadmap_elapsed_time');
+		if (savedTime) {
+			startTime = Date.now() - parseInt(savedTime, 10) * 1000;
+		} else {
+			startTime = Date.now();
+		}
 
-        timerInterval = setInterval(() => {
-            const currentTime = Date.now();
-            const elapsedTime = (currentTime - startTime) / 1000;
-            document.getElementById('timer').textContent = formatTime(elapsedTime);
-        }, 1000);
+		timerInterval = setInterval(() => {
+			const currentTime = Date.now();
+			const elapsedTime = (currentTime - startTime) / 1000;
+			document.getElementById('timer').textContent = formatTime(elapsedTime);
+		}, 1000);
 
-        const correctSequence = "bbbcdffiltss";
+		const correctSequence = "bbbcdffiltss";
 
-        const letterInputs = document.querySelectorAll('.letter-input');
-        const lettersContainer = document.querySelector('.letters');
-        let currentInputIndex = 0;
+		const letterInputs = document.querySelectorAll('.letter-input');
+		const lettersContainer = document.querySelector('.letters');
+		let currentInputIndex = 0;
 
-        const letterCounts = {
-            'b': 3,
-            'c': 1,
-            'd': 1,
-            'f': 2,
-            'i': 1,
-            'l': 1,
-            't': 1,
-            's': 2
-        };
+		const letterCounts = {
+			'b': 3,
+			'c': 1,
+			'd': 1,
+			'f': 2,
+			'i': 1,
+			'l': 1,
+			't': 1,
+			's': 2
+		};
 
-        const lettersArray = ['b', 'c', 'd', 'f', 'i', 'l', 't', 's'];
+		const lettersArray = ['b', 'c', 'd', 'f', 'i', 'l', 't', 's'];
 
-        function shuffleArray(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
-            }
-            return array;
-        }
+		function shuffleArray(array) {
+			for (let i = array.length - 1; i > 0; i--) {
+				const j = Math.floor(Math.random() * (i + 1));
+				[array[i], array[j]] = [array[j], array[i]];
+			}
+			return array;
+		}
 
-        const shuffledLetters = shuffleArray(lettersArray);
+		const shuffledLetters = shuffleArray(lettersArray);
 
-        shuffledLetters.forEach(letter => {
-            const letterDiv = document.createElement('div');
-            letterDiv.classList.add('letter');
-            letterDiv.textContent = letter;
-            lettersContainer.appendChild(letterDiv);
-        });
+		shuffledLetters.forEach(letter => {
+			const letterDiv = document.createElement('div');
+			letterDiv.classList.add('letter');
+			letterDiv.textContent = letter;
+			lettersContainer.appendChild(letterDiv);
+		});
 
-        lettersContainer.addEventListener('click', (event) => {
-            if (event.target.classList.contains('letter')) {
-                const letterValue = event.target.textContent;
+		lettersContainer.addEventListener('click', (event) => {
+			if (event.target.classList.contains('letter')) {
+				const letterValue = event.target.textContent;
 
-                if (letterCounts[letterValue] > 0 && correctSequence[currentInputIndex] === letterValue) {
-                    letterInputs[currentInputIndex].value = letterValue;
-                    currentInputIndex++;
+				if (letterCounts[letterValue] > 0 && correctSequence[currentInputIndex] === letterValue) {
+					letterInputs[currentInputIndex].value = letterValue;
+					currentInputIndex++;
 
-                    letterCounts[letterValue]--;
+					letterCounts[letterValue]--;
 
-                    if (letterCounts[letterValue] === 0) {
-                        event.target.classList.add('disabled');
-                    }
+					if (letterCounts[letterValue] === 0) {
+						event.target.classList.add('disabled');
+					}
 
-                    if (currentInputIndex === letterInputs.length) {
-                        checkInput();
-                    }
-                }
-            }
-        });
+					if (currentInputIndex === letterInputs.length) {
+						checkInput();
+					}
+				}
+			}
+		});
 
-        function checkInput() {
-            let userInput = '';
-            letterInputs.forEach(input => userInput += input.value.trim());
+		function checkInput() {
+			let userInput = '';
+			letterInputs.forEach(input => userInput += input.value.trim());
 
-            if (userInput.length === 12 && userInput === correctSequence) {
-                document.getElementById('game-container').style.display = "none";
-                document.getElementById('p1').style.display = "none";
-                document.querySelector('.letters').style.display = "none";
+			if (userInput.length === 12 && userInput === correctSequence) {
+				document.getElementById('game-container').style.display = "none";
+				document.getElementById('p1').style.display = "none";
+				document.querySelector('.letters').style.display = "none";
 
-                const elapsedTime = (Date.now() - startTime) / 1000;
-                localStorage.setItem('roadmap_elapsed_time', elapsedTime);
+				const elapsedTime = (Date.now() - startTime) / 1000;
+				localStorage.setItem('roadmap_elapsed_time', elapsedTime);
 
-                setTimeout(() => {
-                    window.location.href = "1.html";
-                }, 300);
-            }
-        }
-    </script>
-</body>
-</html>
+				setTimeout(() => {
+					window.location.href = "1.html";
+				}, 300);
+			}
+		}
+	</script>
+</body></html>
