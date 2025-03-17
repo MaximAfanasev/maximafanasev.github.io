@@ -66,16 +66,16 @@
 <body>
 	<div class="circles">
 		<div class="circle">b</div>
+		<div class="circle">d</div>
+		<div class="circle">l</div>
+		<div class="circle">s</div>
 		<div class="circle">b</div>
 		<div class="circle">b</div>
 		<div class="circle">c</div>
-		<div class="circle">d</div>
 		<div class="circle">f</div>
 		<div class="circle">f</div>
 		<div class="circle">i</div>
-		<div class="circle">l</div>
 		<div class="circle">t</div>
-		<div class="circle">s</div>
 		<div class="circle">s</div>
 	</div>
 
@@ -83,8 +83,7 @@
 
 	<script>
 		const correctAnswers = [
-			"bool", "bytearray", "bytes", "complex", "dict", "float",
-			"frozenset", "int", "list", "tuple", "set", "str"
+			"bytearray", "dict", "list", "set", "bool", "bytes", "complex", "float", "frozenset", "int", "tuple", "str"
 		];
 
 		const circles = document.querySelectorAll('.circle');
@@ -100,7 +99,7 @@
 				input.value = '';
 
 				if (currentIndex === correctAnswers.length) {
-				window.location.href = "2.html";
+				window.location.href = "4.html";
 					input.disabled = true;
 				}
 			}
