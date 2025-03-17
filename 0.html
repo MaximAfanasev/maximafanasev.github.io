@@ -30,13 +30,13 @@
     }
 
     input[type="text"] {
-        width: 30px;
-        height: 30px;
+        width: 60px;
+        height: 60px;
         font-size: 24px;
         text-align: center;
         margin: 5px;
         border: none;
-        border-radius: 10px;
+        border-radius: 15px;
         outline: none;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     }
@@ -45,15 +45,15 @@
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
-        gap: 10px;
+        gap: 5px;
     }
 
     .letter {
         cursor: pointer;
-        padding: 15px;
+        padding: 15px 25px;
         border: 1px solid #ccc;
         border-radius: 15px;
-        background-color: #f9f9f9;
+        background-color: #fff;
         user-select: none;
         font-size: 25px;
     }
@@ -187,7 +187,7 @@
                 localStorage.setItem('roadmap_elapsed_time', elapsedTime);
 
                 setTimeout(() => {
-                    window.location.href = "../index.html";
+                    window.location.href = "1.html";
                 }, 300);
             }
         }
