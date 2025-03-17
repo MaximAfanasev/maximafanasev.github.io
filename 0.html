@@ -86,7 +86,6 @@
 </style>
 
 <body>
-    <div class="timer" id="timer"></div>
     <div id="game-container" style="display: block">
         <div id="input-container">
             <input type="text" maxlength="1" class="letter-input" />
@@ -106,7 +105,7 @@
     <div class="letters">
     </div>
 
-    <p id="p1">Ответ: bbb c d ff i l t ss</p>
+    <p id="p1">bbb c d ff i l t ss</p>
 
     <script>
         let startTime;
@@ -201,10 +200,8 @@
                 localStorage.setItem('roadmap_elapsed_time', elapsedTime);
 
                 setTimeout(() => {
-                    window.location.href = "2.html";
+                    window.location.href = "../index.html";
                 }, 300);
-            } else {
-                alert('Попробуйте снова!');
             }
         }
     </script>
