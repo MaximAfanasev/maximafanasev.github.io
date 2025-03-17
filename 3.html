@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Num-num-num</title>
+	<title>Num</title>
 	<style>
 		body {
 			font-family: 'Arial', sans-serif;
@@ -129,106 +129,77 @@
 		</div>
 	</div>
 	<script>
-		const questions = [{
+		const questions = [
+			{
 				id: 1,
-				question: "a = 7<br>print(a)",
-				answer: "7"
+				question: "print(7//2)",
+				answer: "3"
 			},
 			{
 				id: 2,
-				question: "b = a<br>print(b)",
-				answer: "7"
+				question: "print(9//5)",
+				answer: "1"
 			},
 			{
 				id: 3,
-				question: "print(123)",
-				answer: "123"
+				question: "print(7%3)",
+				answer: "1"
 			},
 			{
 				id: 4,
-				question: "print(1+1)",
-				answer: "2"
+				question: "print(9%5)",
+				answer: "4"
 			},
 			{
 				id: 5,
-				question: "print(1-1)",
-				answer: "0"
+				question: "print(chr(65))",
+				answer: "A"
 			},
 			{
 				id: 6,
-				question: "print(1*2)",
-				answer: "2"
+				question: "print(ord('A'))",
+				answer: "65"
 			},
 			{
 				id: 7,
-				question: "print(+123)",
-				answer: "123"
+				question: "print(int(True))",
+				answer: "1"
 			},
 			{
 				id: 8,
-				question: "print(7/2)",
-				answer: "3.5"
-			},
-			{
-				id: 8,
-				question: "print(2**3)",
-				answer: "8"
+				question: "print(int(False))",
+				answer: "0"
 			},
 			{
 				id: 9,
-				question: "print(1 + \\<br>2)",
-				answer: "3"
+				question: "print(int(98.6))",
+				answer: "98"
 			},
 			{
 				id: 10,
-				question: "print(1 + <br>2)",
-				answer: "3"
+				question: "print(int('99'))",
+				answer: "99"
 			},
 			{
 				id: 11,
-				question: "c = 5 <br>print(c == 7)",
-				answer: "False"
+				question: "print(int('10', 2))",
+				answer: "2"
 			},
 			{
 				id: 12,
-				question: "print(5 &#60; 5 and 5 &#60; 10)",
-				answer: "False"
+				question: "print(float(True))",
+				answer: "1.0"
 			},
 			{
 				id: 13,
-				question: "print(bool(True))",
-				answer: "True"
+				question: "divmod(9, 5)",
+				answer: "(1, 4)"
 			},
 			{
 				id: 14,
-				question: "print(bool(1))",
-				answer: "True"
-			},
-			{
-				id: 15,
-				question: "print(bool(45))",
-				answer: "True"
-			},
-			{
-				id: 16,
-				question: "print(bool(-45))",
-				answer: "True"
-			},
-			{
-				id: 17,
-				question: "print(bool(False))",
-				answer: "False"
-			},
-			{
-				id: 18,
-				question: "print(bool(0))",
-				answer: "False"
-			},
-			{
-				id: 19,
-				question: "print(bool(0.0))",
-				answer: "False"
-			},
+				question: "9 + 7.0",
+				answer: "16.0"
+			}
 		];
 
 		const timer = document.getElementById('timer');
@@ -303,8 +274,8 @@
 					finalTime.textContent = `Финальное время: ${formatTime(elapsedTime)}`;
 					finalTime.style.display = "block";
 
-					localStorage.setItem('lvl_3_time', formatTime(elapsedTime));
-					localStorage.setItem('lvl_3_done', 'true');
+					localStorage.setItem('lvl_4_time', formatTime(elapsedTime));
+					localStorage.setItem('lvl_4_done', 'true');
 
 					setTimeout(() => {
 						window.location.href = "../index.html";

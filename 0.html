@@ -174,16 +174,7 @@
 			letterInputs.forEach(input => userInput += input.value.trim());
 
 			if (userInput.length === 12 && userInput === correctSequence) {
-				document.getElementById('game-container').style.display = "none";
-				document.getElementById('p1').style.display = "none";
-				document.querySelector('.letters').style.display = "none";
-
-				const elapsedTime = (Date.now() - startTime) / 1000;
-				localStorage.setItem('roadmap_elapsed_time', elapsedTime);
-
-				setTimeout(() => {
-					window.location.href = "1.html";
-				}, 300);
+				window.location.href = "1.html";
 			}
 		}
 	</script>

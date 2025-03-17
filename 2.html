@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Num-num-num</title>
+	<title>Num</title>
 	<style>
 		body {
 			font-family: 'Arial', sans-serif;
@@ -118,167 +118,114 @@
 </head>
 
 <body>
-
-	<div class="timer" id="timer">0:00:00</div>
-	<div class="final-time" id="finalTime"></div>
-
 	<div class="container">
-		<h1>[Массивы]</h1>
-
 		<div id="questions">
 		</div>
 	</div>
-
+	
 	<script>
 		const questions = [{
 				id: 1,
-				question: "",
-				answer: ""
+				question: "a = 7<br>print(a)",
+				answer: "7"
 			},
 			{
 				id: 2,
-				question: "",
-				answer: ""
+				question: "b = a<br>print(b)",
+				answer: "7"
 			},
 			{
 				id: 3,
-				question: "",
-				answer: ""
+				question: "print(123)",
+				answer: "123"
 			},
 			{
 				id: 4,
-				question: "",
-				answer: ""
+				question: "print(1+1)",
+				answer: "2"
 			},
 			{
 				id: 5,
-				question: "",
-				answer: ""
+				question: "print(1-1)",
+				answer: "0"
 			},
 			{
 				id: 6,
-				question: "",
-				answer: ""
+				question: "print(1*2)",
+				answer: "2"
 			},
 			{
 				id: 7,
-				question: "",
-				answer: ""
+				question: "print(+123)",
+				answer: "123"
 			},
 			{
 				id: 8,
-				question: "",
-				answer: ""
+				question: "print(7/2)",
+				answer: "3.5"
+			},
+			{
+				id: 8,
+				question: "print(2**3)",
+				answer: "8"
 			},
 			{
 				id: 9,
-				question: "",
-				answer: ""
+				question: "print(1 + \\<br>2)",
+				answer: "3"
 			},
 			{
 				id: 10,
-				question: "",
-				answer: ""
+				question: "print(1 + <br>2)",
+				answer: "3"
 			},
 			{
 				id: 11,
-				question: "",
-				answer: ""
+				question: "c = 5 <br>print(c == 7)",
+				answer: "False"
 			},
 			{
 				id: 12,
-				question: "",
-				answer: ""
+				question: "print(5 &#60; 5 and 5 &#60; 10)",
+				answer: "False"
 			},
 			{
 				id: 13,
-				question: "",
-				answer: ""
+				question: "print(bool(True))",
+				answer: "True"
 			},
 			{
 				id: 14,
-				question: "",
-				answer: ""
+				question: "print(bool(1))",
+				answer: "True"
 			},
 			{
 				id: 15,
-				question: "",
-				answer: ""
+				question: "print(bool(45))",
+				answer: "True"
 			},
 			{
 				id: 16,
-				question: "",
-				answer: ""
+				question: "print(bool(-45))",
+				answer: "True"
 			},
 			{
 				id: 17,
-				question: "",
-				answer: ""
+				question: "print(bool(False))",
+				answer: "False"
 			},
 			{
 				id: 18,
-				question: "",
-				answer: ""
+				question: "print(bool(0))",
+				answer: "False"
 			},
 			{
 				id: 19,
-				question: "",
-				answer: ""
-			},
-			{
-				id: 20,
-				question: "",
-				answer: ""
-			},
-			{
-				id: 21,
-				question: "",
-				answer: ""
-			},
-			{
-				id: 22,
-				question: "",
-				answer: ""
-			},
-			{
-				id: 23,
-				question: "",
-				answer: ""
-			},
-			{
-				id: 24,
-				question: "",
-				answer: ""
-			},
-			{
-				id: 25,
-				question: "",
-				answer: ""
-			},
-			{
-				id: 26,
-				question: "",
-				answer: ""
-			},
-			{
-				id: 27,
-				question: "",
-				answer: ""
-			},
-			{
-				id: 28,
-				question: "",
-				answer: ""
-			},
-			{
-				id: 29,
-				question: "",
-				answer: ""
+				question: "print(bool(0.0))",
+				answer: "False"
 			},
 		];
 
-		const timer = document.getElementById('timer');
-		const finalTime = document.getElementById('finalTime');
 		const questionsContainer = document.getElementById('questions');
 
 		let startTime;
@@ -288,6 +235,14 @@
 			const minutes = Math.floor(seconds / 60);
 			const secs = Math.floor(seconds % 60);
 			return `${minutes}m ${String(secs).padStart(2, '0')}s`;
+		}
+
+		function shuffleArray(array) {
+			for (let i = array.length - 1; i > 0; i--) {
+				const j = Math.floor(Math.random() * (i + 1));
+				[array[i], array[j]] = [array[j], array[i]];
+			}
+			return array;
 		}
 
 		function createQuestionElement(question, index) {
@@ -308,34 +263,41 @@
 					const nextQuestion = document.getElementById(`question${nextQuestionId}`);
 					if (nextQuestion) {
 						nextQuestion.style.display = "block";
+
+						const nextInput = document.getElementById(`input${nextQuestionId}`);
+						if (nextInput) {
+							nextInput.focus();
+						}
 					}
 				}
 			});
 		}
 
 		function initializeQuestions() {
-			questions.forEach((question, index) => {
+			const shuffledQuestions = shuffleArray(questions);
+
+			shuffledQuestions.forEach((question, index) => {
 				const questionElement = createQuestionElement(question, index);
 				questionsContainer.appendChild(questionElement);
 			});
 
-			questions.forEach((_, index) => {
+			shuffledQuestions.forEach((_, index) => {
 				const input = document.getElementById(`input${index + 1}`);
 				if (input) {
 					setupInputListener(input, index + 2);
 				}
 			});
 
-			const lastInput = document.getElementById(`input${questions.length}`);
+			const lastInput = document.getElementById(`input${shuffledQuestions.length}`);
 			lastInput.addEventListener('input', function() {
-				if (lastInput.value === questions[questions.length - 1].answer) {
+				if (lastInput.value === shuffledQuestions[shuffledQuestions.length - 1].answer) {
 					clearInterval(timerInterval);
 					const elapsedTime = (Date.now() - startTime) / 1000;
 					finalTime.textContent = `Финальное время: ${formatTime(elapsedTime)}`;
 					finalTime.style.display = "block";
 
-					localStorage.setItem('lvl_6_time', formatTime(elapsedTime));
-					localStorage.setItem('lvl_6_done', 'true');
+					localStorage.setItem('lvl_3_time', formatTime(elapsedTime));
+					localStorage.setItem('lvl_3_done', 'true');
 
 					setTimeout(() => {
 						window.location.href = "../index.html";
@@ -343,14 +305,6 @@
 				}
 			});
 		}
-
-		startTime = Date.now();
-		timerInterval = setInterval(() => {
-			const currentTime = Date.now();
-			const elapsedTime = (currentTime - startTime) / 1000;
-			timer.textContent = formatTime(elapsedTime);
-		}, 1000);
-
 		initializeQuestions();
 	</script>
 
