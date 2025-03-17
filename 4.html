@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Num</title>
+	<style>
+		body {
+			font-family: 'Arial', sans-serif;
+			background: linear-gradient(135deg, #6a11cb, #2575fc);
+			margin: 0;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			min-height: 100vh;
+		}
+
+		#circles {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 2px;
+			justify-content: center;
+			margin-bottom: 20px;
+		}
+
+		.circle {
+			width: 10px;
+			height: 10px;
+			border-radius: 50%;
+			background-color: #fff;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-size: 18px;
+			font-weight: bold;
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+			transition: background-color 0.3s ease, transform 0.3s ease;
+		}
+
+		.circle.correct {
+			background-color: #4caf50;
+			color: #fff;
+			transform: scale(1.1);
+		}
+
+		input {
+			padding: 12px;
+			font-size: 16px;
+			border-radius: 15px;
+			width: 100%;
+			max-width: 300px;
+			margin-top: 10px;
+			border: 2px solid #ccc;
+			outline: none;
+			transition: border-color 0.3s ease;
+		}
+
+		input:focus {
+			border-color: #6a11cb;
+		}
+	</style>
+</head>
+
+<body>
+		<div id="circles"></div>
+	<div class="container">
+		<div id="question-container">
+			<input type="text" id="answer-input" maxlength="12">
+		</div>
+	</div>
+	<script>
+		const questions = [
+			{
+				id: 1,
+				question: "a = 7 print(a)",
+				answer: "7"
+			},
+			{
+				id: 3,
+				question: "print(123)",
+				answer: "123"
+			},
+			{
+				id: 4,
+				question: "print(1+1)",
+				answer: "2"
+			},
+			{
+				id: 5,
+				question: "print(1-1)",
+				answer: "0"
+			},
+			{
+				id: 6,
+				question: "print(1*2)",
+				answer: "2"
+			},
+			{
+				id: 7,
+				question: "print(+123)",
+				answer: "123"
+			},
+			{
+				id: 8,
+				question: "print(7/2)",
+				answer: "3.5"
+			},
+			{
+				id: 9,
+				question: "print(2**3)",
+				answer: "8"
+			},
+			{
+				id: 10,
+				question: "print(1 + \\<br>2)",
+				answer: "3"
+			},
+			{
+				id: 11,
+				question: "print(1 + <br>2)",
+				answer: "3"
+			},
+			{
+				id: 12,
+				question: "c = 5 <br>print(c == 7)",
+				answer: "False"
+			},
+			{
+				id: 13,
+				question: "print(5 &#60; 5 and 5 &#60; 10)",
+				answer: "False"
+			},
+			{
+				id: 14,
+				question: "print(bool(True))",
+				answer: "True"
+			},
+			{
+				id: 15,
+				question: "print(bool(1))",
+				answer: "True"
+			},
+			{
+				id: 16,
+				question: "print(bool(45))",
+				answer: "True"
+			},
+			{
+				id: 17,
+				question: "print(bool(-45))",
+				answer: "True"
+			},
+			{
+				id: 18,
+				question: "print(bool(False))",
+				answer: "False"
+			},
+			{
+				id: 19,
+				question: "print(bool(0))",
+				answer: "False"
+			},
+			{
+				id: 20,
+				question: "print(bool(0.0))",
+				answer: "False"
+			},
+		];
+
+		let currentQuestionIndex = 0;
+
+		const answerInput = document.getElementById('answer-input');
+		const circlesContainer = document.getElementById('circles');
+
+		function loadQuestion() {
+			const currentQuestion = questions[currentQuestionIndex];
+			answerInput.placeholder = currentQuestion.question;
+		}
+
+		function createCircles() {
+			questions.forEach(() => {
+				const circle = document.createElement('div');
+				circle.className = 'circle';
+				circlesContainer.appendChild(circle);
+			});
+		}
+
+		answerInput.addEventListener('input', () => {
+			const currentQuestion = questions[currentQuestionIndex].answer;
+			if (answerInput.value === currentQuestion) {
+				// Очищаем инпут
+				answerInput.value = '';
+				// Закрашиваем кружок в зеленый
+				circlesContainer.children[currentQuestionIndex].classList.add('correct');
+				// Переходим к следующему вопросу
+				currentQuestionIndex++;
+				if (currentQuestionIndex < questions.length) {
+					loadQuestion();
+				} else {
+					// Закончить игру
+					alert('Поздравляем! Вы ответили на все вопросы.');
+				}
+			}
+		});
+
+		// Инициализация
+		createCircles();
+		loadQuestion();
+	</script>
+</body></html>

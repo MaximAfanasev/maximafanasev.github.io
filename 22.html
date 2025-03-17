@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -122,7 +123,10 @@
 		<div id="questions">
 		</div>
 	</div>
-	
+
+	<div class="timer" id="timer">00:00</div>
+	<div class="final-time" id="finalTime">Финальное время: 00:00</div>
+
 	<script>
 		const questions = [{
 				id: 1,
@@ -165,68 +169,70 @@
 				answer: "3.5"
 			},
 			{
-				id: 8,
+				id: 9,
 				question: "print(2**3)",
 				answer: "8"
 			},
 			{
-				id: 9,
+				id: 10,
 				question: "print(1 + \\<br>2)",
 				answer: "3"
 			},
 			{
-				id: 10,
+				id: 11,
 				question: "print(1 + <br>2)",
 				answer: "3"
 			},
 			{
-				id: 11,
+				id: 12,
 				question: "c = 5 <br>print(c == 7)",
 				answer: "False"
 			},
 			{
-				id: 12,
+				id: 13,
 				question: "print(5 &#60; 5 and 5 &#60; 10)",
 				answer: "False"
 			},
 			{
-				id: 13,
+				id: 14,
 				question: "print(bool(True))",
 				answer: "True"
 			},
 			{
-				id: 14,
+				id: 15,
 				question: "print(bool(1))",
 				answer: "True"
 			},
 			{
-				id: 15,
+				id: 16,
 				question: "print(bool(45))",
 				answer: "True"
 			},
 			{
-				id: 16,
+				id: 17,
 				question: "print(bool(-45))",
 				answer: "True"
 			},
 			{
-				id: 17,
+				id: 18,
 				question: "print(bool(False))",
 				answer: "False"
 			},
 			{
-				id: 18,
+				id: 19,
 				question: "print(bool(0))",
 				answer: "False"
 			},
 			{
-				id: 19,
+				id: 20,
 				question: "print(bool(0.0))",
 				answer: "False"
 			},
 		];
 
 		const questionsContainer = document.getElementById('questions');
+		const timer = document.getElementById('timer');
+		const finalTime = document.getElementById('finalTime');
 
 		let startTime;
 		let timerInterval;
@@ -234,7 +240,15 @@
 		function formatTime(seconds) {
 			const minutes = Math.floor(seconds / 60);
 			const secs = Math.floor(seconds % 60);
-			return `${minutes}m ${String(secs).padStart(2, '0')}s`;
+			return `${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+		}
+
+		function startTimer() {
+			startTime = Date.now();
+			timerInterval = setInterval(() => {
+				const elapsedTime = Math.floor((Date.now() - startTime) / 1000);
+				timer.textContent = formatTime(elapsedTime);
+			}, 1000);
 		}
 
 		function shuffleArray(array) {
@@ -292,7 +306,7 @@
 			lastInput.addEventListener('input', function() {
 				if (lastInput.value === shuffledQuestions[shuffledQuestions.length - 1].answer) {
 					clearInterval(timerInterval);
-					const elapsedTime = (Date.now() - startTime) / 1000;
+					const elapsedTime = Math.floor((Date.now() - startTime) / 1000);
 					finalTime.textContent = `Финальное время: ${formatTime(elapsedTime)}`;
 					finalTime.style.display = "block";
 
@@ -305,7 +319,10 @@
 				}
 			});
 		}
+
+		startTimer();
 		initializeQuestions();
 	</script>
+</body>
 
-</body></html>
+</html>
