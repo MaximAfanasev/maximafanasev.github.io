@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Викторина True/False</title>
-    <style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Викторина True/False</title>
+	<style>
 		body {
 			font-family: 'Arial', sans-serif;
 			background: linear-gradient(135deg, #6a11cb, #2575fc);
@@ -16,127 +16,104 @@
 			min-height: 100vh;
 		}
 
-		#circles {
-			display: flex;
-			flex-wrap: wrap;
-			gap: 10px;
-			justify-content: center;
-			margin-bottom: 20px;
-		}
-
-		.circle {
-			width: 50px;
-			height: 50px;
+		.button {
+			padding: 12px;
+			font-size: 16px;
 			border-radius: 15px;
+			width: 100%;
+			max-width: 300px;
+			margin: 10px 0;
+			border: 2px solid #ccc;
 			background-color: #fff;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			font-size: 18px;
-			font-weight: bold;
-			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-			transition: background-color 0.3s ease, transform 0.3s ease;
+			cursor: pointer;
+			transition: background-color 0.3s ease, border-color 0.3s ease;
 		}
 
-        .circle.correct {
-            background-color: #4caf50 !important; /* Зеленый для правильных ответов */
-            color: #fff;
-            transform: scale(1.1);
-        }
-
-        .circle.incorrect {
-            background-color: #f44336 !important; /* Красный для неправильных ответов */
-            color: #fff;
-            transform: scale(1.1);
-        }
-
-        .button {
-            padding: 12px;
-            font-size: 16px;
-            border-radius: 15px;
-            width: 100%;
-            max-width: 300px;
-            margin: 10px 0;
-            border: 2px solid #ccc;
-            background-color: #fff;
-            cursor: pointer;
-            transition: background-color 0.3s ease, border-color 0.3s ease;
-        }
-			
-			.question {
-				color: #fff;
-				font-size: 25px;
-				margin-bottom: 30px;
-			}
-    </style>
+		.question {
+			color: #fff;
+			font-size: 25px;
+			margin-bottom: 30px;
+		}
+	</style>
 </head>
+
 <body>
-    <div class="container">
-        <div id="question-container" class="question"></div>
-        <button id="true-button" class="button">True</button>
-        <button id="false-button" class="button">False</button>
-    </div>
+	<div class="container">
+		<div id="question-container" class="question"></div>
+		<button id="true-button" class="button">True</button>
+		<button id="false-button" class="button">False</button>
+	</div>
 
-    <script>
-        const questions = [
-            { id: 12, question: "c = 5 print(c == 7)", answer: "False" },
-            { id: 14, question: "print(bool(True))", answer: "True" },
-            { id: 15, question: "print(bool(1))", answer: "True" },
-            { id: 16, question: "print(bool(45))", answer: "True" },
-            { id: 17, question: "print(bool(-45))", answer: "True" },
-            { id: 18, question: "print(bool(False))", answer: "False" },
-            { id: 19, question: "print(bool(0))", answer: "False" },
-            { id: 20, question: "print(bool(0.0))", answer: "False" },
-        ];
+	<script>
+		const questions = [{
+				id: 12,
+				question: "c = 5 print(c == 7)",
+				answer: "False"
+			},
+			{
+				id: 14,
+				question: "print(bool(True))",
+				answer: "True"
+			},
+			{
+				id: 15,
+				question: "print(bool(1))",
+				answer: "True"
+			},
+			{
+				id: 16,
+				question: "print(bool(45))",
+				answer: "True"
+			},
+			{
+				id: 17,
+				question: "print(bool(-45))",
+				answer: "True"
+			},
+			{
+				id: 18,
+				question: "print(bool(False))",
+				answer: "False"
+			},
+			{
+				id: 19,
+				question: "print(bool(0))",
+				answer: "False"
+			},
+			{
+				id: 20,
+				question: "print(bool(0.0))",
+				answer: "False"
+			},
+		];
 
-        let currentQuestionIndex = 0;
+		let currentQuestionIndex = 0;
 
-        const questionDisplay = document.getElementById('question-container');
-        const trueButton = document.getElementById('true-button');
-        const falseButton = document.getElementById('false-button');
-        const circlesContainer = document.getElementById('circles');
+		const questionDisplay = document.getElementById('question-container');
+		const trueButton = document.getElementById('true-button');
+		const falseButton = document.getElementById('false-button');
 
-        function loadQuestion() {
-            const currentQuestion = questions[currentQuestionIndex];
-            questionDisplay.innerText = currentQuestion.question;
-            updateCircles();
-        }
+		function loadQuestion() {
+			const currentQuestion = questions[currentQuestionIndex];
+			questionDisplay.innerText = currentQuestion.question;
+		}
 
-        function updateCircles() {
-            circlesContainer.innerHTML = ''; // Очистить предыдущие кружки
-            questions.forEach((_, index) => {
-                const circle = document.createElement('div');
-                circle.className = 'circle';
-                circle.innerText = index + 1; // Нумерация
-                circlesContainer.appendChild(circle);
-            });
-        }
+		function checkAnswer(answer) {
+			const currentQuestion = questions[currentQuestionIndex];
+			const isCorrect = currentQuestion.answer === answer;
 
-        function checkAnswer(answer) {
-            const currentQuestion = questions[currentQuestionIndex];
-            const isCorrect = currentQuestion.answer === answer;
+			currentQuestionIndex++;
+			if (currentQuestionIndex < questions.length) {
+				loadQuestion();
+			} else {
+				window.location.href = 'index.html'
+			}
+		}
 
-            // Изменяем цвет кружка при правильном или неправильном ответе
-            const currentCircle = circlesContainer.children[currentQuestionIndex];
-            if (isCorrect) {
-                currentCircle.classList.add('correct');
-            } else {
-                currentCircle.classList.add('incorrect');
-            }
+		trueButton.addEventListener('click', () => checkAnswer('True'));
+		falseButton.addEventListener('click', () => checkAnswer('False'));
 
-            currentQuestionIndex++;
-            if (currentQuestionIndex < questions.length) {
-                loadQuestion();
-            } else {
-							window.location.href='index.html'
-            }
-        }
-
-        trueButton.addEventListener('click', () => checkAnswer('True'));
-        falseButton.addEventListener('click', () => checkAnswer('False'));
-
-        // Инициализация
-        loadQuestion();
-    </script>
-</body>
-</html>
+		// Инициализация
+		loadQuestion();
+	</script>
+</body></html>
