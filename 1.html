@@ -43,7 +43,7 @@
 
 		input,
 		textarea {
-			width: calc(100% - 40px);
+			width: calc(100% - 25px);
 			padding: 12px;
 			margin-top: 10px;
 			margin-bottom: 20px;
@@ -116,6 +116,10 @@
 			display: none;
 		}
 
+		p {
+			text-align: center;
+		}
+
 	</style>
 </head>
 
@@ -125,15 +129,12 @@
 	<div class="final-time" id="finalTime"></div>
 
 	<div class="container">
-		<h1>Типы данных</h1>
-
 		<div id="questions">
 		</div>
 	</div>
 
 	<script>
-		const questionsData = [
-			{
+		const questionsData = [{
 				id: "question1",
 				questionText: "12 типов",
 				inputType: "textarea",
@@ -176,13 +177,13 @@
 			div.className = 'question';
 			div.style.display = question.id === "question1" ? 'block' : 'none';
 			div.innerHTML = `
-                <p>${question.questionText}</p>
-                ${question.inputType === "textarea" ? 
-                    `<textarea id="input${question.id}" rows="12"></textarea>` :
-                    `<input type="text" id="input${question.id}" maxlength="12">`
-                }
-                <p id="feedback${question.id}" class="feedback"></p>
-            `;
+        <p>${question.questionText}</p>
+        ${question.inputType === "textarea" ? 
+            `<textarea id="input${question.id}" rows="12"></textarea>` :
+            `<input type="text" id="input${question.id}" maxlength="12">`
+        }
+        <p id="feedback${question.id}" class="feedback"></p>
+    `;
 			return div;
 		}
 
@@ -190,11 +191,11 @@
 			if (Array.isArray(correctAnswer)) {
 				const lines = inputValue.split('\n').filter(line => line.trim() !== "");
 				if (lines.length === correctAnswer.length) {
-					return lines.every((line, index) => line.trim() === correctAnswer[index]);
+					return lines.every((line, index) => line.trim().toLowerCase() === correctAnswer[index].toLowerCase());
 				}
 				return false;
 			} else {
-				return inputValue === correctAnswer;
+				return inputValue.toLowerCase() === correctAnswer.toLowerCase();
 			}
 		}
 

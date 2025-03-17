@@ -6,7 +6,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Types</title>
 	<link rel="icon" type="image/x-icon" href="/img/logo.png">
-	<link rel="stylesheet" href="style.css">
 </head>
 
 <style>
@@ -112,12 +111,6 @@
 		} else {
 			startTime = Date.now();
 		}
-
-		timerInterval = setInterval(() => {
-			const currentTime = Date.now();
-			const elapsedTime = (currentTime - startTime) / 1000;
-			document.getElementById('timer').textContent = formatTime(elapsedTime);
-		}, 1000);
 
 		const correctSequence = "bbbcdffiltss";
 
