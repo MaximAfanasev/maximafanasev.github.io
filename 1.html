@@ -132,27 +132,20 @@
 	</div>
 
 	<script>
-		const questionsData = [{
-				id: "question1",
-				questionText: "12 букв",
-				inputType: "text",
-				correctAnswer: "bbbcdffiltss",
-				feedbackText: "Правильно!",
-				nextQuestionId: "question2"
-			},
+		const questionsData = [
 			{
-				id: "question2",
-				questionText: "Напишите 12 типов данных:",
+				id: "question1",
+				questionText: "12 типов",
 				inputType: "textarea",
 				correctAnswer: [
 					"bool", "bytearray", "bytes", "complex", "dict", "float",
 					"frozenset", "int", "list", "tuple", "set", "str"
 				],
 				feedbackText: "Правильно!",
-				nextQuestionId: "question3"
+				nextQuestionId: "question2"
 			},
 			{
-				id: "question3",
+				id: "question2",
 				questionText: "Напишите 4 типа изменяемых данных и 8 неизменяемых:",
 				inputType: "textarea",
 				correctAnswer: [
