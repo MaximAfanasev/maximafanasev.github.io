@@ -16,50 +16,8 @@
 			justify-content: center;
 			align-items: center;
 		}
-
-		.circles {
-			display: flex;
-			flex-wrap: wrap;
-			gap: 5px;
-			justify-content: center;
-			margin-bottom: 20px;
-		}
-
-		.a {
-			width: fit-content;
-			padding: 5px 10px;
-			border-radius: 5px;
-			background-color: #fff;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			font-size: 16px;
-			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-			transition: background-color 0.3s ease, transform 0.3s ease;
-			color: #222;
-		}
-
-		.a.correct {
-			background-color: #4caf50;
-			color: #fff;
-		}
-
-		input {
-			padding: 12px;
-			font-size: 16px;
-			border-radius: 15px;
-			width: 100%;
-			max-width: 300px;
-			margin-top: 10px;
-			border: 2px solid #ccc;
-		}
-
-		input:focus {
-			border-color: #6a11cb;
-		}
 		
 		pre {
-			margin-top: 100px;
 			background: #fff;
 			padding: 20px;
 			border-radius: 20px;
@@ -68,62 +26,6 @@
 </head>
 
 <body>
-	<div class="circles">
-		<div class="a">b</div>
-		<div class="a">b</div>
-		<div class="a">b</div>
-		<div class="a">c</div>
-		<div class="a">d</div>
-		<div class="a">f</div>
-		<div class="a">f</div>
-		<div class="a">i</div>
-		<div class="a">l</div>
-		<div class="a">t</div>
-		<div class="a">s</div>
-		<div class="a">s</div>
-		<div class="a">2</div>
-		<div class="a">5</div>
-		<div class="a">9</div>
-		<div class="a">11</div>
-		<div class="a">абсолютное значение числа</div>
-		<div class="a">числитель, знаменатель</div>
-		<div class="a">количество бит</div>
-		<div class="a">символ по его unicode</div>
-		<div class="a">сопряженное число</div>
-		<div class="a">частное и остаток</div>
-		<div class="a">число с плавающей точкой</div>
-		<div class="a">в формате шестнадцатеричного</div>
-		<div class="a">шестнадцатеричное представление</div>
-		<div class="a">мнимая часть</div>
-		<div class="a">в целое число</div>
-		<div class="a">является ли целым</div>
-		<div class="a">unicode-код</div>
-		<div class="a">x в степени y</div>
-		<div class="a">действительная часть</div>
-		<div class="a">округляет</div>
-		<div class="a">сложение</div>
-		<div class="a">вычитание</div>
-		<div class="a">умножение</div>
-		<div class="a">деление</div>
-		<div class="a">целочисленное</div>
-		<div class="a">остаток</div>
-		<div class="a">степень</div>
-		<div class="a">сравнение</div>
-		<div class="a">не равно</div>
-		<div class="a">больше</div>
-		<div class="a">меньше</div>
-		<div class="a">больше или равно</div>
-		<div class="a">меньше или равно</div>
-		<div class="a">И</div>
-		<div class="a">ИЛИ</div>
-		<div class="a">исключающее ИЛИ</div>
-		<div class="a">битовое НЕ</div>
-		<div class="a">сдвиг влево</div>
-		<div class="a">сдвиг вправо</div>
-		<div class="a"></div>
-	</div>
-
-	<input type="text" id="input" placeholder="">
 	
 	<pre>
 print(abs(-5)) # 5 |-5|
@@ -409,83 +311,6 @@ for _ in zip([1,2,3],[4,5,6]):
 
 
 	</pre>
-
-	<script>
-		const correctAnswers = [
-			"bool", 
-			"bytearray",
-			"bytes",
-			"complex",
-			"dict",
-			"float",
-			"frozenset",
-			"int",
-			"list",
-			"tuple",
-			"set",
-			"str",
-			
-			
-			
-			"2",
-			"5",
-			"9",
-			"11",
-			
-
-			"abs",
-			"as_integer_ratio",
-			"bit_length",
-			"chr",
-			"conjugate",
-			"divmod",
-			"float",
-			"fromhex",
-			"imag",
-			"int",
-			"is_integer",
-			"ord",
-			"pow",
-			"real",
-			"round",
-			
-			
-			"+",
-			"-",
-			"*",
-			"/",
-			"//",
-			"%",
-			"**",
-			"==",
-"!=",
-">",
-"<",
-">=",
-"<=",
-"&",
-"|",
-"^",
-"~",
-"<<",
-">>",
-		];
-		
-
-		const circles = document.querySelectorAll('.a');
-		const input = document.getElementById('input');
-		let currentIndex = 0;
-
-		input.addEventListener('input', (event) => {
-			const userInput = event.target.value.trim().toLowerCase();
-
-			if (userInput === correctAnswers[currentIndex]) {
-				circles[currentIndex].classList.add('correct');
-				currentIndex++;
-				input.value = '';
-			}
-		});
-	</script>
 </body>
 
 </html>
