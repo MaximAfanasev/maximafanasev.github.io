@@ -9,6 +9,7 @@ print(b.conjugate()) # 3 - 4j ???
 print(divmod(10, 3))  # (3, 1)
 print(float(1)) # 1.0
 print(float.fromhex('0x1.ffffp10')) # 2047.984375
+print(float(True)) # 1.0
 c = 3 + 4j
 print(c.imag) # 4.0 ???
 print(int(True)) # 1
@@ -54,39 +55,80 @@ print(5 >> 1)  # 2 (101 сдвигается вправо на 1 бит: 10)
 
 print()
 
-print(bool(True))
-print(bool(1))
-print(bool(45))
-print(bool(-45))
-print(bool(False))
-print(bool(0))
-print(bool(0.0))
+print(bool(True))   # True (логическое True остается True)
+print(bool(1))      # True (числа, кроме 0, считаются True)
+print(bool(45))     # True (любое ненулевое число — True)
+print(bool(-45))    # True (отрицательные числа, кроме 0, тоже True)
+print(bool(False))  # False (логическое False остается False)
+print(bool(0))      # False (0 считается False)
+print(bool(0.0))    # False (0.0 также считается False)
+print(bool([]))         # False (пустой список)
+print(bool([1, 2, 3]))  # True (непустой список)
+print(bool(""))         # False (пустая строка)
+print(bool("Hello"))    # True (непустая строка)
+print(bool({}))         # False (пустой словарь)
+print(bool({1: "one"})) # True (непустой словарь)
+print(bool(None))  # False
 
-print(float(True))
 
+
+# Выводит пустую строку (функция print без аргументов)
 print()
-print(type('a'))
-print(type("b"))
-print(type('''c'''))
 
-print()
-print(str(98.6))
-print(str(1.0e4))
-print(str(True))
+# Выводит тип данных 'a' — это строка (тип <class 'str'>)
+print(type('a'))  # <class 'str'>
 
-print()
-print('A man.\n P')
-print('a'+'b')
-print('a'*4)
-print('ab'[0])
-print('abc'[:])
-print('abc'[1:])
-print('abc'[-2:])
-print('abcdefj'[::2])
-print(len('abc'))
-print(''.join(['a','b']))
-print(','.join(['a','b']))
-print('abc'.split())
+# Выводит тип данных "b" — это также строка (тип <class 'str'>)
+print(type("b"))  # <class 'str'>
+
+# Выводит тип данных '''c''' — это тоже строка (тип <class 'str'>)
+print(type('''c'''))  # <class 'str'>
+
+# Преобразует число 98.6 в строку и выводит её
+print(str(98.6))  # '98.6'
+
+# Преобразует число 1.0e4 (10000.0) в строку и выводит её
+print(str(1.0e4))  # '10000.0'
+
+# Преобразует логическое значение True в строку и выводит её
+print(str(True))  # 'True'
+
+# Выводит строку с переносом на новую строку после 'A man.'
+print('A man.\n P')  # A man.
+                     #  P
+
+# Конкатенирует строки 'a' и 'b' и выводит результат
+print('a' + 'b')  # 'ab'
+
+# Повторяет строку 'a' 4 раза и выводит результат
+print('a' * 4)  # 'aaaa'
+
+# Выводит первый символ строки 'ab' (индексация начинается с 0)
+print('ab'[0])  # 'a'
+
+# Выводит всю строку 'abc' (срез [:] возвращает всю строку)
+print('abc'[:])  # 'abc'
+
+# Выводит подстроку, начиная с индекса 1 до конца строки
+print('abc'[1:])  # 'bc'
+
+# Выводит подстроку из последних двух символов
+print('abc'[-2:])  # 'bc'
+
+# Выводит каждый второй символ строки, начиная с первого
+print('abcdefj'[::2])  # 'acej'
+
+# Выводит длину строки 'abc'
+print(len('abc'))  # 3
+
+# Объединяет список строк ['a', 'b'] в одну строку без разделителя
+print(''.join(['a', 'b']))  # 'ab'
+
+# Объединяет список строк ['a', 'b'] в одну строку с разделителем ','
+print(','.join(['a', 'b']))  # 'a,b'
+
+# Разделяет строку 'abc' по пробелам (но пробелов нет, поэтому возвращает список с одной строкой)
+print('abc'.split())  # ['abc']
 
 print()
 a1 = 'aoiu'; 
