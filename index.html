@@ -164,6 +164,8 @@
 			"~",
 			"<<",
 			">>",
+			
+			
 		];
 
 		const circles = document.querySelectorAll('.circle');
@@ -177,11 +179,6 @@
 				circles[currentIndex].classList.add('correct');
 				currentIndex++;
 				input.value = '';
-
-				if (currentIndex === correctAnswers.length) {
-				window.location.href = "2.html";
-					input.disabled = true;
-				}
 			}
 		});
 	</script>
