@@ -43,7 +43,3 @@ print(int('99'))
 print(int('10', 2))
 
 print(float(True))
-
-
-
-
