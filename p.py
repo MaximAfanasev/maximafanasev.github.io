@@ -25,19 +25,34 @@ print(round(3.14159)) #3
 
 print()
 
+print(1+1) # 2
+print(+123) # 123
+print(1-1) # 0
+print(1*2) # 2
+print(7/2) # 3.5
+print(7//2) # 3
+print(9//5) # 1
+print(7%3) # 1
+print(9%5) # 4
+print(2**3) # 8
 
+print()
 
-print(123)
-print(1+1)
-print(1-1)
-print(1*2)
-print(+123)
-print(7/2)
-print(7//2)
-print(9//5)
-print(7%3)
-print(9%5)
-print(2**3)
+print(7==5) # False
+print(5==5) # True
+print(5!=3) # True
+print(5>3) # True
+print(5<3) # False
+print(5>=5) # True
+print(5<=3) # False
+print(5&3) # 1 (101 & 011 = 001)
+print(5|3) # 7 (101 | 011 = 111)
+print(5^3)  # 6 (101 ^ 011 = 110)
+print(~5)  # -6 (инверсия битов)
+print(5 << 1)  # 10 (101 сдвигается влево на 1 бит: 1010)
+print(5 >> 1)  # 2 (101 сдвигается вправо на 1 бит: 10)
+
+print()
 
 print(bool(True))
 print(bool(1))
@@ -49,12 +64,17 @@ print(bool(0.0))
 
 print(float(True))
 
+print()
 print(type('a'))
 print(type("b"))
 print(type('''c'''))
+
+print()
 print(str(98.6))
 print(str(1.0e4))
 print(str(True))
+
+print()
 print('A man.\n P')
 print('a'+'b')
 print('a'*4)
@@ -68,6 +88,7 @@ print(''.join(['a','b']))
 print(','.join(['a','b']))
 print('abc'.split())
 
+print()
 a1 = 'aoiu'; 
 print('a' in a1)
 print('ab'.replace('a','c'))
@@ -79,6 +100,7 @@ print('a'.ljust(2))
 print('a'.rjust(2))
 print('{}'.format('str'))
 
+print()
 a2 = []
 print(a1)
 
@@ -92,6 +114,7 @@ print(['a','b'][1])
 print([1]*3)
 print([1]+[2])
 
+print()
 print(['a','b','c'][1:])
 print(['a','b','c'][-1:])
 print(['a','b','c'][:1])
@@ -107,6 +130,7 @@ d1 = [1,2,3]
 d1.append(4)
 print(d1)
 
+print()
 e1 = [1]
 f1 = [2]
 e1.extend(f1)
