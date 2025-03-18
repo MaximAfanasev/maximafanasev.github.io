@@ -1,8 +1,3 @@
-a = 7
-print(a)
-b = a
-print(b)
-
 print(123)
 print(1+1)
 print(1-1)
@@ -15,15 +10,7 @@ print(7%3)
 print(9%5)
 print(2**3)
 
-print(1 + \
-2)
-print(1 + 
-2)
-
-c = 5 
-print(c == 7)
-
-print(5 < 5 and 5 < 10 )
+print(5<5 and 5<10)
 
 print(bool(True))
 print(bool(1))
