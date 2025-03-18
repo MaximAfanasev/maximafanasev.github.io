@@ -177,16 +177,42 @@ print('a'.endswith('a'))  # True
 #добавляя пробелы по бокам
 print('a'.center(3))  # ' a '
 
-# Выравниваем строку 'a' по левому краю,
-# добавляя пробелы справа до длины 2
-print('a'.ljust(2))  # 'a '
-
-# Выравниваем строку 'a' по правому краю,
-# добавляя пробелы слева до длины 2
-print('a'.rjust(2))  # ' a'
+print('a'.ljust(5, '-'))  # 'a----'
+print('a'.rjust(5, '-'))  # '----a'
 
 # Форматируем строку, подставляя 'str' вместо {}
 print('{}'.format('str'))  # 'str'
+
+text = "  abc  "
+print(text.lstrip())
+# 'abc  ' (удаляет пробелы слева)
+print(text.rstrip())
+# '  abc' (удаляет пробелы справа)
+
+print('{} {}'.format('Hello', 'world'))  # 'Hello world'
+
+print('a'.isupper())
+# False (проверка, является ли символ заглавным)
+print('A'.isupper())
+# True
+print('a'.islower())
+# True (проверка, является ли символ строчным)
+
+text = "Hello"
+print(text[::-1])  # 'olleH'
+
+text = "Hello, world!"
+print(text.count('l'))  # 3
+
+print('abc'.isalpha())  # True
+print('abc123'.isalpha())  # False
+
+
+
+
+
+
+print('##############################')
 
 print()
 a2 = []
