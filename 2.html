@@ -5,175 +5,105 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Types</title>
-	<link rel="icon" type="image/x-icon" href="/img/logo.png">
+	<style>
+		body {
+			font-family: 'Arial', sans-serif;
+			background: linear-gradient(135deg, #6a11cb, #2575fc);
+			margin: 0;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			min-height: 100vh;
+		}
+
+		.circles {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 10px;
+			justify-content: center;
+			margin-bottom: 20px;
+		}
+
+		.circle {
+			width: 60px;
+			height: 60px;
+			border-radius: 15px;
+			background-color: #fff;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-size: 25px;
+			font-weight: bold;
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+			transition: background-color 0.3s ease, transform 0.3s ease;
+		}
+
+		.circle.correct {
+			background-color: #4caf50;
+			color: #fff;
+			transform: scale(1.1);
+		}
+
+		input {
+			padding: 12px;
+			font-size: 16px;
+			border-radius: 15px;
+			width: 100%;
+			max-width: 300px;
+			margin-top: 10px;
+			border: 2px solid #ccc;
+			outline: none;
+			transition: border-color 0.3s ease;
+		}
+
+		input:focus {
+			border-color: #6a11cb;
+		}
+	</style>
 </head>
 
-<style>
-	body {
-		font-family: 'Arial', sans-serif;
-		background: linear-gradient(135deg, #6a11cb, #2575fc);
-		margin: 0;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		min-height: 100vh;
-		gap: 20px;
-	}
-
-	div#input-container {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: center;
-	}
-
-	div#input-container {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: center;
-	}
-
-	input[type="text"] {
-		width: 60px;
-		height: 60px;
-		font-size: 24px;
-		text-align: center;
-		margin: 5px;
-		border: none;
-		border-radius: 15px;
-		outline: none;
-		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-	}
-
-	.letters {
-		display: flex;
-		justify-content: center;
-		flex-wrap: wrap;
-		gap: 5px;
-	}
-
-	.letter {
-		cursor: pointer;
-		padding: 15px 25px;
-		border: 1px solid #ccc;
-		border-radius: 15px;
-		background-color: #fff;
-		user-select: none;
-		font-size: 25px;
-	}
-
-	.letter:hover {
-		background-color: #e0e0e0;
-	}
-
-	.letter.disabled {
-		display: none;
-	}
-
-	p {
-		color: #aaa;
-	}
-</style>
-
 <body>
-	<div id="game-container" style="display: block">
-		<div id="input-container">
-			<input type="text" maxlength="1" class="letter-input" />
-			<input type="text" maxlength="1" class="letter-input" />
-			<input type="text" maxlength="1" class="letter-input" />
-			<input type="text" maxlength="1" class="letter-input" />
-			<input type="text" maxlength="1" class="letter-input" />
-			<input type="text" maxlength="1" class="letter-input" />
-			<input type="text" maxlength="1" class="letter-input" />
-			<input type="text" maxlength="1" class="letter-input" />
-			<input type="text" maxlength="1" class="letter-input" />
-			<input type="text" maxlength="1" class="letter-input" />
-			<input type="text" maxlength="1" class="letter-input" />
-			<input type="text" maxlength="1" class="letter-input" />
-		</div>
-	</div>
-	<div class="letters">
+	<div class="circles">
+		<div class="circle">b</div>
+		<div class="circle">d</div>
+		<div class="circle">l</div>
+		<div class="circle">s</div>
+		<div class="circle">b</div>
+		<div class="circle">b</div>
+		<div class="circle">c</div>
+		<div class="circle">f</div>
+		<div class="circle">f</div>
+		<div class="circle">i</div>
+		<div class="circle">t</div>
+		<div class="circle">s</div>
 	</div>
 
-	<p id="p1">bdls bbcffits</p>
+	<input type="text" id="input" placeholder="">
 
 	<script>
-		let startTime;
-		let timerInterval;
+		const correctAnswers = [
+			"bytearray", "dict", "list", "set", "bool", "bytes", "complex", "float", "frozenset", "int", "tuple", "str"
+		];
 
-		function formatTime(seconds) {
-			const minutes = Math.floor(seconds / 60);
-			const secs = Math.floor(seconds % 60);
-			return `${minutes}m ${String(secs).padStart(2, '0')}s`;
-		}
+		const circles = document.querySelectorAll('.circle');
+		const input = document.getElementById('input');
+		let currentIndex = 0;
 
-		const savedTime = localStorage.getItem('roadmap_elapsed_time');
-		if (savedTime) {
-			startTime = Date.now() - parseInt(savedTime, 10) * 1000;
-		} else {
-			startTime = Date.now();
-		}
+		input.addEventListener('input', (event) => {
+			const userInput = event.target.value.trim().toLowerCase();
 
-		// Получаем правильную последовательность из элемента p1
-		const correctSequence = document.getElementById('p1').textContent.replace(/\s+/g, '');
+			if (userInput === correctAnswers[currentIndex]) {
+				circles[currentIndex].classList.add('correct');
+				currentIndex++;
+				input.value = '';
 
-		const letterInputs = document.querySelectorAll('.letter-input');
-		const lettersContainer = document.querySelector('.letters');
-		let currentInputIndex = 0;
-
-		// Подсчитываем количество каждой буквы в правильной последовательности
-		const letterCounts = {};
-		for (const letter of correctSequence) {
-			letterCounts[letter] = (letterCounts[letter] || 0) + 1;
-		}
-
-		const lettersArray = Object.keys(letterCounts);
-
-		function shuffleArray(array) {
-			for (let i = array.length - 1; i > 0; i--) {
-				const j = Math.floor(Math.random() * (i + 1));
-				[array[i], array[j]] = [array[j], array[i]];
-			}
-			return array;
-		}
-
-		const shuffledLetters = shuffleArray(lettersArray);
-
-		shuffledLetters.forEach(letter => {
-			const letterDiv = document.createElement('div');
-			letterDiv.classList.add('letter');
-			letterDiv.textContent = letter;
-			lettersContainer.appendChild(letterDiv);
-		});
-
-		lettersContainer.addEventListener('click', (event) => {
-			if (event.target.classList.contains('letter')) {
-				const letterValue = event.target.textContent;
-
-				if (letterCounts[letterValue] > 0 && correctSequence[currentInputIndex] === letterValue) {
-					letterInputs[currentInputIndex].value = letterValue;
-					currentInputIndex++;
-
-					letterCounts[letterValue]--;
-
-					if (letterCounts[letterValue] === 0) {
-						event.target.classList.add('disabled');
-					}
-
-					if (currentInputIndex === letterInputs.length) {
-						checkInput();
-					}
+				if (currentIndex === correctAnswers.length) {
+				window.location.href = "3.html";
 				}
 			}
 		});
-
-		function checkInput() {
-			let userInput = '';
-			letterInputs.forEach(input => userInput += input.value.trim());
-
-			if (userInput.length === 12 && userInput === correctSequence) {
-				window.location.href = "3.html";
-			}
-		}
 	</script>
-</body></html>
+</body>
+
+</html>

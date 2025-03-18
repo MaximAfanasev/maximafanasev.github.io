@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Types</title>
+	<title>Num</title>
 	<style>
 		body {
 			font-family: 'Arial', sans-serif;
@@ -17,7 +17,7 @@
 			min-height: 100vh;
 		}
 
-		.circles {
+		#circles {
 			display: flex;
 			flex-wrap: wrap;
 			gap: 10px;
@@ -26,14 +26,14 @@
 		}
 
 		.circle {
-			width: 60px;
-			height: 60px;
+			width: 50px;
+			height: 50px;
 			border-radius: 15px;
 			background-color: #fff;
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			font-size: 25px;
+			font-size: 18px;
 			font-weight: bold;
 			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 			transition: background-color 0.3s ease, transform 0.3s ease;
@@ -64,46 +64,74 @@
 </head>
 
 <body>
-	<div class="circles">
-		<div class="circle">b</div>
-		<div class="circle">d</div>
-		<div class="circle">l</div>
-		<div class="circle">s</div>
-		<div class="circle">b</div>
-		<div class="circle">b</div>
-		<div class="circle">c</div>
-		<div class="circle">f</div>
-		<div class="circle">f</div>
-		<div class="circle">i</div>
-		<div class="circle">t</div>
-		<div class="circle">s</div>
+		<div id="circles"></div>
+	<div class="container">
+		<div id="question-container">
+			<input type="text" id="answer-input" maxlength="12">
+		</div>
 	</div>
-
-	<input type="text" id="input" placeholder="">
-
 	<script>
-		const correctAnswers = [
-			"bytearray", "dict", "list", "set", "bool", "bytes", "complex", "float", "frozenset", "int", "tuple", "str"
+		const questions = [
+			{
+				id: 1,
+				question: "a = 7 print(a)",
+				answer: "7"
+			},
+			{
+				id: 2,
+				question: "print(+123)",
+				answer: "123"
+			},
+			{
+				id: 3,
+				question: "print(7/2)",
+				answer: "3.5"
+			},
+			{
+				id: 4,
+				question: "print(2**3)",
+				answer: "8"
+			},
 		];
 
-		const circles = document.querySelectorAll('.circle');
-		const input = document.getElementById('input');
-		let currentIndex = 0;
+		let currentQuestionIndex = 0;
 
-		input.addEventListener('input', (event) => {
-			const userInput = event.target.value.trim().toLowerCase();
+		const answerInput = document.getElementById('answer-input');
+		const circlesContainer = document.getElementById('circles');
 
-			if (userInput === correctAnswers[currentIndex]) {
-				circles[currentIndex].classList.add('correct');
-				currentIndex++;
-				input.value = '';
+		function loadQuestion() {
+			const currentQuestion = questions[currentQuestionIndex];
+			answerInput.placeholder = currentQuestion.question;
+		}
 
-				if (currentIndex === correctAnswers.length) {
+		function createCircles() {
+			questions.forEach(() => {
+				const circle = document.createElement('div');
+				circle.className = 'circle';
+				circlesContainer.appendChild(circle);
+			});
+		}
+
+		answerInput.addEventListener('input', () => {
+			const currentQuestion = questions[currentQuestionIndex].answer;
+			if (answerInput.value === currentQuestion) {
+				// Очищаем инпут
+				answerInput.value = '';
+				// Закрашиваем кружок в зеленый
+				circlesContainer.children[currentQuestionIndex].classList.add('correct');
+				// Переходим к следующему вопросу
+				currentQuestionIndex++;
+				if (currentQuestionIndex < questions.length) {
+					loadQuestion();
+				} else {
+					// Закончить игру
 				window.location.href = "4.html";
 				}
 			}
 		});
-	</script>
-</body>
 
-</html>
+		// Инициализация
+		createCircles();
+		loadQuestion();
+	</script>
+</body></html>
