@@ -11,11 +11,19 @@ print(float(1)) # 1.0
 print(float.fromhex('0x1.ffffp10')) # 2047.984375
 c = 3 + 4j
 print(c.imag) # 4.0 ???
-print()
-print()
-print()
-print()
+print(int(True)) # 1
+print(int(False)) # 0
+print(int(98.6)) # 98
+print(int('99')) # 99
+print(int('10', 2)) # 2
+d = 5.0
+print(d.is_integer()) # True ???
+print(ord('A')) # 65
+print(pow(2, 3)) # 8
+print(c.real) # 3.0
+print(round(3.14159)) #3
 
+print()
 
 
 
@@ -39,12 +47,6 @@ print(bool(False))
 print(bool(0))
 print(bool(0.0))
 
-print(ord('A'))
-print(int(True))
-print(int(False))
-print(int(98.6))
-print(int('99'))
-print(int('10', 2))
 print(float(True))
 
 print(type('a'))
