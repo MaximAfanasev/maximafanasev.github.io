@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Types</title>
+	<link rel="icon" type="image/x-icon" href="/img/logo.png">
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<style>
+	body {
+		font-family: 'Arial', sans-serif;
+		background: linear-gradient(135deg, #6a11cb, #2575fc);
+		margin: 0;
+		padding: 100px 20px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	#game-container {
+		display: flex;
+		flex-direction: column;
+	}
+
+	#input-container {
+		max-width: 500px;
+	}
+
+	input[type="text"] {
+		width: 30px;
+		height: 30px;
+		font-size: 24px;
+		text-align: center;
+		margin: 5px;
+		border: none;
+		border-radius: 10px;
+		outline: none;
+		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+	}
+</style>
+
+<body>
+
+	<div id="game-container">
+		<div id="input-container">
+			<input type="text" maxlength="1" class="letter-input" />
+			<input type="text" maxlength="1" class="letter-input" />
+			<input type="text" maxlength="1" class="letter-input" /><br>
+			<input type="text" maxlength="1" class="letter-input" /><br>
+			<input type="text" maxlength="1" class="letter-input" /><br>
+			<input type="text" maxlength="1" class="letter-input" />
+			<input type="text" maxlength="1" class="letter-input" /><br>
+			<input type="text" maxlength="1" class="letter-input" /><br>
+			<input type="text" maxlength="1" class="letter-input" /><br>
+			<input type="text" maxlength="1" class="letter-input" /><br>
+			<input type="text" maxlength="1" class="letter-input" />
+			<input type="text" maxlength="1" class="letter-input" />
+		</div>
+	</div>
+
+	<script>
+		const correctSequence = "bbbcdffiltss";
+
+		const letterInputs = document.querySelectorAll('.letter-input');
+		letterInputs.forEach((input, index) => {
+			input.addEventListener('input', function() {
+				if (this.value.length === 1) {
+					if (index < letterInputs.length - 1) {
+						letterInputs[index + 1].focus();
+					} else {
+						checkInput();
+					}
+				} else {
+					this.focus();
+				}
+			});
+		});
+
+		function checkInput() {
+			let userInput = '';
+			letterInputs.forEach(input => userInput += input.value.trim().toLowerCase());
+
+			if (userInput.length === 12 && userInput === correctSequence.toLowerCase()) {}
+		}
+	</script>
+</body></html>
