@@ -4,11 +4,11 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Types</title>
+	<title>?!</title>
 	<style>
 		body {
 			font-family: 'Arial', sans-serif;
-		background-color: #121619;
+			background-color: #121619;
 			margin: 0;
 			display: flex;
 			flex-direction: column;
@@ -20,7 +20,10 @@
 		.circles {
 			display: flex;
 			flex-wrap: wrap;
-			gap: 10px;
+			flex-direction: column;
+			align-content: center;
+			align-items: center;
+			gap: 5px;
 			justify-content: center;
 			margin-bottom: 20px;
 		}
@@ -28,7 +31,7 @@
 		.circle {
 			width: 30px;
 			height: 30px;
-			border-radius: 50%;
+			border-radius: 10px;
 			background-color: #fff;
 			display: flex;
 			justify-content: center;
@@ -37,6 +40,10 @@
 			font-weight: bold;
 			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 			transition: background-color 0.3s ease, transform 0.3s ease;
+		}
+
+		.two {
+			width: 60px;
 		}
 
 		.circle.correct {
@@ -56,10 +63,6 @@
 			outline: none;
 			transition: border-color 0.3s ease;
 		}
-
-		input:focus {
-			border-color: #6a11cb;
-		}
 	</style>
 </head>
 
@@ -69,15 +72,15 @@
 		<div class="circle"></div>
 		<div class="circle"></div>
 		<div class="circle"></div>
-		<div class="circle"></div>
-		<div class="circle"></div>
+		<div class="circle two"></div>
+		<div class="circle two"></div>
 	</div>
 
 	<input type="text" id="input" placeholder="">
 
 	<script>
 		const correctAnswers = [
-			"&", "^", "|", "~", ">>", "<<", 
+			"&", "^", "|", "~", ">>", "<<",
 		];
 
 		const circles = document.querySelectorAll('.circle');
@@ -93,13 +96,11 @@
 				input.value = '';
 
 				if (currentIndex === correctAnswers.length) {
-				setTimeout(() => {
-					window.location.href = "6.html"
-				}, 2000)
+					setTimeout(() => {
+						window.location.href = "6.html"
+					}, 2000)
 				}
 			}
 		});
 	</script>
-</body>
-
-</html>
+</body></html>

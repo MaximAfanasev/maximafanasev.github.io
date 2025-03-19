@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Types</title>
+	<title>?!</title>
 	<link rel="icon" type="image/x-icon" href="/img/logo.png">
 	<style>
 		body {
@@ -13,7 +13,7 @@
 			margin: 0;
 			padding: 100px 20px;
 			display: flex;
-			flex-direction: column;
+			gap: 20px;
 			justify-content: center;
 			align-items: center;
 		}
@@ -27,7 +27,9 @@
 			gap: 5px;
 			border: 2px solid transparent;
 			border-radius: 20px;
-			transition: border-color 0.3s ease;padding: 20px;
+			transition: border-color 0.3s ease;
+			padding: 20px;
+			margin-bottom: 20px;
 		}
 
 		.container.completed {
@@ -45,28 +47,67 @@
 			outline: none;
 			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 		}
+
+		.hidden {
+			display: none;
+		}
 	</style>
 </head>
 
 <body>
-	<div>
+	<!-- Первая головоломка -->
+	<div id="puzzle1">
 		<div class="container">
 			<div>
 				<input type="text" maxlength="1" class="letter-input" />
 				<input type="text" maxlength="1" class="letter-input" />
 				<input type="text" maxlength="1" class="letter-input" />
 			</div>
-
 			<input type="text" maxlength="1" class="letter-input" />
-
 			<input type="text" maxlength="1" class="letter-input" />
-
 			<div>
 				<input type="text" maxlength="1" class="letter-input" />
 				<input type="text" maxlength="1" class="letter-input" />
 			</div>
-
 			<input type="text" maxlength="1" class="letter-input" />
+			<input type="text" maxlength="1" class="letter-input" />
+			<input type="text" maxlength="1" class="letter-input" />
+			<div>
+				<input type="text" maxlength="1" class="letter-input" />
+				<input type="text" maxlength="1" class="letter-input" />
+			</div>
+			<div>
+				<input type="text" maxlength="1" class="letter-input" />
+				<input type="text" maxlength="1" class="letter-input" />
+				<input type="text" maxlength="1" class="letter-input" />
+				<input type="text" maxlength="1" class="letter-input" />
+			</div>
+		</div>
+	</div>
+
+	<!-- Вторая головоломка (скрыта до завершения первой) -->
+	<div id="puzzle2" class="hidden">
+		<div class="container">
+			<div>
+				<input type="text" maxlength="1" class="letter-input" />
+				<input type="text" maxlength="1" class="letter-input" />
+			</div>
+			<input type="text" maxlength="1" class="letter-input" />
+			<div>
+				<input type="text" maxlength="1" class="letter-input" />
+				<input type="text" maxlength="1" class="letter-input" />
+			</div>
+			<input type="text" maxlength="1" class="letter-input" />
+			<div>
+				<input type="text" maxlength="1" class="letter-input" />
+				<input type="text" maxlength="1" class="letter-input" />
+				<input type="text" maxlength="1" class="letter-input" />
+			</div>
+			<div>
+				<input type="text" maxlength="1" class="letter-input" />
+				<input type="text" maxlength="1" class="letter-input" />
+				<input type="text" maxlength="1" class="letter-input" />
+			</div>
 			<input type="text" maxlength="1" class="letter-input" />
 			<input type="text" maxlength="1" class="letter-input" />
 			<div>
@@ -77,18 +118,18 @@
 	</div>
 
 	<script>
-		const correctSequence = "bbbcdffiltss";
+		// Первая головоломка
+		const correctSequence1 = "bbbcdffiltss2591";
+		const letterInputs1 = document.querySelectorAll('#puzzle1 .letter-input');
+		const inputContainer1 = document.querySelector('#puzzle1 .container');
 
-		const letterInputs = document.querySelectorAll('.letter-input');
-		const inputContainer = document.querySelector('.container');
-
-		letterInputs.forEach((input, index) => {
-			input.addEventListener('input', function() {
+		letterInputs1.forEach((input, index) => {
+			input.addEventListener('input', function () {
 				if (this.value.length === 1) {
-					if (index < letterInputs.length - 1) {
-						letterInputs[index + 1].focus();
+					if (index < letterInputs1.length - 1) {
+						letterInputs1[index + 1].focus();
 					} else {
-						checkInput();
+						checkInput1();
 					}
 				} else {
 					this.focus();
@@ -96,18 +137,53 @@
 			});
 		});
 
-		function checkInput() {
+		function checkInput1() {
 			let userInput = '';
-			letterInputs.forEach(input => userInput += input.value.trim().toLowerCase());
+			letterInputs1.forEach(input => userInput += input.value.trim().toLowerCase());
 
-			if (userInput === correctSequence.toLowerCase()) {
-				inputContainer.classList.add('completed');
+			if (userInput === correctSequence1.toLowerCase()) {
+				inputContainer1.classList.add('completed');
 				setTimeout(() => {
-					window.location.href = "2.html"
-				}, 2000)
+					document.getElementById('puzzle2').classList.remove('hidden');
+				}, 2000);
 			} else {
-				inputContainer.classList.remove('completed');
+				inputContainer1.classList.remove('completed');
+			}
+		}
+
+		// Вторая головоломка
+		const correctSequence2 = "aabccdfffiiioprr";
+		const letterInputs2 = document.querySelectorAll('#puzzle2 .letter-input');
+		const inputContainer2 = document.querySelector('#puzzle2 .container');
+
+		letterInputs2.forEach((input, index) => {
+			input.addEventListener('input', function () {
+				if (this.value.length === 1) {
+					if (index < letterInputs2.length - 1) {
+						letterInputs2[index + 1].focus();
+					} else {
+						checkInput2();
+					}
+				} else {
+					this.focus();
+				}
+			});
+		});
+
+		function checkInput2() {
+			let userInput = '';
+			letterInputs2.forEach(input => userInput += input.value.trim().toLowerCase());
+
+			if (userInput === correctSequence2.toLowerCase()) {
+				inputContainer2.classList.add('completed');
+				setTimeout(() => {
+					window.location.href = "3.html"
+				}, 2000);
+			} else {
+				inputContainer2.classList.remove('completed');
 			}
 		}
 	</script>
-</body></html>
+</body>
+
+</html>
