@@ -2,103 +2,112 @@
 <html lang="ru">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Types</title>
-    <link rel="icon" type="image/x-icon" href="/img/logo.png">
-    <link rel="stylesheet" href="style.css">
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #121619;
-            margin: 0;
-            padding: 100px 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Types</title>
+	<link rel="icon" type="image/x-icon" href="/img/logo.png">
+	<style>
+		body {
+			font-family: 'Arial', sans-serif;
+			background-color: #121619;
+			margin: 0;
+			padding: 100px 20px;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
 
-        #game-container {
-            display: flex;
-            flex-direction: column;
-        }
+		.container {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-content: center;
+			align-items: center;
+			gap: 5px;
+			border: 2px solid transparent;
+			border-radius: 20px;
+			transition: border-color 0.3s ease;padding: 20px;
+		}
 
-        #input-container {
-            max-width: 500px;
-            padding: 20px;
-            border: 2px solid transparent;
-            border-radius: 20px;
-            transition: border-color 0.3s ease;
-        }
+		.container.completed {
+			border-color: gold;
+		}
 
-        #input-container.completed {
-            border-color: gold;
-        }
-
-        input[type="text"] {
-            width: 30px;
-            height: 30px;
-            font-size: 24px;
-            text-align: center;
-            margin: 5px;
-            border: none;
-            border-radius: 10px;
-            outline: none;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-        }
-    </style>
+		input[type="text"] {
+			width: 30px;
+			height: 30px;
+			font-size: 24px;
+			text-align: center;
+			margin: 0;
+			border: none;
+			border-radius: 10px;
+			outline: none;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+		}
+	</style>
 </head>
 
 <body>
-    <div id="game-container">
-        <div id="input-container">
-            <input type="text" maxlength="1" class="letter-input" />
-            <input type="text" maxlength="1" class="letter-input" />
-            <input type="text" maxlength="1" class="letter-input" /><br>
-            <input type="text" maxlength="1" class="letter-input" /><br>
-            <input type="text" maxlength="1" class="letter-input" /><br>
-            <input type="text" maxlength="1" class="letter-input" />
-            <input type="text" maxlength="1" class="letter-input" /><br>
-            <input type="text" maxlength="1" class="letter-input" /><br>
-            <input type="text" maxlength="1" class="letter-input" /><br>
-            <input type="text" maxlength="1" class="letter-input" /><br>
-            <input type="text" maxlength="1" class="letter-input" />
-            <input type="text" maxlength="1" class="letter-input" />
-        </div>
-    </div>
+	<div>
+		<div class="container">
+			<div>
+				<input type="text" maxlength="1" class="letter-input" />
+				<input type="text" maxlength="1" class="letter-input" />
+				<input type="text" maxlength="1" class="letter-input" />
+			</div>
 
-    <script>
-        const correctSequence = "bbbcdffiltss";
+			<input type="text" maxlength="1" class="letter-input" />
 
-        const letterInputs = document.querySelectorAll('.letter-input');
-        const inputContainer = document.getElementById('input-container');
+			<input type="text" maxlength="1" class="letter-input" />
 
-        letterInputs.forEach((input, index) => {
-            input.addEventListener('input', function () {
-                if (this.value.length === 1) {
-                    if (index < letterInputs.length - 1) {
-                        letterInputs[index + 1].focus(); // Переход к следующему инпуту
-                    } else {
-                        checkInput(); // Проверка ввода, если заполнен последний инпут
-                    }
-                } else {
-                    this.focus(); // Остаемся в текущем инпуте, если символ удален
-                }
-            });
-        });
+			<div>
+				<input type="text" maxlength="1" class="letter-input" />
+				<input type="text" maxlength="1" class="letter-input" />
+			</div>
 
-        function checkInput() {
-            let userInput = '';
-            letterInputs.forEach(input => userInput += input.value.trim().toLowerCase());
+			<input type="text" maxlength="1" class="letter-input" />
+			<input type="text" maxlength="1" class="letter-input" />
+			<input type="text" maxlength="1" class="letter-input" />
+			<div>
+				<input type="text" maxlength="1" class="letter-input" />
+				<input type="text" maxlength="1" class="letter-input" />
+			</div>
+		</div>
+	</div>
 
-            if (userInput === correctSequence.toLowerCase()) {
-                inputContainer.classList.add('completed'); // Добавляем золотую рамку
-            } else {
-                inputContainer.classList.remove('completed'); // Убираем рамку, если ввод неверный
-            }
-        }
-    </script>
-</body>
+	<script>
+		const correctSequence = "bbbcdffiltss";
 
-</html>
+		const letterInputs = document.querySelectorAll('.letter-input');
+		const inputContainer = document.querySelector('.container');
+
+		letterInputs.forEach((input, index) => {
+			input.addEventListener('input', function() {
+				if (this.value.length === 1) {
+					if (index < letterInputs.length - 1) {
+						letterInputs[index + 1].focus();
+					} else {
+						checkInput();
+					}
+				} else {
+					this.focus();
+				}
+			});
+		});
+
+		function checkInput() {
+			let userInput = '';
+			letterInputs.forEach(input => userInput += input.value.trim().toLowerCase());
+
+			if (userInput === correctSequence.toLowerCase()) {
+				inputContainer.classList.add('completed');
+				setTimeout(() => {
+					window.location.href = "2.html"
+				}, 2000)
+			} else {
+				inputContainer.classList.remove('completed');
+			}
+		}
+	</script>
+</body></html>
