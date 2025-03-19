@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Игры в клеточки</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f0f0f0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			margin: 0;
+			gap: 20px;
+			background: linear-gradient(135deg, #6a11cb, #2575fc);
+		}
+
+		.game {
+			text-align: center;
+			padding: 10px;
+			border: 2px solid transparent;
+			transition: border-color 0.3s ease;
+		}
+
+		.game.completed {
+			border-color: gold;
+			border-radius: 20px;
+		}
+
+		.grid {
+			display: grid;
+			gap: 4px;
+			border-radius: 20px;
+		}
+
+		.cell {
+			width: 30px;
+			height: 30px;
+			background-color: #ccc;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-size: 16px;
+			cursor: pointer;
+			user-select: none;
+			transition: background-color 0.3s ease;
+			border-radius: 10px;
+		}
+
+		.cell.correct {
+			background-color: #4caf50;
+		}
+
+		.cell.incorrect {
+			background-color: #f44336;
+		}
+
+		.cell.disabled {
+			pointer-events: none;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="game" id="game1">
+		<div class="grid" id="grid1"></div>
+	</div>
+
+	<div class="game" id="game2">
+		<div class="grid" id="grid2"></div>
+	</div>
+
+	<div class="game" id="game3">
+		<div class="grid" id="grid3"></div>
+	</div>
+
+	<script>
+		const correctCells1 = [1, 2, 3, 5, 8, 10, 11, 14, 17, 20, 22, 23];
+
+		const correctCells2 = [1, 2, 5, 7, 8, 11, 13, 14, 15, 16, 17, 18, 20, 23, 25, 26];
+		
+		const correctCells3 = [2, 5, 8, 11, 14, 17, 20];
+
+		const grid1 = document.getElementById('grid1');
+		grid1.style.gridTemplateColumns = 'repeat(3, 30px)';
+		grid1.style.gridTemplateRows = 'repeat(8, 30px)';
+		for (let i = 1; i <= 24; i++) {
+			const cell = document.createElement('div');
+			cell.classList.add('cell');
+			cell.addEventListener('click', () => handleCellClick(cell, i, correctCells1, 'game1'));
+			grid1.appendChild(cell);
+		}
+
+		const grid2 = document.getElementById('grid2');
+		grid2.style.gridTemplateColumns = 'repeat(3, 30px)';
+		grid2.style.gridTemplateRows = 'repeat(9, 30px)';
+		for (let i = 1; i <= 27; i++) {
+			const cell = document.createElement('div');
+			cell.classList.add('cell');
+			cell.addEventListener('click', () => handleCellClick(cell, i, correctCells2, 'game2'));
+			grid2.appendChild(cell);
+		}
+
+		const grid3 = document.getElementById('grid3');
+		grid3.style.gridTemplateColumns = 'repeat(3, 30px)';
+		grid3.style.gridTemplateRows = 'repeat(7, 30px)';
+		for (let i = 1; i <= 21; i++) {
+			const cell = document.createElement('div');
+			cell.classList.add('cell');
+			cell.addEventListener('click', () => handleCellClick(cell, i, correctCells3, 'game3'));
+			grid3.appendChild(cell);
+		}
+
+		// Обработка клика по клетке
+		function handleCellClick(cell, number, correctCells, gameId) {
+			if (correctCells.includes(number)) {
+				cell.classList.add('correct'); // Зеленый, если правильно
+			} else {
+				cell.classList.add('incorrect'); // Красный, если неправильно
+			}
+
+			// Проверяем, все ли правильные клетки нажаты
+			const game = document.getElementById(gameId);
+			const allCorrectCellsClicked = correctCells.every(cellNumber => {
+				const cellElement = game.querySelector(`.cell:nth-child(${cellNumber})`);
+				return cellElement.classList.contains('correct');
+			});
+
+			// Если все правильные клетки нажаты
+			if (allCorrectCellsClicked) {
+				game.classList.add('completed'); // Золотая рамка
+				const cells = game.querySelectorAll('.cell');
+				cells.forEach(cell => {
+					cell.classList.add('disabled'); // Отключаем клики
+				});
+			}
+		}
+	</script>
+</body></html>
