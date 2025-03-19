@@ -55,10 +55,12 @@
 			user-select: none;
 			transition: background-color 0.3s ease;
 			border-radius: 10px;
+			color: transparent; /* Скрываем текст */
 		}
 
 		.cell.correct {
 			background-color: #4caf50;
+			color: #000; /* Показываем текст после нажатия */
 		}
 
 		.cell.incorrect {
@@ -128,7 +130,7 @@
 	<script>
 		const correctCells1 = [1, 2, 3, 5, 8, 10, 11, 14, 17, 20, 22, 23];
 		const correctCells2 = [1, 2, 5, 7, 8, 11, 13, 14, 15, 16, 17, 18, 20, 23, 25, 26];
-		const correctCells3 = [2, 5, 8, 11, 14, 17, 20];
+		const correctCells3 = [2, 5, 8, 11, 13, 14, 17, 19, 20];
 		const correctCells4 = [1, 2, 3, 4, 5, 7, 9, 10, 11, 12];
 		const correctCells5 = [1, 3, 5, 7, 9, 10, 11, 12];
 		const correctCells6 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
@@ -138,43 +140,41 @@
 				grid: 'grid1',
 				rows: 8,
 				cols: 3,
-				correctCells: correctCells1
+				correctCells: correctCells1,
+				letters: "bbbcdffiltss"
 			},
 			{
 				id: 'game2',
 				grid: 'grid2',
 				rows: 9,
 				cols: 3,
-				correctCells: correctCells2
+				correctCells: correctCells2,
+				letters: "aabccdfffiiioprr"
 			},
 			{
 				id: 'game3',
 				grid: 'grid3',
 				rows: 7,
 				cols: 3,
-				correctCells: correctCells3
+				correctCells: correctCells3,
+				letters: "+-*///%**"
 			},
 			{
 				id: 'game4',
 				grid: 'grid4',
 				rows: 6,
 				cols: 2,
-				correctCells: correctCells4
+				correctCells: correctCells4,
+				letters: "==!=><>=<="
 			},
 			{
 				id: 'game5',
 				grid: 'grid5',
 				rows: 6,
 				cols: 2,
-				correctCells: correctCells5
-			},
-			{
-				id: 'game6',
-				grid: 'grid6',
-				rows: 7,
-				cols: 2,
-				correctCells: correctCells6
-			},
+				correctCells: correctCells5,
+				letters: "&^|~>><<"
+			}
 		];
 
 		let completedGames = 0;
@@ -187,6 +187,11 @@
 				const cell = document.createElement('div');
 				cell.classList.add('cell');
 				cell.addEventListener('click', () => handleCellClick(cell, i, game.correctCells, game.id));
+				// Если игра имеет буквы/символы и ячейка правильная, добавляем их
+				if (game.letters && game.correctCells.includes(i)) {
+					const letterIndex = game.correctCells.indexOf(i);
+					cell.textContent = game.letters[letterIndex];
+				}
 				grid.appendChild(cell);
 			}
 		});
