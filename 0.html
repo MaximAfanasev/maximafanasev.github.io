@@ -76,12 +76,31 @@
 		<div class="grid" id="grid3"></div>
 	</div>
 
+	<div class="game" id="game4">
+		<div class="grid" id="grid4"></div>
+	</div>
+
+	<div class="game" id="game5">
+		<div class="grid" id="grid5"></div>
+	</div>
+
+	<div class="game" id="game6">
+		<div class="grid" id="grid6"></div>
+	</div>
+
 	<script>
 		const correctCells1 = [1, 2, 3, 5, 8, 10, 11, 14, 17, 20, 22, 23];
 
 		const correctCells2 = [1, 2, 5, 7, 8, 11, 13, 14, 15, 16, 17, 18, 20, 23, 25, 26];
 		
 		const correctCells3 = [2, 5, 8, 11, 14, 17, 20];
+		
+		const correctCells4 = [1, 2, 3, 4, 5, 7, 9, 10, 11, 12];
+
+		
+		const correctCells5 = [1, 3, 5, 7, 9, 10, 11, 12];
+		
+		const correctCells6 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
 
 		const grid1 = document.getElementById('grid1');
 		grid1.style.gridTemplateColumns = 'repeat(3, 30px)';
@@ -111,6 +130,36 @@
 			cell.classList.add('cell');
 			cell.addEventListener('click', () => handleCellClick(cell, i, correctCells3, 'game3'));
 			grid3.appendChild(cell);
+		}
+
+		const grid4 = document.getElementById('grid4');
+		grid4.style.gridTemplateColumns = 'repeat(2, 30px)';
+		grid4.style.gridTemplateRows = 'repeat(6, 30px)';
+		for (let i = 1; i <= 12; i++) {
+			const cell = document.createElement('div');
+			cell.classList.add('cell');
+			cell.addEventListener('click', () => handleCellClick(cell, i, correctCells4, 'game4'));
+			grid4.appendChild(cell);
+		}
+
+		const grid5 = document.getElementById('grid5');
+		grid5.style.gridTemplateColumns = 'repeat(2, 30px)';
+		grid5.style.gridTemplateRows = 'repeat(6, 30px)';
+		for (let i = 1; i <= 12; i++) {
+			const cell = document.createElement('div');
+			cell.classList.add('cell');
+			cell.addEventListener('click', () => handleCellClick(cell, i, correctCells5, 'game5'));
+			grid5.appendChild(cell);
+		}
+
+		const grid6 = document.getElementById('grid6');
+		grid6.style.gridTemplateColumns = 'repeat(2, 30px)';
+		grid6.style.gridTemplateRows = 'repeat(7, 30px)';
+		for (let i = 1; i <= 14; i++) {
+			const cell = document.createElement('div');
+			cell.classList.add('cell');
+			cell.addEventListener('click', () => handleCellClick(cell, i, correctCells6, 'game5'));
+			grid6.appendChild(cell);
 		}
 
 		// Обработка клика по клетке
