@@ -81,11 +81,6 @@
 			pointer-events: none;
 		}
 
-		.letter-grid {
-			display: none;
-			margin-top: 20px;
-		}
-
 		.letter-cell {
 			width: 30px;
 			height: 30px;
@@ -116,18 +111,19 @@
 		</div>
 	
 	<pre>
-bool
+bool True
 bytearray
-bytes
-complex
-dict
-float
+bytes b = b'some bytes'
+b[0]  # 115
+complex 3j
+dict {}
+float 1.0
 frozenset
-int
-list
-tuple
+int 4
+list []
+tuple ()
 set
-str
+str ''
 	</pre>
 </div>
 	<div class="wrap">
@@ -236,9 +232,6 @@ print(5 >> 1)  # 2
 </div>
 
 	<div class="wrap">
-	<div class="letter-grid" id="letterGrid">
-		<div class="grid" id="letterCells"></div>
-	</div>
 	
 	<pre>
 print(bool(True))       # True
@@ -305,7 +298,7 @@ print(bool(""))         # False
 				cols: 2,
 				correctCells: correctCells5,
 				letters: "&^|~>><<"
-			}
+			},
 		];
 
 		let completedGames = 0;
@@ -347,9 +340,6 @@ print(bool(""))         # False
 				});
 
 				completedGames++;
-				if (completedGames === games.length) {
-					window.location.href = '1.html'
-				}
 			}
 		}
 	</script>
