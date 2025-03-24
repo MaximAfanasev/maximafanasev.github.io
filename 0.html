@@ -14,6 +14,7 @@
 			align-items: center;
 			min-height: 100vh;
 			margin: 0;
+			padding: 20px;
 			gap: 20px;
 			background-color: #121619;
 		}
@@ -88,10 +89,11 @@
 			border-radius: 5px;
 			text-transform: uppercase;
 		}
-
-		.letter-cell:focus {
-			outline: none;
-			border-color: #6a11cb;
+		
+		pre {
+			background: #fff;
+			padding: 20px;
+			border-radius: 20px;
 		}
 	</style>
 </head>
@@ -101,22 +103,110 @@
 		<div class="game" id="game1">
 			<div class="grid" id="grid1"></div>
 		</div>
+	
+	<pre>
+bool
+bytearray
+bytes
+complex
+dict
+float
+frozenset
+int
+list
+tuple
+set
+str
+	</pre>
 
 		<div class="game" id="game2">
 			<div class="grid" id="grid2"></div>
 		</div>
+		
+		
+	<pre>
+print(abs(-5))           # 5
+print(chr(65))           # A
+print(divmod(10, 3))     # (3, 1)
+print(float(1))          # 1.0
+print(float(True))       # 1.0
+
+print(int(True))         # 1
+print(int(False))        # 0
+print(int(98.6))         # 98
+print(int('99'))         # 99
+print(int('10', 2))      # 2
+
+print(ord('A'))          # 65
+print(pow(2, 3))         # 8
+print(round(3.14159))    #3
+	</pre>
+		
+	<pre>
+print(2.5.as_integer_ratio()) #(5, 2)
+
+a = 10
+print(a.bit_length())    # 4
+
+b = 3 + 4j
+print(b)                 # 3 + 4j
+
+print(b.conjugate())     # 3 - 4j
+
+print(float.fromhex('0x1.ffffp10')) # 2047.984375
+
+c = 3 + 4j
+print(c.imag)            # 4.0
+
+d = 5.0
+print(d.is_integer())    # True
+
+print(c.real)            # 3.0
+	</pre>
 
 		<div class="game" id="game3">
 			<div class="grid" id="grid3"></div>
 		</div>
+		
+		<pre>
+print(1+1)     # 2
+print(+123)    # 123
+print(1-1)     # 0
+print(1*2)     # 2
+print(7/2)     # 3.5
+print(7//2)    # 3
+print(9//5)    # 1
+print(7%3)     # 1
+print(9%5)     # 4
+print(2**3)    # 8
+		</pre>
 
 		<div class="game" id="game4">
 			<div class="grid" id="grid4"></div>
 		</div>
+		
+		<pre>
+print(7==5)    # False
+print(5==5)    # True
+print(5!=3)    # True
+print(5>3)     # True
+print(5<3)     # False
+print(5>=5)    # True
+print(5<=3)    # False
+		</pre>
 
 		<div class="game" id="game5">
 			<div class="grid" id="grid5"></div>
 		</div>
+		
+		<pre>
+print(5&3)     # 1 (101 & 011 = 001)
+print(5|3)     # 7 (101 | 011 = 111)
+print(5^3)     # 6 (101 ^ 011 = 110)
+print(~5)      # -6
+print(5 << 1)  # 10
+print(5 >> 1)  # 2
+		</pre>
 
 		<div class="game" id="game6">
 			<div class="grid" id="grid6"></div>
@@ -126,11 +216,29 @@
 	<div class="letter-grid" id="letterGrid">
 		<div class="grid" id="letterCells"></div>
 	</div>
+	
+	<pre>
+print(bool(True))       # True
+print(bool(1))          # True
+print(bool(45))         # True
+print(bool(-45))        # True
+print(bool([1, 2, 3]))  # True
+print(bool("Hello"))    # True
+print(bool({1: "one"})) # True
+
+print(bool(False))      # False
+print(bool(None))       # False
+print(bool(0))          # False
+print(bool(0.0))        # False
+print(bool({}))         # False
+print(bool([]))         # False
+print(bool(""))         # False
+	</pre>
 
 	<script>
 		const correctCells1 = [1, 2, 3, 5, 8, 10, 11, 14, 17, 20, 22, 23];
 		const correctCells2 = [1, 2, 5, 7, 8, 11, 13, 14, 15, 16, 17, 18, 20, 23, 25, 26];
-		const correctCells3 = [2, 5, 8, 11, 13, 14, 17, 19, 20];
+		const correctCells3 = [1, 3, 5, 7, 9, 10, 11, 13, 14];
 		const correctCells4 = [1, 2, 3, 4, 5, 7, 9, 10, 11, 12];
 		const correctCells5 = [1, 3, 5, 7, 9, 10, 11, 12];
 		const correctCells6 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
@@ -155,7 +263,7 @@
 				id: 'game3',
 				grid: 'grid3',
 				rows: 7,
-				cols: 3,
+				cols: 2,
 				correctCells: correctCells3,
 				letters: "+-*///%**"
 			},
@@ -187,7 +295,6 @@
 				const cell = document.createElement('div');
 				cell.classList.add('cell');
 				cell.addEventListener('click', () => handleCellClick(cell, i, game.correctCells, game.id));
-				// Если игра имеет буквы/символы и ячейка правильная, добавляем их
 				if (game.letters && game.correctCells.includes(i)) {
 					const letterIndex = game.correctCells.indexOf(i);
 					cell.textContent = game.letters[letterIndex];
