@@ -21,6 +21,9 @@
 
 		.games-container {
 			display: flex;
+			flex-direction: column;
+			align-content: center;
+			align-items: center;
 			flex-wrap: wrap;
 			gap: 20px;
 			justify-content: center;
@@ -36,6 +39,12 @@
 		.game.completed {
 			border-color: gold;
 			border-radius: 20px;
+		}
+		
+		.wrap {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
 		}
 
 		.grid {
@@ -100,6 +109,8 @@
 
 <body>
 	<div class="games-container">
+	
+	<div class="wrap">
 		<div class="game" id="game1">
 			<div class="grid" id="grid1"></div>
 		</div>
@@ -118,6 +129,8 @@ tuple
 set
 str
 	</pre>
+</div>
+	<div class="wrap">
 
 		<div class="game" id="game2">
 			<div class="grid" id="grid2"></div>
@@ -163,7 +176,9 @@ print(d.is_integer())    # True
 
 print(c.real)            # 3.0
 	</pre>
+</div>
 
+	<div class="wrap">
 		<div class="game" id="game3">
 			<div class="grid" id="grid3"></div>
 		</div>
@@ -180,7 +195,9 @@ print(7%3)     # 1
 print(9%5)     # 4
 print(2**3)    # 8
 		</pre>
+</div>
 
+	<div class="wrap">
 		<div class="game" id="game4">
 			<div class="grid" id="grid4"></div>
 		</div>
@@ -194,7 +211,9 @@ print(5<3)     # False
 print(5>=5)    # True
 print(5<=3)    # False
 		</pre>
+</div>
 
+	<div class="wrap">
 		<div class="game" id="game5">
 			<div class="grid" id="grid5"></div>
 		</div>
@@ -207,12 +226,16 @@ print(~5)      # -6
 print(5 << 1)  # 10
 print(5 >> 1)  # 2
 		</pre>
+</div>
 
+	<div class="wrap">
 		<div class="game" id="game6">
 			<div class="grid" id="grid6"></div>
 		</div>
 	</div>
+</div>
 
+	<div class="wrap">
 	<div class="letter-grid" id="letterGrid">
 		<div class="grid" id="letterCells"></div>
 	</div>
@@ -234,7 +257,7 @@ print(bool({}))         # False
 print(bool([]))         # False
 print(bool(""))         # False
 	</pre>
-
+</div>
 	<script>
 		const correctCells1 = [1, 2, 3, 5, 8, 10, 11, 14, 17, 20, 22, 23];
 		const correctCells2 = [1, 2, 5, 7, 8, 11, 13, 14, 15, 16, 17, 18, 20, 23, 25, 26];
