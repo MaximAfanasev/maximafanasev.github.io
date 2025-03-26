@@ -1,0 +1,83 @@
+a2 = {}
+print(a2)              						  # {}
+
+b1 = dict()
+print(b1)               						# {}
+
+print(dict([('a', 1), ('b', 2)]))   # {'a': 1, 'b': 2}
+print(dict(a=1, b=2))               # {'a': 1, 'b': 2}
+
+d = {'a': 1, 'b': 2}
+print(d['a'])         						  # 1
+print(d.get('b'))     						  # 2
+print(d.get('c', 0))  						  # 0 (значение по умолчанию)
+
+print({'a': 1} | {'b': 2})          # {'a': 1, 'b': 2} 
+print({**{'a': 1}, **{'b': 2}})     # {'a': 1, 'b': 2}
+
+print('a' in {'a': 1}) 							# True
+
+for k, v in {'a': 1, 'b': 2}.items():
+    print(k, v)        							# a 1, b 2
+
+m = {x: x*2 for x in range(3)}
+print(m)              							# {0: 0, 1: 2, 2: 4}
+
+n = {'a': 1, 'b': 2, 'c': 3}
+filtered = {k: v for k, v in n.items() if v > 1}
+print(filtered)       							# {'b': 2, 'c': 3}
+
+
+
+
+
+
+
+
+#c c g i k p s v u 
+
+# Методы словарей
+a = {'a': 1}
+a.clear()
+print(a)             				# {}
+
+b = {'a': 1, 'b': 2}
+c = b.copy()
+print(c)              			# {'a': 1, 'b': 2}
+
+e = {'a': 1, 'b': 2}
+print(e.get('a'))     			# 1
+print(e.get('c'))     			# None
+print(e.get('c', 0))  			# 0
+
+f = {'a': 1, 'b': 2}
+print(f.items())      			# dict_items([('a', 1), ('b', 2)])
+
+g = {'a': 1, 'b': 2}
+print(g.keys())       			# dict_keys(['a', 'b'])
+
+h = {'a': 1, 'b': 2}
+print(h.pop('a'))     			# 1
+print(h)              			# {'b': 2}
+
+i = {'a': 1, 'b': 2}
+print(i.popitem())    			# ('b', 2) (Python 3.7+ удаляет последний)
+print(i)              			# {'a': 1}
+
+j = {'a': 1}
+j.setdefault('a', 2)  			# 1 (значение не изменилось)
+j.setdefault('b', 2)  			# 2 (добавлен новый ключ)
+print(j)              			# {'a': 1, 'b': 2}
+
+m = {'b': 2, 'a': 1, 'c': 3}
+print(sorted(m))               # ['a', 'b', 'c']
+print(sorted(m.items()))       # [('a', 1), ('b', 2), ('c', 3)]
+print(sorted(m.values()))      # [1, 2, 3]
+print(sorted(m, key=m.get))    # ['a', 'b', 'c'] (по значениям)
+
+l = {'a': 1, 'b': 2}
+print(l.values())     			# dict_values([1, 2])
+
+k = {'a': 1, 'b': 2}
+k.update({'c': 3})
+print(k)              			# {'a': 1, 'b': 2, 'c': 3}
