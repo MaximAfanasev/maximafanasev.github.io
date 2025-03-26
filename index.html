@@ -47,6 +47,7 @@
 		.game.completed {
 			border-color: gold;
 			border-radius: 20px;
+			padding: 60px;
 		}
 
 		.grid {
@@ -84,7 +85,7 @@
 		}
 
 		.gamelist {
-			display: non;
+			display: none;
 			color: #fff;
 			list-style: none;
 			text-align: left;
@@ -122,20 +123,93 @@
 			display: block;
 		}
 		
-		.a,.b,.c {
+		.a,.b,.c,
+		.e,
+.f,
+.h,
+.j,
+.l,
+.q,
+.w,
+.r,
+.y,
+.u
+		{
 			position: absolute;
 			color: #fff;
-			top: -20px;
-			transform: rotateZ(-90deg)
+			top: 30px;
 		}
 		.a {
+			left: 60px;
+			transform: rotateZ(-90deg)
 		}
 		.b {
-			left: 25px;
-			top: -35px;
+			left: 80px;
+			top: 20px;
+			transform: rotateZ(-90deg)
 		}
 		.c {
-			left: 75px;
+			left: 130px;
+			transform: rotateZ(-90deg)
+		}
+		.e,
+.f,
+.h,
+.j,
+.l,
+.q,
+.w,
+.r,
+.y,
+.u {
+			left: 120px;
+		}
+		.e{
+			left: 160px;
+			top: 100px;
+		}
+		.f{
+			left: 160px;
+			top: 135px;
+		}
+		.h{
+			
+			left: 160px;
+			top: 165px;
+		}
+		.j{
+			left: 160px;
+			top: 175px;
+		}
+		.l{
+			
+			left: 160px;
+			top: 205px;
+		}
+		.q{
+			
+			left: 160px;
+			top: 235px;
+		}
+		.w{
+			
+			left: 160px;
+			top: 275px;
+		}
+		.r{
+			
+			left: 160px;
+			top: 305px;
+		}
+		.y{
+			
+			left: 160px;
+			top: 335px;
+		}
+		.u {
+			
+			left: 160px;
+			top: 345px;
 		}
 	</style>
 </head>
@@ -146,26 +220,21 @@
 	<h2>Types</h2>
 	<div class="game game1" id="game1">
 		<div class="grid" id="grid1">
-			<div class="a">ool</div>
-			<div class="b">ytearray</div>
-			<div class="c">ytes</div>
-			
 		</div>
 		<ul class="gamelist game1list">
-			<li>&nbsp;</li>
-			<li>complex</li>
-			<li>dict</li>
-			<li>&nbsp;</li>
-			<li>float</li>
-			<li>frozenset</li>
-			<li>&nbsp;</li>
-			<li>generator</li>
-			<li>int</li>
-			<li>list</li>
-			<li>tuple</li>
-			<li>&nbsp;</li>
-			<li>set</li>
-			<li>str</li>
+			<li class="a">ool</li>
+			<li class="b">ytearray</li>
+			<li class="c">ytes</li>
+			<li class="e">omplex</li>
+			<li class="f">ict</li>
+			<li class="h">loat</li>
+			<li class="j">rozenset</li>
+			<li class="l">enerator</li>
+			<li class="q">nt</li>
+			<li class="w">ist</li>
+			<li class="r">uple</li>
+			<li class="y">et</li>
+			<li class="u">tr</li>
 		</ul>
 	</div>
 
