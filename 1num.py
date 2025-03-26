@@ -108,7 +108,6 @@ print(float.fromhex('0x1.ffffp10')) # 2047.984375
 c = 3 + 4j
 print(c.imag)            # 4.0
 
-
 print(c.real)            # 3.0
 
 
