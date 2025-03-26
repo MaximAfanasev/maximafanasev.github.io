@@ -6,6 +6,8 @@
 #вызвать код буквы
 #округлить число
 
+#a c d f i o p r
+
 print(abs(-5))           # 5
 print(chr(65))           # A
 print(divmod(10, 3))     # (3, 1)
@@ -21,6 +23,21 @@ print(int('10', 2))      # 2
 print(ord('A'))          # 65
 print(pow(2, 3))         # 8
 print(round(3.14159))    #3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 print(2.5.as_integer_ratio()) #(5, 2)
 

@@ -21,6 +21,8 @@
 
 		.games-container {
 			display: flex;
+			flex-direction: column;
+			align-items: center;
 			flex-wrap: wrap;
 			gap: 20px;
 			justify-content: center;
@@ -31,6 +33,8 @@
 			padding: 10px;
 			border: 2px solid transparent;
 			transition: border-color 0.3s ease;
+			display: flex;
+			gap: 20px
 		}
 
 		.game.completed {
@@ -72,9 +76,17 @@
 			pointer-events: none;
 		}
 
-		.letter-grid {
+		.game1list, 
+		.game2list {
 			display: none;
-			margin-top: 20px;
+			color: #fff;
+			list-style: none;
+			text-align: left;
+			padding: 0;
+		}
+		
+		ul li {
+			line-height: 1r;
 		}
 
 		.letter-cell {
@@ -90,21 +102,57 @@
 			text-transform: uppercase;
 		}
 
-		.letter-cell:focus {
-			outline: none;
-			border-color: #6a11cb;
+		h2 {
+			color: red;
+			margin: 0;
+		}
+
+		.letter-grid {
+			color: #fff;
+		}
+		
+		.game1.completed .game1list, 
+		.game2.completed .game2list {
+			display: block;
 		}
 	</style>
 </head>
 
 <body>
 	<div class="games-container">
-		<div class="game" id="game1">
+		<h2>Types</h2>
+		<div class="game game1" id="game1">
 			<div class="grid" id="grid1"></div>
+			<ul class="game1list">
+			<li>bool</li>
+			<li>bytearray</li>
+			<li>bytes</li>
+			<li>complex</li>
+			<li>dict</li>
+			<li>float</li>
+			<li>frozenset</li>
+			<li>int</li>
+			<li>list</li>
+			<li>tuple</li>
+			<li>set</li>
+			<li>str</li>
+			</ul>
 		</div>
 
-		<div class="game" id="game2">
+
+		<h2>N4mbers methods</h2>
+		<div class="game game2" id="game2">
 			<div class="grid" id="grid2"></div>
+			<ul class="game2list">
+			<li>abs</li>
+			<li>chr</li>
+			<li>divmod</li>
+			<li>float</li>
+			<li>int</li>
+			<li>ord</li>
+			<li>pow</li>
+			<li>round</li>
+			</ul>
 		</div>
 
 		<div class="game" id="game3">
@@ -124,14 +172,10 @@
 		</div>
 	</div>
 
-	<div class="letter-grid" id="letterGrid">
-		<div class="grid" id="letterCells"></div>
-	</div>
-	
 
 	<script>
 		const correctCells1 = [1, 2, 3, 5, 8, 10, 11, 14, 17, 20, 22, 23];
-		const correctCells2 = [1, 2, 5, 7, 8, 11, 13, 14, 15, 16, 17, 18, 20, 23, 25, 26];
+		const correctCells2 = [1, 2, 3, 4, 5, 6, 7, 8];
 		const correctCells3 = [2, 5, 8, 11, 13, 14, 17, 19, 20];
 		const correctCells4 = [1, 2, 3, 4, 5, 7, 9, 10, 11, 12];
 		const correctCells5 = [1, 3, 5, 7, 9, 10, 11, 12];
@@ -148,10 +192,10 @@
 			{
 				id: 'game2',
 				grid: 'grid2',
-				rows: 9,
-				cols: 3,
+				rows: 8,
+				cols: 1,
 				correctCells: correctCells2,
-				letters: "aabccdfffiiioprr"
+				letters: "acdfiopr"
 			},
 			{
 				id: 'game3',
@@ -219,9 +263,6 @@
 				});
 
 				completedGames++;
-				if (completedGames === games.length) {
-					window.location.href = '1.html'
-				}
 			}
 		}
 	</script>
