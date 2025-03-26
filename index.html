@@ -18,11 +18,10 @@
 			gap: 20px;
 			background-color: #121619;
 		}
-		
-		
 
 	h1, h2 {
 		margin: 0;
+			margin-bottom: 60px;
 		color: #cc2836;
 		text-shadow:
 			1px 1px 0 rgba(255, 255, 255, 0.5),
@@ -30,8 +29,13 @@
 			3px 3px 0 rgba(255, 255, 255, 0.1),
 			4px 4px 0 rgba(0, 0, 0, 0.4);
 	}
-
+		
+		h1 {
+			margin-bottom: 0;
+		}
+		
 		.game {
+			position: relative;
 			text-align: center;
 			padding: 10px;
 			border: 2px solid transparent;
@@ -117,6 +121,22 @@
 		.game5.completed .game5list {
 			display: block;
 		}
+		
+		.a,.b,.c {
+			position: absolute;
+			color: #fff;
+			top: -20px;
+			transform: rotateZ(-90deg)
+		}
+		.a {
+		}
+		.b {
+			left: 25px;
+			top: -35px;
+		}
+		.c {
+			left: 75px;
+		}
 	</style>
 </head>
 
@@ -125,11 +145,13 @@
 	
 	<h2>Types</h2>
 	<div class="game game1" id="game1">
-		<div class="grid" id="grid1"></div>
+		<div class="grid" id="grid1">
+			<div class="a">ool</div>
+			<div class="b">ytearray</div>
+			<div class="c">ytes</div>
+			
+		</div>
 		<ul class="gamelist game1list">
-			<li>bool</li>
-			<li>bytearray</li>
-			<li>bytes</li>
 			<li>&nbsp;</li>
 			<li>complex</li>
 			<li>dict</li>
