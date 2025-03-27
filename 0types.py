@@ -17,4 +17,3 @@ print(type((1,2)))               # tuple
 
 print(type(set[1,2]))            # set
 print(type('a'))                 # str
-
