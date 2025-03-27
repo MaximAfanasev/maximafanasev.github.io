@@ -59,12 +59,12 @@ print(h.pop('a'))     			# 1
 print(h)              			# {'b': 2}
 
 i = {'a': 1, 'b': 2}
-print(i.popitem())    			# ('b', 2) (Python 3.7+ удаляет последний)
+print(i.popitem())    			# ('b', 2)
 print(i)              			# {'a': 1}
 
 j = {'a': 1}
-j.setdefault('a', 2)  			# 1 (значение не изменилось)
-j.setdefault('b', 2)  			# 2 (добавлен новый ключ)
+j.setdefault('a', 2)  			# 1
+j.setdefault('b', 2)  			# 2
 print(j)              			# {'a': 1, 'b': 2}
 
 m = {'b': 2, 'a': 1, 'c': 3}

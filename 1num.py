@@ -10,9 +10,13 @@
 
 
 print(abs(-5))           # 5
+
 print(2.5.as_integer_ratio()) #(5, 2)
+
 print(chr(65))           # A
+
 print(divmod(10, 3))     # (3, 1)
+
 print(float(1))          # 1.0
 print(float(True))       # 1.0
 
@@ -26,7 +30,9 @@ d = 5.0
 print(d.is_integer())    # True
 
 print(ord('A'))          # 65
+
 print(pow(2, 3))         # 8
+
 print(round(3.14159))    #3
 
 

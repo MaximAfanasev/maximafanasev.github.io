@@ -7,6 +7,8 @@ dict         # {}
  
 float        # 1.0
 frozenset
+
+generate     # (x for x in range())
  
 int          # 4
 list         # []
