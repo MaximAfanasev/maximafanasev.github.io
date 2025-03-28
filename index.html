@@ -1,128 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Проверка ввода</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            background: #000;
-            color: #fff;
-        }
-        .input-field {
-            margin-bottom: 15px;
-        }
-        input, textarea {
-            width: 100%;
-            padding: 8px;
-            border: 2px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            margin-top: 5px;
-            background: #222;
-            color: #fff;
-        }
-        .correct {
-            border-color: #4CAF50 !important;
-        }
-        .incorrect {
-            border-color: #f44336 !important;
-        }
-        label {
-            font-weight: bold;
-            display: block;
-            margin-bottom: 5px;
-        }
-        h1 {
-            color: #4CAF50;
-            text-align: center;
-        }
-    </style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Проверка ввода</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			max-width: 600px;
+			margin: 0 auto;
+			padding: 20px;
+			background: #000;
+			color: #fff;
+			font-size: 25px;
+		}
+
+		.input-field {
+			margin-bottom: 15px;
+		}
+
+		input,
+		textarea {
+			width: 100%;
+			padding: 8px;
+			font-size: 25px;
+			border: 2px solid #ccc;
+			border-radius: 10px;
+			box-sizing: border-box;
+			margin-top: 5px;
+			background: #222;
+			color: #fff;
+		}
+
+		.correct {
+			border-color: #4CAF50;
+			background: #4CAF50;
+		}
+
+		.incorrect {
+			border-color: #f44336;
+		}
+
+		label {
+			font-weight: bold;
+			display: block;
+			margin-bottom: 5px;
+		}
+
+		h1 {
+			color: #4CAF50;
+			text-align: center;
+		}
+	</style>
 </head>
+
 <body>
-    <h1>Python</h1>
-    
-    <div class="input-field">
-        <label for="secret-input1">bbbcdffgiltss</label>
-        <input type="text" id="secret-input1" placeholder="">
-    </div>
-    
-    <div class="input-field">
-        <label for="secret-input2">aacdfiiopr</label>
-        <input type="text" id="secret-input2" placeholder="">
-    </div>
-    
-    <div class="input-field">
-        <label for="types-textarea1">типы данных</label>
-        <textarea id="types-textarea1" rows="8" placeholder=""></textarea>
-    </div>
+	<h1>Python</h1>
 
-    <div class="input-field">
-        <label for="types-textarea2">методы чисел</label>
-        <textarea id="types-textarea2" rows="8" placeholder=""></textarea>
-    </div>
+	<div class="input-field">
+		<label for="secret-input1">bbb cd ff gilt ss</label>
+		<input type="text" id="secret-input1" placeholder="">
+	</div>
 
-    <script>
-        // Элементы DOM
-        const secretInput1 = document.getElementById('secret-input1');
-        const secretInput2 = document.getElementById('secret-input2');
-        const typesTextarea1 = document.getElementById('types-textarea1');
-        const typesTextarea2 = document.getElementById('types-textarea2');
-        
-        // Правильные значения
-        const correctCode1 = 'bbbcdffgiltss';
-        const correctCode2 = 'aacdfiiopr';
-        
-        const correctTypes = [
-            'bool', 'bytearray', 'bytes', 'complex', 'dict',
-            'float', 'frozenset', 'generate', 'int', 'list',
-            'tuple', 'set', 'str'
-        ];
-        
-        const correctMethods = [
-            'abs', 'as_integer_ratio', 'chr', 'divmod', 'float',
-            'int', 'is_integer', 'ord', 'pow', 'round'
-        ];
+	<div class="input-field">
+		<label for="secret-input2">aa cdf ii opr</label>
+		<input type="text" id="secret-input2" placeholder="">
+	</div>
 
-        // Слушатели событий
-        secretInput1.addEventListener('input', () => checkInput(secretInput1, correctCode1));
-        secretInput2.addEventListener('input', () => checkInput(secretInput2, correctCode2));
-        typesTextarea1.addEventListener('input', () => checkTextarea(typesTextarea1, correctTypes));
-        typesTextarea2.addEventListener('input', () => checkTextarea(typesTextarea2, correctMethods));
+	<div class="input-field">
+		<label for="secret-input3">cc efj iii ll rr ssss</label>
+		<input type="text" id="secret-input3" placeholder="">
+	</div>
 
-        // Функция проверки инпутов
-        function checkInput(inputElement, correctValue) {
-            if (inputElement.value === correctValue) {
-                inputElement.classList.add('correct');
-                inputElement.classList.remove('incorrect');
-            } else {
-                inputElement.classList.remove('correct');
-                inputElement.classList.add('incorrect');
-            }
-        }
+	<div class="input-field">
+		<label for="secret-input4">a ccc e ii p rr ss</label>
+		<input type="text" id="secret-input4" placeholder="">
+	</div>
 
-        // Функция проверки текстареа
-        function checkTextarea(textareaElement, correctItems) {
-            const enteredItems = textareaElement.value.split('\n')
-                .map(item => item.trim())
-                .filter(item => item.length > 0);
-            
-            const allCorrect = correctItems.every(item => enteredItems.includes(item)) &&
-                              enteredItems.every(item => correctItems.includes(item)) &&
-                              enteredItems.length === correctItems.length;
-            
-            if (allCorrect) {
-                textareaElement.classList.add('correct');
-                textareaElement.classList.remove('incorrect');
-            } else {
-                textareaElement.classList.remove('correct');
-                textareaElement.classList.add('incorrect');
-            }
-        }
-    </script>
-</body>
-</html>
+	<div class="input-field">
+		<label for="secret-input5">cc gikpsvu</label>
+		<input type="text" id="secret-input5" placeholder="">
+	</div>
+
+	<div class="input-field">
+		<label for="types-textarea1">типы данных</label>
+		<textarea id="types-textarea1" rows="8" placeholder=""></textarea>
+	</div>
+
+	<div class="input-field">
+		<label for="types-textarea2">методы чисел</label>
+		<textarea id="types-textarea2" rows="8" placeholder=""></textarea>
+	</div>
+
+	<script>
+		// Элементы DOM
+		const secretInput1 = document.getElementById('secret-input1');
+		const secretInput2 = document.getElementById('secret-input2');
+		const secretInput3 = document.getElementById('secret-input3');
+		const secretInput4 = document.getElementById('secret-input4');
+		const secretInput5 = document.getElementById('secret-input5');
+		const typesTextarea1 = document.getElementById('types-textarea1');
+		const typesTextarea2 = document.getElementById('types-textarea2');
+
+		// Правильные значения
+		const correctCode1 = 'bbbcdffgiltss';
+		const correctCode2 = 'aacdfiiopr';
+		const correctCode3 = 'ccefjiiillrrssss';
+		const correctCode4 = 'accceiiprrss';
+		const correctCode5 = 'ccgikpsvu';
+
+		const correctTypes = [
+			'bool', 'bytearray', 'bytes', 'complex', 'dict',
+			'float', 'frozenset', 'generate', 'int', 'list',
+			'tuple', 'set', 'str'
+		];
+
+		const correctMethods = [
+			'abs', 'as_integer_ratio', 'chr', 'divmod', 'float',
+			'int', 'is_integer', 'ord', 'pow', 'round'
+		];
+
+		// Слушатели событий
+		secretInput1.addEventListener('input', () => checkInput(secretInput1, correctCode1));
+		secretInput2.addEventListener('input', () => checkInput(secretInput2, correctCode2));
+		secretInput3.addEventListener('input', () => checkInput(secretInput3, correctCode3));
+		secretInput4.addEventListener('input', () => checkInput(secretInput4, correctCode4));
+		secretInput5.addEventListener('input', () => checkInput(secretInput5, correctCode5));
+		typesTextarea1.addEventListener('input', () => checkTextarea(typesTextarea1, correctTypes));
+		typesTextarea2.addEventListener('input', () => checkTextarea(typesTextarea2, correctMethods));
+
+		// Функция проверки инпутов
+		function checkInput(inputElement, correctValue) {
+			if (inputElement.value === correctValue) {
+				inputElement.classList.add('correct');
+				inputElement.classList.remove('incorrect');
+			} else {
+				inputElement.classList.remove('correct');
+				inputElement.classList.add('incorrect');
+			}
+		}
+
+		// Функция проверки текстареа
+		function checkTextarea(textareaElement, correctItems) {
+			const enteredItems = textareaElement.value.split('\n')
+				.map(item => item.trim())
+				.filter(item => item.length > 0);
+
+			const allCorrect = correctItems.every(item => enteredItems.includes(item)) &&
+				enteredItems.every(item => correctItems.includes(item)) &&
+				enteredItems.length === correctItems.length;
+
+			if (allCorrect) {
+				textareaElement.classList.add('correct');
+				textareaElement.classList.remove('incorrect');
+			} else {
+				textareaElement.classList.remove('correct');
+				textareaElement.classList.add('incorrect');
+			}
+		}
+	</script>
+</body></html>
