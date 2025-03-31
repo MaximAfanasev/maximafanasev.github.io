@@ -1,118 +1,75 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Курсы валют</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .currency-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        .currency-table th, .currency-table td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-        .currency-table tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-        .currency-table th {
-            background-color: #4CAF50;
-            color: white;
-        }
-        .update-time {
-            margin-top: 10px;
-            font-style: italic;
-            color: #666;
-        }
-        .refresh-btn {
-            margin-top: 20px;
-            padding: 10px 15px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 4px;
-        }
-    </style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>?!</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			max-width: 600px;
+			margin: 0 auto;
+			padding: 20px;
+			background: #000;
+			color: #fff;
+			font-size: 25px;
+		}
+
+		.input-field {
+			margin-bottom: 15px;
+		}
+
+		input,
+		textarea {
+			width: 100%;
+			padding: 8px;
+			font-size: 25px;
+			border: 2px solid #ccc;
+			border-radius: 10px;
+			box-sizing: border-box;
+			margin-top: 5px;
+			background: #222;
+			color: #fff;
+		}
+
+		.correct {
+			border-color: #4CAF50;
+			background: #4CAF50;
+		}
+
+		.incorrect {
+			border-color: #f44336;
+		}
+
+		label {
+			font-weight: bold;
+			display: block;
+			margin-bottom: 5px;
+		}
+
+		h1 {
+			color: #4CAF50;
+			text-align: center;
+		}
+	</style>
 </head>
+
 <body>
-    <h1>Курсы валют ЦБ РФ</h1>
-    <div id="update-time" class="update-time">
-        Обновлено: {{ update_time }}
-    </div>
-    <table class="currency-table">
-        <thead>
-            <tr>
-                <th>Валюта</th>
-                <th>Код</th>
-                <th>Номинал</th>
-                <th>Курс (руб.)</th>
-                <th>Изменение</th>
-            </tr>
-        </thead>
-        <tbody id="currency-data">
-            {% for code, currency in currencies.items() %}
-            <tr>
-                <td>{{ currency.Name }}</td>
-                <td>{{ currency.CharCode }}</td>
-                <td>{{ currency.Nominal }}</td>
-                <td>{{ "%.4f"|format(currency.Value) }}</td>
-                <td style="color: {{ 'red' if currency.Value > currency.Previous else 'green' }}">
-                    {{ "%+.4f"|format(currency.Value - currency.Previous) }}
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    
-    <button class="refresh-btn" onclick="refreshData()">Обновить</button>
-    
-    <script>
-        // Автоматическое обновление каждые 60 секунд
-        setInterval(fetchNewData, 60000);
-        
-        function fetchNewData() {
-            fetch('/api/rates')
-                .then(response => response.json())
-                .then(data => {
-                    // Обновляем время
-                    document.getElementById('update-time').innerText = `Обновлено: ${data.update_time}`;
-                    
-                    // Обновляем таблицу
-                    let tbody = document.getElementById('currency-data');
-                    tbody.innerHTML = '';
-                    
-                    for (const [code, currency] of Object.entries(data.currencies)) {
-                        const change = currency.Value - currency.Previous;
-                        const row = document.createElement('tr');
-                        
-                        row.innerHTML = `
-                            <td>${currency.Name}</td>
-                            <td>${currency.CharCode}</td>
-                            <td>${currency.Nominal}</td>
-                            <td>${currency.Value.toFixed(4)}</td>
-                            <td style="color: ${change > 0 ? 'red' : 'green'}">
-                                ${change > 0 ? '+' : ''}${change.toFixed(4)}
-                            </td>
-                        `;
-                        
-                        tbody.appendChild(row);
-                    }
-                });
-        }
-        
-        function refreshData() {
-            fetchNewData();
-        }
-    </script>
-</body>
-</html>
+	<h1>Информационная безопасность</h1>
+	
+	<h2>TCP/IP</h2>
+	<h3>Прикладной (Application)</h3>
+	<p>HTTP, HTTPS, FTP, DNS, SSH</p>
+	
+	<h3>Транспортный (Transport)</h3>
+	<p>TCP UDP 80 — HTTP, 443 — HTTPS, 22 — SSH</p>
+	
+	<h3>Сетевой (Internet)</h3>
+	<p>IP (IPv4, IPv6) ICMP (ping, traceroute)</p>
+	
+	<h3>Канальный (Link)</h3>
+	<p>Ethernet, Wi-Fi, MAC-адреса</p>
+	
+	
+		
+</body></html>
