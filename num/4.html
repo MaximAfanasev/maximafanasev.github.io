@@ -74,44 +74,55 @@
         <h1>Методы 4исел</h1>
         
         <div class="input-group">
-            <input type="text" autocomplete="off" id="type1" class="input-field" data-correct="abs">
+            <label for="type1">1. print(abs(-5))</label>
+            <input type="text" autocomplete="off" id="type1" class="input-field" data-correct="5">
         </div>
         
         <div class="input-group">
-            <input type="text" autocomplete="off" id="type2" class="input-field" data-correct="as_integer_ratio">
+            <label for="type2">2. print(2.5.as_integer_ratio())</label>
+            <input type="text" autocomplete="off" id="type2" class="input-field" data-correct="(5, 2)">
         </div>
         
 
         <div class="input-group">
-            <input type="text" autocomplete="off" id="type3" class="input-field" data-correct="chr">
+            <label for="type3">3. print(chr(65))           </label>
+            <input type="text" autocomplete="off" id="type3" class="input-field" data-correct="a">
+        </div>
+
+        <div class="input-group">
+            <label for="type4">4.  print(divmod(10, 3))</label>
+            <input type="text" autocomplete="off" id="type4" class="input-field" data-correct="(3, 1)">
         </div>
         
         <div class="input-group">
-            <input type="text" autocomplete="off" id="type4" class="input-field" data-correct="divmod">
+            <label for="type5">5. print(float(1))          </label>
+            <input type="text" autocomplete="off" id="type5" class="input-field" data-correct="1.0">
         </div>
         
         <div class="input-group">
-            <input type="text" autocomplete="off" id="type5" class="input-field" data-correct="float">
+            <label for="type6">6. print(int(True))         </label>
+            <input type="text" autocomplete="off" id="type6" class="input-field" data-correct="1">
         </div>
         
         <div class="input-group">
-            <input type="text" autocomplete="off" id="type6" class="input-field" data-correct="int">
+            <label for="type7">7. d = 5.0
+print(d.is_integer())</label>
+            <input type="text" autocomplete="off" id="type7" class="input-field" data-correct="true">
         </div>
         
         <div class="input-group">
-            <input type="text" autocomplete="off" id="type7" class="input-field" data-correct="is_integer">
+            <label for="type8">8. print(ord('A'))         </label>
+            <input type="text" autocomplete="off" id="type8" class="input-field" data-correct="65">
         </div>
         
         <div class="input-group">
-            <input type="text" autocomplete="off" id="type8" class="input-field" data-correct="ord">
+            <label for="type9">9. print(pow(2, 3))         </label>
+            <input type="text" autocomplete="off" id="type9" class="input-field" data-correct="8">
         </div>
         
         <div class="input-group">
-            <input type="text" autocomplete="off" id="type9" class="input-field" data-correct="pow">
-        </div>
-        
-        <div class="input-group">
-            <input type="text" autocomplete="off" id="type10" class="input-field" data-correct="round">
+            <label for="type10">10. print(round(3.14159))</label>
+            <input type="text" autocomplete="off" id="type10" class="input-field" data-correct="3">
         </div>
         
         <div id="message" class="message"></div>
@@ -141,7 +152,7 @@
                         } else {
                             // Все поля заполнены правильно
                             messageEl.textContent = 'Все типы данных введены правильно!';
-													window.location.href="4.html"
+													window.location.href="../index.html"
                             messageEl.className = 'message success';
                         }
                     } else {
