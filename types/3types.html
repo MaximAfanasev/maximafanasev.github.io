@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Types Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            background-color: #000;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        .input-field {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            box-sizing: border-box;
+            transition: all 0.3s;
+        }
+        .input-field:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+        .correct {
+            border-color: #4CAF50;
+            background-color: #f0fff0;
+        }
+        .incorrect {
+            border-color: #f44336;
+            background-color: #fff0f0;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+        .message {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 4px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .success {
+            background-color: #dff0d8;
+            color: #3c763d;
+        }
+        .error {
+            background-color: #f2dede;
+            color: #a94442;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Введите типы данных Python</h1>
+        
+        <div class="input-group">
+            <input type="text" id="type1" class="input-field" data-correct="bool">
+        </div>
+        
+        <div class="input-group">
+            <input type="text" id="type2" class="input-field" data-correct="bytearray">
+        </div>
+        
+        <div class="input-group">
+            <input type="text" id="type3" class="input-field" data-correct="bytes">
+        </div>
+        
+        <div class="input-group">
+            <input type="text" id="type4" class="input-field" data-correct="complex">
+        </div>
+        
+        <div class="input-group">
+            <input type="text" id="type5" class="input-field" data-correct="dict">
+        </div>
+        
+        <div class="input-group">
+            <input type="text" id="type6" class="input-field" data-correct="float">
+        </div>
+        
+        <div class="input-group">
+            <input type="text" id="type7" class="input-field" data-correct="frozenset">
+        </div>
+        
+        <div class="input-group">
+            <input type="text" id="type8" class="input-field" data-correct="generate">
+        </div>
+        
+        <div class="input-group">
+            <input type="text" id="type9" class="input-field" data-correct="int">
+        </div>
+        
+        <div class="input-group">
+            <input type="text" id="type10" class="input-field" data-correct="list">
+        </div>
+        
+        <div class="input-group">
+            <input type="text" id="type11" class="input-field" data-correct="tuple">
+        </div>
+        
+        <div class="input-group">
+            <input type="text" id="type12" class="input-field" data-correct="set">
+        </div>
+        
+        <div class="input-group">
+            <input type="text" id="type13" class="input-field" data-correct="str">
+        </div>
+        
+        <div id="message" class="message"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputs = document.querySelectorAll('.input-field');
+            const messageEl = document.getElementById('message');
+            
+            // Фокусируем первый инпут при загрузке
+            inputs[0].focus();
+            
+            inputs.forEach((input, index) => {
+                input.addEventListener('input', function() {
+                    const correctValue = this.dataset.correct;
+                    const userValue = this.value.trim().toLowerCase();
+                    
+                    // Проверяем введенное значение
+                    if (userValue === correctValue) {
+                        this.classList.add('correct');
+                        this.classList.remove('incorrect');
+                        
+                        // Переходим к следующему инпуту, если он есть
+                        if (index < inputs.length - 1) {
+                            inputs[index + 1].focus();
+                        } else {
+                            // Все поля заполнены правильно
+                            messageEl.textContent = 'Все типы данных введены правильно!';
+													window.location.href="../index.html"
+                            messageEl.className = 'message success';
+                        }
+                    } else {
+                        this.classList.remove('correct');
+                        this.classList.add('incorrect');
+                        messageEl.textContent = '';
+                    }
+                });
+                
+                // Обработка нажатия Enter
+                input.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        const correctValue = this.dataset.correct;
+                        const userValue = this.value.trim().toLowerCase();
+                        
+                        if (userValue === correctValue && index < inputs.length - 1) {
+                            inputs[index + 1].focus();
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
