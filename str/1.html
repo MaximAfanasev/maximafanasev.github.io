@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Letter Puzzle</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+			margin: 0;
+			background-color: #000;
+			color: white;
+		}
+
+		.puzzle-container {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 10px;
+			max-width: 400px;
+			margin-bottom: 20px;
+			padding: 15px;
+			border: 3px solid transparent;
+			border-radius: 12px;
+			transition: border-color 0.3s;
+		}
+
+		.letter-input {
+			width: 50px;
+			height: 50px;
+			text-align: center;
+			font-size: 24px;
+			border: 2px solid #ccc;
+			border-radius: 8px;
+			outline: none;
+			transition: all 0.3s;
+			background-color: #222;
+			color: white;
+		}
+
+		.letter-input:focus {
+			border-color: #4CAF50;
+		}
+
+		.correct {
+			border-color: #4CAF50;
+			box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+		}
+
+		.correct-container {
+			border-color: #4CAF50;
+			box-shadow: 0 0 20px rgba(76, 175, 80, 0.7);
+		}
+
+		.message {
+			margin-top: 20px;
+			font-size: 18px;
+			min-height: 24px;
+		}
+
+		.success {
+			color: #4CAF50;
+			font-weight: bold;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>17 методов 'строк'</h1>
+	<div class="puzzle-container" id="puzzleContainer">
+	</div>
+	<div class="message" id="message"></div>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			const puzzleContainer = document.getElementById('puzzleContainer');
+			const messageEl = document.getElementById('message');
+
+			// Правильная последовательность букв
+			const correctSequence = [
+				'c',
+				'c',
+				'e',
+				'f',
+				'j',
+				'i',
+				'i',
+				'i',
+				'l',
+				'l',
+				'r',
+				'r',
+				'r',
+				's',
+				's',
+				's',
+				's'
+			];
+
+			// Создаем 13 инпутов
+			for (let i = 0; i < 17; i++) {
+				const input = document.createElement('input');
+				input.type = 'text';
+				input.maxLength = 1;
+				input.className = 'letter-input';
+				input.dataset.index = i;
+				puzzleContainer.appendChild(input);
+			}
+
+			// Фокусировка на следующем инпуте при вводе
+			const inputs = document.querySelectorAll('.letter-input');
+			inputs.forEach((input, index) => {
+				input.addEventListener('input', function() {
+					// Приводим к нижнему регистру
+					this.value = this.value.toLowerCase();
+
+					if (this.value.length === 1 && index < inputs.length - 1) {
+						inputs[index + 1].focus();
+					}
+
+					// Проверяем если все поля заполнены
+					checkAllFilled();
+				});
+
+				// Разрешаем только буквы
+				input.addEventListener('keydown', function(e) {
+					if (!/[a-z]/i.test(e.key) && e.key !== 'Backspace' && e.key !== 'Delete' && e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') {
+						e.preventDefault();
+					}
+				});
+			});
+
+			function checkAllFilled() {
+				let allFilled = true;
+				inputs.forEach(input => {
+					if (input.value === '') {
+						allFilled = false;
+					}
+				});
+
+				if (allFilled) {
+					checkSolution();
+				} else {
+					// Сбрасываем стили если не все заполнено
+					puzzleContainer.classList.remove('correct-container');
+					messageEl.textContent = '';
+				}
+			}
+
+			function checkSolution() {
+				let allCorrect = true;
+
+				inputs.forEach((input, index) => {
+					const userLetter = input.value.toLowerCase();
+					const correctLetter = correctSequence[index];
+
+					if (userLetter === correctLetter) {
+						input.classList.add('correct');
+					} else {
+						input.classList.remove('correct');
+						allCorrect = false;
+					}
+				});
+
+				if (allCorrect) {
+					puzzleContainer.classList.add('correct-container');
+					window.location.href = "1.html"
+				} else {
+					puzzleContainer.classList.remove('correct-container');
+					messageEl.className = 'message';
+				}
+			}
+		});
+	</script>
+</body></html>
