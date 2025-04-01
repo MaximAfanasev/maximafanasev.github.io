@@ -58,23 +58,30 @@
 			border-radius: 20px;
 			margin-bottom: 20px;
 		}
-		
+
 		table {
 			font-size: 15px;
 			border-collapse: collapse;
 		}
-		
+
 		table th {
 			text-align: left;
 		}
-		
-		table th,table td {
+
+		table th,
+		table td {
 			border: 1px solid;
 			padding: 10px;
 		}
-		
-		h2 {
+
+		h2,
+		h3 {
 			font-size: 25px;
+			margin: 0;
+			margin-bottom: 10px;
+		}
+
+		p {
 			margin: 0;
 		}
 	</style>
@@ -99,38 +106,41 @@
 			</tr>
 		</table>
 	</div>
-	
+
 	<div class="block">
-	<h2>DNS (Domain Name System)</h2>
-	<p>DNS => IP</p>
-	<p>Spoofing, DDoS-атаки</p>
-</div>
-	<h3>https</h3>
-	<p>Браузер запрашивает сертификат у сервера.
+		<h2>DNS (Domain Name System)</h2>
+		<p>DNS => IP</p>
+		<p>Spoofing, DDoS-атаки</p>
+	</div>
 
-		Проверка сертификата (CA — Certificate Authority).
+	<div class="block">
+		<h3>https</h3>
+		<p>сертификат у сервера
 
-		Установка TLS-рукопожатия (обмен ключами).
+			Проверка сертификата (CA — Certificate Authority)
 
-		Шифрование трафика (AES, RSA).</p>
+			Установка TLS-рукопожатия (обмен ключами)
 
-	<h2>VPN</h2>
-	<p>Ваш трафик шифруется (AES-256).
+			Шифрование трафика (AES, RSA)</p>
+	</div>
+	<div class="block">
+		<h2>VPN</h2>
+		<p>Ваш трафик шифруется (AES-256).
 
-		Отправляется на VPN-сервер.
+			Отправляется на VPN-сервер.
 
-		Сервер подменяет ваш IP и перенаправляет запросы.</p>
+			Сервер подменяет ваш IP и перенаправляет запросы.</p>
 
-	<h3>Протоколы VPN</h3>
-	<p>OpenVPN WireGuard IPSec</p>
+		<h3>Протоколы VPN</h3>
+		<p>OpenVPN WireGuard IPSec</p>
 
-	<h3>Прокси</h3>
-	<p>HTTP-прокси — только для веб-трафика.
+		<h3>Прокси</h3>
+		<p>HTTP-прокси — только для веб-трафика.
 
-		SOCKS5 — поддерживает любой трафик (Tor).
+			SOCKS5 — поддерживает любой трафик (Tor).
 
-		Прозрачный прокси (используется в корпоративных сетях).</p>
-
+			Прозрачный прокси (используется в корпоративных сетях).</p>
+	</div>
 	<h3>Wi-Fi: WPA2 vs WPA3 vs WPS</h3>
 	<p>WPA2 (Wi-Fi Protected Access 2)
 		Шифрование: AES-CCMP.
