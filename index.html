@@ -51,84 +51,113 @@
 			color: #4CAF50;
 			text-align: center;
 		}
+
+		.block {
+			padding: 20px;
+			border: 2px solid orange;
+			border-radius: 20px;
+			margin-bottom: 20px;
+		}
+		
+		table {
+			font-size: 15px;
+			border-collapse: collapse;
+		}
+		
+		table th {
+			text-align: left;
+		}
+		
+		table th,table td {
+			border: 1px solid;
+			padding: 10px;
+		}
+		
+		h2 {
+			font-size: 25px;
+			margin: 0;
+		}
 	</style>
 </head>
 
 <body>
 	<h1>Информационная безопасность</h1>
+	<div class="block">
+		<h2>TCP/IP</h2>
+		<table>
+			<tr>
+				<th>Прикладной</th>
+				<th>Транспортный</th>
+				<th>Сетевой</th>
+				<th>Канальный</th>
+			</tr>
+			<tr>
+				<td>HTTP, HTTPS, FTP, DNS, SSH</td>
+				<td>TCP UDP 80 — HTTP, 443 — HTTPS, 22 — SSH</td>
+				<td>IPv4, IPv6, ICMP</td>
+				<td>Ethernet, Wi-Fi, MAC-адреса</td>
+			</tr>
+		</table>
+	</div>
 	
-	<h2>TCP/IP</h2>
-	<h3>Прикладной (Application)</h3>
-	<p>HTTP, HTTPS, FTP, DNS, SSH</p>
-	
-	<h3>Транспортный (Transport)</h3>
-	<p>TCP UDP 80 — HTTP, 443 — HTTPS, 22 — SSH</p>
-	
-	<h3>Сетевой (Internet)</h3>
-	<p>IP (IPv4, IPv6) ICMP (ping, traceroute)</p>
-	
-	<h3>Канальный (Link)</h3>
-	<p>Ethernet, Wi-Fi, MAC-адреса</p>
-	
+	<div class="block">
 	<h2>DNS (Domain Name System)</h2>
-	<p>DNS преобразует доменные имена (google.com) в IP-адреса</p>
-	<p>DNS Spoofing (подмена DNS-записей).
+	<p>DNS => IP</p>
+	<p>Spoofing, DDoS-атаки</p>
+</div>
+	<h3>https</h3>
+	<p>Браузер запрашивает сертификат у сервера.
 
-DDoS-атаки на DNS</p>
+		Проверка сертификата (CA — Certificate Authority).
 
-<h3>https</h3>
-<p>Браузер запрашивает сертификат у сервера.
+		Установка TLS-рукопожатия (обмен ключами).
 
-Проверка сертификата (CA — Certificate Authority).
+		Шифрование трафика (AES, RSA).</p>
 
-Установка TLS-рукопожатия (обмен ключами).
+	<h2>VPN</h2>
+	<p>Ваш трафик шифруется (AES-256).
 
-Шифрование трафика (AES, RSA).</p>
+		Отправляется на VPN-сервер.
 
-<h2>VPN</h2>
-<p>Ваш трафик шифруется (AES-256).
+		Сервер подменяет ваш IP и перенаправляет запросы.</p>
 
-Отправляется на VPN-сервер.
+	<h3>Протоколы VPN</h3>
+	<p>OpenVPN WireGuard IPSec</p>
 
-Сервер подменяет ваш IP и перенаправляет запросы.</p>
+	<h3>Прокси</h3>
+	<p>HTTP-прокси — только для веб-трафика.
 
-<h3>Протоколы VPN</h3>
-<p>OpenVPN WireGuard IPSec</p>
+		SOCKS5 — поддерживает любой трафик (Tor).
 
-<h3>Прокси</h3>
-<p>HTTP-прокси — только для веб-трафика.
+		Прозрачный прокси (используется в корпоративных сетях).</p>
 
-SOCKS5 — поддерживает любой трафик (Tor).
+	<h3>Wi-Fi: WPA2 vs WPA3 vs WPS</h3>
+	<p>WPA2 (Wi-Fi Protected Access 2)
+		Шифрование: AES-CCMP.
 
-Прозрачный прокси (используется в корпоративных сетях).</p>
+		Уязвимости:
 
-<h3>Wi-Fi: WPA2 vs WPA3 vs WPS</h3>
-<p>WPA2 (Wi-Fi Protected Access 2)
-Шифрование: AES-CCMP.
+		KRACK (Key Reinstallation Attack) — перехват рукопожатия.
 
-Уязвимости:
+		Атака на WPS (если включён).</p>
+	<p>WPA3
+		Улучшенная защита:
 
-KRACK (Key Reinstallation Attack) — перехват рукопожатия.
+		SAE (Secure Authentication) — защита от брутфорса.
 
-Атака на WPS (если включён).</p>
-<p>WPA3
-Улучшенная защита:
+		Forward Secrecy — даже если ключ утек, старый трафик не расшифровать.</p>
+	<p>WPS (Wi-Fi Protected Setup)
+		Позволяет подключаться к Wi-Fi без пароля (через PIN или кнопку).
 
-SAE (Secure Authentication) — защита от брутфорса.
+		Уязвимость:
 
-Forward Secrecy — даже если ключ утек, старый трафик не расшифровать.</p>
-<p>WPS (Wi-Fi Protected Setup)
-Позволяет подключаться к Wi-Fi без пароля (через PIN или кнопку).
+		PIN можно подобрать за 2–10 часов (брутфорс).</p>
 
-Уязвимость:
+	<p>Deauth-атака — отключение устройств от сети.
 
-PIN можно подобрать за 2–10 часов (брутфорс).</p>
+		Перехват рукопожатия (для взлома WPA2).
 
-<p>Deauth-атака — отключение устройств от сети.
+		Подбор PIN WPS (если включён).</p>
 
-Перехват рукопожатия (для взлома WPA2).
 
-Подбор PIN WPS (если включён).</p>
-	
-		
 </body></html>
