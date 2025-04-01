@@ -62,7 +62,7 @@
     </style>
 </head>
 <body>
-   <h1>13 типов данных</h1>
+   <h1>13 типов данных bbb c d ff g i l t s s</h1>
     <div class="puzzle-container" id="puzzleContainer">
     </div>
     <div class="message" id="message"></div>
@@ -133,7 +133,7 @@
                     const correctLetter = correctSequence[index];
                     
                     if (userLetter === correctLetter) {
-                        input.classList.add('correct');window.location.href="2types.html"
+                        input.classList.add('correct');
                     } else {
                         input.classList.remove('correct');
                         allCorrect = false;
@@ -142,6 +142,7 @@
                 
                 if (allCorrect) {
                     puzzleContainer.classList.add('correct-container');
+									window.location.href="1.html"
                 } else {
                     puzzleContainer.classList.remove('correct-container');
                     messageEl.className = 'message';

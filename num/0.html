@@ -62,7 +62,7 @@
     </style>
 </head>
 <body>
-   <h1>13 типов данных bbb c d ff g i l t s s</h1>
+   <h1>10 методов 4исел aa c d f ii o p r</h1>
     <div class="puzzle-container" id="puzzleContainer">
     </div>
     <div class="message" id="message"></div>
@@ -73,10 +73,10 @@
             const messageEl = document.getElementById('message');
             
             // Правильная последовательность букв
-            const correctSequence = ['b', 'b', 'b', 'c', 'd', 'f', 'f', 'g', 'i', 'l', 't', 's', 's'];
+            const correctSequence = ['a','a', 'c', 'd', 'f', 'i', 'i', 'o', 'p', 'r'];
             
             // Создаем 13 инпутов
-            for (let i = 0; i < 13; i++) {
+            for (let i = 0; i < 10; i++) {
                 const input = document.createElement('input');
                 input.type = 'text';
                 input.maxLength = 1;
@@ -142,7 +142,7 @@
                 
                 if (allCorrect) {
                     puzzleContainer.classList.add('correct-container');
-									window.location.href="1types.html"
+									window.location.href="1.html"
                 } else {
                     puzzleContainer.classList.remove('correct-container');
                     messageEl.className = 'message';
