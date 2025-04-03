@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+	<link rel="stylesheet" href="../../style/style.css">
+	<link rel="stylesheet" href="../../style/win.css">
+	<title>M</title>
+	<link rel="icon" type="image/x-icon" href="/img/favicon.png">
+	<style>
+		body {
+			overflow: scroll;
+		}
+
+		h2 {
+			text-align: center;
+		}
+
+		input {
+			display: block;
+			margin: 10px auto;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="container">
+		<div class="column">
+			<h2>May Vary</h2>
+			<input type="text" placeholder="">
+		</div>
+		<div class="column">
+			<h2>Can't Vary</h2>
+			<input type="text" placeholder="">
+		</div>
+		<button id="checkButton">Проверить</button>
+	</div>
+
+	<div class="message" id="finalMessage">
+		<div class="container">
+			<img src="../../img/trophy.png" class="first" alt="">
+			<img src="../../img/trophy2.png" class="second" alt="">
+			<img src="../../img/trophy3.png" class="three" alt="">
+			<img src="../../img/trophy4.png" class="four" alt="">
+			<img src="../../img/trophy5.png" class="five" alt="">
+		</div>
+	</div>
+	<script>
+		const correctMayVary = ["bdls"];
+		const correctCantVary = ["bbcffits"];
+
+		document.getElementById('checkButton').addEventListener('click', () => {
+			const mayVaryInputs = document.querySelectorAll('.column:first-child input');
+			const cantVaryInputs = document.querySelectorAll('.column:last-child input');
+
+			let mayVaryCorrect = true;
+			let cantVaryCorrect = true;
+
+			mayVaryInputs.forEach((input, index) => {
+				if (input.value !== correctMayVary[index]) {
+					mayVaryCorrect = false;
+				}
+			});
+
+			cantVaryInputs.forEach((input, index) => {
+				if (input.value !== correctCantVary[index]) {
+					cantVaryCorrect = false;
+				}
+			});
+
+			if (mayVaryCorrect && cantVaryCorrect) {
+
+				document.getElementById('container').style.display = "none";
+				document.getElementById("finalMessage").style.display = "block";
+			}
+		});
+	</script>
+</body></html>
