@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Курсы валют</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .currency-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .currency-table th, .currency-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .currency-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .currency-table th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .update-time {
+            margin-top: 10px;
+            font-style: italic;
+            color: #666;
+        }
+        .refresh-btn {
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Курсы валют ЦБ РФ</h1>
+    <div id="update-time" class="update-time">
+        Обновлено: {{ update_time }}
+    </div>
+    <table class="currency-table">
+        <thead>
+            <tr>
+                <th>Валюта</th>
+                <th>Код</th>
+                <th>Номинал</th>
+                <th>Курс (руб.)</th>
+                <th>Изменение</th>
+            </tr>
+        </thead>
+        <tbody id="currency-data">
+            {% for code, currency in currencies.items() %}
+            <tr>
+                <td>{{ currency.Name }}</td>
+                <td>{{ currency.CharCode }}</td>
+                <td>{{ currency.Nominal }}</td>
+                <td>{{ "%.4f"|format(currency.Value) }}</td>
+                <td style="color: {{ 'red' if currency.Value > currency.Previous else 'green' }}">
+                    {{ "%+.4f"|format(currency.Value - currency.Previous) }}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <button class="refresh-btn" onclick="refreshData()">Обновить</button>
+    
+    <script>
+        // Автоматическое обновление каждые 60 секунд
+        setInterval(fetchNewData, 60000);
+        
+        function fetchNewData() {
+            fetch('/api/rates')
+                .then(response => response.json())
+                .then(data => {
+                    // Обновляем время
+                    document.getElementById('update-time').innerText = `Обновлено: ${data.update_time}`;
+                    
+                    // Обновляем таблицу
+                    let tbody = document.getElementById('currency-data');
+                    tbody.innerHTML = '';
+                    
+                    for (const [code, currency] of Object.entries(data.currencies)) {
+                        const change = currency.Value - currency.Previous;
+                        const row = document.createElement('tr');
+                        
+                        row.innerHTML = `
+                            <td>${currency.Name}</td>
+                            <td>${currency.CharCode}</td>
+                            <td>${currency.Nominal}</td>
+                            <td>${currency.Value.toFixed(4)}</td>
+                            <td style="color: ${change > 0 ? 'red' : 'green'}">
+                                ${change > 0 ? '+' : ''}${change.toFixed(4)}
+                            </td>
+                        `;
+                        
+                        tbody.appendChild(row);
+                    }
+                });
+        }
+        
+        function refreshData() {
+            fetchNewData();
+        }
+    </script>
+</body>
+</html>
