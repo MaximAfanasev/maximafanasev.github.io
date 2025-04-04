@@ -1,2 +1,0 @@
-print(set('abc'))
-
