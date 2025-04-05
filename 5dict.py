@@ -32,7 +32,7 @@ print(filtered)       							# {'b': 2, 'c': 3}
 
 
 
-#c c g i k p s v u 
+# c c g i k p s v u
 
 # Методы словарей
 a = {'a': 1}

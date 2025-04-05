@@ -1,12 +1,9 @@
-print('ab'[0])          # 'a'
-print('abc'[:])         # 'abc'
-print('abc'[1:])        # 'bc'
-print('abc'[-2:])       # 'bc'
-print('abcdefj'[::2])   # 'acej'
-
-text = "Hello"
-print(text[::-1])       # 'olleH'
-
+print(len('abc'))       # 3
+print('A man.\n P')     # A man.
+                        #  P
+print(type('a'))        # <class 'str'>
+print(type("b"))        # <class 'str'>
+print(type('''c'''))    # <class 'str'>
 print('a' + 'b')        # 'ab'
 print('a' * 4)          # 'aaaa'
 
@@ -18,15 +15,29 @@ print('a' * 4)          # 'aaaa'
 
 
 
+# [start : end : step]
+print('ab'[0])          # 'a'
+print('abc'[:])         # 'abc'
+print('abc'[1:])        # 'bc'
+print('abc'[1:2])       # 'b'
+print('abc'[-2:])       # 'bc'
+print('abcdefj'[::2])   # 'acej'
+
+text = "Hello"
+print(text[::-1])       # 'olleH'
 
 
 
-print(len('abc'))       # 3
-print('A man.\n P')     # A man.
-                        #  P
-print(type('a'))        # <class 'str'>
-print(type("b"))        # <class 'str'>
-print(type('''c'''))    # <class 'str'>
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -79,6 +90,9 @@ text = "Hello, world!"
 print(text.count('l'))             # 3
 
 
+print('abc'.capitalize(), 'capitalize')   # Abc
+
+
 
 
 
@@ -88,7 +102,9 @@ print('a'.endswith('a'))           # True
 
 print('{}'.format('str'))          # 'str'
 print('{} {}'.format('Hello', 'world'))  
-																	 # 'Hello world'
+# Hello world
+
+print('abc'.find('b'))	         # 1																 # 'Hello world'
 
 print(''.join(['a', 'b']))         # 'ab'
 print(','.join(['a', 'b']))        # 'a,b'
@@ -99,13 +115,15 @@ print(','.join(['a', 'b']))        # 'a,b'
 
 
 
-print('abc'.isalpha())             # True
-print('abc123'.isalpha())          # False
+print('abc'.isalpha())               # True
+print('abc123'.isalpha())            # False
 
-print('a'.islower())               # True
+print('abc123'.isalnum(), 'isalnum') # True
 
-print('a'.isupper())               # False
-print('A'.isupper())               # True
+print('a'.islower())                 # True
+
+print('a'.isupper())                 # False
+print('A'.isupper())                 # True
 
 
 
@@ -124,6 +142,8 @@ print(text.lstrip())               # 'abc  '
 
 print('ab'.replace('a', 'c'))      # 'cb'
 
+print('ab'.rfind('a'))             # 0
+
 print('a'.rjust(5, '-'))           # '----a'
 
 text = "  abc  "
@@ -134,10 +154,6 @@ print(text.rstrip())               # '  abc'
 
 
 
-
-
-print('abc'.split())               # ['abc']
-
 print('a'.startswith('a'))         # True
 
 print(' abc '.strip())             # 'abc'
@@ -146,3 +162,8 @@ print(' abc '.strip())             # 'abc'
 print(str(98.6))        # '98.6'
 print(str(1.0e4))       # '10000.0'
 print(str(True))        # 'True'
+
+
+print('abc def hij'.title(), ', title') # Abc Def Hij
+
+print('abc'.upper(), ', upper')    # ABC

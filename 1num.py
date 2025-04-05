@@ -5,13 +5,17 @@ print(2.5.as_integer_ratio()) #(5, 2)
 print(chr(65))           # A
 print(divmod(10, 3))     # (3, 1)
 
-print(float(1))          # 1.0
 print(float(True))       # 1.0
+print(float(1))          # 1.0
+print(float('99'))       # 99.0
+print(float(98.6))       # 98.6
 
 print(int(True))         # 1
 print(int(False))        # 0
+print(int(1.0e4))        # 10000
 print(int(98.6))         # 98
 print(int('99'))         # 99
+print(int('+12'))        # 12
 print(int('10', 2))      # 2
 
 d = 5.0
@@ -29,7 +33,9 @@ print(round(3.14159))    #3
 
 print(1+1)     # 2
 print(+123)    # 123
+print(-123)    # -123
 print(1-1)     # 0
+print(4-10)    # -6
 print(1*2)     # 2
 print(7/2)     # 3.5
 print(7//2)    # 3
@@ -37,10 +43,13 @@ print(9//5)    # 1
 print(7%3)     # 1
 print(9%5)     # 4
 print(2**3)    # 8
+print(4 + 7.0) # 11.0
 
 
 
-
+print(0b10)    # 2
+print(0o10)    # 8
+print(0x10)    # 16
 
 
 
