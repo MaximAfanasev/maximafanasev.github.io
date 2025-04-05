@@ -13,7 +13,6 @@ print(d['a'])         						  # 1
 print({'a': 1} | {'b': 2})          # {'a': 1, 'b': 2} 
 print({**{'a': 1}, **{'b': 2}})     # {'a': 1, 'b': 2}
 
-print('a' in {'a': 1}) 							# True
 
 for k, v in {'a': 1, 'b': 2}.items():
     print(k, v)        							# a 1, b 2
@@ -32,21 +31,23 @@ print(filtered)       							# {'b': 2, 'c': 3}
 
 
 
-# c c g i k p s v u
+
 
 # Методы словарей
 a = {'a': 1}
 a.clear()
-print(a)             				# {}
+print(a)                 # {}
 
 b = {'a': 1, 'b': 2}
 c = b.copy()
-print(c)              			# {'a': 1, 'b': 2}
+print(c)                 # {'a': 1, 'b': 2}
 
 e = {'a': 1, 'b': 2}
 print(e.get('a'))     			# 1
 print(e.get('c'))     			# None
 print(e.get('c', 0))  			# 0
+
+print('a' in {'a': 1}) 		        # True
 
 f = {'a': 1, 'b': 2}
 print(f.items())      			# dict_items([('a', 1), ('b', 2)])

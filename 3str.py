@@ -10,11 +10,6 @@ print('a' * 4)          # 'aaaa'
 
 
 
-
-
-
-
-
 # [start : end : step]
 print('ab'[0])          # 'a'
 print('abc'[:])         # 'abc'
@@ -25,26 +20,6 @@ print('abcdefj'[::2])   # 'acej'
 
 text = "Hello"
 print(text[::-1])       # 'olleH'
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -70,50 +45,23 @@ print('a' in a1)        # True
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-# cc efj iii ll rrr ssss
-
 print('a'.center(3))               # ' a '
 
 text = "Hello, world!"
 print(text.count('l'))             # 3
 
-
 print('abc'.capitalize(), 'capitalize')   # Abc
-
-
-
-
-
-
 
 print('a'.endswith('a'))           # True
 
+print('abc'.find('b'))	         # 1
+
 print('{}'.format('str'))          # 'str'
 print('{} {}'.format('Hello', 'world'))  
-# Hello world
-
-print('abc'.find('b'))	         # 1																 # 'Hello world'
+# Hello world													 # 'Hello world'
 
 print(''.join(['a', 'b']))         # 'ab'
 print(','.join(['a', 'b']))        # 'a,b'
-
-
-
-
-
-
 
 print('abc'.isalpha())               # True
 print('abc123'.isalpha())            # False
@@ -125,20 +73,10 @@ print('a'.islower())                 # True
 print('a'.isupper())                 # False
 print('A'.isupper())                 # True
 
-
-
-
-
-
 print('a'.ljust(5, '-'))           # 'a----'
 
 text = "  abc  "
 print(text.lstrip())               # 'abc  '
-
-
-
-
-
 
 print('ab'.replace('a', 'c'))      # 'cb'
 
@@ -149,20 +87,13 @@ print('a'.rjust(5, '-'))           # '----a'
 text = "  abc  "
 print(text.rstrip())               # '  abc'
 
-
-
-
-
-
 print('a'.startswith('a'))         # True
 
 print(' abc '.strip())             # 'abc'
 
-
 print(str(98.6))        # '98.6'
 print(str(1.0e4))       # '10000.0'
 print(str(True))        # 'True'
-
 
 print('abc def hij'.title(), ', title') # Abc Def Hij
 
