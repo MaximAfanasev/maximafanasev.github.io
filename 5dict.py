@@ -42,6 +42,10 @@ b = {'a': 1, 'b': 2}
 c = b.copy()
 print(c)                 # {'a': 1, 'b': 2}
 
+p = {'a': 1, 'b': 2}
+del(p['a'])
+print(p, ', del')        # {'b': 2}
+
 e = {'a': 1, 'b': 2}
 print(e.get('a'))     			# 1
 print(e.get('c'))     			# None
