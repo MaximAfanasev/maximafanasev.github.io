@@ -44,13 +44,12 @@ print('a' in a1)        # True
 
 
 
+print('abc'.capitalize(), 'capitalize')   # Abc
 
 print('a'.center(3))               # ' a '
 
 text = "Hello, world!"
 print(text.count('l'))             # 3
-
-print('abc'.capitalize(), 'capitalize')   # Abc
 
 print('a'.endswith('a'))           # True
 
