@@ -73,6 +73,10 @@
     <div class="container">
         
         <div class="input-group">
+            <input type="text" autocomplete="off" id="type0" class="input-field" data-correct="aacdfiiopr">
+        </div>
+        
+        <div class="input-group">
             <input type="text" autocomplete="off" id="type1" class="input-field" data-correct="abs">
         </div>
         
@@ -139,8 +143,7 @@
                             inputs[index + 1].focus();
                         } else {
                             // Все поля заполнены правильно
-                            messageEl.textContent = 'Все типы данных введены правильно!';
-													window.location.href="../index.html"
+                            messageEl.textContent = 'Все верно!';
                             messageEl.className = 'message success';
                         }
                     } else {

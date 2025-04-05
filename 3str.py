@@ -71,7 +71,7 @@ print('a' in a1)        # True
 
 
 
-# cc    efj   iii  ll  rrr  ssss
+# cc efj iii ll rrr ssss
 
 print('a'.center(3))               # ' a '
 

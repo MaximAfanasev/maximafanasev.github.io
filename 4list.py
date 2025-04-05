@@ -47,7 +47,7 @@ print(len(r)) 					 # 3
 		
 		
 		
-#  a c c c e i i p r r s s		
+#  a ccc e ii p rr ss		
 		
 		
 a = [1, 2]
