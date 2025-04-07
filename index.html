@@ -27,17 +27,126 @@
 		filter: blur(0px);
 	}
 	
+	.input-container {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 5px;
+		margin-top: 10px;
+	}
 	
+	input {
+		width: 30px;
+		height: 30px;
+		font-size: 20px;
+		text-align: center;
+		background: #222;
+		color: white;
+		border: 1px solid #444;
+	}
 	
+	input.correct {
+		background: #0a0;
+		border-color: #0f0;
+	}
 </style>
 
 <body>
 
-	<div>13 bbb c d ff g i l t ss</div>
-	<div>10 aa c d f ii opr</div>
-	<div>22 ccc effj iiii ll rrrr sss t u</div>
-	<div>16 a ccc deil mm p rr sss</div>
-	<div>12 cc g ii k pp ss v u</div>
+	<div>13 bbb c d ff g i l t ss
+		<div class="input-container">
+			<input maxlength="1" data-answer="b">
+			<input maxlength="1" data-answer="b">
+			<input maxlength="1" data-answer="b">
+			<input maxlength="1" data-answer="c">
+			<input maxlength="1" data-answer="d">
+			<input maxlength="1" data-answer="f">
+			<input maxlength="1" data-answer="f">
+			<input maxlength="1" data-answer="g">
+			<input maxlength="1" data-answer="i">
+			<input maxlength="1" data-answer="l">
+			<input maxlength="1" data-answer="t">
+			<input maxlength="1" data-answer="s">
+			<input maxlength="1" data-answer="s">
+		</div>
+	</div>
+	<div>10 aa c d f ii opr
+		<div class="input-container">
+			<input maxlength="1" data-answer="a">
+			<input maxlength="1" data-answer="a">
+			<input maxlength="1" data-answer="c">
+			<input maxlength="1" data-answer="d">
+			<input maxlength="1" data-answer="f">
+			<input maxlength="1" data-answer="i">
+			<input maxlength="1" data-answer="i">
+			<input maxlength="1" data-answer="o">
+			<input maxlength="1" data-answer="p">
+			<input maxlength="1" data-answer="r">
+		</div>
+	</div>
+	<div>22 ccc effj iiii ll rrrr sss t u
+		<div class="input-container">
+			<input maxlength="1" data-answer="c">
+			<input maxlength="1" data-answer="c">
+			<input maxlength="1" data-answer="c">
+			<input maxlength="1" data-answer="e">
+			<input maxlength="1" data-answer="f">
+			<input maxlength="1" data-answer="f">
+			<input maxlength="1" data-answer="j">
+			<input maxlength="1" data-answer="i">
+			<input maxlength="1" data-answer="i">
+			<input maxlength="1" data-answer="i">
+			<input maxlength="1" data-answer="i">
+			<input maxlength="1" data-answer="l">
+			<input maxlength="1" data-answer="l">
+			<input maxlength="1" data-answer="r">
+			<input maxlength="1" data-answer="r">
+			<input maxlength="1" data-answer="r">
+			<input maxlength="1" data-answer="r">
+			<input maxlength="1" data-answer="s">
+			<input maxlength="1" data-answer="s">
+			<input maxlength="1" data-answer="s">
+			<input maxlength="1" data-answer="t">
+			<input maxlength="1" data-answer="u">
+		</div>
+	</div>
+	<div>18 a ccc deiiil mm p rr sss
+		<div class="input-container">
+			<input maxlength="1" data-answer="a">
+			<input maxlength="1" data-answer="c">
+			<input maxlength="1" data-answer="c">
+			<input maxlength="1" data-answer="c">
+			<input maxlength="1" data-answer="d">
+			<input maxlength="1" data-answer="e">
+			<input maxlength="1" data-answer="i">
+			<input maxlength="1" data-answer="i">
+			<input maxlength="1" data-answer="i">
+			<input maxlength="1" data-answer="l">
+			<input maxlength="1" data-answer="m">
+			<input maxlength="1" data-answer="m">
+			<input maxlength="1" data-answer="p">
+			<input maxlength="1" data-answer="r">
+			<input maxlength="1" data-answer="r">
+			<input maxlength="1" data-answer="s">
+			<input maxlength="1" data-answer="s">
+			<input maxlength="1" data-answer="s">
+		</div>
+	</div>
+	<div>12 cc g ii k pp ss v u
+		<div class="input-container">
+			<input maxlength="1" data-answer="c">
+			<input maxlength="1" data-answer="c">
+			<input maxlength="1" data-answer="g">
+			<input maxlength="1" data-answer="i">
+			<input maxlength="1" data-answer="i">
+			<input maxlength="1" data-answer="k">
+			<input maxlength="1" data-answer="p">
+			<input maxlength="1" data-answer="p">
+			<input maxlength="1" data-answer="s">
+			<input maxlength="1" data-answer="s">
+			<input maxlength="1" data-answer="v">
+			<input maxlength="1" data-answer="u">
+		</div>
+	</div>
 
 	<ul>
 		<li>bool</li>
@@ -117,7 +226,9 @@
 		<li>count</li>
 		<li>del</li>
 		<li>extend</li>
+		<li>in</li>
 		<li>insert</li>
+		<li>index</li>
 		<li>len</li>
 		<li>min</li>
 		<li>max</li>
@@ -142,4 +253,21 @@
 		<li>values</li>
 		<li>update</li>
 	</ul>
-</body></html>
+
+<script>
+	// Add event listeners to all inputs
+	document.querySelectorAll('input').forEach(input => {
+		input.addEventListener('input', function() {
+			const correctChar = this.getAttribute('data-answer').toLowerCase();
+			const userInput = this.value.toLowerCase();
+			
+			if (userInput === correctChar) {
+				this.classList.add('correct');
+			} else {
+				this.classList.remove('correct');
+			}
+		});
+	});
+</script>
+</body>
+</html>
