@@ -1,32 +1,11 @@
 a2 = {}
 print(a2)              						  # {}
 
-b1 = dict()
-print(b1)               						# {}
-
-print(dict([('a', 1), ('b', 2)]))   # {'a': 1, 'b': 2}
-print(dict(a=1, b=2))               # {'a': 1, 'b': 2}
-
 d = {'a': 1, 'b': 2}
 print(d['a'])         						  # 1
 
 print({'a': 1} | {'b': 2})          # {'a': 1, 'b': 2} 
 print({**{'a': 1}, **{'b': 2}})     # {'a': 1, 'b': 2}
-
-
-for k, v in {'a': 1, 'b': 2}.items():
-    print(k, v)        							# a 1, b 2
-
-m = {x: x*2 for x in range(3)}
-print(m)              							# {0: 0, 1: 2, 2: 4}
-
-n = {'a': 1, 'b': 2, 'c': 3}
-filtered = {k: v for k, v in n.items() if v > 1}
-print(filtered)       							# {'b': 2, 'c': 3}
-
-
-
-
 
 
 
@@ -46,6 +25,12 @@ p = {'a': 1, 'b': 2}
 del(p['a'])
 print(p, ', del')        # {'b': 2}
 
+b1 = dict()
+print(b1)               						# {}
+
+print(dict([('a', 1), ('b', 2)]))   # {'a': 1, 'b': 2}
+print(dict(a=1, b=2))               # {'a': 1, 'b': 2}
+
 e = {'a': 1, 'b': 2}
 print(e.get('a'))     			# 1
 print(e.get('c'))     			# None
@@ -53,8 +38,18 @@ print(e.get('c', 0))  			# 0
 
 print('a' in {'a': 1}) 		        # True
 
+m = {x: x*2 for x in range(3)}
+print(m)              							# {0: 0, 1: 2, 2: 4}
+
 f = {'a': 1, 'b': 2}
 print(f.items())      			# dict_items([('a', 1), ('b', 2)])
+
+for k, v in {'a': 1, 'b': 2}.items():
+    print(k, v)        							# a 1, b 2
+		
+n = {'a': 1, 'b': 2, 'c': 3}
+filtered = {k: v for k, v in n.items() if v > 1}
+print(filtered)       							# {'b': 2, 'c': 3}
 
 g = {'a': 1, 'b': 2}
 print(g.keys())       			# dict_keys(['a', 'b'])

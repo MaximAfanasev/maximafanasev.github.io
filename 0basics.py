@@ -29,5 +29,9 @@ while e <= 5:
 
 for x in range(1,5):
     print(x) # 1 2 3 4
+		
+	
+x = input()
+print(x)
 
 

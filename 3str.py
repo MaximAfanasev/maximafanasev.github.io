@@ -67,7 +67,13 @@ print('abc123'.isalpha())            # False
 
 print('abc123'.isalnum(), 'isalnum') # True
 
+print('123'.isdecimal())            # True
+
 print('a'.islower())                 # True
+
+print('   '.isspace())              # True
+
+print('Abc Cde'.istitle( ))             # True
 
 print('a'.isupper())                 # False
 print('A'.isupper())                 # True

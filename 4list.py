@@ -4,8 +4,6 @@ print(a2)               # []
 b1 = list()
 print(b1)               # []
 
-print(list('abc'))      # ['a', 'b', 'c']
-
 print(['a', 'b'][1])    # 'b'
 
 print([1] * 3)          # [1, 1, 1]
@@ -20,9 +18,6 @@ print(['a', 'b', 'c'][:-2])     # ['a']
 j1 = [1, 2, 3, 4]
 j1[1:3] = [5, 6]
 print(j1)                # [1, 5, 6, 4]
-
-for _ in zip([1, 2, 3], [4, 5, 6]):
-    print(_)             # (1, 4), (2, 5), (3, 6)
 		
 m = [x for x in range(5)]
 print(m)                 # [0, 1, 2, 3, 4]
@@ -75,6 +70,8 @@ print(h)  		  # [1, 1.5, 2, 3]
 r = [1, 2, 3]
 print(len(r)) 		# 3
 
+print(list('abc'))      # ['a', 'b', 'c']
+
 p = [1, 2, 3]
 print(min(p))  		# 1
 print(max(p))  		# 3
@@ -99,3 +96,6 @@ print('a,b,c'.split(','))  # ['a', 'b', 'c']
 
 q = [1, 2, 3]
 print(sum(q))  		# 6
+
+for _ in zip([1, 2, 3], [4, 5, 6]):
+    print(_)             # (1, 4), (2, 5), (3, 6)
