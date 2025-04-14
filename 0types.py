@@ -19,3 +19,27 @@ print(type((1,2)))               # tuple
 
 print(type(set[1,2]))            # set
 print(type('a'))                 # str
+
+
+
+# типы файлов
+# csv
+# xml
+# html
+# json
+# yaml
+# excel
+# hdf5
+# database
+# sql
+# db-api
+# sql lite
+# my sql
+# postgre sql
+# sql achemy
+# no sql
+# memcashed
+# redis
+# hesh
+# bit
+# full text

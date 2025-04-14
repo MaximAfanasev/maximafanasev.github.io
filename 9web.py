@@ -1,3 +1,19 @@
+# tcp ip
+# telnet
+# urlib
+# requests
+# web server
+# webbrowser
+# beatiful soup
+
+
+# unicode
+# кодирование
+# декодирование
+# регулярки
+# шаблоны
+# бинарные
+
 # Сети (HTTP-запрос с использованием библиотеки requests)
 import requests
 response = requests.get('https://api.github.com')
