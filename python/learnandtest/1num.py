@@ -95,15 +95,3 @@ print(c.imag)            # 4.0
 
 print(c.real)            # 3.0
 
-
-
-
-
-
-
-
-
-
-
-
-
