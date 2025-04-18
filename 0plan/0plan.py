@@ -1,6 +1,15 @@
 План по изучению хакерства (этичного взлома)
 
 
+* Законы:
+    * УК РФ (ст. 272, 273, 274)
+    * GDPR, HIPAA (для международных стандартов)
+		
+* Бугипрование:
+    * Получение разрешения на тестирование
+    * Составление отчётов об уязвимостях
+		
+
 * Компьютерные сети:
     * Модель OSI и TCP/IP
     * Протоколы (HTTP, HTTPS, FTP, DNS, DHCP, SSH, SSL/TLS)
@@ -67,18 +76,3 @@
     * VulnHub, OverTheWire
     * CTF (Capture The Flag)
 6. Этические и правовые аспекты
-* Законы:
-    * УК РФ (ст. 272, 273, 274)
-    * GDPR, HIPAA (для международных стандартов)
-* Бугипрование:
-    * Получение разрешения на тестирование
-    * Составление отчётов об уязвимостях
-Рекомендуемые ресурсы
-* Книги:
-    * "The Web Application Hacker’s Handbook" (Dafydd Stuttard)
-    * "Hacking: The Art of Exploitation" (Jon Erickson)
-    * "Metasploit: The Penetration Tester’s Guide" (David Kennedy)
-* YouTube-каналы:
-    * LiveOverflow, Null Byte, The Cyber Mentor
-* Форумы:
-    * Hack Forums, Reddit (r/netsec, r/HowToHack)
