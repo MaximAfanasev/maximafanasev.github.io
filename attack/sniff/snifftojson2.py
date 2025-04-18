@@ -1,4 +1,3 @@
-
 from scapy.all import *
 import json
 
