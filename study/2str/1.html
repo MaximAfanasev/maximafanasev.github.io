@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>M</title>
+	<link rel="icon" type="image/x-icon" href="/img/favicon.png">
+	<link rel="stylesheet" href="../../style/style.css">
+	<link rel="stylesheet" href="../../style/win.css">
+</head>
+
+<body class="base">
+	<pre>
+3 types
+' \" '''
+
+98.6
+'98.6'
+str(98.6)
+
+'a' 'b'
+'ab'
+'a'+'b'
+
+'a'
+'aaaa'
+'a'*4
+
+'ab'
+'a'
+'ab'[0]
+
+'abc'
+'abc'
+'abc'[:]
+
+'abc'
+'bc'
+'abc'[1:]
+
+'abc'
+'bc' use -
+'abc'[-2:]
+
+'abcdefj'
+'acej'
+'abcdefj'[::2]
+
+'abc'
+3
+len('abc')
+
+['a','b']
+'ab'
+''.join(['a','b'])
+
+['a','b']
+'a,b'
+','.join(['a','b'])
+
+'ab'
+'cb'
+'ab'.replace('a','c')
+
+'  abc  '
+'abc'
+' abc '.strip()
+
+'a'
+start with 'a'
+'a'.startswith('a')
+
+'a'
+end with 'a'
+'a'.endswith('a')
+
+'a'
+' a '
+'a'.center(3)
+
+'a'
+'a  '
+'a'.ljust(2)
+
+'a'
+'  a'
+'a'.rjust(2)
+
+%s % 42
+42
+
+'{}'.format('str')
+str
+
+a='b' 
+f'{a}'
+'b'
+</pre>
+
+	<button id="start-button">Start</button>
+	<div id="game-container">
+		<div id="question"></div>
+		<input type="text" id="answer" placeholder="">
+		<button id="submit">Check</button>
+		<div id="result"></div>
+	</div>
+
+	
+
+	<div class="message" id="finalMessage">
+		<div class="container">
+			<img src="../../img/trophy.png" class="first" alt="">
+			<img src="../../img/trophy2.png" class="second" alt="">
+			<img src="../../img/trophy3.png" class="three" alt="">
+			<img src="../../img/trophy4.png" class="four" alt="">
+			<img src="../../img/trophy5.png" class="five" alt="">
+		</div>
+	</div>
+	<script>
+		document.addEventListener("DOMContentLoaded", () => {
+			const questions = [{
+					question: "3 types",
+					answer: "' \" '''"
+				},
+				{
+					question: "98.6->'98.6'",
+					answer: "str(98.6)"
+				},
+				{
+					question: "'a' 'b'->'ab'",
+					answer: "'a'+'b'"
+				},
+				{
+					question: "'a'->'aaaa'",
+					answer: "'a'*4"
+				},
+				{
+					question: "'ab'->'a'",
+					answer: "'ab'[0]"
+				},
+				{
+					question: "'abc'->'abc'",
+					answer: "'abc'[:]"
+				},
+				{
+					question: "'abc'->'bc'",
+					answer: "'abc'[1:]"
+				},
+				{
+					question: "'abc'->'bc' use -",
+					answer: "'abc'[-2:]"
+				},
+				{
+					question: "'abcdefj'->'acej'",
+					answer: "'abcdefj'[::2]"
+				},
+				{
+					question: "'abc'->3",
+					answer: "len('abc')"
+				},
+				{
+					question: "['a','b']->'ab'",
+					answer: "''.join(['a','b'])"
+				},
+				{
+					question: "['a','b']->'a,b'",
+					answer: "','.join(['a','b'])"
+				},
+				{
+					question: "'ab'->'cb'",
+					answer: "'ab'.replace('a','c')"
+				},
+				{
+					question: "'  abc  '->'abc'",
+					answer: "' abc '.strip()"
+				},
+				{
+					question: "'a'-> start with 'a'",
+					answer: "'a'.startswith('a')"
+				},
+				{
+					question: "'a'-> end with 'a'",
+					answer: "'a'.endswith('a')"
+				},
+				{
+					question: "'a'->' a '",
+					answer: "'a'.center(3)"
+				},
+				{
+					question: "'a'->'a  '",
+					answer: "'a'.ljust(2)"
+				},
+				{
+					question: "'a'->'  a'",
+					answer: "'a'.rjust(2)"
+				},
+				{
+					question: "%s % 42",
+					answer: "42"
+				},
+				{
+					question: "'{}'.format('str')",
+					answer: "str"
+				},
+				{
+					question: "a='b' f'{a}'",
+					answer: "'b'"
+				}
+			];
+
+			let questionIndex = 0;
+			const questionElement = document.getElementById("question");
+			const answerInput = document.getElementById("answer");
+			const resultElement = document.getElementById("result");
+			const submitButton = document.getElementById("submit");
+			const startButton = document.getElementById("start-button");
+			const gameContainer = document.getElementById("game-container");
+
+			// Отображение вопроса
+			function displayQuestion() {
+				if (questionIndex < questions.length) {
+					questionElement.textContent = questions[questionIndex].question;
+					resultElement.textContent = ""; // Сброс результата
+				} else {
+					questionElement.textContent = "";
+					answerInput.style.display = "none";
+					gameContainer.style.display = "none";
+					document.getElementById('finalMessage').style.display = "block";
+				}
+			}
+
+			// Обработка клика по кнопке "Начать"
+			startButton.addEventListener("click", () => {
+				document.querySelector('pre').style.display = 'none'; // Скрыть блок вопросов и ответов
+				startButton.style.display = 'none'; // Скрыть кнопку "Начать"
+				gameContainer.style.display = 'block'; // Показать контейнер игры
+				displayQuestion(); // Отобразить первый вопрос
+			});
+
+			submitButton.addEventListener("click", () => {
+				const userAnswer = answerInput.value.trim();
+				const currentAnswer = questions[questionIndex].answer;
+
+				if (userAnswer === currentAnswer) {
+questionIndex++;
+					answerInput.value = "";
+					displayQuestion();
+				} else {
+					resultElement.textContent = "Неправильно! Попробуйте еще раз.";
+				}
+			});
+		});
+	</script>
+</body></html>

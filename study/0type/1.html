@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+	<link rel="stylesheet" href="../../style/win.css">
+	<title>M</title>
+	<link rel="icon" type="image/x-icon" href="/img/favicon.png">
+</head>
+
+<style>
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	body {
+		position: relative;
+		background-color: #121619;
+		color: #e0e0e0;
+		font-family: monospace;
+		font-size: 20px;
+		line-height: 2.5;
+		padding: 20px;
+		z-index: 20;
+		height: 100vh;
+	}
+
+	main {
+		max-width: 500px;
+		margin: 0 auto;
+	}
+
+	canvas {
+		background-color: none;
+		width: 300px;
+		height: 400px;
+		position: absolute;
+		z-index: -1;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	h1 {
+		color: #cc2836;
+		text-align: center;
+	}
+
+	h2 {
+		color: #cc2836;
+		margin-top: 50px;
+		font-size: 20px;
+	}
+
+	.done {
+		position: relative;
+	}
+
+	.done a {
+		background: lightgreen;
+		font-weight: bold;
+		border: 1px solid green;
+	}
+
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		gap: 20px;
+	}
+
+	ul li a {
+		color: #cc2836;
+		text-decoration: none;
+		border: 1px solid #cc2836;
+		padding: 5px 10px;
+		border-radius: 10px;
+	}
+
+	button {
+		padding: 10px 26px;
+		font-size: 24px;
+		color: white;
+		text-shadow: 2px 4px 2px #000;
+		background-color: #77cc00;
+		border: none;
+		border-radius: 30px;
+		cursor: pointer;
+		box-shadow: 3px 3px 3px #000;
+		transition: background-color 0.3s, transform 0.3s;
+	}
+
+	.b-w {
+		position: absolute;
+		left: 50%;
+		transform: translate(-50%);
+		bottom: 20px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.b-w button {
+		margin-right: 30px;
+	}
+
+	.a {
+		padding: 60px;
+		border-radius: 15px;
+		width: 100%;
+	}
+
+	.c {
+		color: gold;
+	}
+
+	.s {
+		margin-top: 50px;
+		border: 1px solid gold;
+		padding: 10px 20px;
+		border-radius: 10px;
+		cursor: progress;
+		transition: 0.2s;
+		filter: blur(6px);
+	}
+
+	.s:hover {
+		filter: blur(0px) !important;
+	}
+
+	.s.active {
+		filter: blur(0px);
+	}
+
+	.c1 {
+		position: relative;
+	}
+
+	.c1::before {
+		content: '0 1 2';
+		position: absolute;
+		width: 100px;
+		height: 20px;
+		top: -50px;
+		left: 13px;
+		letter-spacing: 5.5px;
+		color: gray;
+	}
+
+	.progress-container {
+		width: 80%;
+		background: #222;
+		margin: 10px auto;
+		border-radius: 25px;
+		position: relative;
+	}
+
+	.progress-container::after {
+		position: absolute;
+		content: '💰';
+		right: -20px;
+		top: -5px;
+		font-size: 30px;
+	}
+
+	.progress {
+		height: 5px;
+		background: gold;
+		transition: width 0.3s;
+		border-radius: 25px;
+	}
+
+	.coin {
+		position: absolute;
+		top: 20px;
+		background: gold;
+		border-radius: 50%;
+		border: 2px solid #000;
+		width: 25px;
+		height: 25px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		animation: rotateCoin 2s infinite cubic-bezier(0.1, 0.7, 1.0, 0.1);
+		color: #000;
+		font-weight: bolder;
+		font-family: sans-serif;
+	}
+
+	@keyframes rotateCoin {
+		from {
+			transform: rotateY(0deg);
+		}
+
+		to {
+			transform: rotateY(360deg);
+		}
+	}
+
+
+	.card-counter {
+		margin-top: 40px;
+		color: gold;
+		display: flex;
+		justify-content: center;
+		font-family: sans-serif;
+	}
+
+	.repeat {
+		margin-top: 10px;
+		padding: 0 20px;
+		line-height: 30px;
+		color: gold;
+		display: flex;
+		justify-content: center;
+		font-family: sans-serif;
+	}
+
+	.filter-controller input {
+		width: 78px;
+		height: 58px;
+		display: block;
+	}
+
+	.b-w input {
+		width: 78px;
+		height: 58px;
+		border-radius: 30px;
+		display: block;
+	}
+
+	.custom-checkbox {
+		cursor: pointer;
+	}
+
+	.eye {
+		display: block;
+		border-radius: 50px;
+	}
+
+	.eye2 {
+		display: none;
+		filter: blur(0px);
+	}
+
+	.custom-checkbox img {
+		width: 70px;
+	}
+
+	.active .eye {
+		display: none;
+	}
+
+	.active .eye2 {
+		display: block;
+		filter: blur(0px);
+	}
+
+	.eye {
+		filter: blur(3px);
+	}
+
+
+
+	.card-checkbox {
+		display: none;
+	}
+
+	.card-label img {
+		width: 50px;
+		position: absolute;
+		bottom: 30px;
+		right: 20px;
+	}
+
+	.container {
+		position: relative;
+		margin: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100vh;
+		background-color: #121619;
+		overflow: hidden;
+	}
+</style>
+
+<body>
+
+	<main class="basics">
+		<div class="progress-container" id="correctProgressContainer">
+			<div class="progress" id="correctProgress" style="width: 0%;"></div>
+			<div class="coin" id="coin" style="">$</div>
+		</div>
+
+		<div class="a">
+			<div class="wrap">
+				<div>print(type(True))</div>
+				<div class="s c">&#60;class 'bool'></div>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>print(type(1))</div>
+				<div class="s c">&#60;class 'int'></div>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>print(type(1.1))</div>
+				<div class="s c">&#60;class 'float'></div>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>print(type(3j))</div>
+				<div class="s c">&#60;class 'complex'></div>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>print(type('a'))</div>
+				<div class="s c">&#60;class 'str'></div>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>print(type([1,2]))</div>
+				<div class="s c">&#60;class 'list'></div>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>print(type((1,2)))</div>
+				<div class="s c">&#60;class 'tuple'></div>
+			</div>
+		</div>
+
+		<div class="a h r">
+			<div class="wrap">
+				<div>print(type(b'ab\xff'))</div>
+				<div class="s c">&#60;class 'bytes'></div>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>print(type(bytearray([1,2])))</div>
+				<div class="s c">&#60;class 'bytearray'></div>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>print(type(set([1,2])))</div>
+				<div class="s c">&#60;class 'bytearray'></div>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>print(type(frozenset([1,2])))</div>
+				<div class="s c">&#60;class 'set'></div>
+			</div>
+		</div>
+
+		<div class="a h">
+			<div class="wrap">
+				<div>print(type({'a':'1'}))</div>
+				<div class="s c">&#60;class 'dict'></div>
+			</div>
+		</div>
+
+		<div class="b-w">
+			<button class="btn check">✓</button>
+			<div class="filter-controller">
+				<label for="blurToggle" class="custom-checkbox" id="blurLabel">
+					<img class="eye2" src="../../img/eye.png" alt="Toggle Blur">
+					<img class="eye" src="../../img/eye2.png" alt="Toggle Blur">
+				</label>
+				<input type="checkbox" id="blurToggle" style="display: none;">
+			</div>
+		</div>
+	</main>
+
+	<div class="message" id="finalMessage">
+		<div class="container">
+			<img src="../../img/trophy.png" class="first" alt="">
+			<img src="../../img/trophy2.png" class="second" alt="">
+			<img src="../../img/trophy3.png" class="three" alt="">
+			<img src="../../img/trophy4.png" class="four" alt="">
+			<img src="../../img/trophy5.png" class="five" alt="">
+		</div>
+	</div>
+
+	<script>
+		// Переменные для работы с тестом
+		const finalMessage = document.getElementById('finalMessage');
+		const correctProgressContainer = document.getElementById('correctProgressContainer');
+
+		let correctCount = 0;
+		let incorrectCount = 0;
+		const totalQuestions = document.querySelectorAll('.a').length;
+		const blocks = document.querySelectorAll('.a');
+		let currentIndex = 0; // Индекс текущей карточки
+		const checkButtons = document.querySelectorAll('.check');
+		const cardCountDisplayOff = document.querySelector('.counters');
+
+		// Функция для отображения текущей карточки
+		function showCurrentBlock() {
+			blocks.forEach((block, index) => {
+				block.style.display = index === currentIndex ? 'block' : 'none';
+			});
+		}
+
+		// Показать первую карточку при загрузке
+		showCurrentBlock();
+
+		// Обработчики для кнопок проверки
+		checkButtons.forEach((button, index) => {
+			button.addEventListener('click', () => {
+				correctCount++;
+				updateProgress();
+
+				// Переходим к следующей карточке
+				currentIndex++;
+				if (currentIndex < totalQuestions) {
+					showCurrentBlock();
+				} else {
+					finalizeTest();
+				}
+			});
+		});
+
+		function updateProgress() {
+			const correctPercentage = (correctCount / totalQuestions) * 100;
+			const correctProgress = document.getElementById('correctProgress');
+			const coin = document.getElementById('coin');
+
+			correctProgress.style.width = `${correctPercentage}%`;
+			coin.style.left = `${correctPercentage}%`;
+
+			if (correctCount + incorrectCount === totalQuestions) {
+
+				finalizeTest();
+			}
+		}
+
+		function finalizeTest() {
+			for (const block of blocks) {
+				correctProgressContainer.style.display = 'none';
+				block.style.display = 'none';
+			}
+			finalMessage.style.display = 'block';
+			startRedirectCountdown(); // Запускаем обратный отсчет
+		}
+
+		document.getElementById('blurLabel').addEventListener('click', function() {
+			this.classList.toggle('active'); // Добавляет или удаляет класс 'active' при клике
+		});
+
+		// Инициализируем показ первой карточки
+		showCurrentBlock();
+	</script>
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+			const totalCards = document.querySelectorAll('.a').length; // Общее количество карточек
+			// Элемент для отображения текущего количества
+			const totalCardsDisplay = document.getElementById('totalCards'); // Элемент для отображения общего количества
+			const repeatList = document.getElementById('repeatList'); // Элемент для отображения номеров карточек
+			const blurToggle = document.getElementById('blurToggle'); // Чекбокс для размытия
+
+			let cardCount = 1; // Начальное количество пройденных карточек
+
+			// Находим все кнопки и добавляем обработчик событий
+			const buttons = document.querySelectorAll('.btn.check');
+			buttons.forEach(button => {
+				button.addEventListener('click', () => {
+					if (cardCount < totalCards) {
+						cardCount++; // Увеличиваем количество пройденных карточек
+					}
+				});
+			});
+
+			// Находим все чекбоксы и добавляем обработчик событий
+			const checkboxes = document.querySelectorAll('.card-checkbox');
+			checkboxes.forEach(checkbox => {
+				checkbox.addEventListener('change', () => {
+					const checkedCards = Array.from(checkboxes)
+						.filter(cb => cb.checked)
+						.map(cb => cb.getAttribute('data-card-number'));
+					repeatList.textContent = 'Повторить: ' + checkedCards.join(', ');
+				});
+			});
+
+			// Обработчик события для чекбокса размытия
+			blurToggle.addEventListener('change', () => {
+				const sElements = document.querySelectorAll('.s'); // Находим все элементы с классом .s
+				sElements.forEach(element => {
+					element.classList.toggle('active')
+				});
+			});
+
+		});
+	</script>
+
+</body></html>

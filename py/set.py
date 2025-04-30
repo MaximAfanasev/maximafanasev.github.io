@@ -1,0 +1,2 @@
+print(set('abc'))
+
