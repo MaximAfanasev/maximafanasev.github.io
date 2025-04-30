@@ -67,6 +67,7 @@ h2 {
 	text-decoration: none;
 	font-size: 25px;
 	font-weight: 500;
+	border: 3px solid green;
 	border-radius: 30px;
 }
 
