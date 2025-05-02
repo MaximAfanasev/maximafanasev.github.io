@@ -8,7 +8,18 @@
 # возвести в степень
 # округлить
 
+# aa c d f ii o p r
 
+# a  abs
+# a  as_integer_ratio
+# c  chr
+# d  divmod
+# f  float
+# i  int
+# i  is_integer_ratio
+# o  ord
+# p  pow
+# r  round
 
 print(abs(-5))           # 5
 print(2.5.as_integer_ratio()) #(5, 2)
@@ -36,47 +47,43 @@ print(round(3.14159))    #3
 
 
 
-print(1+1)     # 2
-print(+123)    # 123
-print(-123)    # -123
-print(1-1)     # 0
-print(4-10)    # -6
-print(1*2)     # 2
-print(7/2)     # 3.5
-print(7//2)    # 3
-print(9//5)    # 1
-print(7%3)     # 1
-print(9%5)     # 4
-print(2**3)    # 8
-print(4 + 7.0) # 11.0
+print(1+1)     					 # 2
+print(+123)    					 # 123
+print(-123)    					 # -123
+print(1-1)     					 # 0
+print(4-10)    					 # -6
+print(1*2)     					 # 2
+print(7/2)     					 # 3.5
+print(7//2)    					 # 3
+print(9//5)    					 # 1
+print(7%3)     					 # 1
+print(9%5)     					 # 4
+print(2**3)    					 # 8
+print(4 + 7.0) 					 # 11.0
 
 
 
-print(0b10)    # 2
-print(0o10)    # 8
-print(0x10)    # 16
+print(0b10)    					 # 2
+print(0o10)    					 # 8
+print(0x10)    					 # 16
 
 
 
-print(7==5)    # False
-print(5==5)    # True
-print(5!=3)    # True
-print(5>3)     # True
-print(5<3)     # False
-print(5>=5)    # True
-print(5<=3)    # False
+print(7==5)              # False
+print(5==5)              # True
+print(5!=3)              # True
+print(5>3)               # True
+print(5<3)               # False
+print(5>=5)              # True
+print(5<=3)              # False
 
 
-
-
-print(5&3)     # 1 (101 & 011 = 001)
-print(5|3)     # 7 (101 | 011 = 111)
-print(5^3)     # 6 (101 ^ 011 = 110)
-print(~5)      # -6
-print(5 << 1)  # 10
-print(5 >> 1)  # 2
-
-
+print(5&3)     					 # 1 (101 & 011 = 001)
+print(5|3)     					 # 7 (101 | 011 = 111)
+print(5^3)     					 # 6 (101 ^ 011 = 110)
+print(~5)      					 # -6
+print(5 << 1)  					 # 10
+print(5 >> 1)  					 # 2
 
 
 
