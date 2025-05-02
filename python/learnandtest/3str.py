@@ -1,30 +1,29 @@
-print(len('abc'))       # 3
-print('A man.\n P')     # A man.
-                        #  P
-print(type('a'))        # <class 'str'>
-print(type("b"))        # <class 'str'>
-print(type('''c'''))    # <class 'str'>
-print('a' + 'b')        # 'ab'
-print('a' * 4)          # 'aaaa'
+print(len('abc'))       												# 3
+print('A man.\n P')     												# A man.
+                        												#  P
+print(type('a'))        												# <class 'str'>
+print(type("b"))        												# <class 'str'>
+print(type('''c'''))    												# <class 'str'>
+print('a' + 'b')        												# 'ab'
+print('a' * 4)          												# 'aaaa'
 
 multi_line = '''Это
 многострочная
 строка.'''
 print(multi_line)
 
-# [start : end : step]
-print('ab'[0])          # 'a'
-print('abc'[:])         # 'abc'
-print('abc'[1:])        # 'bc'
-print('abc'[1:2])       # 'b'
-print('abc'[-2:])       # 'bc'
-print('abcdefj'[::2])   # 'acej'
+																								# [start : end : step]
+print('ab'[0])          												# 'a'
+print('abc'[:])         												# 'abc'
+print('abc'[1:])        												# 'bc'
+print('abc'[1:2])       												# 'b'
+print('abc'[-2:])       												# 'bc'
+print('abcdefj'[::2])   												# 'acej'
 
 text = "Hello"
-print(text[::-1])       # 'olleH'
+print(text[::-1])       												# 'olleH'
 
-print("Он сказал: \"Привет!\"")
-# Он сказал: "Привет!"
+print("Он сказал: \"Привет!\"")									# Он сказал: "Привет!"
 
 
 
