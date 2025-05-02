@@ -1,9 +1,3 @@
-# 13 letters														# bbb c d ff g i l t ss
-
-
-
-
-
 print(type(True))                				# bool
 print(type(bytearray(b'hh')))    				# bytearray
 a = b'aaaa'
