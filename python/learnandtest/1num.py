@@ -1,49 +1,39 @@
-# модуль числа
-# десятичная в дробные
-# код числа в букву
-# число в десятичное
-# строка в число
-# проверить десятичное
-# буква в код буквы
-# возвести в степень
-# округлить
+#10 letters															# aa c d f ii o p r
 
-# aa c d f ii o p r
+																				# a  abs
+																				# a  as_integer_ratio
+																				# c  chr
+																				# d  divmod
+																				# f  float
+																				# i  int
+																				# i  is_integer
+																				# o  ord
+																				# p  pow
+																				# r  round
 
-# a  abs
-# a  as_integer_ratio
-# c  chr
-# d  divmod
-# f  float
-# i  int
-# i  is_integer_ratio
-# o  ord
-# p  pow
-# r  round
+print(abs(-5))           								# 5
+print(2.5.as_integer_ratio()) 					#(5, 2)
+print(chr(65))           								# A
+print(divmod(10, 3))     								# (3, 1)
 
-print(abs(-5))           # 5
-print(2.5.as_integer_ratio()) #(5, 2)
-print(chr(65))           # A
-print(divmod(10, 3))     # (3, 1)
+print(float(True))       								# 1.0
+print(float(1))          								# 1.0
+print(float('99'))       								# 99.0
+print(float(98.6))       								# 98.6
 
-print(float(True))       # 1.0
-print(float(1))          # 1.0
-print(float('99'))       # 99.0
-print(float(98.6))       # 98.6
-
-print(int(True))         # 1
-print(int(False))        # 0
-print(int(1.0e4))        # 10000
-print(int(98.6))         # 98
-print(int('99'))         # 99
-print(int('+12'))        # 12
-print(int('10', 2))      # 2
+print(int(True))         								# 1
+print(int(False))        								# 0
+print(int(1.0e4))        								# 10000
+print(int(98.6))         								# 98
+print(int('99'))         								# 99
+print(int('+12'))        								# 12
+print(int('10', 2))      								# 2
 
 d = 5.0
-print(d.is_integer())    # True
-print(ord('A'))          # 65
-print(pow(2, 3))         # 8
-print(round(3.14159))    #3
+print(d.is_integer())    								# True
+print(ord('A'))          								# 65
+print(pow(2, 3))         								# 8
+print(round(3.14159))    								#3
 
 
 
