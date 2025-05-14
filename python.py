@@ -158,22 +158,152 @@ print(5<<1)
 print(5>>1)
 #2
 
-
-
 a = 10
 print(a.bit_length())
 #4
-
 b = 3 + 4j
 print(b.conjugate())
 #(3 - 4j)
-
 print(float.fromhex('0x1.ffffp10'))
 #2047.984375
 print(b.imag)
 #4.0
 print(b.real)
 #3.0
+
+print(1, 'a', 'b')
+#1 a b
+
+#iterator
+#''
+#''
+
+#""
+#''
+
+#''''''
+#''
+
+print(len('abc'))
+#3
+print('A man.\n P')
+# A man.
+#   P
+print(type('a'))
+#<class 'str'>
+print(type("b"))
+#<class 'str'>
+print(type('''c'''))
+#<class 'str'>
+print('a' + 'b')
+#ab
+print('a' * 4)
+#aaaa
+
+m = '''1
+2
+3'''
+print(m)
+#1
+#2
+#3
+
+print('ab'[0])
+#a
+print('abc'[1:])
+#bc
+print('abc'[1:2])
+#b
+print('abc'[-2:])
+#bc
+print('abcdefj'[::2])
+#acej
+
+b = 'Hello'
+print(b[::-1])
+#olleH
+
+print('Он сказал: \"Привет\"')
+#Он сказал: "Привет"
+print('abc'.capitalize())
+#Abc
+print('a'.center(3))
+# a
+c = 'Hello, world'
+print(c.count('l'))
+#3
+print('a'.endswith('a'))
+#True
+print('abc'.find('b'))
+#1
+print('{}'.format('str'))
+#str
+print('{}{}'.format('Hello', 'world'))
+#Helloworld
+
+d = 'Alice'
+e = 25
+print(f'ааа {d}, bbb {e}')
+#aaa Alice, bbb 25
+
+print(''.join(['a', 'b']))
+#ab
+print(','.join(['a', 'b']))
+#a,b
+
+f = 'aoiu'
+print('a' in f)
+#True
+
+print('abc'.isalpha())
+#True
+print('abc123'.isalnum())
+#True
+print('123'.isdecimal())
+#True
+print('a'.islower())
+#True
+print('  '.isspace())
+#True
+print('Abc Cde'.istitle())
+#True
+print('A'.isupper())
+#True
+print('a'.ljust(5, '-'))
+#a----
+print(' abc '.lstrip())
+#abc__
+print('ab'.replace('a', 'c'))
+#cb
+print('ab'.rfind('a'))
+#0
+print('a'.rjust(5, '-'))
+#----a
+print(' abc '.rstrip())
+#_abc
+print('a'.startswith('a'))
+#True
+f = 'a b c'
+print(f.split())
+#['a', 'b', 'c']
+g = 'aBCDe'
+print(g.swapcase())
+#AbcdE
+print(str(98.6))
+#98.6
+print(str(1.0e4))
+#10000.0
+print(str(True))
+#True
+print('abc def hij'.title())
+#Abc Def Hij
+print('abc'.upper())
+#ABC
+      
+
+
+
+
 
 
 
