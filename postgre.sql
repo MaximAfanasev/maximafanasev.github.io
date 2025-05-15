@@ -284,16 +284,133 @@ SELECT * FROM students;
 
 
 
+\q
+
+brew services list
+
+brew services start postgresql@15
 
 
+brew services restart postgresql@14
+Stopping `postgresql@14`... (might take a while)
+==> Successfully stopped `postgresql@14` (label: homebrew.mxcl.postgresql@14)
+==> Successfully started `postgresql@14` (label: homebrew.mxcl.postgresql@14)
+bash-5.2$ 
 
+psql -U test -d big if big.sql 
 
+\i big.sql 
 
+SELECT * FROM aircrafts;
+ aircraft_code | model | range 
+---------------+-------+-------
+ 773           |       | 11100
+ 763           |       |  7900
+ SU9           |       |  3000
+ 320           |       |  5700
+ 321           |       |  5600
+ 319           |       |  6700
+ 733           |       |  4200
+ CN1           |       |  1200
+ CR2           |       |  2700
+(9 rows)
 
+SELECT bookings.now();
+          now           
+------------------------
+ 2017-08-15 19:00:00+04
+(1 row)
 
+SELECT airport_code, city
+FROM airports LIMIT 5;
+ airport_code | city 
+--------------+------
+ YKS          | 
+ MJZ          | 
+ KHV          | 
+ PKC          | 
+ UUS          | 
+(5 rows)
 
+\c
 
+\i big.sql
 
+SELECT airport_code, city
+FROM airports
+LIMIT 5;
+ airport_code |           city           
+--------------+--------------------------
+ YKS          | Якутск
+ MJZ          | Мирный
+ KHV          | Хабаровск
+ PKC          | Петропавловск-Камчатский
+ UUS          | Южно-Сахалинск
+(5 rows)
+
+SELECT t.passenger_name,
+b.book_date
+FROM bookings b
+JOIN tickets t
+ON t.book_ref = b.book_ref
+JOIN boarding_passes bp
+ON bp.ticket_no = t.ticket_no
+JOIN flights f
+ON f.flight_id = bp.flight_id
+WHERE f.departure_airport ='SVO'
+AND f.arrival_airport ='OVB'
+AND f.scheduled_departure::date =
+bookings.now()::date - INTERVAL'2 day'
+AND bp.seat_no ='1A';
+  passenger_name   |       book_date        
+-------------------+------------------------
+ SERGEY SCHERBAKOV | 2017-07-28 21:39:00+04
+ SERGEY SCHERBAKOV | 2017-07-28 21:39:00+04
+ SERGEY SCHERBAKOV | 2017-07-28 21:39:00+04
+ SERGEY SCHERBAKOV | 2017-07-28 21:39:00+04
+(4 rows)
+
+SELECT count(*)
+FROM flights f
+JOIN seats s
+ON s.aircraft_code = f.aircraft_code
+WHERE f.flight_no ='PG0404'
+AND f.scheduled_departure::date =
+bookings.now()::date - INTERVAL'1 day'
+AND NOT EXISTS (
+SELECT NULL
+FROM boarding_passes bp
+WHERE bp.flight_id = f.flight_id
+AND bp.seat_no = s.seat_no
+);
+ count 
+-------
+   252
+(1 row)
+
+SELECT f.flight_no,
+f.scheduled_departure,
+f.actual_departure,
+f.actual_departure - f.scheduled_departure
+AS delay
+FROM flights f
+WHERE f.actual_departure IS NOT NULL
+ORDER BY f.actual_departure - f.scheduled_departure
+DESC
+LIMIT 10;
+ flight_no |  scheduled_departure   |    actual_departure    |  delay   
+-----------+------------------------+------------------------+----------
+ PG0073    | 2016-09-03 12:50:00+04 | 2016-09-03 17:53:00+04 | 05:03:00
+ PG0073    | 2016-09-03 12:50:00+04 | 2016-09-03 17:53:00+04 | 05:03:00
+ PG0040    | 2016-10-16 14:45:00+04 | 2016-10-16 19:29:00+04 | 04:44:00
+ PG0040    | 2016-10-16 14:45:00+04 | 2016-10-16 19:29:00+04 | 04:44:00
+ PG0533    | 2016-10-23 15:55:00+04 | 2016-10-23 20:37:00+04 | 04:42:00
+ PG0533    | 2016-10-23 15:55:00+04 | 2016-10-23 20:37:00+04 | 04:42:00
+ PG0132    | 2017-05-22 13:25:00+04 | 2017-05-22 18:06:00+04 | 04:41:00
+ PG0531    | 2017-05-17 10:15:00+04 | 2017-05-17 14:56:00+04 | 04:41:00
+ PG0531    | 2017-05-17 10:15:00+04 | 2017-05-17 14:56:00+04 | 04:41:00
+ PG0132    | 2017-05-22 13:25:00+04 | 2017-05-22 18:06:00+04 | 04:41:00
+(10 rows)
 
 
 
