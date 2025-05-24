@@ -81,5 +81,49 @@ if (2 == 1) {
 
 let a = 2==1 ? true : false
 
+||
+||=
+&&
+&&=
+!
+??
+??=
 
+a ||= b
+a || (a=b)
 
+while (a<3) {a++}
+
+do {a++} while (a<3)
+
+for (let i = 0; i<3; i++) {}
+
+break
+continue
+
+switch(a) {
+	case 'a':
+	alert('a')
+	break;
+	default:
+	alert('0')
+}
+
+function a() {
+	alert('a')
+}
+a()
+
+b = 'b';
+function a() {
+	let a = 'a' + b
+}
+
+function a(b, text = 'a') {
+}
+
+function sum(a,b) {
+	return a + b
+}
+
+function a() {} == undefined
