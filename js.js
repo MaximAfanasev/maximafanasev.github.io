@@ -127,3 +127,59 @@ function sum(a,b) {
 }
 
 function a() {} == undefined
+
+function a() {}
+let a = function() {}
+
+function a() {}
+a('a?', function b() {}, function c() {})
+
+a('a') 
+function a() {}
+b('b') // Error
+let b = function() {}
+
+let a = () => {}
+
+let a = prompt('', 18)
+let b = (a < 18) ?
+		() => alert('a'):
+		() => alert('b')
+a()
+
+F12
+console
+debugger
+eslint
+
+Mocha
+describe("pow", function() {
+
+  it("возводит в степень n", function() {
+    assert.equal(pow(2, 3), 8);
+  });
+
+});
+
+let user = new Object(); // синтаксис "конструктор объекта"
+let user = {};  // синтаксис "литерал объекта"
+
+let user = {     // объект
+  name: "John",  // под ключом "name" хранится значение "John"
+  age: 30        // под ключом "age" хранится значение 30
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
