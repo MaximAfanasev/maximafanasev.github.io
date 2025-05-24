@@ -169,16 +169,35 @@ let user = {     // объект
   age: 30        // под ключом "age" хранится значение 30
 };
 
+// получаем свойства объекта:
+alert( user.name ); // John
+alert( user.age ); // 30
+user.isAdmin = true;
+delete user.age;
 
+let user = {
+  name: "John",
+  age: 30,
+  "likes birds": true  // имя свойства из нескольких слов должно быть в кавычках
+};
 
+const user = {
+  name: "John"
+};
+user.name = "Pete"; // (*)
+alert(user.name); // Pete
 
+let user = {};
+// присваивание значения свойству
+user["likes birds"] = true;
 
-
-
-
-
-
-
+let user = {
+  name: "John",
+  age: 30
+};
+let key = prompt("Что вы хотите узнать о пользователе?", "name");
+// доступ к свойству через переменную
+alert( user[key] ); // John (если ввели "name")
 
 
 
