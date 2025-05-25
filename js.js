@@ -369,17 +369,38 @@ let userGuest = {};
 userAdmin.admin?.(); // Я админ
 userGuest.admin?.(); // ничего не произойдет	
 
+let id = Symbol();
+let id = Symbol("id");
 
+let id1 = Symbol("id");
+let id2 = Symbol("id");
+alert(id1 == id2); // false
 
+let id = Symbol("id");
+alert(id); // TypeError
 
+let user = {
+  name: "Вася"
+};
+let id = Symbol("id");
+user[id] = 1;
+alert( user[id] ); // 1
 
+let id = Symbol("id");
+let user = {
+  name: "Вася",
+  [id]: 123 // просто "id: 123" не сработает
+};
 
-
-
-
-
-
-
+let id = Symbol("id");
+let user = {
+  name: "Вася",
+  age: 30,
+  [id]: 123
+};
+for (let key in user) alert(key); // name, age (свойства с ключом-символом нет среди перечисленных)
+// хотя прямой доступ по символу работает
+alert( "Напрямую: " + user[id] );
 
 
 
