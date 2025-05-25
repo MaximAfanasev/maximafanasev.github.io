@@ -402,26 +402,69 @@ for (let key in user) alert(key); // name, age (свойства с ключом
 // хотя прямой доступ по символу работает
 alert( "Напрямую: " + user[id] );
 
+let id = Symbol("id");
+let user = {
+  [id]: 123
+};
+let clone = Object.assign({}, user);
+alert( clone[id] ); // 123
 
+// читаем символ из глобального реестра и записываем его в переменную
+let id = Symbol.for("id"); // если символа не существует, он будет создан
+// читаем его снова и записываем в другую переменную (возможно, из другого места кода)
+let idAgain = Symbol.for("id");
+// проверяем -- это один и тот же символ
+alert( id === idAgain ); // true
 
+// получаем символ по имени
+let sym = Symbol.for("name");
+let sym2 = Symbol.for("id");
 
+// получаем имя по символу
+alert( Symbol.keyFor(sym) ); // name
+alert( Symbol.keyFor(sym2) ); // id
 
+alert(obj);
+// используем объект в качестве ключа
+anotherObj[obj] = 123;
 
+// явное преобразование
+let num = Number(obj);
+// математические (не считая бинарного плюса)
+let n = +obj; // унарный плюс
+let delta = date1 - date2;
+// сравнения больше/меньше
+let greater = user1 > user2;
 
+let user = {name: "John"};
+alert(user); // [object Object]
+alert(user.valueOf() === user); // true
 
+let user = {
+  name: "John",
+  toString() {
+    return this.name;
+  }
+};
+alert(user); // toString -> John
+alert(user + 500); // toString -> John500
 
+let obj = {
+  // toString обрабатывает все преобразования в случае отсутствия других методов
+  toString() {
+    return "2";
+  }
+};
+alert(obj * 2); // 4
 
+let str = "Привет";
+alert( str.toUpperCase() ); // ПРИВЕТ
 
+let num = 1.23456;
+alert( num.toFixed(2) ); // 1.23
 
-
-
-
-
-
-
-
-
-
+let billion = 1e9;  // 1 миллиард, буквально: 1 и 9 нулей
+alert( 7.3e9 );  // 7.3 миллиарда (7,300,000,000)
 
 
 
