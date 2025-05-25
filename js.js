@@ -528,6 +528,105 @@ alert( str.indexOf("id") ); // 1
 let str = 'Widget with id';
 alert( str.indexOf('id', 2) ) // 12
 
+let str = 'Ослик Иа-Иа посмотрел на виадук';
+let target = 'Иа'; // цель поиска
+let pos = 0;
+while (true) {
+  let foundPos = str.indexOf(target, pos);
+  if (foundPos == -1) break;
+  alert( `Найдено тут: ${foundPos}` );
+  pos = foundPos + 1; // продолжаем со следующей позиции
+}
+
+let str = "Ослик Иа-Иа посмотрел на виадук";
+let target = "Иа";
+let pos = -1;
+while ((pos = str.indexOf(target, pos + 1)) != -1) {
+  alert( pos );
+}
+
+let str = "Widget with id";
+if (str.indexOf("Widget") != -1) {
+    alert("Совпадение есть"); // теперь работает
+}
+
+alert( ~2 ); // -3, то же, что -(2+1)
+alert( ~1 ); // -2, то же, что -(1+1)
+alert( ~0 ); // -1, то же, что -(0+1)
+alert( ~-1 ); // 0, то же, что -(-1+1)
+
+alert( "Widget with id".includes("Widget") ); // true
+alert( "Hello".includes("Bye") ); // false
+
+alert( "Widget".startsWith("Wid") ); // true, "Wid" — начало "Widget"
+alert( "Widget".endsWith("get") ); // true
+
+let str = "stringify";
+// 'strin', символы от 0 до 5 (не включая 5)
+alert( str.slice(0, 5) );
+// 's', от 0 до 1, не включая 1, т. е. только один символ на позиции 0
+alert( str.slice(0, 1) );
+
+alert( 'a' > 'Z' ); // true
+
+alert( "z".codePointAt(0) ); // 122
+alert( "Z".codePointAt(0) ); // 90
+
+let arr = new Array();
+let arr = [];
+
+let fruits = ["Яблоко", "Апельсин", "Слива"];
+alert( fruits[0] ); // Яблоко
+alert( fruits.length ); // 3
+alert( fruits ); // Яблоко, Апельсин, Слива
+
+// разные типы значений
+let arr = [ 'Яблоко', { name: 'Джон' }, true, function() { alert('привет'); } ];
+alert( arr[1].name ); // Джон
+
+let fruits = ["Apple", "Orange", "Plum"];
+alert( fruits[fruits.length-1] ); // Plum
+
+let fruits = ["Apple", "Orange", "Plum"];
+alert( fruits.at(-1) ); // Plum
+
+let fruits = ["Яблоко", "Апельсин", "Груша"];
+alert( fruits.pop() ); // удаляем "Груша" и выводим его
+alert( fruits ); // Яблоко, Апельсин
+
+let fruits = ["Яблоко", "Апельсин"];
+fruits.push("Груша");
+alert( fruits ); // Яблоко, Апельсин, Груша
+
+let fruits = ["Яблоко", "Апельсин", "Груша"];
+alert( fruits.shift() ); // удаляем Яблоко и выводим его
+alert( fruits ); // Апельсин, Груша
+
+let fruits = ["Апельсин", "Груша"];
+fruits.unshift('Яблоко');
+alert( fruits ); // Яблоко, Апельсин, Груша
+
+let arr = ["Яблоко", "Апельсин", "Груша"];
+for (let key in arr) {
+  alert( arr[key] ); // Яблоко, Апельсин, Груша
+}
+
+let fruits = [];
+fruits[123] = "Яблоко";
+alert( fruits.length ); // 124
+
+let arr = [1, 2, 3, 4, 5];
+
+arr.length = 2; // укорачиваем до двух элементов
+alert( arr ); // [1, 2]
+arr.length = 5; // возвращаем length как было
+alert( arr[3] ); // undefined: значения не восстановились
+
+let arr = new Array("Яблоко", "Груша", "и тд");
+
+
+
+
 
 
 
