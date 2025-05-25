@@ -466,5 +466,71 @@ alert( num.toFixed(2) ); // 1.23
 let billion = 1e9;  // 1 миллиард, буквально: 1 и 9 нулей
 alert( 7.3e9 );  // 7.3 миллиарда (7,300,000,000)
 
+let ms = 1e-6; // шесть нулей слева от 1
+
+alert( 0xff ); // 255
+
+let a = 0b11111111; // двоичная (бинарная) форма записи числа 255
+let b = 0o377; // восьмеричная форма записи числа 255
+
+let num = 255;
+alert( num.toString(16) );  // ff
+alert( num.toString(2) );   // 11111111
+
+let num = 12.34;
+alert( num.toFixed(1) ); // "12.3"
+
+let num = 12.36;
+alert( num.toFixed(1) ); // "12.4"
+
+alert( 1e500 ); // Infinity
+
+alert( 0.1 + 0.2 == 0.3 ); // false
+
+alert( 0.1 + 0.2 ); // 0.30000000000000004
+
+alert( isNaN(NaN) ); // true
+alert( isNaN("str") ); // true
+alert( NaN === NaN ); // false
+
+alert( isFinite("15") ); // true
+alert( isFinite("str") ); // false,
+
+alert( parseInt('100px') ); // 100
+alert( parseInt('12.3') ); // 12
+alert( parseInt('a123') ); // NaN
+
+alert( Math.random() ); // 0.12345
+
+alert( Math.max(3, 5, -10, 0, 1) ); // 5
+alert( Math.pow(2, 10) ); // 1024
+
+let guestList = "Guests:\n * John\n * Pete\n * Mary";
+
+let str = `Hello`;
+
+// получаем первый символ
+alert( str[0] ); // H
+alert( str.at(0) ); // H
+
+// получаем последний символ
+alert( str[str.length - 1] ); // o
+alert( str.at(-1) ); // o
+
+alert( 'Interface'.toUpperCase() ); // INTERFACE
+alert( 'Interface'.toLowerCase() ); // interface
+
+let str = 'Widget with id';
+alert( str.indexOf('Widget') ); // 0, потому что подстрока 'Widget' найдена в начале
+alert( str.indexOf('widget') ); // -1, совпадений нет, поиск чувствителен к регистру
+alert( str.indexOf("id") ); // 1
+
+let str = 'Widget with id';
+alert( str.indexOf('id', 2) ) // 12
+
+
+
+
+
 
 
