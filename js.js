@@ -624,6 +624,275 @@ alert( arr[3] ); // undefined: значения не восстановилис�
 
 let arr = new Array("Яблоко", "Груша", "и тд");
 
+let matrix = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9]
+];
+alert( matrix[1][1] ); // 5, центральный элемент
+
+let arr = [1, 2, 3];
+alert( arr ); // 1,2,3
+alert( String(arr) === '1,2,3' ); // true
+
+alert( [] + 1 ); // "1"
+alert( [1] + 1 ); // "11"
+alert( [1,2] + 1 ); // "1,21"
+
+alert( [] == [] ); // false
+alert( [0] == [0] ); // false
+alert( 0 == [] ); // true
+
+let arr = ["Я", "изучаю", "JavaScript"];
+arr.splice(1, 1); // начиная с индекса 1, удалить 1 элемент
+alert( arr ); // осталось ["Я", "JavaScript"]
+
+let arr = ["t", "e", "s", "t"];
+alert( arr.slice(1, 3) ); // e,s (копирует с 1 до 3)
+alert( arr.slice(-2) ); // s,t (копирует с -2 до конца)
+
+let arr = [1, 2];
+// создать массив из: arr и [3,4]
+alert( arr.concat([3, 4]) ); // 1,2,3,4
+
+["Бильбо", "Гэндальф", "Назгул"].forEach((item, index, array) => {
+  alert(`У ${item} индекс ${index} в ${array}`);
+});
+
+let arr = [1, 0, false];
+alert( arr.indexOf(0) ); // 1
+
+let users = [
+  {id: 1, name: "Вася"},
+  {id: 2, name: "Петя"},
+  {id: 3, name: "Маша"}
+];
+let user = users.find(item => item.id == 1);
+alert(user.name); // Вася
+
+let users = [
+  {id: 1, name: "Вася"},
+  {id: 2, name: "Петя"},
+  {id: 3, name: "Маша"}
+];
+// возвращает массив, состоящий из двух первых пользователей
+let someUsers = users.filter(item => item.id < 3);
+alert(someUsers.length); // 2
+let lengths = ["Бильбо", "Гэндальф", "Назгул"].map(item => item.length);
+alert(lengths); // 6,8,6
+
+et arr = [ 1, 2, 15 ];
+// метод сортирует содержимое arr
+arr.sort();
+alert( arr );  // 1, 15, 2
+
+function compare(a, b) {
+  if (a > b) return 1; // если первое значение больше второго
+  if (a == b) return 0; // если равны
+  if (a < b) return -1; // если первое значение меньше второго
+}
+
+let arr = [1, 2, 3, 4, 5];
+arr.reverse();
+alert( arr ); // 5,4,3,2,1
+
+let names = 'Вася, Петя, Маша';
+let arr = names.split(', ');
+for (let name of arr) {
+  alert( `Сообщение получат: ${name}.` ); // Сообщение получат: Вася (и другие имена)
+}
+
+let str = "тест";
+alert( str.split('') ); // т,е,с,т
+
+let arr = [1, 2, 3, 4, 5];
+let result = arr.reduce((sum, current) => sum + current, 0);
+alert(result); // 15
+
+for (let char of "test") {
+  // срабатывает 4 раза: по одному для каждого символа
+  alert( char ); // t, затем e, затем s, затем t
+}
+
+let arrayLike = {
+  0: "Hello",
+  1: "World",
+  length: 2
+};
+
+let arr = Array.from(arrayLike); // (*)
+alert(arr.pop()); // World (метод работает)
+
+
+new Map() – создаёт коллекцию.
+map.set(key, value) – записывает по ключу key значение value.
+map.get(key) – возвращает значение по ключу или undefined, если ключ key отсутствует.
+map.has(key) – возвращает true, если ключ key присутствует в коллекции, иначе false.
+map.delete(key) – удаляет элемент (пару «ключ/значение») по ключу key.
+map.clear() – очищает коллекцию от всех элементов.
+map.size – возвращает текущее количество элементов.
+
+ключи в WeakMap должны быть объектами, а не примитивными значениями
+
+Object.keys(obj) – возвращает массив ключей.
+Object.values(obj) – возвращает массив значений.
+Object.entries(obj) – возвращает массив пар [ключ, значение].
+
+// у нас есть массив с именем и фамилией
+let arr = ["Ilya", "Kantor"];
+// деструктурирующее присваивание
+// записывает firstName = arr[0]
+// и surname = arr[1]
+let [firstName, surname] = arr;
+
+alert(firstName); // Ilya
+alert(surname);  // Kantor
+
+let [firstName, , title] = ["Julius", "Caesar", "Consul", "of the Roman Republic"];
+alert( title ); // Consul
+
+let [name1, name2, ...rest] = ["Julius", "Caesar", "Consul", "of the Roman Republic"];
+// rest это массив элементов, начиная с 3-го
+alert(rest[0]); // Consul
+alert(rest[1]); // of the Roman Republic
+alert(rest.length); // 2
+
+let options = {
+  title: "Menu",
+  width: 100,
+  height: 200
+};
+let {title, width, height} = options;
+alert(title);  // Menu
+alert(width);  // 100
+alert(height); // 200
+
+let options = {
+  title: "Menu",
+  height: 200,
+  width: 100
+};
+// title = свойство с именем title
+// rest = объект с остальными свойствами
+let {title, ...rest} = options;
+// сейчас title="Menu", rest={height: 200, width: 100}
+alert(rest.height);  // 200
+alert(rest.width);   // 100
+
+let now = new Date();
+alert( now ); // показывает текущие дату и время
+
+let user = {
+  name: "John",
+  age: 30,
+
+  toString() {
+    return `{name: "${this.name}", age: ${this.age}}`;
+  }
+};
+alert(user); // {name: "John", age: 30}
+
+let student = {
+  name: 'John',
+  age: 30,
+  isAdmin: false,
+  courses: ['html', 'css', 'js'],
+  wife: null
+};
+
+let json = JSON.stringify(student);
+alert(typeof json); // мы получили строку!
+alert(json);
+/* выведет объект в формате JSON:
+{
+  "name": "John",
+  "age": 30,
+  "isAdmin": false,
+  "courses": ["html", "css", "js"],
+  "wife": null
+}
+*/
+
+// строковый массив
+let numbers = "[0, 1, 2, 3]";
+numbers = JSON.parse(numbers);
+alert( numbers[1] ); // 1
+
+function pow(x, n) {
+  if (n == 1) {
+    return x;
+  } else {
+    return x * pow(x, n - 1);
+  }
+}
+alert( pow(2, 3) ); // 8
+
+function sum(a, b) {
+  return a + b;
+}
+alert( sum(1, 2, 3, 4, 5) ); // 3
+
+function sumAll(...args) { // args — имя массива
+  let sum = 0;
+  for (let arg of args) sum += arg;
+  return sum;
+}
+alert( sumAll(1) ); // 1
+alert( sumAll(1, 2) ); // 3
+alert( sumAll(1, 2, 3) ); // 6
+
+let arr = [3, 5, 1];
+alert( Math.max(...arr) ); // 5
+
+let arr1 = [1, -2, 3, 4];
+let arr2 = [8, 3, -8, 1];
+alert( Math.max(1, ...arr1, 2, ...arr2, 25) ); // 25
+
+let arr = [3, 5, 1];
+let arr2 = [8, 9, 15];
+let merged = [0, ...arr, 2, ...arr2];
+alert(merged); // 0,3,5,1,2,8,9,15
+
+let str = "Привет";
+alert( [...str] ); // П,р,и,в,е,т
+
+{
+  // выполняем некоторые действия с локальной переменной, которые не должны быть видны снаружи
+  let message = "Hello"; // переменная видна только в этом блоке
+  alert(message); // Hello
+}
+alert(message); // ReferenceError: message is not defined
+
+if (true) {
+  let phrase = "Hello";
+  alert(phrase); // Hello
+}
+alert(phrase); // Ошибка, нет такой переменной!
+
+function makeCounter() {
+  let count = 0;
+  return function() {
+    return count++;
+  };
+}
+let counter = makeCounter();
+
+alert("Привет");
+// это то же самое, что и
+window.alert("Привет");
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
