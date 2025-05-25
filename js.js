@@ -161,9 +161,9 @@ describe("pow", function() {
 let user = new Object(); // синтаксис "конструктор объекта"
 let user = {};  // синтаксис "литерал объекта"
 
-let user = {     // объект
-  name: "John",  // под ключом "name" хранится значение "John"
-  age: 30        // под ключом "age" хранится значение 30
+let user = {
+  name: "John",
+  age: 30
 };
 
 // получаем свойства объекта:
@@ -175,17 +175,16 @@ delete user.age;
 let user = {
   name: "John",
   age: 30,
-  "likes birds": true  // имя свойства из нескольких слов должно быть в кавычках
+  "likes birds": true
 };
 
 const user = {
   name: "John"
 };
-user.name = "Pete"; // (*)
+user.name = "Pete";
 alert(user.name); // Pete
 
 let user = {};
-// присваивание значения свойству
 user["likes birds"] = true;
 
 let user = {
@@ -193,14 +192,12 @@ let user = {
   age: 30
 };
 let key = prompt("Что вы хотите узнать о пользователе?", "name");
-// доступ к свойству через переменную
 alert( user[key] ); // John (если ввели "name")
 
 function makeUser(name, age) {
   return {
     name: name,
     age: age
-    // ...другие свойства
   };
 }
 
@@ -208,7 +205,7 @@ let user = makeUser("John", 30);
 alert(user.name); // John
 
 let user = {
-  name,  // тоже самое, что и name:name
+  name,
   age: 30
 };
 
@@ -216,10 +213,24 @@ let user = { name: "John", age: 30 };
 alert( "age" in user ); // true
 alert( "blabla" in user ); // false
 
+for (let key in user) {
+  alert( key );  // name, age
+  alert( user[key] ); // John, 30
+}
 
+let user = { name: 'John' };
+let admin = user;
+admin.name = 'Pete';
+alert(user.name); // 'Pete',
 
+let a = {};
+let b = a;
+alert( a == b ); // true
+alert( a === b ); // true
 
-
+let a = {};
+let b = {};
+alert( a == b ); // false
 
 
 
