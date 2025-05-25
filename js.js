@@ -881,19 +881,40 @@ alert("Привет");
 // это то же самое, что и
 window.alert("Привет");
 
+function sayHi() {
+  alert("Hi");
+}
+alert(sayHi.name); // sayHi
 
+let func = new Function([arg1, arg2, ...argN], functionBody);
 
+function sayHi() {
+  alert('Привет');
+}
+setTimeout(sayHi, 1000);
 
+// повторить с интервалом 2 секунды
+let timerId = setInterval(() => alert('tick'), 2000);
 
+декоратор, специальная функция, которая принимает другую функцию и изменяет её поведение
 
+let user = {
+  firstName: "Вася",
+  sayHi() {
+    alert(`Привет, ${this.firstName}!`);
+  }
+};
+setTimeout(user.sayHi, 1000); // Привет, undefined!
 
-
-
-
-
-
-
-
+let user = {
+  firstName: "Вася",
+  sayHi() {
+    alert(`Привет, ${this.firstName}!`);
+  }
+};
+setTimeout(function() {
+  user.sayHi(); // Привет, Вася!
+}, 1000);
 
 
 
