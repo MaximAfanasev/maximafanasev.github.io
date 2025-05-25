@@ -158,8 +158,8 @@ describe("pow", function() {
 
 });
 
-let user = new Object(); // синтаксис "конструктор объекта"
-let user = {};  // синтаксис "литерал объекта"
+let user = new Object();
+let user = {};
 
 let user = {
   name: "John",
@@ -221,7 +221,7 @@ for (let key in user) {
 let user = { name: 'John' };
 let admin = user;
 admin.name = 'Pete';
-alert(user.name); // 'Pete',
+alert(user.name); // 'Pete'
 
 let a = {};
 let b = a;
@@ -231,6 +231,165 @@ alert( a === b ); // true
 let a = {};
 let b = {};
 alert( a == b ); // false
+
+let user = { name: "John" };
+
+let permissions1 = { canView: true };
+let permissions2 = { canEdit: true };
+Object.assign(user, permissions1, permissions2);
+// user = { name: "John", canView: true, canEdit: true }
+
+let user = {
+  name: "John",
+  age: 30
+};
+let clone = Object.assign({}, user);
+
+let user = {
+  name: "John",
+  sizes: {
+    height: 182,
+    width: 50
+  }
+};
+alert( user.sizes.height ); // 182
+
+let user = {
+  name: "John",
+  age: 30
+};
+user.sayHi = function() {
+  alert("Привет!");
+};
+user.sayHi(); // Привет!
+
+function sayHi() {
+  alert("Привет!");
+}
+user.sayHi = sayHi;
+user.sayHi(); // Привет!
+
+user = {
+  sayHi: function() {
+    alert("Привет");
+  }
+};
+
+user = {
+  sayHi() { // то же самое, что и "sayHi: function(){...}"
+    alert("Привет");
+  }
+};
+
+let user = {
+  name: "John",
+  age: 30,
+  sayHi() {
+    // "this" - это "текущий объект".
+    alert(this.name);
+  }
+
+};
+user.sayHi(); // John
+
+let user = {
+  name: "John",
+  age: 30,
+  sayHi() {
+    alert(user.name); // "user" вместо "this"
+  }
+};
+
+let user = {
+  firstName: "Ilya",
+  sayHi() {
+    let arrow = () => alert(this.firstName);
+    arrow();
+  }
+};
+user.sayHi(); // Ilya
+
+function User(name) {
+  this.name = name;
+  this.isAdmin = false;
+}
+let user = new User("Jack");
+alert(user.name); // Jack
+alert(user.isAdmin); // false
+
+function User() {
+  alert(new.target);
+}
+// без "new":
+User(); // undefined
+// с "new":
+new User(); // function User { ... }
+
+function User(name) {
+  if (!new.target) { // в случае, если вы вызвали меня без оператора new
+    return new User(name); // ...я добавлю new за вас
+  }
+  this.name = name;
+}
+let john = User("John");
+alert(john.name); // John
+
+function BigUser() {
+  this.name = "John";
+  return { name: "Godzilla" };  // <-- возвращает этот объект
+}
+alert( new BigUser().name );  // Godzilla
+
+let user = new User; // <-- без скобок
+// то же, что и
+let user = new User();
+
+let user = {}; // пользователь без свойства "address"
+alert(user.address.street); // Ошибка!
+
+let user = {};
+alert(user.address ? user.address.street : undefined);
+
+let user = {}; // пользователь без адреса
+alert( user?.address?.street ); // undefined (без ошибки)
+
+let html = document.querySelector('.elem')?.innerHTML;
+
+let user = null;
+let x = 0;
+user?.sayHi(x++); // нет "user", поэтому выполнение не достигает вызова sayHi и x++
+alert(x); // 0, значение не увеличилось
+			
+let userAdmin = {
+  admin() {
+    alert("Я админ");
+  }
+};
+let userGuest = {};
+userAdmin.admin?.(); // Я админ
+userGuest.admin?.(); // ничего не произойдет	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
