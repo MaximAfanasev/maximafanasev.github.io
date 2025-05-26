@@ -174,33 +174,88 @@
 	<h2>Функции</h2>
 	<table>
 		<tr>
-			<td>локальные переменные</td>
-			<td></td>
+			<td>Создание функции</td>
+			<td>let func = new Function([arg1, arg2, ...argN], functionBody);</td>
 		</tr>
-
+		<tr>
+			<td>локальные переменные</td>
+			<td>
+<pre>
+function greet() {
+    const message = "Hello!"; 
+    
+    // Локальная переменная
+    console.log(message);
+}
+greet(); // "Hello!"
+// console.log(message); 
+// Ошибка: message не определена
+</pre>
+			</td>
+		</tr>
 		<tr>
 			<td>параметры</td>
-			<td></td>
+			<td>
+<pre>
+function sum(a, b) { // a и b — параметры
+    return a + b;
+}
+console.log(sum(2, 3)); // 5
+</pre></td>
 		</tr>
 
 		<tr>
 			<td>параметры по умолчанию</td>
-			<td></td>
+			<td>
+<pre>
+function greet(name = "Guest") {
+    console.log(`Hello, ${name}!`);
+}
+greet(); // "Hello, Guest!"
+greet("Alice"); // "Hello, Alice!"
+</pre>
+			</td>
 		</tr>
 
 		<tr>
 			<td>возврат значения</td>
-			<td></td>
+			<td>
+<pre>
+function multiply(a, b) {
+    return a * b; 
+    // Возврат значения
+}
+const result = multiply(4, 5);
+console.log(result); // 20
+</pre>
+			</td>
 		</tr>
 
 		<tr>
 			<td>неименованная функция</td>
-			<td></td>
+			<td>
+<pre>
+const square = function(x) { 
+   // Функция без имени
+    return x * x;
+};
+console.log(square(4)); // 16
+</pre>
+			</td>
 		</tr>
-
 		<tr>
 			<td>именованная функция</td>
-			<td></td>
+			<td>
+<pre>
+
+function factorial(n) { 
+   // Именованная функция
+    if (n &#60;= 1) return 1;
+    return n * factorial(n - 1);
+}
+console.log(factorial(5)); // 120
+</pre>
+			</td>
 		</tr>
 
 		<tr>
@@ -210,12 +265,58 @@
 
 		<tr>
 			<td>области видимости и замыкание</td>
-			<td></td>
+			<td>
+<pre>
+function outer() {
+    const outerVar = "I'm outside!";
+    function inner() { 
+       // Замыкание (видит outerVar)
+        console.log(outerVar); // "I'm outside!"
+    }
+    return inner;
+}
+const closureFunc = outer();
+closureFunc();
+</pre>
+			</td>
 		</tr>
 
 		<tr>
 			<td>рекурсия и стек</td>
-			<td></td>
+			<td>
+<pre>
+function countdown(n) { // Рекурсивная функция
+    if (n &#60;= 0) {
+        console.log("Done!");
+        return;
+    }
+    console.log(n);
+    countdown(n - 1); // Рекурсивный вызов
+}
+countdown(3);
+// Вывод:
+// 3
+// 2
+// 1
+// Done!
+</pre>
+			</td>
+		</tr>
+		<tr>
+			<td>Свойство «name»</td>
+			<td>function sayHi() {
+  alert("Hi");
+}
+
+alert(sayHi.name); // sayHi</td>
+		</tr>
+		<tr>
+			<td>Свойство «length»</td>
+			<td>function f1(a) {}
+function f2(a, b) {}
+
+alert(f1.length); // 1
+alert(f2.length); // 2</td>
 		</tr>
 	</table>
 
@@ -223,31 +324,59 @@
 	<table>
 		<tr>
 			<td>ключи и значения</td>
-			<td></td>
+			<td>
+<pre>
+
+</pre>
+			</td>
 		</tr>
 		<tr>
 			<td>доступ к ключам и значениям</td>
-			<td></td>
+			<td>
+<pre>
+
+</pre>
+			</td>
 		</tr>
 		<tr>
 			<td>вычисляемые свойства</td>
-			<td></td>
+			<td>
+<pre>
+
+</pre>
+			</td>
 		</tr>
 		<tr>
 			<td>проверка существования свойства</td>
-			<td></td>
+			<td>
+<pre>
+
+</pre>
+			</td>
 		</tr>
 		<tr>
 			<td>цикл по ключам</td>
-			<td></td>
+			<td>
+<pre>
+
+</pre>
+			</td>
 		</tr>
 		<tr>
 			<td>упорядочение свойств объекта</td>
-			<td></td>
+			<td>
+<pre>
+
+</pre>
+			</td>
 		</tr>
 		<tr>
 			<td>копирование по ссылке</td>
-			<td></td>
+			<td>
+<pre>
+
+</pre>
+			</td>
 		</tr>
 		<tr>
 			<td>клонирование объекта</td>
