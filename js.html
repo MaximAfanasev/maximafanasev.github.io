@@ -3,41 +3,161 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>JavaScript Справочник</title>
+	<style>
+		:root {
+			--bg-color: #1e1e2e;
+			--text-color: #e0e0e0;
+			--primary-color: #bb86fc;
+			--secondary-color: #03dac6;
+			--border-color: #44475a;
+			--table-header-bg: #2d2d3d;
+			--code-bg: #282a36;
+			--hover-color: #383a59;
+		}
+
+		body {
+			background: var(--bg-color);
+			color: var(--text-color);
+			font-family: 'Fira Code', 'Consolas', monospace;
+			font-size: 16px;
+			line-height: 1.6;
+			padding: 20px;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		h1, h2, h3 {
+			color: var(--primary-color);
+			margin-top: 30px;
+			border-bottom: 1px solid var(--border-color);
+			padding-bottom: 10px;
+		}
+
+		h2 {
+			color: var(--secondary-color);
+			font-size: 1.8em;
+			margin-top: 40px;
+		}
+
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			margin: 25px 0;
+			box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+			border-radius: 8px;
+			overflow: hidden;
+		}
+
+		table th, table td {
+			padding: 15px 20px;
+			text-align: left;
+			border: 1px solid var(--border-color);
+		}
+
+		table th {
+			background-color: var(--table-header-bg);
+			color: var(--primary-color);
+			font-weight: bold;
+			text-transform: uppercase;
+			font-size: 0.9em;
+			letter-spacing: 0.5px;
+		}
+
+		table tr:nth-child(even) {
+			background-color: rgba(68, 71, 90, 0.2);
+		}
+
+		table tr:hover {
+			background-color: var(--hover-color);
+		}
+
+		pre, code {
+			font-family: 'Fira Code', 'Consolas', monospace;
+			background: var(--code-bg);
+			color: #f8f8f2;
+			padding: 10px;
+			border-radius: 5px;
+			overflow-x: auto;
+			tab-size: 2;
+			margin: 0;
+		}
+
+		pre {
+			white-space: pre-wrap;
+			word-wrap: break-word;
+		}
+
+		code {
+			padding: 2px 5px;
+		}
+
+		ul {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+
+		ul li {
+			padding: 3px 0;
+		}
+
+		ul li:before {
+			content: "•";
+			color: var(--secondary-color);
+			display: inline-block;
+			width: 1em;
+			margin-left: -1em;
+		}
+
+		.keyword {
+			color: #ff79c6;
+			font-weight: bold;
+		}
+
+		.string {
+			color: #f1fa8c;
+		}
+
+		.comment {
+			color: #6272a4;
+			font-style: italic;
+		}
+
+		.number {
+			color: #bd93f9;
+		}
+
+		.operator {
+			color: #ff5555;
+		}
+
+		.function {
+			color: #50fa7b;
+		}
+
+		@media (max-width: 768px) {
+			body {
+				padding: 10px;
+				font-size: 14px;
+			}
+
+			table th, table td {
+				padding: 10px 12px;
+			}
+
+			h2 {
+				font-size: 1.5em;
+			}
+		}
+	</style>
 </head>
-<style>
-	body {
-		background: #000;
-		color: #fff;
-		font-family: monospace;
-		padding: 10px 0;
-		max-width: 1200px;
-		margin: 0 auto;
-	}
-
-	table {
-		border-collapse: collapse;
-		margin: 0 auto;
-		margin-bottom: 30px;
-	}
-
-	table td {
-		padding: 20px;
-		border: 1px solid #555;
-	}
-
-	ul {
-		margin: 0;
-		padding: 0;
-		list-style: none;
-	}
-</style>
 
 <body>
 	<table>
 		<tr>
 			<td>тег для работы кода js</td>
-			<td>script</td>
+			<td>&#60;script></td>
 		</tr>
 
 		<tr>
@@ -182,7 +302,7 @@
 		<tr>
 			<td>локальные переменные</td>
 			<td>
-<pre>
+				<pre>
 function greet() {
     const message = "Hello!"; 
     
@@ -198,18 +318,19 @@ greet(); // "Hello!"
 		<tr>
 			<td>параметры</td>
 			<td>
-<pre>
+				<pre>
 function sum(a, b) { // a и b — параметры
     return a + b;
 }
 console.log(sum(2, 3)); // 5
-</pre></td>
+</pre>
+			</td>
 		</tr>
 
 		<tr>
 			<td>параметры по умолчанию</td>
 			<td>
-<pre>
+				<pre>
 function greet(name = "Guest") {
     console.log(`Hello, ${name}!`);
 }
@@ -222,7 +343,7 @@ greet("Alice"); // "Hello, Alice!"
 		<tr>
 			<td>возврат значения</td>
 			<td>
-<pre>
+				<pre>
 function multiply(a, b) {
     return a * b; 
     // Возврат значения
@@ -236,7 +357,7 @@ console.log(result); // 20
 		<tr>
 			<td>неименованная функция</td>
 			<td>
-<pre>
+				<pre>
 const square = function(x) { 
    // Функция без имени
     return x * x;
@@ -248,7 +369,7 @@ console.log(square(4)); // 16
 		<tr>
 			<td>именованная функция</td>
 			<td>
-<pre>
+				<pre>
 
 function factorial(n) { 
    // Именованная функция
@@ -268,7 +389,7 @@ console.log(factorial(5)); // 120
 		<tr>
 			<td>области видимости и замыкание</td>
 			<td>
-<pre>
+				<pre>
 function outer() {
     const outerVar = "I'm outside!";
     function inner() { 
@@ -286,7 +407,7 @@ closureFunc();
 		<tr>
 			<td>рекурсия и стек</td>
 			<td>
-<pre>
+				<pre>
 function countdown(n) { // Рекурсивная функция
     if (n &#60;= 0) {
         console.log("Done!");
@@ -307,18 +428,18 @@ countdown(3);
 		<tr>
 			<td>Свойство «name»</td>
 			<td>function sayHi() {
-  alert("Hi");
-}
+				alert("Hi");
+				}
 
-alert(sayHi.name); // sayHi</td>
+				alert(sayHi.name); // sayHi</td>
 		</tr>
 		<tr>
 			<td>Свойство «length»</td>
 			<td>function f1(a) {}
-function f2(a, b) {}
+				function f2(a, b) {}
 
-alert(f1.length); // 1
-alert(f2.length); // 2</td>
+				alert(f1.length); // 1
+				alert(f2.length); // 2</td>
 		</tr>
 		<tr>
 			<td>Привязка контекста к функции</td>
@@ -331,106 +452,177 @@ alert(f2.length); // 2</td>
 		<tr>
 			<td>ключи и значения</td>
 			<td>
-<pre>
-
+				<pre>
+const obj = { name: 'John', age: 30 };
 </pre>
 			</td>
 		</tr>
 		<tr>
 			<td>доступ к ключам и значениям</td>
 			<td>
-<pre>
-
+				<pre>
+console.log(obj.name); // 'John'
+console.log(obj['age']); // 30
 </pre>
 			</td>
 		</tr>
 		<tr>
 			<td>вычисляемые свойства</td>
 			<td>
-<pre>
-
+				<pre>
+const prop = 'language';
+const user = { [prop]: 'JavaScript' };
+console.log(user.language); // 'JavaScript'
 </pre>
 			</td>
 		</tr>
 		<tr>
 			<td>проверка существования свойства</td>
 			<td>
-<pre>
-
+				<pre>
+console.log('name' in obj); // true
+console.log(obj.hasOwnProperty('age')); // true
 </pre>
 			</td>
 		</tr>
 		<tr>
 			<td>цикл по ключам</td>
 			<td>
-<pre>
-
+				<pre>
+for (const key in obj) {
+  console.log(key, obj[key]);
+}
 </pre>
 			</td>
 		</tr>
 		<tr>
 			<td>упорядочение свойств объекта</td>
 			<td>
-<pre>
-
+				<pre>
+const codes = { 49: 'Germany', 41: 'Switzerland', 1: 'USA' };
+// Числовые ключи сортируются, строковые - в порядке добавления
 </pre>
 			</td>
 		</tr>
 		<tr>
 			<td>копирование по ссылке</td>
 			<td>
-<pre>
-
+				<pre>
+const obj2 = obj;
+obj2.name = 'Alice';
+console.log(obj.name); // 'Alice'
 </pre>
 			</td>
 		</tr>
 		<tr>
 			<td>клонирование объекта</td>
-			<td></td>
+			<td>
+				<pre>
+const clone = Object.assign({}, obj);
+const deepClone = JSON.parse(JSON.stringify(obj));
+</pre>
+			</td>
 		</tr>
 		<tr>
 			<td>сборка мусора</td>
-			<td></td>
+			<td>
+				<pre>
+let obj = { data: '...' };
+obj = null; // Объект может быть удален сборщиком мусора
+</pre>
+			</td>
 		</tr>
 		<tr>
 			<td>методы</td>
-			<td></td>
+			<td>
+				<pre>
+const user = {
+  name: 'John',
+  greet() { console.log(`Hello, ${this.name}!`); }
+};
+user.greet(); // Hello, John!
+</pre>
+			</td>
 		</tr>
 		<tr>
 			<td>this</td>
-			<td></td>
+			<td>
+				<pre>
+function User(name) { this.name = name; }
+const user = new User('John');
+</pre>
+			</td>
 		</tr>
 		<tr>
 			<td>конструктор new</td>
-			<td></td>
+			<td>
+				<pre>
+function User(name) { this.name = name; }
+const user = new User('John');
+</pre>
+			</td>
 		</tr>
 		<tr>
 			<td>проверка создания объекта</td>
-			<td>new.target</td>
+			<td>
+<pre>
+function User() { console.log(new.target); }
+new User(); // [Function: User]
+</pre></td>
 		</tr>
 		<tr>
 			<td>опциональная цепочка</td>
-			<td>?.</td>
+			<td>
+<pre>
+console.log(user?.address?.street); // undefined вместо ошибки
+</pre></td>
 		</tr>
 		<tr>
 			<td>перебор ключей значений и пар</td>
-			<td></td>
+			<td>
+				<pre>
+Object.keys(obj);    // ['name', 'age']
+Object.values(obj);  // ['John', 30]
+Object.entries(obj); // [['name', 'John'], ['age', 30]]
+</pre>
+			</td>
 		</tr>
 		<tr>
 			<td>деструктуризация</td>
-			<td></td>
+			<td>
+				<pre>
+const { name, age } = obj;
+console.log(name, age); // John 30
+</pre>
+			</td>
 		</tr>
 		<tr>
 			<td>оператор расширения</td>
-			<td></td>
+			<td>
+<pre>
+const newObj = { ...obj, city: 'Paris' };
+</pre>
+			</td>
 		</tr>
 		<tr>
 			<td>Флаги свойств</td>
-			<td>writable, enumerable, configurable</td>
+			<td>
+<pre>
+Object.getOwnPropertyDescriptor(obj, 'name');
+// { value: 'John', writable: true, enumerable: true, configurable: true }
+</pre></td>
 		</tr>
 		<tr>
 			<td>геттеры и сеттеры</td>
-			<td></td>
+			<td>
+				<pre>
+const user = {
+  _name: 'John',
+  get name() { return this._name; },
+  set name(value) { this._name = value; }
+};
+</pre>
+			</td>
 		</tr>
 	</table>
 
@@ -673,7 +865,7 @@ alert(f2.length); // 2</td>
 			<td></td>
 		</tr>
 	</table>
-	
+
 	<h2>дата и время</h2>
 	<table>
 		<tr>
@@ -681,7 +873,7 @@ alert(f2.length); // 2</td>
 			<td></td>
 		</tr>
 	</table>
-	
+
 	<h2>формат JSON</h2>
 	<table>
 		<tr>
@@ -689,7 +881,7 @@ alert(f2.length); // 2</td>
 			<td></td>
 		</tr>
 	</table>
-	
+
 	<h2>setTimeout и setInterval</h2>
 	<table>
 		<tr>
@@ -697,7 +889,7 @@ alert(f2.length); // 2</td>
 			<td></td>
 		</tr>
 	</table>
-	
+
 	<h2>call/apply</h2>
 	<table>
 		<tr>
