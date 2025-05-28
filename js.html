@@ -155,7 +155,6 @@
 				font-size: 1.5em;
 			}
 		}
-
 	</style>
 </head>
 
@@ -413,7 +412,7 @@ closureFunc();
 		</tr>
 
 		<tr>
-			<td>рекурсия и стек</td>
+			<td>рекурсия функция вызывает сама себя для решения задачи, которая может быть разбита на более простые подзадачи. стек структура данных, которая хранит информацию о том, какие функции вызываются в данный момент. В JavaScript при вызове функции она помещается в стек, а после завершения — удаляетс</td>
 			<td>
 				<pre>
 function countdown(n) { // Рекурсивная функция
@@ -1156,7 +1155,7 @@ console.log(sum(...[1, 2, 3])); // 6</code></pre>
 	<table>
 		<tr>
 			<td>Это похожий на Set, который хранит только объекты.
-Также не "держит" объекты в памяти — если на объект больше нет ссылок, он может быть удалён сборщиком мусора. В отличие от обычного Set, в WeakSet нельзя перебирать элементы или получать их список</td>
+				Также не "держит" объекты в памяти — если на объект больше нет ссылок, он может быть удалён сборщиком мусора. В отличие от обычного Set, в WeakSet нельзя перебирать элементы или получать их список</td>
 			<td>const ws = new WeakSet();const obj = {};ws.add(obj);</td>
 		</tr>
 	</table>
@@ -1164,8 +1163,192 @@ console.log(sum(...[1, 2, 3])); // 6</code></pre>
 	<h2>Дата и время</h2>
 	<table>
 		<tr>
-			<td>Отображение текущей даты и времени</td>
-			<td>Запись времени событий</td>
+			<td>Отображение текущей даты и времени, Запись времени событий, Расчёты интервалов и продолжительности, Работа с таймерами и задержками</td>
+			<td>const startTime = new Date();
+				console.log(`Стартовое время: ${startTime.toLocaleString()}`);</td>
+		</tr>
+	</table>
+
+	<h2>Таймеры</h2>
+	<table>
+		<tr>
+			<td>для выполнения отложенных или повторяющихся задач используются функции планирования — setTimeout и setInterval</td>
+			<td>console.log("Начало");
+
+				setTimeout(() => {
+				console.log("Через 2 секунды");
+				}, 2000);
+
+				console.log("Конец");</td>
+		</tr>
+	</table>
+
+	<h2>Формат JSON</h2>
+	<table>
+		<tr>
+			<td>Передача данных между сервером и клиентом (например, через API).
+				Хранение настроек или данных в файлах.
+				Обмен информацией между системами.</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>объект в JSON</td>
+			<td>const user = {
+				name: "Иван",
+				age: 30,
+				isAdmin: false
+				};
+
+				const jsonString = JSON.stringify(user);
+				console.log(jsonString); // '{"name":"Иван","age":30,"isAdmin":false}'</td>
+		</tr>
+		<tr>
+			<td>JSON-строки обратно в объект — JSON.parse()</td>
+			<td>const jsonString = '{"name":"Иван","age":30,"isAdmin":false}';
+
+				const userObject = JSON.parse(jsonString);
+				console.log(userObject.name); // Иван
+				console.log(userObject.age); // 30</td>
+		</tr>
+	</table>
+
+
+	<h2>Декораторы</h2>
+	<table>
+		<tr>
+			<td>функция, которая принимает другую функцию и расширяет или изменяет её поведение, не изменяя исходный код функции</td>
+			<td></td>
+		</tr>
+	</table>
+
+	<h2>call apply</h2>
+	<table>
+		<tr>
+			<td>(call/apply)
+				Эти методы позволяют вызвать функцию с явно заданным значением this и передать аргумент</td>
+			<td>const person = {
+				firstName: "Иван",
+				sayHi() {
+				console.log(`Привет, я ${this.firstName}`);
+				}
+				};
+
+				const anotherPerson = { firstName: "Мария" };
+
+				// Используем call
+				person.sayHi.call(anotherPerson); // Привет, я Мария
+
+				// Используем apply
+				person.sayHi.apply(anotherPerson); // Привет, я Мария</td>
+		</tr>
+	</table>
+
+	<h2>bind</h2>
+	<table>
+		<tr>
+			<td>Создаёт новую функцию с привязанным контекстом</td>
+			<td>const person = {
+				name: "Боб"
+				};
+
+				function sayName() {
+				console.log(this.name);
+				}
+
+				const boundSayName = sayName.bind(person);
+				boundSayName(); // Боб
+
+				sayName.call(person); // Боб
+				sayName.apply(person); // Боб</td>
+		</tr>
+	</table>
+
+	<h2>Геттер Сеттер</h2>
+	<table>
+		<tr>
+			<td>Геттер — функция, которая вызывается при чтении свойства.
+Сеттер — функция, которая вызывается при присвоении значения свойству.</td>
+			<td></td>
+		</tr>
+	</table>
+
+	<h2>прототипное наследование</h2>
+	<table>
+		<tr>
+			<td>Объект — это коллекция свойств.
+Прототип — объект, от которого наследуются свойства другого объекта.
+Цепочка прототипов — последовательность объектов, по которым ищутся свойства.
+Каждый объект в JavaScript имеет внутреннее свойство [[Prototype]], которое ссылается на другой объект (или null).</td>
+			<td>const animal = {
+  eat() {
+    console.log("Кушает");
+  }
+};
+
+const dog = Object.create(animal);
+dog.bark = function() {
+  console.log("Гав-гав");
+};
+
+dog.eat(); // "Кушает" — метод из прототипа
+dog.bark(); // "Гав-гав"</td>
+		</tr>
+	</table>
+
+	<h2>prototype</h2>
+	<table>
+		<tr>
+			<td></td>
+			<td>Копировать код
+function Person(name) {
+  this.name = name;
+}
+
+Person.prototype.sayHello = function() {
+  console.log(`Привет, я ${this.name}`);
+};
+
+const alice = new Person("Алиса");
+alice.sayHello(); // "Привет, я Алиса"</td>
+		</tr>
+	</table>
+
+	<h2>F.prototype</h2>
+	<table>
+		<tr>
+			<td>Все объекты, созданные через new F(), имеют внутреннее свойство [[Prototype]], которое ссылается на F.prototype.
+Это означает, что свойства и методы, добавленные в F.prototype, доступны всем экземплярам</td>
+			<td>function Person(name) {
+  this.name = name;
+}
+
+console.log(Person.prototype); // объект, связанный с функцией</td>
+		</tr>
+	</table>
+
+	<h2>Встроенные прототипы</h2>
+	<table>
+		<tr>
+			<td>JavaScript ищет свойство .method. Если его нет прямо в объекте, он ищет в цепочке прототипов — начиная с объекта и поднимаясь по цепочке до тех пор, пока не найдёт или не достигнет конца (null).
+
+Это называется прототипным наследованием.</td>
+			<td>Object	Object.prototype	Методы для работы с объектами: hasOwnProperty(), toString(), valueOf() и др.
+Array	Array.prototype	Методы для массивов: push(), pop(), map(), filter() и др.
+Function	Function.prototype	Методы для функций: call(), apply(), bind()
+String	String.prototype	Методы строк: slice(), toUpperCase(), indexOf() и др.
+Number	Number.prototype	Методы чисел: например, для обёрнутых чисел (редко используют)
+Boolean	Boolean.prototype	Методы булевых значений (редко используют)
+Date	Date.prototype	Методы работы с датами: getTime(), toISOString() и др.</td>
+		</tr>
+	</table>
+
+	<h2>__proto__</h2>
+	<table>
+		<tr>
+			<td>Это устаревшее (но широко поддерживаемое) свойство, которое указывает на внутренний прототип объекта.
+В современных стандартах рекомендуется использовать функции и методы для работы с прототипами.</td>
+			<td>const obj = { a: 1 }; // Нет явного свойства __proto__, но есть внутренний прототип
+console.log(obj.__proto__); // Object.prototype</td>
 		</tr>
 	</table>
 
@@ -1201,6 +1384,28 @@ console.log(sum(...[1, 2, 3])); // 6</code></pre>
 		</tr>
 	</table>
 
-</body>
+	<h2></h2>
+	<table>
+		<tr>
+			<td></td>
+			<td></td>
+		</tr>
+	</table>
 
-</html>
+	<h2></h2>
+	<table>
+		<tr>
+			<td></td>
+			<td></td>
+		</tr>
+	</table>
+
+	<h2></h2>
+	<table>
+		<tr>
+			<td></td>
+			<td></td>
+		</tr>
+	</table>
+
+</body></html>
