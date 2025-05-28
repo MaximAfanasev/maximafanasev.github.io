@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Игра: Угадай фрукт или овощ</title>
+<style>
+  body {
+    background-color: #f0f8ff;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+  }
+
+  h1 {
+    margin-bottom: 20px;
+  }
+
+  #hint {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    font-style: italic;
+    color: #555;
+  }
+
+  #word-container {
+    font-size: 2em;
+    letter-spacing: 10px;
+    margin-bottom: 20px;
+  }
+
+  #letters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px; /* добавил отступ снизу */
+  }
+
+  .letter-btn {
+    padding: 10px 15px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    background-color: #87cefa;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+
+  .letter-btn:hover {
+    background-color: #00bfff;
+    transform: scale(1.05);
+  }
+
+  #status {
+    font-size: 1.5em;
+    margin-top: 20px;
+  }
+
+  #restart-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size:1em;
+    cursor:pointer;
+    border:none;
+    border-radius:5px;
+    background-color:#32cd32; 
+    color:#fff; 
+    transition:.3s all; 
+}
+#restart-btn:hover {background:#228b22;}
+</style>
+</head>
+<body>
+
+<h1>Угадай фрукт или овощ</h1>
+
+<div id="hint"></div>
+<div id="word-container"></div>
+
+<div id="letters"></div>
+
+<div id="status"></div>
+
+<button id="restart-btn">Начать заново</button>
+
+<script>
+// Массивы с описаниями
+const items = [
+{ name:"Абрикос", hint:"Маленький оранжевый фрукт с мягкой мякотью." },
+{ name:"Авокадо", hint:"Зеленый плод с маслянистой текстурой и косточкой внутри." },
+{ name:"Айва", hint:"Желтый или оранжевый фрукт с ароматной кожурой." },
+{ name:"Алыча", hint:"Маленькая оранжевая ягода, похожая на сливу." },
+{ name:"Апельсин", hint:"Цитрусовый фрукт с ярко-оранжевой кожурой." },
+{ name:"Арбуз", hint:"Большой зеленый с полосками плод с сочной красной мякотью." },
+{ name:"Банан", hint:"Длинный желтый фрукт, легко очищается." },
+{ name:"Брусника", hint:"Маленькая красная ягода, растущая на болотах." },
+{ name:"Вишня", hint:"Маленькая красная ягода с косточкой и сладким вкусом." },
+{ name:"Груша", hint:"Фрукт с мягкой мякотью и хрустящей кожурой." }
+];
+
+const vegetables = [
+{ name:"Артишок", hint:"Зеленый цветок-овощ с множеством листьев." },
+{ name:"Баклажан", hint:"Темно-фиолетовый овощ с гладкой кожурой." },
+{ name:"Брокколи", hint:"Зеленая капуста в виде кучи маленьких кочанов." },
+{ name:"Кабачок", hint:"Овощ с мягкой мякотью и светлой кожурой." },
+{ name:"Картофель", hint:"Корнеплод, широко используемый в кухне." }
+];
+
+const allItems = [...items, ...vegetables];
+
+let currentItem = null;
+
+const wordContainer = document.getElementById('word-container');
+const lettersContainer = document.getElementById('letters');
+const statusDiv = document.getElementById('status');
+const restartBtn = document.getElementById('restart-btn');
+const hintDiv = document.getElementById('hint');
+
+let guessedLetters = new Set();
+let displayedWord=[];
+
+function startGame() {
+	// Очистка состояния
+	guessedLetters.clear();
+	statusDiv.textContent="";
+	
+	// Выбор случайного элемента
+	const index = Math.floor(Math.random() * allItems.length);
+	currentItem = allItems[index];
+	const word = currentItem.name.toUpperCase();
+	const hintText = currentItem.hint;
+
+	// Показываем подсказку
+	hintDiv.textContent = "Подсказка: " + hintText;
+
+	// Создаем массив для отображения слова
+	displayedWord=Array.from(word).map(letter => (letter === ' ' || letter === '-') ? ' ' : '_');
+
+	updateDisplay();
+	createLetterButtons();
+}
+
+function updateDisplay() {
+	wordContainer.innerHTML=displayedWord.join(' ');
+}
+
+function createLetterButtons() {
+	// Очищаем предыдущие кнопки
+	lettersContainer.innerHTML='';
+
+	const russianAlphabet=[
+	'А','Б','В','Г','Д','Е','Ё','Ж','З','И','Й',
+	'К','Л','М','Н','О','П','Р','С','Т','У',
+	'Ф','Х','Ц','Ч','Ш','Щ','Ъ','Ы','Ь','Э',
+	'Ю','Я'
+	];
+
+	for (const letter of russianAlphabet) {
+		const btn=document.createElement('button');
+		btn.textContent=letter;
+		btn.className='letter-btn';
+		
+		if (guessedLetters.has(letter)) {
+			btn.disabled=true; // если уже угадано
+			btn.style.backgroundColor='#ccc';
+			btn.style.cursor='not-allowed';
+		}
+		
+		btn.onclick= ()=> guessLetter(letter);
+		
+		lettersContainer.appendChild(btn);
+	}
+}
+
+function guessLetter(letter) {
+	if (guessedLetters.has(letter)) return;
+
+	guessedLetters.add(letter);
+
+	let correctGuess=false;
+
+	for (let i=0; i<currentItem.name.length; i++) {
+		if (currentItem.name[i].toUpperCase()===letter) {
+			displayedWord[i]=letter; // показываем угаданную букву
+			correctGuess=true;
+		}
+	}
+
+	if (!correctGuess) {
+		statusDiv.textContent=`Нет буквы "${letter}"`;
+	} else {
+		statusDiv.textContent="";
+	}
+
+	updateButtons();
+	updateDisplay();
+
+	if (!displayedWord.includes('_')) {
+        statusDiv.textContent='Поздравляем! Вы угадали!';
+        revealFullWord();
+        disableAllButtons();
+	}
+}
+
+function updateButtons() {
+	const buttons=document.querySelectorAll('.letter-btn');
+	buttons.forEach(btn => {
+		if (guessedLetters.has(btn.textContent)) {
+			btn.disabled=true;
+			btn.style.backgroundColor='#ccc';
+			btn.style.cursor='not-allowed';
+		}
+	});
+}
+
+function revealFullWord() {
+	displayedWord=Array.from(currentItem.name.toUpperCase());
+	updateDisplay();
+}
+
+function disableAllButtons() {
+	const buttons=document.querySelectorAll('.letter-btn');
+	buttons.forEach(btn => btn.disabled=true);
+}
+
+// Инициализация игры при загрузке
+startGame();
+
+// Обработчик для перезапуска игры
+restartBtn.onclick= ()=> startGame();
+
+</script>
+
+</body>
+</html>
