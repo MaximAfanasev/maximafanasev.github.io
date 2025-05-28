@@ -56,6 +56,46 @@ document.getElementById('app'))
 доступ к свойствам {this.props.name}
 в функцион-х нет this {props.name}
 
+деструктурирующее присваивание ({name})
+({name, job})
+
+MyComponent.defaultProps = {
+job: 'bezdelnik'}
+
+const MyComponent = function({name, job}) {
+return &#60;span>My name is &#60;em>{name}&#60;/em>, the {job}&#60;/span>;
+};
+MyComponent.defaultProps = {
+job: 'engineer',
+};
+ReactDOM.render(
+&#60;MyComponent name="Bob" />,
+document.getElementById('app')
+);
+
+return (&#60;textarea defaultValue={text}/>)
+
+super();
+this.state = {};
+
+render() {
+	const text = 'text' в this.state ? this.state.text
+		: this.props.text;
+	return (
+	&#60;div>
+		&#60;textarea
+			value={text}
+			onChange={event => this.onTextChange(event)}
+		/>
+	&#60;/div>
+	&#60;h3>{text.length}&#60;/h3>
+	);
+}
+
+
+
+
+
 
 
 </code></pre>
