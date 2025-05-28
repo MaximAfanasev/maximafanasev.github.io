@@ -92,7 +92,13 @@ render() {
 	);
 }
 
+onChange={this.onTextChange.bind(this)}
 
+super();
+this.state = {};
+this.onTextChange = this.onTextChange.bind(this);
+
+onTextChange = (event) => {}
 
 
 
