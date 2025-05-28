@@ -27,7 +27,9 @@
 			margin: 0 auto;
 		}
 
-		h1, h2, h3 {
+		h1,
+		h2,
+		h3 {
 			color: var(--primary-color);
 			margin-top: 30px;
 			border-bottom: 1px solid var(--border-color);
@@ -49,7 +51,8 @@
 			overflow: hidden;
 		}
 
-		table th, table td {
+		table th,
+		table td {
 			padding: 15px 20px;
 			text-align: left;
 			border: 1px solid var(--border-color);
@@ -72,7 +75,8 @@
 			background-color: var(--hover-color);
 		}
 
-		pre, code {
+		pre,
+		code {
 			font-family: 'Fira Code', 'Consolas', monospace;
 			background: var(--code-bg);
 			color: #f8f8f2;
@@ -142,7 +146,8 @@
 				font-size: 14px;
 			}
 
-			table th, table td {
+			table th,
+			table td {
 				padding: 10px 12px;
 			}
 
@@ -150,12 +155,13 @@
 				font-size: 1.5em;
 			}
 		}
+
 	</style>
 </head>
 
 <body>
-<h1>Javascript</h1>
-<h2>Base</h2>
+	<h1>Javascript</h1>
+	<h2>Base</h2>
 	<table>
 		<tr>
 			<td>тег для работы кода js</td>
@@ -567,17 +573,19 @@ const user = new User('John');
 		<tr>
 			<td>проверка создания объекта</td>
 			<td>
-<pre>
+				<pre>
 function User() { console.log(new.target); }
 new User(); // [Function: User]
-</pre></td>
+</pre>
+			</td>
 		</tr>
 		<tr>
 			<td>опциональная цепочка</td>
 			<td>
-<pre>
+				<pre>
 console.log(user?.address?.street); // undefined вместо ошибки
-</pre></td>
+</pre>
+			</td>
 		</tr>
 		<tr>
 			<td>перебор ключей значений и пар</td>
@@ -601,7 +609,7 @@ console.log(name, age); // John 30
 		<tr>
 			<td>оператор расширения</td>
 			<td>
-<pre>
+				<pre>
 const newObj = { ...obj, city: 'Paris' };
 </pre>
 			</td>
@@ -609,10 +617,11 @@ const newObj = { ...obj, city: 'Paris' };
 		<tr>
 			<td>Флаги свойств</td>
 			<td>
-<pre>
+				<pre>
 Object.getOwnPropertyDescriptor(obj, 'name');
 // { value: 'John', writable: true, enumerable: true, configurable: true }
-</pre></td>
+</pre>
+			</td>
 		</tr>
 		<tr>
 			<td>геттеры и сеттеры</td>
@@ -627,240 +636,548 @@ const user = {
 			</td>
 		</tr>
 	</table>
-
 	<h2>Symbol</h2>
 	<table>
 		<tr>
 			<td>скрытые свойства</td>
-			<td></td>
+			<td>
+				<pre><code>const id = Symbol('id');
+const user = {
+  name: 'John',
+  [id]: 123 // Скрытое свойство
+};
+console.log(user[id]); // 123</code></pre>
+			</td>
 		</tr>
 		<tr>
 			<td>символ в объекте</td>
-			<td></td>
+			<td>
+				<pre><code>const id = Symbol('id');
+const obj = {
+  [id]: 'symbol value',
+  name: 'Object'
+};
+console.log(obj[id]); // 'symbol value'</code></pre>
+			</td>
 		</tr>
 		<tr>
 			<td>не в цикле</td>
-			<td></td>
+			<td>
+				<pre><code>const id = Symbol('id');
+const obj = {
+  [id]: 'hidden',
+  name: 'Visible'
+};
+
+for (let key in obj) {
+  console.log(key); // только 'name'
+}</code></pre>
+			</td>
 		</tr>
 		<tr>
 			<td>глобальные символы</td>
-			<td></td>
+			<td>
+				<pre><code>// Создание/получение глобального символа
+const globalSym = Symbol.for('global');
+console.log(Symbol.keyFor(globalSym)); // 'global'
+
+// Проверка
+const sameSym = Symbol.for('global');
+console.log(globalSym === sameSym); // true</code></pre>
+			</td>
 		</tr>
 		<tr>
 			<td>ключ по символам</td>
-			<td></td>
+			<td>
+				<pre><code>const sym = Symbol('key');
+const obj = {
+  [sym]: 'value',
+  name: 'Object'
+};
+
+const symbols = Object.getOwnPropertySymbols(obj);
+console.log(symbols); // [Symbol(key)]</code></pre>
+			</td>
 		</tr>
 	</table>
 
-	<h2>числа</h2>
+	<h2>Числа</h2>
 	<table>
 		<tr>
 			<td>сокращенная запись нулей</td>
-			<td>e</td>
+			<td>
+				<pre><code>const billion = 1e9; // 1 000 000 000
+const micro = 1e-6; // 0.000001
+console.log(billion); // 1000000000</code></pre>
+			</td>
+		</tr>
+		<tr>
+			<td>двоичная восьмеричная шестнадцатиричная</td>
+			<td>
+				<pre><code>const binary = 0b11111111; // 255
+const octal = 0o377; // 255
+const hex = 0xff; // 255
+console.log(binary, octal, hex); // 255 255 255</code></pre>
+			</td>
+		</tr>
+		<tr>
+			<td>перевод в строку</td>
+			<td>
+				<pre><code>const num = 255;
+console.log(num.toString(16)); // 'ff'
+console.log(num.toString(2)); // '11111111'
+console.log(String(num)); // '255'</code></pre>
+			</td>
+		</tr>
+		<tr>
+			<td>округление чисел</td>
+			<td>
+				<pre><code>console.log(Math.floor(3.9)); // 3 (вниз)
+console.log(Math.ceil(3.1)); // 4 (вверх)
+console.log(Math.round(3.5)); // 4 (к ближайшему)
+console.log(Math.trunc(3.9)); // 3 (отбросить дробную часть)</code></pre>
+			</td>
+		</tr>
+		<tr>
+			<td>бесконечность</td>
+			<td>
+				<pre><code>console.log(1 / 0); // Infinity
+console.log(-1 / 0); // -Infinity
+console.log(Number.POSITIVE_INFINITY); // Infinity
+console.log(isFinite(1 / 0)); // false</code></pre>
+			</td>
+		</tr>
+		<tr>
+			<td>ошибки</td>
+			<td>
+				<pre><code>console.log(0.1 + 0.2 === 0.3); // false
+console.log(0.1 + 0.2); // 0.30000000000000004</code></pre>
+			</td>
+		</tr>
+		<tr>
+			<td>убрать нужно количество после точки и округлить</td>
+			<td>
+				<pre><code>const num = 12.34567;
+console.log(num.toFixed(2)); // "12.35" (строка)
+console.log(+num.toFixed(2)); // 12.35 (число)</code></pre>
+			</td>
+		</tr>
+		<tr>
+			<td>проверка на не число</td>
+			<td>
+				<pre><code>console.log(isNaN(NaN)); // true
+console.log(isNaN("строка")); // true
+console.log(Number.isNaN("строка")); // false</code></pre>
+			</td>
+		</tr>
+		<tr>
+			<td>проверка на число</td>
+			<td>
+				<pre><code>console.log(isFinite("123")); // true
+console.log(isFinite("строка")); // false
+console.log(Number.isInteger(123.0)); // true</code></pre>
+			</td>
+		</tr>
+		<tr>
+			<td>убрать все кроме целого числа</td>
+			<td>
+				<pre><code>console.log(parseInt("100px")); // 100
+console.log(parseInt("12.3")); // 12
+console.log(Math.trunc(12.3)); // 12</code></pre>
+			</td>
+		</tr>
+		<tr>
+			<td>убрать все кроме числа с точкой</td>
+			<td>
+				<pre><code>console.log(parseFloat("12.3em")); // 12.3
+console.log(parseFloat("12.3.4")); // 12.3</code></pre>
+			</td>
+		</tr>
+		<tr>
+			<td>рандом</td>
+			<td>
+				<pre><code>console.log(Math.random()); // случайное число от 0 до 1
+// Функция для получения случайного числа в диапазоне
+function random(min, max) {
+  return min + Math.random() * (max - min);
+}</code></pre>
+			</td>
+		</tr>
+		<tr>
+			<td>максимальное</td>
+			<td>
+				<pre><code>console.log(Math.max(3, 5, 1)); // 5
+console.log(Math.max(...[3, 5, 1])); // 5 (с spread оператором)</code></pre>
+			</td>
+		</tr>
+		<tr>
+			<td>минимальное</td>
+			<td>
+				<pre><code>console.log(Math.min(3, 5, 1)); // 1
+console.log(Math.min(...[3, 5, 1])); // 1 (с spread оператором)</code></pre>
+			</td>
+		</tr>
+		<tr>
+			<td>в степень</td>
+			<td>
+				<pre><code>console.log(2 ** 3); // 8
+console.log(Math.pow(2, 3)); // 8</code></pre>
+			</td>
+		</tr>
+	</table>
+
+	<h2>Строки</h2>
+	<table>
+		<tr>
+			<td>сложение строк</td>
+			<td>
+				<pre><code>const str1 = 'Hello';
+const str2 = 'World';
+console.log(str1 + ' ' + str2); // 'Hello World'
+console.log(`${str1} ${str2}`); // 'Hello World' (шаблонные строки)</code></pre>
+			</td>
+		</tr>
+		<tr>
+			<td>типы строк</td>
+			<td>
+				<pre><code>const single = 'одинарные кавычки';
+const double = "двойные кавычки";
+const backticks = `обратные кавычки ${single}`;
+console.log(backticks); // 'обратные кавычки одинарные кавычки'</code></pre>
+			</td>
+		</tr>
+		<tr>
+			<td>спецсимволы перенос табуляция</td>
+			<td>
+				<pre><code>console.log("Первая строка\nВторая строка");
+console.log("1\t2\t3");
+console.log("Экранирование: \\ \"");</code></pre>
+			</td>
+		</tr>
+		<tr>
+			<td>обращение к символам строки</td>
+			<td>
+				<pre><code>const str = 'Hello';
+console.log(str[0]); // 'H'
+console.log(str.charAt(1)); // 'e'
+console.log(str.at(-1)); // 'o' (последний символ)</code></pre>
+			</td>
+		</tr>
+		<tr>
+			<td>неизменяемость строк</td>
+			<td>
+				<pre><code>let str = 'Hi';
+str[0] = 'h'; // Ошибки нет, но строка не изменится
+console.log(str); // 'Hi'</code></pre>
+			</td>
+		</tr>
+		<tr>
+			<td>изменение регистра</td>
+			<td>
+				<pre><code>console.log('Интерфейс'.toUpperCase()); // 'ИНТЕРФЕЙС'
+console.log('Интерфейс'.toLowerCase()); // 'интерфейс'</code></pre>
+			</td>
+		</tr>
+		<tr>
+			<td>поиск подстроки</td>
+			<td>
+				<pre><code>const str = 'Widget with id';
+console.log(str.indexOf('Widget')); // 0
+console.log(str.indexOf('id')); // 1
+console.log(str.lastIndexOf('id')); // 12</code></pre>
+			</td>
+		</tr>
+		<tr>
+			<td>проверка наличия в строке</td>
+			<td>
+				<pre><code>const str = 'Hello world';
+console.log(str.includes('world')); // true
+console.log(str.includes('word')); // false</code></pre>
+			</td>
+		</tr>
+		<tr>
+			<td>проверка начала и окончания</td>
+			<td>
+				<pre><code>const str = 'Hello world';
+console.log(str.startsWith('Hello')); // true
+console.log(str.endsWith('world')); // true</code></pre>
+			</td>
+		</tr>
+		<tr>
+			<td>срез строки</td>
+			<td>
+				<pre><code>const str = 'stringify';
+console.log(str.slice(0, 5)); // 'strin'
+console.log(str.slice(-4, -1)); // 'gif'</code></pre>
+			</td>
+		</tr>
+		<tr>
+			<td>сравнение</td>
+			<td>
+				<pre><code>console.log('a' > 'Z'); // true (коды символов)
+console.log('Строка' === 'строка'); // false
+console.log('Привет'.localeCompare('Пока')); // 1</code></pre>
+			</td>
+		</tr>
+	</table>
+
+	<h2>Массивы</h2>
+	<table>
+		<tr>
+			<td>создание массива</td>
+			<td>
+				<pre><code>const arr1 = [1, 2, 3];
+const arr2 = new Array(1, 2, 3);
+const arr3 = Array.from('hello'); // ['h', 'e', 'l', 'l', 'o']</code></pre>
+			</td>
+		</tr>
+		<tr>
+			<td>обращение к элементам</td>
+			<td>
+				<pre><code>const fruits = ['Яблоко', 'Апельсин', 'Груша'];
+console.log(fruits[0]); // 'Яблоко'
+fruits[2] = 'Груша'; // изменение элемента</code></pre>
+			</td>
+		</tr>
+		<tr>
+			<td>длина</td>
+			<td>
+				<pre><code>const arr = [1, 2, 3];
+console.log(arr.length); // 3
+arr.length = 2; // укорачиваем массив
+console.log(arr); // [1, 2]</code></pre>
+			</td>
+		</tr>
+		<tr>
+			<td>последние элементы</td>
+			<td>
+				<pre><code>const arr = [1, 2, 3];
+console.log(arr.at(-1)); // 3 (последний элемент)
+console.log(arr[arr.length - 1]); // 3 (альтернатива)</code></pre>
+			</td>
+		</tr>
+		<tr>
+			<td>получение последнего, добавление последнего, получение первого, добавление первого</td>
+			<td>
+				<pre><code>const arr = [1, 2];
+arr.push(3); // [1, 2, 3] (добавить в конец)
+arr.pop(); // [1, 2] (удалить последний)
+arr.unshift(0); // [0, 1, 2] (добавить в начало)
+arr.shift(); // [1, 2] (удалить первый)</code></pre>
+			</td>
+		</tr>
+		<tr>
+			<td>перебор</td>
+			<td>
+				<pre><code>const arr = ['Яблоко', 'Апельсин', 'Груша'];
+
+// for..of
+for (const fruit of arr) {
+  console.log(fruit);
+}
+
+// forEach
+arr.forEach((item, index, array) => {
+  console.log(`${index}: ${item}`);
+});</code></pre>
+			</td>
+		</tr>
+		<tr>
+			<td>многомерные</td>
+			<td>
+				<pre><code>const matrix = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9]
+];
+console.log(matrix[1][1]); // 5</code></pre>
+			</td>
+		</tr>
+		<tr>
+			<td>перевод в строку</td>
+			<td>
+				<pre><code>const arr = [1, 2, 3];
+console.log(arr.toString()); // "1,2,3"
+console.log(arr.join('; ')); // "1; 2; 3"</code></pre>
+			</td>
+		</tr>
+		<tr>
+			<td>сравнение по ссылке</td>
+			<td>
+				<pre><code>const arr1 = [1, 2, 3];
+const arr2 = [1, 2, 3];
+console.log(arr1 == arr2); // false (разные объекты)
+console.log(JSON.stringify(arr1) === JSON.stringify(arr2)); // true</code></pre>
+			</td>
+		</tr>
+		<tr>
+			<td>вырезание</td>
+			<td>
+				<pre><code>const arr = ['Я', 'изучаю', 'JavaScript'];
+const removed = arr.splice(1, 1); // ['изучаю']
+console.log(arr); // ['Я', 'JavaScript']
+
+const sliced = arr.slice(0, 1); // ['Я'] (не изменяет исходный массив)</code></pre>
+			</td>
+		</tr>
+		<tr>
+			<td>объединение</td>
+			<td>
+				<pre><code>const arr1 = [1, 2];
+const arr2 = [3, 4];
+console.log(arr1.concat(arr2)); // [1, 2, 3, 4]
+console.log([...arr1, ...arr2]); // [1, 2, 3, 4] (spread оператор)</code></pre>
+			</td>
+		</tr>
+		<tr>
+			<td>перебор</td>
+			<td>
+				<pre><code>const arr = [1, 2, 3];
+const newArr = arr.map(item => item * 2);
+console.log(newArr); // [2, 4, 6]</code></pre>
+			</td>
+		</tr>
+		<tr>
+			<td>поиск</td>
+			<td>
+				<pre><code>const users = [
+  {id: 1, name: 'Вася'},
+  {id: 2, name: 'Петя'}
+];
+
+const user = users.find(item => item.id == 1);
+console.log(user.name); // 'Вася'
+
+console.log(users.findIndex(item => item.id == 2)); // 1</code></pre>
+			</td>
+		</tr>
+		<tr>
+			<td>фильтр</td>
+			<td>
+				<pre><code>const users = [
+  {id: 1, name: 'Вася'},
+  {id: 2, name: 'Петя'}
+];
+
+const filtered = users.filter(item => item.id < 2);
+console.log(filtered.length); // 1</code></pre>
+			</td>
+		</tr>
+		<tr>
+			<td>преобразование</td>
+			<td>
+				<pre><code>const lengths = ['Бильбо', 'Гэндальф'].map(item => item.length);
+console.log(lengths); // [6, 8]
+
+const numbers = ['1', '2', '3'].map(Number);
+console.log(numbers); // [1, 2, 3]</code></pre>
+			</td>
+		</tr>
+		<tr>
+			<td>сортировка</td>
+			<td>
+				<pre><code>const arr = [1, 2, 15];
+arr.sort(); // [1, 15, 2] (по умолчанию как строки)
+arr.sort((a, b) => a - b); // [1, 2, 15] (правильная сортировка чисел)</code></pre>
+			</td>
+		</tr>
+		<tr>
+			<td>разворот</td>
+			<td>
+				<pre><code>const arr = [1, 2, 3];
+console.log(arr.reverse()); // [3, 2, 1]</code></pre>
+			</td>
+		</tr>
+		<tr>
+			<td>работа со всеми элементами</td>
+			<td>
+				<pre><code>const arr = [1, 2, 3];
+console.log(arr.every(item => item > 0)); // true
+console.log(arr.some(item => item > 2)); // true
+console.log(arr.reduce((sum, item) => sum + item, 0)); // 6</code></pre>
+			</td>
+		</tr>
+		<tr>
+			<td>проверка на массив</td>
+			<td>
+				<pre><code>console.log(Array.isArray([])); // true
+console.log(Array.isArray({})); // false</code></pre>
+			</td>
+		</tr>
+		<tr>
+			<td>деструктуризация</td>
+			<td>
+				<pre><code>const arr = ['Иван', 'Иванов'];
+const [firstName, surname] = arr;
+console.log(firstName); // 'Иван'
+
+// Пропуск элементов
+const [first, , third] = ['первый', 'второй', 'третий'];</code></pre>
+			</td>
+		</tr>
+		<tr>
+			<td>оператор расширения</td>
+			<td>
+				<pre><code>const arr1 = [1, 2];
+const arr2 = [3, 4];
+const combined = [...arr1, ...arr2]; // [1, 2, 3, 4]
+
+function sum(a, b, c) { return a + b + c; }
+console.log(sum(...[1, 2, 3])); // 6</code></pre>
+			</td>
+		</tr>
+	</table>
+
+	<h2>map</h2>
+	<table>
+		<tr>
+			<td>Если нужно быстро искать что-то по ключу или хранить связанные данные</td>
+			<td>const userMap = new Map();userMap.set('user1', {name: 'Ivan', age: 30});</td>
+		</tr>
+	</table>
+
+	<h2>set</h2>
+	<table>
+		<tr>
+			<td>Если нужно просто собрать уникальные элементы</td>
+			<td>const tags = new Set();tags.add('javascript');tags.add('programming');</td>
+		</tr>
+	</table>
+
+	<h2>WeakMap</h2>
+	<table>
+		<tr>
+			<td>ключи в WeakMap должны быть объектами (не примитивами). если на объект больше нет ссылок, он может быть автоматически удалён сборщиком мусора. Когда нужно связать данные с объектом, и при этом важно, чтобы эти данные исчезли, когда объект больше не нужен.</td>
+			<td>const wm = new WeakMap();const obj = {};wm.set(obj, 'some data');</td>
+		</tr>
+	</table>
+
+	<h2>WeakSet</h2>
+	<table>
+		<tr>
+			<td>Это похожий на Set, который хранит только объекты.
+Также не "держит" объекты в памяти — если на объект больше нет ссылок, он может быть удалён сборщиком мусора. В отличие от обычного Set, в WeakSet нельзя перебирать элементы или получать их список</td>
+			<td>const ws = new WeakSet();const obj = {};ws.add(obj);</td>
+		</tr>
+	</table>
+
+	<h2>Дата и время</h2>
+	<table>
+		<tr>
+			<td>Отображение текущей даты и времени</td>
+			<td>Запись времени событий</td>
 		</tr>
 	</table>
 
 	<h2></h2>
 	<table>
 		<tr>
-			<td>двоичная восьмеричная шестнадцатиричная</td>
 			<td></td>
-		</tr>
-		<tr>
-			<td>перевод в строку</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>округление чисел</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>бесконечность</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>ошибки</td>
-			<td>0.1 0.2</td>
-		</tr>
-		<tr>
-			<td>убрать нужно количество после точки и округлить</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>проверка на не число</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>проверка на число</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>убрать все кроме целого числа</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>убрать все кроме числа с точкой</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>рандом</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>максимальное</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>минимальное</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>в степень</td>
 			<td></td>
 		</tr>
 	</table>
 
-	<h2>строки</h2>
-	<table>
-		<tr>
-			<td>сложение строк</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>типы строк</td>
-			<td>' " `</td>
-		</tr>
-		<tr>
-			<td>спецсимволы перенос табуляция</td>
-			<td>\n \t</td>
-		</tr>
-		<tr>
-			<td>обращение к символам строки</td>
-			<td>[0]</td>
-		</tr>
-		<tr>
-			<td>неизменяемость строк</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>изменение регистра</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>поиск подстроки</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>проверка наличия в строке</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>проверка начала и окончания</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>срез строки</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>сравнение</td>
-			<td></td>
-		</tr>
-	</table>
-
-	<h2>массивы</h2>
-	<table>
-		<tr>
-			<td>создание массива</td>
-			<td>[] new Array()</td>
-		</tr>
-		<tr>
-			<td>обращение к элементам</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>длина</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>последние элементы</td>
-			<td>at</td>
-		</tr>
-		<tr>
-			<td>получение последнего
-				добавление последнего
-				получение первого
-				добавление первого</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>перебор</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>многомерные</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>перевод в строку</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>сравнение по ссылке</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>вырезание</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>объединение</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>перебор</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>поиск</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>фильтр</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>преобразование</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>сортировка</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>разворот</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>работа со всеми элементами</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>проверка на массив</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>деструктуризация</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>оператор расширения</td>
-			<td></td>
-		</tr>
-	</table>
-
-	<h2>map set и ключи
-		weakmap weakset</h2>
+	<h2></h2>
 	<table>
 		<tr>
 			<td></td>
@@ -868,7 +1185,7 @@ const user = {
 		</tr>
 	</table>
 
-	<h2>дата и время</h2>
+	<h2></h2>
 	<table>
 		<tr>
 			<td></td>
@@ -876,7 +1193,7 @@ const user = {
 		</tr>
 	</table>
 
-	<h2>формат JSON</h2>
+	<h2></h2>
 	<table>
 		<tr>
 			<td></td>
@@ -884,19 +1201,6 @@ const user = {
 		</tr>
 	</table>
 
-	<h2>setTimeout и setInterval</h2>
-	<table>
-		<tr>
-			<td></td>
-			<td></td>
-		</tr>
-	</table>
+</body>
 
-	<h2>call/apply</h2>
-	<table>
-		<tr>
-			<td></td>
-			<td></td>
-		</tr>
-	</table>
-</body></html>
+</html>
