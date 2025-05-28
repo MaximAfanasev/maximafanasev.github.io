@@ -36,7 +36,7 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
-    margin-bottom: 20px; /* добавил отступ снизу */
+    margin-bottom: 20px;
   }
 
   .letter-btn {
@@ -87,7 +87,6 @@
 <button id="restart-btn">Начать заново</button>
 
 <script>
-// Массивы с описаниями
 const items = [
 { name:"Абрикос", hint:"Маленький оранжевый фрукт с мягкой мякотью." },
 { name:"Авокадо", hint:"Зеленый плод с маслянистой текстурой и косточкой внутри." },
@@ -133,10 +132,8 @@ function startGame() {
 	const word = currentItem.name.toUpperCase();
 	const hintText = currentItem.hint;
 
-	// Показываем подсказку
 	hintDiv.textContent = "Подсказка: " + hintText;
 
-	// Создаем массив для отображения слова
 	displayedWord=Array.from(word).map(letter => (letter === ' ' || letter === '-') ? ' ' : '_');
 
 	updateDisplay();
@@ -226,10 +223,8 @@ function disableAllButtons() {
 	buttons.forEach(btn => btn.disabled=true);
 }
 
-// Инициализация игры при загрузке
 startGame();
 
-// Обработчик для перезапуска игры
 restartBtn.onclick= ()=> startGame();
 
 </script>

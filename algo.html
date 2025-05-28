@@ -1,4 +1,35 @@
-// Сортировка выбором O(n2)
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Красивый разукрашенный код сортировок</title>
+<link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.css" rel="stylesheet"/>
+<style>
+  body {
+    background-color: #2d2d2d;
+    color: #ccc;
+    font-family: 'Fira Code', monospace;
+    padding: 20px;
+  }
+  h1 {
+    text-align: center;
+    color: #ffd700;
+  }
+  pre {
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #1e1e1e;
+    overflow-x: auto;
+  }
+</style>
+</head>
+<body>
+
+<h1>Код сортировок с подсветкой</h1>
+
+<pre><code class="language-javascript">
+// Сортировка выбором O(n²)
 function Sort(a) {
   let n = a.length
   for (let i=0; i<n-1; i++){
@@ -11,7 +42,7 @@ function Sort(a) {
   return a
 }
 
-// Сортировка пузырьком O(n2)
+// Сортировка пузырьком O(n²)
 function bubbleSort(a) {
   let n = a.length;
   for (let i = 0; i < n - 1; i++) {
@@ -24,7 +55,7 @@ function bubbleSort(a) {
 return a
 }
 
-// Сортировка вставками O(n2)
+// Сортировка вставками O(n²)
 function insertionSort(a) {
   let n = a.length
   for (let i = 0; i < n; i++) {
@@ -39,7 +70,7 @@ function insertionSort(a) {
   return a;
 };
 
-// Быстрая сортировка O(n2)
+// Быстрая сортировка O(n log n)
 function quickSort(arr) {
   if (arr.length < 2) return arr;
   let pivot = arr[0];
@@ -56,7 +87,7 @@ function quickSort(arr) {
   return quickSort(left).concat(pivot, quickSort(right))
 }
 
-// Сортировка слиянием O(n2)
+// Сортировка слиянием O(n log n)
 function merge(left, right) {
   let arr = []
   while (left.length && right.length) {
@@ -70,17 +101,20 @@ function merge(left, right) {
 }
  
 function mergeSort(array) {
-  const half = array.length / 2
-  if (array.length < 2){
+  const half = Math.floor(array.length /2)
+  if (array.length <2){
     return array
   }
   const left = array.splice(0, half)
   return merge(mergeSort(left),mergeSort(array))
 }
 
+const arr = [2,10,5,44,10,5,1,0];
 
-arr = [2,10,5,44, 10,5, 1, 0]
+console.log(Sort([...arr]));
+console.log(bubbleSort([...arr]));
+</code></pre>
 
-console.log(Sort(arr))
-console.log(bubbleSort(arr))
-
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script>
+</body>
+</html>
