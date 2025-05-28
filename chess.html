@@ -50,11 +50,10 @@ const board = document.getElementById('board');
 
 // SVG фигуры (примеры для пешки и короля, можно расширить)
 const piecesSVG = {
-  'wp': `<svg viewBox="0 0 45 45" xmlns="http://www.w3.org/2000/svg" fill="#000"><circle cx="22.5" cy="10" r="4"/><rect x="20" y="14" width="5" height="10"/><rect x="17" y="24" width="11" height="2"/></svg>`, // белая пешка
-  'bp': `<svg viewBox="0 0 45 45" xmlns="http://www.w3.org/2000/svg" fill="#000"><circle cx="22.5" cy="10" r="4"/><rect x="20" y="14" width="5" height="10"/><rect x="17" y="24" width="11" height="2"/></svg>`, // черная пешка (можно изменить цвет)
-  
+  'wp': `<img src="img/chess/2.png" width="40">`, // белая пешка
+  'bp': `<svg viewBox="0 0 45 45" xmlns="http://www.w3.org/2000/svg" fill="#000"><circle cx="22.5" cy="10" r="4"/><rect x="20" y="14" width="5" height="10"/><rect x="17" y="24" width="11" height="2"/></svg>`, // черная пешка
   'wK': `<svg viewBox="0 0 45 45" xmlns="http://www.w3.org/2000/svg"><circle cx="22.5" cy="12" r="4"/><rect x="20" y="16" width="5" height="10"/><rect x="15" y="26" width="15" height="2"/></svg>`, // белый король
-  'bK': `<svg viewBox="0 0 45 45" xmlns="http://www.w3.org/2000/svg"><circle cx="22.5" cy="12" r="4"/><rect x="20" y "16"" width "5"" height "10"/><rect x "15"" y "26"" width "15"" height "2"/></svg>` // черный король (пример)
+  'bK': `<svg viewBox="0 0 45 45" xmlns="http://www.w3.org/2000/svg"><circle cx="22.5" cy="12" r="4"/><rect x="20" y="16" width="5" height="10"/><rect x="15" y="26" width="15" height="2"/></svg>` // черный король
 };
 
 // Расстановка фигур (пример)
@@ -77,10 +76,13 @@ for (let row=0; row<8; row++) {
    
    const pieceCode = initialSetup[row][col];
    if (pieceCode) {
-     const img = document.createElement('div');
-     img.className = 'piece';
-     img.innerHTML = piecesSVG[pieceCode];
-     cell.appendChild(img);
+     const pieceDiv = document.createElement('div');
+     pieceDiv.className = 'piece';
+     // Вставляем SVG или изображение
+     if (piecesSVG[pieceCode]) {
+       pieceDiv.innerHTML = piecesSVG[pieceCode];
+     }
+     cell.appendChild(pieceDiv);
    }
    
    board.appendChild(cell);
