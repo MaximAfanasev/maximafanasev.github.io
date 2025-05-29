@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Library</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="ключевые">
+  <style>
+    body {
+      margin: 0 auto;
+      padding: 10px;
+      max-width: fit-content;
+      background: #000;
+      color: gray;
+      font-family: var(--fontStack-monospace, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace);
+      font-size: 14px;
+      line-height: 18px;
+      letter-spacing: 1px;
+    }
+
+    @media(min-width: 460px) {
+      body {
+        font-size: 20px;
+        line-height: 22px;
+        padding: 20px;
+      }
+    }
+
+    #game {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .card {
+      min-width: 150px;
+      min-height: 150px;
+      max-width: 290px;
+      background-color: lightgray;
+      padding: 10px;
+      text-align: center;
+      line-height: 150px;
+      color: #222;
+      font-size: 2rem;
+      cursor: pointer;
+      border-radius: 10px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .matched {
+      background: #000;
+      color: #000;
+    }
+
+    .game-title {
+      color: gold;
+      font-size: 50px;
+      margin-bottom: 40px;
+    }
+
+    .hidden {
+      visibility: hidden;
+    }
+
+    .congratulations {
+      font-size: 40px;
+      line-height: 50px;
+      color: gold;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 class="game-title">Игра Memory</h1>
+  <div id="congratulations" class="hidden congratulations">Поздравляем! Вы нашли все пары!</div>
+  
+  <div id="game" class="flex"></div>
+
+  <template id="card-template">
+    <div class="card" data-card-value=""></div>
+  </template>
+
+  <script>
+    const game = document.getElementById('game');
+    const congratulationsText = document.getElementById('congratulations');
+
+    const cards = ['1', '1', '2', '2', '3', '3', '4', '4', '5', '5'];
+    let firstCard = null;
+    let secondCard = null;
+    let lockBoard = false;
+    let matchedCardsCount = 0;
+
+    function shuffle(array) {
+      return array.sort(() => Math.random() - 0.5);
+    }
+
+    function start() {
+      shuffle(cards);
+      const cardTemplate = document.getElementById('card-template').content;
+
+      cards.forEach(card => {
+        const cardElement = cardTemplate.cloneNode(true).querySelector('.card');
+        cardElement.dataset.cardValue = card;
+        cardElement.addEventListener('click', flip);
+        game.appendChild(cardElement);
+      });
+    }
+
+    function flip() {
+      if (lockBoard || this === firstCard) return;
+      this.textContent = this.dataset.cardValue;
+      if (!firstCard) {
+        firstCard = this;
+        return;
+      }
+      secondCard = this;
+      lockBoard = true;
+      check();
+    }
+
+    function check() {
+      if (firstCard.dataset.cardValue === secondCard.dataset.cardValue) {
+        setTimeout(() => {
+          firstCard.classList.add('matched');
+          secondCard.classList.add('matched');
+          matchedCardsCount += 2;
+          reset();
+          if (matchedCardsCount === cards.length) {
+            congratulationsText.classList.remove('hidden');
+          }
+        }, 1000);
+      } else {
+        setTimeout(() => {
+          firstCard.textContent = '';
+          secondCard.textContent = '';
+          reset();
+        }, 1500);
+      }
+    }
+
+    function reset() {
+      firstCard = null;
+      secondCard = null;
+      lockBoard = false;
+    }
+
+    start();
+  </script>
+</body>
+</html>
