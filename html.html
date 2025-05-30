@@ -236,7 +236,134 @@
 
 
 
+1. Глобальные атрибуты
+Доступны для всех HTML-элементов.
 
+Атрибут	Пример	Описание
+id	&#60;div id="header">	Уникальный идентификатор
+class	&#60;p class="text-red">	Класс для CSS/JS
+style	&#60;span style="color:red">	Встроенные стили
+title	&#60;a title="Подсказка">	Всплывающая подсказка
+data-*	&#60;div data-user="123">	Пользовательские данные
+hidden	&#60;p hidden>	Скрывает элемент
+tabindex	&#60;button tabindex="1">	Порядок фокусировки
+contenteditable	&#60;div contenteditable>	Разрешает редактирование
+draggable	&#60;img draggable="true">	Можно перетаскивать
+lang	&#60;html lang="en">	Язык содержимого
+dir	&#60;p dir="rtl">	Направление текста (ltr/rtl)
+2. Атрибуты событий
+Используются для JavaScript.
+
+Атрибут	Пример (&#60;button onclick="func()">)	Описание
+onclick	Выполняет код при клике
+onmouseover	Срабатывает при наведении
+onkeydown	При нажатии клавиши
+onload	&#60;body onload="init()">
+onsubmit	&#60;form onsubmit="validate()">
+onchange	&#60;input onchange="update()">
+
+3. Атрибуты форм (&#60;input>, &#60;form>, &#60;select>)
+Атрибут	Пример	Описание
+type	&#60;input type="text">	Тип поля (text, password, email, etc.)
+name	&#60;input name="username">	Имя для отправки на сервер
+value	&#60;input value="John">	Значение по умолчанию
+placeholder	&#60;input placeholder="Введите имя">	Подсказка в поле
+required	&#60;input required>	Обязательное поле
+disabled	&#60;button disabled>	Блокирует элемент
+readonly	&#60;input readonly>	Только для чтения
+checked	&#60;input type="checkbox" checked>	Выбранный чекбокс/радио
+min/max	&#60;input type="number" min="1" max="10">	Ограничения для чисел
+pattern	&#60;input pattern="[A-Za-z]+">	Регулярное выражение
+autocomplete	&#60;input autocomplete="off">	Отключает автозаполнение
+
+4. Атрибуты ссылок (&#60;a>) и изображений (&#60;img>)
+Атрибут	Пример	Описание
+href	&#60;a href="https://example.com">	URL ссылки
+target	&#60;a target="_blank">	Открыть в новой вкладке
+download	&#60;a download="file.pdf">	Принудительная загрузка
+rel	&#60;a rel="nofollow">	Отношение ссылки
+src	&#60;img src="image.jpg">	Путь к изображению
+alt	&#60;img alt="Описание">	Альтернативный текст
+width/height	&#60;img width="100">	Размеры изображения
+loading	&#60;img loading="lazy">	Ленивая загрузка
+
+5. Атрибуты мультимедиа (&#60;video>, &#60;audio>)
+Атрибут	Пример	Описание
+controls	&#60;video controls>	Показывает элементы управления
+autoplay	&#60;audio autoplay>	Автовоспроизведение
+loop	&#60;video loop>	Зацикливание
+muted	&#60;video muted>	Без звука
+poster	&#60;video poster="preview.jpg">	Заставка для видео
+
+6. Мета-атрибуты (&#60;meta>, &#60;link>)
+Атрибут	Пример	Описание
+charset	&#60;meta charset="UTF-8">	Кодировка
+name	&#60;meta name="description">	Мета-описание
+content	&#60;meta content="width=device-width">	Значение метатега
+rel	&#60;link rel="stylesheet">	Отношение ресурса
+media	&#60;link media="screen">	Условия применения CSS
+
+7. Специальные атрибуты
+Атрибут	Пример	Описание
+colspan	&#60;td colspan="2">	Объединение столбцов
+rowspan	&#60;td rowspan="2">	Объединение строк
+sandbox	&#60;iframe sandbox>	Ограничения для iframe
+srcdoc	&#60;iframe srcdoc="&#60;p>Text&#60;/p>">	HTML-код внутри iframe
+
+1. Базовые селекторы
+css
+* {}                     /* Все элементы */
+div {}                   /* Все &#60;div> */
+.class {}                /* Элементы с class="class" */
+#id {}                   /* Элемент с id="id" */
+
+2. Комбинаторы
+css
+div p {}                 /* Все &#60;p> внутри &#60;div> */
+div > p {}               /* &#60;p> - прямые потомки &#60;div> */
+div + p {}               /* &#60;p> сразу после &#60;div> */
+div ~ p {}               /* Все &#60;p> после &#60;div> */
+
+3. Атрибутные селекторы
+css
+[title] {}               /* Элементы с атрибутом title */
+[href="..."] {}          /* Точное значение атрибута */
+[class^="icon-"] {}      /* Начинается с... */
+[class$="-btn"] {}       /* Заканчивается на... */
+[class*="error"] {}      /* Содержит подстроку */
+
+4. Псевдоклассы
+css
+:hover {}                /* При наведении */
+:focus {}                /* Элемент в фокусе */
+:first-child {}          /* Первый потомок */
+:nth-child(2n) {}        /* Чётные элементы */
+:not(.class) {}          /* Все, кроме .class */
+
+5. Псевдоэлементы
+css
+::before {}              /* Добавить контент ДО */
+::after {}               /* Добавить контент ПОСЛЕ */
+::first-letter {}        /* Стиль первой буквы */
+::selection {}           /* Выделенный текст */
+
+6. Структурные псевдоклассы
+css
+:first-of-type {}        /* Первый элемент типа */
+:last-of-type {}         /* Последний элемент типа */
+:nth-of-type(3) {}       /* Конкретный элемент */
+:only-child {}           /* Единственный потомок */
+7. Формы и состояние
+css
+:checked {}              /* Выбранный чекбокс */
+:disabled {}             /* Отключённые поля */
+:valid {}                /* Корректные данные */
+:placeholder-shown {}    /* Показ placeholder */
+8. Комбинированные примеры
+css
+nav a.active:hover {}    /* Наведение на активную ссылку в <nav> */
+input[type="text"] {}    /* Текстовые поля */
+div > :first-child {}    /* Первый потомок div */
 
 </code></pre>
 
