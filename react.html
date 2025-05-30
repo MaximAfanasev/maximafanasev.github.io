@@ -55,21 +55,24 @@ React делегирует события
 Верблюжий регистр
 bind для методов
 
-Жизненный цикл
+Жизненный цикл 60стр
 
-вставка mounting
-componentDidMount() можно добавить addEvent или получить данные с сервера
-getSnapshotBeforeUpdate
-shouldComponentUpdate
-обновление updating
-componentDidUpdate
-componentWillUnmount
+1. Mounting (монтирование)
+componentDidMount() — можно добавить addEventListener или получить данные с сервера.
 
-удаление unmounting
+2. Updating (обновление)
+shouldComponentUpdate() — проверка, нужно ли перерендерить компонент.
+
+getSnapshotBeforeUpdate() — вызывается перед применением изменений из DOM.
+
+componentDidUpdate() — вызывается после обновления.
+
+3. Unmounting (размонтирование)
+componentWillUnmount() — очистка (таймеры, подписки, события).
 
 Регистрация
 
-
+setState извне компонента
 
 
 
