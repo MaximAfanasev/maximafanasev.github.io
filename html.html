@@ -1,33 +1,36 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>HTML &#38; CSS</title>
-<link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.css" rel="stylesheet"/>
-<style>
-  body {
-    background-color: #2d2d2d;
-    color: #ccc;
-    font-family: 'Fira Code', monospace;
-    padding: 20px;
-  }
-  h1 {
-    color: #ffd700;
-  }
-  pre {
-    padding: 20px;
-    border-radius: 10px;
-    background-color: #1e1e1e;
-    overflow-x: auto;
-  }
-</style>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>HTML &#38; CSS</title>
+	<link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.css" rel="stylesheet" />
+	<style>
+		body {
+			background-color: #2d2d2d;
+			color: #ccc;
+			font-family: 'Fira Code', monospace;
+			padding: 20px;
+		}
+
+		h1 {
+			color: #ffd700;
+		}
+
+		pre {
+			padding: 20px;
+			border-radius: 10px;
+			background-color: #1e1e1e;
+			overflow-x: auto;
+		}
+	</style>
 </head>
+
 <body>
 
-<h1>HTML &#38; CSS</h1>
+	<h1>HTML &#38; CSS</h1>
 
-<pre><code class="language-javascript">
+	<pre><code class="language-javascript">
 &#60;!DOCTYPE> – объявление типа документа
 &#60;html> – корневой элемент HTML-документа
 &#60;head> – метаинформация
@@ -40,7 +43,7 @@
 &#60;base> – базовый URL
 </code></pre>
 
-<pre><code class="language-javascript">
+	<pre><code class="language-javascript">
 &#60;!DOCTYPE html&#62;
 &#60;html lang="ru"&#62;
 &#60;head&#62;
@@ -70,7 +73,7 @@
 &#60;/html&#62;
 </code></pre>
 
-<pre><code class="language-javascript">
+	<pre><code class="language-javascript">
 &#60;h1>–&#60;h6> – заголовки
 &#60;p> – абзац
 &#60;br> – перенос строки
@@ -88,40 +91,40 @@
 &#60;time> – дата/время
 </code></pre>
 
-<h1>h1</h1>
-<h2>h2</h2>
-<h3>h3</h3>
-<h4>h4</h4>
-<h5>h5</h5>
-<h6>h6</h6>
+	<h1>h1</h1>
+	<h2>h2</h2>
+	<h3>h3</h3>
+	<h4>h4</h4>
+	<h5>h5</h5>
+	<h6>h6</h6>
 
-<p>p<br>p</p>
+	<p>p<br>p</p>
 
-<hr class="divider">hr
-<pre>pre
+	<hr class="divider">hr
+	<pre>pre
  pre</pre>
 
-<blockquote cite="https://example.com">
-Это важная цитата с указанием источника
-</blockquote>
+	<blockquote cite="https://example.com">
+		Это важная цитата с указанием источника
+	</blockquote>
 
-<p> <q>q</q> <cite>cite</cite></p>
+	<p> <q>q</q> <cite>cite</cite></p>
 
-<code>code</code>
+	<code>code</code>
 
-<p><var>var</var> = 5</p>
+	<p><var>var</var> = 5</p>
 
-<p><kbd>kbd</kbd></p>
+	<p><kbd>kbd</kbd></p>
 
-<p><samp>samp</samp></p>
+	<p><samp>samp</samp></p>
 
-<p><abbr title="HyperText Markup Language">abbr</abbr></p>
+	<p><abbr title="HyperText Markup Language">abbr</abbr></p>
 
-<p><dfn>dfn</dfn></p>
+	<p><dfn>dfn</dfn></p>
 
-<p><time datetime="2023-12-31">datetime</time></p>
+	<p><time datetime="2023-12-31">datetime</time></p>
 
-<pre><code class="language-javascript">
+	<pre><code class="language-javascript">
 &#60;b> – жирный
 &#60;strong> – важный текст
 &#60;i> – курсив
@@ -135,13 +138,53 @@
 &#60;sub> – нижний индекс
 &#60;sup> – верхний индекс
 
+</code></pre>
+
+	<p><b>– жирный</b></p>
+	<p><strong>– важный текст</strong></p>
+	<p><i>– курсив</i></p>
+	<p><em>– акцентированный текст</em></p>
+	<p><u>– подчёркнутый</u></p>
+	<p><s>– зачёркнутый</s>, <strike>– зачёркнутый</strike></p>
+	<p><del>– удалённый</del></p>
+	<p><ins>– вставленный</ins></p>
+	<p><mark>– выделенный</mark></p>
+	<p><small>– мелкий</small></p>
+	<p><sub>– нижний индекс</sub></p>
+	<p><sup>– верхний индекс</sup></p>
+
+	<pre><code class="language-javascript">
 &#60;ul> – маркированный список
 &#60;ol> – нумерованный
 &#60;li> – элемент списка
 &#60;dl> – список определений
 &#60;dt> – термин
 &#60;dd> – описание
+</code></pre>
 
+<p>&#60;ul> – маркированный список</p>
+<ul>
+	<li>Элемент 1</li>
+	<li>Элемент 2</li>
+	<li>Элемент 3</li>
+</ul>
+
+<p>&#60;ol> – нумерованный список</p>
+<ol>
+	<li>Первый пункт</li>
+	<li>Второй пункт</li>
+	<li>Третий пункт</li>
+</ol>
+
+<p>&#60;dl> – список определений</p>
+<dl>
+	<dt>HTML</dt>
+	<dd>Язык разметки веб-страниц</dd>
+	<dt>CSS</dt>
+	<dd>Язык стилей для оформления</dd>
+</dl>
+
+	<pre><code class="language-javascript">
 &#60;a> – гиперссылка
 &#60;img> – изображение
 &#60;picture> – адаптивное изображение
@@ -149,7 +192,48 @@
 &#60;figcaption> – подпись
 &#60;map> – карта изображения
 &#60;area> – активная область
+</code></pre>
 
+<p>&#60;a> – гиперссылка</p>
+<a href="https://example.com">Пример ссылки</a>
+
+<p>&#60;img> – изображение</p>
+<img src="image.jpg" alt="Пример изображения" width="200">
+
+<p>&#60;picture> – адаптивное изображение</p>
+<picture>
+  <source media="(min-width: 800px)" srcset="large-image.jpg">
+  <source media="(min-width: 400px)" srcset="medium-image.jpg">
+  <img src="small-image.jpg" alt="Адаптивное изображение">
+</picture>
+
+<p>&#60;figure> – иллюстрация</p>
+<figure>
+  <img src="example.jpg" alt="Пример иллюстрации">
+  <figcaption>Подпись к изображению</figcaption>
+</figure>
+
+<p>&#60;figcaption> – подпись</p>
+<figure>
+  <img src="photo.jpg" alt="Фотография">
+  <figcaption>Пример подписи к фото</figcaption>
+</figure>
+
+<p>&#60;map> – карта изображения</p>
+<img src="world-map.jpg" alt="Карта мира" usemap="#worldmap">
+<map name="worldmap">
+  <area shape="rect" coords="100,50,200,150" href="europe.html" alt="Европа">
+  <area shape="circle" coords="300,100,50" href="asia.html" alt="Азия">
+</map>
+
+<p>&#60;area> – активная область</p>
+<img src="tech-map.jpg" alt="Технологическая карта" usemap="#techmap">
+<map name="techmap">
+  <area shape="poly" coords="50,75,100,50,150,75,100,100" href="ai.html" alt="Искусственный интеллект">
+</map>
+
+
+<pre><code class="language-javascript">
 &#60;table> – таблица
 &#60;caption> – заголовок
 &#60;thead> – заголовок таблицы
@@ -160,7 +244,121 @@
 &#60;td> – ячейка
 &#60;col> – стиль столбца
 &#60;colgroup> – группа столбцов
+</code></pre>
 
+<p>&#60;table> – таблица</p>
+<table border="1">
+  <tr>
+    <th>Заголовок 1</th>
+    <th>Заголовок 2</th>
+  </tr>
+  <tr>
+    <td>Ячейка 1</td>
+    <td>Ячейка 2</td>
+  </tr>
+</table>
+
+<p>&#60;caption> – заголовок таблицы</p>
+<table border="1">
+  <caption>Пример таблицы с заголовком</caption>
+  <tr>
+    <td>Данные 1</td>
+    <td>Данные 2</td>
+  </tr>
+</table>
+
+<p>&#60;thead> – заголовок таблицы</p>
+<table border="1">
+  <thead>
+    <tr>
+      <th>Имя</th>
+      <th>Возраст</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Анна</td>
+      <td>25</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>&#60;tbody> – тело таблицы</p>
+<table border="1">
+  <thead>
+    <tr><th>Продукт</th><th>Цена</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Молоко</td><td>50 руб.</td></tr>
+    <tr><td>Хлеб</td><td>30 руб.</td></tr>
+  </tbody>
+</table>
+
+<p>&#60;tfoot> – подвал таблицы</p>
+<table border="1">
+  <thead>
+    <tr><th>Месяц</th><th>Доход</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Январь</td><td>10000</td></tr>
+  </tbody>
+  <tfoot>
+    <tr><td>Итого:</td><td>10000</td></tr>
+  </tfoot>
+</table>
+
+<p>&#60;tr> – строка таблицы</p>
+<table border="1">
+  <tr>
+    <td>Строка 1</td>
+  </tr>
+  <tr>
+    <td>Строка 2</td>
+  </tr>
+</table>
+
+<p>&#60;th> – заголовок ячейки</p>
+<table border="1">
+  <tr>
+    <th>Имя</th>
+    <th>Фамилия</th>
+  </tr>
+  <tr>
+    <td>Иван</td>
+    <td>Иванов</td>
+  </tr>
+</table>
+
+<p>&#60;td> – ячейка таблицы</p>
+<table border="1">
+  <tr>
+    <td>Ячейка 1</td>
+    <td>Ячейка 2</td>
+  </tr>
+</table>
+
+<p>&#60;col> – стиль столбца</p>
+<table border="1">
+  <col style="background-color:yellow">
+  <col style="background-color:lightblue">
+  <tr>
+    <td>Желтый</td>
+    <td>Голубой</td>
+  </tr>
+</table>
+
+<p>&#60;colgroup> – группа столбцов</p>
+<table border="1">
+  <colgroup span="2" style="background-color:lightgreen"></colgroup>
+  <tr>
+    <td>Зеленый</td>
+    <td>Зеленый</td>
+    <td>Белый</td>
+  </tr>
+</table>
+
+
+<pre><code class="language-javascript">
 &#60;form> – форма
 &#60;input> – поле ввода
 &#60;textarea> – многострочный текст
@@ -304,6 +502,5 @@ input[type="text"] {}    /* Текстовые поля */
 div > :first-child {}    /* Первый потомок div */
 </code></pre>
 
-<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script>
-</body>
-</html>
+	<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script>
+</body></html>
