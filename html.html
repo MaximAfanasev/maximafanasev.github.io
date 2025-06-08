@@ -16,18 +16,31 @@
 
 <body>
 !DOCTYPE html
-html lang="ru"
+html 
+lang="ru"
+
 head
-meta charset="UTF-8"
-meta name="viewport" content="width=device-width, initial-scale=1.0"
-meta name="description" content="Пример HTML-документа"
+meta 
+charset="UTF-8"
+name="viewport"
+name="description"
+content="width=device-width, initial-scale=1.0"
+content="контент"
+
 title
-base href="https://example.com/" 
-link rel="stylesheet" href="styles.css"
-link rel="icon" href="favicon.ico" type="image/x-icon"
+
+base
+href="https://"
+
+link 
+rel="stylesheet"
+rel="icon"
+href="styles.css"
+type="image/x-icon"
+
 style
+
 body
-script
 
 h1
 h2
@@ -67,6 +80,7 @@ strike
 
 del
 ins
+
 mark
 
 small
@@ -82,70 +96,80 @@ dd
 dt
 
 a
-href="https://example.com"
+href="https:/"
 target="_blank"
-download="file.pdf"
+download="f.pdf"
 rel="nofollow"
 
 img
-src="world-map.jpg"
-alt="Карта мира"
-usemap="#worldmap"
+src="p.jpg"
+alt="Карта"
+usemap="#map"
 width="200"
 loading="lazy"
+usemap="#map"
 
 picture
-source media="(min-width: 800px)" 
-srcset="large-image.jpg"
-img src="small-image.jpg" 
+source 
+media="(min-width: 800px)" 
+srcset="e.jpg"
+img 
 					
 figure
-img src="example.jpg"
+img src="e.jpg"
 figcaption
 
-map name="worldmap"
-area shape="rect" coords="100,50,200,150" href="europe.html" alt="Европа"
-area shape="circle" coords="300,100,50" href="asia.html" alt="Азия"
-
-img src="tech-map.jpg" alt="Технологическая карта" usemap="#techmap"
+map name="p"
+area
+shape="rect" 
+coords="100,50,200,150" 
+href="e.html"
 
 table
 caption
+col
 tr
 th
 td
-col style="background-color:yellow"
-col style="background-color:lightblue"
+colgroup 
+span="2" 
 
-colgroup span="2" style="background-color:lightgreen">
+form 
+action="/submit"
+method="post"
+oninput="+parseInt(value)"
 
-form action="/submit" method="post"
-form oninput="result.value=parseInt(a.value)+parseInt(b.value)"
-label for="name"
+label 
+for="name"
 
-input type="text" id="name" name="name"
-input type="text"
-input type="password" placeholder="Пароль"
-input type="email" placeholder="Email"
-input type="number" placeholder="Число"
-input type="checkbox" id="check1"
-input type="radio" id="radio1"
+input 
+type="text" 
+name="name"
+type="password" 
+type="email"
+type="number"
+type="checkbox"
+type="radio"
+placeholder="Пароль"
 
 output
 
-textarea rows="4" cols="50"
-
-placeholder="Введите текст"
+textarea
+rows="4"
+cols="50"
 
 button 
-
 type="button"
 type="submit"
 type="reset"
 
 select
-optgroup label="Фрукты"
-option value="1"
+
+optgroup
+label="Фрукты"
+
+option 
+value="1"
 
 fieldset
 legend
@@ -153,14 +177,16 @@ label
 
 input 
 list="browsers"
-datalist id="browsers"
-option value="Chrome"
+datalist
 
 progress 
-value="70" max="100"
+value="70"
+max="100"
 
 meter 
-value="0.6" min="0" max="1"
+value="0.6" 
+min="0" 
+max="1"
 
 audio 
 controls
@@ -169,9 +195,9 @@ src="audio.mp3"
 type="audio/mpeg"
 
 video 
+controls
 width="320" 
 height="240" 
-controls
 
 source 
 src="movie.mp4" 
@@ -184,7 +210,9 @@ height="300"
 
 object
 data="pdfdoc.pdf"
-param name="autoplay" value="true"
+param 
+name="autoplay" 
+value="true"
 width="400" 
 height="500"
 
@@ -201,7 +229,7 @@ article
 section
 aside
 address
-details>
+details
 summary
 
 dialog 
@@ -216,11 +244,10 @@ user-profile
 slot="username"
 
 canvas
-id="myCanvas"
 width="200"
 height="100"
 
-id="header"
+id="name"
 class
 hidden
 tabindex="1"
