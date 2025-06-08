@@ -3,8 +3,7 @@
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>HTML &#38; CSS</title>
-	<link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.css" rel="stylesheet" />
+	<title>HTML</title>
 	<style>
 		body {
 			background-color: #2d2d2d;
@@ -12,495 +11,217 @@
 			font-family: 'Fira Code', monospace;
 			padding: 20px;
 		}
-
-		h1 {
-			color: #ffd700;
-		}
-
-		pre {
-			padding: 20px;
-			border-radius: 10px;
-			background-color: #1e1e1e;
-			overflow-x: auto;
-		}
 	</style>
 </head>
 
 <body>
-
-	<h1>HTML &#38; CSS</h1>
-
-	<pre><code class="language-javascript">
-&#60;!DOCTYPE> – объявление типа документа
-&#60;html> – корневой элемент HTML-документа
-&#60;head> – метаинформация
-&#60;title> – заголовок страницы
-&#60;body> – основное содержимое
-&#60;meta> – метаданные
-&#60;link> – подключение внешних ресурсов
-&#60;style> – встроенные CSS-стили
-&#60;script> – JavaScript
-&#60;base> – базовый URL
-</code></pre>
-
-	<pre><code class="language-javascript">
-&#60;!DOCTYPE html&#62;
-&#60;html lang="ru"&#62;
-&#60;head&#62;
-    &#60;meta charset="UTF-8"&#62; Кодировка
-    &#60;meta name="viewport" content="width=device-width, initial-scale=1.0"&#62; Адаптивность
-    &#60;meta name="description" content="Пример HTML-документа"&#62; SEO
-    &#60;title&#62;Моя первая страница&#60;/title&#62; Заголовок во вкладке
-    &#60;base href="https://example.com/"&#62; Базовый URL для относительных ссылок
-    &#60;link rel="stylesheet" href="styles.css"&#62; Подключение CSS
-    &#60;link rel="icon" href="favicon.ico" type="image/x-icon"&#62; Иконка сайта
-    &#60;style&#62;
-        body { 
-            font-family: Arial, sans-serif; 
-            margin: 0;
-        }
-    &#60;/style&#62; Встроенные CSS
-&#60;/head&#62;
-&#60;body&#62; Основное содержимое страницы
-    &#60;h1&#62;Привет, мир!&#60;/h1&#62;
-    &#60;p&#62;Это пример HTML-документа.&#60;/p&#62;
-
-    &#60;script&#62;
-        console.log("Hello from JavaScript!"); 
-    &#60;/script&#62; Встроенный JavaScript
-    &#60;script src="app.js"&#62;&#60;/script&#62; Подключение внешнего JS-файла
-&#60;/body&#62;
-&#60;/html&#62;
-</code></pre>
-
-	<pre><code class="language-javascript">
-&#60;h1>–&#60;h6> – заголовки
-&#60;p> – абзац
-&#60;br> – перенос строки
-&#60;hr> – горизонтальная линия
-&#60;pre> – текст с форматированием
-&#60;blockquote> – цитата
-&#60;q> – встроенная цитата
-&#60;cite> – источник
-&#60;code> – код
-&#60;var> – переменная
-&#60;kbd> – ввод с клавиатуры
-&#60;samp> – вывод программы
-&#60;abbr> – аббревиатура
-&#60;dfn> – определение
-&#60;time> – дата/время
-</code></pre>
-
-	<h1>h1</h1>
-	<h2>h2</h2>
-	<h3>h3</h3>
-	<h4>h4</h4>
-	<h5>h5</h5>
-	<h6>h6</h6>
-
-	<p>p<br>p</p>
-
-	<hr class="divider">hr
-	<pre>pre
- pre</pre>
-
-	<blockquote cite="https://example.com">
-		Это важная цитата с указанием источника
-	</blockquote>
-
-	<p> <q>q</q> <cite>cite</cite></p>
-
-	<code>code</code>
-
-	<p><var>var</var> = 5</p>
-
-	<p><kbd>kbd</kbd></p>
-
-	<p><samp>samp</samp></p>
-
-	<p><abbr title="HyperText Markup Language">abbr</abbr></p>
-
-	<p><dfn>dfn</dfn></p>
-
-	<p><time datetime="2023-12-31">datetime</time></p>
-
-	<pre><code class="language-javascript">
-&#60;b> – жирный
-&#60;strong> – важный текст
-&#60;i> – курсив
-&#60;em> – акцентированный текст
-&#60;u> – подчёркнутый
-&#60;s>, &#60;strike> – зачёркнутый
-&#60;del> – удалённый
-&#60;ins> – вставленный
-&#60;mark> – выделенный
-&#60;small> – мелкий
-&#60;sub> – нижний индекс
-&#60;sup> – верхний индекс
-
-</code></pre>
-
-	<p><b>– жирный</b></p>
-	<p><strong>– важный текст</strong></p>
-	<p><i>– курсив</i></p>
-	<p><em>– акцентированный текст</em></p>
-	<p><u>– подчёркнутый</u></p>
-	<p><s>– зачёркнутый</s>, <strike>– зачёркнутый</strike></p>
-	<p><del>– удалённый</del></p>
-	<p><ins>– вставленный</ins></p>
-	<p><mark>– выделенный</mark></p>
-	<p><small>– мелкий</small></p>
-	<p><sub>– нижний индекс</sub></p>
-	<p><sup>– верхний индекс</sup></p>
-
-	<pre><code class="language-javascript">
-&#60;ul> – маркированный список
-&#60;ol> – нумерованный
-&#60;li> – элемент списка
-&#60;dl> – список определений
-&#60;dt> – термин
-&#60;dd> – описание
-</code></pre>
-
-<p>&#60;ul> – маркированный список</p>
-<ul>
-	<li>Элемент 1</li>
-	<li>Элемент 2</li>
-	<li>Элемент 3</li>
-</ul>
-
-<p>&#60;ol> – нумерованный список</p>
-<ol>
-	<li>Первый пункт</li>
-	<li>Второй пункт</li>
-	<li>Третий пункт</li>
-</ol>
-
-<p>&#60;dl> – список определений</p>
-<dl>
-	<dt>HTML</dt>
-	<dd>Язык разметки веб-страниц</dd>
-	<dt>CSS</dt>
-	<dd>Язык стилей для оформления</dd>
-</dl>
-
-	<pre><code class="language-javascript">
-&#60;a> – гиперссылка
-&#60;img> – изображение
-&#60;picture> – адаптивное изображение
-&#60;figure> – иллюстрация
-&#60;figcaption> – подпись
-&#60;map> – карта изображения
-&#60;area> – активная область
-</code></pre>
-
-<p>&#60;a> – гиперссылка</p>
-<a href="https://example.com">Пример ссылки</a>
-
-<p>&#60;img> – изображение</p>
-<img src="image.jpg" alt="Пример изображения" width="200">
-
-<p>&#60;picture> – адаптивное изображение</p>
-<picture>
-  <source media="(min-width: 800px)" srcset="large-image.jpg">
-  <source media="(min-width: 400px)" srcset="medium-image.jpg">
-  <img src="small-image.jpg" alt="Адаптивное изображение">
-</picture>
-
-<p>&#60;figure> – иллюстрация</p>
-<figure>
-  <img src="example.jpg" alt="Пример иллюстрации">
-  <figcaption>Подпись к изображению</figcaption>
-</figure>
-
-<p>&#60;figcaption> – подпись</p>
-<figure>
-  <img src="photo.jpg" alt="Фотография">
-  <figcaption>Пример подписи к фото</figcaption>
-</figure>
-
-<p>&#60;map> – карта изображения</p>
-<img src="world-map.jpg" alt="Карта мира" usemap="#worldmap">
-<map name="worldmap">
-  <area shape="rect" coords="100,50,200,150" href="europe.html" alt="Европа">
-  <area shape="circle" coords="300,100,50" href="asia.html" alt="Азия">
-</map>
-
-<p>&#60;area> – активная область</p>
-<img src="tech-map.jpg" alt="Технологическая карта" usemap="#techmap">
-<map name="techmap">
-  <area shape="poly" coords="50,75,100,50,150,75,100,100" href="ai.html" alt="Искусственный интеллект">
-</map>
-
-
-<pre><code class="language-javascript">
-&#60;table> – таблица
-&#60;caption> – заголовок
-&#60;thead> – заголовок таблицы
-&#60;tbody> – тело
-&#60;tfoot> – подвал
-&#60;tr> – строка
-&#60;th> – заголовок ячейки
-&#60;td> – ячейка
-&#60;col> – стиль столбца
-&#60;colgroup> – группа столбцов
-</code></pre>
-
-<p>&#60;table> – таблица</p>
-<table border="1">
-  <tr>
-    <th>Заголовок 1</th>
-    <th>Заголовок 2</th>
-  </tr>
-  <tr>
-    <td>Ячейка 1</td>
-    <td>Ячейка 2</td>
-  </tr>
-</table>
-
-<p>&#60;caption> – заголовок таблицы</p>
-<table border="1">
-  <caption>Пример таблицы с заголовком</caption>
-  <tr>
-    <td>Данные 1</td>
-    <td>Данные 2</td>
-  </tr>
-</table>
-
-<p>&#60;thead> – заголовок таблицы</p>
-<table border="1">
-  <thead>
-    <tr>
-      <th>Имя</th>
-      <th>Возраст</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Анна</td>
-      <td>25</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>&#60;tbody> – тело таблицы</p>
-<table border="1">
-  <thead>
-    <tr><th>Продукт</th><th>Цена</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>Молоко</td><td>50 руб.</td></tr>
-    <tr><td>Хлеб</td><td>30 руб.</td></tr>
-  </tbody>
-</table>
-
-<p>&#60;tfoot> – подвал таблицы</p>
-<table border="1">
-  <thead>
-    <tr><th>Месяц</th><th>Доход</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>Январь</td><td>10000</td></tr>
-  </tbody>
-  <tfoot>
-    <tr><td>Итого:</td><td>10000</td></tr>
-  </tfoot>
-</table>
-
-<p>&#60;tr> – строка таблицы</p>
-<table border="1">
-  <tr>
-    <td>Строка 1</td>
-  </tr>
-  <tr>
-    <td>Строка 2</td>
-  </tr>
-</table>
-
-<p>&#60;th> – заголовок ячейки</p>
-<table border="1">
-  <tr>
-    <th>Имя</th>
-    <th>Фамилия</th>
-  </tr>
-  <tr>
-    <td>Иван</td>
-    <td>Иванов</td>
-  </tr>
-</table>
-
-<p>&#60;td> – ячейка таблицы</p>
-<table border="1">
-  <tr>
-    <td>Ячейка 1</td>
-    <td>Ячейка 2</td>
-  </tr>
-</table>
-
-<p>&#60;col> – стиль столбца</p>
-<table border="1">
-  <col style="background-color:yellow">
-  <col style="background-color:lightblue">
-  <tr>
-    <td>Желтый</td>
-    <td>Голубой</td>
-  </tr>
-</table>
-
-<p>&#60;colgroup> – группа столбцов</p>
-<table border="1">
-  <colgroup span="2" style="background-color:lightgreen"></colgroup>
-  <tr>
-    <td>Зеленый</td>
-    <td>Зеленый</td>
-    <td>Белый</td>
-  </tr>
-</table>
-
-
-<pre><code class="language-javascript">
-&#60;form> – форма
-&#60;input> – поле ввода
-&#60;textarea> – многострочный текст
-&#60;button> – кнопка
-&#60;select> – выпадающий список
-&#60;option> – элемент списка
-&#60;optgroup> – группа элементов
-&#60;label> – метка
-&#60;fieldset> – группа полей
-&#60;legend> – заголовок группы
-&#60;datalist> – подсказки
-&#60;output> – результат
-&#60;progress> – индикатор прогресса
-&#60;meter> – шкала
-
-&#60;audio> – аудио
-&#60;video> – видео
-&#60;source> – источник
-&#60;track> – субтитры
-&#60;embed> – встраиваемый контент
-&#60;object> – объект
-&#60;param> – параметр
-&#60;iframe> – фрейм
-
-&#60;header> – шапка
-&#60;footer> – подвал
-&#60;nav> – навигация
-&#60;main> – основной контент
-&#60;article> – статья
-&#60;section> – раздел
-&#60;aside> – боковая панель
-&#60;address> – контакты
-&#60;details> – раскрывающийся блок
-&#60;summary> – заголовок
-&#60;dialog> – диалог
-
-&#60;script> – JavaScript
-&#60;noscript> – альтернатива без JS
-&#60;template> – шаблон
-&#60;slot> – слот (Web Components)
-&#60;canvas> – холст для рисования
-
-
-&#60;div id="header">	Уникальный идентификатор
-&#60;p class="text-red">	Класс для CSS/JS
-&#60;span style="color:red">	Встроенные стили
-&#60;a title="Подсказка">	Всплывающая подсказка
-&#60;div data-user="123">	Пользовательские данные
-&#60;p hidden>	Скрывает элемент
-&#60;button tabindex="1">	Порядок фокусировки
-&#60;div contenteditable>	Разрешает редактирование
-&#60;img draggable="true">	Можно перетаскивать
-&#60;html lang="en">	Язык содержимого
-&#60;p dir="rtl">	Направление текста (ltr/rtl)
-
-
-onclick	Выполняет код при клике
-onmouseover	Срабатывает при наведении
-onkeydown	При нажатии клавиши
-onload	&#60;body onload="init()">
-onsubmit	&#60;form onsubmit="validate()">
-onchange	&#60;input onchange="update()">
-
-&#60;input type="text">	Тип поля (text, password, email, etc.)
-&#60;input name="username">	Имя для отправки на сервер
-&#60;input value="John">	Значение по умолчанию
-&#60;input placeholder="Введите имя">	Подсказка в поле
-&#60;input required>	Обязательное поле
-&#60;button disabled>	Блокирует элемент
-&#60;input readonly>	Только для чтения
-&#60;input type="checkbox" checked>	Выбранный чекбокс/радио
-&#60;input type="number" min="1" max="10">	Ограничения для чисел
-&#60;input pattern="[A-Za-z]+">	Регулярное выражение
-&#60;input autocomplete="off"> Отключает автозаполнение
-
-&#60;a href="https://example.com">	URL ссылки
-&#60;a target="_blank">	Открыть в новой вкладке
-&#60;a download="file.pdf">	Принудительная загрузка
-&#60;a rel="nofollow">	Отношение ссылки
-&#60;img src="image.jpg">	Путь к изображению
-&#60;img alt="Описание">	Альтернативный текст
-&#60;img width="100">	Размеры изображения
-&#60;img loading="lazy">	Ленивая загрузка
-
-&#60;video controls>	Показывает элементы управления
-&#60;audio autoplay>	Автовоспроизведение
-&#60;video loop>	Зацикливание
-&#60;video muted>	Без звука
-&#60;video poster="preview.jpg">	Заставка для видео
-
-&#60;meta charset="UTF-8">	Кодировка
-&#60;meta name="description">	Мета-описание
-&#60;meta content="width=device-width">	Значение метатега
-&#60;link rel="stylesheet">	Отношение ресурса
-&#60;link media="screen">	Условия применения CSS
-
-&#60;td colspan="2">	Объединение столбцов
-&#60;td rowspan="2">	Объединение строк
-&#60;iframe sandbox>	Ограничения для iframe
-&#60;iframe srcdoc="&#60;p>Text&#60;/p>">	HTML-код внутри iframe
-
-* {}                     /* Все элементы */
-div {}                   /* Все &#60;div> */
-.class {}                /* Элементы с class="class" */
-#id {}                   /* Элемент с id="id" */
-
-div p {}                 /* Все &#60;p> внутри &#60;div> */
-div > p {}               /* &#60;p> - прямые потомки &#60;div> */
-div + p {}               /* &#60;p> сразу после &#60;div> */
-div ~ p {}               /* Все &#60;p> после &#60;div> */
-
-[title] {}               /* Элементы с атрибутом title */
-[href="..."] {}          /* Точное значение атрибута */
-[class^="icon-"] {}      /* Начинается с... */
-[class$="-btn"] {}       /* Заканчивается на... */
-[class*="error"] {}      /* Содержит подстроку */
-
-:hover {}                /* При наведении */
-:focus {}                /* Элемент в фокусе */
-:first-child {}          /* Первый потомок */
-:nth-child(2n) {}        /* Чётные элементы */
-:not(.class) {}          /* Все, кроме .class */
-
-::before {}              /* Добавить контент ДО */
-::after {}               /* Добавить контент ПОСЛЕ */
-::first-letter {}        /* Стиль первой буквы */
-::selection {}           /* Выделенный текст */
-
-:first-of-type {}        /* Первый элемент типа */
-:last-of-type {}         /* Последний элемент типа */
-:nth-of-type(3) {}       /* Конкретный элемент */
-:only-child {}           /* Единственный потомок */
-
-:checked {}              /* Выбранный чекбокс */
-:disabled {}             /* Отключённые поля */
-:valid {}                /* Корректные данные */
-:placeholder-shown {}    /* Показ placeholder */
-
-nav a.active:hover {}    /* Наведение на активную ссылку &#60;nav> */
-input[type="text"] {}    /* Текстовые поля */
-div > :first-child {}    /* Первый потомок div */
-</code></pre>
-
-	<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script>
+!DOCTYPE html
+html lang="ru"
+head
+meta charset="UTF-8"
+meta name="viewport" content="width=device-width, initial-scale=1.0"
+meta name="description" content="Пример HTML-документа"
+title
+base href="https://example.com/" 
+link rel="stylesheet" href="styles.css"
+link rel="icon" href="favicon.ico" type="image/x-icon"
+style
+body
+script
+
+h1
+h2
+h3
+h4
+h5
+h6
+
+div
+p
+hr
+code
+pre
+blockquote
+q
+cite
+var
+kbd
+samp
+abbr
+dfn
+time
+
+b
+strong
+i
+em
+
+u
+s
+strike
+
+del
+ins
+mark
+
+small
+sub
+sup
+
+ul
+ol
+li
+
+dl
+dd
+dt
+
+a href="https://example.com"
+target="_blank"
+download="file.pdf"
+rel="nofollow"
+
+img src="world-map.jpg"
+alt="Карта мира"
+usemap="#worldmap"
+width="200"
+loading="lazy"
+
+picture
+source media="(min-width: 800px)" srcset="large-image.jpg"
+source media="(min-width: 400px)" srcset="medium-image.jpg"
+img src="small-image.jpg" alt="Адаптивное изображение"
+					
+figure
+img src="example.jpg" alt="Пример иллюстрации"
+figcaption
+
+map name="worldmap"
+area shape="rect" coords="100,50,200,150" href="europe.html" alt="Европа"
+area shape="circle" coords="300,100,50" href="asia.html" alt="Азия"
+
+img src="tech-map.jpg" alt="Технологическая карта" usemap="#techmap"
+
+table
+caption
+tr
+th
+td
+col style="background-color:yellow"
+col style="background-color:lightblue"
+
+colgroup span="2" style="background-color:lightgreen">
+
+form action="/submit" method="post"
+form oninput="result.value=parseInt(a.value)+parseInt(b.value)"
+label for="name"
+
+input type="text" id="name" name="name"
+input type="text"
+input type="password" placeholder="Пароль"
+input type="email" placeholder="Email"
+input type="number" placeholder="Число"
+input type="checkbox" id="check1"
+input type="radio" id="radio1"
+
+output
+
+textarea rows="4" cols="50"
+
+placeholder="Введите текст"
+
+button 
+
+type="button"
+type="submit"
+type="reset"
+
+select
+optgroup label="Фрукты"
+option value="1"
+
+fieldset
+legend
+label
+
+input 
+list="browsers"
+datalist id="browsers"
+option value="Chrome"
+
+progress 
+value="70" max="100"
+
+meter 
+value="0.6" min="0" max="1"
+
+audio 
+controls
+source 
+src="audio.mp3" 
+type="audio/mpeg"
+
+video 
+width="320" 
+height="240" 
+controls
+
+source 
+src="movie.mp4" 
+type="video/mp4"
+
+embed 
+src="flashgame.swf"
+width="400" 
+height="300"
+
+object
+data="pdfdoc.pdf"
+param name="autoplay" value="true"
+width="400" 
+height="500"
+
+iframe
+src="https://example.com"
+width="500" 
+height="300"
+
+header
+footer
+nav
+main
+article
+section
+aside
+address
+details>
+summary
+
+dialog 
+open
+
+script
+noscript
+
+template
+
+user-profile
+slot="username"
+
+canvas
+id="myCanvas"
+width="200"
+height="100"
+
+id="header"
+class
+hidden
+tabindex="1"
+contenteditable
+dir="rtl"
+dir="ltr"
+onclick="alert('Кнопка нажата!')"
+onmouseover="this.style.backgroundColor='yellow'" 
+onmouseout="this.style.backgroundColor='white'"
+onkeydown="console.log('Нажата клавиша: ' + event.key)"
 </body></html>
