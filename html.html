@@ -1,497 +1,1102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multiple Code Blocks with Copy Buttons</title>
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background-color: #f5f5f5;
-            margin: 0;
-            padding: 20px;
-            gap: 20px;
-						background: #000;
-        }
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Multiple Code Blocks with Copy Buttons</title>
+	<style>
+		body {
+			font-family: 'Roboto', sans-serif;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			min-height: 100vh;
+			background-color: #f5f5f5;
+			margin: 0;
+			padding: 20px;
+			gap: 20px;
+			background: #000;
+		}
 
-        .code-container {
-					display: flex;
-					gap: 20px;
-					justify-content: space-between;
-            position: relative;
-            width: 100%;
-            max-width: 600px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
+		.code-container {
+			display: flex;
+			gap: 20px;
+			justify-content: space-between;
+			position: relative;
+			width: 100%;
+			max-width: 600px;
+			border-radius: 8px;
+			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+		}
 
-        pre {
-            margin: 0;
-            padding: 20px;
-            overflow-x: auto;
-            background-color: #f8f9fa;
-            border-radius: 8px;
-        }
+		pre {
+			margin: 0;
+			padding: 20px;
+			overflow-x: auto;
+			background-color: #f8f9fa;
+			border-radius: 8px;
+		}
 
-        code {
-            font-family: 'Roboto Mono', monospace;
-            color: #333;
-            font-size: 14px;
-            line-height: 1.5;
-        }
+		code {
+			font-family: 'Roboto Mono', monospace;
+			color: #333;
+			font-size: 14px;
+			line-height: 1.5;
+		}
 
-        .copy-btn {
-            top: 10px;
-            right: -20px;
-            background: #6200ee;
-            color: white;
-            border: none;
-            border-radius: 15px;
-            padding: 8px 12px;
-            cursor: pointer;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: background 0.2s, transform 0.1s;
-        }
+		.copy-btn {
+			top: 10px;
+			right: -20px;
+			background: #6200ee;
+			color: white;
+			border: none;
+			border-radius: 15px;
+			padding: 8px 12px;
+			cursor: pointer;
+			font-size: 14px;
+			display: flex;
+			align-items: center;
+			gap: 6px;
+			transition: background 0.2s, transform 0.1s;
+		}
 
-        .copy-btn:hover {
-            background: #3700b3;
-        }
+		.copy-btn:hover {
+			background: #3700b3;
+		}
 
-        .copy-btn:active {
-            transform: scale(0.95);
-        }
+		.copy-btn:active {
+			transform: scale(0.95);
+		}
 
-        .copy-icon {
-            display: inline-block;
-            width: 14px;
-            height: 16px;
-            position: relative;
-        }
+		.copy-icon {
+			display: inline-block;
+			width: 14px;
+			height: 16px;
+			position: relative;
+		}
 
-        .copy-icon::before,
-        .copy-icon::after {
-            content: '';
-            position: absolute;
-            border: 2px solid white;
-            border-radius: 2px;
-            background: transparent;
-        }
+		.copy-icon::before,
+		.copy-icon::after {
+			content: '';
+			position: absolute;
+			border: 2px solid white;
+			border-radius: 2px;
+			background: transparent;
+		}
 
-        .copy-icon::before {
-            width: 10px;
-            height: 12px;
-            top: 0;
-            left: 0;
-        }
+		.copy-icon::before {
+			width: 10px;
+			height: 12px;
+			top: 0;
+			left: 0;
+		}
 
-        .copy-icon::after {
-            width: 10px;
-            height: 12px;
-            top: 2px;
-            left: 2px;
-            background: rgba(255, 255, 255, 0.2);
-        }
+		.copy-icon::after {
+			width: 10px;
+			height: 12px;
+			top: 2px;
+			left: 2px;
+			background: rgba(255, 255, 255, 0.2);
+		}
 
-        .tooltip {
-            position: absolute;
-            top: -30px;
-            right: 0;
-            background: #333;
-            color: white;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-            opacity: 0;
-            transition: opacity 0.2s;
-        }
+		.tooltip {
+			position: absolute;
+			top: -30px;
+			right: 0;
+			background: #333;
+			color: white;
+			padding: 4px 8px;
+			border-radius: 4px;
+			font-size: 12px;
+			opacity: 0;
+			transition: opacity 0.2s;
+		}
 
-        .copy-btn.copied .tooltip {
-            opacity: 1;
-        }
-    </style>
+		.copy-btn.copied .tooltip {
+			opacity: 1;
+		}
+
+
+
+
+		.example-output {
+			background: #fff;
+			border: 1px solid #eee;
+			padding: 15px;
+			margin-bottom: 20px;
+			border-radius: 4px;
+		}
+
+		.example-output {
+			background: #fff;
+			border: 1px solid #eee;
+			padding: 15px;
+			margin-bottom: 20px;
+			border-radius: 4px;
+		}
+	</style>
 </head>
+
 <body>
 
-    <div class="code-container">
-        <pre><code>&lt;!DOCTYPE html&gt;</code></pre>
-        <button class="copy-btn">
-            <span class="copy-icon"></span>
-            <span class="btn-text">Copy</span>
-            <span class="tooltip">Copied!</span>
-        </button>
-    </div>
-    
-    <div class="code-container">
-        <pre><code>&lt;html lang="ru"&gt;</code></pre>
-        <button class="copy-btn">
-            <span class="copy-icon"></span>
-            <span class="btn-text">Copy</span>
-            <span class="tooltip">Copied!</span>
-        </button>
-    </div>
-    
-    <div class="code-container">
-        <pre><code>&lt;head&gt; &lt;/head></code></pre>
-        <button class="copy-btn">
-            <span class="copy-icon"></span>
-            <span class="btn-text">Copy</span>
-            <span class="tooltip">Copied!</span>
-        </button>
-    </div>
-    
-    <div class="code-container">
-        <pre><code>&lt;meta charset="UTF-8" &gt;</code></pre>
-        <button class="copy-btn">
-            <span class="copy-icon"></span>
-            <span class="btn-text">Copy</span>
-            <span class="tooltip">Copied!</span>
-        </button>
-    </div>
-    
-    <div class="code-container">
-        <pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></pre>
-        <button class="copy-btn">
-            <span class="copy-icon"></span>
-            <span class="btn-text">Copy</span>
-            <span class="tooltip">Copied!</span>
-        </button>
-    </div>
-    
-    <div class="code-container">
-        <pre><code>&lt;meta name="description" content="Пример описания страницы о SEO и веб-разработке."&gt;</code></pre>
-        <button class="copy-btn">
-            <span class="copy-icon"></span>
-            <span class="btn-text">Copy</span>
-            <span class="tooltip">Copied!</span>
-        </button>
-    </div>
-    
-    <div class="code-container">
-        <pre><code>&lt;meta name="keywords" content="веб-разработка, SEO, HTML, CSS, JavaScript"&gt;</code></pre>
-        <button class="copy-btn">
-            <span class="copy-icon"></span>
-            <span class="btn-text">Copy</span>
-            <span class="tooltip">Copied!</span>
-        </button>
-    </div>
-    
-    <div class="code-container">
-        <pre><code>&lt;meta name="author" content="Иван Петров"&gt;</code></pre>
-        <button class="copy-btn">
-            <span class="copy-icon"></span>
-            <span class="btn-text">Copy</span>
-            <span class="tooltip">Copied!</span>
-        </button>
-    </div>
-    
-    <div class="code-container">
-        <pre><code>&lt;meta name="robots" content="index, follow"&gt;</code></pre>
-        <button class="copy-btn">
-            <span class="copy-icon"></span>
-            <span class="btn-text">Copy</span>
-            <span class="tooltip">Copied!</span>
-        </button>
-    </div>
-    
-    <div class="code-container">
-        <pre><code>&lt;meta name="robots" content="noindex, nofollow"&gt;</code></pre>
-        <button class="copy-btn">
-            <span class="copy-icon"></span>
-            <span class="btn-text">Copy</span>
-            <span class="tooltip">Copied!</span>
-        </button>
-    </div>
-    
-    <div class="code-container">
-        <pre><code>&lt;meta property="og:title" content="Крутая статья про HTML"&gt;</code></pre>
-        <button class="copy-btn">
-            <span class="copy-icon"></span>
-            <span class="btn-text">Copy</span>
-            <span class="tooltip">Copied!</span>
-        </button>
-    </div>
-    
-    <div class="code-container">
-        <pre><code>&lt;meta property="og:description" content="Учимся верстать за 5 минут!"&gt;</code></pre>
-        <button class="copy-btn">
-            <span class="copy-icon"></span>
-            <span class="btn-text">Copy</span>
-            <span class="tooltip">Copied!</span>
-        </button>
-    </div>
-    
-    <div class="code-container">
-        <pre><code>&lt;meta property="og:image" content="https://site.com/image.jpg"&gt;</code></pre>
-        <button class="copy-btn">
-            <span class="copy-icon"></span>
-            <span class="btn-text">Copy</span>
-            <span class="tooltip">Copied!</span>
-        </button>
-    </div>
-    
-    <div class="code-container">
-        <pre><code>&lt;title>Заголовок страницы&lt;/title&gt;</code></pre>
-        <button class="copy-btn">
-            <span class="copy-icon"></span>
-            <span class="btn-text">Copy</span>
-            <span class="tooltip">Copied!</span>
-        </button>
-    </div>
-    
-    <div class="code-container">
-        <pre><code>&lt;base href="https://example.com/" target="_blank"&gt;</code></pre>
-        <button class="copy-btn">
-            <span class="copy-icon"></span>
-            <span class="btn-text">Copy</span>
-            <span class="tooltip">Copied!</span>
-        </button>
-    </div>
-    
-    <div class="code-container">
-        <pre><code>&lt;link rel="stylesheet" href="styles.css" type="text/css"&gt;</code></pre>
-        <button class="copy-btn">
-            <span class="copy-icon"></span>
-            <span class="btn-text">Copy</span>
-            <span class="tooltip">Copied!</span>
-        </button>
-    </div>
-    
-    <div class="code-container">
-        <pre><code>&lt;link rel="stylesheet" href="https://cdn.example.com/style.css"&gt;</code></pre>
-        <button class="copy-btn">
-            <span class="copy-icon"></span>
-            <span class="btn-text">Copy</span>
-            <span class="tooltip">Copied!</span>
-        </button>
-    </div>
-    
-    <div class="code-container">
-        <pre><code>&lt;link rel="icon" href="favicon.ico" type="image/x-icon"&gt;</code></pre>
-        <button class="copy-btn">
-            <span class="copy-icon"></span>
-            <span class="btn-text">Copy</span>
-            <span class="tooltip">Copied!</span>
-        </button>
-    </div>
-    
-    <div class="code-container">
-        <pre><code>&lt;link rel="icon" href="favicon.svg" type="image/svg+xml"&gt;</code></pre>
-        <button class="copy-btn">
-            <span class="copy-icon"></span>
-            <span class="btn-text">Copy</span>
-            <span class="tooltip">Copied!</span>
-        </button>
-    </div>
-    
-    <div class="code-container">
-        <pre><code>&lt;link rel="apple-touch-icon" href="apple-touch-icon.png"&gt;</code></pre>
-        <button class="copy-btn">
-            <span class="copy-icon"></span>
-            <span class="btn-text">Copy</span>
-            <span class="tooltip">Copied!</span>
-        </button>
-    </div>
-    
-    <div class="code-container">
-        <pre><code>&lt;link rel="icon" href="images/favicon-32x32.png" type="image/png" sizes="32x32"&gt;</code></pre>
-        <button class="copy-btn">
-            <span class="copy-icon"></span>
-            <span class="btn-text">Copy</span>
-            <span class="tooltip">Copied!</span>
-        </button>
-    </div>
-    
-    <div class="code-container">
-        <pre><code>&lt;body&gt; &lt;/body></code></pre>
-        <button class="copy-btn">
-            <span class="copy-icon"></span>
-            <span class="btn-text">Copy</span>
-            <span class="tooltip">Copied!</span>
-        </button>
-    </div>
-    
-    <div class="code-container">
-        <pre><code>&lt;header&gt; &lt;/header></code></pre>
-        <button class="copy-btn">
-            <span class="copy-icon"></span>
-            <span class="btn-text">Copy</span>
-            <span class="tooltip">Copied!</span>
-        </button>
-    </div>
-    
-    <div class="code-container">
-        <pre><code>&lt;nav&gt; &lt;/nav></code></pre>
-        <button class="copy-btn">
-            <span class="copy-icon"></span>
-            <span class="btn-text">Copy</span>
-            <span class="tooltip">Copied!</span>
-        </button>
-    </div>
-    
-    <div class="code-container">
-        <pre><code>&lt;main&gt; &lt;/main></code></pre>
-        <button class="copy-btn">
-            <span class="copy-icon"></span>
-            <span class="btn-text">Copy</span>
-            <span class="tooltip">Copied!</span>
-        </button>
-    </div>
-    
-    <div class="code-container">
-        <pre><code>&lt;article&gt; &lt;/article></code></pre>
-        <button class="copy-btn">
-            <span class="copy-icon"></span>
-            <span class="btn-text">Copy</span>
-            <span class="tooltip">Copied!</span>
-        </button>
-    </div>
-    
-    <div class="code-container">
-        <pre><code>&lt;section&gt; &lt;/section></code></pre>
-        <button class="copy-btn">
-            <span class="copy-icon"></span>
-            <span class="btn-text">Copy</span>
-            <span class="tooltip">Copied!</span>
-        </button>
-    </div>
-    
-    <div class="code-container">
-        <pre><code>&lt;aside&gt; &lt;/aside></code></pre>
-        <button class="copy-btn">
-            <span class="copy-icon"></span>
-            <span class="btn-text">Copy</span>
-            <span class="tooltip">Copied!</span>
-        </button>
-    </div>
-    
-    <div class="code-container">
-        <pre><code>&lt;address&gt; &lt;/address></code></pre>
-        <button class="copy-btn">
-            <span class="copy-icon"></span>
-            <span class="btn-text">Copy</span>
-            <span class="tooltip">Copied!</span>
-        </button>
-    </div>
-    
-    <div class="code-container">
-        <pre><code>&lt;details&gt; &lt;/details></code></pre>
-        <button class="copy-btn">
-            <span class="copy-icon"></span>
-            <span class="btn-text">Copy</span>
-            <span class="tooltip">Copied!</span>
-        </button>
-    </div>
-    
-    <div class="code-container">
-        <pre><code>&lt;summary&gt; &lt;/summary></code></pre>
-        <button class="copy-btn">
-            <span class="copy-icon"></span>
-            <span class="btn-text">Copy</span>
-            <span class="tooltip">Copied!</span>
-        </button>
-    </div>
-    
-    <div class="code-container">
-        <pre><code>&lt;dialog&gt; &lt;/dialog></code></pre>
-        <button class="copy-btn">
-            <span class="copy-icon"></span>
-            <span class="btn-text">Copy</span>
-            <span class="tooltip">Copied!</span>
-        </button>
-    </div>
-    
-    <div class="code-container">
-        <pre><code>&lt;footer&gt; &lt;/footer></code></pre>
-        <button class="copy-btn">
-            <span class="copy-icon"></span>
-            <span class="btn-text">Copy</span>
-            <span class="tooltip">Copied!</span>
-        </button>
-    </div>
-    
-    <div class="code-container">
-        <pre><code>&lt;span slot="username"&gt; &lt;/span slot="username"></code></pre>
-        <button class="copy-btn">
-            <span class="copy-icon"></span>
-            <span class="btn-text">Copy</span>
-            <span class="tooltip">Copied!</span>
-        </button>
-    </div>
-    
-    <div class="code-container">
-        <pre><code>&lt;script&gt; &lt;/script></code></pre>
-        <button class="copy-btn">
-            <span class="copy-icon"></span>
-            <span class="btn-text">Copy</span>
-            <span class="tooltip">Copied!</span>
-        </button>
-    </div>
-    
-    <div class="code-container">
-        <pre><code>&lt;user-profile&gt; &lt;/user-profile></code></pre>
-        <button class="copy-btn">
-            <span class="copy-icon"></span>
-            <span class="btn-text">Copy</span>
-            <span class="tooltip">Copied!</span>
-        </button>
-    </div>
-    
-    <div class="code-container">
-        <pre><code>&lt;template&gt; &lt;/template></code></pre>
-        <button class="copy-btn">
-            <span class="copy-icon"></span>
-            <span class="btn-text">Copy</span>
-            <span class="tooltip">Copied!</span>
-        </button>
-    </div>
-    
-    <div class="code-container">
-        <pre><code>&lt;noscript&gt; &lt;/noscript></code></pre>
-        <button class="copy-btn">
-            <span class="copy-icon"></span>
-            <span class="btn-text">Copy</span>
-            <span class="tooltip">Copied!</span>
-        </button>
-    </div>
+	<div class="code-container">
+		<pre><code>&lt;!DOCTYPE html&gt;</code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+
+	<div class="code-container">
+		<pre><code>&lt;html lang="ru"&gt;</code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+
+	<div class="code-container">
+		<pre><code>&lt;head&gt; &lt;/head></code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+
+	<div class="code-container">
+		<pre><code>&lt;meta charset="UTF-8" &gt;</code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+
+	<div class="code-container">
+		<pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+
+	<div class="code-container">
+		<pre><code>&lt;meta name="description" content="Пример описания страницы о SEO и веб-разработке."&gt;</code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+
+	<div class="code-container">
+		<pre><code>&lt;meta name="keywords" content="веб-разработка, SEO, HTML, CSS, JavaScript"&gt;</code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+
+	<div class="code-container">
+		<pre><code>&lt;meta name="author" content="Иван Петров"&gt;</code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+
+	<div class="code-container">
+		<pre><code>&lt;meta name="robots" content="index, follow"&gt;</code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+
+	<div class="code-container">
+		<pre><code>&lt;meta name="robots" content="noindex, nofollow"&gt;</code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+
+	<div class="code-container">
+		<pre><code>&lt;meta property="og:title" content="Крутая статья про HTML"&gt;</code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+
+	<div class="code-container">
+		<pre><code>&lt;meta property="og:description" content="Учимся верстать за 5 минут!"&gt;</code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+
+	<div class="code-container">
+		<pre><code>&lt;meta property="og:image" content="https://site.com/image.jpg"&gt;</code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+
+	<div class="code-container">
+		<pre><code>&lt;title>Заголовок страницы&lt;/title&gt;</code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+
+	<div class="code-container">
+		<pre><code>&lt;base href="https://example.com/" target="_blank"&gt;</code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+
+	<div class="code-container">
+		<pre><code>&lt;link rel="stylesheet" href="styles.css" type="text/css"&gt;</code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+
+	<div class="code-container">
+		<pre><code>&lt;link rel="stylesheet" href="https://cdn.example.com/style.css"&gt;</code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+
+	<div class="code-container">
+		<pre><code>&lt;link rel="icon" href="favicon.ico" type="image/x-icon"&gt;</code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+
+	<div class="code-container">
+		<pre><code>&lt;link rel="icon" href="favicon.svg" type="image/svg+xml"&gt;</code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+
+	<div class="code-container">
+		<pre><code>&lt;link rel="apple-touch-icon" href="apple-touch-icon.png"&gt;</code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+
+	<div class="code-container">
+		<pre><code>&lt;link rel="icon" href="images/favicon-32x32.png" type="image/png" sizes="32x32"&gt;</code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+
+	<div class="code-container">
+		<pre><code>&lt;body&gt; &lt;/body></code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+
+	<div class="code-container">
+		<pre><code>&lt;header&gt; &lt;/header></code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+
+	<div class="code-container">
+		<pre><code>&lt;nav&gt; &lt;/nav></code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+
+	<div class="code-container">
+		<pre><code>&lt;main&gt; &lt;/main></code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+
+	<div class="code-container">
+		<pre><code>&lt;article&gt; &lt;/article></code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+
+	<div class="code-container">
+		<pre><code>&lt;section&gt; &lt;/section></code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+
+	<div class="code-container">
+		<pre><code>&lt;aside&gt; &lt;/aside></code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+
+	<div class="code-container">
+		<pre><code>&lt;address&gt; &lt;/address></code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+
+	<div class="code-container">
+		<pre><code>&lt;details&gt; &lt;/details></code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+
+	<div class="code-container">
+		<pre><code>&lt;summary&gt; &lt;/summary></code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+
+	<div class="code-container">
+		<pre><code>&lt;dialog&gt; &lt;/dialog></code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+
+	<div class="code-container">
+		<pre><code>&lt;footer&gt; &lt;/footer></code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+
+	<div class="code-container">
+		<pre><code>&lt;span slot="username"&gt; &lt;/span slot="username"></code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+
+	<div class="code-container">
+		<pre><code>&lt;script&gt; &lt;/script></code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+
+	<div class="code-container">
+		<pre><code>&lt;user-profile&gt; &lt;/user-profile></code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+
+	<div class="code-container">
+		<pre><code>&lt;template&gt; &lt;/template></code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+
+	<div class="code-container">
+		<pre><code>&lt;noscript&gt; &lt;/noscript></code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
 
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Находим все кнопки копирования
-            const copyButtons = document.querySelectorAll('.copy-btn');
-            
-            // Добавляем обработчик для каждой кнопки
-            copyButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    // Находим соответствующий код (ближайший элемент pre > code)
-                    const codeBlock = button.closest('.code-container').querySelector('code');
-                    const code = codeBlock.textContent;
-                    
-                    navigator.clipboard.writeText(code).then(() => {
-                        // Показываем состояние "Copied"
-                        button.classList.add('copied');
-                        const btnText = button.querySelector('.btn-text');
-                        btnText.textContent = 'Copied!';
-                        
-                        // Возвращаем обратно через 2 секунды
-                        setTimeout(() => {
-                            button.classList.remove('copied');
-                            btnText.textContent = 'Copy';
-                        }, 2000);
-                    }).catch(err => {
-                        console.error('Failed to copy text: ', err);
-                    });
-                });
-            });
-        });
-    </script>
-</body>
-</html>
+
+
+	<!-- Заголовки -->
+	<div class="code-container">
+		<pre><code>&lt;h1&gt;Заголовок 1 уровня&lt;/h1&gt;</code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+	<div class="example-output">
+		<h1>Заголовок 1 уровня</h1>
+	</div>
+
+	<div class="code-container">
+		<pre><code>&lt;h2&gt;Заголовок 2 уровня&lt;/h2&gt;</code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+	<div class="example-output">
+		<h2>Заголовок 2 уровня</h2>
+	</div>
+
+	<div class="code-container">
+		<pre><code>&lt;h3&gt;Заголовок 3 уровня&lt;/h3&gt;</code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+	<div class="example-output">
+		<h3>Заголовок 3 уровня</h3>
+	</div>
+
+	<div class="code-container">
+		<pre><code>&lt;h4&gt;Заголовок 4 уровня&lt;/h4&gt;</code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+	<div class="example-output">
+		<h4>Заголовок 4 уровня</h4>
+	</div>
+
+	<div class="code-container">
+		<pre><code>&lt;h5&gt;Заголовок 5 уровня&lt;/h5&gt;</code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+	<div class="example-output">
+		<h5>Заголовок 5 уровня</h5>
+	</div>
+
+	<div class="code-container">
+		<pre><code>&lt;h6&gt;Заголовок 6 уровня&lt;/h6&gt;</code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+	<div class="example-output">
+		<h6>Заголовок 6 уровня</h6>
+	</div>
+
+	<!-- Текстовые элементы -->
+	<div class="code-container">
+		<pre><code>&lt;p&gt;Это пример абзаца текста&lt;/p&gt;</code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+	<div class="example-output">
+		<p>Это пример абзаца текста</p>
+	</div>
+
+	<div class="code-container">
+		<pre><code>&lt;div&gt;Блочный контейнер&lt;/div&gt;</code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+	<div class="example-output">
+		<div style="border: 1px dashed #ccc; padding: 5px;">Блочный контейнер</div>
+	</div>
+
+	<div class="code-container">
+		<pre><code>&lt;span&gt;Строчный элемент&lt;/span&gt;</code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+	<div class="example-output">
+		Текст со <span style="color: red;">строчным элементом</span> внутри
+	</div>
+
+	<!-- Специальные теги -->
+	<div class="code-container">
+		<pre><code>Первая строка&lt;br&gt;Вторая строка</code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+	<div class="example-output">
+		Первая строка<br>Вторая строка
+	</div>
+
+	<div class="code-container">
+		<pre><code>&lt;hr&gt;</code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+	<div class="example-output">
+		Текст выше
+		<hr style="width: 50%; margin: 10px auto;">
+		Текст ниже
+	</div>
+
+	<div class="code-container">
+		<pre><code>&lt;p&gt;Оченьдлинноеслово&lt;wbr&gt;разделённое&lt;/p&gt;</code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+	<div class="example-output" style="width: 150px; border: 1px solid #ddd; padding: 5px;">
+		<p>Оченьдлинное<wbr>слово<wbr>разделённое</p>
+	</div>
+
+
+
+
+
+	<!-- Жирный текст -->
+	<div class="code-container">
+		<pre><code>&lt;b&gt;Жирный текст&lt;/b&gt;</code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+	<div class="example-output">
+		<b>Жирный текст</b>
+	</div>
+
+	<!-- Strong -->
+	<div class="code-container">
+		<pre><code>&lt;strong&gt;Важный текст&lt;/strong&gt;</code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+	<div class="example-output">
+		<strong>Важный текст</strong>
+	</div>
+
+	<!-- Курсив -->
+	<div class="code-container">
+		<pre><code>&lt;i&gt;Курсивный текст&lt;/i&gt;</code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+	<div class="example-output">
+		<i>Курсивный текст</i>
+	</div>
+
+	<!-- Акцентированный -->
+	<div class="code-container">
+		<pre><code>&lt;em&gt;Акцентированный текст&lt;/em&gt;</code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+	<div class="example-output">
+		<em>Акцентированный текст</em>
+	</div>
+
+	<!-- Подчеркнутый -->
+	<div class="code-container">
+		<pre><code>&lt;u&gt;Подчеркнутый текст&lt;/u&gt;</code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+	<div class="example-output">
+		<u>Подчеркнутый текст</u>
+	</div>
+
+	<!-- Зачеркнутый (s) -->
+	<div class="code-container">
+		<pre><code>&lt;s&gt;Зачеркнутый текст&lt;/s&gt;</code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+	<div class="example-output">
+		<s>Зачеркнутый текст</s>
+	</div>
+
+	<!-- Зачеркнутый (strike) -->
+	<div class="code-container">
+		<pre><code>&lt;strike&gt;Устаревший зачеркнутый&lt;/strike&gt;</code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+	<div class="example-output">
+		<strike>Устаревший зачеркнутый</strike>
+	</div>
+
+	<!-- Удаленный текст -->
+	<div class="code-container">
+		<pre><code>&lt;del&gt;Удаленный текст&lt;/del&gt;</code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+	<div class="example-output">
+		<del>Удаленный текст</del>
+	</div>
+
+	<!-- Вставленный текст -->
+	<div class="code-container">
+		<pre><code>&lt;ins&gt;Вставленный текст&lt;/ins&gt;</code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+	<div class="example-output">
+		<ins>Вставленный текст</ins>
+	</div>
+
+	<!-- Выделенный текст -->
+	<div class="code-container">
+		<pre><code>&lt;mark&gt;Выделенный текст&lt;/mark&gt;</code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+	<div class="example-output">
+		<mark>Выделенный текст</mark>
+	</div>
+
+	<!-- Мелкий текст -->
+	<div class="code-container">
+		<pre><code>&lt;small&gt;Мелкий текст&lt;/small&gt;</code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+	<div class="example-output">
+		<small>Мелкий текст</small>
+	</div>
+
+	<!-- Подстрочный -->
+	<div class="code-container">
+		<pre><code>&lt;sub&gt;Подстрочный текст&lt;/sub&gt;</code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+	<div class="example-output">
+		H<sub>2</sub>O
+	</div>
+
+	<!-- Надстрочный -->
+	<div class="code-container">
+		<pre><code>&lt;sup&gt;Надстрочный текст&lt;/sup&gt;</code></pre>
+		<button class="copy-btn">
+			<span class="copy-icon"></span>
+			<span class="btn-text">Copy</span>
+			<span class="tooltip">Copied!</span>
+		</button>
+	</div>
+	<div class="example-output">
+		x<sup>2</sup> + y<sup>2</sup> = z<sup>2</sup>
+	</div>
+
+
+
+
+
+
+
+<!-- Тег <code> -->
+<div class="code-container">
+    <pre><code>&lt;code&gt;console.log('Hello World');&lt;/code&gt;</code></pre>
+    <button class="copy-btn">
+        <span class="copy-icon"></span>
+        <span class="btn-text">Copy</span>
+        <span class="tooltip">Copied!</span>
+    </button>
+</div>
+<div class="example-output">
+    Пример кода: <code>console.log('Hello World');</code>
+</div>
+
+<!-- Тег <pre> -->
+<div class="code-container">
+    <pre><code>&lt;pre&gt;
+function hello() {
+  console.log('Hello');
+  return true;
+}
+&lt;/pre&gt;</code></pre>
+    <button class="copy-btn">
+        <span class="copy-icon"></span>
+        <span class="btn-text">Copy</span>
+        <span class="tooltip">Copied!</span>
+    </button>
+</div>
+<div class="example-output">
+    <pre>
+function hello() {
+  console.log('Hello');
+  return true;
+}</pre>
+</div>
+
+<!-- Тег <var> -->
+<div class="code-container">
+    <pre><code>&lt;p&gt;Переменная &lt;var&gt;x&lt;/var&gt; равна 10&lt;/p&gt;</code></pre>
+    <button class="copy-btn">
+        <span class="copy-icon"></span>
+        <span class="btn-text">Copy</span>
+        <span class="tooltip">Copied!</span>
+    </button>
+</div>
+<div class="example-output">
+    <p>Переменная <var>x</var> равна 10</p>
+</div>
+
+<!-- Тег <kbd> -->
+<div class="code-container">
+    <pre><code>&lt;p&gt;Нажмите &lt;kbd&gt;Ctrl&lt;/kbd&gt; + &lt;kbd&gt;C&lt;/kbd&gt; для копирования&lt;/p&gt;</code></pre>
+    <button class="copy-btn">
+        <span class="copy-icon"></span>
+        <span class="btn-text">Copy</span>
+        <span class="tooltip">Copied!</span>
+    </button>
+</div>
+<div class="example-output">
+    <p>Нажмите <kbd>Ctrl</kbd> + <kbd>C</kbd> для копирования</p>
+</div>
+
+<!-- Тег <samp> -->
+<div class="code-container">
+    <pre><code>&lt;p&gt;Результат: &lt;samp&gt;File not found&lt;/samp&gt;&lt;/p&gt;</code></pre>
+    <button class="copy-btn">
+        <span class="copy-icon"></span>
+        <span class="btn-text">Copy</span>
+        <span class="tooltip">Copied!</span>
+    </button>
+</div>
+<div class="example-output">
+    <p>Результат: <samp>File not found</samp></p>
+</div>
+
+<!-- Тег <abbr> -->
+<div class="code-container">
+    <pre><code>&lt;p&gt;&lt;abbr title="HyperText Markup Language"&gt;HTML&lt;/abbr&gt; - язык разметки&lt;/p&gt;</code></pre>
+    <button class="copy-btn">
+        <span class="copy-icon"></span>
+        <span class="btn-text">Copy</span>
+        <span class="tooltip">Copied!</span>
+    </button>
+</div>
+<div class="example-output">
+    <p><abbr title="HyperText Markup Language">HTML</abbr> - язык разметки</p>
+</div>
+
+<!-- Тег <dfn> -->
+<div class="code-container">
+    <pre><code>&lt;p&gt;&lt;dfn&gt;HTML&lt;/dfn&gt; - стандартный язык разметки документов&lt;/p&gt;</code></pre>
+    <button class="copy-btn">
+        <span class="copy-icon"></span>
+        <span class="btn-text">Copy</span>
+        <span class="tooltip">Copied!</span>
+    </button>
+</div>
+<div class="example-output">
+    <p><dfn>HTML</dfn> - стандартный язык разметки документов</p>
+</div>
+
+<!-- Тег <blockquote> -->
+<div class="code-container">
+    <pre><code>&lt;blockquote cite="https://example.com"&gt;
+  Это длинная цитата из внешнего источника.
+&lt;/blockquote&gt;</code></pre>
+    <button class="copy-btn">
+        <span class="copy-icon"></span>
+        <span class="btn-text">Copy</span>
+        <span class="tooltip">Copied!</span>
+    </button>
+</div>
+<div class="example-output">
+    <blockquote cite="https://example.com">
+        Это длинная цитата из внешнего источника.
+    </blockquote>
+</div>
+
+<!-- Тег <q> -->
+<div class="code-container">
+    <pre><code>&lt;p&gt;Как говорил Эйнштейн: &lt;q&gt;Воображение важнее знания&lt;/q&gt;&lt;/p&gt;</code></pre>
+    <button class="copy-btn">
+        <span class="copy-icon"></span>
+        <span class="btn-text">Copy</span>
+        <span class="tooltip">Copied!</span>
+    </button>
+</div>
+<div class="example-output">
+    <p>Как говорил Эйнштейн: <q>Воображение важнее знания</q></p>
+</div>
+
+<!-- Тег <cite> -->
+<div class="code-container">
+    <pre><code>&lt;p&gt;&lt;cite&gt;Мона Лиза&lt;/cite&gt; Леонардо да Винчи&lt;/p&gt;</code></pre>
+    <button class="copy-btn">
+        <span class="copy-icon"></span>
+        <span class="btn-text">Copy</span>
+        <span class="tooltip">Copied!</span>
+    </button>
+</div>
+<div class="example-output">
+    <p><cite>Мона Лиза</cite> Леонардо да Винчи</p>
+</div>
+	
+	
+	
+	<!-- Неупорядоченный список <ul> -->
+<div class="code-container">
+    <pre><code>&lt;ul&gt;
+  &lt;li&gt;Первый пункт&lt;/li&gt;
+  &lt;li&gt;Второй пункт&lt;/li&gt;
+  &lt;li&gt;Третий пункт&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+    <button class="copy-btn">
+        <span class="copy-icon"></span>
+        <span class="btn-text">Copy</span>
+        <span class="tooltip">Copied!</span>
+    </button>
+</div>
+<div class="example-output">
+    <ul>
+        <li>Первый пункт</li>
+        <li>Второй пункт</li>
+        <li>Третий пункт</li>
+    </ul>
+</div>
+
+<!-- Упорядоченный список <ol> -->
+<div class="code-container">
+    <pre><code>&lt;ol&gt;
+  &lt;li&gt;Первый пункт&lt;/li&gt;
+  &lt;li&gt;Второй пункт&lt;/li&gt;
+  &lt;li&gt;Третий пункт&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+    <button class="copy-btn">
+        <span class="copy-icon"></span>
+        <span class="btn-text">Copy</span>
+        <span class="tooltip">Copied!</span>
+    </button>
+</div>
+<div class="example-output">
+    <ol>
+        <li>Первый пункт</li>
+        <li>Второй пункт</li>
+        <li>Третий пункт</li>
+    </ol>
+</div>
+
+<!-- Элемент списка <li> -->
+<div class="code-container">
+    <pre><code>&lt;li&gt;Отдельный элемент списка&lt;/li&gt;</code></pre>
+    <button class="copy-btn">
+        <span class="copy-icon"></span>
+        <span class="btn-text">Copy</span>
+        <span class="tooltip">Copied!</span>
+    </button>
+</div>
+<div class="example-output">
+    <ul>
+        <li>Отдельный элемент списка</li>
+    </ul>
+</div>
+
+<!-- Список определений <dl> -->
+<div class="code-container">
+    <pre><code>&lt;dl&gt;
+  &lt;dt&gt;HTML&lt;/dt&gt;
+  &lt;dd&gt;Язык гипертекстовой разметки&lt;/dd&gt;
+  &lt;dt&gt;CSS&lt;/dt&gt;
+  &lt;dd&gt;Каскадные таблицы стилей&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+    <button class="copy-btn">
+        <span class="copy-icon"></span>
+        <span class="btn-text">Copy</span>
+        <span class="tooltip">Copied!</span>
+    </button>
+</div>
+<div class="example-output">
+    <dl>
+        <dt>HTML</dt>
+        <dd>Язык гипертекстовой разметки</dd>
+        <dt>CSS</dt>
+        <dd>Каскадные таблицы стилей</dd>
+    </dl>
+</div>
+
+<!-- Термин <dt> -->
+<div class="code-container">
+    <pre><code>&lt;dt&gt;JavaScript&lt;/dt&gt;</code></pre>
+    <button class="copy-btn">
+        <span class="copy-icon"></span>
+        <span class="btn-text">Copy</span>
+        <span class="tooltip">Copied!</span>
+    </button>
+</div>
+<div class="example-output">
+    <dl>
+        <dt>JavaScript</dt>
+    </dl>
+</div>
+
+<!-- Определение <dd> -->
+<div class="code-container">
+    <pre><code>&lt;dd&gt;Язык программирования для веб-страниц&lt;/dd&gt;</code></pre>
+    <button class="copy-btn">
+        <span class="copy-icon"></span>
+        <span class="btn-text">Copy</span>
+        <span class="tooltip">Copied!</span>
+    </button>
+</div>
+<div class="example-output">
+    <dl>
+        <dt>JavaScript</dt>
+        <dd>Язык программирования для веб-страниц</dd>
+    </dl>
+</div>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+			// Находим все кнопки копирования
+			const copyButtons = document.querySelectorAll('.copy-btn');
+
+			// Добавляем обработчик для каждой кнопки
+			copyButtons.forEach(button => {
+				button.addEventListener('click', () => {
+					// Находим соответствующий код (ближайший элемент pre > code)
+					const codeBlock = button.closest('.code-container').querySelector('code');
+					const code = codeBlock.textContent;
+
+					navigator.clipboard.writeText(code).then(() => {
+						// Показываем состояние "Copied"
+						button.classList.add('copied');
+						const btnText = button.querySelector('.btn-text');
+						btnText.textContent = 'Copied!';
+
+						// Возвращаем обратно через 2 секунды
+						setTimeout(() => {
+							button.classList.remove('copied');
+							btnText.textContent = 'Copy';
+						}, 2000);
+					}).catch(err => {
+						console.error('Failed to copy text: ', err);
+					});
+				});
+			});
+		});
+	</script>
+</body></html>
