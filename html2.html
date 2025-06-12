@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Примеры всех HTML-тегов</title>
+</head>
+<body>
+
+<!-- 1. Основная структура документа -->
+<h2>1. Основная структура документа</h2>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Заголовок страницы</title>
+    <base href="https://example.com/">
+</head>
+<body>
+    Содержимое страницы
+</body>
+</html>
+
+<!-- 2. Мета-теги и ресурсы -->
+<h2>2. Мета-теги и ресурсы</h2>
+<link rel="stylesheet" href="styles.css">
+<style>p { color: red; }</style>
+
+<!-- 3. Скрипты -->
+<h2>3. Скрипты</h2>
+<script>console.log('Hello!');</script>
+<noscript>Ваш браузер не поддерживает JavaScript!</noscript>
+<template><div>Шаблонный контент</div></template>
+
+<!-- 4. Веб-компоненты -->
+<h2>4. Веб-компоненты</h2>
+<user-profile>
+    <span slot="username">Иван</span>
+</user-profile>
+
+<!-- 5. Графика -->
+<h2>5. Графика</h2>
+<canvas width="200" height="100" style="border:1px solid #000;"></canvas>
+<svg width="100" height="100">
+    <circle cx="50" cy="50" r="40" fill="red" />
+</svg>
+
+<!-- 6. Текстовые элементы -->
+<h2>6. Текстовые элементы</h2>
+<h1>Заголовок 1</h1>
+<h2>Заголовок 2</h2>
+<h3>Заголовок 3</h3>
+<p>Обычный абзац текста.</p>
+<span>Строчный элемент</span>
+<br>
+<hr>
+<wbr>
+
+<!-- 7. Форматирование текста -->
+<h2>7. Форматирование текста</h2>
+<b>Жирный текст</b><br>
+<strong>Важный текст</strong><br>
+<i>Курсив</i><br>
+<em>Акцентированный текст</em><br>
+<u>Подчёркнутый</u><br>
+<s>Зачёркнутый</s><br>
+<del>Удалённый текст</del><br>
+<ins>Вставленный текст</ins><br>
+<mark>Выделенный текст</mark><br>
+<small>Мелкий текст</small><br>
+H<sub>2</sub>O<br>
+E=mc<sup>2</sup>
+
+<!-- 8. Код и цитаты -->
+<h2>8. Код и цитаты</h2>
+<code>console.log('Hello');</code><br>
+<pre>Предварительно
+форматированный
+текст</pre>
+<var>Переменная</var><br>
+<kbd>Ctrl+C</kbd><br>
+<samp>Пример вывода</samp><br>
+<abbr title="HyperText Markup Language">HTML</abbr><br>
+<dfn>Термин</dfn><br>
+<blockquote>Длинная цитата</blockquote>
+<q>Короткая цитата</q><br>
+<cite>Название произведения</cite>
+
+<!-- 9. Списки -->
+<h2>9. Списки</h2>
+<ul>
+    <li>Элемент списка 1</li>
+    <li>Элемент списка 2</li>
+</ul>
+
+<ol>
+    <li>Первый элемент</li>
+    <li>Второй элемент</li>
+</ol>
+
+<dl>
+    <dt>Термин</dt>
+    <dd>Определение</dd>
+</dl>
+
+<!-- 10. Ссылки и изображения -->
+<h2>10. Ссылки и изображения</h2>
+<a href="https://example.com" target="_blank">Ссылка</a><br>
+<img src="https://via.placeholder.com/150" alt="Пример изображения" width="150"><br>
+
+<picture>
+    <source media="(min-width: 800px)" srcset="large.jpg">
+    <img src="small.jpg" alt="Пример picture">
+</picture>
+
+<figure>
+    <img src="https://via.placeholder.com/100" alt="Пример figure">
+    <figcaption>Подпись к изображению</figcaption>
+</figure>
+
+<map name="examplemap">
+    <area shape="rect" coords="0,0,50,50" href="https://example.com" alt="Пример area">
+</map>
+
+<!-- 11. Таблицы -->
+<h2>11. Таблицы</h2>
+<table border="1">
+    <caption>Пример таблицы</caption>
+    <colgroup>
+        <col span="1" style="background-color: #eee">
+    </colgroup>
+    <thead>
+        <tr>
+            <th>Заголовок 1</th>
+            <th>Заголовок 2</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Ячейка 1</td>
+            <td>Ячейка 2</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="2">Итого</td>
+        </tr>
+    </tfoot>
+</table>
+
+<!-- 12. Формы -->
+<h2>12. Формы</h2>
+<form action="/submit" method="post">
+    <label for="username">Имя:</label>
+    <input type="text" id="username" name="username" placeholder="Введите имя"><br>
+    
+    <label for="pass">Пароль:</label>
+    <input type="password" id="pass" name="password"><br>
+    
+    <input type="email" placeholder="Email"><br>
+    <input type="number" min="1" max="10"><br>
+    
+    <input type="checkbox" id="agree" name="agree">
+    <label for="agree">Согласен</label><br>
+    
+    <input type="radio" id="male" name="gender" value="male">
+    <label for="male">Мужской</label>
+    <input type="radio" id="female" name="gender" value="female">
+    <label for="female">Женский</label><br>
+    
+    <textarea rows="4" cols="50" placeholder="Ваш комментарий"></textarea><br>
+    
+    <select>
+        <optgroup label="Фрукты">
+            <option value="1">Яблоко</option>
+            <option value="2">Банан</option>
+        </optgroup>
+    </select><br>
+    
+    <input list="browsers">
+    <datalist id="browsers">
+        <option value="Chrome">
+        <option value="Firefox">
+    </datalist><br>
+    
+    <progress value="70" max="100"></progress><br>
+    <meter value="0.6" min="0" max="1"></meter><br>
+    
+    <button type="submit">Отправить</button>
+</form>
+
+<!-- 13. Мультимедиа -->
+<h2>13. Мультимедиа</h2>
+<audio controls>
+    <source src="audio.mp3" type="audio/mpeg">
+    Ваш браузер не поддерживает аудио.
+</audio>
+
+<video width="320" height="240" controls>
+    <source src="movie.mp4" type="video/mp4">
+    Ваш браузер не поддерживает видео.
+</video>
+
+<embed src="flashgame.swf" width="400" height="300">
+
+<object data="example.pdf" width="400" height="500">
+    Альтернативный текст
+</object>
+
+<iframe src="https://example.com" width="500" height="300"></iframe>
+
+<!-- 14. Семантическая разметка -->
+<h2>14. Семантическая разметка</h2>
+<header>Шапка сайта</header>
+<nav>Навигация</nav>
+<main>Основное содержимое</main>
+<article>Статья</article>
+<section>Раздел</section>
+<aside>Боковая панель</aside>
+<footer>Подвал</footer>
+<address>Контактная информация</address>
+
+<details>
+    <summary>Подробнее</summary>
+    <p>Скрытый контент</p>
+</details>
+
+<dialog open>Диалоговое окно</dialog>
+
+<!-- 15. Устаревшие теги -->
+<h2>15. Устаревшие теги</h2>
+<center>Центрированный текст</center>
+<font size="3" color="red">Текст с атрибутами</font>
+<big>Большой текст</big>
+<tt>Моноширинный текст</tt>
+<marquee>Бегущая строка</marquee>
+
+</body>
+</html>

@@ -1,30 +1,31 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>HTML</title>
-	<style>
-		body {
-			background-color: #2d2d2d;
-			color: #ccc;
-			font-family: 'Fira Code', monospace;
-			padding: 20px;
-		}
-	</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Все HTML-теги</title>
+    <style>
+        body {
+            background-color: #2d2d2d;
+            color: #ccc;
+            font-family: 'Fira Code', monospace;
+            padding: 20px;
+        }
+    </style>
 </head>
-
 <body>
-!DOCTYPE html
-html 
+
+<!-- 1. Основная структура документа -->
+<!DOCTYPE html>
+html
 lang="ru"
 
 head
-meta 
+meta
 charset="UTF-8"
 name="viewport"
-name="description"
 content="width=device-width, initial-scale=1.0"
+name="description"
 content="контент"
 
 title
@@ -32,16 +33,50 @@ title
 base
 href="https://"
 
-link 
+body
+
+<!-- 2. Мета-теги и ресурсы -->
+link
 rel="stylesheet"
-rel="icon"
 href="styles.css"
+rel="icon"
 type="image/x-icon"
 
 style
 
-body
+<!-- 3. Скрипты -->
+script
+noscript
 
+template
+
+<!-- 4. Веб-компоненты -->
+user-profile
+slot="username"
+
+<!-- 5. Графика -->
+canvas
+width="200"
+height="100"
+
+svg
+width="100"
+height="100"
+
+<!-- 6. Атрибуты -->
+id="name"
+class
+hidden
+tabindex="1"
+contenteditable
+dir="rtl"
+dir="ltr"
+
+data-*
+draggable="true"
+spellcheck="true"
+
+<!-- 7. Текстовые элементы -->
 h1
 h2
 h3
@@ -49,54 +84,52 @@ h4
 h5
 h6
 
-div
 p
+div
+span
 
+br
+hr
+wbr
+
+<!-- 8. Форматирование текста -->
+b
+strong
+i
+em
+u
+s
+strike
+del
+ins
+mark
+small
+sub
+sup
+
+<!-- 9. Код и цитаты -->
 code
 pre
-
-blockquote
-q
-cite
-
 var
 kbd
 samp
 abbr
 dfn
+blockquote
+q
+cite
 
-time
-
-hr
-
-b
-strong
-i
-em
-
-u
-s
-strike
-
-del
-ins
-
-mark
-
-small
-sub
-sup
-
+<!-- 10. Списки -->
 ul
 ol
 li
-
 dl
-dd
 dt
+dd
 
+<!-- 11. Ссылки и изображения -->
 a
-href="https:/"
+href="https://"
 target="_blank"
 download="f.pdf"
 rel="nofollow"
@@ -104,123 +137,130 @@ rel="nofollow"
 img
 src="p.jpg"
 alt="Карта"
-usemap="#map"
 width="200"
 loading="lazy"
 usemap="#map"
 
 picture
-source 
-media="(min-width: 80px)" 
+source
+media="(min-width: 80px)"
 srcset="e.jpg"
-img 
-					
+
 figure
-img src="e.jpg"
 figcaption
 
-map name="p"
+map
+name="p"
 area
-shape="rect" 
-coords="100,50" 
+shape="rect"
+coords="100,50"
 href="e.html"
 
+<!-- 12. Таблицы -->
 table
 caption
+colgroup
 col
+span="2"
 tr
 th
 td
-colgroup 
-span="2" 
+thead
+tbody
+tfoot
 
-form 
+<!-- 13. Формы -->
+form
 action="/submit"
 method="post"
-oninput="+parseInt(value)"
 
-label 
+label
 for="name"
 
-input 
-type="text" 
+input
+type="text"
 name="name"
-type="password" 
+type="password"
 type="email"
 type="number"
 type="checkbox"
 type="radio"
 placeholder="Пароль"
-
-output
+required
+disabled
+readonly
 
 textarea
 rows="4"
 cols="50"
 
-button 
+button
 type="button"
 type="submit"
 type="reset"
 
 select
-
 optgroup
 label="Фрукты"
-
-option 
+option
 value="1"
 
 fieldset
 legend
-label
 
-input 
-list="browsers"
 datalist
+id="browsers"
 
-progress 
+output
+
+progress
 value="70"
 max="100"
 
-meter 
-value="0.6" 
-min="0" 
+meter
+value="0.6"
+min="0"
 max="1"
 
-audio 
+<!-- 14. Мультимедиа -->
+audio
 controls
-source 
-src="audio.mp3" 
+source
+src="audio.mp3"
 type="audio/mpeg"
 
-video 
+video
 controls
-width="320" 
-height="240" 
-
-source 
-src="movie.mp4" 
+width="320"
+height="240"
+source
+src="movie.mp4"
 type="video/mp4"
 
-embed 
+track
+kind="subtitles"
+srclang="ru"
+
+embed
 src="flashgame.swf"
-width="400" 
+width="400"
 height="300"
 
 object
 data="c.pdf"
-param 
-name="autoplay" 
-value="true"
-width="400" 
+width="400"
 height="500"
+param
+name="autoplay"
+value="true"
 
 iframe
 src="https://"
-width="500" 
+width="500"
 height="300"
+sandbox="allow-scripts"
 
+<!-- 15. Семантическая разметка -->
 header
 footer
 nav
@@ -232,31 +272,28 @@ address
 details
 summary
 
-dialog 
+dialog
 open
 
-script
-noscript
+<!-- 16. Устаревшие теги -->
+center
+font
+big
+tt
+frame
+frameset
+noframes
+marquee
+acronym
+applet
 
-template
-
-user-profile
-slot="username"
-
-canvas
-width="200"
-height="100"
-
-id="name"
-class
-hidden
-tabindex="1"
-contenteditable
-dir="rtl"
-dir="ltr"
+<!-- 17. События -->
 onclick="alert('Ok')"
-
-onmouseover="" 
+onmouseover=""
 onmouseout=""
 onkeydown=""
-</body></html>
+onload=""
+onsubmit=""
+
+</body>
+</html>
