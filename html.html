@@ -10,12 +10,10 @@
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
-			align-items: center;
 			min-height: 100vh;
 			background-color: #f5f5f5;
 			margin: 0;
 			padding: 20px;
-			gap: 20px;
 			background: #000;
 		}
 
@@ -25,6 +23,7 @@
 			justify-content: space-between;
 			position: relative;
 			width: 100%;
+			margin-bottom: 15px;
 			max-width: 600px;
 			border-radius: 8px;
 			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -117,25 +116,16 @@
 			opacity: 1;
 		}
 
-
-
-
 		.example-output {
-			background: #fff;
-			border: 1px solid #eee;
-			padding: 15px;
-			margin-bottom: 20px;
-			border-radius: 4px;
+			background: #333;
+			color: #fff;
+			width: fit-content;
+			font-size: 14px;
+			padding: 5px 20px;
+			margin-top: -15px;
+			margin-bottom: 15px;
+			border-radius: 10px;
 		}
-
-		.example-output {
-			background: #fff;
-			border: 1px solid #eee;
-			padding: 15px;
-			margin-bottom: 20px;
-			border-radius: 4px;
-		}
-
 
 		figure {
 			margin: 0;
@@ -146,7 +136,6 @@
 			text-align: center;
 			font-style: italic;
 		}
-
 
 		table {
 			border-collapse: collapse;
@@ -292,13 +281,16 @@
 	</div>
 
 	<div class="code-container">
-		<pre><code>&lt;title>Заголовок страницы&lt;/title&gt;</code></pre>
+		<pre><code>&lt;title>&lt;/title&gt;</code></pre>
 		<button class="copy-btn">
 			<span class="copy-icon"></span>
 			<span class="btn-text">Copy</span>
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
+	<span class="example-output">
+		Заголовок страницы
+	</span>
 
 	<div class="code-container">
 		<pre><code>&lt;base href="https://example.com/" target="_blank"&gt;</code></pre>
@@ -364,7 +356,7 @@
 	</div>
 
 	<div class="code-container">
-		<pre><code>&lt;body&gt; &lt;/body></code></pre>
+		<pre><code>&lt;body&gt;&lt;/body></code></pre>
 		<button class="copy-btn">
 			<span class="copy-icon"></span>
 			<span class="btn-text">Copy</span>
@@ -373,7 +365,7 @@
 	</div>
 
 	<div class="code-container">
-		<pre><code>&lt;header&gt; &lt;/header></code></pre>
+		<pre><code>&lt;header&gt;&lt;/header></code></pre>
 		<button class="copy-btn">
 			<span class="copy-icon"></span>
 			<span class="btn-text">Copy</span>
@@ -382,7 +374,7 @@
 	</div>
 
 	<div class="code-container">
-		<pre><code>&lt;nav&gt; &lt;/nav></code></pre>
+		<pre><code>&lt;nav&gt;&lt;/nav></code></pre>
 		<button class="copy-btn">
 			<span class="copy-icon"></span>
 			<span class="btn-text">Copy</span>
@@ -391,7 +383,7 @@
 	</div>
 
 	<div class="code-container">
-		<pre><code>&lt;main&gt; &lt;/main></code></pre>
+		<pre><code>&lt;main&gt;&lt;/main></code></pre>
 		<button class="copy-btn">
 			<span class="copy-icon"></span>
 			<span class="btn-text">Copy</span>
@@ -400,7 +392,7 @@
 	</div>
 
 	<div class="code-container">
-		<pre><code>&lt;article&gt; &lt;/article></code></pre>
+		<pre><code>&lt;article&gt;&lt;/article></code></pre>
 		<button class="copy-btn">
 			<span class="copy-icon"></span>
 			<span class="btn-text">Copy</span>
@@ -409,7 +401,7 @@
 	</div>
 
 	<div class="code-container">
-		<pre><code>&lt;section&gt; &lt;/section></code></pre>
+		<pre><code>&lt;section&gt;&lt;/section></code></pre>
 		<button class="copy-btn">
 			<span class="copy-icon"></span>
 			<span class="btn-text">Copy</span>
@@ -418,7 +410,7 @@
 	</div>
 
 	<div class="code-container">
-		<pre><code>&lt;aside&gt; &lt;/aside></code></pre>
+		<pre><code>&lt;aside&gt;&lt;/aside></code></pre>
 		<button class="copy-btn">
 			<span class="copy-icon"></span>
 			<span class="btn-text">Copy</span>
@@ -427,7 +419,7 @@
 	</div>
 
 	<div class="code-container">
-		<pre><code>&lt;address&gt; &lt;/address></code></pre>
+		<pre><code>&lt;address&gt;&lt;/address></code></pre>
 		<button class="copy-btn">
 			<span class="copy-icon"></span>
 			<span class="btn-text">Copy</span>
@@ -436,7 +428,7 @@
 	</div>
 
 	<div class="code-container">
-		<pre><code>&lt;details&gt; &lt;/details></code></pre>
+		<pre><code>&lt;details&gt;&lt;/details></code></pre>
 		<button class="copy-btn">
 			<span class="copy-icon"></span>
 			<span class="btn-text">Copy</span>
@@ -445,7 +437,7 @@
 	</div>
 
 	<div class="code-container">
-		<pre><code>&lt;summary&gt; &lt;/summary></code></pre>
+		<pre><code>&lt;summary&gt;&lt;/summary></code></pre>
 		<button class="copy-btn">
 			<span class="copy-icon"></span>
 			<span class="btn-text">Copy</span>
@@ -454,7 +446,7 @@
 	</div>
 
 	<div class="code-container">
-		<pre><code>&lt;dialog&gt; &lt;/dialog></code></pre>
+		<pre><code>&lt;dialog&gt;&lt;/dialog></code></pre>
 		<button class="copy-btn">
 			<span class="copy-icon"></span>
 			<span class="btn-text">Copy</span>
@@ -463,7 +455,7 @@
 	</div>
 
 	<div class="code-container">
-		<pre><code>&lt;footer&gt; &lt;/footer></code></pre>
+		<pre><code>&lt;footer&gt;&lt;/footer></code></pre>
 		<button class="copy-btn">
 			<span class="copy-icon"></span>
 			<span class="btn-text">Copy</span>
@@ -472,7 +464,7 @@
 	</div>
 
 	<div class="code-container">
-		<pre><code>&lt;span slot="username"&gt; &lt;/span slot="username"></code></pre>
+		<pre><code>&lt;span slot="username"&gt;&lt;/span slot="username"></code></pre>
 		<button class="copy-btn">
 			<span class="copy-icon"></span>
 			<span class="btn-text">Copy</span>
@@ -481,7 +473,7 @@
 	</div>
 
 	<div class="code-container">
-		<pre><code>&lt;script&gt; &lt;/script></code></pre>
+		<pre><code>&lt;script&gt;&lt;/script></code></pre>
 		<button class="copy-btn">
 			<span class="copy-icon"></span>
 			<span class="btn-text">Copy</span>
@@ -490,7 +482,7 @@
 	</div>
 
 	<div class="code-container">
-		<pre><code>&lt;user-profile&gt; &lt;/user-profile></code></pre>
+		<pre><code>&lt;user-profile&gt;&lt;/user-profile></code></pre>
 		<button class="copy-btn">
 			<span class="copy-icon"></span>
 			<span class="btn-text">Copy</span>
@@ -499,7 +491,7 @@
 	</div>
 
 	<div class="code-container">
-		<pre><code>&lt;template&gt; &lt;/template></code></pre>
+		<pre><code>&lt;template&gt;&lt;/template></code></pre>
 		<button class="copy-btn">
 			<span class="copy-icon"></span>
 			<span class="btn-text">Copy</span>
@@ -508,7 +500,7 @@
 	</div>
 
 	<div class="code-container">
-		<pre><code>&lt;noscript&gt; &lt;/noscript></code></pre>
+		<pre><code>&lt;noscript&gt;&lt;/noscript></code></pre>
 		<button class="copy-btn">
 			<span class="copy-icon"></span>
 			<span class="btn-text">Copy</span>
@@ -517,16 +509,16 @@
 	</div>
 
 	<div class="code-container">
-		<pre><code>&lt;h1&gt;Заголовок 1 уровня&lt;/h1&gt;</code></pre>
+		<pre><code>&lt;h1&gt;&lt;/h1&gt;</code></pre>
 		<button class="copy-btn">
 			<span class="copy-icon"></span>
 			<span class="btn-text">Copy</span>
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
-	<div class="example-output">
-		<h1>Заголовок 1 уровня</h1>
-	</div>
+	<span class="example-output">
+		Заголовок 1 уровня
+	</span>
 
 	<div class="code-container">
 		<pre><code>&lt;h2&gt;Заголовок 2 уровня&lt;/h2&gt;</code></pre>
