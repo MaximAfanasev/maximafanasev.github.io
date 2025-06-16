@@ -126,6 +126,7 @@
 			margin-bottom: 15px;
 			border-radius: 10px;
 		}
+
 		p {
 			margin: 0;
 		}
@@ -161,6 +162,19 @@
 			font-weight: bold;
 			margin-bottom: 5px;
 		}
+
+		blockquote {
+			margin: 0;
+		}
+
+		ul, ol {
+			margin: 0;
+			padding: 0 10px;
+		}
+		
+		a {
+			color: #fff;
+		}
 	</style>
 </head>
 
@@ -194,7 +208,7 @@
 	</div>
 
 	<div class="code-container">
-		<pre><code>&lt;meta charset="UTF-8" &gt;</code></pre>
+		<pre><code>&lt;meta charset="UTF-8"&gt;</code></pre>
 		<button class="copy-btn">
 			<span class="copy-icon"></span>
 			<span class="btn-text">Copy</span>
@@ -813,7 +827,7 @@
 	</div>
 
 	<div class="code-container">
-		<pre><code>&lt;p&gt;Результат: &lt;samp&gt;File not found&lt;/samp&gt;&lt;/p&gt;</code></pre>
+		<pre><code>&lt;samp&gt;&lt;/samp&gt;</code></pre>
 		<button class="copy-btn">
 			<span class="copy-icon"></span>
 			<span class="btn-text">Copy</span>
@@ -821,11 +835,11 @@
 		</button>
 	</div>
 	<div class="example-output">
-		<p>Результат: <samp>File not found</samp></p>
+		<p><samp>File not found</samp></p>
 	</div>
 
 	<div class="code-container">
-		<pre><code>&lt;p&gt;&lt;abbr title="HyperText Markup Language"&gt;HTML&lt;/abbr&gt; - язык разметки&lt;/p&gt;</code></pre>
+		<pre><code>&lt;abbr&gt;&lt;/abbr&gt;</code></pre>
 		<button class="copy-btn">
 			<span class="copy-icon"></span>
 			<span class="btn-text">Copy</span>
@@ -833,11 +847,11 @@
 		</button>
 	</div>
 	<div class="example-output">
-		<p><abbr title="HyperText Markup Language">HTML</abbr> - язык разметки</p>
+		<p><abbr title="HyperText Markup Language">Точки под словом</abbr></p>
 	</div>
 
 	<div class="code-container">
-		<pre><code>&lt;p&gt;&lt;dfn&gt;HTML&lt;/dfn&gt; - стандартный язык разметки документов&lt;/p&gt;</code></pre>
+		<pre><code>&lt;dfn&gt;&lt;/dfn&gt;</code></pre>
 		<button class="copy-btn">
 			<span class="copy-icon"></span>
 			<span class="btn-text">Copy</span>
@@ -845,13 +859,11 @@
 		</button>
 	</div>
 	<div class="example-output">
-		<p><dfn>HTML</dfn> - стандартный язык разметки документов</p>
+		<p><dfn>dfn</dfn></p>
 	</div>
 
 	<div class="code-container">
-		<pre><code>&lt;blockquote cite="https://example.com"&gt;
-  Это длинная цитата из внешнего источника.
-&lt;/blockquote&gt;</code></pre>
+		<pre><code>&lt;blockquote cite="https://"&gt;&lt;/blockquote&gt;</code></pre>
 		<button class="copy-btn">
 			<span class="copy-icon"></span>
 			<span class="btn-text">Copy</span>
@@ -860,12 +872,12 @@
 	</div>
 	<div class="example-output">
 		<blockquote cite="https://example.com">
-			Это длинная цитата из внешнего источника.
+			Длинная цитата
 		</blockquote>
 	</div>
 
 	<div class="code-container">
-		<pre><code>&lt;p&gt;Как говорил Эйнштейн: &lt;q&gt;Воображение важнее знания&lt;/q&gt;&lt;/p&gt;</code></pre>
+		<pre><code>&lt;q&gt;&lt;/q&gt;</code></pre>
 		<button class="copy-btn">
 			<span class="copy-icon"></span>
 			<span class="btn-text">Copy</span>
@@ -873,11 +885,11 @@
 		</button>
 	</div>
 	<div class="example-output">
-		<p>Как говорил Эйнштейн: <q>Воображение важнее знания</q></p>
+		<p><q>Цитата с кавычками</q></p>
 	</div>
 
 	<div class="code-container">
-		<pre><code>&lt;p&gt;&lt;cite&gt;Мона Лиза&lt;/cite&gt; Леонардо да Винчи&lt;/p&gt;</code></pre>
+		<pre><code>&lt;cite&gt;&lt;/cite&gt;</code></pre>
 		<button class="copy-btn">
 			<span class="copy-icon"></span>
 			<span class="btn-text">Copy</span>
@@ -885,14 +897,12 @@
 		</button>
 	</div>
 	<div class="example-output">
-		<p><cite>Мона Лиза</cite> Леонардо да Винчи</p>
+		<p><cite>Наклонная цитата</cite></p>
 	</div>
 
 	<div class="code-container">
 		<pre><code>&lt;ul&gt;
-  &lt;li&gt;Первый пункт&lt;/li&gt;
-  &lt;li&gt;Второй пункт&lt;/li&gt;
-  &lt;li&gt;Третий пункт&lt;/li&gt;
+  &lt;li&gt;&lt;/li&gt;
 &lt;/ul&gt;</code></pre>
 		<button class="copy-btn">
 			<span class="copy-icon"></span>
@@ -902,17 +912,13 @@
 	</div>
 	<div class="example-output">
 		<ul>
-			<li>Первый пункт</li>
-			<li>Второй пункт</li>
-			<li>Третий пункт</li>
+			<li>Список с точками</li>
 		</ul>
 	</div>
 
 	<div class="code-container">
 		<pre><code>&lt;ol&gt;
-  &lt;li&gt;Первый пункт&lt;/li&gt;
-  &lt;li&gt;Второй пункт&lt;/li&gt;
-  &lt;li&gt;Третий пункт&lt;/li&gt;
+  &lt;li&gt;&lt;/li&gt;
 &lt;/ol&gt;</code></pre>
 		<button class="copy-btn">
 			<span class="copy-icon"></span>
@@ -922,32 +928,14 @@
 	</div>
 	<div class="example-output">
 		<ol>
-			<li>Первый пункт</li>
-			<li>Второй пункт</li>
-			<li>Третий пункт</li>
+			<li>Список с цифрами</li>
 		</ol>
 	</div>
 
 	<div class="code-container">
-		<pre><code>&lt;li&gt;Отдельный элемент списка&lt;/li&gt;</code></pre>
-		<button class="copy-btn">
-			<span class="copy-icon"></span>
-			<span class="btn-text">Copy</span>
-			<span class="tooltip">Copied!</span>
-		</button>
-	</div>
-	<div class="example-output">
-		<ul>
-			<li>Отдельный элемент списка</li>
-		</ul>
-	</div>
-
-	<div class="code-container">
 		<pre><code>&lt;dl&gt;
-  &lt;dt&gt;HTML&lt;/dt&gt;
-  &lt;dd&gt;Язык гипертекстовой разметки&lt;/dd&gt;
-  &lt;dt&gt;CSS&lt;/dt&gt;
-  &lt;dd&gt;Каскадные таблицы стилей&lt;/dd&gt;
+  &lt;dt&gt;&lt;/dt&gt;
+  &lt;dd&gt;&lt;/dd&gt;
 &lt;/dl&gt;</code></pre>
 		<button class="copy-btn">
 			<span class="copy-icon"></span>
@@ -957,44 +945,13 @@
 	</div>
 	<div class="example-output">
 		<dl>
-			<dt>HTML</dt>
-			<dd>Язык гипертекстовой разметки</dd>
-			<dt>CSS</dt>
-			<dd>Каскадные таблицы стилей</dd>
+			<dt>Список</dt>
+			<dd>С определениями</dd>
 		</dl>
 	</div>
 
 	<div class="code-container">
-		<pre><code>&lt;dt&gt;JavaScript&lt;/dt&gt;</code></pre>
-		<button class="copy-btn">
-			<span class="copy-icon"></span>
-			<span class="btn-text">Copy</span>
-			<span class="tooltip">Copied!</span>
-		</button>
-	</div>
-	<div class="example-output">
-		<dl>
-			<dt>JavaScript</dt>
-		</dl>
-	</div>
-
-	<div class="code-container">
-		<pre><code>&lt;dd&gt;Язык программирования для веб-страниц&lt;/dd&gt;</code></pre>
-		<button class="copy-btn">
-			<span class="copy-icon"></span>
-			<span class="btn-text">Copy</span>
-			<span class="tooltip">Copied!</span>
-		</button>
-	</div>
-	<div class="example-output">
-		<dl>
-			<dt>JavaScript</dt>
-			<dd>Язык программирования для веб-страниц</dd>
-		</dl>
-	</div>
-
-	<div class="code-container">
-		<pre><code>&lt;a href="https://example.com"&gt;Обычная ссылка&lt;/a&gt;</code></pre>
+		<pre><code>&lt;a href="https://example.com"&gt;&lt;/a&gt;</code></pre>
 		<button class="copy-btn">
 			<span class="copy-icon"></span>
 			<span class="btn-text">Copy</span>
@@ -1006,7 +963,7 @@
 	</div>
 
 	<div class="code-container">
-		<pre><code>&lt;a href="https://example.com" target="_blank"&gt;Ссылка в новой вкладке&lt;/a&gt;</code></pre>
+		<pre><code>&lt;a href="https://example.com" target="_blank"&gt;&lt;/a&gt;</code></pre>
 		<button class="copy-btn">
 			<span class="copy-icon"></span>
 			<span class="btn-text">Copy</span>
@@ -1018,7 +975,7 @@
 	</div>
 
 	<div class="code-container">
-		<pre><code>&lt;a href="document.pdf" download="file.pdf"&gt;Скачать PDF&lt;/a&gt;</code></pre>
+		<pre><code>&lt;a href="document.pdf" download="file.pdf"&gt;&lt;/a&gt;</code></pre>
 		<button class="copy-btn">
 			<span class="copy-icon"></span>
 			<span class="btn-text">Copy</span>
@@ -1026,11 +983,11 @@
 		</button>
 	</div>
 	<div class="example-output">
-		<a href="document.pdf" download="file.pdf">Скачать PDF</a>
+		<a href="document.pdf" download="file.pdf">Скачать</a>
 	</div>
 
 	<div class="code-container">
-		<pre><code>&lt;a href="https://example.com" rel="nofollow"&gt;Nofollow ссылка&lt;/a&gt;</code></pre>
+		<pre><code>&lt;a href="https://example.com" rel="nofollow"&gt;&lt;/a&gt;</code></pre>
 		<button class="copy-btn">
 			<span class="copy-icon"></span>
 			<span class="btn-text">Copy</span>
@@ -1038,7 +995,7 @@
 		</button>
 	</div>
 	<div class="example-output">
-		<a href="https://example.com" rel="nofollow">Nofollow ссылка</a>
+		<a href="https://example.com" rel="nofollow">Nofollow</a>
 	</div>
 
 	<div class="code-container">
@@ -1050,13 +1007,13 @@
 		</button>
 	</div>
 	<div class="example-output">
-		<img src="https://via.placeholder.com/200" alt="Пример изображения" width="200" loading="lazy">
+		<img src="https://via.placeholder.com/200" alt="Изображение" width="200" loading="lazy">
 	</div>
 
 	<div class="code-container">
 		<pre><code>&lt;picture&gt;
   &lt;source media="(min-width: 800px)" srcset="large.jpg"&gt;
-  &lt;img src="small.jpg" alt="Адаптивное изображение"&gt;
+  &lt;img src="small.jpg" alt="Описание"&gt;
 &lt;/picture&gt;</code></pre>
 		<button class="copy-btn">
 			<span class="copy-icon"></span>
@@ -1271,7 +1228,7 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
-	
+
 	<div class="code-container">
 		<pre><code>&lt;label for="name"&gt;</code></pre>
 		<button class="copy-btn">
@@ -1280,7 +1237,7 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
-	
+
 	<div class="code-container">
 		<pre><code>&lt;input type="text"&gt;</code></pre>
 		<button class="copy-btn">
@@ -1289,7 +1246,7 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
-	
+
 	<div class="code-container">
 		<pre><code>&lt;input name="name"&gt;</code></pre>
 		<button class="copy-btn">
@@ -1298,7 +1255,7 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
-	
+
 	<div class="code-container">
 		<pre><code>&lt;input type="password"&gt;</code></pre>
 		<button class="copy-btn">
@@ -1307,7 +1264,7 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
-	
+
 	<div class="code-container">
 		<pre><code>&lt;input type="email"&gt;</code></pre>
 		<button class="copy-btn">
@@ -1325,7 +1282,7 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
-	
+
 	<div class="code-container">
 		<pre><code>&lt;input type="checkbox"&gt;</code></pre>
 		<button class="copy-btn">
@@ -1334,7 +1291,7 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
-	
+
 	<div class="code-container">
 		<pre><code>&lt;input type="radio"&gt;</code></pre>
 		<button class="copy-btn">
@@ -1343,7 +1300,7 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
-	
+
 	<div class="code-container">
 		<pre><code>&lt;input placeholder="Пароль"&gt;</code></pre>
 		<button class="copy-btn">
@@ -1352,7 +1309,7 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
-	
+
 	<div class="code-container">
 		<pre><code>&lt;input required&gt;</code></pre>
 		<button class="copy-btn">
@@ -1361,7 +1318,7 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
-	
+
 	<div class="code-container">
 		<pre><code>&lt;input disabled&gt;</code></pre>
 		<button class="copy-btn">
@@ -1370,7 +1327,7 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
-	
+
 	<div class="code-container">
 		<pre><code>&lt;input readonly&gt;</code></pre>
 		<button class="copy-btn">
@@ -1388,7 +1345,7 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
-	
+
 	<div class="code-container">
 		<pre><code>&lt;textarea rows="4" cols="50"&gt;</code></pre>
 		<button class="copy-btn">
@@ -1397,7 +1354,7 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
-	
+
 	<div class="code-container">
 		<pre><code>&lt;button type="button"&gt;</code></pre>
 		<button class="copy-btn">
@@ -1406,7 +1363,7 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
-	
+
 	<div class="code-container">
 		<pre><code>&lt;button type="submit"&gt;</code></pre>
 		<button class="copy-btn">
@@ -1415,7 +1372,7 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
-	
+
 	<div class="code-container">
 		<pre><code>&lt;button type="reset"&gt;</code></pre>
 		<button class="copy-btn">
@@ -1424,7 +1381,7 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
-	
+
 	<div class="code-container">
 		<pre><code>&lt;select&gt;</code></pre>
 		<button class="copy-btn">
@@ -1433,7 +1390,7 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
-	
+
 	<div class="code-container">
 		<pre><code>&lt;optgroup&gt;</code></pre>
 		<button class="copy-btn">
@@ -1442,7 +1399,7 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
-	
+
 	<div class="code-container">
 		<pre><code>&lt;option value="1"&gt;</code></pre>
 		<button class="copy-btn">
@@ -1460,7 +1417,7 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
-	
+
 	<div class="code-container">
 		<pre><code>&lt;legend&gt;</code></pre>
 		<button class="copy-btn">
@@ -1469,7 +1426,7 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
-	
+
 	<div class="code-container">
 		<pre><code>&lt;datalist&gt;</code></pre>
 		<button class="copy-btn">
@@ -1478,7 +1435,7 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
-	
+
 	<div class="code-container">
 		<pre><code>&lt;progress value="70" max="100"&gt;</code></pre>
 		<button class="copy-btn">
@@ -1487,7 +1444,7 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
-	
+
 	<div class="code-container">
 		<pre><code>&lt;meter value="0.6" min="0" max="1"&gt;</code></pre>
 		<button class="copy-btn">
@@ -1496,7 +1453,7 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
-	
+
 	<div class="code-container">
 		<pre><code>&lt;audio controls source src="audio.mp3" type="audio/mpeg"&gt;</code></pre>
 		<button class="copy-btn">
@@ -1505,7 +1462,7 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
-	
+
 	<div class="code-container">
 		<pre><code>&lt;video controls width="320" height="240" source src="movie.mp4" type="video/mp4"&gt;</code></pre>
 		<button class="copy-btn">
@@ -1523,7 +1480,7 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
-	
+
 	<div class="code-container">
 		<pre><code>&lt;embed src="flashgame.swf" width="400" height="300"&gt;</code></pre>
 		<button class="copy-btn">
@@ -1532,7 +1489,7 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
-	
+
 	<div class="code-container">
 		<pre><code>&lt;object data="c.pdf" width="400" height="500" param name="autoplay" value="true"&gt;</code></pre>
 		<button class="copy-btn">
@@ -1541,7 +1498,7 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
-	
+
 	<div class="code-container">
 		<pre><code>&lt;iframe src="https://" width="500" height="300" sandbox="allow-scripts"&gt;</code></pre>
 		<button class="copy-btn">
@@ -1550,7 +1507,7 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
-	
+
 	<div class="code-container">
 		<pre><code>&lt;canvas width="200" height="100"&gt;</code></pre>
 		<button class="copy-btn">
@@ -1559,7 +1516,7 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
-	
+
 	<div class="code-container">
 		<pre><code>&lt;svg width="100" height="100"&gt;</code></pre>
 		<button class="copy-btn">
@@ -1577,7 +1534,7 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
-	
+
 	<div class="code-container">
 		<pre><code>&lt;class&gt;</code></pre>
 		<button class="copy-btn">
@@ -1586,7 +1543,7 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
-	
+
 	<div class="code-container">
 		<pre><code>&lt;hidden&gt;</code></pre>
 		<button class="copy-btn">
@@ -1595,7 +1552,7 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
-	
+
 	<div class="code-container">
 		<pre><code>&lt;tabindex="1"&gt;</code></pre>
 		<button class="copy-btn">
@@ -1604,7 +1561,7 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
-	
+
 	<div class="code-container">
 		<pre><code>&lt;contenteditable&gt;</code></pre>
 		<button class="copy-btn">
@@ -1613,7 +1570,7 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
-	
+
 	<div class="code-container">
 		<pre><code>&lt;dir="rtl"&gt;</code></pre>
 		<button class="copy-btn">
@@ -1622,7 +1579,7 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
-	
+
 	<div class="code-container">
 		<pre><code>&lt;dir="ltr"&gt;</code></pre>
 		<button class="copy-btn">
@@ -1631,7 +1588,7 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
-	
+
 	<div class="code-container">
 		<pre><code>&lt;data-*&gt;</code></pre>
 		<button class="copy-btn">
@@ -1640,7 +1597,7 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
-	
+
 	<div class="code-container">
 		<pre><code>&lt;draggable="true"&gt;</code></pre>
 		<button class="copy-btn">
@@ -1649,7 +1606,7 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
-	
+
 	<div class="code-container">
 		<pre><code>&lt;spellcheck="true"&gt;</code></pre>
 		<button class="copy-btn">
@@ -1658,7 +1615,7 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
-	
+
 	<div class="code-container">
 		<pre><code>&lt;onclick="alert('Ok')"&gt;</code></pre>
 		<button class="copy-btn">
@@ -1667,7 +1624,7 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
-	
+
 	<div class="code-container">
 		<pre><code>&lt;onmouseover=""&gt;</code></pre>
 		<button class="copy-btn">
@@ -1676,7 +1633,7 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
-	
+
 	<div class="code-container">
 		<pre><code>&lt;onmouseout=""&gt;</code></pre>
 		<button class="copy-btn">
@@ -1685,7 +1642,7 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
-	
+
 	<div class="code-container">
 		<pre><code>&lt;onkeydown=""&gt;</code></pre>
 		<button class="copy-btn">
@@ -1694,7 +1651,7 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
-	
+
 	<div class="code-container">
 		<pre><code>&lt;onload=""&gt;</code></pre>
 		<button class="copy-btn">
@@ -1703,7 +1660,7 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
-	
+
 	<div class="code-container">
 		<pre><code>&lt;onsubmit=""&gt;</code></pre>
 		<button class="copy-btn">
@@ -1712,7 +1669,7 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
-	
+
 	<script>
 		document.addEventListener('DOMContentLoaded', () => {
 			// Находим все кнопки копирования
