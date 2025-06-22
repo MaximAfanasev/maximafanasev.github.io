@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Multiple Code Blocks with Copy Buttons</title>
+	<title>HTML &#38; CSS</title>
 	<style>
 		body {
 			font-family: 'Roboto', sans-serif;
@@ -223,7 +223,6 @@
 	<div class="example-output">
 		Указывает кодировку документа
 	</div>
-
 	<div class="code-container">
 		<pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></pre>
 		<button class="copy-btn">
@@ -231,6 +230,9 @@
 			<span class="btn-text">Copy</span>
 			<span class="tooltip">Copied!</span>
 		</button>
+	</div>
+	<div class="example-output">
+		Для корректного отображения на мобильных
 	</div>
 
 	<div class="code-container">
@@ -241,6 +243,9 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
+	<div class="example-output">
+		Описание для поисковых систем
+	</div>
 
 	<div class="code-container">
 		<pre><code>&lt;meta name="keywords" content="веб-разработка, SEO, HTML, CSS, JavaScript"&gt;</code></pre>
@@ -249,6 +254,9 @@
 			<span class="btn-text">Copy</span>
 			<span class="tooltip">Copied!</span>
 		</button>
+	</div>
+	<div class="example-output">
+		Ключевые слова, связанные с содержимым
 	</div>
 
 	<div class="code-container">
@@ -259,7 +267,9 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
-
+	<div class="example-output">
+		Указание автора страницы
+	</div>
 	<div class="code-container">
 		<pre><code>&lt;meta name="robots" content="index, follow"&gt;</code></pre>
 		<button class="copy-btn">
@@ -267,6 +277,9 @@
 			<span class="btn-text">Copy</span>
 			<span class="tooltip">Copied!</span>
 		</button>
+	</div>
+	<div class="example-output">
+		Инструкция для поисковых роботов
 	</div>
 
 	<div class="code-container">
@@ -277,6 +290,9 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
+	<div class="example-output">
+		НЕ индексировать страницу и НЕ переходить по ссылкам
+	</div>
 
 	<div class="code-container">
 		<pre><code>&lt;meta property="og:title" content="Крутая статья про HTML"&gt;</code></pre>
@@ -285,6 +301,9 @@
 			<span class="btn-text">Copy</span>
 			<span class="tooltip">Copied!</span>
 		</button>
+	</div>
+	<div class="example-output">
+		OpenGraph-заголовок для соцсетей
 	</div>
 
 	<div class="code-container">
@@ -295,7 +314,9 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
-
+	<div class="example-output">
+		OpenGraph-описание для соцсетей
+	</div>
 	<div class="code-container">
 		<pre><code>&lt;meta property="og:image" content="https://site.com/image.jpg"&gt;</code></pre>
 		<button class="copy-btn">
@@ -304,14 +325,20 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
+	<div class="example-output">
+		Изображение для предпросмотра
+	</div>
 
 	<div class="code-container">
-		<pre><code>&lt;title>&lt;/title&gt;</code></pre>
+		<pre><code>&lt;title&gt;&lt;/title&gt;</code></pre>
 		<button class="copy-btn">
 			<span class="copy-icon"></span>
 			<span class="btn-text">Copy</span>
 			<span class="tooltip">Copied!</span>
 		</button>
+	</div>
+	<div class="example-output">
+		Заголовок во вкладке браузера и в результатах поиска
 	</div>
 
 	<div class="code-container">
@@ -322,6 +349,9 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
+	<div class="example-output">
+		Базовый URL для всех относительных ссылок
+	</div>
 
 	<div class="code-container">
 		<pre><code>&lt;link rel="stylesheet" href="styles.css" type="text/css"&gt;</code></pre>
@@ -330,6 +360,9 @@
 			<span class="btn-text">Copy</span>
 			<span class="tooltip">Copied!</span>
 		</button>
+	</div>
+	<div class="example-output">
+		Подключение внешней CSS стилей
 	</div>
 
 	<div class="code-container">
@@ -340,6 +373,9 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
+	<div class="example-output">
+		Подключение CSS с внешнего CDN
+	</div>
 
 	<div class="code-container">
 		<pre><code>&lt;link rel="icon" href="favicon.ico" type="image/x-icon"&gt;</code></pre>
@@ -348,6 +384,9 @@
 			<span class="btn-text">Copy</span>
 			<span class="tooltip">Copied!</span>
 		</button>
+	</div>
+	<div class="example-output">
+		Иконка сайта
 	</div>
 
 	<div class="code-container">
@@ -358,6 +397,9 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
+	<div class="example-output">
+		Векторная иконка сайта
+	</div>
 
 	<div class="code-container">
 		<pre><code>&lt;link rel="apple-touch-icon" href="apple-touch-icon.png"&gt;</code></pre>
@@ -367,51 +409,69 @@
 			<span class="tooltip">Copied!</span>
 		</button>
 	</div>
-
-	<div class="code-container">
-		<pre><code>&lt;link rel="icon" href="images/favicon-32x32.png" type="image/png" sizes="32x32"&gt;</code></pre>
-		<button class="copy-btn">
-			<span class="copy-icon"></span>
-			<span class="btn-text">Copy</span>
-			<span class="tooltip">Copied!</span>
-		</button>
+	<div class="example-output">
+		Иконка для iOS-устройств
 	</div>
 
-	<div class="code-container">
-		<pre><code>&lt;body&gt;&lt;/body></code></pre>
-		<button class="copy-btn">
-			<span class="copy-icon"></span>
-			<span class="btn-text">Copy</span>
-			<span class="tooltip">Copied!</span>
-		</button>
-	</div>
+<div class="code-container">
+    <pre><code>&lt;link rel="icon" href="images/favicon-32x32.png" type="image/png" sizes="32x32"&gt;</code></pre>
+    <button class="copy-btn">
+        <span class="copy-icon"></span>
+        <span class="btn-text">Copy</span>
+        <span class="tooltip">Copied!</span>
+    </button>
+</div>
+<div class="example-output">
+    Фавикон 32×32 пикселя
+</div>
 
-	<div class="code-container">
-		<pre><code>&lt;header&gt;&lt;/header></code></pre>
-		<button class="copy-btn">
-			<span class="copy-icon"></span>
-			<span class="btn-text">Copy</span>
-			<span class="tooltip">Copied!</span>
-		</button>
-	</div>
+<div class="code-container">
+    <pre><code>&lt;body&gt;&lt;/body&gt;</code></pre>
+    <button class="copy-btn">
+        <span class="copy-icon"></span>
+        <span class="btn-text">Copy</span>
+        <span class="tooltip">Copied!</span>
+    </button>
+</div>
+<div class="example-output">
+    <b>Тело документа</b>: Содержит всё видимое содержимое веб-страницы (текст, изображения, видео и другие элементы).
+</div>
 
-	<div class="code-container">
-		<pre><code>&lt;nav&gt;&lt;/nav></code></pre>
-		<button class="copy-btn">
-			<span class="copy-icon"></span>
-			<span class="btn-text">Copy</span>
-			<span class="tooltip">Copied!</span>
-		</button>
-	</div>
+<div class="code-container">
+    <pre><code>&lt;header&gt;&lt;/header&gt;</code></pre>
+    <button class="copy-btn">
+        <span class="copy-icon"></span>
+        <span class="btn-text">Copy</span>
+        <span class="tooltip">Copied!</span>
+    </button>
+</div>
+<div class="example-output">
+    <b>Шапка сайта</b>: Обычно содержит логотип, заголовок и иногда элементы навигации.
+</div>
 
-	<div class="code-container">
-		<pre><code>&lt;main&gt;&lt;/main></code></pre>
-		<button class="copy-btn">
-			<span class="copy-icon"></span>
-			<span class="btn-text">Copy</span>
-			<span class="tooltip">Copied!</span>
-		</button>
-	</div>
+<div class="code-container">
+    <pre><code>&lt;nav&gt;&lt;/nav&gt;</code></pre>
+    <button class="copy-btn">
+        <span class="copy-icon"></span>
+        <span class="btn-text">Copy</span>
+        <span class="tooltip">Copied!</span>
+    </button>
+</div>
+<div class="example-output">
+    <b>Навигация</b>: Содержит основные ссылки для перемещения между страницами сайта.
+</div>
+
+<div class="code-container">
+    <pre><code>&lt;main&gt;&lt;/main&gt;</code></pre>
+    <button class="copy-btn">
+        <span class="copy-icon"></span>
+        <span class="btn-text">Copy</span>
+        <span class="tooltip">Copied!</span>
+    </button>
+</div>
+<div class="example-output">
+    <b>Основное содержимое</b>: Включает уникальный контент страницы (должен быть только один на странице).
+</div>
 
 	<div class="code-container">
 		<pre><code>&lt;article&gt;&lt;/article></code></pre>
