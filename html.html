@@ -1647,42 +1647,57 @@
 <div class="example-output">
     Список подсказок для input (автодополнение при вводе)
 </div>
+<div class="code-container">
+    <pre><code>&lt;progress value="70" max="100"&gt;&lt;/progress&gt;</code></pre>
+    <button class="copy-btn">
+        <span class="copy-icon"></span>
+        <span class="btn-text">Copy</span>
+        <span class="tooltip">Copied!</span>
+    </button>
+</div>
+<div class="example-output">
+    Индикатор выполнения (показывает 70% из 100%)
+</div>
 
-	<div class="code-container">
-		<pre><code>&lt;progress value="70" max="100"&gt;</code></pre>
-		<button class="copy-btn">
-			<span class="copy-icon"></span>
-			<span class="btn-text">Copy</span>
-			<span class="tooltip">Copied!</span>
-		</button>
-	</div>
+<div class="code-container">
+    <pre><code>&lt;meter value="0.6" min="0" max="1"&gt;&lt;/meter&gt;</code></pre>
+    <button class="copy-btn">
+        <span class="copy-icon"></span>
+        <span class="btn-text">Copy</span>
+        <span class="tooltip">Copied!</span>
+    </button>
+</div>
+<div class="example-output">
+    Графический индикатор значения в диапазоне (0.6 из 1)
+</div>
 
-	<div class="code-container">
-		<pre><code>&lt;meter value="0.6" min="0" max="1"&gt;</code></pre>
-		<button class="copy-btn">
-			<span class="copy-icon"></span>
-			<span class="btn-text">Copy</span>
-			<span class="tooltip">Copied!</span>
-		</button>
-	</div>
+<div class="code-container">
+    <pre><code>&lt;audio controls&gt;
+  &lt;source src="audio.mp3" type="audio/mpeg"&gt;
+&lt;/audio&gt;</code></pre>
+    <button class="copy-btn">
+        <span class="copy-icon"></span>
+        <span class="btn-text">Copy</span>
+        <span class="tooltip">Copied!</span>
+    </button>
+</div>
+<div class="example-output">
+    Аудиоплеер с элементами управления (формат MP3)
+</div>
 
-	<div class="code-container">
-		<pre><code>&lt;audio controls source src="audio.mp3" type="audio/mpeg"&gt;</code></pre>
-		<button class="copy-btn">
-			<span class="copy-icon"></span>
-			<span class="btn-text">Copy</span>
-			<span class="tooltip">Copied!</span>
-		</button>
-	</div>
-
-	<div class="code-container">
-		<pre><code>&lt;video controls width="320" height="240" source src="movie.mp4" type="video/mp4"&gt;</code></pre>
-		<button class="copy-btn">
-			<span class="copy-icon"></span>
-			<span class="btn-text">Copy</span>
-			<span class="tooltip">Copied!</span>
-		</button>
-	</div>
+<div class="code-container">
+    <pre><code>&lt;video controls width="320" height="240"&gt;
+  &lt;source src="movie.mp4" type="video/mp4"&gt;
+&lt;/video&gt;</code></pre>
+    <button class="copy-btn">
+        <span class="copy-icon"></span>
+        <span class="btn-text">Copy</span>
+        <span class="tooltip">Copied!</span>
+    </button>
+</div>
+<div class="example-output">
+    Видеоплеер с контролами (размер 320×240, формат MP4)
+</div>
 
 	<div class="code-container">
 		<pre><code>&lt;track kind="subtitles" srclang="ru"&gt;</code></pre>
@@ -1693,194 +1708,265 @@
 		</button>
 	</div>
 
-	<div class="code-container">
-		<pre><code>&lt;embed src="flashgame.swf" width="400" height="300"&gt;</code></pre>
-		<button class="copy-btn">
-			<span class="copy-icon"></span>
-			<span class="btn-text">Copy</span>
-			<span class="tooltip">Copied!</span>
-		</button>
-	</div>
+<div class="code-container">
+    <pre><code>&lt;embed src="flashgame.swf" width="400" height="300" type="application/x-shockwave-flash"&gt;</code></pre>
+    <button class="copy-btn">
+        <span class="copy-icon"></span>
+        <span class="btn-text">Copy</span>
+        <span class="tooltip">Copied!</span>
+    </button>
+</div>
+<div class="example-output">
+    Встраивает Flash-контент (устаревшая технология, требует плагин)
+</div>
+
+<div class="code-container">
+    <pre><code>&lt;object data="c.pdf" width="400" height="500" type="application/pdf"&gt;
+  &lt;param name="autoplay" value="true"&gt;
+&lt;/object&gt;</code></pre>
+    <button class="copy-btn">
+        <span class="copy-icon"></span>
+        <span class="btn-text">Copy</span>
+        <span class="tooltip">Copied!</span>
+    </button>
+</div>
+<div class="example-output">
+    Встраивает внешний ресурс (PDF, Flash) с параметрами
+</div>
+
+<div class="code-container">
+    <pre><code>&lt;iframe src="https://example.com" width="500" height="300" sandbox="allow-scripts" allowfullscreen&gt;&lt;/iframe&gt;</code></pre>
+    <button class="copy-btn">
+        <span class="copy-icon"></span>
+        <span class="btn-text">Copy</span>
+        <span class="tooltip">Copied!</span>
+    </button>
+</div>
+<div class="example-output">
+    Встроенное окно другого сайта с ограниченными правами (только скрипты)
+</div>
+
+<div class="code-container">
+    <pre><code>&lt;canvas id="myCanvas" width="200" height="100"&gt;
+  Ваш браузер не поддерживает Canvas
+&lt;/canvas&gt;</code></pre>
+    <button class="copy-btn">
+        <span class="copy-icon"></span>
+        <span class="btn-text">Copy</span>
+        <span class="tooltip">Copied!</span>
+    </button>
+</div>
+<div class="example-output">
+    Контейнер для рисования графики через JavaScript
+</div>
 
 	<div class="code-container">
-		<pre><code>&lt;object data="c.pdf" width="400" height="500" param name="autoplay" value="true"&gt;</code></pre>
-		<button class="copy-btn">
-			<span class="copy-icon"></span>
-			<span class="btn-text">Copy</span>
-			<span class="tooltip">Copied!</span>
-		</button>
-	</div>
+    <pre><code>&lt;svg width="100" height="100"&gt;
+  &lt;circle cx="50" cy="50" r="40" fill="blue"/&gt;
+&lt;/svg&gt;</code></pre>
+    <button class="copy-btn">
+        <span class="copy-icon"></span>
+        <span class="btn-text">Copy</span>
+        <span class="tooltip">Copied!</span>
+    </button>
+</div>
+<div class="example-output">
+    Векторная графика SVG (в данном примере - синий круг)
+</div>
 
-	<div class="code-container">
-		<pre><code>&lt;iframe src="https://" width="500" height="300" sandbox="allow-scripts"&gt;</code></pre>
-		<button class="copy-btn">
-			<span class="copy-icon"></span>
-			<span class="btn-text">Copy</span>
-			<span class="tooltip">Copied!</span>
-		</button>
-	</div>
+<div class="code-container">
+    <pre><code>&lt;div id="name"&gt;&lt;/div&gt;</code></pre>
+    <button class="copy-btn">
+        <span class="copy-icon"></span>
+        <span class="btn-text">Copy</span>
+        <span class="tooltip">Copied!</span>
+    </button>
+</div>
+<div class="example-output">
+    Уникальный идентификатор элемента (используется для CSS/JavaScript)
+</div>
 
-	<div class="code-container">
-		<pre><code>&lt;canvas width="200" height="100"&gt;</code></pre>
-		<button class="copy-btn">
-			<span class="copy-icon"></span>
-			<span class="btn-text">Copy</span>
-			<span class="tooltip">Copied!</span>
-		</button>
-	</div>
+<div class="code-container">
+    <pre><code>&lt;div class="my-class"&gt;&lt;/div&gt;</code></pre>
+    <button class="copy-btn">
+        <span class="copy-icon"></span>
+        <span class="btn-text">Copy</span>
+        <span class="tooltip">Copied!</span>
+    </button>
+</div>
+<div class="example-output">
+    Класс для группировки элементов (может применяться к нескольким элементам)
+</div>
 
-	<div class="code-container">
-		<pre><code>&lt;svg width="100" height="100"&gt;</code></pre>
-		<button class="copy-btn">
-			<span class="copy-icon"></span>
-			<span class="btn-text">Copy</span>
-			<span class="tooltip">Copied!</span>
-		</button>
-	</div>
+<div class="code-container">
+    <pre><code>&lt;div hidden&gt;&lt;/div&gt;</code></pre>
+    <button class="copy-btn">
+        <span class="copy-icon"></span>
+        <span class="btn-text">Copy</span>
+        <span class="tooltip">Copied!</span>
+    </button>
+</div>
+<div class="example-output">
+    Скрытый элемент (не отображается на странице)
+</div>
 
-	<div class="code-container">
-		<pre><code>&lt;id="name"&gt;</code></pre>
-		<button class="copy-btn">
-			<span class="copy-icon"></span>
-			<span class="btn-text">Copy</span>
-			<span class="tooltip">Copied!</span>
-		</button>
-	</div>
+<div class="code-container">
+    <pre><code>&lt;button tabindex="1"&gt;Click me&lt;/button&gt;</code></pre>
+    <button class="copy-btn">
+        <span class="copy-icon"></span>
+        <span class="btn-text">Copy</span>
+        <span class="tooltip">Copied!</span>
+    </button>
+</div>
+<div class="example-output">
+    Управление порядком фокусировки при навигации по Tab (в данном случае - первый)
+</div>
 
-	<div class="code-container">
-		<pre><code>&lt;class&gt;</code></pre>
-		<button class="copy-btn">
-			<span class="copy-icon"></span>
-			<span class="btn-text">Copy</span>
-			<span class="tooltip">Copied!</span>
-		</button>
-	</div>
+<div class="code-container">
+    <pre><code>&lt;div contenteditable="true"&gt;Редактируемый текст&lt;/div&gt;</code></pre>
+    <button class="copy-btn">
+        <span class="copy-icon"></span>
+        <span class="btn-text">Copy</span>
+        <span class="tooltip">Copied!</span>
+    </button>
+</div>
+<div class="example-output">
+    Делает элемент редактируемым пользователем (как текстовое поле)
+</div>
 
-	<div class="code-container">
-		<pre><code>&lt;hidden&gt;</code></pre>
-		<button class="copy-btn">
-			<span class="copy-icon"></span>
-			<span class="btn-text">Copy</span>
-			<span class="tooltip">Copied!</span>
-		</button>
-	</div>
+<div class="code-container">
+    <pre><code>&lt;div dir="rtl"&gt;نص باللغة العربية&lt;/div&gt;</code></pre>
+    <button class="copy-btn">
+        <span class="copy-icon"></span>
+        <span class="btn-text">Copy</span>
+        <span class="tooltip">Copied!</span>
+    </button>
+</div>
+<div class="example-output">
+    Направление текста справа налево (для арабского, иврита и др.)
+</div>
 
-	<div class="code-container">
-		<pre><code>&lt;tabindex="1"&gt;</code></pre>
-		<button class="copy-btn">
-			<span class="copy-icon"></span>
-			<span class="btn-text">Copy</span>
-			<span class="tooltip">Copied!</span>
-		</button>
-	</div>
+<div class="code-container">
+    <pre><code>&lt;div dir="ltr"&gt;English text&lt;/div&gt;</code></pre>
+    <button class="copy-btn">
+        <span class="copy-icon"></span>
+        <span class="btn-text">Copy</span>
+        <span class="tooltip">Copied!</span>
+    </button>
+</div>
+<div class="example-output">
+    Направление текста слева направо (по умолчанию для большинства языков)
+</div>
 
-	<div class="code-container">
-		<pre><code>&lt;contenteditable&gt;</code></pre>
-		<button class="copy-btn">
-			<span class="copy-icon"></span>
-			<span class="btn-text">Copy</span>
-			<span class="tooltip">Copied!</span>
-		</button>
-	</div>
+<div class="code-container">
+    <pre><code>&lt;div data-user-id="12345" data-role="admin"&gt;&lt;/div&gt;</code></pre>
+    <button class="copy-btn">
+        <span class="copy-icon"></span>
+        <span class="btn-text">Copy</span>
+        <span class="tooltip">Copied!</span>
+    </button>
+</div>
+<div class="example-output">
+    Пользовательские атрибуты данных (доступны через JavaScript)
+</div>
+<div class="code-container">
+    <pre><code>&lt;div draggable="true"&gt;Перетащи меня&lt;/div&gt;</code></pre>
+    <button class="copy-btn">
+        <span class="copy-icon"></span>
+        <span class="btn-text">Copy</span>
+        <span class="tooltip">Copied!</span>
+    </button>
+</div>
+<div class="example-output">
+    Делает элемент перетаскиваемым (требует JavaScript для обработки событий перетаскивания)
+</div>
 
-	<div class="code-container">
-		<pre><code>&lt;dir="rtl"&gt;</code></pre>
-		<button class="copy-btn">
-			<span class="copy-icon"></span>
-			<span class="btn-text">Copy</span>
-			<span class="tooltip">Copied!</span>
-		</button>
-	</div>
+<div class="code-container">
+    <pre><code>&lt;textarea spellcheck="true"&gt;Текст с проверкой орфографии&lt;/textarea&gt;</code></pre>
+    <button class="copy-btn">
+        <span class="copy-icon"></span>
+        <span class="btn-text">Copy</span>
+        <span class="tooltip">Copied!</span>
+    </button>
+</div>
+<div class="example-output">
+    Включает проверку орфографии в редактируемом поле (подчеркивание ошибок)
+</div>
 
-	<div class="code-container">
-		<pre><code>&lt;dir="ltr"&gt;</code></pre>
-		<button class="copy-btn">
-			<span class="copy-icon"></span>
-			<span class="btn-text">Copy</span>
-			<span class="tooltip">Copied!</span>
-		</button>
-	</div>
+<div class="code-container">
+    <pre><code>&lt;button onclick="alert('Ok')"&gt;Нажми меня&lt;/button&gt;</code></pre>
+    <button class="copy-btn">
+        <span class="copy-icon"></span>
+        <span class="btn-text">Copy</span>
+        <span class="tooltip">Copied!</span>
+    </button>
+</div>
+<div class="example-output">
+    Обработчик клика (выполняет JavaScript при нажатии)
+</div>
 
-	<div class="code-container">
-		<pre><code>&lt;data-*&gt;</code></pre>
-		<button class="copy-btn">
-			<span class="copy-icon"></span>
-			<span class="btn-text">Copy</span>
-			<span class="tooltip">Copied!</span>
-		</button>
-	</div>
+<div class="code-container">
+    <pre><code>&lt;div onmouseover="this.style.backgroundColor='yellow'"&gt;Наведи курсор&lt;/div&gt;</code></pre>
+    <button class="copy-btn">
+        <span class="copy-icon"></span>
+        <span class="btn-text">Copy</span>
+        <span class="tooltip">Copied!</span>
+    </button>
+</div>
+<div class="example-output">
+    Срабатывает при наведении курсора (в примере меняет фон)
+</div>
 
-	<div class="code-container">
-		<pre><code>&lt;draggable="true"&gt;</code></pre>
-		<button class="copy-btn">
-			<span class="copy-icon"></span>
-			<span class="btn-text">Copy</span>
-			<span class="tooltip">Copied!</span>
-		</button>
-	</div>
+<div class="code-container">
+    <pre><code>&lt;div onmouseout="this.style.backgroundColor='white'"&gt;Отведи курсор&lt;/div&gt;</code></pre>
+    <button class="copy-btn">
+        <span class="copy-icon"></span>
+        <span class="btn-text">Copy</span>
+        <span class="tooltip">Copied!</span>
+    </button>
+</div>
+<div class="example-output">
+    Срабатывает при уходе курсора (в примере возвращает исходный фон)
+</div>
+<div class="code-container">
+    <pre><code>&lt;input type="text" onkeydown="console.log('Key pressed:', event.key)"&gt;</code></pre>
+    <button class="copy-btn">
+        <span class="copy-icon"></span>
+        <span class="btn-text">Copy</span>
+        <span class="tooltip">Copied!</span>
+    </button>
+</div>
+<div class="example-output">
+    Срабатывает при нажатии клавиши (в примере выводит код клавиши в консоль)
+</div>
 
-	<div class="code-container">
-		<pre><code>&lt;spellcheck="true"&gt;</code></pre>
-		<button class="copy-btn">
-			<span class="copy-icon"></span>
-			<span class="btn-text">Copy</span>
-			<span class="tooltip">Copied!</span>
-		</button>
-	</div>
+<div class="code-container">
+    <pre><code>&lt;body onload="console.log('Page loaded')"&gt;
+  &lt;!-- Содержимое страницы --&gt;
+&lt;/body&gt;</code></pre>
+    <button class="copy-btn">
+        <span class="copy-icon"></span>
+        <span class="btn-text">Copy</span>
+        <span class="tooltip">Copied!</span>
+    </button>
+</div>
+<div class="example-output">
+    Срабатывает при полной загрузке страницы (включая все ресурсы)
+</div>
 
-	<div class="code-container">
-		<pre><code>&lt;onclick="alert('Ok')"&gt;</code></pre>
-		<button class="copy-btn">
-			<span class="copy-icon"></span>
-			<span class="btn-text">Copy</span>
-			<span class="tooltip">Copied!</span>
-		</button>
-	</div>
-
-	<div class="code-container">
-		<pre><code>&lt;onmouseover=""&gt;</code></pre>
-		<button class="copy-btn">
-			<span class="copy-icon"></span>
-			<span class="btn-text">Copy</span>
-			<span class="tooltip">Copied!</span>
-		</button>
-	</div>
-
-	<div class="code-container">
-		<pre><code>&lt;onmouseout=""&gt;</code></pre>
-		<button class="copy-btn">
-			<span class="copy-icon"></span>
-			<span class="btn-text">Copy</span>
-			<span class="tooltip">Copied!</span>
-		</button>
-	</div>
-
-	<div class="code-container">
-		<pre><code>&lt;onkeydown=""&gt;</code></pre>
-		<button class="copy-btn">
-			<span class="copy-icon"></span>
-			<span class="btn-text">Copy</span>
-			<span class="tooltip">Copied!</span>
-		</button>
-	</div>
-
-	<div class="code-container">
-		<pre><code>&lt;onload=""&gt;</code></pre>
-		<button class="copy-btn">
-			<span class="copy-icon"></span>
-			<span class="btn-text">Copy</span>
-			<span class="tooltip">Copied!</span>
-		</button>
-	</div>
-
-	<div class="code-container">
-		<pre><code>&lt;onsubmit=""&gt;</code></pre>
-		<button class="copy-btn">
-			<span class="copy-icon"></span>
-			<span class="btn-text">Copy</span>
-			<span class="tooltip">Copied!</span>
-		</button>
-	</div>
+<div class="code-container">
+    <pre><code>&lt;form onsubmit="alert('Form submitted'); return false"&gt;
+  &lt;input type="submit" value="Отправить"&gt;
+&lt;/form&gt;</code></pre>
+    <button class="copy-btn">
+        <span class="copy-icon"></span>
+        <span class="btn-text">Copy</span>
+        <span class="tooltip">Copied!</span>
+    </button>
+</div>
+<div class="example-output">
+    Срабатывает при отправке формы (return false отменяет стандартную отправку)
+</div>
 
 	<script>
 		document.addEventListener('DOMContentLoaded', () => {
