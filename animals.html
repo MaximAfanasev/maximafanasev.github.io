@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интерактивные животные</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #000;
+            font-family: Arial, sans-serif;
+        }
+        
+        .animal-container {
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .animal-container:hover {
+            transform: scale(1.05);
+        }
+        
+        .animal-container:active {
+            transform: scale(0.95);
+        }
+        
+        img {
+            max-width: 300px;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .title {
+            color: #ff69b4;
+            margin-bottom: 20px;
+            min-height: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="animal-container" id="animalContainer">
+        <h1 class="title" id="title">Кто это?</h1>
+        <img id="animalImage" src="" alt="Животное">
+    </div>
+
+    <audio id="pigSound" src="pig.mp3" preload="auto"></audio>
+    <audio id="catSound" src="cat.mp3" preload="auto"></audio>
+
+    <script>
+        const animalContainer = document.getElementById('animalContainer');
+        const animalImage = document.getElementById('animalImage');
+        const title = document.getElementById('title');
+        const pigSound = document.getElementById('pigSound');
+        const catSound = document.getElementById('catSound');
+        
+        // Начальное животное (0 - свинья, 1 - кошка)
+        let currentAnimal = Math.round(Math.random());
+        
+        function showAnimal() {
+            if (currentAnimal === 0) {
+                // Показываем свинью
+                animalImage.src = 'pig.jpg';
+                animalImage.alt = 'Свинья';
+                title.textContent = 'Свинка';
+            } else {
+                // Показываем кошку
+                animalImage.src = 'cat.jpg';
+                animalImage.alt = 'Кошка';
+                title.textContent = 'Кошка';
+            }
+        }
+        
+        // Показываем первое животное
+        showAnimal();
+        
+        animalContainer.addEventListener('click', function() {
+            // Воспроизводим звук текущего животного
+            if (currentAnimal === 0) {
+                pigSound.currentTime = 0;
+                pigSound.play();
+            } else {
+                catSound.currentTime = 0;
+                catSound.play();
+            }
+            
+            // Меняем животное на противоположное
+            currentAnimal = currentAnimal === 0 ? 1 : 0;
+            
+            // Показываем новое животное после окончания звука
+            setTimeout(showAnimal, 500);
+        });
+    </script>
+</body>
+</html>
