@@ -1,104 +1,146 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Тест: Определение типа документа</title>
-	<style>
-		body {
-			font-family: Arial, sans-serif;
-			max-width: 600px;
-			margin: 0 auto;
-			padding: 20px;
-			line-height: 1.6;
-			background: #000;
-			color: #fff;
-		}
-
-		.question {
-			font-size: 1.2em;
-			margin-bottom: 15px;
-			font-weight: bold;
-		}
-
-		.input-container {
-			display: flex;
-			gap: 10px;
-			margin-bottom: 20px;
-		}
-
-		input {
-			padding: 8px;
-			font-size: 1em;
-			flex-grow: 1;
-		}
-
-		button {
-			padding: 8px 15px;
-			font-size: 1em;
-			background-color: #4CAF50;
-			color: white;
-			border: none;
-			cursor: pointer;
-		}
-
-		button:hover {
-			background-color: #45a049;
-		}
-
-		.message {
-			padding: 10px;
-			border-radius: 4px;
-			display: none;
-		}
-
-		.success {
-			background-color: #dff0d8;
-			color: #3c763d;
-			border: 1px solid #d6e9c6;
-		}
-
-		.error {
-			background-color: #f2dede;
-			color: #a94442;
-			border: 1px solid #ebccd1;
-		}
-	</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест: HTML вопросы</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+					background: #000;
+					color: #fff;
+        }
+        .question {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        .input-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        input {
+            padding: 8px;
+            font-size: 1em;
+            flex-grow: 1;
+        }
+        button {
+            padding: 8px 15px;
+            font-size: 1em;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .message {
+            padding: 10px;
+            border-radius: 4px;
+            display: none;
+            margin-bottom: 20px;
+        }
+        .success {
+            background-color: #dff0d8;
+            color: #3c763d;
+            border: 1px solid #d6e9c6;
+        }
+        .error {
+            background-color: #f2dede;
+            color: #a94442;
+            border: 1px solid #ebccd1;
+        }
+        .second-question {
+            display: none;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+    </style>
 </head>
-
 <body>
-	<div class="question">Определение типа документа</div>
-	<p>Какой тег используется для объявления типа документа в HTML5?</p>
+    <!-- Первый вопрос -->
+    <div class="first-question">
+        <div class="question">Определение типа документа</div>
+        <p>Какой тег используется для объявления типа документа в HTML5?</p>
+        
+        <div class="input-container">
+            <input type="text" id="answerInput1" placeholder="Введите ответ...">
+            <button id="checkButton1">Проверить</button>
+        </div>
+        
+        <div id="message1" class="message"></div>
+    </div>
+    
+    <!-- Второй вопрос (изначально скрыт) -->
+    <div id="secondQuestion" class="second-question">
+        <div class="question">Определяет язык содержимого страницы</div>
+        <p>Какой атрибут указывает язык содержимого страницы (например, русский)?</p>
+        
+        <div class="input-container">
+            <input type="text" id="answerInput2" placeholder="Введите ответ...">
+            <button id="checkButton2">Проверить</button>
+        </div>
+        
+        <div id="message2" class="message"></div>
+    </div>
 
-	<div class="input-container">
-		<input type="text" id="answerInput" placeholder="Введите ответ...">
-		<button id="checkButton">Проверить</button>
-	</div>
-
-	<div id="message" class="message"></div>
-
-	<script>
-		document.getElementById('checkButton').addEventListener('click', function() {
-			const userAnswer = document.getElementById('answerInput').value.trim();
-			const correctAnswer = '<!DOCTYPE html>';
-			const messageElement = document.getElementById('message');
-
-			if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
-				messageElement.textContent = 'Правильно! Это верное объявление типа документа для HTML5.';
-				messageElement.className = 'message success';
-				messageElement.style.display = 'block';
-			} else {
-				messageElement.textContent = 'Неверно. Попробуйте еще раз. Правильный ответ: <!DOCTYPE html>';
-				messageElement.className = 'message error';
-				messageElement.style.display = 'block';
-			}
-		});
-
-		// Добавляем возможность проверки по нажатию Enter
-		document.getElementById('answerInput').addEventListener('keyup', function(event) {
-			if (event.key === 'Enter') {
-				document.getElementById('checkButton').click();
-			}
-		});
-	</script>
-</body></html>
+    <script>
+        // Обработка первого вопроса
+        document.getElementById('checkButton1').addEventListener('click', function() {
+            const userAnswer = document.getElementById('answerInput1').value.trim();
+            const correctAnswer = '<!DOCTYPE html>';
+            const messageElement = document.getElementById('message1');
+            
+            if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+                messageElement.textContent = 'Правильно! Это верное объявление типа документа для HTML5.';
+                messageElement.className = 'message success';
+                messageElement.style.display = 'block';
+                
+                // Показываем второй вопрос
+                document.getElementById('secondQuestion').style.display = 'block';
+            } else {
+                messageElement.textContent = 'Неверно. Попробуйте еще раз. Правильный ответ: <!DOCTYPE html>';
+                messageElement.className = 'message error';
+                messageElement.style.display = 'block';
+            }
+        });
+        
+        // Обработка второго вопроса
+        document.getElementById('checkButton2').addEventListener('click', function() {
+            const userAnswer = document.getElementById('answerInput2').value.trim();
+            const correctAnswer = '<html lang="ru">';
+            const messageElement = document.getElementById('message2');
+            
+            if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+                messageElement.textContent = 'Верно! Этот атрибут определяет язык содержимого страницы.';
+                messageElement.className = 'message success';
+                messageElement.style.display = 'block';
+            } else {
+                messageElement.textContent = 'Неправильно. Правильный ответ: <html lang="ru">';
+                messageElement.className = 'message error';
+                messageElement.style.display = 'block';
+            }
+        });
+        
+        // Добавляем возможность проверки по нажатию Enter для обоих вопросов
+        document.getElementById('answerInput1').addEventListener('keyup', function(event) {
+            if (event.key === 'Enter') {
+                document.getElementById('checkButton1').click();
+            }
+        });
+        
+        document.getElementById('answerInput2').addEventListener('keyup', function(event) {
+            if (event.key === 'Enter') {
+                document.getElementById('checkButton2').click();
+            }
+        });
+    </script>
+</body>
+</html>
