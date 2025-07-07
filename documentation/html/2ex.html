@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Примеры использования HTML-тегов</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header, footer, section, article, aside, nav { border: 1px solid #ddd; margin: 10px 0; padding: 15px; }
+        details { margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header>
+        <h1>Мой сайт</h1>
+        <p>Добро пожаловать на мой сайт!</p>
+    </header>
+
+    <!-- Основная навигация -->
+    <nav>
+        <ul>
+            <li><a href="#home">Главная</a></li>
+            <li><a href="#news">Новости</a></li>
+            <li><a href="#contact">Контакты</a></li>
+            <li><a href="#about">О нас</a></li>
+        </ul>
+    </nav>
+
+    <!-- Основное содержимое страницы -->
+    <main>
+        <!-- Независимый, самодостаточный контент -->
+        <article>
+            <h2>Последние новости</h2>
+            <p>Сегодня произошло важное событие...</p>
+        </article>
+
+        <!-- Тематическая группа контента -->
+        <section>
+            <h2>Наши услуги</h2>
+            <p>Мы предлагаем широкий спектр услуг...</p>
+        </section>
+
+        <!-- Боковая панель -->
+        <aside>
+            <h3>Реклама</h3>
+            <p>Специальное предложение только сегодня!</p>
+        </aside>
+
+        <!-- Элемент details с summary -->
+        <details>
+            <summary>Подробнее о нашей компании</summary>
+            <p>Наша компания была основана в 2010 году и с тех пор...</p>
+        </details>
+
+        <!-- Модальное окно (обычно скрыто и открывается через JavaScript) -->
+        <dialog id="myDialog">
+            <p>Это модальное окно!</p>
+            <button onclick="document.getElementById('myDialog').close()">Закрыть</button>
+        </dialog>
+        <button onclick="document.getElementById('myDialog').showModal()">Открыть диалог</button>
+
+        <!-- Пользовательский веб-компонент -->
+        <user-profile>
+            <p>Это пользовательский компонент, который может быть расширен JavaScript</p>
+        </user-profile>
+    </main>
+
+    <!-- Контактная информация -->
+    <address>
+        Вы можете связаться с нами:<br>
+        email: <a href="mailto:example@example.com">example@example.com</a><br>
+        телефон: 123-456-7890
+    </address>
+
+    <!-- Подвал сайта -->
+    <footer>
+        <p>© 2023 Мой сайт. Все права защищены.</p>
+    </footer>
+
+    <!-- Контейнер для JavaScript-кода -->
+    <script>
+        // Пример JavaScript кода
+        console.log("Страница загружена!");
+        
+        // Регистрация пользовательского элемента
+        class UserProfile extends HTMLElement {
+            constructor() {
+                super();
+                // Логика компонента
+            }
+        }
+        customElements.define('user-profile', UserProfile);
+    </script>
+
+    <!-- Шаблон (не отображается на странице) -->
+    <template id="productTemplate">
+        <div class="product">
+            <h2></h2>
+            <p class="price"></p>
+        </div>
+    </template>
+
+    <!-- Альтернативный контент при отключенном JavaScript -->
+    <noscript>
+        <p>Для полноценной работы сайта пожалуйста включите JavaScript в вашем браузере.</p>
+    </noscript>
+</body>
+</html>
