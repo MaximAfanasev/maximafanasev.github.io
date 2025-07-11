@@ -1,109 +1,130 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Примеры использования HTML-тегов</title>
-    <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; max-width: 1200px; margin: 0 auto; padding: 20px; }
-        header, footer, section, article, aside, nav { border: 1px solid #ddd; margin: 10px 0; padding: 15px; }
-        details { margin: 10px 0; }
-    </style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Примеры использования HTML-тегов</title>
+	<style>
+		body {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 20px;
+			
+			font-family: Arial, sans-serif;
+			line-height: 1.6;
+		}
+	</style>
 </head>
+
 <body>
-    <!-- Шапка сайта -->
-    <header>
-        <h1>Мой сайт</h1>
-        <p>Добро пожаловать на мой сайт!</p>
-    </header>
+	<header>
+		<h1>header</h1>
+		<p>шапка сайта</p>
+	</header>
 
-    <!-- Основная навигация -->
-    <nav>
-        <ul>
-            <li><a href="#home">Главная</a></li>
-            <li><a href="#news">Новости</a></li>
-            <li><a href="#contact">Контакты</a></li>
-            <li><a href="#about">О нас</a></li>
-        </ul>
-    </nav>
+	<hr>
 
-    <!-- Основное содержимое страницы -->
-    <main>
-        <!-- Независимый, самодостаточный контент -->
-        <article>
-            <h2>Последние новости</h2>
-            <p>Сегодня произошло важное событие...</p>
-        </article>
+	<nav>
+		<h2>nav</h2>
+		<p>Навигация сайта</p>
+		<ul>
+			<li><a href="#home">1</a></li>
+			<li><a href="#news">2</a></li>
+			<li><a href="#contact">3</a></li>
+			<li><a href="#about">4</a></li>
+		</ul>
+		<p>ссылки</p>
+	</nav>
 
-        <!-- Тематическая группа контента -->
-        <section>
-            <h2>Наши услуги</h2>
-            <p>Мы предлагаем широкий спектр услуг...</p>
-        </section>
+	<hr>
 
-        <!-- Боковая панель -->
-        <aside>
-            <h3>Реклама</h3>
-            <p>Специальное предложение только сегодня!</p>
-        </aside>
+	<main>
+		<h2>main</h2>
+		<p>Основное содержимое страницы</p>
+	</main>
 
-        <!-- Элемент details с summary -->
-        <details>
-            <summary>Подробнее о нашей компании</summary>
-            <p>Наша компания была основана в 2010 году и с тех пор...</p>
-        </details>
+	<hr>
 
-        <!-- Модальное окно (обычно скрыто и открывается через JavaScript) -->
-        <dialog id="myDialog">
-            <p>Это модальное окно!</p>
-            <button onclick="document.getElementById('myDialog').close()">Закрыть</button>
-        </dialog>
-        <button onclick="document.getElementById('myDialog').showModal()">Открыть диалог</button>
+	<article>
+		<h2>article</h2>
+		<p>Независимый, самодостаточный контент</p>
+	</article>
 
-        <!-- Пользовательский веб-компонент -->
-        <user-profile>
-            <p>Это пользовательский компонент, который может быть расширен JavaScript</p>
-        </user-profile>
-    </main>
+	<hr>
 
-    <!-- Контактная информация -->
-    <address>
-        Вы можете связаться с нами:<br>
-        email: <a href="mailto:example@example.com">example@example.com</a><br>
-        телефон: 123-456-7890
-    </address>
+	<section>
+		<h2>section</h2>
+		<p>Тематическая группа контента</p>
+	</section>
 
-    <!-- Подвал сайта -->
-    <footer>
-        <p>© 2023 Мой сайт. Все права защищены.</p>
-    </footer>
+	<hr>
 
-    <!-- Контейнер для JavaScript-кода -->
-    <script>
-        // Пример JavaScript кода
-        console.log("Страница загружена!");
-        
-        // Регистрация пользовательского элемента
-        class UserProfile extends HTMLElement {
-            constructor() {
-                super();
-                // Логика компонента
-            }
-        }
-        customElements.define('user-profile', UserProfile);
-    </script>
+	<aside>
+		<h2>aside</h2>
+		<p>Боковая панель</p>
+	</aside>
 
-    <!-- Шаблон (не отображается на странице) -->
-    <template id="productTemplate">
-        <div class="product">
-            <h2></h2>
-            <p class="price"></p>
-        </div>
-    </template>
+	<hr>
 
-    <!-- Альтернативный контент при отключенном JavaScript -->
-    <noscript>
-        <p>Для полноценной работы сайта пожалуйста включите JavaScript в вашем браузере.</p>
-    </noscript>
-</body>
-</html>
+	<details>
+		<summary>Скрытый список</summary>
+		<h2>details summary</h2>
+		<p>Скрытый список</p>
+	</details>
+
+	<hr>
+
+	<dialog id="myDialog">
+		<p>Это модальное окно!</p>
+		<button onclick="document.getElementById('myDialog').close()">Закрыть</button>
+	</dialog>
+	<button onclick="document.getElementById('myDialog').showModal()">Модальное окно</button>
+
+	<hr>
+
+	<user-profile>
+		<h2>user-profile</h2>
+		<p>Это пользовательский компонент, который может быть расширен JavaScript</p>
+	</user-profile>
+
+	<hr>
+
+	<address>
+		<h2>address</h2>
+		<p>Контактная информация</p>
+		Вы можете связаться с нами:<br>
+		email: <a href="mailto:example@example.com">example@example.com</a><br>
+		телефон: 123-456-7890
+	</address>
+
+	<hr>
+
+	<footer>
+		<h2>Подвал сайта</h2>
+		<p>Располагается внизу сайта</p>
+	</footer>
+
+	<script>
+		console.log("Страница загружена!");
+
+		class UserProfile extends HTMLElement {
+			constructor() {
+				super();
+			}
+		}
+		customElements.define('user-profile', UserProfile);
+	</script>
+
+	<!-- Шаблон (не отображается на странице) -->
+	<template id="productTemplate">
+		<div class="product">
+			<h2></h2>
+			<p class="price"></p>
+		</div>
+	</template>
+
+	<!-- Альтернативный контент при отключенном JavaScript -->
+	<noscript>
+		<p>Для полноценной работы сайта пожалуйста включите JavaScript в вашем браузере.</p>
+	</noscript>
+</body></html>
