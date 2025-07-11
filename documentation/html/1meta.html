@@ -19,6 +19,18 @@
             --border-glow: 0 0 15px var(--neon-blue);
             --font-main: 'Roboto Mono', monospace;
             --font-heading: 'Orbitron', sans-serif;
+            --base-font-size: 16px;
+        }
+
+        .light-mode {
+            --space-dark: #f0f4f9;
+            --space-light: #d6e3f7;
+            --neon-blue: #0066cc;
+            --neon-purple: #6600cc;
+            --neon-pink: #cc0066;
+            --star-color: rgba(0, 0, 0, 0.6);
+            --text-color: #1a1a2e;
+            --code-bg: rgba(220, 230, 245, 0.9);
         }
 
         body {
@@ -35,6 +47,7 @@
                 linear-gradient(to bottom, rgba(10,14,23,0.9), rgba(20,25,40,0.9));
             min-height: 100vh;
             position: relative;
+            font-size: var(--base-font-size);
         }
 
         /* Звездный фон */
@@ -133,9 +146,13 @@
             backdrop-filter: blur(3px);
         }
 
+        .light-mode .comment-block {
+            background-color: rgba(214, 227, 247, 0.8);
+        }
+
         code {
             font-family: var(--font-main);
-            font-size: 15px;
+            font-size: 1em;
             white-space: pre-wrap;
             word-break: break-word;
             display: block;
@@ -172,6 +189,10 @@
             border-top: 1px solid var(--neon-blue);
         }
 
+        .light-mode .bottom-nav {
+            background: rgba(240, 244, 249, 0.9);
+        }
+
         .nav-btn {
             width: 70px;
             height: 70px;
@@ -189,6 +210,10 @@
             box-shadow: var(--border-glow), inset 0 0 15px rgba(0, 240, 255, 0.2);
             position: relative;
             overflow: hidden;
+        }
+
+        .light-mode .nav-btn {
+            background: linear-gradient(145deg, #d6e3f7, #f0f4f9);
         }
 
         .nav-btn:hover {
@@ -283,7 +308,7 @@
             }
             
             code {
-                font-size: 13px;
+                font-size: 0.9em;
             }
         }
 
@@ -377,7 +402,7 @@
     <!-- Нижняя панель навигации -->
     <div class="bottom-nav">
         <button class="nav-btn" onclick="window.location.href='/'"><span>🚀</span></button>
-        <button class="nav-btn" id="themeToggleBtn"><span>🌌</span></button>
+        <button class="nav-btn" id="themeToggleBtn"><span>🌓</span></button>
         <button class="nav-btn" id="fontToggleBtn"><span>Aa</span></button>
     </div>
 
@@ -385,33 +410,44 @@
         // Переключение темы
         const themeToggleBtn = document.getElementById('themeToggleBtn');
         
+        // Проверяем сохраненную тему
+        if (localStorage.getItem('themeMode') === 'light') {
+            document.body.classList.add('light-mode');
+            themeToggleBtn.innerHTML = '<span>🌙</span>';
+        }
+
         themeToggleBtn.addEventListener('click', () => {
-            // В космическом стиле только темная тема, но можно добавить эффект
-            document.body.classList.toggle('pulse-effect');
+            document.body.classList.toggle('light-mode');
+            const isLight = document.body.classList.contains('light-mode');
+            localStorage.setItem('themeMode', isLight ? 'light' : 'dark');
+            themeToggleBtn.innerHTML = isLight ? '<span>🌙</span>' : '<span>🌓</span>';
+            
+            // Анимация переключения
+            document.body.classList.add('pulse-effect');
             setTimeout(() => {
                 document.body.classList.remove('pulse-effect');
-            }, 1000);
+            }, 500);
         });
 
         // Изменение размера шрифта
         const fontToggleBtn = document.getElementById('fontToggleBtn');
         const root = document.documentElement;
         const fontSizes = [14, 16, 18, 20];
-        let currentFontIndex = 1;
+        let currentFontIndex = 1; // Начинаем со среднего размера
 
         function updateFontSize() {
             const newSize = fontSizes[currentFontIndex];
-            root.style.fontSize = `${newSize}px`;
+            root.style.setProperty('--base-font-size', `${newSize}px`);
             localStorage.setItem('fontSize', newSize);
             
-            // Анимация при изменении
+            // Анимация изменения
             document.body.classList.add('pulse-effect');
             setTimeout(() => {
                 document.body.classList.remove('pulse-effect');
-            }, 500);
+            }, 300);
         }
 
-        // Восстановление размера шрифта
+        // Восстановление размера шрифта из localStorage
         const savedFontSize = localStorage.getItem('fontSize');
         if (savedFontSize) {
             const size = parseInt(savedFontSize);
