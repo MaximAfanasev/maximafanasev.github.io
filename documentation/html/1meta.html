@@ -3,89 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTML-код с пояснениями</title>
+    <title>Космический справочник HTML</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto+Mono:wght@300;400;700&display=swap');
+        
         :root {
-            --bg-color: #f8f9fa;
-            --text-color: #212529;
-            --code-bg: #ffffff;
-            --border-color: #dee2e6;
-            --tag-color: #2f6f9f;
-            --attr-color: #4f9fcf;
-            --value-color: #d44950;
-            --comment-color: #6c757d;
-            --block-spacing: 25px;
-            --comment-bg: #f1f3f5;
-            --base-font-size: 16px;
-        }
-
-        .dark-mode {
-            --bg-color: #1a1a1a;
-            --text-color: #e0e0e0;
-            --code-bg: #2d2d2d;
-            --border-color: #444;
-            --tag-color: #4ec9b0;
-            --attr-color: #9cdcfe;
-            --value-color: #ce9178;
-            --comment-color: #adb5bd;
-            --comment-bg: #2b2b2b;
+            --space-dark: #0a0e17;
+            --space-light: #1a2138;
+            --neon-blue: #00f0ff;
+            --neon-purple: #b400ff;
+            --neon-pink: #ff00aa;
+            --star-color: rgba(255, 255, 255, 0.8);
+            --text-color: #e0f7ff;
+            --code-bg: rgba(10, 20, 40, 0.7);
+            --border-glow: 0 0 15px var(--neon-blue);
+            --font-main: 'Roboto Mono', monospace;
+            --font-heading: 'Orbitron', sans-serif;
         }
 
         body {
-            font-family: 'Segoe UI', system-ui, sans-serif;
-            background-color: var(--bg-color);
+            font-family: var(--font-main);
+            background-color: var(--space-dark);
             color: var(--text-color);
             line-height: 1.6;
-            padding: 20px;
             margin: 0;
-            transition: all 0.3s ease;
-            font-size: var(--base-font-size);
+            padding: 0;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(0, 240, 255, 0.1) 0%, transparent 25%),
+                radial-gradient(circle at 80% 70%, rgba(180, 0, 255, 0.1) 0%, transparent 25%),
+                linear-gradient(to bottom, rgba(10,14,23,0.9), rgba(20,25,40,0.9));
+            min-height: 100vh;
+            position: relative;
         }
 
-        .code-container {
-            max-width: 100%;
-            padding-bottom: 70px; /* Чтобы контент не перекрывался нижней панелью */
+        /* Звездный фон */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(2px 2px at 10% 20%, var(--star-color) 50%, transparent 100%),
+                radial-gradient(2px 2px at 90% 70%, var(--star-color) 50%, transparent 100%),
+                radial-gradient(1px 1px at 30% 60%, var(--star-color) 50%, transparent 100%),
+                radial-gradient(1px 1px at 70% 30%, var(--star-color) 50%, transparent 100%),
+                radial-gradient(3px 3px at 50% 80%, var(--star-color) 50%, transparent 100%);
+            background-size: 200px 200px;
+            animation: stars 60s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes stars {
+            from { transform: translateY(0); }
+            to { transform: translateY(-200px); }
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px 20px 120px;
+            position: relative;
+        }
+
+        /* Анимация космического корабля */
+        .spaceship {
+            position: fixed;
+            right: -200px;
+            top: 20%;
+            width: 200px;
+            height: 100px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100"><path fill="%2300f0ff" d="M200,50 L150,90 L120,70 L100,100 L80,70 L50,90 L0,50 L50,10 L80,30 L100,0 L120,30 L150,10 Z"/></svg>') no-repeat;
+            animation: flyby 30s linear infinite;
+            opacity: 0.7;
+            z-index: -1;
+        }
+
+        @keyframes flyby {
+            0% { transform: translateX(0) translateY(0) rotate(0deg); }
+            50% { transform: translateX(-120vw) translateY(100px) rotate(360deg); }
+            100% { transform: translateX(-240vw) translateY(0) rotate(720deg); }
         }
 
         .code-block {
             background-color: var(--code-bg);
-            padding: 15px 20px;
+            padding: 20px;
             border-radius: 8px;
-            border: 1px solid var(--border-color);
-            overflow-x: auto;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border: 1px solid var(--neon-blue);
+            margin-bottom: 25px;
+            box-shadow: var(--border-glow), inset 0 0 20px rgba(0, 240, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s;
+        }
+
+        .code-block:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px var(--neon-blue);
+        }
+
+        .code-block::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple), var(--neon-pink));
+            animation: scanline 4s linear infinite;
+        }
+
+        @keyframes scanline {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
         }
 
         .comment-block {
-            background-color: var(--comment-bg);
-            padding: 12px 20px;
-            border-left: 4px solid var(--comment-color);
-            margin: 5px 0 var(--block-spacing);
-            border-radius: 0 4px 4px 0;
-            color: var(--comment-color);
-            font-style: normal;
+            background-color: rgba(26, 33, 56, 0.7);
+            padding: 15px 20px;
+            border-left: 4px solid var(--neon-purple);
+            margin: 5px 0 30px;
+            border-radius: 0 8px 8px 0;
+            color: var(--text-color);
+            font-style: italic;
+            box-shadow: 0 0 15px rgba(180, 0, 255, 0.1);
+            backdrop-filter: blur(3px);
         }
 
         code {
-            font-family: 'Consolas', 'Courier New', monospace;
-            font-size: 0.95em;
+            font-family: var(--font-main);
+            font-size: 15px;
             white-space: pre-wrap;
             word-break: break-word;
             display: block;
             color: var(--text-color);
+            line-height: 1.5;
         }
 
         .tag {
-            color: var(--tag-color);
+            color: var(--neon-blue);
             font-weight: bold;
         }
 
         .attr {
-            color: var(--attr-color);
+            color: var(--neon-purple);
         }
 
         .value {
-            color: var(--value-color);
+            color: var(--neon-pink);
         }
 
         /* Нижняя панель навигации */
@@ -94,102 +162,145 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background-color: var(--code-bg);
+            background: rgba(10, 14, 23, 0.9);
             display: flex;
             justify-content: center;
-            padding: 10px 0;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-            z-index: 90;
-            gap: 15px;
+            padding: 20px 0;
+            box-shadow: 0 -5px 30px rgba(0, 0, 0, 0.5);
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            border-top: 1px solid var(--neon-blue);
         }
 
         .nav-btn {
-            width: 50px;
-            height: 50px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
-            background-color: var(--code-bg);
+            background: linear-gradient(145deg, #0f1425, #1a2138);
             color: var(--text-color);
-            border: 1px solid var(--border-color);
+            border: 2px solid var(--neon-blue);
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            font-size: 20px;
-            transition: all 0.2s ease;
+            margin: 0 20px;
+            font-size: 24px;
+            transition: all 0.3s ease;
+            box-shadow: var(--border-glow), inset 0 0 15px rgba(0, 240, 255, 0.2);
+            position: relative;
+            overflow: hidden;
         }
 
         .nav-btn:hover {
-            transform: scale(1.1);
-            background-color: var(--tag-color);
-            color: white;
+            transform: translateY(-10px) scale(1.1);
+            box-shadow: 0 0 30px var(--neon-blue);
+            color: var(--neon-blue);
         }
 
-        .font-toggle-btn {
-            font-weight: bold;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            line-height: 1;
+        .nav-btn::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(255,255,255,0) 0%,
+                rgba(255,255,255,0) 45%,
+                rgba(255,255,255,0.5) 50%,
+                rgba(255,255,255,0) 55%,
+                rgba(255,255,255,0) 100%
+            );
+            transform: rotate(30deg);
+            animation: shine 3s infinite;
         }
 
-        .font-toggle-btn span:first-child {
-            font-size: 0.8em;
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(30deg); }
+            100% { transform: translateX(100%) rotate(30deg); }
         }
 
-        .font-toggle-btn span:last-child {
-            font-size: 1.1em;
+        .nav-btn span {
+            position: relative;
+            z-index: 1;
         }
 
-        @media (max-width: 480px) {
-            body {
-                padding: 15px;
+        /* Анимация загрузки */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .code-block, .comment-block {
+            animation: fadeIn 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .code-block:nth-child(1) { animation-delay: 0.1s; }
+        .comment-block:nth-child(2) { animation-delay: 0.2s; }
+        .code-block:nth-child(3) { animation-delay: 0.3s; }
+        .comment-block:nth-child(4) { animation-delay: 0.4s; }
+        .code-block:nth-child(5) { animation-delay: 0.5s; }
+        .comment-block:nth-child(6) { animation-delay: 0.6s; }
+        .code-block:nth-child(7) { animation-delay: 0.7s; }
+        .comment-block:nth-child(8) { animation-delay: 0.8s; }
+        .code-block:nth-child(9) { animation-delay: 0.9s; }
+        .comment-block:nth-child(10) { animation-delay: 1.0s; }
+        .code-block:nth-child(11) { animation-delay: 1.1s; }
+        .comment-block:nth-child(12) { animation-delay: 1.2s; }
+        .code-block:nth-child(13) { animation-delay: 1.3s; }
+        .comment-block:nth-child(14) { animation-delay: 1.4s; }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px 100px;
+            }
+            
+            .nav-btn {
+                width: 60px;
+                height: 60px;
+                font-size: 20px;
+                margin: 0 15px;
             }
             
             .code-block, .comment-block {
-                padding: 12px 15px;
-                margin-bottom: 20px;
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px 10px 90px;
+            }
+            
+            .nav-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 18px;
+                margin: 0 10px;
             }
             
             code {
-                font-size: 0.9em;
-            }
-
-            .nav-btn {
-                width: 45px;
-                height: 45px;
-                font-size: 18px;
-            }
-
-            .bottom-nav {
-                gap: 10px;
-                padding: 8px 0;
+                font-size: 13px;
             }
         }
 
         @media (max-width: 320px) {
-            .code-block, .comment-block {
-                padding: 10px 12px;
-            }
-            
-            code {
-                font-size: 0.85em;
-            }
-            
-            :root {
-                --block-spacing: 18px;
-            }
-
             .nav-btn {
-                width: 40px;
-                height: 40px;
+                width: 45px;
+                height: 45px;
                 font-size: 16px;
+                margin: 0 5px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="code-container">
+    <div class="spaceship"></div>
+
+    <div class="container">
         <!-- Метатеги -->
         <div class="code-block">
             <code>&lt;<span class="tag">meta</span> <span class="attr">charset</span>=<span class="value">"UTF-8"</span>&gt;</code>
@@ -265,45 +376,42 @@
 
     <!-- Нижняя панель навигации -->
     <div class="bottom-nav">
-        <button class="nav-btn" onclick="window.location.href='/'">🏠</button>
-        <button class="nav-btn" id="themeToggleBtn">🌙</button>
-        <button class="nav-btn font-toggle-btn" id="fontToggleBtn">
-            <span>a A</span>
-        </button>
+        <button class="nav-btn" onclick="window.location.href='/'"><span>🚀</span></button>
+        <button class="nav-btn" id="themeToggleBtn"><span>🌌</span></button>
+        <button class="nav-btn" id="fontToggleBtn"><span>Aa</span></button>
     </div>
 
     <script>
         // Переключение темы
         const themeToggleBtn = document.getElementById('themeToggleBtn');
         
-        // Проверяем сохраненную тему
-        if (localStorage.getItem('darkMode') === 'true') {
-            document.body.classList.add('dark-mode');
-            themeToggleBtn.textContent = '☀️';
-        }
-
         themeToggleBtn.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            const isDark = document.body.classList.contains('dark-mode');
-            localStorage.setItem('darkMode', isDark);
-            themeToggleBtn.textContent = isDark ? '☀️' : '🌙';
+            // В космическом стиле только темная тема, но можно добавить эффект
+            document.body.classList.toggle('pulse-effect');
+            setTimeout(() => {
+                document.body.classList.remove('pulse-effect');
+            }, 1000);
         });
 
         // Изменение размера шрифта
         const fontToggleBtn = document.getElementById('fontToggleBtn');
         const root = document.documentElement;
-        const minFontSize = 12;
-        const maxFontSize = 24;
         const fontSizes = [14, 16, 18, 20];
-        let currentFontIndex = 1; // Начинаем со среднего размера
+        let currentFontIndex = 1;
 
         function updateFontSize() {
             const newSize = fontSizes[currentFontIndex];
-            root.style.setProperty('--base-font-size', `${newSize}px`);
+            root.style.fontSize = `${newSize}px`;
             localStorage.setItem('fontSize', newSize);
+            
+            // Анимация при изменении
+            document.body.classList.add('pulse-effect');
+            setTimeout(() => {
+                document.body.classList.remove('pulse-effect');
+            }, 500);
         }
 
-        // Восстановление размера шрифта из localStorage
+        // Восстановление размера шрифта
         const savedFontSize = localStorage.getItem('fontSize');
         if (savedFontSize) {
             const size = parseInt(savedFontSize);
@@ -318,6 +426,40 @@
             currentFontIndex = (currentFontIndex + 1) % fontSizes.length;
             updateFontSize();
         });
+
+        // Анимация кнопок при загрузке
+        document.querySelectorAll('.nav-btn').forEach((btn, index) => {
+            btn.style.animation = `fadeIn 0.8s ease-out ${0.5 + index * 0.2}s forwards`;
+            btn.style.opacity = '0';
+        });
+
+        // Случайные вспышки звезд
+        setInterval(() => {
+            const star = document.createElement('div');
+            star.style.position = 'fixed';
+            star.style.width = Math.random() * 5 + 2 + 'px';
+            star.style.height = star.style.width;
+            star.style.background = 'white';
+            star.style.borderRadius = '50%';
+            star.style.top = Math.random() * 100 + 'vh';
+            star.style.left = Math.random() * 100 + 'vw';
+            star.style.boxShadow = `0 0 ${Math.random() * 10 + 5}px white`;
+            star.style.opacity = '0';
+            star.style.transition = 'opacity 0.5s, transform 0.5s';
+            document.body.appendChild(star);
+            
+            setTimeout(() => {
+                star.style.opacity = '1';
+                star.style.transform = `scale(${Math.random() * 2 + 1})`;
+            }, 10);
+            
+            setTimeout(() => {
+                star.style.opacity = '0';
+                setTimeout(() => {
+                    star.remove();
+                }, 500);
+            }, 1000);
+        }, 300);
     </script>
 </body>
 </html>
