@@ -402,34 +402,34 @@
 			<code>&lt;<span class="tag">!DOCTYPE</span> <span class="attr">html</span>&gt;</code>
 		</div>
 		<div class="comment-block">
-			Опредение типа документа
+			Тип документа
 		</div>
 		<div class="code-block">
 			<code>&lt;<span class="tag">html</span> <span class="attr">lang="ru"</span>&gt;</code>
 		</div>
 		<div class="comment-block">
-			Язык страницы
+			Выбор языка
 		</div>
 
 		<div class="code-block">
 			<code>&lt;<span class="tag">meta</span> <span class="attr">charset</span>=<span class="value">"UTF-8"</span>&gt;</code>
 		</div>
 		<div class="comment-block">
-			Для кириллицы и спецсимволов
+			Кириллица и спецсимволы
 		</div>
 
 		<div class="code-block">
 			<code>&lt;<span class="tag">meta</span> <span class="attr">name</span>=<span class="value">"viewport"</span> <span class="attr">content</span>=<span class="value">"width=device-width, initial-scale=1.0"</span>&gt;</code>
 		</div>
 		<div class="comment-block">
-			Адаптивность для мобильных
+			Адаптивность
 		</div>
 
 		<div class="code-block">
 			<code>&lt;<span class="tag">meta</span> <span class="attr">name</span>=<span class="value">"description"</span> <span class="attr">content</span>=<span class="value">"описание страницы"</span>&gt;</code>
 		</div>
 		<div class="comment-block">
-			Краткое описание
+			Описание
 		</div>
 
 		<div class="code-block">
@@ -443,7 +443,7 @@
 			<code>&lt;<span class="tag">meta</span> <span class="attr">name</span>=<span class="value">"robots"</span> <span class="attr">content</span>=<span class="value">"index, follow"</span>&gt;</code>
 		</div>
 		<div class="comment-block">
-			Инструкция поисковым роботам: индексировать страницу и переходить по ссылкам
+			Инструкция поисковым роботам
 		</div>
 
 		<div class="code-block">
@@ -460,7 +460,6 @@
 			Не переходить
 		</div>
 
-		<!-- OpenGraph -->
 		<div class="code-block">
 			<code>&lt;<span class="tag">meta</span> <span class="attr">property</span>=<span class="value">"og:title"</span> <span class="attr">content</span>=<span class="value">"описание"</span>&gt;</code>
 		</div>
@@ -483,7 +482,6 @@
 		</div>
 	</div>
 
-	<!-- Нижняя панель навигации -->
 	<div class="bottom-nav">
 		<button class="nav-btn" onclick="window.location.href='/'"><span>🚀</span></button>
 		<button class="nav-btn" id="themeToggleBtn"><span>🌓</span></button>
@@ -491,10 +489,8 @@
 	</div>
 
 	<script>
-		// Переключение темы
 		const themeToggleBtn = document.getElementById('themeToggleBtn');
 
-		// Проверяем сохраненную тему
 		if (localStorage.getItem('themeMode') === 'light') {
 			document.body.classList.add('light-mode');
 			themeToggleBtn.innerHTML = '<span>🌙</span>';
@@ -506,14 +502,12 @@
 			localStorage.setItem('themeMode', isLight ? 'light' : 'dark');
 			themeToggleBtn.innerHTML = isLight ? '<span>🌙</span>' : '<span>🌓</span>';
 
-			// Анимация переключения
 			document.body.classList.add('pulse-effect');
 			setTimeout(() => {
 				document.body.classList.remove('pulse-effect');
 			}, 500);
 		});
 
-		// Изменение размера шрифта
 		const fontToggleBtn = document.getElementById('fontToggleBtn');
 		const root = document.documentElement;
 		const fontSizes = [14, 16, 18, 20];
@@ -524,14 +518,12 @@
 			root.style.setProperty('--base-font-size', `${newSize}px`);
 			localStorage.setItem('fontSize', newSize);
 
-			// Анимация изменения
 			document.body.classList.add('pulse-effect');
 			setTimeout(() => {
 				document.body.classList.remove('pulse-effect');
 			}, 300);
 		}
 
-		// Восстановление размера шрифта из localStorage
 		const savedFontSize = localStorage.getItem('fontSize');
 		if (savedFontSize) {
 			const size = parseInt(savedFontSize);
@@ -547,13 +539,11 @@
 			updateFontSize();
 		});
 
-		// Анимация кнопок при загрузке
 		document.querySelectorAll('.nav-btn').forEach((btn, index) => {
 			btn.style.animation = `fadeIn 0.8s ease-out ${0.5 + index * 0.2}s forwards`;
 			btn.style.opacity = '0';
 		});
 
-		// Случайные вспышки звезд
 		setInterval(() => {
 			const star = document.createElement('div');
 			star.style.position = 'fixed';

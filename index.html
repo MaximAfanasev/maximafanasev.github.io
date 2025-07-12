@@ -251,7 +251,6 @@
     </div>
 
     <script>
-        // Добавляем эффект "загрузки" при открытии страницы
         document.addEventListener('DOMContentLoaded', () => {
             const terminal = document.querySelector('.terminal');
             terminal.style.opacity = '0';
@@ -263,7 +262,6 @@
                 terminal.style.transform = 'translateY(0)';
             }, 300);
             
-            // Случайные мерцания как в старом терминале
             setInterval(() => {
                 const randomGlow = document.createElement('div');
                 randomGlow.style.position = 'absolute';
