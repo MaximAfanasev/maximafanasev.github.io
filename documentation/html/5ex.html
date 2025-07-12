@@ -1,17 +1,191 @@
-<img src="image.jpg" alt="описание">
-<!--Изображение (обязательный атрибут alt для доступности)-->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Примеры изображений в HTML</title>
+<style>
+    :root {
+        --bg-color: #1a1a1a;
+        --text-color: #e0e0e0;
+        --header-color: #3498db;
+        --link-color: #5dade2;
+        --border-color: #444;
+        --hr-color: #444;
+        --card-bg: #2d2d2d;
+        --code-bg: #333;
+    }
 
-<picture>
-  <source>
-  <img>
-<!--Адаптивное изображение (разные версии для разных экранов)-->
+    body {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        transition: all 0.3s ease;
+    }
 
-<figure>
-  <img>
-  <figcaption>
-<!--Контейнер для изображения с подписью-->
+    .theme-toggle {
+        position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 8px 15px;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            cursor: pointer;
+            z-index: 100;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
 
-<img usemap="#map">
-<map>
-  <area shape="координаты">
-<!--Изображение-карта с кликабельными областями-->
+    section {
+        background-color: var(--card-bg);
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        border: 1px solid var(--border-color);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    h1, h2, h3 {
+        color: var(--header-color);
+        margin-top: 0;
+    }
+
+    .example-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin-top: 20px;
+    }
+
+    .example {
+        flex: 1;
+        min-width: 250px;
+        background-color: var(--bg-color);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        padding: 15px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .example-title {
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: var(--header-color);
+    }
+
+    .example-description {
+        margin-bottom: 15px;
+            font-size: 0.9em; 
+            color : var(--text-color); 
+    }
+
+    .example-link {
+      display:inline-block; 
+      margin-top :10px; 
+      padding :8px 15px; 
+      background-color :var(--header-color); 
+      color :white; 
+      border-radius :4px; 
+      text-decoration:none; 
+      transition :background-color 0.3s; 
+    }
+    
+    .example-link:hover {
+      background-color :var(--link-color); 
+      text-decoration:none; 
+    }
+    
+    code {
+      font-family:'Courier New', Courier, monospace; 
+      background-color :var(--code-bg); 
+      padding :2px 5px; 
+      border-radius :3px; 
+      display:block; 
+      white-space :pre-wrap; 
+      margin :10px 0; 
+      overflow-x:auto; 
+    }
+    
+    hr {
+      border:none; height :1px; background-color :var(--hr-color); margin :30px 0; }
+      
+     @media(max-width :768px){
+       body { padding :15 px;}
+       section { padding :15 px;}
+       .theme-toggle { top :10 px; right :10 px; padding :6 px12 px;}
+     }
+     @media(max-width :480 px){
+       body { padding :10 px;}
+       section { padding :12 px;}
+       hr {margin :20 px;}
+       .example-container { flex-direction :column;}
+     }
+</style>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle">🌙 Темная тема</button>
+
+<header>
+<h1>Примеры изображений в HTML</h1>
+<p>Различные способы вставки изображений и их атрибуты</p>
+</header>
+
+<section>
+<h2>Основные теги изображений</h2>
+
+<div class="example-container">
+<div class="example">
+<div class="example-title">Тег &lt;img&gt;</div>
+<div class="example-description">Базовый способ вставки изображения с обязательным атрибутом alt для доступности.</div>
+<code>&lt;img src="image.jpg" alt="описание"&gt;</code>
+<a href="#" class="example-link">Посмотреть изображение</a>
+</div>
+
+<div class="example">
+<div class="example-title">Тег &lt;picture&gt;</div>
+<div class="example-description">Используется для адаптивных изображений (разные версии для разных экранов).</div>
+<code>&lt;pictures&gt;<br>&nbsp;&nbsp;&lt;source srcset="image-small.jpg" media="(max-width:600px)"&gt;<br>&nbsp;&nbsp;&lt;source srcset="image-large.jpg" media="(min-width:601px)"&gt;<br>&nbsp;&nbsp;&lt;img src="image.jpg" alt="описание"&gt;<br>&lt;/picture&gt;</code>
+<a href="#" class="example-link">Посмотреть пример</a>
+</div>
+
+<div class="example">
+<div class="example-title">Тег &lt;figure&gt;</div>
+<div class="example-description">Контейнер для изображения с подписью (figcaption).</div>
+<code>&lt;figure&gt;<br>&nbsp;&nbsp;&lt;img src="image.jpg" alt="описание"&gt;<br>&nbsp;&nbsp;&lt;figcaption&gt;Подпись к изображению&lt;/figcaption&gt;<br>&lt;/figure&gt;</code>
+<a href="#" class="example-link">Посмотреть пример</a>
+</div>
+
+<div class="example">
+<div class="example-title">Изображение с картой (usemap)</div>
+<div class="example-description">Области внутри изображения с помощью карты.</div>
+<code>&lt;img src="map-image.jpg" usemap="#map"&gt;<br>&lt;map name="map"&gt;<br>&nbsp;&nbsp;&lt;area shape="rect" coords="34,44,270,350" href="#section1"&gt;<br>&nbsp;&nbsp;&lt;area shape="circle" coords="377,300,44" href="#section2"&gt;<br>&lt;/map&gt;</code>
+<a href="#" class="example-link">Посмотреть пример карты</a>
+</div>
+</div>
+</section>
+
+<script>
+// Переключение темы
+const themeToggle = document.getElementById('themeToggle');
+
+if (localStorage.getItem('darkMode') === 'true') {
+document.body.classList.add('dark-mode');
+themeToggle.textContent = '☀️ Светлая тема';
+}
+
+themeToggle.addEventListener('click', () => {
+document.body.classList.toggle('dark-mode');
+const isDark = document.body.classList.contains('dark-mode');
+localStorage.setItem('darkMode', isDark);
+themeToggle.textContent = isDark ? '☀️ Светлая тема' : '🌙 Темная тема';
+});
+</script>
+
+</body>
+</html>
