@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ввод типа документа</title>
+<!-- Подключение Material Icons -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+<!-- Подключение Google Fonts для шрифтов -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet" />
+
+<style>
+  /* Общий стиль страницы с градиентом */
+  body {
+    margin: 0;
+    font-family: 'Montserrat', 'Roboto', sans-serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-size: 400% 400%;
+    animation: gradientAnimation 12s ease infinite;
+    padding-top: 50px;
+    color: #fff;
+  }
+
+  @keyframes gradientAnimation {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+  }
+
+  /* Карточка с содержимым */
+  .card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  h2 {
+    color: #fff;
+    text-shadow: 0px 2px 4px rgba(0,0,0,0.2);
+    margin-bottom: 24px;
+    font-size: 28px;
+    font-weight: 600;
+  }
+
+  /* Контейнер для инпутов */
+  .inputs {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px 0;
+  }
+
+  /* Стиль для инпутов */
+  input[type="text"] {
+    width: 34px;
+    height: 44px;
+    font-size: 28px;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    border-radius: 8px;
+    border: none;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    outline: none;
+    color: #333;
+    font-weight: 500;
+  }
+
+  input[type="text"]:focus {
+    background: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Подсказка под инпутами */
+  .hint {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 10px;
+    font-style: italic;
+  }
+
+  /* Сообщение о результате */
+  #result {
+    margin-top: 30px;
+    font-weight: 600;
+    font-size: 22px;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    min-height: 30px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    display: inline-block;
+    transition: all 0.4s ease;
+  }
+
+  /* Анимация успеха */
+  .success {
+    animation: successAnimation 0.6s ease;
+    background: rgba(46, 213, 115, 0.3) !important;
+  }
+
+  @keyframes successAnimation {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+  }
+
+  /* Кнопка для сброса */
+  button.reset-btn {
+    margin-top: 25px;
+    padding: 12px 28px;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #764ba2;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  button.reset-btn:hover {
+    background: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Иконка */
+  .material-icons {
+    font-size: 20px;
+  }
+
+  /* Адаптивность */
+  @media (max-width: 600px) {
+    .card {
+      padding: 24px 16px;
+      width: 85%;
+    }
+    
+    input[type="text"] {
+      width: 40px;
+      height: 50px;
+      font-size: 24px;
+    }
+    
+    h2 {
+      font-size: 24px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <h2>Язык страницы</h2>
+  <div class="inputs" id="inputContainer"></div>
+  <div id="result"></div>
+</div>
+
+<script>
+const correctAnswer = '<html lang="ru">';
+const totalInputs = correctAnswer.length;
+
+const container = document.getElementById('inputContainer');
+const resultElement = document.getElementById('result');
+
+// Создаем инпуты
+for (let i = 0; i < totalInputs; i++) {
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.maxLength = 1;
+  input.dataset.index = i;
+  input.setAttribute('aria-label', `Символ ${i + 1} из ${totalInputs}`);
+
+  // Обработчик ввода
+  input.addEventListener('input', function() {
+    const index = parseInt(this.dataset.index);
+    const value = this.value;
+
+    // Ограничение на один символ
+    if (value.length > 1) {
+      this.value = value.charAt(0);
+    }
+
+    if (value !== '') {
+      if (index + 1 < totalInputs) {
+        document.querySelector(`input[data-index="${index+1}"]`).focus();
+      } else {
+        checkAnswer();
+      }
+    }
+    
+    checkAnswer();
+  });
+
+  // Обработчик удаления (backspace)
+  input.addEventListener('keydown', function(e) {
+    if (e.key === 'Backspace' && this.value === '') {
+      const index = parseInt(this.dataset.index);
+      if (index > 0) {
+        document.querySelector(`input[data-index="${index-1}"]`).focus();
+      }
+    }
+  });
+
+  container.appendChild(input);
+}
+
+// Установить фокус на первый инпут при загрузке
+document.querySelector('input[data-index="0"]').focus();
+
+// Проверка правильности ответа
+function checkAnswer() {
+  let userInput = '';
+  for (let i = 0; i < totalInputs; i++) {
+    const val = document.querySelector(`input[data-index="${i}"]`).value || '';
+    userInput += val;
+  }
+  
+  if (userInput === correctAnswer) {
+    resultElement.textContent = 'Верно!';
+    resultElement.classList.add('success');
+		
+		setTimeout(function() {
+			window.location.href = "../index.html";
+		}, 3000);
+    
+    // Отключить все инпуты после правильного ответа
+    document.querySelectorAll('input').forEach(inp => {
+      inp.disabled = true;
+      inp.style.background = 'rgba(46, 213, 115, 0.3)';
+      inp.style.color = '#fff';
+    });
+    
+  } else {
+    resultElement.textContent = '';
+    resultElement.classList.remove('success');
+  }
+}
+
+// Функция сброса
+function resetInputs() {
+  document.querySelectorAll('input').forEach(inp => {
+    inp.value = '';
+    inp.disabled = false;
+    inp.style.background = 'rgba(255, 255, 255, 0.9)';
+    inp.style.color = '#333';
+  });
+  resultElement.textContent = '';
+  resultElement.classList.remove('success');
+  document.querySelector(`input[data-index="0"]`).focus();
+}
+</script>
+
+</body>
+</html>
