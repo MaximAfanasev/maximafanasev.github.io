@@ -242,6 +242,10 @@ function checkAnswer() {
   if (userInput === correctAnswer) {
     resultElement.textContent = 'Верно!';
     resultElement.classList.add('success');
+		
+		setTimeout(function() {
+			window.location.href = "../index.html";
+		}, 3000);
     
     // Отключить все инпуты после правильного ответа
     document.querySelectorAll('input').forEach(inp => {
