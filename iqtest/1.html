@@ -166,13 +166,20 @@
     
     h2 {
       font-size: 24px;
+			filter: blur(6px);
     }
+		h2:hover {
+			filter: blur(0px);
+			transition: 7s;
+			cursor: cell;
+		}
   }
 </style>
 </head>
 <body>
 
 <div class="card">
+ <h2>&#60;!DOCTYPE html></h2>
   <div class="inputs" id="inputContainer"></div>
   <div id="result"></div>
 </div>
