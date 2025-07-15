@@ -136,39 +136,7 @@
 <p>Различные способы вставки изображений и их атрибуты</p>
 </header>
 
-<section>
-<h2>Основные теги изображений</h2>
 
-<div class="example-container">
-<div class="example">
-<div class="example-title">Тег &lt;img&gt;</div>
-<div class="example-description">Базовый способ вставки изображения с обязательным атрибутом alt для доступности.</div>
-<code>&lt;img src="image.jpg" alt="описание"&gt;</code>
-<a href="#" class="example-link">Посмотреть изображение</a>
-</div>
-
-<div class="example">
-<div class="example-title">Тег &lt;picture&gt;</div>
-<div class="example-description">Используется для адаптивных изображений (разные версии для разных экранов).</div>
-<code>&lt;pictures&gt;<br>&nbsp;&nbsp;&lt;source srcset="image-small.jpg" media="(max-width:600px)"&gt;<br>&nbsp;&nbsp;&lt;source srcset="image-large.jpg" media="(min-width:601px)"&gt;<br>&nbsp;&nbsp;&lt;img src="image.jpg" alt="описание"&gt;<br>&lt;/picture&gt;</code>
-<a href="#" class="example-link">Посмотреть пример</a>
-</div>
-
-<div class="example">
-<div class="example-title">Тег &lt;figure&gt;</div>
-<div class="example-description">Контейнер для изображения с подписью (figcaption).</div>
-<code>&lt;figure&gt;<br>&nbsp;&nbsp;&lt;img src="image.jpg" alt="описание"&gt;<br>&nbsp;&nbsp;&lt;figcaption&gt;Подпись к изображению&lt;/figcaption&gt;<br>&lt;/figure&gt;</code>
-<a href="#" class="example-link">Посмотреть пример</a>
-</div>
-
-<div class="example">
-<div class="example-title">Изображение с картой (usemap)</div>
-<div class="example-description">Области внутри изображения с помощью карты.</div>
-<code>&lt;img src="map-image.jpg" usemap="#map"&gt;<br>&lt;map name="map"&gt;<br>&nbsp;&nbsp;&lt;area shape="rect" coords="34,44,270,350" href="#section1"&gt;<br>&nbsp;&nbsp;&lt;area shape="circle" coords="377,300,44" href="#section2"&gt;<br>&lt;/map&gt;</code>
-<a href="#" class="example-link">Посмотреть пример карты</a>
-</div>
-</div>
-</section>
 
 <script>
 // Переключение темы
