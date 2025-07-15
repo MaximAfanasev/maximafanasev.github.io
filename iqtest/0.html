@@ -10,22 +10,54 @@
 			color: #fff;
 			font-family: monospace;
 		}
-		
+
+		div p:first-child {
+			filter: blur(6px);
+		}
+
+		div p:first-child:hover {
+			filter: blur(0);
+			cursor: crosshair;
+		}
+
 	</style>
 </head>
 
 <body>
-	&#60;!DOCTYPE html>
-	тип документа
-
-	&#60;html lang="ru">
-	язык страницы
-
-	&#60;head>
-	обертка мета тегов и линков
-
-	&#60;title></title>
-	заголовок страницы
+	<div>
+		<p>&#60;!DOCTYPE html></p>
+		<p>тип документа</p>
+	</div>
+	
+	<div>
+		<p>&#60;html lang="ru"></p>
+		<p>язык страницы</p>
+	</div>
+	
+	<div>
+		<p>&#60;head></p>
+		<p>обертка мета тегов и линков</p>
+	</div>
+	
+	<div>
+		<p>&#60;title></p>
+		<p>заголовок страницы</p>
+	</div>
+	
+	<div>
+		<p></p>
+		<p></p>
+	</div>
+	
+	<div>
+		<p></p>
+		<p></p>
+	</div>
+	
+	<div>
+		<p></p>
+		<p></p>
+	</div>
 
 	&#60;meta charset="UTF-8">
 	кодировка страницы
