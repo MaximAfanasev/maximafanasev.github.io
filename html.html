@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<title></title>
+
+	<meta charset="UTF-8">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<meta name="robots" content="index">
+	<meta name="robots" content="follow">
+	<meta name="robots" content="noindex">
+	<meta name="robots" content="nofollow">
+	
+	<meta property="og:title" content="">
+	<meta property="og:description" content="">
+	<meta property="og:image" content="">
+	<base href="" target="">
+
+	<link rel="stylesheet" href="s.css" type="text/css">
+	<link rel="stylesheet" href="https://google.com" type="text/css">
+
+	<link rel="icon" href="f.ico" type="image/x-icon, image/svg+xml">
+	<link rel="icon" href="f.svg" type="image/x-icon, image/svg+xml">
+	
+	<link rel="" href="" type="" sizes="32x32">
+	<link rel="apple-touch-icon" href="i.png">
+
+	<style></style>
+</head>
+
+<body>
+	<header></header>
+	<script></script>
+	<noscript></noscript>
+	<footer></footer>
+</body>
+
+<section></section>
+<address></address>
+<article></article>
+<aside></aside>
+<details>
+	<summary></summary>
+</details>
+<dialog></dialog>
+<main></main>
+<nav></nav>
+
+<template></template>
+
+<user-profile></user-profile>
+
+<template id="">
+	<slot name=""></slot>
+</template>
+
+<user-card>
+	<span slot=""></span>
+</user-card>
+
+<h1>Главный и единственный</h1>
+<h2>Подзаголовок</h2>
+<h3>Раздел статьи</h3>
+<h4>Подраздел</h4>
+<h5>Маленький заголовок</h5>
+<h6>Самый маленький</h6>
+
+<p>Основной параграф текста</p>
+<div>блочный элемент</div>
+<span>строчный элемент</span>
+
+<br>перенос
+<hr>линия
+длинноеслово<wbr>спереносом
+
+<b>Жирный</b>
+<strong>важный</strong>
+<i>курсив</i>
+<em>акцент</em>
+<u>подчёркнутый</u>
+<s>зачёркнутый</s>
+<del>удалённый</del>
+<ins>добавленный</ins>
+<mark>выделенный</mark>
+<small>мелкий</small>
+<sub>верхний</sub>
+<sup>нижний</sup>
+
+<code>const x = 10</code>
+<pre>
+"Форматированный код";
+</pre>
+<var>y</var>
+<kbd>Enter</kbd>
+<samp>Success</samp>
+
+<ul>
+	<li>1</li>
+	<li>2</li>
+</ul>
+
+<ol>
+	<li>1</li>
+	<li>2</li>
+</ol>
+
+<dl>
+	<dt>1</dt>
+	<dd>2</dd>
+</dl>
+
+<abbr title="HTML">HTML</abbr>
+<dfn>веб-страница</dfn>
+
+<blockquote cite="https://e.com">Длинная цитата</blockquote>
+<cite>А.С. Пушкин</cite>
+<q>Гений и злодейство</q>
+
+<img src="i.jpg" alt="описание">
+
+<pictures>
+	<source srcset="is.jpg" media="(max-width:600px)">
+	<img src="i.jpg" alt="описание">
+</pictures>
+
+<figure>
+	<img src="i.jpg" alt="описание">
+	<figcaption>Подпись</figcaption>
+</figure>
+
+<map name="map">
+	<area shape="rect" coords="34,44,270,350" href="#s1">
+</map>
+
+<a href="https://example.com">Пример ссылки</a>
+
+<a href="https://example.com" target="_blank">
+	Открыть в новой вкладке
+</a>
+
+<a href="/files/document.pdf" download>
+	Скачать PDF
+</a>
+
+<a href="/files/document.pdf" download="my-file.pdf">
+	Скачать с другим именем
+</a>
+
+<a href="#section-id">К разделу</a>
+<div id="section-id">...</div>
+
+<a href="mailto:email@example.com">
+	Написать нам
+</a>
+
+<a href="tel:+1234567890">Позвонить нам</a>
+
+<a href="#" title="Это всплывающая подсказка">
+	Наведи на меня
+</a>
+
+<a href="https://example.de" hreflang="de">
+	Немецкая версия
+</a>
+
+<table>
+	<tr>
+		<th>
+		</th>
+		<td></td>
+	</tr>
+</table>
+
+<form action="/submit" method="post">
+	<!--Контейнер для элементов формы (отправка POST-запросом)-->
+
+	<label for="input-id">
+		<!--Текстовая метка для привязки к элементу формы-->
+
+		<input type="text">
+		<!--Текстовое поле ввода (однострочное)-->
+
+		<input name="field-name">
+		<!--Идентификатор поля для данных формы-->
+
+		<input type="password">
+		<!--Поле для ввода пароля (символы скрыты)-->
+
+		<input type="email">
+		<!--Поле для email с валидацией формата-->
+
+		<input type="number">
+		<!--Поле для числового ввода-->
+
+		<input type="checkbox">
+		<!--Флажок для выбора опций (множественный выбор)-->
+
+		<input type="radio">
+		<!--Переключатель (выбор одной опции из группы)-->
+
+		<input placeholder="Подсказка">
+		<!--Вспомогательный текст в пустом поле-->
+
+		<input required>
+		<!--Обязательное для заполнения поле-->
+
+		<input disabled>
+		<!--Неактивное (заблокированное) поле-->
+
+		<input readonly>
+		<!--Поле только для чтения (без редактирования)-->
+
+		<output>
+			<!--Отображение результата вычислений-->
+
+			<textarea rows="4" cols="50">
+<!--Многострочное текстовое поле-->
+
+<select>
+<!--Выпадающий список выбора-->
+
+<optgroup label="Группа">
+<!--Группировка вариантов в select-->
+
+<option value="1">
+<!--Вариант выбора в списке-->
+
+<fieldset>
+<!--Группировка связанных полей формы-->
+
+<legend>
+<!--Заголовок группы полей fieldset-->
+
+<datalist id="list-id">
+<!--Список подсказок для автозаполнения-->
+
+<progress value="70" max="100">
+<!--Индикатор выполнения процесса-->
+
+<meter value="0.6" min="0" max="1">
+<!--Графическое отображение значения в диапазоне-->
+
+<button type="button">
+<!--Кнопка без действия по умолчанию-->
+
+<button type="submit">
+<!--Кнопка отправки формы-->
+
+<button type="reset">
+<!--Кнопка сброса значений формы-->
+
+<audio controls>
+<source src="audio.mp3" type="audio/mpeg">
+<!--Аудиоплеер с элементами управления-->
+
+<video controls width="320" height="240">
+<source src="video.mp4" type="video/mp4">
+<!--Видеоплеер с элементами управления-->
+
+<track kind="subtitles" srclang="ru">
+<!--Субтитры для видео/аудио-->
+
+<embed src="game.swf" type="application/x-shockwave-flash">
+<!--Встраиваемый Flash-контент (устаревший)-->
+
+<object data="document.pdf" type="application/pdf">
+<param name="autoplay" value="true">
+<!--Встраивание внешних ресурсов (PDF, Flash)-->
+
+<iframe src="https://example.com" sandbox="allow-scripts">
+<!--Встроенная веб-страница с ограничениями безопасности-->
+
+<canvas id="drawing" width="200" height="100">
+<!--Контейнер для динамической графики (рисование через JS)-->
+
+<svg width="100" height="100">
+<circle cx="50" cy="50" r="40">
+<!--Векторная графика SVG-->
+
+<div id="unique-element">
+<!--Уникальный идентификатор элемента (должен быть один на странице)-->
+
+<div class="group-class">
+<!--Класс для стилизации и группировки элементов-->
+
+<div hidden>
+<!--Скрытый элемент (не отображается на странице)-->
+
+<button tabindex="1">
+<!--Управление порядком перехода по Tab-->
+
+<div contenteditable="true">
+<!--Редактируемый пользователем контент-->
+
+<div dir="rtl">
+<!--Текст с направлением справа налево (для арабского, иврита)-->
+
+<div data-custom="value">
+<!--Пользовательские data-атрибуты для хранения информации-->
+
+<div draggable="true">
+<!--Элемент, который можно перетаскивать-->
+
+<textarea spellcheck="true">
+<!--Проверка орфографии в текстовом поле-->
+
+<button onclick="handleClick()">
+<!--Обработчик клика (лучше использовать addEventListener)-->
+
+<div onmouseover="highlight()">
+<!--Событие при наведении курсора-->
+
+<div onmouseout="unhighlight()">
+<!--Событие при уходе курсора-->
+
+<input onkeydown="logKey(event)">
+<!--Событие при нажатии клавиши-->
+
+<body onload="init()">
+<!--Событие после полной загрузки страницы-->
+
+<form onsubmit="validateForm()">
+<!--Обработчик отправки формы-->
+
+
+	
+	
+*                    				Все элементы
+div                  				Все div
+.class               				Элементы с class="class"
+#id                  				Элемент с id="id"
+
+div p                				Все p внутри div
+div > p              				p прямые потомки div
+div + p              				p сразу после div
+div ~ p              				Все p после div
+
+position: static    				По умолчанию, в потоке документа
+position: relative  				Относительное позиционирование
+position: absolute  				Абсолютное позиционирование
+position: fixed     				Фиксированное позиционирование
+position: sticky    				Липкое позиционирование
+
+[title]                 		Элементы с атрибутом title
+[href="..."]            		Точное значение атрибута
+[class^="icon-"]        		Начинается с...
+[class$="-btn"]         		Заканчивается на...
+[class*="error"]        		Содержит подстроку
+
+:hover                  		При наведении
+:active                 		При клике
+:focus                  		При фокусе
+
+:link                   		Непосещённая ссылка
+:visited                		Посещённая ссылка
+
+:nth-of-type(3)         		Конкретный элемент
+:nth-child(even)         		Элемент по порядку
+:nth-child(odd)         		Элемент по порядку
+:nth-last-of-type           
+
+:first-child          			Первый потомок
+:last-child           			Последний потомок
+:first-of-type          		Первый элемент типа
+:last-of-type           		Последний элемент типа
+
+:only-child             		Единственный потомок
+:not()         		        	Исключение
+:empty
+:only-of-type
+
+
+:checked                 		Выбранный чекбокс
+:disabled                		Отключённые поля
+:valid                   		Корректные данные
+:placeholder-shown       		Показ placeholder
+
+::before                 		Добавить контент ДО
+::after                  		Добавить контент ПОСЛЕ
+::first-letter           		Стиль первой букв
+::first-line             		Стиль первой строки
+::selection              		Выделенный текст
+::selection              		Стиль выделенного текста
+
+padding                 		Внутренние отступы
+margin                  		Внешние отступы
+
+font-size               		Размер шрифта (px, em, rem, %)
+font-family             		Семейство шрифтов (Arial, sans-serif)
+font-weight             		Насыщенность (normal, bold, 100-900)
+font-style              		Курсив (italic, oblique, normal)
+font-variant            		Капитель (small-caps), альтернативные глифы
+
+line-height             		Высота строки (число, px, em, %)
+
+color                   		Цвет текста (hex, rgb, hsl, имя цвета)
+
+vertical-align          		Вертикальное выравнивание (baseline, top, middle, bottom)
+
+font-feature-settings    		Расширенные настройки OpenType
+
+text-align              		Горизонтальное выравнивание (left, right, center, justify)
+text-decoration         		Оформление (underline, overline, line-through, none)
+text-transform          		Регистр (uppercase, lowercase, capitalize)
+text-shadow             		Тень текста (x y blur color)
+text-overflow           		Обрезка текста (ellipsis, clip)
+text-rendering           		Оптимизация рендеринга
+
+letter-spacing          		Расстояние между буквами
+word-spacing            		Расстояние между словами
+white-space              		Обработка пробелов (normal, nowrap, pre, pre-wrap)
+
+word-break              		Перенос слов (normal, break-all, keep-all)
+hyphens                 		Автоматический перенос слов (auto, manual, none)
+
+background-color        		Цвет фона текста
+background-image        		Фоновое изображение
+background-clip: text   		Обрезать фон по тексту
+
+box-shadow
+text-shadow
+
+display: flex
+flex-direction
+justify-content
+align-items
+align-self
+flex-wrap
+align-content
+order
+flex-grow
+flex-shrink
+flex-basis
+gap
+
+display: grid
+grid-row-srart
+grid-column-start
+grid-column-end
+grid-template-areas
+gap
