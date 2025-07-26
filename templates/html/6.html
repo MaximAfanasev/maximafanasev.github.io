@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<title>Page</title>
+
+	<meta charset="UTF-8">
+	<meta name="description" content="page">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<meta name="robots" content="index">
+	<meta name="robots" content="follow">
+
+	<meta property="og:title" content="">
+	<meta property="og:description" content="">
+	<meta property="og:image" content="">
+
+	<link rel="stylesheet" href="../../css/indexPageStyle.css" type="text/css">
+	<link rel="stylesheet" href="../css/style.css" type="text/css">
+
+	<link rel="icon" href="f.ico" type="image/x-icon, image/svg+xml">
+
+	<style>
+		div,
+		textarea,
+		button,
+		form {
+			border: 1px solid lightgray;
+			margin-bottom: 20px;
+			padding: 20px;
+			border-radius: 10px;
+		}
+		.orange {
+			color: orange;
+		}
+	</style>
+</head>
+
+<body>
+	<main>
+		<div id="unique-element"><span class="orange">id="unique-element"</span> Уникальный идентификатор</div>
+
+		<div class="group-class"><span class="orange">class="group-class"</span> Класс для стилизации и группировки элементов</div>
+
+		<div hidden><span class="orange">hidden</span> Скрытый элемент</div>
+
+		<div tabindex="1"><span class="orange">tabindex="1"</span> Управление порядком перехода</div>
+
+		<div contenteditable="true"><span class="orange">contenteditable="true"</span> Редактируемый пользователем контент???</div>
+
+		<div dir="rtl"><span class="orange">dir="rtl"</span> abc Текст с направлением справа налево</div>
+
+		<div data-custom="value"><span class="orange">data-custom="value"</span> Пользовательские data-атрибуты</div>
+
+		<div draggable="true"><span class="orange">draggable="true"</span> можно перетаскивать</div>
+
+		<textarea spellcheck="true" rows="4">spellcheck="true" Прfверка орфографии поставь курсор</textarea>
+
+		<button onclick="handleClick()"><span class="orange">onclick="handleClick()"</span> Обработчик клика</button>
+
+		<div onmouseover="highlight()"><span class="orange">onmouseover="highlight()"</span> Событие при наведении курсора</div>
+
+		<div onmouseout="unhighlight()"><span class="orange">onmouseout="unhighlight()"</span> Событие при уводе курсора</div>
+
+		<div onkeydown="logKey(event)"><span class="orange">onkeydown="logKey(event)"</span> Событие при нажатии клавиши</div>
+
+		<div onload="init()"><span class="orange">onload="init()"</span> Событие после полной загрузки страницы</div>
+
+		<form onsubmit="validateForm()"><span class="orange">onsubmit="validateForm()"</span>Обработчик отправки формы</form>
+
+	</main>
+</body>
+
+</html>

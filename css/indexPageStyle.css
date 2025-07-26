@@ -1,4 +1,9 @@
 body {
+	padding: 20px 10px;
+	width: fit-content;
 	background: #000;
 	color: #fff;
+	font-size: 18px;
+	line-height: 1.2em;
+	font-family: monospace;
 }
