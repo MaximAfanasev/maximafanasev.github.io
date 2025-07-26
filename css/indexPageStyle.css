@@ -7,3 +7,11 @@ body {
 	line-height: 1.2em;
 	font-family: monospace;
 }
+
+.orange {
+	color: orange;
+}
+
+.green {
+	color: green;
+}
