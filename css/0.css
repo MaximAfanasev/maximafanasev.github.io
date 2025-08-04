@@ -1,6 +1,7 @@
 body {
 	padding: 20px 10px;
 	width: fit-content;
+	margin: 0 auto;
 	background: #000;
 	color: #fff;
 	font-size: 18px;
@@ -18,7 +19,7 @@ body {
 
 input {
 	background: #000;
-	color: #fff;
+	color: #999;
 	height: 30px;
 	width: calc(100% - 100px);
 	border-radius: 5px;
@@ -32,4 +33,21 @@ textarea {
 	font-size: 22px;
 	background: #000;
 	color: #fff;
+}
+
+#number {
+	font-size: 100px;
+	margin: 30px;
+}
+
+#input {
+	padding: 10px;
+	font-size: 16px;
+	width: 200px;
+}
+
+.correct {
+	color: green;
+	font-weight: bold;
+	margin-top: 20px;
 }

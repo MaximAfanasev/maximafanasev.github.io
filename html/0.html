@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>?!</title>
+	<meta name="viewport" content="width=device-width,
+  initial-scale=1.0">
+	<link rel="stylesheet" href="../css/0.css" type="text/css">
+</head>
+
+<body>
+	<input type="text" id="input" placeholder="">
+	<div id="message" class="correct"></div>
+
+	<script>
+		const phrases = [
+'<!DOCTYPE html>', 
+'<html lang="ru">', 
+'<head>',
+'<title>',
+'<meta charset="UTF-8">',
+'<meta name="viewport" content="width=device-width, initial-scale=1.0">',
+'<meta name="robots" content="index">', 
+'<meta name="robots" content="follow">', 
+'<meta property="og:title" content="">', 
+'<meta property="og:description" content="">', 
+'<meta property="og:image" content="">', 
+'<base href="" target="">', 
+'<link rel="stylesheet" href="../css/0.css" type="text/css">', 
+'<link rel="icon" href="f.ico" type="image/x-icon, image/svg+xml">',
+'style',
+'body',
+'main',
+'header',
+'nav',
+'section',
+'article',
+'aside',
+'script',
+'noscript',
+'footer',
+'address',
+];
+		let currentPhase = 0;
+		const input = document.getElementById('input');
+		const message = document.getElementById('message');
+
+		input.addEventListener('keyup', function(e) {
+			if (e.key === 'Enter') {
+				if (input.value === phrases[currentPhase]) {
+					message.textContent = '';
+					input.value = '';
+					currentPhase++;
+
+					if (currentPhase >= phrases.length) {
+						message.textContent = '+';
+						currentPhase = 0;
+					}
+				} else {
+					message.textContent = '-';
+				}
+			}
+		});
+
+		// Фокус на поле ввода при загрузке
+		window.onload = function() {
+			input.focus();
+		};
+	</script>
+</body></html>
