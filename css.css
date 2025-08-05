@@ -94,18 +94,24 @@ background-clip: text Обрезать фон по тексту
 box-shadow
 text-shadow
 
+div {
 display: flex
-flex-direction
-justify-content
-align-items
-align-self
-flex-wrap
-align-content
-order
-flex-grow
-flex-shrink
-flex-basis
-gap
+flex-direction: row;
+flex-direction: row;
+flex-direction: row;
+flex-direction: row;
+	
+justify-content: ;
+align-items: ;
+align-self: ;
+flex-wrap: ;
+align-content: ;
+order: ;
+flex-grow: ;
+flex-shrink: ;
+flex-basis: ;
+gap: 20px;
+}
 
 display: grid
 grid-row-srart
