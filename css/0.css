@@ -51,3 +51,18 @@ textarea {
 	font-weight: bold;
 	margin-top: 20px;
 }
+
+div,
+textarea,
+button,
+form {
+	border: 1px solid lightgray;
+	margin-bottom: 20px;
+	padding: 20px;
+	border-radius: 10px;
+}
+
+a {
+	display: block;
+	margin-bottom: 20px;
+}
