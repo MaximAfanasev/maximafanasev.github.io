@@ -75,9 +75,9 @@ Proxy + Balancer
 Web -> HTTP2 -> Apache -> App Server -> DB
 Revert Proxy
 CDN
+NPN
 ALPN
 SSLLabs
-NPN
 RHEL
 ECDHE CGM
 POLY
@@ -93,16 +93,21 @@ compressed
 server-push
 
 Fragment answer
-
 QUIC
-
 incrementalID
 
 Cookie
-User-Agent
+User-Agent - web browser
+Host - url
+Accept - Format
+Accept-Encoding - HPACK/QPACK
 
+Push load
+Asymmetric
+Upgrade: h2c
 
-
+Preamble 24okt
+ASCII
 
 
 
