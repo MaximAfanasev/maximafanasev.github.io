@@ -38,6 +38,19 @@
 		tr:hover {
 			background-color: #000;
 		}
+		
+		td:nth-child(2),
+		td:last-child {
+			filter: blur(3px);
+			transition: 1s;
+			cursor: cell;
+		}
+		
+		td:nth-child(2):hover,
+		td:last-child:hover {
+			filter: blur(0px);
+		}
+		
 
 	</style>
 </head>
@@ -539,6 +552,46 @@
 				<td>export SSLKEYLOGFILE=~/sslkey.log</td>
 				<td></td>
 				<td>Command to set SSL key log file</td>
+			</tr>
+			<tr>
+				<td>nghttp -va https://www.google.com | more</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
 			</tr>
 		</tbody>
 	</table>
