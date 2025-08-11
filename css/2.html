@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Примеры CSS-селекторов атрибутов</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .container {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        
+        .example-box {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 15px 0;
+            background-color: #f9f9f9;
+        }
+        
+        .example {
+            margin: 10px 0;
+            padding: 10px;
+            border-left: 4px solid #3498db;
+            background-color: #eaf2f8;
+        }
+        
+        code {
+            background-color: #f0f0f0;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+        
+        /* Примеры селекторов атрибутов */
+        a[title] {
+            color: #e74c3c;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        
+        a[href="https://example.com"] {
+            background-color: #2ecc71;
+            color: white;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        
+        a[href^="https"] {
+            border-left: 3px solid #f39c12;
+            padding-left: 5px;
+        }
+        
+        a[href$=".pdf"] {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="%23e74c3c"><path d="M8.267 14.68c-.184 0-.308.018-.372.036v1.178c.076.018.171.023.302.023.479 0 .774-.242.774-.651 0-.366-.254-.586-.704-.586zm3.487.012c-.2 0-.33.018-.407.036v2.61c.077.018.201.018.313.018.817.006 1.349-.444 1.349-1.396.006-.83-.479-1.268-1.255-1.268z"/><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM9.498 16.19c-.309.29-.765.42-1.296.42a2.23 2.23 0 0 1-.308-.018v1.426H7v-3.936A7.558 7.558 0 0 1 8.219 14c.557 0 .953.106 1.22.319.254.202.426.533.426.923-.001.392-.131.723-.367.948zm3.807 1.355c-.42.349-1.059.515-1.84.515-.468 0-.799-.03-1.024-.06v-3.917A7.947 7.947 0 0 1 11.66 14c.757 0 1.249.136 1.633.426.415.308.675.799.675 1.504 0 .763-.279 1.29-.663 1.615zM17 14.77h-1.532v.911H16.9v.734h-1.432v1.604h-.906V14.03H17v.74zM14 9h-1V4l5 5h-4z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right center;
+            padding-right: 20px;
+        }
+        
+        a[href*="example"] {
+            text-decoration: underline wavy #9b59b6;
+        }
+        
+        div[class^="icon-"] {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background-color: #3498db;
+            color: white;
+            text-align: center;
+            line-height: 30px;
+            margin-right: 5px;
+            border-radius: 50%;
+        }
+        
+        div[class$="-btn"] {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #2ecc71;
+            color: white;
+            border-radius: 4px;
+            margin-right: 5px;
+        }
+        
+        div[class*="error"] {
+            border: 2px solid #e74c3c;
+            padding: 10px;
+            margin: 5px 0;
+            background-color: #fadbd8;
+        }
+    </style>
+</head>
+<body>
+    <h1>Примеры CSS-селекторов атрибутов</h1>
+    
+    <!-- [attr] - наличие атрибута -->
+    <div class="container">
+        <h2>Селектор <code>[атрибут]</code></h2>
+        <p>Выбирает элементы с указанным атрибутом, независимо от его значения.</p>
+        
+        <div class="example-box">
+            <p>CSS:</p>
+            <div class="example">
+                <code>a[title] { color: #e74c3c; font-weight: bold; }</code>
+            </div>
+            
+            <p>HTML:</p>
+            <div class="example">
+                <code>&lt;a href="#" title="Это подсказка"&gt;Ссылка с title&lt;/a&gt;</code><br>
+                <code>&lt;a href="#"&gt;Обычная ссылка&lt;/a&gt;</code>
+            </div>
+            
+            <p>Результат:</p>
+            <div class="example">
+                <a href="#" title="Это подсказка">Ссылка с title</a><br>
+                <a href="#">Обычная ссылка</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- [attr=value] - точное значение -->
+    <div class="container">
+        <h2>Селектор <code>[атрибут="значение"]</code></h2>
+        <p>Выбирает элементы, у которых указанный атрибут имеет точное указанное значение.</p>
+        
+        <div class="example-box">
+            <p>CSS:</p>
+            <div class="example">
+                <code>a[href="https://example.com"] { background-color: #2ecc71; color: white; }</code>
+            </div>
+            
+            <p>HTML:</p>
+            <div class="example">
+                <code>&lt;a href="https://example.com"&gt;example.com&lt;/a&gt;</code><br>
+                <code>&lt;a href="https://example.org"&gt;example.org&lt;/a&gt;</code>
+            </div>
+            
+            <p>Результат:</p>
+            <div class="example">
+                <a href="https://example.com">example.com</a><br>
+                <a href="https://example.org">example.org</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- [attr^=value] - начинается с -->
+    <div class="container">
+        <h2>Селектор <code>[атрибут^="значение"]</code></h2>
+        <p>Выбирает элементы, у которых указанный атрибут начинается с указанного значения.</p>
+        
+        <div class="example-box">
+            <p>CSS:</p>
+            <div class="example">
+                <code>a[href^="https"] { border-left: 3px solid #f39c12; }</code>
+            </div>
+            
+            <p>HTML:</p>
+            <div class="example">
+                <code>&lt;a href="https://example.com"&gt;HTTPS ссылка&lt;/a&gt;</code><br>
+                <code>&lt;a href="http://example.com"&gt;HTTP ссылка&lt;/a&gt;</code>
+            </div>
+            
+            <p>Результат:</p>
+            <div class="example">
+                <a href="https://example.com">HTTPS ссылка</a><br>
+                <a href="http://example.com">HTTP ссылка</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- [attr$=value] - заканчивается на -->
+    <div class="container">
+        <h2>Селектор <code>[атрибут$="значение"]</code></h2>
+        <p>Выбирает элементы, у которых указанный атрибут заканчивается указанным значением.</p>
+        
+        <div class="example-box">
+            <p>CSS:</p>
+            <div class="example">
+                <code>a[href$=".pdf"] { background-image: url('pdf-icon.svg'); }</code>
+            </div>
+            
+            <p>HTML:</p>
+            <div class="example">
+                <code>&lt;a href="document.pdf"&gt;PDF документ&lt;/a&gt;</code><br>
+                <code>&lt;a href="document.doc"&gt;Word документ&lt;/a&gt;</code>
+            </div>
+            
+            <p>Результат:</p>
+            <div class="example">
+                <a href="document.pdf">PDF документ</a><br>
+                <a href="document.doc">Word документ</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- [attr*=value] - содержит -->
+    <div class="container">
+        <h2>Селектор <code>[атрибут*="значение"]</code></h2>
+        <p>Выбирает элементы, у которых указанный атрибут содержит указанное значение в любой части.</p>
+        
+        <div class="example-box">
+            <p>CSS:</p>
+            <div class="example">
+                <code>a[href*="example"] { text-decoration: underline wavy #9b59b6; }</code>
+            </div>
+            
+            <p>HTML:</p>
+            <div class="example">
+                <code>&lt;a href="https://example.com"&gt;example.com&lt;/a&gt;</code><br>
+                <code>&lt;a href="https://test-example.org"&gt;test-example.org&lt;/a&gt;</code><br>
+                <code>&lt;a href="https://something.org"&gt;something.org&lt;/a&gt;</code>
+            </div>
+            
+            <p>Результат:</p>
+            <div class="example">
+                <a href="https://example.com">example.com</a><br>
+                <a href="https://test-example.org">test-example.org</a><br>
+                <a href="https://something.org">something.org</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Примеры с классами -->
+    <div class="container">
+        <h2>Примеры с классами</h2>
+        
+        <div class="example-box">
+            <p>CSS:</p>
+            <div class="example">
+                <code>div[class^="icon-"] { /* стили для иконок */ }</code><br>
+                <code>div[class$="-btn"] { /* стили для кнопок */ }</code><br>
+                <code>div[class*="error"] { /* стили для ошибок */ }</code>
+            </div>
+            
+            <p>HTML:</p>
+            <div class="example">
+                <code>&lt;div class="icon-user"&gt;U&lt;/div&gt;</code><br>
+                <code>&lt;div class="icon-settings"&gt;S&lt;/div&gt;</code><br>
+                <code>&lt;div class="submit-btn"&gt;Отправить&lt;/div&gt;</code><br>
+                <code>&lt;div class="cancel-btn"&gt;Отмена&lt;/div&gt;</code><br>
+                <code>&lt;div class="error-message"&gt;Ошибка!&lt;/div&gt;</code><br>
+                <code>&lt;div class="server-error"&gt;Ошибка сервера&lt;/div&gt;</code>
+            </div>
+            
+            <p>Результат:</p>
+            <div class="example">
+                <div class="icon-user">U</div>
+                <div class="icon-settings">S</div>
+                <div class="submit-btn">Отправить</div>
+                <div class="cancel-btn">Отмена</div>
+                <div class="error-message">Ошибка!</div>
+                <div class="server-error">Ошибка сервера</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
