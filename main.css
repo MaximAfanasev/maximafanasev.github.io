@@ -1,0 +1,33 @@
+body {
+	padding: 20px 10px;
+	margin: 0 auto;
+	font-size: 18px;
+	line-height: 2em;
+	background: #000;
+	color: #fff;
+	font-family: monospace;
+}
+
+section {
+	border: 1px solid gold;
+	padding: 10px;
+	border-radius: 10px;
+	margin: 10px 0;
+}
+
+ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+h2 {
+	text-align: center;
+	color: gold;
+	margin: 0;
+}
+
+.nochange {
+	text-align: left;
+	color: #fff;
+}

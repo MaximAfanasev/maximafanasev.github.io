@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<title>..</title>
+
+	<meta charset="UTF-8">
+	<meta name="description" content="Описание страницы">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<meta name="robots" content="index, follow">
+
+	<meta property="og:title" content="Заголовок страницы">
+	<meta property="og:description" content="Описание для соцсетей">
+	<meta property="og:image" content="URL изображения">
+
+	<link rel="stylesheet" href="main.css" type="text/css">
+
+	<link rel="icon" href="f.ico" type="image/x-icon">
+
+	<style></style>
+</head>
+
+<body>
+	<section>
+
+		<h2>Wrappers</h2>
+
+		<ul>
+			<li>main</li>
+			<li>header</li>
+			<li>nav</li>
+			<li>section</li>
+			<li>article</li>
+			<li>aside</li>
+			<li>footer</li>
+			<li>address</li>
+			<li>script</li>
+		</ul>
+	</section>
+
+
+
+
+
+
+
+	<section>
+		<h2>Attributes</h2>
+
+		<ul>
+			<li>id="unique-id"</li>
+			<li>class="class1 class2"</li>
+			<li>style="color: red;"</li>
+			<li>title="Всплывающая подсказка"</li>
+			<li>lang="ru"</li>
+			<li>dir="ltr | rtl | auto"</li>
+			<li>contenteditable="true | false"</li>
+			<li>spellcheck="true | false"</li>
+			<li>hidden</li>
+			<li>tabindex="0 | -1 | 1..."</li>
+			<li>draggable="true | false | auto"</li>
+			<li>aria-* (атрибуты доступности, например, aria-label="Описание")</li>
+		</ul>
+
+
+
+		<ul>
+			<!-- Мышиные события -->
+			<li>onclick="function()"</li>
+			<li>ondblclick="function()"</li>
+			<li>onmousedown="function()"</li>
+			<li>onmouseup="function()"</li>
+			<li>onmouseover="function()"</li>
+			<li>onmouseout="function()"</li>
+			<li>onmousemove="function()"</li>
+			<li>onwheel="function()"</li>
+
+			<!-- Клавиатурные события -->
+			<li>onkeydown="function()"</li>
+			<li>onkeyup="function()"</li>
+			<li>onkeypress="function()"</li>
+
+			<!-- Формы и ввод -->
+			<li>oninput="function()"</li>
+			<li>onchange="function()"</li>
+			<li>onsubmit="function()"</li>
+			<li>onreset="function()"</li>
+			<li>onfocus="function()"</li>
+			<li>onblur="function()"</li>
+
+			<!-- Загрузка и мультимедиа -->
+			<li>onload="function()"</li>
+			<li>onerror="function()"</li>
+			<li>onabort="function()"</li>
+			<li>onresize="function()"</li>
+			<li>onscroll="function()"</li>
+		</ul>
+
+		<ul>
+
+
+			<!-- Для мета-тегов -->
+			<li>charset="UTF-8"</li>
+			<li>http-equiv="X-UA-Compatible" content="IE=edge"</li>
+			<li>name="viewport | description | keywords" content="..."</li>
+			<li>property="og:title" (Open Graph)</li>
+			<li>name="twitter:card" (Twitter Cards)</li>
+			<li>sizes="16x16" (для favicon)</li>
+			<li>as="script | style | font" (для предзагрузки)</li>
+
+		</ul>
+	</section>
+
+
+	<section>
+		<h2>Text</h2>
+
+		<ul>
+			<li>
+				<h1>h1</h1>
+			</li>
+			<li>
+				<h2 class="nochange">h2</h2>
+			</li>
+			<li>
+				<h3>h3</h3>
+			</li>
+			<li>
+				<h4>h4</h4>
+			</li>
+			<li>
+				<h5>h5</h5>
+			</li>
+			<li>
+				<h6>h6</h6>
+			</li>
+		</ul>
+
+		<div>div</div>
+		<p>p</p>
+		<span>span</span>
+
+		<details>
+			<summary>Details</summary>
+			<div>summary</div>
+		</details>
+
+		<hr>
+		<br>
+
+		<b>b</b>
+		<strong>strong</strong>
+		<i>i</i>
+		<em>em</em>
+		<u>u</u>
+		<s>s</s>
+		<del>del</del>
+		<ins>ins</ins>
+		<mark>mark</mark>
+		<small>small</small>
+		<sub>sub</sub>
+		<sup>sup</sup>
+
+		<ul>
+			<li>ul</li>
+			<li>li</li>
+		</ul>
+
+		<ol>
+			<li>ol</li>
+			<li>li</li>
+		</ol>
+
+		<dl>
+			<dt>dl</dt>
+			<dd>dt</dd>
+			<dd>dd</dd>
+		</dl>
+
+		<abbr title="">abbr</abbr>
+		<dfn>dfn</dfn>
+
+		<blockquote cite="https://">blockquote</blockquote>
+		<cite>cite</cite>
+		<q>q</q>
+		<!-- Базовые ссылки -->
+		<a href="https://example.com">Обычная ссылка</a>
+		<a href="https://example.com" title="Подсказка">Ссылка с подсказкой</a>
+		<a href="#section-id">Якорная ссылка</a>
+		<div id="section-id"></div>
+
+		<!-- Открытие в новом окне/вкладке -->
+		<a href="https://example.com" target="_blank">_blank (новое окно)</a>
+		<a href="https://example.com" target="_self">_self (текущая вкладка)</a>
+		<a href="https://example.com" target="_parent">_parent (родительский фрейм)</a>
+		<a href="https://example.com" target="_top">_top (полное окно)</a>
+
+		<!-- Политики безопасности -->
+		<a href="https://example.com" rel="nofollow">nofollow (не передавать вес)</a>
+		<a href="https://example.com" rel="noopener">noopener (безопасность при target="_blank")</a>
+		<a href="https://example.com" rel="noreferrer">noreferrer (скрыть источник)</a>
+		<a href="https://example.com" referrerpolicy="no-referrer">Контроль Referer</a>
+
+		<!-- Специальные ссылки -->
+		<a href="mailto:email@example.com">Почтовая ссылка</a>
+		<a href="tel:+1234567890">Телефонная ссылка</a>
+		<a href="/file.pdf" download>Скачать файл (имя по умолчанию)</a>
+		<a href="/file.pdf" download="document.pdf">Скачать с указанием имени</a>
+
+		<!-- Дополнительные атрибуты -->
+		<a href="https://example.com" hreflang="de">Для немецкого языка</a>
+		<a href="https://example.com" type="application/pdf">PDF-документ</a>
+		<a href="https://example.com" media="print">Версия для печати</a>
+		<a href="https://example.com" ping="https://tracker.com">С отслеживанием</a>
+
+		<!-- Доступность -->
+		<a href="https://example.com" aria-label="Описание для скринридеров">
+			<span class="icon-link"></span>
+		</a>
+
+		<a href="https://example.com/document.pdf" target="_blank" rel="noopener noreferrer" download="doc.pdf" type="application/pdf" hreflang="en" title="Download PDF" aria-label="Download document (PDF, 2MB)" ping="/track">
+			Скачать документ
+		</a>
+
+		<table>
+			<tr>
+				<th>
+				</th>
+				<td></td>
+				<td></td>
+			</tr>
+		</table>
+
+		<!-- Для таблиц -->
+		<ul>
+			<li>colspan="2" (объединение ячеек)</li>
+			<li>rowspan="2"</li>
+			<li>headers="id1 id2" (связь ячеек)</li>
+		</ul>
+
+		<code>code</code> <!-- Код -->
+		<kbd>Ctrl+C</kbd> <!-- Клавиши -->
+		<samp>samp</samp> <!-- Пример вывода -->
+		<var>x</var> <!-- Переменная -->
+		<pre>pre (сохраняет форматирование)</pre>
+		<time datetime="2023-10-05">5 октября</time> <!-- Дата/время -->
+		<wbr> <!-- Возможный разрыв строки -->
+		<ruby>漢 <rp>(</rp>
+			<rt>kan</rt>
+			<rp>)</rp>
+		</ruby> <!-- Руби-аннотации -->
+		<bdi>إيان</bdi> <!-- Изоляция направления текста -->
+		<bdo dir="rtl">текст справа налево</bdo> <!-- Принудительное направление -->
+
+
+		<data value="123">Product Name</data> <!-- Машиночитаемые данные -->
+		<meter min="0" max="100" value="50">50%</meter> <!-- Индикатор -->
+		<progress value="70" max="100">70%</progress> <!-- Прогресс-бар -->
+
+		<li>lang="en | ru | de" (язык текста)</li>
+		<li>translate="yes | no" (можно ли переводить)</li>
+		<li>spellcheck="true | false" (проверка орфографии)</li>
+		<li>contenteditable="true | false" (редактируемый текст)</li>
+		<li>style="font-size: 16px; color: red;" (инлайновые стили)</li>
+
+		<time datetime="2023-10-05T19:30">19:30</time>
+	</section>
+
+
+
+
+
+
+
+
+
+	<section>
+		<h2>Form</h2>
+
+		<form action="/submit" method="post"></form>
+
+
+
+		<!-- Для форм -->
+		<ul>
+			<li>type="text | password | checkbox | radio | submit..."</li>
+			<li>name="field-name"</li>
+			<li>value="default-value"</li>
+			<li>placeholder="Подсказка"</li>
+			<li>required</li>
+			<li>disabled</li>
+			<li>readonly</li>
+			<li>min="0" max="100" step="1" (для чисел/даты)</li>
+			<li>pattern="[A-Za-z]+" (регулярное выражение)</li>
+			<li>autocomplete="on | off"</li>
+			<li>multiple</li>
+			<!--для <select> и <input type="file">-->
+		</ul>
+		<label for="input-id"></label>
+		<!--Текстовая метка для привязки к элементу формы-->
+
+		<input type="text">
+		<!--Текстовое поле ввода (однострочное)-->
+
+		<input name="field-name">
+		<!--Идентификатор поля для данных формы-->
+
+		<input type="password">
+		<!--Поле для ввода пароля (символы скрыты)-->
+
+		<input type="email">
+		<!--Поле для email с валидацией формата-->
+
+		<input type="number">
+		<!--Поле для числового ввода-->
+
+		<input type="checkbox">
+		<!--Флажок для выбора опций (множественный выбор)-->
+
+		<input type="radio">
+		<!--Переключатель (выбор одной опции из группы)-->
+
+		<input placeholder="Подсказка">
+		<!--Вспомогательный текст в пустом поле-->
+
+		<input required>
+		<!--Обязательное для заполнения поле-->
+
+		<input disabled>
+		<!--Неактивное (заблокированное) поле-->
+
+		<input readonly>
+		<!--Поле только для чтения (без редактирования)-->
+
+		<output></output>
+		<!--Отображение результата вычислений-->
+
+		<textarea rows="4" cols="50"></textarea>
+		<!--Многострочное текстовое поле-->
+
+		<textarea spellcheck="true" rows="4">Прfверка орфографии кликни</textarea>
+
+		<select></select>
+		<!--Выпадающий список выбора-->
+
+		<optgroup label=""></optgroup>
+		<!--Группировка вариантов в select-->
+
+		<option value="1"></option>
+		<!--Вариант выбора в списке-->
+
+		<fieldset></fieldset>
+		<!--Группировка связанных полей формы-->
+
+		<legend></legend>
+		<!--Заголовок группы полей fieldset-->
+
+		<datalist id="list-id"></datalist>
+		<!--Список подсказок для автозаполнения-->
+	</section>
+
+
+
+
+
+
+
+	<section>
+		<h2>Buttons</h2>
+		<button type="button">type="button"</button>
+		<!--Кнопка без действия по умолчанию-->
+
+		<button type="submit">type="submit"</button>
+		<!--Кнопка отправки формы-->
+
+		<button type="reset">type="reset"</button>
+		<!--Кнопка сброса значений формы-->
+	</section>
+
+
+
+
+
+
+
+
+	<section>
+		<h2>Media</h2>
+
+		<ul>
+			<li>img</li>
+			<li>pictures</li>
+			<li>figure</li>
+			<li>map</li>
+			<li>audio</li>
+			<li>video</li>
+			<li>track</li>
+			<li>object</li>
+			<li>iframe</li>
+			<li>canvas</li>
+			<li>svg</li>
+		</ul>
+
+		<img src="i.jpg" alt="">
+
+		<pictures>
+			<source srcset="" media="(max-width:600px)">
+			<img src="i.jpg" alt="">
+		</pictures>
+
+		<figure>
+			<img src="i.jpg" alt="">
+			<figcaption></figcaption>
+		</figure>
+
+		<map name="map">
+			<area shape="rect" coords="34,44,270,350" href="#s1">
+		</map>
+
+		<audio controls>
+			<source src="audio.mp3" type="audio/mpeg">
+		</audio>
+		<!--Аудиоплеер с элементами управления-->
+
+		<video controls width="320" height="240">
+			<source src="video.mp4" type="video/mp4">
+		</video>
+		<!--Видеоплеер с элементами управления-->
+
+		<track kind="subtitles" srclang="ru">
+		<!--Субтитры для видео/аудио-->
+
+		<object data="document.pdf" type="application/pdf"></object>
+		<param name="autoplay" value="true">
+		<!--Встраивание внешних ресурсов (PDF, Flash)-->
+
+		<iframe src="https://example.com" sandbox="allow-scripts"></iframe>
+		<!--Встроенная веб-страница с ограничениями безопасности-->
+
+		<canvas id="drawing" width="200" height="100"></canvas>
+		<!--Контейнер для динамической графики (рисование через JS)-->
+
+		<svg width="100" height="100"></svg>
+		<circle cx="50" cy="50" r="40"></circle>
+		<!--Векторная графика SVG-->
+
+
+		<!-- Для изображений и медиа -->
+		<ul>
+			<li>src="path"</li>
+			<!--для <img>, <script>, <iframe>, <video>, <audio>-->
+			<li>alt="альтернативный текст"</li>
+			<!--для <img>, <area>-->
+			<li>width="100" height="50" (размеры)</li>
+			<li>poster="image.jpg"</li>
+			<!--для <video>-->
+			<li>controls (аудио/видео элементы)</li>
+			<li>autoplay</li>
+			<li>loop</li>
+			<li>muted</li>
+		</ul>
+	</section>
+</body></html>
