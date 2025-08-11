@@ -1,80 +1,9 @@
 body {
 	padding: 20px 10px;
-	width: fit-content;
 	margin: 0 auto;
-	background: #000;
-	color: #fff;
 	font-size: 18px;
-	line-height: 1.2em;
-	font-family: monospace;
-}
-
-.orange {
-	color: orange;
-}
-
-.green {
-	color: green;
-}
-
-input {
-	background: #000;
-	color: #999;
-	height: 30px;
-	border-radius: 5px;
-	font-size: 22px;
-}
-
-textarea {
-	width: 300px;
-	border-radius: 5px;
-	font-size: 22px;
+	line-height: 2em;
 	background: #000;
 	color: #fff;
-}
-
-#number {
-	font-size: 100px;
-	margin: 30px;
-}
-
-#input {
-	padding: 10px;
-	font-size: 16px;
-	width: 200px;
-}
-
-.correct {
-	color: green;
-	font-weight: bold;
-	margin-top: 20px;
-}
-
-div,
-textarea,
-button,
-form {
-	border: 1px solid lightgray;
-	margin-bottom: 20px;
-	padding: 20px;
-	border-radius: 10px;
-}
-
-a {
-	display: block;
-	margin-bottom: 20px;
-}
-
-input,
-output,
-textarea,
-select,
-optgroup,
-fieldset,
-datalist,
-progress,
-meter,
-button {
-	display: block;
-	margin-bottom: 20px;
+	font-family: monospace;
 }
