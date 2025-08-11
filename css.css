@@ -26,6 +26,8 @@ url('fonts/League_Gothic-webfont.svg') format('svg');
 }
 h1 {
 font-family: 'League Gothic';
+font-weight: normal;
+font-style: normal;
 }
 .a {
 	position: static;
@@ -143,9 +145,12 @@ li:not(:first-child) {}
 }
 /* ===== Типографика ===== */
 .a {
-	font-family: Arial,
-		sans-serif;
+	font-family: Arial, sans-serif;
 	font-size: 16px;
+	font-size: 1em;
+	font-size: 1rem;
+	font-size: large;
+	font-size: 200%;
 	font-weight: normal;
 	font-weight: bold;
 	font-weight: 700;
@@ -155,12 +160,18 @@ li:not(:first-child) {}
 	font-variant: small-caps;
 	line-height: 1.5;
 	color: #333;
+	color: rgb(100%,100%,100%);
+	color: rgb(255,255,255);
+	color: hsl(0, 100%, 50%);
+	color: hsla(0, 100%, 50%, .5);
 	text-align: left;
 	text-align: center;
 	text-align: right;
 	text-align: justify;
 	text-decoration: none;
 	text-decoration: underline;
+	text-decoration: overline;
+	text-decoration: underline overline;
 	text-transform: none;
 	text-transform: uppercase;
 	text-transform: lowercase;
@@ -189,6 +200,7 @@ li:not(:first-child) {}
 .a {
 	background-color: #fff;
 	background-image: url("image.jpg");
+	background-image: linear-gradient(to top, black, white);
 	background-repeat: no-repeat;
 	background-repeat: repeat-x;
 	background-repeat: repeat-y;
@@ -226,7 +238,6 @@ li:not(:first-child) {}
 /* ===== Тени ===== */
 .a {
 	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 /* ===== Flexbox ===== */
 .a {
