@@ -8,7 +8,7 @@
 	<style>
 		body {
 			background: #000;
-			color: #888;
+			color: #ddd;
 			padding: 0;
 			margin: 0;
 		}
@@ -24,22 +24,18 @@
 			padding: 20px 5px;
 			text-align: left;
 		}
-		
-		input[type="checkbox"] {
-			cursor: cell;
-		}
 
 		td:nth-child(2),
 		td:last-child {
-			filter: blur(3px);
+			filter: blur(0px);
 			transition: 0.1s;
-			cursor: crosshair;
 		}
 
 		td:nth-child(2):hover,
 		td:last-child:hover {
 			filter: blur(0px);
 		}
+
 	</style>
 </head>
 
@@ -111,20 +107,22 @@
 				<td>Service unavailable<br>Server temporarily overloaded or down</td>
 			</tr>
 			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
 				<td>HTTP </td>
 				<td>HyperText Transfer Protocol<br>Protocol for transmitting hypertext documents on the web</td>
 			</tr>
 			<tr>
 				<td>IP</td>
 				<td>Internet Protocol<br>Protocol for routing packets across networks</td>
-			</tr>
-			<tr>
-				<td>IPv4</td>
-				<td>192.192.255.255</td>
-			</tr>
-			<tr>
-				<td>IPv6</td>
-				<td>1:2:3:4:5:6:7:8</td>
 			</tr>
 			<tr>
 				<td>DNS</td>
@@ -259,13 +257,78 @@
 				<td>Poly1305 message authentication code</td>
 			</tr>
 			<tr>
+				<td>QUIC</td>
+				<td>Google transport protocol over UDP</td>
+			</tr>
+			<tr>
+				<td>Cookie</td>
+				<td>HTTP header for client state</td>
+			</tr>
+			<tr>
+				<td>Host</td>
+				<td>url<br>Specifies requested host</td>
+			</tr>
+			<tr>
+				<td>ASCII</td>
+				<td>Character encoding standard</td>
+			</tr>
+			<tr>
+				<td>ngHTTP</td>
+				<td>HTTP/2 client and server</td>
+			</tr>
+
+
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+
+			<tr>
 				<td>Mozila SSL</td>
 				<td>Configurator for SSL/TLS configuration</td>
 			</tr>
 			<tr>
-				<td>CASH</td>
-				<td>Cache (possibly typo)</td>
+				<td>Wireshark</td>
+				<td>Network protocol analyzer</td>
 			</tr>
+
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+
+			<tr>
+				<td>IPv4</td>
+				<td>192.192.255.255</td>
+			</tr>
+			<tr>
+				<td>IPv6</td>
+				<td>1:2:3:4:5:6:7:8</td>
+			</tr>
+
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			
 			<tr>
 				<td>Binary</td>
 				<td>HTTP/2 uses binary framing</td>
@@ -295,24 +358,12 @@
 				<td>Possibly fragmented HTTP responses</td>
 			</tr>
 			<tr>
-				<td>QUIC</td>
-				<td>Google transport protocol over UDP</td>
-			</tr>
-			<tr>
 				<td>IncrementalID</td>
 				<td>Possibly stream IDs in HTTP/2</td>
 			</tr>
 			<tr>
-				<td>Cookie</td>
-				<td>HTTP header for client state</td>
-			</tr>
-			<tr>
 				<td>User-Agent</td>
 				<td>web browser<br>Identifies client software</td>
-			</tr>
-			<tr>
-				<td>Host</td>
-				<td>url<br>Specifies requested host</td>
 			</tr>
 			<tr>
 				<td>Accept</td>
@@ -337,18 +388,6 @@
 			<tr>
 				<td>Preamble 24okt</td>
 				<td>Possibly TLS handshake preamble</td>
-			</tr>
-			<tr>
-				<td>ASCII</td>
-				<td>Character encoding standard</td>
-			</tr>
-			<tr>
-				<td>ngHTTP</td>
-				<td>HTTP/2 client and server</td>
-			</tr>
-			<tr>
-				<td>Wireshark</td>
-				<td>Network protocol analyzer</td>
 			</tr>
 			<tr>
 				<td>SSLKEYLOGFILE</td>
@@ -391,4 +430,6 @@
 			</tr>
 		</tbody>
 	</table>
-</body></html>
+</body>
+
+</html>
