@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>?!</title>
+	<title>.</title>
 	<style>
 		body {
 			background: #000;
@@ -24,16 +24,16 @@
 			padding: 20px 5px;
 			text-align: left;
 		}
-
-		td:first-child {
-			width: 25%;
+		
+		input[type="checkbox"] {
+			cursor: cell;
 		}
 
 		td:nth-child(2),
 		td:last-child {
 			filter: blur(3px);
-			transition: 1s;
-			cursor: cell;
+			transition: 0.1s;
+			cursor: crosshair;
 		}
 
 		td:nth-child(2):hover,
@@ -47,397 +47,312 @@
 	<table>
 		<tbody>
 			<tr>
-				<td>Tim Berners Li</td>
-				<td><input type="checkbox"> Inventor of the World Wide Web</td>
-			</tr>
-			<tr>
-				<td>HTTP </td>
-				<td><input type="checkbox"> HyperText Transfer Protocol<br>Protocol for transmitting hypertext documents on the web</td>
-			</tr>
-			<tr>
-				<td>IP</td>
-				<td><input type="checkbox"> Internet Protocol<br>Protocol for routing packets across networks</td>
-				<td></td>
-			</tr>
-			<tr>
-				<td>IPv4</td>
-				<td><input type="checkbox"> 192.192.255.255</td>
-			</tr>
-			<tr>
-				<td>IPv6</td>
-				<td><input type="checkbox"> 1:2:3:4:5:6:7:8</td>
-			</tr>
-			<tr>
-				<td>DNS</td>
-				<td><input type="checkbox"> Domain Name System, Translates domain</td>
-			</tr>
-			<tr>
-				<td>www.google.com</td>
-				<td><input type="checkbox"> 192.192.255.255</td>
-			</tr>
-			<tr>
-				<td>onload</td>
-				<td><input type="checkbox"> JavaScript event when page finishes loading</td>
-			</tr>
-			<tr>
-				<td>SMTP, IMAP, POP</td>
-				<td><input type="checkbox"> Email protocols</td>
-			</tr>
-			<tr>
-				<td>TCP</td>
-				<td><input type="checkbox"> Transmission Control Protocol<br>Reliable, connection-oriented transport protocol</td>
-			</tr>
-			<tr>
-				<td>VoIP</td>
-				<td><input type="checkbox"> Voice over IP services<br>Zoom, WhatsApp</td>
-			</tr>
-			<tr>
-				<td>:80 :8080</td>
-				<td><input type="checkbox"> Default HTTP port</td>
-			</tr>
-			<tr>
-				<td>:443 :8443</td>
-				<td><input type="checkbox"> Default HTTPS port</td>
-			</tr>
-			<tr>
-				<td>DOM</td>
-				<td><input type="checkbox"> Document Object Model<br>API for HTML and XML documents</td>
-			</tr>
-			<tr>
-				<td>OSI</td>
-				<td><input type="checkbox"> Open Systems Interconnection<br>7-layer network model</td>
-			</tr>
-			<tr>
-				<td>GET</td>
-				<td><input type="checkbox"> HTTP method to retrieve data</td>
-			</tr>
-			<tr>
-				<td>POST</td>
-				<td><input type="checkbox"> HTTP method to send data</td>
-			</tr>
-			<tr>
-				<td>HEAD</td>
-				<td><input type="checkbox"> HTTP method to get headers only</td>
-			</tr>
-			<tr>
-				<td>URL</td>
-				<td><input type="checkbox"> Uniform Resource Locator /?q=search<br>Web address with query example</td>
-			</tr>
-			<tr>
-				<td>Headers</td>
-				<td><input type="checkbox"> HTTP request/response metadata</td>
-			</tr>
-			<tr>
-				<td>Telnet</td>
-				<td><input type="checkbox"> Network protocol for remote access</td>
-			</tr>
-			<tr>
 				<td>200</td>
-				<td><input type="checkbox"> OK<br>Successful HTTP request</td>
+				<td>OK<br>Successful HTTP request</td>
 			</tr>
 			<tr>
 				<td>201</td>
-				<td><input type="checkbox"> Created<br>Resource successfully created</td>
+				<td>Created<br>Resource successfully created</td>
 			</tr>
 			<tr>
 				<td>202</td>
-				<td><input type="checkbox"> Accepted<br>Request accepted for processing</td>
+				<td>Accepted<br>Request accepted for processing</td>
 			</tr>
 			<tr>
 				<td>204</td>
-				<td><input type="checkbox"> No content<br>Successful request with no response body</td>
+				<td>No content<br>Successful request with no response body</td>
 			</tr>
 			<tr>
 				<td>300</td>
-				<td><input type="checkbox"> Multi<br>Multiple options for resource</td>
+				<td>Multi<br>Multiple options for resource</td>
 			</tr>
 			<tr>
 				<td>301</td>
-				<td><input type="checkbox"> Moved permanently<br>Resource permanently moved</td>
+				<td>Moved permanently<br>Resource permanently moved</td>
 			</tr>
 			<tr>
 				<td>302</td>
-				<td><input type="checkbox"> Moved temporarily<br>Resource temporarily moved</td>
+				<td>Moved temporarily<br>Resource temporarily moved</td>
 			</tr>
 			<tr>
 				<td>304</td>
-				<td><input type="checkbox"> Not modified<br>Resource not modified since last request</td>
+				<td>Not modified<br>Resource not modified since last request</td>
 			</tr>
 			<tr>
 				<td>400</td>
-				<td><input type="checkbox"> Bad request<br>Server cannot process malformed request</td>
+				<td>Bad request<br>Server cannot process malformed request</td>
 			</tr>
 			<tr>
 				<td>401</td>
-				<td><input type="checkbox"> Unathorized<br>Authentication required</td>
+				<td>Unathorized<br>Authentication required</td>
 			</tr>
 			<tr>
 				<td>403</td>
-				<td><input type="checkbox"> Forbindden<br>Server refuses to fulfill request</td>
+				<td>Forbindden<br>Server refuses to fulfill request</td>
 			</tr>
 			<tr>
 				<td>404</td>
-				<td><input type="checkbox"> Not found<br>Resource not found</td>
+				<td>Not found<br>Resource not found</td>
 			</tr>
 			<tr>
 				<td>500</td>
-				<td><input type="checkbox"> Internal server error<br>Server encountered an error</td>
+				<td>Internal server error<br>Server encountered an error</td>
 			</tr>
 			<tr>
 				<td>501</td>
-				<td><input type="checkbox"> Not implemented<br>Server doesn't support the functionality</td>
+				<td>Not implemented<br>Server doesn't support the functionality</td>
 			</tr>
 			<tr>
 				<td>502</td>
-				<td><input type="checkbox"> Bad gateway<br>Invalid response from upstream server</td>
+				<td>Bad gateway<br>Invalid response from upstream server</td>
 			</tr>
 			<tr>
 				<td>503</td>
-				<td><input type="checkbox"> Service unavailable<br>Server temporarily overloaded or down</td>
+				<td>Service unavailable<br>Server temporarily overloaded or down</td>
 			</tr>
 			<tr>
-				<td>GET /page.html HTTP/1.0</td>
-				<td><input type="checkbox"> Example HTTP request</td>
+				<td>HTTP </td>
+				<td>HyperText Transfer Protocol<br>Protocol for transmitting hypertext documents on the web</td>
 			</tr>
 			<tr>
-				<td>Connection: Keep-Alive</td>
-				<td><input type="checkbox"> HTTP header for persistent connection</td>
+				<td>IP</td>
+				<td>Internet Protocol<br>Protocol for routing packets across networks</td>
 			</tr>
 			<tr>
-				<td>HTTP/1.0 200 OK</td>
-				<td><input type="checkbox"> Example HTTP response</td>
+				<td>IPv4</td>
+				<td>192.192.255.255</td>
 			</tr>
 			<tr>
-				<td>HTTP/1.1</td>
-				<td><input type="checkbox"> HTTP protocol version</td>
+				<td>IPv6</td>
+				<td>1:2:3:4:5:6:7:8</td>
 			</tr>
 			<tr>
-				<td>Connection: close</td>
-				<td><input type="checkbox"> HTTP header to close connection</td>
+				<td>DNS</td>
+				<td>Domain Name System<br>Translates domain</td>
 			</tr>
 			<tr>
-				<td>Content-Type: text/html; charset=UTF-8</td>
-				<td><input type="checkbox"> HTTP header for HTML content</td>
+				<td>SMTP</td>
+				<td>Email protocols</td>
 			</tr>
 			<tr>
-				<td>Content-Type: application/x-javascript; charset=UTF-8</td>
-				<td><input type="checkbox"> HTTP header for JavaScript content</td>
+				<td>TCP</td>
+				<td>Transmission Control Protocol<br>Reliable<br>connection-oriented transport protocol</td>
+			</tr>
+			<tr>
+				<td>VoIP</td>
+				<td>Voice over IP services<br>Zoom<br>WhatsApp</td>
+			</tr>
+			<tr>
+				<td>DOM</td>
+				<td>Document Object Model<br>API for HTML and XML documents</td>
+			</tr>
+			<tr>
+				<td>OSI</td>
+				<td>Open Systems Interconnection<br>7-layer network model</td>
+			</tr>
+			<tr>
+				<td>GET</td>
+				<td>HTTP method to retrieve data</td>
+			</tr>
+			<tr>
+				<td>POST</td>
+				<td>HTTP method to send data</td>
+			</tr>
+			<tr>
+				<td>HEAD</td>
+				<td>HTTP method to get headers only</td>
+			</tr>
+			<tr>
+				<td>URL</td>
+				<td>Uniform Resource Locator /?q=search<br>Web address with query example</td>
 			</tr>
 			<tr>
 				<td>HTTPS</td>
-				<td><input type="checkbox"> HTTP Secure (HTTP over TLS/SSL)</td>
+				<td>HTTP Secure (HTTP over TLS/SSL)</td>
 			</tr>
 			<tr>
 				<td>TLS</td>
-				<td><input type="checkbox"> Transport Layer Security<br>Cryptographic protocol for secure communication</td>
+				<td>Transport Layer Security<br>Cryptographic protocol for secure communication</td>
 			</tr>
 			<tr>
 				<td>SSL</td>
-				<td><input type="checkbox"> Secure Sockets Layer<br>Predecessor to TLS</td>
-			</tr>
-			<tr>
-				<td>TLSv1.0b = SSLv3 TLSv1.3 2018</td>
-				<td><input type="checkbox"> TLS version history</td>
+				<td>Secure Sockets Layer<br>Predecessor to TLS</td>
 			</tr>
 			<tr>
 				<td>CA</td>
-				<td><input type="checkbox"> Certification authority<br>Entity that issues digital certificates</td>
+				<td>Certification authority<br>Entity that issues digital certificates</td>
 			</tr>
 			<tr>
 				<td>EV</td>
-				<td><input type="checkbox"> Extended Validation<br>Higher validation SSL certificate</td>
+				<td>Extended Validation<br>Higher validation SSL certificate</td>
 			</tr>
 			<tr>
+				<td>ARC</td>
 				<td>Advanced Rest Client</td>
-				<td><input type="checkbox"> Tool for testing HTTP requests</td>
 			</tr>
 			<tr>
 				<td>CGI</td>
-				<td><input type="checkbox"> Common Gateway Interface<br>Standard for web server to execute programs</td>
+				<td>Common Gateway Interface<br>Standard for web server to execute programs</td>
 			</tr>
 			<tr>
 				<td>JSP</td>
-				<td><input type="checkbox"> Java Servlet Java Server Pages<br>Java technology for dynamic web content</td>
+				<td>Java Servlet Java Server Pages<br>Java technology for dynamic web content</td>
 			</tr>
 			<tr>
 				<td>HOL</td>
-				<td><input type="checkbox"> head-of-line blocking<br>Performance limitation in HTTP/1.x</td>
+				<td>head-of-line blocking<br>Performance limitation in HTTP/1.x</td>
 			</tr>
 			<tr>
 				<td>SYN</td>
-				<td><input type="checkbox"> Synchronize<br>TCP connection initiation packet</td>
+				<td>Synchronize<br>TCP connection initiation packet</td>
 			</tr>
 			<tr>
 				<td>SYN-ACK</td>
-				<td><input type="checkbox"> Synchronize-Acknowledge<br>TCP connection response packet</td>
+				<td>Synchronize-Acknowledge<br>TCP connection response packet</td>
 			</tr>
 			<tr>
 				<td>ACK</td>
-				<td><input type="checkbox"> Acknowledge<br>TCP acknowledgment packet</td>
+				<td>Acknowledge<br>TCP acknowledgment packet</td>
 			</tr>
 			<tr>
 				<td>SPDY</td>
-				<td><input type="checkbox"> Google protocol precursor to HTTP/2</td>
+				<td>Google protocol precursor to HTTP/2</td>
 			</tr>
 			<tr>
 				<td>HTTP2</td>
-				<td><input type="checkbox"> HTTP2 + HTTPS<br>Major revision of HTTP protocol</td>
+				<td>HTTP2 + HTTPS<br>Major revision of HTTP protocol</td>
 			</tr>
 			<tr>
-				<td>caniuse.com</td>
-				<td><input type="checkbox"> Website for checking feature support</td>
+				<td>Proxy</td>
+				<td>Security concern with MITM attacks</td>
 			</tr>
 			<tr>
-				<td>Proxy + Fake Certeficate</td>
-				<td><input type="checkbox"> Security concern with MITM attacks</td>
-			</tr>
-			<tr>
-				<td>Proxy + Balancer</td>
-				<td><input type="checkbox"> Load balancing with proxy servers</td>
-			</tr>
-			<tr>
-				<td>Web -> HTTP2 -> Apache -> App Server -> DB</td>
-				<td><input type="checkbox"> Example web architecture</td>
-			</tr>
-			<tr>
-				<td>Revert Proxy</td>
-				<td><input type="checkbox"> Reverse proxy server</td>
+				<td>R Proxy</td>
+				<td>Reverse proxy server</td>
 			</tr>
 			<tr>
 				<td>CDN</td>
-				<td><input type="checkbox"> Content Delivery Network</td>
+				<td>Content Delivery Network</td>
 			</tr>
 			<tr>
 				<td>NPN</td>
-				<td><input type="checkbox"> Next Protocol Negotiation (for SPDY)</td>
+				<td>Next Protocol Negotiation (for SPDY)</td>
 			</tr>
 			<tr>
 				<td>ALPN</td>
-				<td><input type="checkbox"> Application-Layer Protocol Negotiation</td>
+				<td>Application-Layer Protocol Negotiation</td>
 			</tr>
 			<tr>
 				<td>SSLLabs</td>
-				<td><input type="checkbox"> SSL/TLS testing service</td>
+				<td>SSL/TLS testing service</td>
 			</tr>
 			<tr>
 				<td>RHEL</td>
-				<td><input type="checkbox"> Red Hat Enterprise Linux</td>
+				<td>Red Hat Enterprise Linux</td>
 			</tr>
 			<tr>
 				<td>ECDHE CGM</td>
-				<td><input type="checkbox"> Elliptic Curve Diffie-Hellman Ephemeral</td>
+				<td>Elliptic Curve Diffie-Hellman Ephemeral</td>
 			</tr>
 			<tr>
 				<td>POLY</td>
-				<td><input type="checkbox"> Poly1305 message authentication code</td>
+				<td>Poly1305 message authentication code</td>
 			</tr>
 			<tr>
-				<td>Mozila SSL Configurator</td>
-				<td><input type="checkbox"> Tool for SSL/TLS configuration</td>
+				<td>Mozila SSL</td>
+				<td>Configurator for SSL/TLS configuration</td>
 			</tr>
 			<tr>
 				<td>CASH</td>
-				<td><input type="checkbox"> Cache (possibly typo)</td>
+				<td>Cache (possibly typo)</td>
 			</tr>
 			<tr>
-				<td>binary</td>
-				<td><input type="checkbox"> HTTP/2 uses binary framing</td>
+				<td>Binary</td>
+				<td>HTTP/2 uses binary framing</td>
 			</tr>
 			<tr>
-				<td>multiplexed</td>
-				<td><input type="checkbox"> HTTP/2 allows multiple streams</td>
+				<td>Multiplexed</td>
+				<td>HTTP/2 allows multiple streams</td>
 			</tr>
 			<tr>
-				<td>flow-controlled</td>
-				<td><input type="checkbox"> HTTP/2 has per-stream flow control</td>
+				<td>Flow-controlled</td>
+				<td>HTTP/2 has per-stream flow control</td>
 			</tr>
 			<tr>
-				<td>prioritized</td>
-				<td><input type="checkbox"> HTTP/2 supports stream prioritization</td>
+				<td>Prioritized</td>
+				<td>HTTP/2 supports stream prioritization</td>
 			</tr>
 			<tr>
-				<td>compressed</td>
-				<td><input type="checkbox"> HTTP/2 header compression (HPACK)</td>
+				<td>Compressed</td>
+				<td>HTTP/2 header compression (HPACK)</td>
 			</tr>
 			<tr>
-				<td>server-push</td>
-				<td><input type="checkbox"> HTTP/2 server push capability</td>
+				<td>Server-push</td>
+				<td>HTTP/2 server push capability</td>
 			</tr>
 			<tr>
 				<td>Fragment answer</td>
-				<td><input type="checkbox"> Possibly fragmented HTTP responses</td>
+				<td>Possibly fragmented HTTP responses</td>
 			</tr>
 			<tr>
 				<td>QUIC</td>
-				<td><input type="checkbox"> Google transport protocol over UDP</td>
+				<td>Google transport protocol over UDP</td>
 			</tr>
 			<tr>
-				<td>incrementalID</td>
-				<td><input type="checkbox"> Possibly stream IDs in HTTP/2</td>
+				<td>IncrementalID</td>
+				<td>Possibly stream IDs in HTTP/2</td>
 			</tr>
 			<tr>
 				<td>Cookie</td>
-				<td><input type="checkbox"> HTTP header for client state</td>
+				<td>HTTP header for client state</td>
 			</tr>
 			<tr>
 				<td>User-Agent</td>
-				<td><input type="checkbox"> web browser<br>Identifies client software</td>
+				<td>web browser<br>Identifies client software</td>
 			</tr>
 			<tr>
 				<td>Host</td>
-				<td><input type="checkbox"> url<br>Specifies requested host</td>
+				<td>url<br>Specifies requested host</td>
 			</tr>
 			<tr>
 				<td>Accept</td>
-				<td><input type="checkbox"> Format<br>Specifies acceptable media types</td>
+				<td>Format<br>Specifies acceptable media types</td>
 			</tr>
 			<tr>
 				<td>Accept-Encoding</td>
-				<td><input type="checkbox"> HPACK/QPACK<br>Specifies acceptable content encodings</td>
+				<td>HPACK/QPACK<br>Specifies acceptable content encodings</td>
 			</tr>
 			<tr>
 				<td>Push load</td>
-				<td><input type="checkbox"> HTTP/2 server push</td>
+				<td>HTTP/2 server push</td>
 			</tr>
 			<tr>
 				<td>Asymmetric</td>
-				<td><input type="checkbox"> Public-key cryptography</td>
+				<td>Public-key cryptography</td>
 			</tr>
 			<tr>
 				<td>Upgrade: h2c</td>
-				<td><input type="checkbox"> HTTP header for HTTP/2 upgrade</td>
+				<td>HTTP header for HTTP/2 upgrade</td>
 			</tr>
 			<tr>
 				<td>Preamble 24okt</td>
-				<td><input type="checkbox"> Possibly TLS handshake preamble</td>
+				<td>Possibly TLS handshake preamble</td>
 			</tr>
 			<tr>
 				<td>ASCII</td>
-				<td><input type="checkbox"> Character encoding standard</td>
-			</tr>
-			<tr>
-				<td>chrome://net-export/</td>
-				<td><input type="checkbox"> Chrome network logging tool</td>
+				<td>Character encoding standard</td>
 			</tr>
 			<tr>
 				<td>ngHTTP</td>
-				<td><input type="checkbox"> HTTP/2 client and server</td>
+				<td>HTTP/2 client and server</td>
 			</tr>
 			<tr>
 				<td>Wireshark</td>
-				<td><input type="checkbox"> Network protocol analyzer</td>
+				<td>Network protocol analyzer</td>
 			</tr>
 			<tr>
 				<td>SSLKEYLOGFILE</td>
-				<td><input type="checkbox"> Environment variable for SSL key logging</td>
-			</tr>
-			<tr>
-				<td>export SSLKEYLOGFILE=~/sslkey.log</td>
-				<td><input type="checkbox"> Command to set SSL key log file</td>
-			</tr>
-			<tr>
-				<td>nghttp -va https://www.google.com | more</td>
-				<td></td>
+				<td>Environment variable for SSL key logging</td>
 			</tr>
 			<tr>
 				<td></td>
