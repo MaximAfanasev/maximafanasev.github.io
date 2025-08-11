@@ -1,101 +1,106 @@
 * {}
-/* Все элементы */
-div Все div
-.class Элементы с class="class"
-#id Элемент с id="id"
+.class {}
+#id {}
 
-div p Все p внутри div
-div > p p прямые потомки div
-div + p p сразу после div
-div ~ p Все p после div
+/* Все p внутри div */
+div p {}
+/* p прямые потомки div */
+div > p {}
+/* p сразу после div */
+div + p 
+/* Все p после div */
+div ~ p 
 
-position: static По умолчанию, в потоке документа
-position: relative Относительное позиционирование
-position: absolute Абсолютное позиционирование
-position: fixed Фиксированное позиционирование
-position: sticky Липкое позиционирование
+position: static {}
+position: relative {}
+position: absolute {}
+position: fixed {}
+position: sticky {}
 
-[title] Элементы с атрибутом title
-[href="..."] Точное значение атрибута
-[class^="icon-"] Начинается с...
-[class$="-btn"] Заканчивается на...
-[class*="error"] Содержит подстроку
+[title] {} 
+[href="..."] {} 
+[class^="icon-"] {} 
+[class$="-btn"] {} 
+[class*="error"] {} 
 
-:hover При наведении
-:active При клике
-:focus При фокусе
+:hover {}
+:active {}
+:focus {}
 
-:link Непосещённая ссылка
-:visited Посещённая ссылка
+:link {}
+:visited {}
 
-:nth-of-type(3) Конкретный элемент
-:nth-child(even) Элемент по порядку
-:nth-child(odd) Элемент по порядку
-:nth-last-of-type
+:nth-of-type(3) {}
+:nth-child(even) {}
+:nth-child(odd) {}
+:nth-last-of-type {}
 
-:first-child Первый потомок
-:last-child Последний потомок
-:first-of-type Первый элемент типа
-:last-of-type Последний элемент типа
+:first-child {}
+:last-child {}
+:first-of-type {}
+:last-of-type {}
 
-:only-child Единственный потомок
-:not() Исключение
-:empty
-:only-of-type
+:only-child {}
+:not() {}
+:empty {}
+:only-of-type {}
+
+:checked {}
+:disabled {}
+:valid {}
+:placeholder-shown {}
+
+::before {}
+::after {}
+::first-letter {}
+::first-line {}
+::selection {}
+::selection {}
 
 
-:checked Выбранный чекбокс
-:disabled Отключённые поля
-:valid Корректные данные
-:placeholder-shown Показ placeholder
 
-::before Добавить контент ДО
-::after Добавить контент ПОСЛЕ
-::first-letter Стиль первой букв
-::first-line Стиль первой строки
-::selection Выделенный текст
-::selection Стиль выделенного текста
 
-padding Внутренние отступы
-margin Внешние отступы
+.a {
+	
+padding: ;
+margin: ;
 
-font-size Размер шрифта (px, em, rem, %)
-font-family Семейство шрифтов (Arial, sans-serif)
-font-weight Насыщенность (normal, bold, 100-900)
-font-style Курсив (italic, oblique, normal)
-font-variant Капитель (small-caps), альтернативные глифы
+font-size;
+font-family;
+font-weight;
+font-style;
+font-variant;
 
-line-height Высота строки (число, px, em, %)
+line-height;
 
-color Цвет текста (hex, rgb, hsl, имя цвета)
+color;
 
-vertical-align Вертикальное выравнивание (baseline, top, middle, bottom)
+vertical-align;
 
-font-feature-settings Расширенные настройки OpenType
+font-feature-settings;
 
-text-align Горизонтальное выравнивание (left, right, center, justify)
-text-decoration Оформление (underline, overline, line-through, none)
-text-transform Регистр (uppercase, lowercase, capitalize)
-text-shadow Тень текста (x y blur color)
-text-overflow Обрезка текста (ellipsis, clip)
-text-rendering Оптимизация рендеринга
+text-align;
+text-decoration;
+text-transform;
+text-shadow;
+text-overflow;
+text-rendering;
 
-letter-spacing Расстояние между буквами
-word-spacing Расстояние между словами
-white-space Обработка пробелов (normal, nowrap, pre, pre-wrap)
+letter-spacing;
+word-spacing;
+white-space;
 
-word-break Перенос слов (normal, break-all, keep-all)
-hyphens Автоматический перенос слов (auto, manual, none)
+word-break;
+hyphens;
 
-background-color Цвет фона текста
-background-image Фоновое изображение
-background-clip: text Обрезать фон по тексту
+background-color;
+background-image;
+background-clip;
 
-box-shadow
-text-shadow
+box-shadow;
+text-shadow;
 
-div {
-display: flex
+display: flex;
 flex-direction: row;
 flex-direction: row;
 flex-direction: row;
@@ -119,3 +124,4 @@ grid-column-start
 grid-column-end
 grid-template-areas
 gap
+}
