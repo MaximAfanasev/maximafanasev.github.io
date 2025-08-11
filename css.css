@@ -1,27 +1,19 @@
 /* ===== Базовые селекторы ===== */
 * {}
-
 /* Универсальный селектор */
 .class {}
-
 /* Селектор класса */
 #id {}
-
 /* Селектор ID */
-
 /* ===== Комбинаторы ===== */
 /* Все p внутри div */
 div p {}
-
 /* p прямые потомки div */
 div > p {}
-
 /* p сразу после div */
 div + p {}
-
 /* Все p после div */
 div ~ p {}
-
 /* ===== Позиционирование ===== */
 .a {
 	position: static;
@@ -35,128 +27,80 @@ div ~ p {}
 	left: 0;
 	z-index: 10;
 }
-
 /* ===== Селекторы атрибутов ===== */
 a[title] {}
-
 a[href="https://example.com"] {}
-
 a[href^="https"] {}
-
 /* Начинается с */
 a[href$=".pdf"] {}
-
 /* Заканчивается на */
 a[href*="example"] {}
-
 /* Содержит */
 div[class^="icon-"] {}
-
 div[class$="-btn"] {}
-
 div[class*="error"] {}
-
 /* ===== Псевдоклассы ===== */
 /* Состояния ссылок */
 :link {}
-
 :visited {}
-
 :hover {}
-
 :active {}
-
 :focus {}
-
 :focus-visible {}
-
 :focus-within {}
-
 /* Структурные */
 :first-child {}
-
 :last-child {}
-
 :first-of-type {}
-
 :last-of-type {}
-
 :only-child {}
-
 :only-of-type {}
-
 :nth-child(2) {}
-
 :nth-child(odd) {}
-
 :nth-child(even) {}
-
 :nth-child(3n+1) {}
-
 :nth-last-child(2) {}
-
 :nth-of-type(2) {}
-
 :nth-last-of-type(2) {}
-
 :not(.ignore) {}
-
 :empty {}
-
 :root {}
 
 /* Формы */
 :checked {}
-
 :disabled {}
-
 :enabled {}
-
 :required {}
-
 :optional {}
-
 :valid {}
-
 :invalid {}
-
 :in-range {}
-
 :out-of-range {}
-
 :placeholder-shown {}
-
 :read-only {}
-
 :read-write {}
-
+/* При клике на один, менят другой элемент */
+:target {}
 /* ===== Псевдоэлементы ===== */
 ::before {
 	content: "";
 	display: block;
 }
-
 ::after {
 	content: "";
 	display: block;
 }
-
 ::first-letter {}
-
 ::first-line {}
-
 ::selection {
 	background: #ff0;
 	color: #000;
 }
-
 ::marker {}
-
 /* Для маркеров списков */
 ::placeholder {
 	color: #999;
 }
-
 /* ===== Box Model ===== */
 .a {
 	width: 100px;
@@ -431,26 +375,21 @@ div[class*="error"] {}
 	filter: saturate(200%);
 	filter: sepia(100%);
 }
-
 /* ===== Медиа-запросы ===== */
 @media screen and (min-width: 768px) {
 	/* Стили для экранов от 768px */
 }
-
 @media (prefers-color-scheme: dark) {
 	/* Темная тема */
 }
-
 @media (orientation: portrait) {
 	/* Вертикальная ориентация */
 }
-
 /* ===== Кастомные свойства ===== */
 :root {
 	--primary-color: #3498db;
 	--spacing: 16px;
 }
-
 .element {
 	color: var(--primary-color);
 	margin: var(--spacing);
