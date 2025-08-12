@@ -35,11 +35,21 @@
 		td:last-child:hover {
 			filter: blur(0px);
 		}
+
 		a {
 			color: gold;
 			font-family: monospace;
 			font-size: 100px;
 		}
+
+		td:nth-child(2) span {
+			display: none;
+		}
+
+		td:nth-child(2):hover span {
+			display: block;
+		}
+
 	</style>
 </head>
 
@@ -48,69 +58,69 @@
 		<tbody>
 			<tr>
 				<td>200</td>
-				<td>OK</td>
+				<td>Ok <span>HTTP статус 200 OK — это код состояния успешного выполнения запроса в протоколе HTTP. Это стандартный ответ для успешных HTTP-запросов, означающий, что запрос клиента был обработан сервером корректно, и запрошенный ресурс был успешно найден и передан</span></td>
 			</tr>
 			<tr>
 				<td>201</td>
-				<td>Created</td>
+				<td>Created <span>Запрос успешно выполнен и в результате был создан новый ресурс. Этот код обычно отправляется в ответ на POST-запрос</span></td>
 			</tr>
 			<tr>
 				<td>202</td>
-				<td>Accepted</td>
+				<td>Accepted <span>Запрос был принят на обработку, но обработка еще не завершена. Запрос может быть или не быть в конечном итоге выполнен</span></td>
 			</tr>
 			<tr>
 				<td>204</td>
-				<td>No content</td>
+				<td>No content <span>Сервер успешно обработал запрос, но не возвращает никакого содержимого. Обычно для подтверждения успешного выполнения операции без необходимости возврата данных</span></td>
 			</tr>
 			<tr>
 				<td>300</td>
-				<td>Multi</td>
+				<td>Multiple Choices <span>Запрос имеет несколько возможных ответов. Пользователь или пользовательский агент должен выбрать один из них</span></td>
 			</tr>
 			<tr>
 				<td>301</td>
-				<td>Moved permanently</td>
+				<td>Moved permanently <span>Запрошенный ресурс был окончательно перемещен в новое место. Все будущие запросы должны использовать новый URI</span></td>
 			</tr>
 			<tr>
 				<td>302</td>
-				<td>Moved temporarily</td>
+				<td>Moved temporarily <span>Запрошенный ресурс временно перемещен в другое место. Текущий URI может быть использован для будущих запросов</span></td>
 			</tr>
 			<tr>
 				<td>304</td>
-				<td>Not modified</td>
+				<td>Not modified <span>Используется для кэширования. Указывает, что ресурс не был изменен с момента последнего запроса</span></td>
 			</tr>
 			<tr>
 				<td>400</td>
-				<td>Bad request</td>
+				<td>Bad request <span>Сервер не может обработать запрос из-за неверного синтаксиса или некорректных данных в запросе</span></td>
 			</tr>
 			<tr>
 				<td>401</td>
-				<td>Unathorized</td>
+				<td>Unauthorized <span>Требуется аутентификация для доступа к ресурсу. Запрос не был применен, так как ему не хватает действительных учетных данных</span></td>
 			</tr>
 			<tr>
 				<td>403</td>
-				<td>Forbindden</td>
+				<td>Forbidden <span>Сервер понял запрос, но отказывается его авторизовать. Доступ запрещен независимо от аутентификации</span></td>
 			</tr>
 			<tr>
 				<td>404</td>
-				<td>Not found</td>
+				<td>Not found <span>Сервер не может найти запрошенный ресурс. Наиболее распространенный код ошибки в вебе</span></td>
 			</tr>
 			<tr>
 				<td>500</td>
-				<td>Internal server error</td>
+				<td>Internal server error <span>Общее сообщение об ошибке, когда сервер столкнулся с непредвиденной ситуацией, которая помешала ему выполнить запрос</span></td>
 			</tr>
 			<tr>
 				<td>501</td>
-				<td>Not implemented</td>
+				<td>Not implemented <span>Сервер не поддерживает функциональность, необходимую для выполнения запроса</span></td>
 			</tr>
 			<tr>
 				<td>502</td>
-				<td>Bad gateway</td>
+				<td>Bad gateway <span>Сервер, действуя как шлюз или прокси, получил недопустимый ответ от вышестоящего сервера</span></td>
 			</tr>
 			<tr>
 				<td>503</td>
-				<td>Service unavailable</td>
+				<td>Service unavailable <span>Сервер временно не может обрабатывать запросы из-за перегрузки или технического обслуживания</span></td>
 			</tr>
-			
+
 			<tr>
 				<td></td>
 				<td></td>
@@ -121,7 +131,7 @@
 				<td></td>
 				<td></td>
 			</tr>
-			
+
 			<tr>
 				<td>GET</td>
 				<td>HTTP method to retrieve data</td>
@@ -134,7 +144,7 @@
 				<td>HEAD</td>
 				<td>HTTP method to get headers only</td>
 			</tr>
-				
+
 			<tr>
 				<td></td>
 				<td></td>
@@ -145,7 +155,7 @@
 				<td></td>
 				<td></td>
 			</tr>
-			
+
 			<tr>
 				<td>HTTP </td>
 				<td>HyperText Transfer Protocol</td>
@@ -162,7 +172,7 @@
 				<td>DNS</td>
 				<td>Domain Name System</td>
 			</tr>
-				
+
 			<tr>
 				<td></td>
 				<td></td>
@@ -173,7 +183,7 @@
 				<td></td>
 				<td></td>
 			</tr>
-			
+
 			<tr>
 				<td>SMTP</td>
 				<td>Email protocols</td>
@@ -186,7 +196,7 @@
 				<td>QUIC</td>
 				<td>Transport protocol over UDP</td>
 			</tr>
-				
+
 			<tr>
 				<td></td>
 				<td></td>
@@ -197,7 +207,7 @@
 				<td></td>
 				<td></td>
 			</tr>
-			
+
 			<tr>
 				<td>VoIP</td>
 				<td>Voice over IP services</td>
@@ -222,7 +232,7 @@
 				<td>ALPN</td>
 				<td>Application-Layer Protocol Negotiation</td>
 			</tr>
-				
+
 			<tr>
 				<td></td>
 				<td></td>
@@ -233,7 +243,7 @@
 				<td></td>
 				<td></td>
 			</tr>
-			
+
 			<tr>
 				<td>URL</td>
 				<td>Uniform Resource Locator /?q=search</td>
@@ -377,11 +387,11 @@
 				<td></td>
 				<td></td>
 			</tr>
-			
+
 			<tr>
 				<td>Binary<br>Multiplexed<br>Flow-controlled<br>Prioritized<br>Compressed<br>Server-push<br>Fragment</td>
 				<td>HTTP/2 uses binary framing</td>
-				
+
 			<tr>
 				<td></td>
 				<td></td>
@@ -392,7 +402,7 @@
 				<td></td>
 				<td></td>
 			</tr>
-			
+
 			<tr>
 				<td>IncrementalID</td>
 				<td>Possibly stream IDs in HTTP/2</td>
