@@ -344,123 +344,182 @@ li:not(:first-child) {} /* выбирает все `<li>`, кроме перво
 
 	grid-area: header; /* Назначение области для элемента, связанной с grid-template-areas */
 
-	justify-items: start;    /* Выравнивание содержимого внутри ячейки по началу (по горизонтали) */
-	justify-items: end;      /* Выравнивание содержимого внутри ячейки по концу (по горизонтали) */
-	justify-items: center;   /* Центрирование содержимого внутри ячейки (по горизонтали) */
-	justify-items: stretch;  /* Растягивание содержимого на всю ширину ячейки (по горизонтали) */
+	justify-items: start;   /* Выравнивание содержимого внутри ячейки по началу (по горизонтали) */
+	justify-items: end;     /* Выравнивание содержимого внутри ячейки по концу (по горизонтали) */
+	justify-items: center;  /* Центрирование содержимого внутри ячейки (по горизонтали) */
+	justify-items: stretch; /* Растягивание содержимого на всю ширину ячейки (по горизонтали) */
 	
-	align-items: start;
-	align-items: end;
-	align-items: center;
-	align-items: stretch;
-	place-items: center stretch;
-	
-	justify-content: start;
-	justify-content: end;
-	justify-content: center;
-	justify-content: stretch;
-	justify-content: space-around;
-	justify-content: space-between;
-	justify-content: space-evenly;
-	
-	align-content: start;
-	align-content: end;
-	align-content: center;
-	align-content: stretch;
-	align-content: space-around;
-	align-content: space-between;
-	align-content: space-evenly;
-	place-content: space-between center;
+	/* Выравнивание элементов внутри контейнера по поперечной оси */
+	align-items: start;        /* Выравнивание по началу (по вертикали или горизонтали в зависимости от flex-direction) */
+	align-items: end;          /* Выравнивание по концу */
+	align-items: center;       /* Центрирование */
+	align-items: stretch;      /* Растягивание элементов на всю высоту/ширину контейнера */
+	place-items: center stretch; /* Одновременное указание для grid: центр по горизонтали, растяжение по вертикали */
 
-	transform: translate(10px, 20px);
-	transform: rotate(45deg);
-	transform: scale(1.2);
-	transform: skew(10deg, 5deg);
-	transform-origin: center;
-	transform-style: flat;
-	transform-style: preserve-3d;
-	backface-visibility: visible;
-	backface-visibility: hidden;
+	/* Выравнивание содержимого внутри flex или grid контейнера по основной оси */
+	justify-content: start;        /* В начале (по основной оси) */
+	justify-content: end;          /* В конце */
+	justify-content: center;       /* Центрировать */
+	justify-content: stretch;      /* Растягивать (обычно не применяется к justify-content) */
+	justify-content: space-around; /* Равномерное распределение с отступами вокруг элементов */
+	justify-content: space-between;/* Распределение с равными промежутками между элементами */
+	justify-content: space-evenly; /* Равные промежутки между всеми элементами */
 
+	/* Выравнивание линий содержимого внутри flex или grid контейнера по поперечной оси (когда есть несколько линий) */
+	align-content: start;        /* В начале линий */
+	align-content: end;          /* В конце линий */
+	align-content: center;       /* Центрирование линий */
+	align-content: stretch;      /* Растягивание линий на всю доступную высоту/ширину контейнера */
+	align-content: space-around; /* Равномерное распределение с отступами вокруг линий */
+	align-content: space-between;/* Распределение с равными промежутками между линиями */
+	align-content: space-evenly; /* Равные промежутки между линиями */
+
+	/* Расположение содержимого внутри grid или flex контейнера по обеим осям одновременно (для grid) */
+	place-items: center stretch; /* Центр по горизонтали, растяжение по вертикали */
+
+	/* Трансформации элемента */
+	transform: translate(10px, 20px);   /* Смещение элемента на 10px вправо и 20px вниз */
+	transform: rotate(45deg);            /* Поворот на 45 градусов */
+	transform: scale(1.2);               /* Масштабирование элемента в 1.2 раза */
+	transform: skew(10deg, 5deg);        /* Искажение по осям X и Y */
+
+	transform-origin: center;            /* Точка трансформации — центр элемента */
+
+	transform-style: flat;               /* Уровень 3D трансформаций (обычно используется в контексте 3D) — 'flat' не является стандартным значением, правильное — 'flat' или 'preserve-3d' */
+
+	transform-style: preserve-3d;        /* Сохраняет 3D-пространство для дочерних элементов */
+
+	backface-visibility: visible;        /* Видимость задней стороны при вращении в 3D пространстве */
+
+	backface-visibility: hidden;         /* Скрывает заднюю сторону при вращении в 3D пространстве */
+
+	/* Общий переход для всех свойств с длительностью 0.3 секунды и функцией плавности ease */
 	transition: all 0.3s ease;
+
+	/* Указывает, что переход применяется только к свойству opacity */
 	transition-property: opacity;
+
+	/* Длительность перехода — 0.3 секунды */
 	transition-duration: 0.3s;
+
+	/* Функция временной плавности — ease (плавное ускорение и замедление) */
 	transition-timing-function: ease;
-	transition-timing-function: linear;
-	transition-timing-function: ease-in;
-	transition-timing-function: ease-out;
-	transition-timing-function: ease-in-out;
-	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	/* Альтернативные функции временной плавности, которые могут быть переопределены по порядку */
+	transition-timing-function: linear;       /* Линейный переход без ускорения */
+	transition-timing-function: ease-in;      /* Плавное ускорение в начале */
+	transition-timing-function: ease-out;     /* Плавное замедление в конце */
+	transition-timing-function: ease-in-out;  /* Ускорение и замедление в середине */
+
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); /* Пользовательская кривая Безье для более точного контроля */
+
+  /* Задержка перед началом перехода — 0.1 секунды */
 	transition-delay: 0.1s;
 
+	/* Основное объявление анимации с именем 'slide', длительностью 2 секунды, функцией ease, и бесконечным повторением */
 	animation: slide 2s ease infinite;
-	animation-name: slide;
-	animation-duration: 2s;
-	animation-timing-function: ease;
-	animation-delay: 0s;
-	animation-iteration-count: infinite;
-	animation-iteration-count: 3;
-	animation-direction: normal;
-	animation-direction: reverse;
-	animation-direction: alternate;
-	animation-direction: alternate-reverse;
-	animation-fill-mode: none;
-	animation-fill-mode: forwards;
-	animation-fill-mode: backwards;
-	animation-fill-mode: both;
-	animation-play-state: running;
-	animation-play-state: paused;
 
-	cursor: pointer;
-	cursor: help;
-	cursor: wait;
-	cursor: not-allowed;
+	/* Название анимации (может быть использовано отдельно) */
+	animation-name: slide;
+
+	/* Длительность анимации — 2 секунды */
+	animation-duration: 2s;
+
+	/* Функция временной плавности анимации */
+	animation-timing-function: ease;
+
+	/* Задержка перед началом анимации — 0 секунд */
+	animation-delay: 0s;
+
+	/* Количество повторений анимации — бесконечно */
+	animation-iteration-count: infinite;
+
+	/* Альтернативное значение количества повторений — 3 раза (будет применено, если раскомментировать или убрать 'infinite') */
+	animation-iteration-count: 3;
+
+	/* Направление воспроизведения анимации */
+	animation-direction: normal;           /* Воспроизведение в обычном порядке */
+	animation-direction: reverse;          /* Воспроизведение в обратном порядке */
+	animation-direction: alternate;        /* Переключение между нормальным и обратным при каждом цикле */
+	animation-direction: alternate-reverse;/* Обратное чередование по сравнению с 'alternate' */
+
+	/* Режим заполнения после завершения анимации */
+	animation-fill-mode: none;     /* Не сохранять состояние после окончания */
+	animation-fill-mode: forwards; /* Сохранять конечное состояние после завершения */
+	animation-fill-mode: backwards;/* Использовать начальное состояние до начала анимации */
+	animation-fill-mode: both;     /* Комбинация 'forwards' и 'backwards' */
+
+	 /* Статус воспроизведения анимации */
+	animation-play-state: running; /* Анимация запущена и воспроизводится */
+	animation-play-state: paused;  /* Анимация приостановлена (по умолчанию) */
+
+	/* Изменение вида курсора при наведении */
+	cursor: pointer;        /* Указатель в виде руки, обычно для кликабельных элементов */
+	cursor: help;           /* В виде вопросительного знака, для подсказок */
+	cursor: wait;           /* Индикатор ожидания (часики или кружок) */
+	cursor: not-allowed;    /* Запрет на взаимодействие (запрещённый символ) */
+
+	/* Прозрачность элемента */
+	opacity: 0.5;           /* Полупрозрачный элемент (50%) */
+
+	/* Видимость элемента */
+	visibility: visible;    /* Элемент видим */
+	visibility: hidden;     /* Элемент скрыт, но занимает место в разметке */
+
+	/* Отображение элемента */
+	display: none;          /* Элемент полностью скрыт и не занимает места */
+	display: block;         /* Блочный элемент, занимает всю ширину контейнера */
+	display: inline;       /* Встроенный элемент, занимает только необходимую ширину */
+	display: inline-block; /* Встроенно-блочный, позволяет задавать размеры и позиционирование */
+	display: contents;     /* Отрисовывает только содержимое без собственного блока (редко используется) */
+	display: list-item;    /* Элемент списка с маркером */
+
+	/* Положение элемента относительно окружающих элементов */
+	float: left;          /* Прижать к левому краю контейнера */
+	float: right;         /* Прижать к правому краю контейнера */
+	float: none;          /* Отменить float, вернуть в поток документа */
 	
-	opacity: 0.5;
-	
-	visibility: visible;
-	visibility: hidden;
-	
-	display: none;
-	display: block;
-	display: inline;
-	display: inline-block;
-	display: contents;
-	display: list-item;
-	
-	float: left;
-	float: right;
-	float: none;
-	
+	/* Очистка float-элементов, сброс обтекания */
 	clear: both;
-	
-	object-fit: cover;
-	object-fit: contain;
-	object-position: center;
-	
-	resize: both;
-	resize: horizontal;
-	resize: vertical;
-	
-	clip-path: circle(50%);
-	
+
+	/* Обработка изображений или элементов с объектом, подгонка по размеру */
+	object-fit: cover;     /* Заполняет контейнер, сохраняя пропорции, может обрезать часть изображения */
+	object-fit: contain;   /* Вписывает изображение полностью в контейнер, сохраняя пропорции */
+	object-position: center; /* Центрирование объекта внутри контейнера */
+
+	/* Изменение размера элемента пользователем */
+	resize: both;          /* Позволяет изменять как по горизонтали, так и по вертикали */
+	resize: horizontal;    /* Только по горизонтали */
+	resize: vertical;      /* Только по вертикали */
+
+	/* Обрезка элемента с помощью формы */
+	clip-path: circle(50%); /* Обрезает элемент в виде круга с радиусом 50% */
+
+	/* Предварительное указание браузеру, что элемент может измениться (оптимизация) */
 	will-change: transform;
-	
-	filter: blur(5px);
-	filter: brightness(1.2);
-	filter: contrast(1.5);
-	filter: grayscale(50%);
-	filter: hue-rotate(90deg);
-	filter: invert(100%);
-	filter: opacity(50%);
-	filter: saturate(200%);
-	filter: sepia(100%);
+
+	/* Применение различных CSS-фильтров к элементу */
+	filter: blur(5px);             /* Размытие изображения на 5 пикселей */
+	filter: brightness(1.2);       /* Увеличение яркости на 20% */
+	filter: contrast(1.5);         /* Повышение контраста на 50% */
+	filter: grayscale(50%);        /* Половина изображения в оттенках серого */
+	filter: hue-rotate(90deg);     /* Поворот цветового оттенка на 90 градусов */
+	filter: invert(100%);          /* Инверсия цветов (цвета меняются местами) */
+	filter: opacity(50%);          /* Полупрозрачность (50%) */
+	filter: saturate(200%);        /* Увеличение насыщенности цветов в два раза */
+	filter: sepia(100%);           /* Полностью сепия-эффект (старинный фотоэффект) */
 }
+
 @media screen and (min-width: 768px) {
+  /* Здесь пишите стили, применяемые при ширине экрана >= 768px */
 }
+
 @media (prefers-color-scheme: dark) {
+  /* Здесь стили для тёмной темы */
 }
+
 @media (orientation: portrait) {
+  /* Здесь стили, применяемые при вертикальной ориентации экрана */
 }
 
 :root {
