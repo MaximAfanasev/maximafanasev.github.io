@@ -136,15 +136,19 @@
 			<!--TODO: примеры работ с методами-->
 			<tr>
 				<td>GET</td>
-				<td>HTTP method to retrieve data</td>
+				<td>HTTP method to retrieve data <p>Параметры передаются в URL (?key=value)Ограничение длины URL (~2048 символов) GET /products?id=123 HTTP/1.1
+						Host: example.com</p>
+				</td>
 			</tr>
 			<tr>
 				<td>POST</td>
-				<td>HTTP method to send data</td>
+				<td>HTTP method to send data <p>Отправка данных на сервер CSRF-токены обязательны Данные в теле запроса</p>
+				</td>
 			</tr>
 			<tr>
 				<td>HEAD</td>
-				<td>HTTP method to get headers only</td>
+				<td>HTTP method to get headers only <p>Получение метаданных роверка последнего изменения (Last-Modified)</p>
+				</td>
 			</tr>
 
 			<tr>
@@ -157,10 +161,18 @@
 				<td></td>
 				<td></td>
 			</tr>
-			
+
 			<tr>
 				<td>OSI</td>
-				<td>Open Systems Interconnection</td>
+				<td>Open Systems Interconnection <p>Эталонная модель взаимодействия открытых систем, разработанная ISO в 1984 году
+						7 Прикладной Интерфейс для приложений HTTP, FTP, SMTP, DNS Данные
+						6 Представления Форматирование, шифрование SSL/TLS, JPEG, MPEG Данные
+						5 Сеансовый Управление сеансами связи NetBIOS, RPC, SIP Данные
+						4 Транспортный Надежная передача данных TCP, UDP, QUIC Сегменты (TCP) / Датаграммы (UDP)
+						3 Сетевой Маршрутизация и логическая адресация IP, ICMP, BGP, OSPF Пакеты
+						2 Канальный Физическая адресация Ethernet, MAC, PPP, VLAN Кадры
+						1 Физический Передача битов USB, DSL, Wi-Fi, оптоволок</p>
+				</td>
 			</tr>
 
 			<tr>
@@ -191,11 +203,12 @@
 			</tr>
 			<tr>
 				<td>TLS</td>
-				<td>Transport Layer Security <p>асимметричное шифрование AES Целостность данных (HMAC) Аутентификацию (сертификаты X.509)</p></td>
+				<td>Transport Layer Security <p>асимметричное шифрование AES Целостность данных (HMAC) Аутентификацию (сертификаты X.509)</p>
+				</td>
 			</tr>
 			<tr>
 				<td>QUIC</td>
-				<td>Transport protocol over UDP <p>стандартизирован как HTTP/3 Работает поверх UDP (не TCP)	Встроенное шифрование (TLS 1.3) Мультиплексирование потоков Уменьшенная задержка (0-RTT) Автовосстановление при смене сети</p>
+				<td>Transport protocol over UDP <p>стандартизирован как HTTP/3 Работает поверх UDP (не TCP) Встроенное шифрование (TLS 1.3) Мультиплексирование потоков Уменьшенная задержка (0-RTT) Автовосстановление при смене сети</p>
 				</td>
 			</tr>
 			<tr>
@@ -205,7 +218,12 @@
 			</tr>
 			<tr>
 				<td>VoIP</td>
-				<td>Voice over IP services <p>Протоколы: SIP, RTP, H.323 Кодеки: G.711, G.729, Opus QoS для приоритизации трафика </p></td>
+				<td>Voice over IP services <p>Протоколы: SIP, RTP, H.323 Кодеки: G.711, G.729, Opus QoS для приоритизации трафика </p>
+				</td>
+			</tr>
+			<tr>
+				<td>SPDY</td>
+				<td>Precursor to HTTP/2 <p>Протокол передачи данных</p></td>
 			</tr>
 			<tr>
 				<td></td>
@@ -229,128 +247,90 @@
 			</tr>
 			<tr>
 				<td>DOM</td>
-				<td>Document Object Model</td>
+				<td>Document Object Model <p>Древовидная структура узлов (элементы, атрибуты, текст) API для манипуляции Событийная модель</p>
+				</td>
 			</tr>
 			<tr>
 				<td>CDN</td>
-				<td>Content Delivery Network</td>
-			</tr>
-			<tr>
-				<td>NPN</td>
-				<td>Next Protocol Negotiation</td>
+				<td>Content Delivery Network <p>Ускорение доставки контента Геораспределённая сеть серверов Кэширование статики</p>
+				</td>
 			</tr>
 			<tr>
 				<td>ALPN</td>
-				<td>Application-Layer Protocol Negotiation</td>
+				<td>Application-Layer Protocol Negotiation <p>Согласование прикладного протокола Определяется во время TLS-handshake</p>
+				</td>
 			</tr>
 
 			<tr>
 				<td>URL</td>
-				<td>Uniform Resource Locator /?q=search</td>
+				<td>Uniform Resource Locator /?q=search <p>Строка идентификации ресурса Параметры (?id=123) Якорь (#reviews) Путь (/products) Порт (443 для HTTPS)Домен (www.example.com) </p>
+				</td>
 			</tr>
 			<tr>
 				<td>CA</td>
-				<td>Certification authority</td>
+				<td>Certification authority <p>Выдача цифровых сертификатов Проверяет владельцев доменов/организаций DigiCert, Sectigo, Let's Encrypt</p>
+				</td>
 			</tr>
 			<tr>
 				<td>EV</td>
-				<td>Extended Validation</td>
+				<td>Extended Validation <p>SSL-сертификат с расширенной проверкой</p>
+				</td>
 			</tr>
 			<tr>
 				<td>ARC</td>
-				<td>Advanced Rest Client</td>
+				<td>Advanced Rest Client <p>Алгоритм кэширования Управление кэш-памятью LRU и LFU</p></td>
 			</tr>
 			<tr>
 				<td>CGI</td>
-				<td>Common Gateway Interface</td>
+				<td>Common Gateway Interface <p>Интерфейс веб-сервера Передача данных через переменные окружения REQUEST_METHOD QUERY_STRING</p></td>
 			</tr>
 			<tr>
 				<td>JSP</td>
-				<td>Java Servlet Java Server Pages</td>
+				<td>Java Servlet Java Server Pages <p>Технология веб-разработки Компилируется в сервлеты </p></td>
 			</tr>
 			<tr>
 				<td>HOL</td>
-				<td>Head-Of-Line</td>
+				<td>Head-Of-Line <p>Задержка обработки пакетов</p></td>
 			</tr>
 			<tr>
 				<td>SYN</td>
-				<td>Synchronize</td>
+				<td>Synchronize <p>Инициация соединения</p></td>
 			</tr>
 			<tr>
 				<td>SYN-ACK</td>
-				<td>Synchronize-Acknowledge</td>
+				<td>Synchronize-Acknowledge <p>Подтверждение и ответ</p></td>
 			</tr>
 			<tr>
 				<td>ACK</td>
-				<td>Acknowledge</td>
-			</tr>
-
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-
-			<tr>
-				<td>SPDY</td>
-				<td>Precursor to HTTP/2</td>
+				<td>Acknowledge <p>Подтверждение установки</p></td>
 			</tr>
 			<tr>
 				<td>Proxy</td>
-				<td>Security concern</td>
+				<td>Security concern <p>Промежуточный сервер </p></td>
 			</tr>
 			<tr>
 				<td>SSLLabs</td>
-				<td>SSL/TLS testing service</td>
-			</tr>
-			<tr>
-				<td>RHEL</td>
-				<td>Red Hat Enterprise Linux</td>
+				<td>SSL/TLS testing service <p>Онлайн-сервис анализа SSL/TLS</p></td>
 			</tr>
 			<tr>
 				<td>ECDHE CGM</td>
-				<td>Elliptic Curve Diffie-Hellman Ephemeral</td>
+				<td>Elliptic Curve Diffie-Hellman Ephemeral <p>Алгоритм обмена ключами Стандарт шифрования (RFC 5652)</p></td>
 			</tr>
 			<tr>
 				<td>POLY</td>
-				<td>Poly1305 message authentication code</td>
+				<td>Poly1305 message authentication code <p>MAC-алгоритм</p></td>
 			</tr>
 			<tr>
 				<td>Cookie</td>
-				<td>HTTP header for client state</td>
+				<td>HTTP header for client state <p>Печеньки</p></td>
 			</tr>
 			<tr>
 				<td>ASCII</td>
-				<td>Character encoding standard</td>
+				<td>Character encoding standard <p>7-битная кодировка </p></td>
 			</tr>
 			<tr>
 				<td>ngHTTP</td>
-				<td>HTTP/2 client and server</td>
-			</tr>
-
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-
-			<tr>
-				<td>Mozila SSL</td>
-				<td>Configurator</td>
-			</tr>
-			<tr>
-				<td>Wireshark</td>
-				<td>Analyzer</td>
+				<td>HTTP/2 client and server <p>Фрейм</p></td>
 			</tr>
 
 			<tr>
@@ -401,39 +381,39 @@
 
 			<tr>
 				<td>IncrementalID</td>
-				<td>Possibly stream IDs in HTTP/2</td>
+				<td>Possibly stream IDs in HTTP/2 <p>автоматически увеличивающийся уникальный числовой идентификатор</p></td>
 			</tr>
 			<tr>
 				<td>User-Agent</td>
-				<td>Web browser</td>
+				<td>Web browser <p>Содержит информацию о браузере, операционной системе и устройстве пользователя</p></td>
 			</tr>
 			<tr>
 				<td>Accept</td>
-				<td>Format</td>
+				<td>Format <p>Указывает, какие типы контента (MIME-типы) клиент может принять в ответ</p></td>
 			</tr>
 			<tr>
 				<td>Accept-Encoding</td>
-				<td>HPACK/QPACK</td>
+				<td>HPACK/QPACK <p>Сообщает серверу, какие методы сжатия поддерживает клиент (например, gzip, deflate)</p></td>
 			</tr>
 			<tr>
 				<td>Push load</td>
-				<td>HTTP/2 server push</td>
+				<td>HTTP/2 server push <p>В HTTP/2 сервер может "протолкнуть" (push) ресурсы клиенту до того, как тот их запросит</p></td>
 			</tr>
 			<tr>
 				<td>Asymmetric</td>
-				<td>Public-key cryptography</td>
+				<td>Public-key cryptography <p>RSA, ECC (Elliptic Curve Cryptography)</p></td>
 			</tr>
 			<tr>
 				<td>Upgrade: h2c</td>
-				<td>HTTP header for HTTP/2 upgrade</td>
+				<td>HTTP header for HTTP/2 upgrade <p>переход с HTTP/1.1 на HTTP/2 без шифрования (h2c = HTTP/2 Cleartext)</p></td>
 			</tr>
 			<tr>
 				<td>Preamble 24okt</td>
-				<td>Possibly TLS handshake preamble</td>
+				<td>Possibly TLS handshake preamble <p>начальные данные, которыми обмениваются клиент и сервер перед установкой соединения</p></td>
 			</tr>
 			<tr>
 				<td>SSLKEYLOGFILE</td>
-				<td>Environment variable for SSL key logging</td>
+				<td>Environment variable for SSL key logging <p>перехват TLS-ключей для анализа трафика</p></td>
 			</tr>
 		</tbody>
 	</table>
