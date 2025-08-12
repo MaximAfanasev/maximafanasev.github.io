@@ -118,28 +118,19 @@ table {
 
 
 
-
-
-
-
-
-/* ===== Базовые селекторы ===== */
 * {}
-/* Универсальный селектор */
 .class {}
-/* Селектор класса */
 #id {}
-/* Селектор ID */
-/* ===== Комбинаторы ===== */
-/* Все p внутри div */
-div p {}
-/* p прямые потомки div */
-div > p {}
-/* p сразу после div */
-div + p {}
-/* Все p после div */
-div ~ p {}
-/* ===== Позиционирование ===== */
+
+div p {} /* Все p внутри div */
+
+div > p {} /* p прямые потомки div */
+
+div + p {} /* p сразу после div */
+
+div ~ p {} /* Все p после div */
+
+
 @font-face {
 font-family: 'League Gothic';
 src: url('fonts/League_Gothic-webfont.eot');
@@ -154,7 +145,7 @@ font-family: 'League Gothic';
 font-weight: normal;
 font-style: normal;
 }
-/* ===== Позиционирование ===== */
+
 .a {
 	position: static;
 	position: relative;
@@ -167,20 +158,19 @@ font-style: normal;
 	left: 0;
 	z-index: 10;
 }
-/* ===== Селекторы атрибутов ===== */
+
+
 a[title] {}
+
 a[href="https://example.com"] {}
-a[href^="https"] {}
-/* Начинается с */
-a[href$=".pdf"] {}
-/* Заканчивается на */
-a[href*="example"] {}
-/* Содержит */
-div[class^="icon-"] {}
-div[class$="-btn"] {}
-div[class*="error"] {}
-/* ===== Псевдоклассы ===== */
-/* Состояния ссылок */
+
+a[href^="https"] {} /* Начинается с div[class^="icon-"] {}*/
+
+a[href$=".pdf"] {} /* Заканчивается на div[class$="-btn"] {}*/
+
+a[href*="example"] {} /* Содержит div[class*="error"] {}*/
+
+
 :link {}
 :visited {}
 :hover {}
@@ -188,7 +178,8 @@ div[class*="error"] {}
 :focus {}
 :focus-visible {}
 :focus-within {}
-/* Структурные */
+:target {}
+
 :first-child {}
 :last-child {}
 :first-of-type {}
@@ -207,7 +198,7 @@ div:not(#banner) {}
 li:not(:first-child) {}
 :empty {}
 :root {}
-/* Формы */
+
 :checked {}
 :disabled {}
 :enabled {}
@@ -220,214 +211,254 @@ li:not(:first-child) {}
 :placeholder-shown {}
 :read-only {}
 :read-write {}
-/* При клике на один, менят другой элемент */
-:target {}
-/* ===== Псевдоэлементы ===== */
+
 ::before {
 	content: "";
-	display: block;
 }
 ::after {
 	content: "";
-	display: block;
 }
 ::first-letter {}
 ::first-line {}
 ::selection {
-	background: #ff0;
-	color: #000;
 }
 ::marker {}
-/* Для маркеров списков */
 ::placeholder {
-	color: #999;
 }
-/* ===== Box Model ===== */
 .a {
 	width: 100px;
 	height: 100px;
+	
 	min-width: 50px;
 	max-width: 200px;
 	min-height: 50px;
 	max-height: 200px;
+	
 	margin: 10px;
 	margin-top: 10px;
 	margin-right: 10px;
 	margin-bottom: 10px;
 	margin-left: 10px;
+	
 	padding: 10px;
 	padding-top: 10px;
 	padding-right: 10px;
 	padding-bottom: 10px;
 	padding-left: 10px;
+	
 	box-sizing: border-box;
 	box-sizing: content-box;
+	
 	overflow: visible;
 	overflow: hidden;
 	overflow: scroll;
 	overflow: auto;
 	overflow-x: hidden;
 	overflow-y: auto;
-}
-/* ===== Типографика ===== */
-.a {
+
 	font-family: Arial, sans-serif;
+	
 	font-size: 16px;
 	font-size: 1em;
 	font-size: 1rem;
 	font-size: large;
 	font-size: 200%;
+	
 	font-weight: normal;
 	font-weight: bold;
 	font-weight: 700;
+	
 	font-style: normal;
 	font-style: italic;
+	
 	font-variant: normal;
 	font-variant: small-caps;
+	
 	line-height: 1.5;
+	
 	color: #333;
 	color: rgb(100%,100%,100%);
 	color: rgb(255,255,255);
 	color: hsl(0, 100%, 50%);
 	color: hsla(0, 100%, 50%, .5);
+	
 	text-align: left;
 	text-align: center;
 	text-align: right;
 	text-align: justify;
+	
 	text-decoration: none;
 	text-decoration: underline;
 	text-decoration: overline;
 	text-decoration: underline overline;
+	
 	text-transform: none;
 	text-transform: uppercase;
 	text-transform: lowercase;
 	text-transform: capitalize;
+	
 	text-indent: 20px;
+	
 	letter-spacing: 1px;
+	
 	word-spacing: 2px;
+	
 	white-space: normal;
 	white-space: nowrap;
 	white-space: pre;
+	
 	word-break: normal;
 	word-break: break-all;
 	word-break: keep-all;
 	word-wrap: normal;
 	word-wrap: break-word;
+	
 	hyphens: none;
 	hyphens: manual;
 	hyphens: auto;
+	
 	text-overflow: ellipsis;
+	
 	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+	
 	direction: ltr;
 	direction: rtl;
+	
 	unicode-bidi: normal;
-}
-/* ===== Фон ===== */
-.a {
+
 	background-color: #fff;
+	
 	background-image: url("image.jpg");
 	background-image: linear-gradient(to top, black, white);
+	
 	background-repeat: no-repeat;
 	background-repeat: repeat-x;
 	background-repeat: repeat-y;
+	
 	background-position: center;
 	background-position: 10px 20px;
+	
 	background-size: cover;
 	background-size: contain;
 	background-size: 100px 50px;
+	
 	background-attachment: scroll;
 	background-attachment: fixed;
+	
 	background-clip: border-box;
+	
 	background-origin: padding-box;
+	
 	background-blend-mode: normal;
-}
-/* ===== Границы ===== */
-.a {
+
 	border: 1px solid #000;
+	
 	border-width: 1px;
 	border-style: solid;
 	border-style: dashed;
 	border-style: dotted;
 	border-color: #000;
+	
 	border-top: 1px solid #000;
 	border-right: 1px solid #000;
 	border-bottom: 1px solid #000;
 	border-left: 1px solid #000;
+	
 	border-radius: 5px;
+	
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
 	border-bottom-right-radius: 5px;
 	border-bottom-left-radius: 5px;
+	
 	outline: 1px solid #f00;
+	
 	outline-offset: 2px;
-}
-/* ===== Тени ===== */
-.a {
+
 	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-}
-/* ===== Flexbox ===== */
-.a {
+
 	display: flex;
+	
 	flex-direction: row;
 	flex-direction: row-reverse;
 	flex-direction: column;
 	flex-direction: column-reverse;
+	
 	flex-wrap: nowrap;
 	flex-wrap: wrap;
 	flex-wrap: wrap-reverse;
+	
 	justify-content: flex-start;
 	justify-content: flex-end;
 	justify-content: center;
 	justify-content: space-between;
 	justify-content: space-around;
 	justify-content: space-evenly;
+	
 	align-items: stretch;
 	align-items: flex-start;
 	align-items: flex-end;
 	align-items: center;
 	align-items: baseline;
+	
 	align-content: stretch;
 	align-content: flex-start;
 	align-content: flex-end;
 	align-content: center;
 	align-content: space-between;
 	align-content: space-around;
+	
 	order: 0;
+	
 	flex-grow: 0;
+	
 	flex-shrink: 1;
+	
 	flex-basis: auto;
+	
 	align-self: auto;
+	
 	gap: 10px;
+	
 	row-gap: 10px;
+	
 	column-gap: 10px;
-}
-/* ===== Grid ===== */
-.a {
+
 	display: grid;
+	
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-template-rows: 100px 200px;
 	grid-template-areas: "header header header"
 		"sidebar main main";
+	
 	grid-column-gap: 10px;
 	grid-row-gap: 10px;
+	
 	gap: 10px;
+	
 	grid-auto-columns: 1fr;
 	grid-auto-rows: 100px;
 	grid-auto-flow: row;
+	
 	grid-column-start: 1;
 	grid-column-end: 3;
+	
 	grid-row-start: 1;
 	grid-row-end: 3;
+	
 	grid-area: header;
+	
 	justify-items: start;
 	justify-items: end;
 	justify-items: center;
 	justify-items: stretch;
+	
 	align-items: start;
 	align-items: end;
 	align-items: center;
 	align-items: stretch;
 	place-items: center stretch;
+	
 	justify-content: start;
 	justify-content: end;
 	justify-content: center;
@@ -435,6 +466,7 @@ li:not(:first-child) {}
 	justify-content: space-around;
 	justify-content: space-between;
 	justify-content: space-evenly;
+	
 	align-content: start;
 	align-content: end;
 	align-content: center;
@@ -443,9 +475,7 @@ li:not(:first-child) {}
 	align-content: space-between;
 	align-content: space-evenly;
 	place-content: space-between center;
-}
-/* ===== Трансформации ===== */
-.a {
+
 	transform: translate(10px, 20px);
 	transform: rotate(45deg);
 	transform: scale(1.2);
@@ -455,9 +485,7 @@ li:not(:first-child) {}
 	transform-style: preserve-3d;
 	backface-visibility: visible;
 	backface-visibility: hidden;
-}
-/* ===== Переходы и анимации ===== */
-.a {
+
 	transition: all 0.3s ease;
 	transition-property: opacity;
 	transition-duration: 0.3s;
@@ -486,35 +514,42 @@ li:not(:first-child) {}
 	animation-fill-mode: both;
 	animation-play-state: running;
 	animation-play-state: paused;
-}
 
-/* ===== Разное ===== */
-.a {
 	cursor: pointer;
 	cursor: help;
 	cursor: wait;
 	cursor: not-allowed;
+	
 	opacity: 0.5;
+	
 	visibility: visible;
 	visibility: hidden;
+	
 	display: none;
 	display: block;
 	display: inline;
 	display: inline-block;
 	display: contents;
 	display: list-item;
+	
 	float: left;
 	float: right;
 	float: none;
+	
 	clear: both;
+	
 	object-fit: cover;
 	object-fit: contain;
 	object-position: center;
+	
 	resize: both;
 	resize: horizontal;
 	resize: vertical;
+	
 	clip-path: circle(50%);
+	
 	will-change: transform;
+	
 	filter: blur(5px);
 	filter: brightness(1.2);
 	filter: contrast(1.5);
@@ -525,17 +560,13 @@ li:not(:first-child) {}
 	filter: saturate(200%);
 	filter: sepia(100%);
 }
-/* ===== Медиа-запросы ===== */
 @media screen and (min-width: 768px) {
-	/* Стили для экранов от 768px */
 }
 @media (prefers-color-scheme: dark) {
-	/* Темная тема */
 }
 @media (orientation: portrait) {
-	/* Вертикальная ориентация */
 }
-/* ===== Кастомные свойства ===== */
+
 :root {
 	--primary-color: #3498db;
 	--spacing: 16px;
