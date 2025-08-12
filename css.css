@@ -1,120 +1,7 @@
-/*NORMALIZE*/
-html,
-body,
-div,
-span,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	vertical-align: baseline;
-}
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section {
-	display: block;
-}
-body {
-	line-height: 1.2;
-}
-ol {
-	padding-left: 1.4em;
-	list-style: decimal;
-}
-ul {
-	padding-left: 1.4em list-style: square;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-
 * {}
+
 .class {}
+
 #id {}
 
 div p {} /* Все p внутри div */
@@ -125,36 +12,6 @@ div + p {} /* p сразу после div */
 
 div ~ p {} /* Все p после div */
 
-@font-face {
-font-family: 'League Gothic';
-src: url('fonts/League_Gothic-webfont.eot');
-src: url('fonts/League_Gothic-webfont.eot?#iefix') format('embeddedopentype'),
-url('fonts/League_Gothic-webfont.woff2') format('woff2'),
-url('fonts/League_Gothic-webfont.woff') format('woff'),
-url('fonts/League_Gothic-webfont.ttf') format('truetype'),
-url('fonts/League_Gothic-webfont.svg') format('svg');
-}
-
-h1 {
-font-family: 'League Gothic';
-font-weight: normal;
-font-style: normal;
-}
-
-.a {
-	position: static;
-	position: relative;
-	position: absolute;
-	position: fixed;
-	position: sticky;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	z-index: 10;
-}
-
-
 a[title] {}
 
 a[href="https://example.com"] {}
@@ -164,7 +21,6 @@ a[href^="https"] {} /* Начинается с div[class^="icon-"] {}*/
 a[href$=".pdf"] {} /* Заканчивается на div[class$="-btn"] {}*/
 
 a[href*="example"] {} /* Содержит div[class*="error"] {}*/
-
 
 :link {}
 :visited {}
@@ -221,6 +77,18 @@ li:not(:first-child) {}
 ::placeholder {
 }
 .a {
+	position: static;
+	position: relative;
+	position: absolute;
+	position: fixed;
+	position: sticky;
+	
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 10;
+	
 	width: 100px;
 	height: 100px;
 	
@@ -571,3 +439,133 @@ li:not(:first-child) {}
 	margin: var(--spacing);
 }
 
+@font-face {
+font-family: 'League Gothic';
+src: url('fonts/League_Gothic-webfont.eot');
+src: url('fonts/League_Gothic-webfont.eot?#iefix') format('embeddedopentype'),
+url('fonts/League_Gothic-webfont.woff2') format('woff2'),
+url('fonts/League_Gothic-webfont.woff') format('woff'),
+url('fonts/League_Gothic-webfont.ttf') format('truetype'),
+url('fonts/League_Gothic-webfont.svg') format('svg');
+}
+
+h1 {
+font-family: 'League Gothic';
+font-weight: normal;
+font-style: normal;
+}
+
+/*NORMALIZE*/
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+	display: block;
+}
+body {
+	line-height: 1.2;
+}
+ol {
+	padding-left: 1.4em;
+	list-style: decimal;
+}
+ul {
+	padding-left: 1.4em list-style: square;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}

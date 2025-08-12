@@ -1,109 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>CSS</title>
-    <style>
-        :root {
-            --bg-color: #1a1a1a;
-            --text-color: #e0e0e0;
-            --primary-accent: #6d8bff;
-            --secondary-accent: #4dffb8;
-            --code-bg: #2d2d2d;
-            --border-color: #3a3a3a;
-            --comment-color: #6a9955;
-            --property-color: #9cdcfe;
-            --value-color: #ce9178;
-            --selector-color: #d7ba7d;
-            --pseudo-color: #c586c0;
-        }
-        
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: 'Fira Code', 'Consolas', monospace;
-            line-height: 1.6;
-            padding: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        code {
-            display: block;
-            background-color: var(--code-bg);
-            border-radius: 8px;
-            padding: 20px;
-            overflow-x: auto;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            border-left: 4px solid var(--primary-accent);
-        }
-        
-        pre {
-            margin: 0;
-            white-space: pre-wrap;
-            tab-size: 2;
-        }
-        
-        /* Syntax highlighting */
-        .token.selector { color: var(--selector-color); }
-        .token.property { color: var(--property-color); }
-        .token.value { color: var(--value-color); }
-        .token.punctuation { color: var(--text-color); }
-        .token.comment { color: var(--comment-color); font-style: italic; }
-        .token.function { color: var(--primary-accent); }
-        .token.keyword { color: var(--pseudo-color); }
-        .token.attr-name { color: var(--secondary-accent); }
-        
-        /* Scrollbar styling */
-        ::-webkit-scrollbar {
-            height: 8px;
-            width: 8px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: var(--code-bg);
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: var(--primary-accent);
-            border-radius: 4px;
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-            background: #5a7eff;
-        }
-        
-        /* Header styling */
-        body::before {
-            content: "CSS";
-            display: block;
-            font-size: 2.5em;
-            font-weight: bold;
-            color: var(--primary-accent);
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--border-color);
-        }
-        
-        /* Responsive design */
-        @media (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
-            
-            code {
-                padding: 15px;
-                border-radius: 6px;
-            }
-        }
-    </style>
+	<meta charset="UTF-8">
+	<title>CSS</title>
+	<style>
+		:root {
+			--bg-color: #1a1a1a;
+			--text-color: #e0e0e0;
+			--primary-accent: #6d8bff;
+			--secondary-accent: #4dffb8;
+			--code-bg: #2d2d2d;
+			--border-color: #3a3a3a;
+			--comment-color: #6a9955;
+			--property-color: #9cdcfe;
+			--value-color: #ce9178;
+			--selector-color: #d7ba7d;
+			--pseudo-color: #c586c0;
+		}
+
+		body {
+			background-color: var(--bg-color);
+			color: var(--text-color);
+			font-family: 'Fira Code', 'Consolas', monospace;
+			line-height: 1.6;
+			padding: 20px;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		code {
+			display: block;
+			background-color: var(--code-bg);
+			border-radius: 8px;
+			padding: 20px;
+			overflow-x: auto;
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+			border-left: 4px solid var(--primary-accent);
+		}
+
+		pre {
+			margin: 0;
+			white-space: pre-wrap;
+			tab-size: 2;
+		}
+
+		/* Syntax highlighting */
+		.token.selector {
+			color: var(--selector-color);
+		}
+
+		.token.property {
+			color: var(--property-color);
+		}
+
+		.token.value {
+			color: var(--value-color);
+		}
+
+		.token.punctuation {
+			color: var(--text-color);
+		}
+
+		.token.comment {
+			color: var(--comment-color);
+			font-style: italic;
+		}
+
+		.token.function {
+			color: var(--primary-accent);
+		}
+
+		.token.keyword {
+			color: var(--pseudo-color);
+		}
+
+		.token.attr-name {
+			color: var(--secondary-accent);
+		}
+
+		/* Scrollbar styling */
+		::-webkit-scrollbar {
+			height: 8px;
+			width: 8px;
+		}
+
+		::-webkit-scrollbar-track {
+			background: var(--code-bg);
+		}
+
+		::-webkit-scrollbar-thumb {
+			background: var(--primary-accent);
+			border-radius: 4px;
+		}
+
+		::-webkit-scrollbar-thumb:hover {
+			background: #5a7eff;
+		}
+
+		/* Header styling */
+		body::before {
+			content: "CSS";
+			display: block;
+			font-size: 2.5em;
+			font-weight: bold;
+			color: var(--primary-accent);
+			margin-bottom: 20px;
+			padding-bottom: 10px;
+			border-bottom: 2px solid var(--border-color);
+		}
+
+		/* Responsive design */
+		@media (max-width: 768px) {
+			body {
+				padding: 10px;
+			}
+
+			code {
+				padding: 15px;
+				border-radius: 6px;
+			}
+		}
+	</style>
 </head>
 
 <body>
-    <code>
-        <pre>
+	<code>
+		<pre>
 * {}
+
 .class {}
+
 #id {}
 
 div p {} /* Все p внутри div */
@@ -113,36 +139,6 @@ div > p {} /* p прямые потомки div */
 div + p {} /* p сразу после div */
 
 div ~ p {} /* Все p после div */
-
-
-@font-face {
-font-family: 'League Gothic';
-src: url('fonts/League_Gothic-webfont.eot');
-src: url('fonts/League_Gothic-webfont.eot?#iefix') format('embeddedopentype'),
-url('fonts/League_Gothic-webfont.woff2') format('woff2'),
-url('fonts/League_Gothic-webfont.woff') format('woff'),
-url('fonts/League_Gothic-webfont.ttf') format('truetype'),
-url('fonts/League_Gothic-webfont.svg') format('svg');
-}
-h1 {
-font-family: 'League Gothic';
-font-weight: normal;
-font-style: normal;
-}
-
-.a {
-	position: static;
-	position: relative;
-	position: absolute;
-	position: fixed;
-	position: sticky;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	z-index: 10;
-}
-
 
 a[title] {}
 
@@ -209,341 +205,353 @@ li:not(:first-child) {}
 ::marker {}
 ::placeholder {
 }
-
-width: 100px;
-height: 100px;
-
-min-width: 50px;
-max-width: 200px;
-min-height: 50px;
-max-height: 200px;
-
-margin: 10px;
-margin-top: 10px;
-margin-right: 10px;
-margin-bottom: 10px;
-margin-left: 10px;
-
-padding: 10px;
-padding-top: 10px;
-padding-right: 10px;
-padding-bottom: 10px;
-padding-left: 10px;
-
-box-sizing: border-box;
-box-sizing: content-box;
-
-overflow: visible;
-overflow: hidden;
-overflow: scroll;
-overflow: auto;
-overflow-x: hidden;
-overflow-y: auto;
-
-font-family: Arial, sans-serif;
-
-font-size: 16px;
-font-size: 1em;
-font-size: 1rem;
-font-size: large;
-font-size: 200%;
-
-font-weight: normal;
-font-weight: bold;
-font-weight: 700;
-
-font-style: normal;
-font-style: italic;
-
-font-variant: normal;
-font-variant: small-caps;
-
-line-height: 1.5;
-
-color: #333;
-color: rgb(100%,100%,100%);
-color: rgb(255,255,255);
-color: hsl(0, 100%, 50%);
-color: hsla(0, 100%, 50%, .5);
-
-text-align: left;
-text-align: center;
-text-align: right;
-text-align: justify;
-
-text-decoration: none;
-text-decoration: underline;
-text-decoration: overline;
-text-decoration: underline overline;
-
-text-transform: none;
-text-transform: uppercase;
-text-transform: lowercase;
-text-transform: capitalize;
-
-text-indent: 20px;
-
-letter-spacing: 1px;
-
-word-spacing: 2px;
-
-white-space: normal;
-white-space: nowrap;
-white-space: pre;
-
-word-break: normal;
-word-break: break-all;
-word-break: keep-all;
-word-wrap: normal;
-word-wrap: break-word;
-
-hyphens: none;
-hyphens: manual;
-hyphens: auto;
-
-text-overflow: ellipsis;
-
-text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-
-direction: ltr;
-direction: rtl;
-
-unicode-bidi: normal;
-
-background-color: #fff;
-
-background-image: url("image.jpg");
-background-image: linear-gradient(to top, black, white);
-
-background-repeat: no-repeat;
-background-repeat: repeat-x;
-background-repeat: repeat-y;
-
-background-position: center;
-background-position: 10px 20px;
-
-background-size: cover;
-background-size: contain;
-background-size: 100px 50px;
-
-background-attachment: scroll;
-background-attachment: fixed;
-
-background-clip: border-box;
-
-background-origin: padding-box;
-
-background-blend-mode: normal;
-
-border: 1px solid #000;
-
-border-width: 1px;
-border-style: solid;
-border-style: dashed;
-border-style: dotted;
-border-color: #000;
-
-border-top: 1px solid #000;
-border-right: 1px solid #000;
-border-bottom: 1px solid #000;
-border-left: 1px solid #000;
-
-border-radius: 5px;
-
-border-top-left-radius: 5px;
-border-top-right-radius: 5px;
-border-bottom-right-radius: 5px;
-border-bottom-left-radius: 5px;
-
-outline: 1px solid #f00;
-
-outline-offset: 2px;
-
-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-
-display: flex;
-
-flex-direction: row;
-flex-direction: row-reverse;
-flex-direction: column;
-flex-direction: column-reverse;
-
-flex-wrap: nowrap;
-flex-wrap: wrap;
-flex-wrap: wrap-reverse;
-
-justify-content: flex-start;
-justify-content: flex-end;
-justify-content: center;
-justify-content: space-between;
-justify-content: space-around;
-justify-content: space-evenly;
-
-align-items: stretch;
-align-items: flex-start;
-align-items: flex-end;
-align-items: center;
-align-items: baseline;
-
-align-content: stretch;
-align-content: flex-start;
-align-content: flex-end;
-align-content: center;
-align-content: space-between;
-align-content: space-around;
-
-order: 0;
-
-flex-grow: 0;
-
-flex-shrink: 1;
-
-flex-basis: auto;
-
-align-self: auto;
-
-gap: 10px;
-
-row-gap: 10px;
-
-column-gap: 10px;
-
-display: grid;
-
-grid-template-columns: 1fr 1fr 1fr;
-grid-template-rows: 100px 200px;
-grid-template-areas: "header header header"
-	"sidebar main main";
-
-grid-column-gap: 10px;
-grid-row-gap: 10px;
-
-gap: 10px;
-
-grid-auto-columns: 1fr;
-grid-auto-rows: 100px;
-grid-auto-flow: row;
-
-grid-column-start: 1;
-grid-column-end: 3;
-
-grid-row-start: 1;
-grid-row-end: 3;
-
-grid-area: header;
-
-justify-items: start;
-justify-items: end;
-justify-items: center;
-justify-items: stretch;
-
-align-items: start;
-align-items: end;
-align-items: center;
-align-items: stretch;
-place-items: center stretch;
-
-justify-content: start;
-justify-content: end;
-justify-content: center;
-justify-content: stretch;
-justify-content: space-around;
-justify-content: space-between;
-justify-content: space-evenly;
-
-align-content: start;
-align-content: end;
-align-content: center;
-align-content: stretch;
-align-content: space-around;
-align-content: space-between;
-align-content: space-evenly;
-place-content: space-between center;
-
-transform: translate(10px, 20px);
-transform: rotate(45deg);
-transform: scale(1.2);
-transform: skew(10deg, 5deg);
-transform-origin: center;
-transform-style: flat;
-transform-style: preserve-3d;
-backface-visibility: visible;
-backface-visibility: hidden;
-
-transition: all 0.3s ease;
-transition-property: opacity;
-transition-duration: 0.3s;
-transition-timing-function: ease;
-transition-timing-function: linear;
-transition-timing-function: ease-in;
-transition-timing-function: ease-out;
-transition-timing-function: ease-in-out;
-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-transition-delay: 0.1s;
-
-animation: slide 2s ease infinite;
-animation-name: slide;
-animation-duration: 2s;
-animation-timing-function: ease;
-animation-delay: 0s;
-animation-iteration-count: infinite;
-animation-iteration-count: 3;
-animation-direction: normal;
-animation-direction: reverse;
-animation-direction: alternate;
-animation-direction: alternate-reverse;
-animation-fill-mode: none;
-animation-fill-mode: forwards;
-animation-fill-mode: backwards;
-animation-fill-mode: both;
-animation-play-state: running;
-animation-play-state: paused;
-
-cursor: pointer;
-cursor: help;
-cursor: wait;
-cursor: not-allowed;
-
-opacity: 0.5;
-
-visibility: visible;
-visibility: hidden;
-
-display: none;
-display: block;
-display: inline;
-display: inline-block;
-display: contents;
-display: list-item;
-
-float: left;
-float: right;
-float: none;
-
-clear: both;
-
-object-fit: cover;
-object-fit: contain;
-object-position: center;
-
-resize: both;
-resize: horizontal;
-resize: vertical;
-
-clip-path: circle(50%);
-
-will-change: transform;
-
-filter: blur(5px);
-filter: brightness(1.2);
-filter: contrast(1.5);
-filter: grayscale(50%);
-filter: hue-rotate(90deg);
-filter: invert(100%);
-filter: opacity(50%);
-filter: saturate(200%);
-filter: sepia(100%);
-
+.a {
+	position: static;
+	position: relative;
+	position: absolute;
+	position: fixed;
+	position: sticky;
+	
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 10;
+	
+	width: 100px;
+	height: 100px;
+	
+	min-width: 50px;
+	max-width: 200px;
+	min-height: 50px;
+	max-height: 200px;
+	
+	margin: 10px;
+	margin-top: 10px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	margin-left: 10px;
+	
+	padding: 10px;
+	padding-top: 10px;
+	padding-right: 10px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	
+	box-sizing: border-box;
+	box-sizing: content-box;
+	
+	overflow: visible;
+	overflow: hidden;
+	overflow: scroll;
+	overflow: auto;
+	overflow-x: hidden;
+	overflow-y: auto;
+
+	font-family: Arial, sans-serif;
+	
+	font-size: 16px;
+	font-size: 1em;
+	font-size: 1rem;
+	font-size: large;
+	font-size: 200%;
+	
+	font-weight: normal;
+	font-weight: bold;
+	font-weight: 700;
+	
+	font-style: normal;
+	font-style: italic;
+	
+	font-variant: normal;
+	font-variant: small-caps;
+	
+	line-height: 1.5;
+	
+	color: #333;
+	color: rgb(100%,100%,100%);
+	color: rgb(255,255,255);
+	color: hsl(0, 100%, 50%);
+	color: hsla(0, 100%, 50%, .5);
+	
+	text-align: left;
+	text-align: center;
+	text-align: right;
+	text-align: justify;
+	
+	text-decoration: none;
+	text-decoration: underline;
+	text-decoration: overline;
+	text-decoration: underline overline;
+	
+	text-transform: none;
+	text-transform: uppercase;
+	text-transform: lowercase;
+	text-transform: capitalize;
+	
+	text-indent: 20px;
+	
+	letter-spacing: 1px;
+	
+	word-spacing: 2px;
+	
+	white-space: normal;
+	white-space: nowrap;
+	white-space: pre;
+	
+	word-break: normal;
+	word-break: break-all;
+	word-break: keep-all;
+	word-wrap: normal;
+	word-wrap: break-word;
+	
+	hyphens: none;
+	hyphens: manual;
+	hyphens: auto;
+	
+	text-overflow: ellipsis;
+	
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+	
+	direction: ltr;
+	direction: rtl;
+	
+	unicode-bidi: normal;
+
+	background-color: #fff;
+	
+	background-image: url("image.jpg");
+	background-image: linear-gradient(to top, black, white);
+	
+	background-repeat: no-repeat;
+	background-repeat: repeat-x;
+	background-repeat: repeat-y;
+	
+	background-position: center;
+	background-position: 10px 20px;
+	
+	background-size: cover;
+	background-size: contain;
+	background-size: 100px 50px;
+	
+	background-attachment: scroll;
+	background-attachment: fixed;
+	
+	background-clip: border-box;
+	
+	background-origin: padding-box;
+	
+	background-blend-mode: normal;
+
+	border: 1px solid #000;
+	
+	border-width: 1px;
+	border-style: solid;
+	border-style: dashed;
+	border-style: dotted;
+	border-color: #000;
+	
+	border-top: 1px solid #000;
+	border-right: 1px solid #000;
+	border-bottom: 1px solid #000;
+	border-left: 1px solid #000;
+	
+	border-radius: 5px;
+	
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	
+	outline: 1px solid #f00;
+	
+	outline-offset: 2px;
+
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+
+	display: flex;
+	
+	flex-direction: row;
+	flex-direction: row-reverse;
+	flex-direction: column;
+	flex-direction: column-reverse;
+	
+	flex-wrap: nowrap;
+	flex-wrap: wrap;
+	flex-wrap: wrap-reverse;
+	
+	justify-content: flex-start;
+	justify-content: flex-end;
+	justify-content: center;
+	justify-content: space-between;
+	justify-content: space-around;
+	justify-content: space-evenly;
+	
+	align-items: stretch;
+	align-items: flex-start;
+	align-items: flex-end;
+	align-items: center;
+	align-items: baseline;
+	
+	align-content: stretch;
+	align-content: flex-start;
+	align-content: flex-end;
+	align-content: center;
+	align-content: space-between;
+	align-content: space-around;
+	
+	order: 0;
+	
+	flex-grow: 0;
+	
+	flex-shrink: 1;
+	
+	flex-basis: auto;
+	
+	align-self: auto;
+	
+	gap: 10px;
+	
+	row-gap: 10px;
+	
+	column-gap: 10px;
+
+	display: grid;
+	
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: 100px 200px;
+	grid-template-areas: "header header header"
+		"sidebar main main";
+	
+	grid-column-gap: 10px;
+	grid-row-gap: 10px;
+	
+	gap: 10px;
+	
+	grid-auto-columns: 1fr;
+	grid-auto-rows: 100px;
+	grid-auto-flow: row;
+	
+	grid-column-start: 1;
+	grid-column-end: 3;
+	
+	grid-row-start: 1;
+	grid-row-end: 3;
+	
+	grid-area: header;
+	
+	justify-items: start;
+	justify-items: end;
+	justify-items: center;
+	justify-items: stretch;
+	
+	align-items: start;
+	align-items: end;
+	align-items: center;
+	align-items: stretch;
+	place-items: center stretch;
+	
+	justify-content: start;
+	justify-content: end;
+	justify-content: center;
+	justify-content: stretch;
+	justify-content: space-around;
+	justify-content: space-between;
+	justify-content: space-evenly;
+	
+	align-content: start;
+	align-content: end;
+	align-content: center;
+	align-content: stretch;
+	align-content: space-around;
+	align-content: space-between;
+	align-content: space-evenly;
+	place-content: space-between center;
+
+	transform: translate(10px, 20px);
+	transform: rotate(45deg);
+	transform: scale(1.2);
+	transform: skew(10deg, 5deg);
+	transform-origin: center;
+	transform-style: flat;
+	transform-style: preserve-3d;
+	backface-visibility: visible;
+	backface-visibility: hidden;
+
+	transition: all 0.3s ease;
+	transition-property: opacity;
+	transition-duration: 0.3s;
+	transition-timing-function: ease;
+	transition-timing-function: linear;
+	transition-timing-function: ease-in;
+	transition-timing-function: ease-out;
+	transition-timing-function: ease-in-out;
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	transition-delay: 0.1s;
+
+	animation: slide 2s ease infinite;
+	animation-name: slide;
+	animation-duration: 2s;
+	animation-timing-function: ease;
+	animation-delay: 0s;
+	animation-iteration-count: infinite;
+	animation-iteration-count: 3;
+	animation-direction: normal;
+	animation-direction: reverse;
+	animation-direction: alternate;
+	animation-direction: alternate-reverse;
+	animation-fill-mode: none;
+	animation-fill-mode: forwards;
+	animation-fill-mode: backwards;
+	animation-fill-mode: both;
+	animation-play-state: running;
+	animation-play-state: paused;
+
+	cursor: pointer;
+	cursor: help;
+	cursor: wait;
+	cursor: not-allowed;
+	
+	opacity: 0.5;
+	
+	visibility: visible;
+	visibility: hidden;
+	
+	display: none;
+	display: block;
+	display: inline;
+	display: inline-block;
+	display: contents;
+	display: list-item;
+	
+	float: left;
+	float: right;
+	float: none;
+	
+	clear: both;
+	
+	object-fit: cover;
+	object-fit: contain;
+	object-position: center;
+	
+	resize: both;
+	resize: horizontal;
+	resize: vertical;
+	
+	clip-path: circle(50%);
+	
+	will-change: transform;
+	
+	filter: blur(5px);
+	filter: brightness(1.2);
+	filter: contrast(1.5);
+	filter: grayscale(50%);
+	filter: hue-rotate(90deg);
+	filter: invert(100%);
+	filter: opacity(50%);
+	filter: saturate(200%);
+	filter: sepia(100%);
+}
 @media screen and (min-width: 768px) {
 }
 @media (prefers-color-scheme: dark) {
@@ -558,6 +566,137 @@ filter: sepia(100%);
 .element {
 	color: var(--primary-color);
 	margin: var(--spacing);
+}
+
+@font-face {
+font-family: 'League Gothic';
+src: url('fonts/League_Gothic-webfont.eot');
+src: url('fonts/League_Gothic-webfont.eot?#iefix') format('embeddedopentype'),
+url('fonts/League_Gothic-webfont.woff2') format('woff2'),
+url('fonts/League_Gothic-webfont.woff') format('woff'),
+url('fonts/League_Gothic-webfont.ttf') format('truetype'),
+url('fonts/League_Gothic-webfont.svg') format('svg');
+}
+
+h1 {
+font-family: 'League Gothic';
+font-weight: normal;
+font-style: normal;
+}
+
+/*NORMALIZE*/
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+	display: block;
+}
+body {
+	line-height: 1.2;
+}
+ol {
+	padding-left: 1.4em;
+	list-style: decimal;
+}
+ul {
+	padding-left: 1.4em list-style: square;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
 }
 	</pre>
 	</code>
