@@ -113,11 +113,6 @@ table {
 	border-spacing: 0;
 }
 
-
-
-
-
-
 * {}
 .class {}
 #id {}
@@ -130,7 +125,6 @@ div + p {} /* p сразу после div */
 
 div ~ p {} /* Все p после div */
 
-
 @font-face {
 font-family: 'League Gothic';
 src: url('fonts/League_Gothic-webfont.eot');
@@ -140,6 +134,7 @@ url('fonts/League_Gothic-webfont.woff') format('woff'),
 url('fonts/League_Gothic-webfont.ttf') format('truetype'),
 url('fonts/League_Gothic-webfont.svg') format('svg');
 }
+
 h1 {
 font-family: 'League Gothic';
 font-weight: normal;
