@@ -1,7 +1,3 @@
-<script src="js.js"></script>
-<script type="text/javascript"></script>
-<script src="/path/to/script.js"></script>
-
 alert( 'Привет, мир!' );
 
 alert(3 +

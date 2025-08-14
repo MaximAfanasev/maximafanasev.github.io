@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>HTTP Status Cards</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			margin: 0;
+			background-color: #000;
+		}
+
+		.card-container {
+			width: 500px;
+			position: relative;
+		}
+
+		.card {
+			background-color: #666;
+			border-radius: 10px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+			padding: 30px;
+			text-align: center;
+			min-height: 300px;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+		}
+
+		.code {
+			font-size: 48px;
+			font-weight: bold;
+			color: #2c3e50;
+			margin-bottom: 10px;
+		}
+
+		.title {
+			font-size: 24px;
+			color: #fff;
+			margin-bottom: 20px;
+		}
+
+		.description {
+			font-size: 16px;
+			color: #fff;
+			margin-bottom: 20px;
+		}
+
+		.navigation {
+			display: flex;
+			justify-content: space-between;
+			margin-top: 20px;
+		}
+
+		.nav-arrow {
+			font-size: 24px;
+			cursor: pointer;
+			padding: 10px 20px;
+			background-color: #3498db;
+			color: white;
+			border-radius: 5px;
+			border: none;
+			transition: background-color 0.3s;
+		}
+
+		.nav-arrow:hover {
+			background-color: #2980b9;
+		}
+
+		.counter {
+			color: #7f8c8d;
+			font-size: 14px;
+			margin-top: 10px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="card-container">
+		<div class="card">
+			<div>
+				<div class="code" id="status-code">200</div>
+				<div class="title" id="status-title">OK</div>
+				<div class="description" id="status-description">HTTP статус 200 OK — это код состояния успешного выполнения запроса в протоколе HTTP</div>
+			</div>
+			<div>
+				<div class="navigation">
+					<button class="nav-arrow" id="prev-btn">←</button>
+					<button class="nav-arrow" id="next-btn">→</button>
+				</div>
+				<div class="counter" id="counter">1/20</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		const statusData = [{
+				code: "200",
+				title: "OK",
+				description: "HTTP статус 200 OK — это код состояния успешного выполнения запроса в протоколе HTTP"
+			},
+			{
+				code: "201",
+				title: "Created",
+				description: "Запрос успешно выполнен и в результате был создан новый ресурс"
+			},
+			{
+				code: "202",
+				title: "Accepted",
+				description: "Запрос был принят на обработку, но обработка еще не завершена"
+			},
+			{
+				code: "204",
+				title: "No content",
+				description: "Сервер успешно обработал запрос, но не возвращает никакого содержимого"
+			},
+			{
+				code: "300",
+				title: "Multiple Choices",
+				description: "Запрос имеет несколько возможных ответов. Пользователь или пользовательский агент должен выбрать один из них"
+			},
+			{
+				code: "301",
+				title: "Moved permanently",
+				description: "Запрошенный ресурс был окончательно перемещен в новое место. Все будущие запросы должны использовать новый URI"
+			},
+			{
+				code: "302",
+				title: "Moved temporarily",
+				description: "Запрошенный ресурс временно перемещен в другое место. Текущий URI может быть использован для будущих запросов"
+			},
+			{
+				code: "304",
+				title: "Not modified",
+				description: "Используется для кэширования. Указывает, что ресурс не был изменен с момента последнего запроса"
+			},
+			{
+				code: "400",
+				title: "Bad request",
+				description: "Сервер не может обработать запрос из-за неверного синтаксиса или некорректных данных в запросе"
+			},
+			{
+				code: "401",
+				title: "Unauthorized",
+				description: "Требуется аутентификация для доступа к ресурсу. Запрос не был применен, так как ему не хватает действительных учетных данных"
+			},
+			{
+				code: "403",
+				title: "Forbidden",
+				description: "Сервер понял запрос, но отказывается его авторизовать. Доступ запрещен независимо от аутентификации"
+			},
+			{
+				code: "404",
+				title: "Not found",
+				description: "Сервер не может найти запрошенный ресурс. Наиболее распространенный код ошибки в вебе"
+			},
+			{
+				code: "500",
+				title: "Internal server error",
+				description: "Общее сообщение об ошибке, когда сервер столкнулся с непредвиденной ситуацией, которая помешала ему выполнить запрос"
+			},
+			{
+				code: "501",
+				title: "Not implemented",
+				description: "Сервер не поддерживает функциональность, необходимую для выполнения запроса"
+			},
+			{
+				code: "502",
+				title: "Bad gateway",
+				description: "Сервер, действуя как шлюз или прокси, получил недопустимый ответ от вышестоящего сервера"
+			},
+			{
+				code: "503",
+				title: "Service unavailable",
+				description: "Сервер временно не может обрабатывать запросы из-за перегрузки или технического обслуживания"
+			},
+			{
+				code: "GET",
+				title: "HTTP method to retrieve data",
+				description: "Параметры передаются в URL (?key=value). Ограничение длины URL (~2048 символов)\nGET /products?id=123 HTTP/1.1\nHost: example.com"
+			},
+			{
+				code: "POST",
+				title: "HTTP method to send data",
+				description: "Отправка данных на сервер. CSRF-токены обязательны. Данные в теле запроса"
+			},
+			{
+				code: "HEAD",
+				title: "HTTP method to get headers only",
+				description: "Получение метаданных. Проверка последнего изменения (Last-Modified)"
+			}, {
+				code: "OSI",
+				title: "Open Systems Interconnection",
+				description: "Эталонная модель взаимодействия открытых систем"
+			},
+			{
+				code: "HTTP",
+				title: "HyperText Transfer Protocol",
+				description: "Определяет, какие именно данные (запросы страниц, изображений и т.д.) должны быть переданы"
+			},
+			{
+				code: "IP",
+				title: "Internet Protocol",
+				description: "Отвечает за доставку пакетов между вашим компьютером и сервером"
+			},
+			{
+				code: "TCP",
+				title: "Transmission Control Protocol",
+				description: "Обеспечивает надежную передачу данных с установкой соединения (3-way handshake)"
+			},
+			{
+				code: "TLS",
+				title: "Transport Layer Security",
+				description: "Обеспечивает:\n- Асимметричное шифрование (AES)\n- Целостность данных (HMAC)\n- Аутентификацию (сертификаты X.509)"
+			},
+			{
+				code: "QUIC",
+				title: "Transport protocol over UDP",
+				description: "Стандартизирован как HTTP/3\nОсновные особенности:\n- Работает поверх UDP\n- Встроенное шифрование (TLS 1.3)\n- Мультиплексирование потоков\n- Уменьшенная задержка (0-RTT)\n- Автовосстановление при смене сети"
+			},
+			{
+				code: "SMTP",
+				title: "Email protocols",
+				description: "Текстовый протокол для отправки почты между серверами"
+			},
+			{
+				code: "VoIP",
+				title: "Voice over IP services",
+				description: "Технологии:\n- Протоколы: SIP, RTP, H.323\n- Кодеки: G.711, G.729, Opus\n- QoS для приоритизации трафика"
+			},
+			{
+				code: "HTTPS",
+				title: "HTTP Secure",
+				description: "Защищенная версия HTTP с шифрованием (HTTP over TLS/SSL)"
+			},
+			{
+				code: "DNS",
+				title: "Domain Name System",
+				description: "Система доменных имен ('телефонная книга' интернета)"
+			},
+			{
+				code: "DOM",
+				title: "Document Object Model",
+				description: "Древовидная структура узлов (элементы, атрибуты, текст)\nAPI для манипуляции\nСобытийная модель"
+			},
+			{
+				code: "URL",
+				title: "Uniform Resource Locator",
+				description: "Структура:\n- Домен (www.example.com)\n- Порт (443 для HTTPS)\n- Путь (/products)\n- Параметры (?id=123)\n- Якорь (#reviews)"
+			},
+			{
+				code: "IPv4",
+				title: "Internet Protocol version 4",
+				description: "Пример адреса: 192.192.255.255\n32-битная адресация"
+			},
+			{
+				code: "IPv6",
+				title: "Internet Protocol version 6",
+				description: "Пример адреса: 1:2:3:4:5:6:7:8\n128-битная адресация"
+			},
+			{
+				code: "HTTP/2",
+				title: "Binary Framing",
+				description: "Основные особенности:\n- Binary\n- Multiplexed\n- Flow-controlled\n- Prioritized\n- Compressed\n- Server-push\n- Fragment"
+			},
+			{
+				code: "Cookie",
+				title: "HTTP header",
+				description: "Механизм хранения состояния на клиенте ('печеньки')"
+			},
+			{
+				code: "ASCII",
+				title: "Character encoding standard",
+				description: "7-битная кодировка символов (128 символов)"
+			},
+			{
+				code: "ngHTTP",
+				title: "HTTP/2 client and server",
+				description: "Реализация HTTP/2 протокола\nРабота с бинарными фреймами"
+			},
+			{
+				code: "IPv4",
+				title: "Internet Protocol version 4",
+				description: "Пример адреса: 192.192.255.255\n32-битная адресация (4.3 млрд адресов)"
+			},
+			{
+				code: "IPv6",
+				title: "Internet Protocol version 6",
+				description: "Пример адреса: 1:2:3:4:5:6:7:8\n128-битная адресация (3.4×10³⁸ адресов)"
+			},
+			{
+				code: "HTTP/2",
+				title: "Binary Framing Features",
+				description: "бинарный формат MultiplexedFlow-controlled Prioritized Compressed Server-push Fragment"
+			},
+			{
+				code: "IncrementalID",
+				title: "HTTP/2 Stream IDs",
+				description: "Автоматически увеличивающийся уникальный числовой идентификатор потока"
+			},
+			{
+				code: "User-Agent",
+				title: "HTTP Header",
+				description: "Содержит информацию о:\n- Браузере\n- Операционной системе\n- Устройстве пользователя"
+			},
+			{
+				code: "Accept",
+				title: "HTTP Header",
+				description: "Указывает серверу, какие типы контента (MIME-типы) клиент может принять в ответ"
+			},
+			{
+				code: "Accept-Encoding",
+				title: "HTTP Header",
+				description: "Поддерживаемые методы сжатия:\n- HPACK/QPACK (для HTTP/2)\n- gzip\n- deflate\n- br (Brotli)"
+			},
+			{
+				code: "Server Push",
+				title: "HTTP/2 Feature",
+				description: "Сервер может отправить ресурсы клиенту до того, как они будут запрошены"
+			},
+			{
+				code: "Asymmetric",
+				title: "Public-key cryptography",
+				description: "Алгоритмы:\n- RSA\n- ECC (Elliptic Curve Cryptography)\n- Диффи-Хеллман"
+			},
+			{
+				code: "h2c",
+				title: "HTTP/2 Cleartext",
+				description: "Версия HTTP/2 без шифрования\nИспользует заголовок Upgrade: h2c"
+			},
+			{
+				code: "TLS Preamble",
+				title: "Handshake Initialization",
+				description: "Начальные данные, которыми обмениваются клиент и сервер перед установкой TLS соединения"
+			},
+			{
+				code: "SSLKEYLOGFILE",
+				title: "TLS Key Logging",
+				description: "Перехват TLS-ключей для анализа трафика\nИспользуется для отладки"
+			}
+		];
+
+		let currentIndex = 0;
+		const statusCodeElement = document.getElementById('status-code');
+		const statusTitleElement = document.getElementById('status-title');
+		const statusDescriptionElement = document.getElementById('status-description');
+		const counterElement = document.getElementById('counter');
+		const prevBtn = document.getElementById('prev-btn');
+		const nextBtn = document.getElementById('next-btn');
+
+		function updateCard() {
+			const currentItem = statusData[currentIndex];
+			statusCodeElement.textContent = currentItem.code;
+			statusTitleElement.textContent = currentItem.title;
+			statusDescriptionElement.textContent = currentItem.description;
+			counterElement.textContent = `${currentIndex + 1}/${statusData.length}`;
+		}
+
+		prevBtn.addEventListener('click', () => {
+			if (currentIndex > 0) {
+				currentIndex--;
+				updateCard();
+			}
+		});
+
+		nextBtn.addEventListener('click', () => {
+			if (currentIndex < statusData.length - 1) {
+				currentIndex++;
+				updateCard();
+			}
+		});
+
+		// Keyboard navigation
+		document.addEventListener('keydown', (e) => {
+			if (e.key === 'ArrowLeft' && currentIndex > 0) {
+				currentIndex--;
+				updateCard();
+			} else if (e.key === 'ArrowRight' && currentIndex < statusData.length - 1) {
+				currentIndex++;
+				updateCard();
+			}
+		});
+
+		// Initialize
+		updateCard();
+	</script>
+</body></html>
