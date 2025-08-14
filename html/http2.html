@@ -36,13 +36,13 @@
 		.code {
 			font-size: 48px;
 			font-weight: bold;
-			color: #2c3e50;
+			color: gold;
 			margin-bottom: 10px;
 		}
 
 		.title {
 			font-size: 24px;
-			color: #fff;
+			color: gold;
 			margin-bottom: 20px;
 		}
 
@@ -94,7 +94,7 @@
 					<button class="nav-arrow" id="prev-btn">←</button>
 					<button class="nav-arrow" id="next-btn">→</button>
 				</div>
-				<div class="counter" id="counter">1/20</div>
+				<div class="counter" id="counter">1/49</div>
 			</div>
 		</div>
 	</div>
@@ -103,7 +103,7 @@
 		const statusData = [{
 				code: "200",
 				title: "OK",
-				description: "HTTP статус 200 OK — это код состояния успешного выполнения запроса в протоколе HTTP"
+				description: "успешный запрос"
 			},
 			{
 				code: "201",
@@ -362,29 +362,48 @@
 			counterElement.textContent = `${currentIndex + 1}/${statusData.length}`;
 		}
 
-		prevBtn.addEventListener('click', () => {
-			if (currentIndex > 0) {
-				currentIndex--;
-				updateCard();
-			}
-		});
-
-		nextBtn.addEventListener('click', () => {
+		function nextCard() {
 			if (currentIndex < statusData.length - 1) {
 				currentIndex++;
-				updateCard();
+			} else {
+				currentIndex = 0; // возврат к первой карточке после последней
 			}
-		});
+			updateCard();
+		}
+
+		function prevCard() {
+			if (currentIndex > 0) {
+				currentIndex--;
+			} else {
+				currentIndex = statusData.length - 1; // переход к последней карточке при нажатии "назад" на первой
+			}
+			updateCard();
+		}
+
+		prevBtn.addEventListener('click', prevCard);
+
+		nextBtn.addEventListener('click', nextCard);
 
 		// Keyboard navigation
 		document.addEventListener('keydown', (e) => {
-			if (e.key === 'ArrowLeft' && currentIndex > 0) {
-				currentIndex--;
-				updateCard();
-			} else if (e.key === 'ArrowRight' && currentIndex < statusData.length - 1) {
-				currentIndex++;
-				updateCard();
+			if (e.key === 'ArrowLeft') {
+				prevCard();
+			} else if (e.key === 'ArrowRight') {
+				nextCard();
 			}
+		});
+
+		// Автопролистывание каждые 3 секунды
+		let autoScrollInterval = setInterval(nextCard, 3000);
+
+		// Остановка автопролистывания при наведении мыши
+		document.querySelector('.status-card-container').addEventListener('mouseenter', () => {
+			clearInterval(autoScrollInterval);
+		});
+
+		// Возобновление автопролистывания при уходе мыши
+		document.querySelector('.status-card-container').addEventListener('mouseleave', () => {
+			autoScrollInterval = setInterval(nextCard, 3000);
 		});
 
 		// Initialize
