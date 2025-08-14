@@ -362,48 +362,29 @@
 			counterElement.textContent = `${currentIndex + 1}/${statusData.length}`;
 		}
 
-		function nextCard() {
-			if (currentIndex < statusData.length - 1) {
-				currentIndex++;
-			} else {
-				currentIndex = 0; // возврат к первой карточке после последней
-			}
-			updateCard();
-		}
-
-		function prevCard() {
+		prevBtn.addEventListener('click', () => {
 			if (currentIndex > 0) {
 				currentIndex--;
-			} else {
-				currentIndex = statusData.length - 1; // переход к последней карточке при нажатии "назад" на первой
+				updateCard();
 			}
-			updateCard();
-		}
+		});
 
-		prevBtn.addEventListener('click', prevCard);
-
-		nextBtn.addEventListener('click', nextCard);
+		nextBtn.addEventListener('click', () => {
+			if (currentIndex < statusData.length - 1) {
+				currentIndex++;
+				updateCard();
+			}
+		});
 
 		// Keyboard navigation
 		document.addEventListener('keydown', (e) => {
-			if (e.key === 'ArrowLeft') {
-				prevCard();
-			} else if (e.key === 'ArrowRight') {
-				nextCard();
+			if (e.key === 'ArrowLeft' && currentIndex > 0) {
+				currentIndex--;
+				updateCard();
+			} else if (e.key === 'ArrowRight' && currentIndex < statusData.length - 1) {
+				currentIndex++;
+				updateCard();
 			}
-		});
-
-		// Автопролистывание каждые 3 секунды
-		let autoScrollInterval = setInterval(nextCard, 3000);
-
-		// Остановка автопролистывания при наведении мыши
-		document.querySelector('.status-card-container').addEventListener('mouseenter', () => {
-			clearInterval(autoScrollInterval);
-		});
-
-		// Возобновление автопролистывания при уходе мыши
-		document.querySelector('.status-card-container').addEventListener('mouseleave', () => {
-			autoScrollInterval = setInterval(nextCard, 3000);
 		});
 
 		// Initialize
