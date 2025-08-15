@@ -81,253 +81,305 @@
 
 <body>
 
-<body>
-	<div class="card-container">
-<a class="base" href="../index.html">🏠</a>
-		<div class="card">
-			<div>
-				<div class="code" id="status-code"></div>
-				<div class="description" id="status-description"></div>
-			</div>
-			<div>
-				<div class="navigation">
-					<button class="nav-arrow" id="prev-btn">←</button>
-					<button class="nav-arrow" id="next-btn">→</button>
+	<body>
+		<div class="card-container">
+			<a class="base" href="../index.html">🏠</a>
+			<div class="card">
+				<div>
+					<div class="code" id="status-code"></div>
+					<div class="description" id="status-description"></div>
 				</div>
-				<div class="counter" id="counter">1/49</div>
+				<div>
+					<div class="navigation">
+						<button class="nav-arrow" id="prev-btn">←</button>
+						<button class="nav-arrow" id="next-btn">→</button>
+					</div>
+					<div class="counter" id="counter">1/49</div>
+				</div>
 			</div>
 		</div>
-	</div>
 
-	<script>
-		const statusData = [{
-				code: "200 OK",
-				description: "Успешный запрос"
-			},
-			{
-				code: "201 Created",
-				description: "Cоздан новый ресурс"
-			},
-			{
-				code: "202 Accepted",
-				description: "Запрос был принят на обработку"
-			},
-			{
-				code: "204 No content",
-				description: "Не возвращает никакого содержимого"
-			},
-			{
-				code: "300 Multiple Choices",
-				description: "Запрос имеет несколько возможных ответов."
-			},
-			{
-				code: "301 Moved permanently",
-				description: "Запрошенный ресурс был окончательно перемещен в новое место"
-			},
-			{
-				code: "302 Moved temporarily",
-				description: "Запрошенный ресурс временно перемещен в другое место"
-			},
-			{
-				code: "304 Not modified",
-				description: "Используется для кэширования"
-			},
-			{
-				code: "400 Bad request",
-				description: "Сервер не может обработать запрос из-за неверного синтаксиса"
-			},
-			{
-				code: "401 Unauthorized",
-				description: "Требуется аутентификация для доступа к ресурсу"
-			},
-			{
-				code: "403 Forbidden",
-				description: "Сервер понял запрос, но отказывается его авторизовать"
-			},
-			{
-				code: "404 Not found",
-				description: "Сервер не может найти запрошенный ресурс"
-			},
-			{
-				code: "500 Internal server error",
-				description: "сервер столкнулся с непредвиденной ситуацией"
-			},
-			{
-				code: "501 Not implemented",
-				description: "Сервер не поддерживает функциональность"
-			},
-			{
-				code: "502 Bad gateway",
-				description: "Сервер, действуя как шлюз или прокси"
-			},
-			{
-				code: "503 Service unavailable",
-				description: "перегрузки или технического обслуживания"
-			},
-			{
-				code: "GET",
-				description: "Параметры передаются в URL (?key=value)"
-			},
-			{
-				code: "POST",
-				description: "Отправка CSRF-токены обязательны. Данные в теле запроса"
-			},
-			{
-				code: "HEAD",
-				description: "Получение метаданных. Проверка последнего изменения (Last-Modified)"
-			}, {
-				code: "OSI",
-				description: "Эталонная модель взаимодействия открытых систем"
-			},
-			{
-				code: "IP",
-				description: "Internet Protocol Отвечает за доставку пакетов между вашим компьютером и сервером"
-			},
-			{
-				code: "TCP",
-				description: "Transmission Control Protocol Обеспечивает надежную передачу данных)"
-			},
-			{
-				code: "TLS",
-				description: "Transport Layer Security Асимметричное шифрование"
-			},
-			{
-				code: "QUIC",
-				description: "Transport protocol over UDP Стандартизирован как HTTP/3"
-			},
-			{
-				code: "SMTP",
-				description: "Текстовый протокол для отправки почты между серверами"
-			},
-			{
-				code: "VoIP",
-				description: "Voice over IP services для приоритизации трафика"
-			},
-			{
-				code: "HTTP",
-				description: "HyperText Transfer Protocol Определяет какие должны быть переданы"
-			},
-			{
-				code: "HTTPS",
-				description: "Secure Защищенная версия HTTP с шифрованием "
-			},
-			{
-				code: "DNS",
-				description: "Domain Name System Система доменных имен ('телефонная книга' интернета)"
-			},
-			{
-				code: "DOM",
-				description: "Document Object Model Древовидная структура"
-			},
-			{
-				code: "URL",
-				description: "Uniform Resource Locator ?id=123"
-			},
-			{
-				code: "IPv4",
-				description: "Пример адреса: 192.192.255.255\n32-битная адресация"
-			},
-			{
-				code: "IPv6",
-				description: "Пример адреса: 1:2:3:4:5:6:7:8\n128-битная адресация"
-			},
-			{
-				code: "Cookie",
-				description: "Механизм хранения состояния на клиенте"
-			},
-			{
-				code: "ASCII",
-				description: "7-битная кодировка символов"
-			},
-			{
-				code: "IncrementalID",
-				description: "Уникальный числовой идентификатор потока"
-			},
-			{
-				code: "User-Agent",
-				description: "Инфа о Браузере Операционной системе Устройстве"
-			},
-			{
-				code: "Accept",
-				description: "Указывает серверу, какие типы контента (MIME-типы)"
-			},
-			{
-				code: "Accept-Encoding",
-				description: "Поддерживаемые методы сжатия"
-			},
-			{
-				code: "Server Push",
-				description: "Данные до того, как они будут запрошены"
-			},
-			{
-				code: "Asymmetric",
-				description: "Public-key cryptography"
-			},
-			{
-				code: "h2c",
-				description: "Версия HTTP/2 без шифрования Upgrade: h2c"
-			},
-			{
-				code: "TLS Preamble",
-				description: "Handshake Initialization Начальные данные, которыми обмениваются клиент и сервер"
-			},
-			{
-				code: "SSLKEYLOGFILE",
-				description: "Перехват TLS-ключей для анализа трафика"
-			},
-			{
-				code: "ngHTTP",
-				description: "Реализация HTTP/2 протокола Работа с бинарными фреймами"
-			},
-			{
-				code: "Фреймы",
-				description: "сообщения состоят из фреймов данных, низкого уровня"
-			},
-		];
+		<script>
+			const statusData = [{
+					code: "200 OK",
+					description: "Успешный запрос"
+				},
+				{
+					code: "201 Created",
+					description: "Cоздан новый ресурс"
+				},
+				{
+					code: "202 Accepted",
+					description: "Запрос был принят на обработку"
+				},
+				{
+					code: "204 No content",
+					description: "Не возвращает никакого содержимого"
+				},
+				{
+					code: "300 Multiple Choices",
+					description: "Запрос имеет несколько возможных ответов"
+				},
+				{
+					code: "301 Moved permanently",
+					description: "Запрошенный ресурс был перемещен в новое место"
+				},
+				{
+					code: "302 Moved temporarily",
+					description: "ресурс временно перемещен в другое место"
+				},
+				{
+					code: "304 Not modified",
+					description: "Используется для кэширования"
+				},
+				{
+					code: "400 Bad request",
+					description: "неверного синтаксиса"
+				},
+				{
+					code: "401 Unauthorized",
+					description: "Требуется аутентификация"
+				},
+				{
+					code: "403 Forbidden",
+					description: "отказывается его авторизовать"
+				},
+				{
+					code: "404 Not found",
+					description: "Сервер не может найти запрошенный ресурс"
+				},
+				{
+					code: "500 Internal server error",
+					description: "непредвиденной ситуацией"
+				},
+				{
+					code: "501 Not implemented",
+					description: "Сервер не поддерживает функциональность"
+				},
+				{
+					code: "502 Bad gateway",
+					description: "Сервер, действуя как шлюз или прокси"
+				},
+				{
+					code: "503 Service unavailable",
+					description: "перегрузки или технического обслуживания"
+				},
+				{
+					code: "GET",
+					description: "Параметры передаются в URL (?key=value)"
+				},
+				{
+					code: "POST",
+					description: "Данные в теле запроса"
+				},
+				{
+					code: "HEAD",
+					description: "Получение метаданных. Проверка последнего изменения"
+				}, {
+					code: "OSI",
+					description: "Эталонная модель взаимодействия открытых систем"
+				},
+				{
+					code: "IP",
+					description: "Internet Protocol доставку пакетов между вашим компьютером и сервером"
+				},
+				{
+					code: "TCP",
+					description: "Transmission Control Protocol Обеспечивает надежную передачу данных"
+				},
+				{
+					code: "TLS",
+					description: "Transport Layer Security Асимметричное шифрование"
+				},
+				{
+					code: "QUIC",
+					description: "Transport protocol over UDP Стандартизирован как HTTP/3"
+				},
+				{
+					code: "SMTP",
+					description: "Текстовый протокол для отправки почты между серверами"
+				},
+				{
+					code: "VoIP",
+					description: "Voice over IP services для приоритизации трафика"
+				},
+				{
+					code: "HTTP",
+					description: "HyperText Transfer Protocol какие должны быть переданы"
+				},
+				{
+					code: "HTTPS",
+					description: "Secure Защищенная версия HTTP с шифрованием"
+				},
+				{
+					code: "DNS",
+					description: "Domain Name System Система доменных имен"
+				},
+				{
+					code: "DOM",
+					description: "Document Object Model Древовидная структура"
+				},
+				{
+					code: "URL",
+					description: "Uniform Resource Locator ?id=123"
+				},
+				{
+					code: "IPv4",
+					description: "Пример адреса: 192.192.255.255 32-битная адресация"
+				},
+				{
+					code: "IPv6",
+					description: "Пример адреса: 1:2:3:4:5:6:7:8 128-битная адресация"
+				},
+				{
+					code: "Cookie",
+					description: "Механизм хранения состояния на клиенте"
+				},
+				{
+					code: "ASCII",
+					description: "7-битная кодировка символов"
+				},
+				{
+					code: "IncrementalID",
+					description: "Уникальный числовой идентификатор потока"
+				},
+				{
+					code: "User-Agent",
+					description: "Браузер Операционная система"
+				},
+				{
+					code: "Accept",
+					description: "Указывает серверу, какие типы контента"
+				},
+				{
+					code: "Accept-Encoding",
+					description: "Поддерживаемые методы сжатия"
+				},
+				{
+					code: "Server Push",
+					description: "Несколько запросов"
+				},
+				{
+					code: "Asymmetric",
+					description: "Public-key cryptography"
+				},
+				{
+					code: "h2c",
+					description: "Версия HTTP/2 без шифрования Upgrade: h2c"
+				},
+				{
+					code: "TLS Preamble",
+					description: "Handshake Initialization Начальные данные"
+				},
+				{
+					code: "SSLKEYLOGFILE",
+					description: "Перехват TLS-ключей для анализа трафика"
+				},
+				{
+					code: "ngHTTP",
+					description: "Реализация HTTP/2 протокола Работа с бинарными фреймами"
+				},
+				{
+					code: "Фреймы",
+					description: "сообщения состоят из фреймов данных, низкого уровня"
+				},
+				{
+					code: 'Websocket',
+					description: 'WebSockets и server-sent events (SSE) двустороннего потока'
+				},
+				{
+					code: 'Apache',
+					description: 'HTTP Server'
+				},
+				{
+					code: 'Service workers',
+					description: 'фоновые скрипты'
+				},
+				{
+					code: 'Виды CASH',
+					description: 'IMG PRELOAD WORKERS HTTP'
+				},
+				{
+					code: 'Дайджесты кеша',
+					description: 'информация о содержимом'
+				},
+				{
+					code: 'Cuckoo Filter',
+					description: 'Фильтр для кэша'
+				},
+				{
+					code: 'Tinypng',
+					description: 'сервис по уменьшению размера файла'
+				},
+				{
+					code: 'gzip',
+					description: 'лучшее сжатие текста'
+				},
+				{
+					code: 'min',
+					description: 'минификация текста'
+				},
+				{
+					code: 'TTL Time to Live',
+					description: 'ограниченное время жизни'
+				},
+				{
+					code: 'Управление потоками',
+					description: 'низкоуровневое улучшение'
+				},
+				{
+					code: 'Сжатие заголовков',
+					description: 'Хаффман кодировка'
+				},
+				{
+					code: 'nginx',
+					description: 'высокопроизводительный веб-сервер и обратный прокси-сервер'
+				},
+			];
 
-		let currentIndex = 0;
-		const statusCodeElement = document.getElementById('status-code');
-		const statusDescriptionElement = document.getElementById('status-description');
-		const counterElement = document.getElementById('counter');
-		const prevBtn = document.getElementById('prev-btn');
-		const nextBtn = document.getElementById('next-btn');
+			let currentIndex = 0;
+			const statusCodeElement = document.getElementById('status-code');
+			const statusDescriptionElement = document.getElementById('status-description');
+			const counterElement = document.getElementById('counter');
+			const prevBtn = document.getElementById('prev-btn');
+			const nextBtn = document.getElementById('next-btn');
 
-		function updateCard() {
-			const currentItem = statusData[currentIndex];
-			statusCodeElement.textContent = currentItem.code;
-			statusDescriptionElement.textContent = currentItem.description;
-			counterElement.textContent = `${currentIndex + 1}/${statusData.length}`;
-		}
-
-		prevBtn.addEventListener('click', () => {
-			if (currentIndex > 0) {
-				currentIndex--;
-				updateCard();
+			function updateCard() {
+				const currentItem = statusData[currentIndex];
+				statusCodeElement.textContent = currentItem.code;
+				statusDescriptionElement.textContent = currentItem.description;
+				counterElement.textContent = `${currentIndex + 1}/${statusData.length}`;
 			}
-		});
 
-		nextBtn.addEventListener('click', () => {
-			if (currentIndex < statusData.length - 1) {
-				currentIndex++;
-				updateCard();
-			}
-		});
+			prevBtn.addEventListener('click', () => {
+				if (currentIndex > 0) {
+					currentIndex--;
+					updateCard();
+				}
+			});
 
-		// Keyboard navigation
-		document.addEventListener('keydown', (e) => {
-			if (e.key === 'ArrowLeft' && currentIndex > 0) {
-				currentIndex--;
-				updateCard();
-			} else if (e.key === 'ArrowRight' && currentIndex < statusData.length - 1) {
-				currentIndex++;
-				updateCard();
-			}
-		});
+			nextBtn.addEventListener('click', () => {
+				if (currentIndex < statusData.length - 1) {
+					currentIndex++;
+					updateCard();
+				}
+			});
 
-		// Initialize
-		updateCard();
+			// Keyboard navigation
+			document.addEventListener('keydown', (e) => {
+				if (e.key === 'ArrowLeft' && currentIndex > 0) {
+					currentIndex--;
+					updateCard();
+				} else if (e.key === 'ArrowRight' && currentIndex < statusData.length - 1) {
+					currentIndex++;
+					updateCard();
+				}
+			});
 
-	</script>
-</body>
+			// Initialize
+			updateCard();
+
+		</script>
+	</body>
 
 </html>
