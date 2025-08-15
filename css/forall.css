@@ -9,7 +9,7 @@ body {
 }
 
 section {
-	border: 1px solid gold;
+	border: 1px solid #222;
 	padding: 10px;
 	border-radius: 10px;
 	margin: 10px 0;
@@ -30,4 +30,9 @@ h2 {
 .nochange {
 	text-align: left;
 	color: #fff;
+}
+
+.base {
+	color: #fff;
+	text-decoration: none;
 }
