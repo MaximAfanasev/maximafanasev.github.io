@@ -24,27 +24,27 @@
 	<address></address>
 	<script></script>
 
-	<div id="unique-id">Пример id</div>
-	<div class="class1 class2">Пример class</div>
-	<div style="color: red;">Пример style</div>
-	<div title="Всплывающая подсказка">Пример title</div>
-	<div lang="en">Пример lang</div>
-	<div dir="rtl">Пример dir</div>
-	<div contenteditable="true">Пример contenteditable</div>
-	<div spellcheck="true" contenteditable="true">Пример spellcheck</div>
-	<div hidden>Пример hidden (не виден)</div>
-	<div tabindex="0">Пример tabindex</div>
-	<div draggable="true">Пример draggable</div>
-	<div aria-label="Описание для скринридеров">Пример aria-label</div>
+	<div id="unique-id"></div>
+	<div class="class1 class2"></div>
+	<div style="color: red;"></div>
+	<div title="Всплывающая подсказка"></div>
+	<div lang="en"></div>
+	<div dir="rtl">dir</div>
+	<div contenteditable="true"></div>
+	<div spellcheck="true" contenteditable="true">double click and change</div>
+	<div hidden></div>
+	<div tabindex="0">Press Tab</div>
+	<div draggable="true">draggable</div>
+	<div aria-label="Описание для скринридеров"></div>
 
-	<button onclick="alert('Клик!')">onclick</button>
-	<div ondblclick="alert('Двойной клик!')">ondblclick</div>
-	<div onmousedown="this.style.color='red'">onmousedown (красный при нажатии)</div>
-	<div onmouseup="this.style.color='blue'">onmouseup (синий при отпускании)</div>
-	<div onmouseover="this.style.backgroundColor='yellow'">onmouseover (жёлтый при наведении)</div>
-	<div onmouseout="this.style.backgroundColor='white'">onmouseout (белый при уходе)</div>
+	<button onclick="alert('Клик!')">click</button>
+	<div ondblclick="alert('Двойной клик!')">double click</div>
+	<div onmousedown="this.style.color='red'">click</div>
+	<div onmouseup="this.style.color='blue'">click</div>
+	<div onmouseover="this.style.backgroundColor='yellow'">hover</div>
+	<div onmouseout="this.style.backgroundColor='black'; this.style.color='white'">hover + out</div>
 	<div onmousemove="this.textContent='X:'+event.clientX+' Y:'+event.clientY">onmousemove (координаты)</div>
-	<div onwheel="this.textContent='Прокрутка!'" style="height:100px;overflow:auto">onwheel (прокрутите колесико)</div>
+	<div onwheel="this.textContent='Wheele!'" style="height:100px;overflow:auto">wheel</div>
 
 	<input onkeydown="console.log('Key down:', event.key)" placeholder="onkeydown">
 	<input onkeyup="console.log('Key up:', event.key)" placeholder="onkeyup">
