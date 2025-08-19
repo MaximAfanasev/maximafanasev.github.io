@@ -12,464 +12,447 @@
 	<meta property="og:image" content="URL изображения">
 	
 	<style>
-* {}           									 								/* всем */
-.class {}      									 								/* с классом */
-#id {}         									 								/* с идентификатором */
+* {}
+.class {}
+#id {}
 
-div p {}       									 								/* все p внутри div */
-div > p {}     									 								/* p потомки div */
-div + p {}     									 								/* p сразу после div */
-div ~ p {}     									 								/* все p после div */
-a[title] {}    									 								/* все <a>, у которых есть атрибут title */
+div p {}
+div > p {}
+div + p {}
+div ~ p {}
+a[title] {}
 
-:first-child {}                  /* первый дочерний элемент внутри родителя */  
-:last-child {}                   /* последний дочерний элемент внутри родителя */  
-:first-of-type {}                /* первый элемент определённого типа среди братьев */  
-:last-of-type {}                 /* последний элемент определённого типа среди братьев */  
-:only-child {}                   /* элемент, который является единственным ребёнком своего родителя */  
-:only-of-type {}                 /* элемент, который является единственным своего типа среди братьев */
+:first-child {}
+:last-child {}
+:first-of-type {}
+:last-of-type {}
+:only-child {}
+:only-of-type {}
 
-:nth-child(2) {}                 /* второй дочерний элемент родителя */  
-:nth-child(odd) {}               /* 1 3 5 */  
-:nth-child(even) {}              /* 2 4 6 */  
-:nth-child(3n+1) {}              /* 1,4,7 */  
-:nth-last-child(2) {}            /* предпоследний дочерний элемент */  
-:nth-of-type(2) {}               /* второй элемент определённого типа */  
-:nth-last-of-type(2) {}          /* предпоследний элемент определённого типа */  
-:not(.ignore) {}                 /* все элементы, у которых нет класса 'ignore' */  
-div:not(#banner) {}              /* все `<div>`, кроме тех, у которых есть id 'banner' */  
-li:not(:first-child) {}          /* все `<li>`, кроме первого ребенка в списке */  
-:empty {}                        /* элементы без содержимого (без текста и детей) */  
-:root {}                         /* корневой элемент документа (обычно `<html>`) */
+:nth-child(2) {}
+:nth-child(odd) {}
+:nth-child(even) {}
+:nth-child(3n+1) {}
+:nth-last-child(2) {}
+:nth-of-type(2) {}
+:nth-last-of-type(2) {}
+:not(.ignore) {}
+div:not(#banner) {}
+li:not(:first-child) {}
+:empty {}
+:root {}
 
 
-a[href="https://"] {}   				 				/* href точно равен */
-a[href^="https"] {}     				 				/* Начинается с div[class^="icon-"] {}*/
-a[href$=".pdf"] {}      				 				/* Заканчивается на div[class$="-btn"] {}*/
-a[href*="example"] {}   				 				/* Содержит div[class*="error"] {}*/
+a[href="https://"] {}
+a[href^="https"] {}
+a[href$=".pdf"] {}
+a[href*="example"] {}
 
-/*ФОРМА*/
-:checked {}     								 		 					/* которые отмечены */  
-:disabled {}    								 		 					/* которые отключены и недоступны для взаимодействия */  
-:enabled {}     								 		 					/* которые доступны для взаимодействия */  
-:required {}    								 		 					/* заполнения элементы формы */  
-:optional {}    								 		 					/* для заполнения элементы формы */  
-:valid {}       								 		 					/* с валидным содержимым */  
-:invalid {}     								 		 					/* с некорректным содержимым */  
-:in-range {}    								 		 					/* с значением в допустимом диапазоне (например, input type=range или number) */  
-:out-of-range {}      					 					/* с значением вне допустимого диапазона */  
-:placeholder-shown {} 					 					/* оторых отображается плейсхолдер */  
-:read-only {}         					 					/*  которые доступны только для чтения */  
-:read-write {}        					 					/*  которые доступны для редактирования */
-::placeholder {}      					 					/* стилизует текст плейсхолдера в полях формы */
+:checked {}
+:disabled {}
+:enabled {}
+:required {}
+:optional {}
+:valid {}
+:invalid {}
+:in-range {}
+:out-of-range {}
+:placeholder-shown {}
+:read-only {}
+:read-write {}
+::placeholder {}
 
-/*              ССЫЛКА               */
-:link {}                									/* еще не были посещены */
-:visited {}             									/* уже посетил */
-:hover {}               									/* когда наводит курсор мыши на элемент */
-:active {}              									/* при нажатии */
-:focus {}               									/* при навигации с клавиатуры */
-:focus-visible {}       									/* элемент в фокусе и это видно пользователю */
-:focus-within {}        									/* внутри которых есть элемент с фокусом */
-:target {}              									/* является текущей целью URL после перехода по якорю */
+:link {}
+:visited {}
+:hover {}
+:active {}
+:focus {}
+:focus-visible {}
+:focus-within {}
+:target {}
 
-/*              ПСЕВДО               */
 ::before {
 	content: "";
-} /* добавляет содержимое перед элементом, используется для стилизации псевдоэлемента ::before */  
+}
 ::after {
 	content: "";
-} /* добавляет содержимое после элемента, используется для стилизации псевдоэлемента ::after */  
+}
 
-/*              БУКВЫ СТРОКИ               */
-::first-letter {} /* выбирает первую букву внутри элемента для стилизации */  
-::first-line {} /* выбирает первую строку внутри элемента для стилизации */  
-::selection {} /* стилизует выделенный текст пользователем */  
-::marker {} /* выбирает маркеры списков (например, точки или номера) */
+::first-letter {}
+::first-line {}
+::selection {}
+::marker {}
 
 .a {
-/*              ПОЗИЦИОНИРОВАНИЕ               */
-	position: static; /* Значение по умолчанию. Элемент располагается в нормальном потоке документа. */
-	position: relative; /* Позволяет смещать элемент относительно его исходного положения, сохраняя место в потоке. */
-	position: absolute; /* Располагает элемент относительно ближайшего позиционированного предка (с отличным от static position). */
-	position: fixed; /* Фиксирует элемент относительно окна браузера; он остается на месте при прокрутке страницы. */
-	position: sticky; /* Позволяет элементу вести себя как `relative` до тех пор, пока не достигнет заданного порога, после чего — как `fixed`. */
+	position: static;
+	position: relative;
+	position: absolute;
+	position: fixed;
+	position: sticky;
 	
-	top: 0; /* Смещает элемент вверх относительно его позиционирования (например, при position: absolute или fixed). */
-	right: 0; /* Смещает элемент вправо. */
-	bottom: 0; /* Смещает элемент вниз. */
-	left: 0; /* Смещает элемент влево. */
-	z-index: 10; /* Определяет порядок наложения элементов; чем больше значение, тем выше слой. */
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 10;
 
-/*              РАЗМЕРЫ              */
-	width: 100px; /* Устанавливает фиксированную ширину элемента в 100 пикселей. */
-	height: 100px; /* Устанавливает фиксированную высоту в 100 пикселей. */
+	width: 100px;
+	height: 100px;
 
-	min-width: 50px; /* Минимальная ширина элемента — не меньше 50 пикселей. */
-	max-width: 200px; /* Максимальная ширина — не больше 200 пикселей. */
-	min-height: 50px; /* Минимальная высота — не меньше 50 пикселей. */
-	max-height: 200px; /* Максимальная высота — не больше 200 пикселей. */
+	min-width: 50px;
+	max-width: 200px;
+	min-height: 50px;
+	max-height: 200px;
 
-/*              ОТСТУПЫ               */
-	margin: 10px; /* Внешний отступ со всех сторон по 10 пикселей. */
-	margin-top: 10px; /* Внешний отступ сверху. */
-	margin-right: 10px; /* Внешний отступ справа. */
-	margin-bottom: 10px; /* Внешний отступ снизу. */
-	margin-left: 10px; /* Внешний отступ слева. */
+	margin: 10px;
+	margin-top: 10px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	margin-left: 10px;
 
-	padding: 10px; /* Внутренний отступ со всех сторон по 10 пикселей. */
-	padding-top: 10px; /* Внутренний отступ сверху. */
-	padding-right: 10px; /* Внутренний отступ справа. */
-	padding-bottom: 10px; /* Внутренний отступ снизу. */
-	padding-left: 10px; /* Внутренний отступ слева. */
+	padding: 10px;
+	padding-top: 10px;
+	padding-right: 10px;
+	padding-bottom: 10px;
+	padding-left: 10px;
 	
 	box-sizing: border-box;
 	box-sizing: content-box;
 
-/*              ВИДИМОСТЬ               */
-	overflow: visible; /* Контент, выходящий за границы элемента, отображается полностью (по умолчанию). */
-	overflow: hidden; /* Контент, выходящий за границы элемента, скрыт и не виден. */
-	overflow: scroll; /* Всегда показываются полосы прокрутки, независимо от необходимости прокрутки. */
-	overflow: auto; /* Полосы прокрутки появляются только при необходимости (если контента больше, чем размер блока). */
-	overflow-y: auto; /* Вертикальные полосы прокрутки появляются только при необходимости. */
+	overflow: visible;
+	overflow: hidden;
+	overflow: scroll;
+	overflow: auto;
+	overflow-y: auto;
 	
-/*              ШРИФТЫ              */
 	font-family: Arial, sans-serif;
 	
-	font-size: 16px; /* Устанавливает размер шрифта в 16 пикселей. */
-	font-size: 1em; /* Размер шрифта равен текущему размеру шрифта родительского элемента (обычно 16px по умолчанию). */
-	font-size: 1rem; /* Размер шрифта равен корневому размеру шрифта документа (обычно 16px). */
-	font-size: large; /* Относительный размер, чуть больше стандартного, зависит от браузера и настроек. */
-	font-size: 200%; /* Размер шрифта в два раза больше текущего размера (например, если текущий 16px, то 32px). */
+	font-size: 16px;
+	font-size: 1em;
+	font-size: 1rem;
+	font-size: large;
+	font-size: 200%;
 	
-	font-weight: normal; /* обычная жирность */
-	font-weight: bold; /* жирный шрифт */
-	font-weight: 700; /* числовое значение жирности, обычно соответствует жирному */
+	font-weight: normal;
+	font-weight: bold;
+	font-weight: 700;
 
-	font-style: normal; /* обычный стиль */
-	font-style: italic; /* курсив */
+	font-style: normal;
+	font-style: italic;
 
-	font-variant: normal; /* стандартное написание */
-	font-variant: small-caps; /* малые заглавные буквы */
+	font-variant: normal;
+	font-variant: small-caps;
 
-	line-height: 1.5; /* межстрочный интервал в 1.5 раза от высоты строки */
+	line-height: 1.5;
 
-	color: #333; /* темно-серый в шестнадцатеричном формате */
-	color: rgb(100%, 100%, 100%); /* белый в процентах (эквивалент #fff) */
-	color: rgb(255, 255, 255); /* белый в числовом формате */
-	color: hsl(0, 100%, 50%); /* насыщенный красный по HSL модели */
-	color: hsla(0, 100%, 50%, .5); /* полупрозрачный красный (50% прозрачности) */
+	color: #333;
+	color: rgb(100%, 100%, 100%);
+	color: rgb(255, 255, 255);
+	color: hsl(0, 100%, 50%);
+	color: hsla(0, 100%, 50%, .5);
 	
-	text-align: left; /* по левому краю */
-	text-align: center; /* по центру */
-	text-align: right; /* по правому краю */
-	text-align: justify; /* по ширине (выравнивание по обеим сторонам) */
+	text-align: left;
+	text-align: center;
+	text-align: right;
+	text-align: justify;
 	
-	text-decoration: none; /* без украшений */
-	text-decoration: underline; /* подчеркивание */
-	text-decoration: overline; /* надчеркивание (линия сверху) */
-	text-decoration: underline overline; /* и подчеркивание, и надчеркивание одновременно */
+	text-decoration: none;
+	text-decoration: underline;
+	text-decoration: overline;
+	text-decoration: underline overline;
 
-	text-transform: none; /* без изменений регистра */
-	text-transform: uppercase; /* все буквы в верхний регистр */
-	text-transform: lowercase; /* все буквы в нижний регистр */
-	text-transform: capitalize; /* первая буква каждого слова в верхний регистр */
+	text-transform: none;
+	text-transform: uppercase;
+	text-transform: lowercase;
+	text-transform: capitalize;
 	
-	text-indent: 20px; /* сдвиг первой строки на 20 пикселей */
+	text-indent: 20px;
 
-	letter-spacing: 1px; /* добавляет по 1 пикселю между символами */
+	letter-spacing: 1px;
 
-	word-spacing: 2px; /* добавляет по 2 пикселя между словами */
+	word-spacing: 2px;
 
-	white-space: normal; /* стандартное поведение: переносит строки, сохраняет пробелы */
-	white-space: nowrap; /* не переносит строки, весь текст в одну строку */
-	white-space: pre; /* сохраняет все пробелы и переносы, как в исходном коде */
+	white-space: normal;
+	white-space: nowrap;
+	white-space: pre;
 
-	word-break: normal; /* стандартное поведение, перенос слов по границам слов */
-	word-break: break-all; /* позволяет переносить слова в любом месте при необходимости */
-	word-break: keep-all; /* не переносит слова, только в случае автоматического переноса (обычно для неанглийских языков) */
+	word-break: normal;
+	word-break: break-all;
+	word-break: keep-all;
 
-	word-wrap: normal; /* стандартное поведение, не переносит слова за границы контейнера */
-	word-wrap: break-word; /* позволяет переносить длинные слова на следующую строку при переполнении */
+	word-wrap: normal;
+	word-wrap: break-word;
 
-	hyphens: none; /* отключает автоматические дефисы при переносе слов */
-	hyphens: manual; /* разрешает автоматические дефисы только там, где они явно указаны */
-	hyphens: auto; /* включает автоматические дефисы для улучшения переноса (поддерживается браузерами) */
+	hyphens: none;
+	hyphens: manual;
+	hyphens: auto;
 
-	text-overflow: ellipsis; /* добавляет "..." при переполнении текста (требует overflow и white-space) */
+	text-overflow: ellipsis;
 
-	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* смещение тени на 1px по горизонтали и вертикали, размытие 2px, цвет полупрозрачный черный */
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 
-	direction: ltr; /* слева направо (по умолчанию для английского и большинства языков) */
-	direction: rtl; /* справа налево (для арабского, иврита и др.) */
+	direction: ltr;
+	direction: rtl;
 
-	unicode-bidi: normal; /* стандартное поведение без особого изменения порядка символов */
+	unicode-bidi: normal;
 
-	/* ФОН */
-	background-color: #fff; /* белый цвет фона */
+	background-color: #fff;
 
-	background-image: url("image.jpg"); /* изображение в качестве фона */
-	background-image: linear-gradient(to top, black, white); /* градиент от черного к белому сверху вниз */
+	background-image: url("image.jpg");
+	background-image: linear-gradient(to top, black, white);
 
-	background-repeat: no-repeat; /* изображение не повторяется */
-	background-repeat: repeat-x; /* повтор по горизонтали (по оси X) */
-	background-repeat: repeat-y; /* повтор по вертикали (по оси Y) */
+	background-repeat: no-repeat;
+	background-repeat: repeat-x;
+	background-repeat: repeat-y;
 
-	background-position: center; /* по центру элемента */
-	background-position: 10px 20px; /* смещение на 10px по горизонтали и 20px по вертикали */
+	background-position: center;
+	background-position: 10px 20px;
 
-	background-size: cover; /* масштабирует изображение, чтобы покрыть весь блок, сохраняя пропорции */
-	background-size: contain; /* масштабирует изображение, чтобы полностью поместиться внутри блока, сохраняя пропорции */
-	background-size: 100px 50px; /* явно задает ширину и высоту изображения */
+	background-size: cover;
+	background-size: contain;
+	background-size: 100px 50px;
 
-	background-attachment: scroll; /* фон прокручивается вместе со страницей (по умолчанию) */
-	background-attachment: fixed; /* фон остается неподвижным при прокрутке (фиксированный) */
+	background-attachment: scroll;
+	background-attachment: fixed;
 
-	background-clip: border-box; /* фон занимает всю область за границами блока */
-	background-origin: padding-box; /* фон начинается от области внутреннего отступа */
-	background-blend-mode: normal; /* стандартное смешивание без эффектов */
+	background-clip: border-box;
+	background-origin: padding-box;
+	background-blend-mode: normal;
 	
-	/* ГРАНИЦЫ */
-	border: 1px solid #000; /* сплошная черная граница толщиной 1px */
+	border: 1px solid #000;
 
-	border-width: 1px; /* толщина границы в 1 пиксель */
-	border-style: solid; /* сплошная линия границы */
-	border-style: dashed; /* пунктирная линия границы */
-	border-style: dotted; /* точечная линия границы */
+	border-width: 1px;
+	border-style: solid;
+	border-style: dashed;
+	border-style: dotted;
 
-	border-color: #000; /* черный цвет границы */
+	border-color: #000;
 
-	border-top: 1px solid #000;    /* верхняя граница */
-	border-right: 1px solid #000;  /* правая граница */
-	border-bottom: 1px solid #000; /* нижняя граница */
-	border-left: 1px solid #000;   /* левая граница */
+	border-top: 1px solid #000;
+	border-right: 1px solid #000;
+	border-bottom: 1px solid #000;
+	border-left: 1px solid #000;
 
-	border-radius: 5px; /* Скругление углов элемента */
+	border-radius: 5px;
 
-	border-top-left-radius: 5px; /* Скругление верхнего левого угла */
-	border-top-right-radius: 5px; /* Скругление верхнего правого угла */
-	border-bottom-right-radius: 5px; /* Скругление правого нижнего угла */
-	border-bottom-left-radius: 5px; /* Скругление левого нижнего угла */
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
 
-	outline: 1px solid #f00; /* Обводка вокруг элемента */
+	outline: 1px solid #f00;
 
-	outline-offset: 2px; /* Смещение обводки относительно границы элемента */
+	outline-offset: 2px;
 
-	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Тень вокруг элемента */
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 
-	/* СЕТКА */
-	display: flex; /* Установка контейнера как флекс-контейнера */
+	display: flex;
 
-	flex-direction: row; /* Расположение элементов по горизонтали (по умолчанию) */
-	flex-direction: row-reverse; /* Расположение элементов по горизонтали в обратном порядке */
-	flex-direction: column; /* Расположение элементов по вертикали */
-	flex-direction: column-reverse; /* Расположение элементов по вертикали в обратном порядке */
+	flex-direction: row;
+	flex-direction: row-reverse;
+	flex-direction: column;
+	flex-direction: column-reverse;
 
-	flex-wrap: nowrap; /* Элементы не переносятся на новую строку/столбец */
-	flex-wrap: wrap; /* Элементы переносятся на новую строку/столбец при необходимости */
-	flex-wrap: wrap-reverse; /* Перенос элементов в обратном порядке */
+	flex-wrap: nowrap;
+	flex-wrap: wrap;
+	flex-wrap: wrap-reverse;
 
-	justify-content: flex-start; /* Выравнивание элементов по началу основной оси */
-	justify-content: flex-end; /* Выравнивание элементов по концу основной оси */
-	justify-content: center; /* Центрирование элементов по основной оси */
-	justify-content: space-between; /* Равномерное распределение с краями у крайних элементов */
-	justify-content: space-around; /* Равномерное распределение с равными отступами вокруг элементов */
-	justify-content: space-evenly; /* Равномерное распределение с равными промежутками между элементами */
+	justify-content: flex-start;
+	justify-content: flex-end;
+	justify-content: center;
+	justify-content: space-between;
+	justify-content: space-around;
+	justify-content: space-evenly;
 
-	align-items: stretch; /* Растягивание элементов по поперечной оси (по умолчанию) */
-	align-items: flex-start; /* Выравнивание элементов по началу поперечной оси */
-	align-items: flex-end; /* Выравнивание элементов по концу поперечной оси */
-	align-items: center; /* Центрирование элементов по поперечной оси */
-	align-items: baseline; /* Выравнивание по базовой линии текста внутри элементов */
+	align-items: stretch;
+	align-items: flex-start;
+	align-items: flex-end;
+	align-items: center;
+	align-items: baseline;
 
-	align-content: stretch; /* Растягивание линий внутри многострочного флекс-контейнера (по умолчанию) */
-	align-content: flex-start; /* Выравнивание линий у начала контейнера */
-	align-content: flex-end; /* Выравнивание линий у конца контейнера */
-	align-content: center; /* Центрирование линий внутри контейнера */
-	align-content: space-between; /* Распределение линий с равными промежутками между ними */
-	align-content: space-around; /* Распределение линий с равными промежутками вокруг них */
+	align-content: stretch;
+	align-content: flex-start;
+	align-content: flex-end;
+	align-content: center;
+	align-content: space-between;
+	align-content: space-around;
 	
-	order: 0; /* Порядок расположения элемента внутри flex или grid контейнера */
+	order: 0;
 
-	flex-grow: 0; /* Элемент не будет расти, занимая доступное пространство */
+	flex-grow: 0;
 
-	flex-shrink: 1; /* Элемент может сжиматься при нехватке места */
+	flex-shrink: 1;
 
-	flex-basis: auto; /* Исходный размер элемента перед распределением свободного пространства */
+	flex-basis: auto;
 
-	align-self: auto; /* Выравнивание элемента по поперечной оси внутри flex-контейнера */
+	align-self: auto;
 
-	gap: 10px; /* Расстояние между строками и колонками в контейнере */
+	gap: 10px;
 
-	row-gap: 10px; /* Расстояние между строками (для grid или flex-контейнера) */
+	row-gap: 10px;
 
-	column-gap: 10px; /* Расстояние между колонками (для grid или flex-контейнера) */
+	column-gap: 10px;
 
-	display: grid; /* Установка элемента как grid-контейнера */
+	display: grid;
 	
-	grid-template-columns: 1fr 1fr 1fr; /* Три равные колонки по ширине */
-	grid-template-rows: 100px 200px; /* Две строки с фиксированной высотой */
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: 100px 200px;
 	grid-template-areas: "header header header"
-											 "sidebar main main"; /* Области для позиционирования элементов */
+											 "sidebar main main";
 
-	grid-column-gap: 10px; /* Расстояние между колонками */
-	grid-row-gap: 10px; /* Расстояние между строками */
+	grid-column-gap: 10px;
+	grid-row-gap: 10px;
 
-	gap: 10px; /* Общее расстояние между строками и колонками */
+	gap: 10px;
 
-	grid-auto-columns: 1fr; /* Автоматическая ширина колонок при необходимости */
-	grid-auto-rows: 100px; /* Автоматическая высота строк при необходимости */
-	grid-auto-flow: row; /* Расположение элементов по строкам */
+	grid-auto-columns: 1fr;
+	grid-auto-rows: 100px;
+	grid-auto-flow: row;
 
-	grid-column-start: 1; /* Начальная колонка для элемента (если применяется к элементу внутри grid) */
-	grid-column-end: 3; /* Конечная колонка для элемента (элемент занимает колонки с 1 по 2) */
+	grid-column-start: 1;
+	grid-column-end: 3;
 
-	grid-row-start: 1; /* Начальная строка для элемента */
-	grid-row-end: 3;   /* Конечная строка для элемента (занимает строки с 1 по 2) */
+	grid-row-start: 1;
+	grid-row-end: 3;
 
-	grid-area: header; /* Назначение области для элемента, связанной с grid-template-areas */
+	grid-area: header;
 
-	justify-items: start;   /* Выравнивание содержимого внутри ячейки по началу (по горизонтали) */
-	justify-items: end;     /* Выравнивание содержимого внутри ячейки по концу (по горизонтали) */
-	justify-items: center;  /* Центрирование содержимого внутри ячейки (по горизонтали) */
-	justify-items: stretch; /* Растягивание содержимого на всю ширину ячейки (по горизонтали) */
+	justify-items: start;
+	justify-items: end;
+	justify-items: center;
+	justify-items: stretch;
 	
-	align-items: start;        /* Выравнивание по началу (по вертикали или горизонтали в зависимости от flex-direction) */
-	align-items: end;          /* Выравнивание по концу */
-	align-items: center;       /* Центрирование */
-	align-items: stretch;      /* Растягивание элементов на всю высоту/ширину контейнера */
-	place-items: center stretch; /* Одновременное указание для grid: центр по горизонтали, растяжение по вертикали */
-
-	justify-content: start;        /* В начале (по основной оси) */
-	justify-content: end;          /* В конце */
-	justify-content: center;       /* Центрировать */
-	justify-content: stretch;      /* Растягивать (обычно не применяется к justify-content) */
-	justify-content: space-around; /* Равномерное распределение с отступами вокруг элементов */
-	justify-content: space-between;/* Распределение с равными промежутками между элементами */
-	justify-content: space-evenly; /* Равные промежутки между всеми элементами */
-
-	align-content: start;        /* В начале линий */
-	align-content: end;          /* В конце линий */
-	align-content: center;       /* Центрирование линий */
-	align-content: stretch;      /* Растягивание линий на всю доступную высоту/ширину контейнера */
-	align-content: space-around; /* Равномерное распределение с отступами вокруг линий */
-	align-content: space-between;/* Распределение с равными промежутками между линиями */
-	align-content: space-evenly; /* Равные промежутки между линиями */
-
-	place-items: center stretch; /* Центр по горизонтали, растяжение по вертикали */
-
-	transform: translate(10px, 20px);   /* Смещение элемента на 10px вправо и 20px вниз */
-	transform: rotate(45deg);     /* Поворот на 45 градусов */
-	transform: scale(1.2);        /* Масштабирование элемента в 1.2 раза */
-	transform: skew(10deg, 5deg); /* Искажение по осям X и Y */
-
-	transform-origin: center;     /* Точка трансформации — центр элемента */
-
-	transform-style: flat;        /* Уровень 3D трансформаций (обычно используется в контексте 3D) — 'flat' не является стандартным значением, правильное — 'flat' или 'preserve-3d' */
-
-	transform-style: preserve-3d; /* Сохраняет 3D-пространство для дочерних элементов */
-
-	backface-visibility: visible; /* Видимость задней стороны при вращении в 3D пространстве */
-
-	backface-visibility: hidden;  /* Скрывает заднюю сторону при вращении в 3D пространстве */
+	align-items: start;
+	align-items: end;
+	align-items: center;
+	align-items: stretch;
+	place-items: center stretch;
 	
-	transition: all 0.3s ease; /* Общий переход для всех свойств с длительностью 0.3 секунды и функцией плавности ease */
+	justify-content: start;
+	justify-content: end;
+	justify-content: center;
+	justify-content: stretch;
+	justify-content: space-around;
+	justify-content: space-between;
+	justify-content: space-evenly;
 
-	transition-property: opacity; /* Указывает, что переход применяется только к свойству opacity */
+	align-content: start;
+	align-content: end;
+	align-content: center;
+	align-content: stretch;
+	align-content: space-around;
+	align-content: space-between;
+	align-content: space-evenly;
+
+	place-items: center stretch;
+
+	transform: translate(10px, 20px);
+	transform: rotate(45deg);
+	transform: scale(1.2);
+	transform: skew(10deg, 5deg);
+
+	transform-origin: center;
+
+	transform-style: flat;
+
+	transform-style: preserve-3d;
+
+	backface-visibility: visible;
+
+	backface-visibility: hidden;
 	
-	transition-duration: 0.3s; /* Длительность перехода — 0.3 секунды */
+	transition: all 0.3s ease;
 
-	transition-timing-function: ease; /* Функция временной плавности — ease (плавное ускорение и замедление) */
+	transition-property: opacity;
+	
+	transition-duration: 0.3s;
 
-	transition-timing-function: linear;       /* Линейный переход без ускорения */
-	transition-timing-function: ease-in;      /* Плавное ускорение в начале */
-	transition-timing-function: ease-out;     /* Плавное замедление в конце */
-	transition-timing-function: ease-in-out;  /* Ускорение и замедление в середине */
+	transition-timing-function: ease;
 
-	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); /* Пользовательская кривая Безье для более точного контроля */
+	transition-timing-function: linear;
+	transition-timing-function: ease-in;
+	transition-timing-function: ease-out;
+	transition-timing-function: ease-in-out;
+
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
  
-	transition-delay: 0.1s;  /* Задержка перед началом перехода — 0.1 секунды */
+	transition-delay: 0.1s;
 	
-	/* АНИМАЦИЯ */
 	animation: slide 2s ease infinite;
 
-	animation-name: slide; /* Название анимации (может быть использовано отдельно) */
-	animation-duration: 2s; /* Длительность анимации — 2 секунды */
-	animation-timing-function: ease; /* Функция временной плавности анимации */
-	animation-delay: 0s; /* Задержка перед началом анимации — 0 секунд */
-	animation-iteration-count: infinite; /* Количество повторений анимации — бесконечно */
-	animation-iteration-count: 3; /* Альтернативное значение количества повторений — 3 раза (будет применено, если раскомментировать или убрать 'infinite') */
+	animation-name: slide;
+	animation-duration: 2s;
+	animation-timing-function: ease;
+	animation-delay: 0s;
+	animation-iteration-count: infinite;
+	animation-iteration-count: 3;
 
-	animation-direction: normal;           /* Воспроизведение в обычном порядке */
-	animation-direction: reverse;          /* Воспроизведение в обратном порядке */
-	animation-direction: alternate;        /* Переключение между нормальным и обратным при каждом цикле */
-	animation-direction: alternate-reverse;/* Обратное чередование по сравнению с 'alternate' */
+	animation-direction: normal;
+	animation-direction: reverse;
+	animation-direction: alternate;
+	animation-direction: alternate-reverse;
 
-	animation-fill-mode: none;     /* Не сохранять состояние после окончания */
-	animation-fill-mode: forwards; /* Сохранять конечное состояние после завершения */
-	animation-fill-mode: backwards;/* Использовать начальное состояние до начала анимации */
-	animation-fill-mode: both;     /* Комбинация 'forwards' и 'backwards' */
+	animation-fill-mode: none;
+	animation-fill-mode: forwards;
+	animation-fill-mode: backwards;
+	animation-fill-mode: both;
 
-	animation-play-state: running; /* Анимация запущена и воспроизводится */
-	animation-play-state: paused;  /* Анимация приостановлена (по умолчанию) */
+	animation-play-state: running;
+	animation-play-state: paused;
 
-	cursor: pointer;        /* Указатель в виде руки, обычно для кликабельных элементов */
-	cursor: help;           /* В виде вопросительного знака, для подсказок */
-	cursor: wait;           /* Индикатор ожидания (часики или кружок) */
-	cursor: not-allowed;    /* Запрет на взаимодействие (запрещённый символ) */
+	cursor: pointer;
+	cursor: help;
+	cursor: wait;
+	cursor: not-allowed;
 
-	opacity: 0.5;           /* Полупрозрачный элемент (50%) */
+	opacity: 0.5;
 
-	visibility: visible;    /* Элемент видим */
-	visibility: hidden;     /* Элемент скрыт, но занимает место в разметке */
+	visibility: visible;
+	visibility: hidden;
 
-	display: none;          /* Элемент полностью скрыт и не занимает места */
-	display: block;         /* Блочный элемент, занимает всю ширину контейнера */
-	display: inline;       /* Встроенный элемент, занимает только необходимую ширину */
-	display: inline-block; /* Встроенно-блочный, позволяет задавать размеры и позиционирование */
-	display: contents;     /* Отрисовывает только содержимое без собственного блока (редко используется) */
-	display: list-item;    /* Элемент списка с маркером */
+	display: none;
+	display: block;
+	display: inline;
+	display: inline-block;
+	display: contents;
+	display: list-item;
 
-	float: left;          /* Прижать к левому краю контейнера */
-	float: right;         /* Прижать к правому краю контейнера */
-	float: none;          /* Отменить float, вернуть в поток документа */
+	float: left;
+	float: right;
+	float: none;
 	
-	clear: both; /* Очистка float-элементов, сброс обтекания */
+	clear: both;
 
-	object-fit: cover;     /* Заполняет контейнер, сохраняя пропорции, может обрезать часть изображения */
-	object-fit: contain;   /* Вписывает изображение полностью в контейнер, сохраняя пропорции */
-	object-position: center; /* Центрирование объекта внутри контейнера */
+	object-fit: cover;
+	object-fit: contain;
+	object-position: center;
 
-	resize: both;          /* Позволяет изменять как по горизонтали, так и по вертикали */
-	resize: horizontal;    /* Только по горизонтали */
-	resize: vertical;      /* Только по вертикали */
+	resize: both;
+	resize: horizontal;
+	resize: vertical;
 
-	clip-path: circle(50%); /* Обрезает элемент в виде круга с радиусом 50% */
+	clip-path: circle(50%);
 	
-	will-change: transform; /* Предварительное указание браузеру, что элемент может измениться (оптимизация) */
+	will-change: transform;
 	
-/*ФИЛЬТРЫ*/
-	filter: blur(5px);             /* Размытие изображения на 5 пикселей */
-	filter: brightness(1.2);       /* Увеличение яркости на 20% */
-	filter: contrast(1.5);         /* Повышение контраста на 50% */
-	filter: grayscale(50%);        /* Половина изображения в оттенках серого */
-	filter: hue-rotate(90deg);     /* Поворот цветового оттенка на 90 градусов */
-	filter: invert(100%);          /* Инверсия цветов (цвета меняются местами) */
-	filter: opacity(50%);          /* Полупрозрачность (50%) */
-	filter: saturate(200%);        /* Увеличение насыщенности цветов в два раза */
-	filter: sepia(100%);           /* Полностью сепия-эффект (старинный фотоэффект) */
+	filter: blur(5px);
+	filter: brightness(1.2);
+	filter: contrast(1.5);
+	filter: grayscale(50%);
+	filter: hue-rotate(90deg);
+	filter: invert(100%);
+	filter: opacity(50%);
+	filter: saturate(200%);
+	filter: sepia(100%);
 }
 	
 @media screen and (min-width: 768px) {
-  /* Здесь пишите стили, применяемые при ширине экрана >= 768px */
 }
 
 @media (prefers-color-scheme: dark) {
-  /* Здесь стили для тёмной темы */
 }
 	
 @media (orientation: portrait) {
-  /* Здесь стили, применяемые при вертикальной ориентации экрана */
 }
 
 :root {
@@ -497,7 +480,6 @@ font-weight: normal;
 font-style: normal;
 }
 
-/*NORMALIZE*/
 html,
 body,
 div,
@@ -1041,39 +1023,31 @@ table {
 	SQL
 
 
-	внешний ключ
-	первичный
-	составной
-
-	текстовые
-	Дата и время
-	Логические
-
 	SELECT
-	AS - Псевдоним
-	ORDER BY - сортировка
+	AS
+	ORDER BY
 	LIMIT 10
 	TOP 1000
 
-	=
-	>
-	<>=
-		<= <>
+=
+>
+<>=
+<= <>
 
-			BETWEEN
-			IN
-			LIKE
-			AND
-			OR
+BETWEEN
+IN
+LIKE
+AND
+OR
 
-			+
-			-
-			/
-			*
-			%
++
+-
+/
+*
+%
 
-			WHERE
-			Total = 1.98 BETWEEN 1.98 AND 5.00
-			Total IN (1.98, 5.00)
+WHERE
+Total = 1.98 BETWEEN 1.98 AND 5.00
+Total IN (1.98, 5.00)
 
 </body></html>
