@@ -23,24 +23,21 @@ console.log(_)
 
 console.log(typeof('str'), ',typeof str')
 console.log(typeof(123), ',typeof 123')
-console.log(1/0, '1/0');
+console.log(1/0, ',1/0');
 console.log(typeof(1/0), ',typeof Infinity')
-
-console.log("не число"/2)
 console.log(typeof("не число"/2), ',type NaN')
-
 console.log(typeof(1n), ',type bigint')
+console.log(`${1 + 2}`)
+console.log(typeof(true), 'typeof true')
+console.log(4 > 1, '4 > 1')
+console.log(null, 'null')
+console.log(typeof(age))
 
 let str = '1'
 console.log(str)
 console.log("2")
 console.log(`var ${str}`)
 
-console.log(`${1 + 2}`)
-console.log(typeof(true), 'typeof true')
-console.log(4 > 1, '4 > 1')
-console.log(null, 'null')
-console.log(typeof(age))
 
 
 
