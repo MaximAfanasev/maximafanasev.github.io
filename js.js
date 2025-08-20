@@ -37,7 +37,6 @@ console.log(typeof("не число"/2), 'type NaN')
 
 console.log(typeof(1n), 'type bigint');
 
-
 let str = '1';
 console.log(str);
 console.log("2");
