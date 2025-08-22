@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Демонстрация :empty и :root</title>
+    <style>
+        :root {
+            --primary-color: #4e54c8;
+            --secondary-color: #8f94fb;
+            --accent-color: #ff6b6b;
+            --text-color: #333;
+            --bg-color: #f9f9f9;
+            --border-radius: 8px;
+            --transition: all 0.3s ease;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 20px;
+            transition: var(--transition);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        .description {
+            max-width: 800px;
+            margin: 0 auto 40px;
+            padding: 20px;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .example {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .example h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+        }
+
+        .empty-box {
+            border: 2px dashed #ccc;
+            padding: 15px;
+            margin: 15px 0;
+            min-height: 50px;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        /* Стили для :empty */
+        .empty-box:empty {
+            background-color: #ffebee;
+            border-color: var(--accent-color);
+        }
+
+        .empty-box:empty::before {
+            content: "Этот блок пуст!";
+            color: var(--accent-color);
+            font-style: italic;
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        button {
+            padding: 8px 16px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        button:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .theme-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+        }
+
+        .theme-switcher button {
+            background-color: var(--accent-color);
+        }
+
+        /* Темная тема, изменяющая переменные в :root */
+        .dark-theme {
+            --text-color: #f0f0f0;
+            --bg-color: #333;
+        }
+
+        .code-block {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: var(--text-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="theme-switcher">
+        <button id="themeToggle">Сменить тему</button>
+    </div>
+
+    <header>
+        <h1>Демонстрация :empty и :root</h1>
+    </header>
+
+    <div class="description">
+        <p>На этой странице представлены примеры использования CSS-псевдоклассов <code>:empty</code> и <code>:root</code>. Эти мощные инструменты позволяют создавать более гибкие и адаптивные стили для ваших веб-страниц.</p>
+    </div>
+
+    <div class="container">
+        <div class="example">
+            <h2>Псевдокласс :empty</h2>
+            <p>Селектор <code>:empty</code> применяет стили к элементам, которые не содержат дочерних элементов или текста.</p>
+            
+            <div class="empty-box">
+                Этот блок имеет содержимое, поэтому стили :empty не применяются.
+            </div>
+            
+            <div class="empty-box">
+                <!-- Этот блок пуст -->
+            </div>
+            
+            <div class="empty-box"></div>
+            
+            <div class="controls">
+                <button onclick="addContent()">Добавить содержимое</button>
+                <button onclick="removeContent()">Удалить содержимое</button>
+            </div>
+            
+            <div class="code-block">
+                /* CSS код для :empty */<br>
+                .empty-box:empty {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;background-color: #ffebee;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;border-color: #ff6b6b;<br>
+                }<br>
+                <br>
+                .empty-box:empty::before {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;content: "Этот блок пуст!";<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;color: #ff6b6b;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;font-style: italic;<br>
+                }
+            </div>
+        </div>
+
+        <div class="example">
+            <h2>Псевдокласс :root</h2>
+            <p>Селектор <code>:root</code> обращается к корневому элементу документа (тегу &lt;html&gt;) и часто используется для определения CSS-переменных (кастомных свойств).</p>
+            
+            <p>Текущие значения переменных:</p>
+            <ul>
+                <li>Основной цвет: <span style="color: var(--primary-color);">var(--primary-color)</span></li>
+                <li>Вторичный цвет: <span style="color: var(--secondary-color);">var(--secondary-color)</span></li>
+                <li>Акцентный цвет: <span style="color: var(--accent-color);">var(--accent-color)</span></li>
+            </ul>
+            
+            <div class="controls">
+                <button onclick="changeColors()">Изменить цвета</button>
+                <button onclick="resetColors()">Сбросить цвета</button>
+            </div>
+            
+            <div class="code-block">
+                /* CSS код для :root */<br>
+                :root {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;--primary-color: #4e54c8;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;--secondary-color: #8f94fb;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;--accent-color: #ff6b6b;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;--text-color: #333;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;--bg-color: #f9f9f9;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;--border-radius: 8px;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;--transition: all 0.3s ease;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;--box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);<br>
+                }<br>
+                <br>
+                .dark-theme {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;--text-color: #f0f0f0;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;--bg-color: #333;<br>
+                }
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Создано для демонстрации CSS-псевдоклассов :empty и :root</p>
+    </footer>
+
+    <script>
+        // Функции для демонстрации :empty
+        function addContent() {
+            const emptyBoxes = document.querySelectorAll('.empty-box:empty');
+            if (emptyBoxes.length > 0) {
+                emptyBoxes[0].innerHTML = 'Теперь этот блок имеет содержимое! Стили :empty больше не применяются.';
+            } else {
+                alert('Все блоки уже имеют содержимое!');
+            }
+        }
+
+        function removeContent() {
+            const nonEmptyBoxes = document.querySelectorAll('.empty-box:not(:empty)');
+            if (nonEmptyBoxes.length > 0) {
+                nonEmptyBoxes[0].innerHTML = '';
+            } else {
+                alert('Все блоки уже пусты!');
+            }
+        }
+
+        // Функции для демонстрации :root
+        function changeColors() {
+            document.documentElement.style.setProperty('--primary-color', '#43cea2');
+            document.documentElement.style.setProperty('--secondary-color', '#185a9d');
+            document.documentElement.style.setProperty('--accent-color', '#ff8e53');
+        }
+
+        function resetColors() {
+            document.documentElement.style.setProperty('--primary-color', '#4e54c8');
+            document.documentElement.style.setProperty('--secondary-color', '#8f94fb');
+            document.documentElement.style.setProperty('--accent-color', '#ff6b6b');
+        }
+
+        // Переключение темы
+        document.getElementById('themeToggle').addEventListener('click', function() {
+            document.body.classList.toggle('dark-theme');
+        });
+    </script>
+</body>
+</html>
