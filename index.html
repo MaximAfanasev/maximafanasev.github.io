@@ -3,7 +3,6 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="css/index.css">
 	<title>Maxim Afanasev</title>
 	<style>
 		:root {
@@ -18,7 +17,6 @@
 
 		@font-face {
 			font-family: 'Cyber';
-			src: url('https://fonts.cdnfonts.com/css/cyberpunk') format('woff');
 			font-weight: normal;
 			font-style: normal;
 		}
@@ -254,7 +252,7 @@
 				<h2>Base #1</h2>
 				<div class="menu-grid">
 					<div class="menu-item">
-						<a href="http2.html" target="_blank">HTTP</a>
+						<a href="http2.html" target="_blank">HTTP 2.0</a>
 						<div class="menu-desc">a-z</div>
 					</div>
 				</div>
@@ -312,253 +310,41 @@
 			</nav>
 		</div>
 
+		<div class="terminal">
+			<div class="corner corner-tl"></div>
+			<div class="corner corner-tr"></div>
+			<div class="corner corner-bl"></div>
+			<div class="corner corner-br"></div>
+
+			<nav class="menu-section">
+				<h2>Base #5</h2>
+				<div class="menu-grid">
+					<div class="menu-item">
+						<a href="#.html" target="_blank">PYTHON</a>
+						<div class="menu-desc">a-z</div>
+					</div>
+				</div>
+			</nav>
+		</div>
+
+		<div class="terminal">
+			<div class="corner corner-tl"></div>
+			<div class="corner corner-tr"></div>
+			<div class="corner corner-bl"></div>
+			<div class="corner corner-br"></div>
+
+			<nav class="menu-section">
+				<h2>Base #6</h2>
+				<div class="menu-grid">
+					<div class="menu-item">
+						<a href="#.html" target="_blank">SQL</a>
+						<div class="menu-desc">a-z</div>
+					</div>
+				</div>
+			</nav>
+		</div>
+
 	</div>
-
-	<code>
-		<pre>
-				<main></main>
-	<header></header>
-	<nav></nav>
-	<section></section>
-	<article></article>
-	<aside></aside>
-	<footer></footer>
-	<address></address>
-	<script></script>
-
-	<div id="unique-id"></div>
-	<div class="class1 class2"></div>
-	<div style="color: red;"></div>
-	<div title="Help >_>">hover here</div>
-	<div lang="en"></div>
-	<div dir="rtl">dir</div>
-	<div contenteditable="true"></div>
-	<div spellcheck="true" contenteditable="true">double click and change</div>
-	<div hidden></div>
-	<div tabindex="0">Press Tab</div>
-	<div draggable="true">draggable</div>
-	<div aria-label="Описание для скринридеров"></div>
-
-	<button onclick="alert('Клик!')">click</button>
-	<div ondblclick="alert('Двойной клик!')">double click</div>
-	<div onmousedown="this.style.color='red'">click</div>
-	<div onmouseup="this.style.color='blue'">click</div>
-	<div onmouseover="this.style.backgroundColor='gold';this.style.color='#222'">hover</div>
-	<div onmouseout="this.style.backgroundColor='white'; this.style.color='black'">hover + out</div>
-	<div onmousemove="this.textContent='X:'+event.clientX+' Y:'+event.clientY">onmousemove (координаты)</div>
-	<div onwheel="this.textContent='Wheele!'" style="height:50px;overflow:auto">wheel</div>
-
-	<input onkeydown="console.log('Key down:', event.key)" placeholder="onkeydown">
-	<input onkeyup="console.log('Key up:', event.key)" placeholder="onkeyup">
-	<input onkeypress="console.log('Key press:', event.key)" placeholder="onkeypress">
-
-	<input oninput="console.log('Input:', this.value)" placeholder="oninput">
-	<select onchange="console.log('Changed:', this.value)">
-		<option>1</option>
-		<option>2</option>
-	</select>
-	<form onsubmit="alert('Submitted!'); return false"><button>onsubmit</button></form>
-	<form onreset="alert('Reset!')"><input type="reset" value="onreset"></form>
-	<input onfocus="this.style.background='yellow'" onblur="this.style.background='white'" placeholder="onfocus/onblur">
-
-	<img onload="" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="onload">
-	<img onerror="console.log('Error loading')" src="" alt="onerror">
-	<iframe onabort="console.log('Loading aborted')" src="about:blank"></iframe>
-	<div onresize="console.log('Resized')" style="border:1px solid">onresize (измените размер окна)</div>
-	<div onscroll="console.log('Scrolled')" style="height:100px;overflow:auto">
-		<div style="height:200px">onscroll (прокрутите)</div>
-	</div>
-
-	<h1>h1</h1>
-	<h2>h2</h2>
-	<h3>h3</h3>
-	<h4>h4</h4>
-	<h5>h5</h5>
-	<h6>h6</h6>
-
-	<div></div>
-	<p></p>
-	<span></span>
-
-	<details>
-		<summary>Details</summary>
-		<div>summary</div>
-	</details>
-
-	<hr>
-	<br>
-
-	<b>b</b>
-	<strong>strong</strong>
-	<i>i</i>
-	<em>em</em>
-	<u>u</u>
-	<s>s</s>
-	<del>del</del>
-	<ins>ins</ins>
-	<mark>mark</mark>
-	<small>small</small>
-	<sub>sub</sub>
-	<sup>sup</sup>
-
-	<ul>
-		<li>ul</li>
-		<li>li</li>
-	</ul>
-
-	<ol>
-		<li>ol</li>
-		<li>li</li>
-	</ol>
-
-	<dl>
-		<dt>dl</dt>
-		<dd>dt</dd>
-		<dd>dd</dd>
-	</dl>
-
-	<abbr title="">abbr</abbr>
-	<dfn>dfn</dfn>
-
-	<blockquote cite="https://">blockquote</blockquote>
-	<cite>cite</cite>
-	<q>q</q>
-	<a href="https://example.com">Обычная ссылка</a>
-	<a href="https://example.com" title="Подсказка">Ссылка с подсказкой</a>
-	<a href="#section-id">Якорная ссылка</a>
-	<div id="section-id"></div>
-
-	<a href="https://example.com" target="_blank">_blank (новое окно)</a>
-	<a href="https://example.com" target="_self">_self (текущая вкладка)</a>
-	<a href="https://example.com" target="_parent">_parent (родительский фрейм)</a>
-	<a href="https://example.com" target="_top">_top (полное окно)</a>
-
-	<a href="https://example.com" rel="nofollow">nofollow (не передавать вес)</a>
-	<a href="https://example.com" rel="noopener">noopener (безопасность при target="_blank")</a>
-	<a href="https://example.com" rel="noreferrer">noreferrer (скрыть источник)</a>
-	<a href="https://example.com" referrerpolicy="no-referrer">Контроль Referer</a>
-
-	<a href="mailto:email@example.com">Почтовая ссылка</a>
-	<a href="tel:+1234567890">Телефонная ссылка</a>
-	<a href="" download>Скачать файл (имя по умолчанию)</a>
-	<a href="" download="">Скачать с указанием имени</a>
-
-	<a href="https://example.com" hreflang="de">Для немецкого языка</a>
-	<a href="https://example.com" type="application/pdf">PDF-документ</a>
-	<a href="https://example.com" media="print">Версия для печати</a>
-	<a href="https://example.com" ping="https://tracker.com">С отслеживанием</a>
-
-	<a href="" target="_blank" rel="noopener noreferrer" download="" type="application/pdf" hreflang="en" title="Download PDF" aria-label="Download document (PDF, 2MB)" ping="/track">
-		Скачать документ
-	</a>
-
-	<table border="2">
-		<tr>
-			<th id="header1">Заголовок 1</th>
-			<th id="header2">Заголовок 2</th>
-			<th id="header3">Заголовок 3</th>
-		</tr>
-		<tr>
-			<td colspan="2">Объединённые ячейки (colspan="2")</td>
-			<td>Обычная ячейка</td>
-		</tr>
-		<tr>
-			<td rowspan="2">Объединённые строки (rowspan="2")</td>
-			<td headers="header1 header2">Ячейка с headers</td>
-			<td>Ещё одна</td>
-		</tr>
-		<tr>
-			<td>Нижняя левая</td>
-			<td>Нижняя правая</td>
-		</tr>
-	</table>
-
-	<code>code</code>
-	<kbd>Ctrl+C</kbd>
-	<samp>samp</samp>
-	<var>x</var>
-	<pre>pre
-       pre</pre>
-		<time datetime="2023-10-05">5 октября</time>
-		<wbr>
-		<ruby>漢 <rp>(</rp>
-			<rt>kan</rt>
-			<rp>)</rp>
-		</ruby>
-		<bdi>إيان</bdi>
-		<bdo dir="rtl">текст справа налево</bdo>
-
-		<data value="123">Product Name</data>
-		<meter min="0" max="100" value="50">50%</meter>
-		<progress value="70" max="100">70%</progress>
-		<time datetime="2023-10-05T19:30">19:30</time>
-
-		<form action="/submit" method="post">
-			<label for="input-id"></label>
-			<input type="text">
-			<input name="field-name">
-			<input type="password">
-			<input type="email">
-			<input type="number">
-			<input type="checkbox">
-			<input type="radio">
-			<input placeholder="Подсказка">
-			<input required>
-			<input disabled>
-			<input readonly>
-			<output></output>
-			<textarea rows="4" cols="50"></textarea>
-			<textarea spellcheck="true" rows="4">Прfверка орфографии кликни</textarea>
-			<select></select>
-			<optgroup label=""></optgroup>
-			<option value="1"></option>
-		</form>
-		<fieldset></fieldset>
-		<legend></legend>
-		<datalist id="list-id"></datalist>
-
-		<button type="button">type="button"</button>
-		<button type="submit">type="submit"</button>
-		<button type="reset">type="reset"</button>
-
-		<img src="" alt="">
-
-		<pictures>
-			<source srcset="" media="(max-width:600px)">
-			<img src="" alt="">
-		</pictures>
-
-		<figure>
-			<img src="" alt="">
-			<figcaption></figcaption>
-		</figure>
-
-		<map name="map">
-			<area shape="rect" coords="34,44,270,350" href="#s1">
-		</map>
-
-		<audio controls>
-			<source src="" type="audio/mpeg">
-		</audio>
-
-		<video controls width="320" height="240">
-			<source src="" type="video/mp4">
-		</video>
-
-		<track kind="subtitles" srclang="ru">
-
-		<object data="" type="application/pdf"></object>
-		<param name="autoplay" value="true">
-
-		<iframe src="https://example.com" sandbox="allow-scripts"></iframe>
-
-		<canvas id="drawing" width="200" height="100"></canvas>
-
-		<svg width="100" height="100"></svg>
-		<circle cx="50" cy="50" r="40"></circle>
-		</pre>
-	</code>
-
 	<script>
 		document.addEventListener('DOMContentLoaded', () => {
 			const terminal = document.querySelector('.terminal');
