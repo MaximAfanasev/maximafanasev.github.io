@@ -23,72 +23,398 @@
 			background-color: #1e1e1e;
 			overflow-x: auto;
 		}
+
+		/* Базовые стили */
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			line-height: 1.6;
+			min-height: 100vh;
+			padding: 20px;
+		}
+
+		/* Контейнер для элементов */
+		div,
+		button,
+		input,
+		form,
+		select,
+		textarea {
+			margin: 10px 0;
+			padding: 15px;
+			border-radius: 12px;
+			border: 2px solid rgba(255, 255, 255, 0.1);
+			backdrop-filter: blur(10px);
+			transition: all 0.3s ease;
+			box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+		}
+
+		/* Специфичные стили для разных элементов */
+		#unique-id {
+			background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+			color: white;
+			font-weight: bold;
+			border: none;
+		}
+
+		.class1.class2 {
+			background: linear-gradient(45deg, #4834d4, #686de0);
+			color: white;
+			border: none;
+		}
+
+		div[style*="color: red"] {
+			background: rgba(255, 0, 0, 0.1);
+			border-left: 4px solid #ff4757;
+		}
+
+		div[title] {
+			background: #fffae6;
+			border: 2px dashed #ffc048;
+			cursor: help;
+			position: relative;
+		}
+
+		div[title]:hover::after {
+			content: attr(title);
+			position: absolute;
+			top: -40px;
+			left: 0;
+			background: #2d3436;
+			color: white;
+			padding: 8px 12px;
+			border-radius: 6px;
+			font-size: 14px;
+			white-space: nowrap;
+		}
+
+		div[lang="en"] {
+			font-style: italic;
+			background: #e3f2fd;
+			border-left: 4px solid #1976d2;
+		}
+
+		div[dir="rtl"] {
+			text-align: right;
+			background: #f3e5f5;
+			border-left: 4px solid #7b1fa2;
+		}
+
+		div[contenteditable="true"] {
+			background: #e8f5e8;
+			border: 2px solid #4caf50;
+			min-height: 60px;
+			outline: none;
+		}
+
+		div[contenteditable="true"]:focus {
+			box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.3);
+		}
+
+		div[spellcheck] {
+			background: #fff3e0;
+			border: 2px solid #ff9800;
+		}
+
+		div[hidden] {
+			display: none;
+		}
+
+		div[tabindex] {
+			background: #e1f5fe;
+			border: 2px solid #0288d1;
+			cursor: pointer;
+		}
+
+		div[tabindex]:focus {
+			outline: 3px solid #0288d1;
+			outline-offset: 2px;
+		}
+
+		div[draggable="true"] {
+			background: #fce4ec;
+			border: 2px solid #ec407a;
+			cursor: grab;
+			user-select: none;
+		}
+
+		div[draggable="true"]:active {
+			cursor: grabbing;
+		}
+
+		div[aria-label] {
+			background: #f5f5f5;
+			border: 2px solid #9e9e9e;
+			font-style: italic;
+			color: #666;
+		}
+
+		/* Кнопки и интерактивные элементы */
+		button {
+			background: linear-gradient(45deg, #667eea, #764ba2);
+			color: white;
+			border: none;
+			padding: 12px 24px;
+			font-weight: 600;
+			cursor: pointer;
+			transition: all 0.3s ease;
+		}
+
+		button:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 12px 40px rgba(102, 126, 234, 0.4);
+		}
+
+		button:active {
+			transform: translateY(0);
+		}
+
+		/* Формы и инпуты */
+		input,
+		select,
+		textarea {
+			width: 100%;
+			padding: 12px;
+			border: 2px solid #ddd;
+			transition: all 0.3s ease;
+			max-width: 500px;
+		}
+
+		input:focus,
+		select:focus,
+		textarea:focus {
+			border-color: #667eea;
+			box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+			outline: none;
+		}
+
+		input[type="checkbox"],
+		input[type="radio"] {
+			width: auto;
+			margin-right: 10px;
+		}
+
+		input[required] {
+			border-left: 4px solid #ff4757;
+		}
+
+		input[disabled] {
+			color: #6c757d;
+			cursor: not-allowed;
+		}
+
+		input[readonly] {
+			border-color: #adb5bd;
+		}
+
+		/* Специальные элементы */
+		meter,
+		progress {
+			width: 100%;
+			height: 20px;
+			border-radius: 10px;
+			overflow: hidden;
+		}
+
+		meter::-webkit-meter-bar,
+		progress::-webkit-progress-bar {
+			border-radius: 10px;
+		}
+
+		progress::-webkit-progress-value {
+			background: linear-gradient(45deg, #00b894, #00cec9);
+			border-radius: 10px;
+		}
+
+		data,
+		time {
+			padding: 8px 12px;
+			border-radius: 6px;
+			font-family: monospace;
+		}
+
+		/* Медиа элементы */
+		img,
+		picture,
+		figure,
+		video,
+		audio,
+		canvas,
+		svg {
+			max-width: 100%;
+			border-radius: 8px;
+			padding: 10px;
+		}
+
+		figure {
+			padding: 20px;
+			text-align: center;
+		}
+
+		figcaption {
+			margin-top: 10px;
+			font-style: italic;
+			color: #666;
+		}
+
+		/* Iframe и объекты */
+		iframe,
+		object {
+			width: 100%;
+			min-height: 200px;
+			border: 2px solid #ddd;
+			border-radius: 8px;
+		}
+
+		/* Состояния hover и active */
+		div:hover,
+		button:hover,
+		input:hover,
+		select:hover,
+		textarea:hover {
+			transform: translateY(-1px);
+			box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+		}
+
+		div:active,
+		button:active {
+			transform: translateY(0);
+		}
+
+		/* Анимации */
+		@keyframes fadeIn {
+			from {
+				opacity: 0;
+				transform: translateY(20px);
+			}
+
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		div,
+		button,
+		input,
+		form,
+		select,
+		textarea {
+			animation: fadeIn 0.6s ease-out;
+		}
+
+		/* Адаптивность */
+		@media (max-width: 768px) {
+			body {
+				padding: 10px;
+			}
+
+			div,
+			button,
+			input,
+			form,
+			select,
+			textarea {
+				margin: 8px 0;
+				padding: 12px;
+			}
+		}
+
+		/* Кастомный скроллбар */
+		::-webkit-scrollbar {
+			width: 8px;
+		}
+
+		::-webkit-scrollbar-track {
+			border-radius: 4px;
+		}
+
+		::-webkit-scrollbar-thumb {
+			background: linear-gradient(45deg, #667eea, #764ba2);
+			border-radius: 4px;
+		}
+
+		::-webkit-scrollbar-thumb:hover {
+			background: linear-gradient(45deg, #5a67d8, #6b46c1);
+		}
 	</style>
 </head>
 
 <body>
 
-	<h1>HTML &#38; CSS</h1>
-
-	<pre><code class="language-javascript">
-&#60;!DOCTYPE> – объявление типа документа
-&#60;html> – корневой элемент HTML-документа
-&#60;head> – метаинформация
-&#60;title> – заголовок страницы
-&#60;body> – основное содержимое
-&#60;meta> – метаданные
-&#60;link> – подключение внешних ресурсов
-&#60;style> – встроенные CSS-стили
-&#60;script> – JavaScript
-&#60;base> – базовый URL
-</code></pre>
+	<h1>HTML</h1>
 
 	<pre><code class="language-javascript">
 &#60;!DOCTYPE html&#62;
 &#60;html lang="ru"&#62;
 &#60;head&#62;
-    &#60;meta charset="UTF-8"&#62; Кодировка
-    &#60;meta name="viewport" content="width=device-width, initial-scale=1.0"&#62; Адаптивность
-    &#60;meta name="description" content="Пример HTML-документа"&#62; SEO
-    &#60;title&#62;Моя первая страница&#60;/title&#62; Заголовок во вкладке
-    &#60;base href="https://example.com/"&#62; Базовый URL для относительных ссылок
-    &#60;link rel="stylesheet" href="styles.css"&#62; Подключение CSS
-    &#60;link rel="icon" href="favicon.ico" type="image/x-icon"&#62; Иконка сайта
-    &#60;style&#62;
-        body { 
-            font-family: Arial, sans-serif; 
-            margin: 0;
-        }
-    &#60;/style&#62; Встроенные CSS
-&#60;/head&#62;
-&#60;body&#62; Основное содержимое страницы
-    &#60;h1&#62;Привет, мир!&#60;/h1&#62;
-    &#60;p&#62;Это пример HTML-документа.&#60;/p&#62;
+    &#60;meta charset="UTF-8"&#62;
+    &#60;meta name="viewport" content="width=device-width, initial-scale=1.0"&#62;
+    &#60;title&#62;Заголовок страницы&#60;/title&#62;
+    
+    &#60;!-- SEO --&#62;
+    &#60;meta name="description" content="Подробное описание страницы"&#62;
+    &#60;meta name="keywords" content="ключевые, слова, пример"&#62;
+    &#60;meta name="author" content="Иван Иванов"&#62;
+    &#60;meta name="robots" content="index, follow"&#62;
+    
+    &#60;!-- Open Graph --&#62;
+    &#60;meta property="og:title" content="Заголовок для соцсетей"&#62;
+    &#60;meta property="og:description" content="Описание для соцсетей"&#62;
+    &#60;meta property="og:image" content="https://example.com/og-image.jpg"&#62;
+    &#60;meta property="og:url" content="https://example.com/page.html"&#62;
+    &#60;meta property="og:type" content="website"&#62;
+    
+    &#60;!-- Twitter --&#62;
+    &#60;meta name="twitter:card" content="summary_large_image"&#62;
+    &#60;meta name="twitter:title" content="Заголовок для Twitter"&#62;
+    &#60;meta name="twitter:description" content="Описание для Twitter"&#62;
+    &#60;meta name="twitter:image" content="https://example.com/twitter-image.jpg"&#62;
+    
+    &#60;!-- Дополнительно --&#62;
+    &#60;meta name="copyright" content="Моя компания"&#62;
+    &#60;meta name="geo.region" content="RU"&#62;
+    
+    &#60;meta name="robots" content="index, follow"&#62;
+	&#60;meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"&#62;
+	&#60;meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"&#62;
+	&#60;meta name="slurp" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"&#62;
+	&#60;meta name="yandex" content="index, follow"&#62;
+	&#60;meta name="applebot" content="index, follow"&#62;
 
-    &#60;script&#62;
-        console.log("Hello from JavaScript!"); 
-    &#60;/script&#62; Встроенный JavaScript
-    &#60;script src="app.js"&#62;&#60;/script&#62; Подключение внешнего JS-файла
+	&#60;!-- Альтернативные инструкции --&#62;
+	&#60;meta name="robots" content="noindex"&#62;
+	&#60;meta name="robots" content="nofollow"&#62;
+	&#60;meta name="robots" content="noarchive"&#62;
+	&#60;meta name="robots" content="nosnippet"&#62;
+	&#60;meta name="robots" content="noimageindex"&#62;
+	&#60;meta name="robots" content="noodp"&#62;
+	&#60;meta name="robots" content="notranslate"&#62;
+
+	&#60;!-- Для конкретных поисковых систем --&#62;
+	&#60;meta name="googlebot-news" content="noindex"&#62;
+	&#60;meta name="googlebot" content="noimageindex"&#62;
+	&#60;meta name="yandex" content="none"&#62;
+
+	&#60;!-- Ограничение сканирования --&#62;
+	&#60;meta name="robots" content="max-snippet:50"&#62;
+	&#60;meta name="robots" content="max-image-preview:standard"&#62;
+	&#60;meta name="robots" content="max-video-preview:60"&#62;
+
+	&#60;!-- Для определенных URL --&#62;
+	&#60;meta name="robots" content="index, if allow: /private/"&#62;
+	&#60;meta name="robots" content="nofollow, if not allow: /public/"&#62;
+	&#60;style&#62;&#60;/style&#62;
+&#60;/head&#62;
+&#60;body&#62;
+
 &#60;/body&#62;
 &#60;/html&#62;
-</code></pre>
-
-	<pre><code class="language-javascript">
-&#60;h1>–&#60;h6> – заголовки
-&#60;p> – абзац
-&#60;br> – перенос строки
-&#60;hr> – горизонтальная линия
-&#60;pre> – текст с форматированием
-&#60;blockquote> – цитата
-&#60;q> – встроенная цитата
-&#60;cite> – источник
-&#60;code> – код
-&#60;var> – переменная
-&#60;kbd> – ввод с клавиатуры
-&#60;samp> – вывод программы
-&#60;abbr> – аббревиатура
-&#60;dfn> – определение
-&#60;time> – дата/время
 </code></pre>
 
 	<h1>h1</h1>
@@ -124,21 +450,10 @@
 
 	<p><time datetime="2023-12-31">datetime</time></p>
 
-	<pre><code class="language-javascript">
-&#60;b> – жирный
-&#60;strong> – важный текст
-&#60;i> – курсив
-&#60;em> – акцентированный текст
-&#60;u> – подчёркнутый
-&#60;s>, &#60;strike> – зачёркнутый
-&#60;del> – удалённый
-&#60;ins> – вставленный
-&#60;mark> – выделенный
-&#60;small> – мелкий
-&#60;sub> – нижний индекс
-&#60;sup> – верхний индекс
-
-</code></pre>
+	<details>
+		<summary>Details</summary>
+		<div>summary</div>
+	</details>
 
 	<p><b>– жирный</b></p>
 	<p><strong>– важный текст</strong></p>
@@ -153,313 +468,379 @@
 	<p><sub>– нижний индекс</sub></p>
 	<p><sup>– верхний индекс</sup></p>
 
-	<pre><code class="language-javascript">
-&#60;ul> – маркированный список
-&#60;ol> – нумерованный
-&#60;li> – элемент списка
-&#60;dl> – список определений
-&#60;dt> – термин
-&#60;dd> – описание
-</code></pre>
-
-<p>&#60;ul> – маркированный список</p>
-<ul>
-	<li>Элемент 1</li>
-	<li>Элемент 2</li>
-	<li>Элемент 3</li>
-</ul>
-
-<p>&#60;ol> – нумерованный список</p>
-<ol>
-	<li>Первый пункт</li>
-	<li>Второй пункт</li>
-	<li>Третий пункт</li>
-</ol>
-
-<p>&#60;dl> – список определений</p>
-<dl>
-	<dt>HTML</dt>
-	<dd>Язык разметки веб-страниц</dd>
-	<dt>CSS</dt>
-	<dd>Язык стилей для оформления</dd>
-</dl>
-
-	<pre><code class="language-javascript">
-&#60;a> – гиперссылка
-&#60;img> – изображение
-&#60;picture> – адаптивное изображение
-&#60;figure> – иллюстрация
-&#60;figcaption> – подпись
-&#60;map> – карта изображения
-&#60;area> – активная область
-</code></pre>
-
-<p>&#60;a> – гиперссылка</p>
-<a href="https://example.com">Пример ссылки</a>
-
-<p>&#60;img> – изображение</p>
-<img src="image.jpg" alt="Пример изображения" width="200">
-
-<p>&#60;picture> – адаптивное изображение</p>
-<picture>
-  <source media="(min-width: 800px)" srcset="large-image.jpg">
-  <source media="(min-width: 400px)" srcset="medium-image.jpg">
-  <img src="small-image.jpg" alt="Адаптивное изображение">
-</picture>
-
-<p>&#60;figure> – иллюстрация</p>
-<figure>
-  <img src="example.jpg" alt="Пример иллюстрации">
-  <figcaption>Подпись к изображению</figcaption>
-</figure>
-
-<p>&#60;figcaption> – подпись</p>
-<figure>
-  <img src="photo.jpg" alt="Фотография">
-  <figcaption>Пример подписи к фото</figcaption>
-</figure>
-
-<p>&#60;map> – карта изображения</p>
-<img src="world-map.jpg" alt="Карта мира" usemap="#worldmap">
-<map name="worldmap">
-  <area shape="rect" coords="100,50,200,150" href="europe.html" alt="Европа">
-  <area shape="circle" coords="300,100,50" href="asia.html" alt="Азия">
-</map>
-
-<p>&#60;area> – активная область</p>
-<img src="tech-map.jpg" alt="Технологическая карта" usemap="#techmap">
-<map name="techmap">
-  <area shape="poly" coords="50,75,100,50,150,75,100,100" href="ai.html" alt="Искусственный интеллект">
-</map>
+	<code>code</code>
+	<kbd>Ctrl+C</kbd>
+	<samp>samp</samp>
+	<var>x</var>
+	<pre>pre
+       pre</pre>
+	<time datetime="2023-10-05">5 октября</time>
+	<wbr>
+	<ruby>漢 <rp>(</rp>
+		<rt>kan</rt>
+		<rp>)</rp>
+	</ruby>
+	<bdi>إيان</bdi>
+	<bdo dir="rtl">текст справа налево</bdo>
 
 
-<pre><code class="language-javascript">
-&#60;table> – таблица
-&#60;caption> – заголовок
-&#60;thead> – заголовок таблицы
-&#60;tbody> – тело
-&#60;tfoot> – подвал
-&#60;tr> – строка
-&#60;th> – заголовок ячейки
-&#60;td> – ячейка
-&#60;col> – стиль столбца
-&#60;colgroup> – группа столбцов
-</code></pre>
+	<p>&#60;ul> – маркированный список</p>
+	<ul>
+		<li>Элемент 1</li>
+		<li>Элемент 2</li>
+		<li>Элемент 3</li>
+	</ul>
 
-<p>&#60;table> – таблица</p>
-<table border="1">
-  <tr>
-    <th>Заголовок 1</th>
-    <th>Заголовок 2</th>
-  </tr>
-  <tr>
-    <td>Ячейка 1</td>
-    <td>Ячейка 2</td>
-  </tr>
-</table>
+	<p>&#60;ol> – нумерованный список</p>
+	<ol>
+		<li>Первый пункт</li>
+		<li>Второй пункт</li>
+		<li>Третий пункт</li>
+	</ol>
 
-<p>&#60;caption> – заголовок таблицы</p>
-<table border="1">
-  <caption>Пример таблицы с заголовком</caption>
-  <tr>
-    <td>Данные 1</td>
-    <td>Данные 2</td>
-  </tr>
-</table>
+	<p>&#60;dl> – список определений</p>
+	<dl>
+		<dt>HTML</dt>
+		<dd>Язык разметки веб-страниц</dd>
+		<dt>CSS</dt>
+		<dd>Язык стилей для оформления</dd>
+	</dl>
 
-<p>&#60;thead> – заголовок таблицы</p>
-<table border="1">
-  <thead>
-    <tr>
-      <th>Имя</th>
-      <th>Возраст</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Анна</td>
-      <td>25</td>
-    </tr>
-  </tbody>
-</table>
+	<p>&#60;a> – гиперссылка</p>
+	<a href="https://example.com">Пример ссылки</a>
+	<a href="https://example.com">Обычная ссылка</a>
+	<a href="https://example.com" title="Подсказка">Ссылка с подсказкой</a>
+	<a href="#section-id">Якорная ссылка</a>
+	<div id="section-id"></div>
 
-<p>&#60;tbody> – тело таблицы</p>
-<table border="1">
-  <thead>
-    <tr><th>Продукт</th><th>Цена</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>Молоко</td><td>50 руб.</td></tr>
-    <tr><td>Хлеб</td><td>30 руб.</td></tr>
-  </tbody>
-</table>
+	<a href="https://example.com" target="_blank">_blank (новое окно)</a>
+	<a href="https://example.com" target="_self">_self (текущая вкладка)</a>
+	<a href="https://example.com" target="_parent">_parent (родительский фрейм)</a>
+	<a href="https://example.com" target="_top">_top (полное окно)</a>
 
-<p>&#60;tfoot> – подвал таблицы</p>
-<table border="1">
-  <thead>
-    <tr><th>Месяц</th><th>Доход</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>Январь</td><td>10000</td></tr>
-  </tbody>
-  <tfoot>
-    <tr><td>Итого:</td><td>10000</td></tr>
-  </tfoot>
-</table>
+	<a href="https://example.com" rel="nofollow">nofollow (не передавать вес)</a>
+	<a href="https://example.com" rel="noopener">noopener (безопасность при target="_blank")</a>
+	<a href="https://example.com" rel="noreferrer">noreferrer (скрыть источник)</a>
+	<a href="https://example.com" referrerpolicy="no-referrer">Контроль Referer</a>
 
-<p>&#60;tr> – строка таблицы</p>
-<table border="1">
-  <tr>
-    <td>Строка 1</td>
-  </tr>
-  <tr>
-    <td>Строка 2</td>
-  </tr>
-</table>
+	<a href="mailto:email@example.com">Почтовая ссылка</a>
+	<a href="tel:+1234567890">Телефонная ссылка</a>
+	<a href="" download>Скачать файл (имя по умолчанию)</a>
+	<a href="" download="">Скачать с указанием имени</a>
 
-<p>&#60;th> – заголовок ячейки</p>
-<table border="1">
-  <tr>
-    <th>Имя</th>
-    <th>Фамилия</th>
-  </tr>
-  <tr>
-    <td>Иван</td>
-    <td>Иванов</td>
-  </tr>
-</table>
+	<a href="https://example.com" hreflang="de">Для немецкого языка</a>
+	<a href="https://example.com" type="application/pdf">PDF-документ</a>
+	<a href="https://example.com" media="print">Версия для печати</a>
+	<a href="https://example.com" ping="https://tracker.com">С отслеживанием</a>
 
-<p>&#60;td> – ячейка таблицы</p>
-<table border="1">
-  <tr>
-    <td>Ячейка 1</td>
-    <td>Ячейка 2</td>
-  </tr>
-</table>
+	<a href="" target="_blank" rel="noopener noreferrer" download="" type="application/pdf" hreflang="en" title="Download PDF" aria-label="Download document (PDF, 2MB)" ping="/track">
+		Скачать документ
+	</a>
 
-<p>&#60;col> – стиль столбца</p>
-<table border="1">
-  <col style="background-color:yellow">
-  <col style="background-color:lightblue">
-  <tr>
-    <td>Желтый</td>
-    <td>Голубой</td>
-  </tr>
-</table>
+	<p>&#60;img> – изображение</p>
+	<img src="image.jpg" alt="Пример изображения" width="200">
 
-<p>&#60;colgroup> – группа столбцов</p>
-<table border="1">
-  <colgroup span="2" style="background-color:lightgreen"></colgroup>
-  <tr>
-    <td>Зеленый</td>
-    <td>Зеленый</td>
-    <td>Белый</td>
-  </tr>
-</table>
+	<p>&#60;picture> – адаптивное изображение</p>
+	<picture>
+		<source media="(min-width: 800px)" srcset="large-image.jpg">
+		<source media="(min-width: 400px)" srcset="medium-image.jpg">
+		<img src="small-image.jpg" alt="Адаптивное изображение">
+	</picture>
+
+	<p>&#60;figure> – иллюстрация</p>
+	<figure>
+		<img src="example.jpg" alt="Пример иллюстрации">
+		<figcaption>Подпись к изображению</figcaption>
+	</figure>
+
+	<p>&#60;figcaption> – подпись</p>
+	<figure>
+		<img src="photo.jpg" alt="Фотография">
+		<figcaption>Пример подписи к фото</figcaption>
+	</figure>
+
+	<p>&#60;map> – карта изображения</p>
+	<img src="world-map.jpg" alt="Карта мира" usemap="#worldmap">
+	<map name="worldmap">
+		<area shape="rect" coords="100,50,200,150" href="europe.html" alt="Европа">
+		<area shape="circle" coords="300,100,50" href="asia.html" alt="Азия">
+	</map>
+
+	<p>&#60;area> – активная область</p>
+	<img src="tech-map.jpg" alt="Технологическая карта" usemap="#techmap">
+	<map name="techmap">
+		<area shape="poly" coords="50,75,100,50,150,75,100,100" href="ai.html" alt="Искусственный интеллект">
+	</map>
 
 
-<pre><code class="language-javascript">
-&#60;form> – форма
-&#60;input> – поле ввода
-&#60;textarea> – многострочный текст
-&#60;button> – кнопка
-&#60;select> – выпадающий список
-&#60;option> – элемент списка
-&#60;optgroup> – группа элементов
-&#60;label> – метка
-&#60;fieldset> – группа полей
-&#60;legend> – заголовок группы
-&#60;datalist> – подсказки
-&#60;output> – результат
-&#60;progress> – индикатор прогресса
-&#60;meter> – шкала
 
-&#60;audio> – аудио
-&#60;video> – видео
-&#60;source> – источник
-&#60;track> – субтитры
-&#60;embed> – встраиваемый контент
-&#60;object> – объект
-&#60;param> – параметр
-&#60;iframe> – фрейм
+	<table border="2">
+		<tr>
+			<th id="header1">Заголовок 1</th>
+			<th id="header2">Заголовок 2</th>
+			<th id="header3">Заголовок 3</th>
+		</tr>
+		<tr>
+			<td colspan="2">Объединённые ячейки (colspan="2")</td>
+			<td>Обычная ячейка</td>
+		</tr>
+		<tr>
+			<td rowspan="2">Объединённые строки (rowspan="2")</td>
+			<td headers="header1 header2">Ячейка с headers</td>
+			<td>Ещё одна</td>
+		</tr>
+		<tr>
+			<td>Нижняя левая</td>
+			<td>Нижняя правая</td>
+		</tr>
+	</table>
 
-&#60;header> – шапка
-&#60;footer> – подвал
-&#60;nav> – навигация
-&#60;main> – основной контент
-&#60;article> – статья
-&#60;section> – раздел
-&#60;aside> – боковая панель
-&#60;address> – контакты
-&#60;details> – раскрывающийся блок
-&#60;summary> – заголовок
-&#60;dialog> – диалог
+	<table border="1">
+		<tr>
+			<th>Заголовок 1</th>
+			<th>Заголовок 2</th>
+		</tr>
+		<tr>
+			<td>Ячейка 1</td>
+			<td>Ячейка 2</td>
+		</tr>
+	</table>
 
-&#60;script> – JavaScript
-&#60;noscript> – альтернатива без JS
-&#60;template> – шаблон
-&#60;slot> – слот (Web Components)
-&#60;canvas> – холст для рисования
+	<table border="1">
+		<caption>Пример таблицы с заголовком</caption>
+		<tr>
+			<td>Данные 1</td>
+			<td>Данные 2</td>
+		</tr>
+	</table>
+
+	<table border="1">
+		<thead>
+			<tr>
+				<th>Имя</th>
+				<th>Возраст</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Анна</td>
+				<td>25</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<table border="1">
+		<thead>
+			<tr>
+				<th>Продукт</th>
+				<th>Цена</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Молоко</td>
+				<td>50 руб.</td>
+			</tr>
+			<tr>
+				<td>Хлеб</td>
+				<td>30 руб.</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<table border="1">
+		<thead>
+			<tr>
+				<th>Месяц</th>
+				<th>Доход</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Январь</td>
+				<td>10000</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td>Итого:</td>
+				<td>10000</td>
+			</tr>
+		</tfoot>
+	</table>
+
+	<table border="1">
+		<tr>
+			<td>Строка 1</td>
+		</tr>
+		<tr>
+			<td>Строка 2</td>
+		</tr>
+	</table>
+
+	<table border="1">
+		<tr>
+			<th>Имя</th>
+			<th>Фамилия</th>
+		</tr>
+		<tr>
+			<td>Иван</td>
+			<td>Иванов</td>
+		</tr>
+	</table>
+
+	<table border="1">
+		<tr>
+			<td>Ячейка 1</td>
+			<td>Ячейка 2</td>
+		</tr>
+	</table>
+
+	<table border="1">
+		<col style="background-color:yellow">
+		<col style="background-color:lightblue">
+		<tr>
+			<td>Желтый</td>
+			<td>Голубой</td>
+		</tr>
+	</table>
+
+	<p>&#60;colgroup> – группа столбцов</p>
+	<table border="1">
+		<colgroup span="2" style="background-color:lightgreen"></colgroup>
+		<tr>
+			<td>Зеленый</td>
+			<td>Зеленый</td>
+			<td>Белый</td>
+		</tr>
+	</table>
 
 
-&#60;div id="header">	Уникальный идентификатор
-&#60;p class="text-red">	Класс для CSS/JS
-&#60;span style="color:red">	Встроенные стили
-&#60;a title="Подсказка">	Всплывающая подсказка
-&#60;div data-user="123">	Пользовательские данные
-&#60;p hidden>	Скрывает элемент
-&#60;button tabindex="1">	Порядок фокусировки
-&#60;div contenteditable>	Разрешает редактирование
-&#60;img draggable="true">	Можно перетаскивать
-&#60;html lang="en">	Язык содержимого
-&#60;p dir="rtl">	Направление текста (ltr/rtl)
+	<main></main>
+	<header></header>
+	<nav></nav>
+	<section></section>
+	<article></article>
+	<aside></aside>
+	<footer></footer>
+	<address></address>
+	<script></script>
 
+	<div></div>
+	<p></p>
+	<span></span>
 
-onclick	Выполняет код при клике
-onmouseover	Срабатывает при наведении
-onkeydown	При нажатии клавиши
-onload	&#60;body onload="init()">
-onsubmit	&#60;form onsubmit="validate()">
-onchange	&#60;input onchange="update()">
+	<div id="unique-id"></div>
+	<div class="class1 class2"></div>
+	<div style="color: red;"></div>
+	<div title="Help >_>">hover here</div>
+	<div lang="en"></div>
+	<div dir="rtl">dir</div>
+	<div contenteditable="true"></div>
+	<div spellcheck="true" contenteditable="true">double click and change</div>
+	<div hidden></div>
+	<div tabindex="0">Press Tab</div>
+	<div draggable="true">draggable</div>
+	<div aria-label="Описание для скринридеров"></div>
 
-&#60;input type="text">	Тип поля (text, password, email, etc.)
-&#60;input name="username">	Имя для отправки на сервер
-&#60;input value="John">	Значение по умолчанию
-&#60;input placeholder="Введите имя">	Подсказка в поле
-&#60;input required>	Обязательное поле
-&#60;button disabled>	Блокирует элемент
-&#60;input readonly>	Только для чтения
-&#60;input type="checkbox" checked>	Выбранный чекбокс/радио
-&#60;input type="number" min="1" max="10">	Ограничения для чисел
-&#60;input pattern="[A-Za-z]+">	Регулярное выражение
-&#60;input autocomplete="off"> Отключает автозаполнение
+	<button onclick="alert('Клик!')">click</button>
+	<div ondblclick="alert('Двойной клик!')">double click</div>
+	<div onmousedown="this.style.color='red'">click</div>
+	<div onmouseup="this.style.color='blue'">click</div>
+	<div onmouseover="this.style.backgroundColor='gold';this.style.color='#222'">hover</div>
+	<div onmouseout="this.style.backgroundColor='white'; this.style.color='black'">hover + out</div>
+	<div onmousemove="this.textContent='X:'+event.clientX+' Y:'+event.clientY">onmousemove (координаты)</div>
+	<div onwheel="this.textContent='Wheele!'" style="height:50px;overflow:auto">wheel</div>
 
-&#60;a href="https://example.com">	URL ссылки
-&#60;a target="_blank">	Открыть в новой вкладке
-&#60;a download="file.pdf">	Принудительная загрузка
-&#60;a rel="nofollow">	Отношение ссылки
-&#60;img src="image.jpg">	Путь к изображению
-&#60;img alt="Описание">	Альтернативный текст
-&#60;img width="100">	Размеры изображения
-&#60;img loading="lazy">	Ленивая загрузка
+	<input onkeydown="console.log('Key down:', event.key)" placeholder="onkeydown">
+	<input onkeyup="console.log('Key up:', event.key)" placeholder="onkeyup">
+	<input onkeypress="console.log('Key press:', event.key)" placeholder="onkeypress">
 
-&#60;video controls>	Показывает элементы управления
-&#60;audio autoplay>	Автовоспроизведение
-&#60;video loop>	Зацикливание
-&#60;video muted>	Без звука
-&#60;video poster="preview.jpg">	Заставка для видео
+	<input oninput="console.log('Input:', this.value)" placeholder="oninput">
+	<select onchange="console.log('Changed:', this.value)">
+		<option>1</option>
+		<option>2</option>
+	</select>
+	<form onsubmit="alert('Submitted!'); return false"><button>onsubmit</button></form>
+	<form onreset="alert('Reset!')"><input type="reset" value="onreset"></form>
+	<input onfocus="this.style.background='yellow'" onblur="this.style.background='white'" placeholder="onfocus/onblur">
 
-&#60;meta charset="UTF-8">	Кодировка
-&#60;meta name="description">	Мета-описание
-&#60;meta content="width=device-width">	Значение метатега
-&#60;link rel="stylesheet">	Отношение ресурса
-&#60;link media="screen">	Условия применения CSS
+	<img onload="" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="onload">
+	<img onerror="console.log('Error loading')" src="" alt="onerror">
+	<iframe onabort="console.log('Loading aborted')" src="about:blank"></iframe>
+	<div onresize="console.log('Resized')" style="border:1px solid">onresize (измените размер окна)</div>
+	<div onscroll="console.log('Scrolled')" style="height:100px;overflow:auto">
+		<div style="height:200px">onscroll (прокрутите)</div>
+	</div>
 
-&#60;td colspan="2">	Объединение столбцов
-&#60;td rowspan="2">	Объединение строк
-&#60;iframe sandbox>	Ограничения для iframe
-&#60;iframe srcdoc="&#60;p>Text&#60;/p>">	HTML-код внутри iframe
-</code></pre>
+	<data value="123">Product Name</data>
+	<meter min="0" max="100" value="50">50%</meter>
+	<progress value="70" max="100">70%</progress>
+	<time datetime="2023-10-05T19:30">19:30</time>
+
+	<form action="/submit" method="post">
+		<label for="input-id"></label>
+		<input type="text">
+		<input name="field-name">
+		<input type="password">
+		<input type="email">
+		<input type="number">
+		<input type="checkbox">
+		<input type="radio">
+		<input placeholder="Подсказка">
+		<input required>
+		<input disabled>
+		<input readonly>
+		<output></output>
+		<textarea rows="4" cols="50"></textarea>
+		<textarea spellcheck="true" rows="4">Прfверка орфографии кликни</textarea>
+		<select></select>
+		<optgroup label=""></optgroup>
+		<option value="1"></option>
+	</form>
+	<fieldset></fieldset>
+	<legend></legend>
+	<datalist id="list-id"></datalist>
+
+	<button type="button">type="button"</button>
+	<button type="submit">type="submit"</button>
+	<button type="reset">type="reset"</button>
+
+	<img src="" alt="">
+
+	<pictures>
+		<source srcset="" media="(max-width:600px)">
+		<img src="" alt="">
+	</pictures>
+
+	<figure>
+		<img src="" alt="">
+		<figcaption></figcaption>
+	</figure>
+
+	<map name="map">
+		<area shape="rect" coords="34,44,270,350" href="#s1">
+	</map>
+
+	<audio controls>
+		<source src="" type="audio/mpeg">
+	</audio>
+
+	<video controls width="320" height="240">
+		<source src="" type="video/mp4">
+	</video>
+
+	<track kind="subtitles" srclang="ru">
+
+	<object data="" type="application/pdf"></object>
+	<param name="autoplay" value="true">
+
+	<iframe src="https://example.com" sandbox="allow-scripts"></iframe>
+
+	<canvas id="drawing" width="200" height="100"></canvas>
+
+	<svg width="100" height="100"></svg>
+	<circle cx="50" cy="50" r="40"></circle>
 
 	<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script>
 </body></html>
