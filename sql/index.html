@@ -737,6 +737,115 @@ SUBSTR(PostalCode,1,5) AS [Five Digit Postal Code]
 				<td><img src="img/F6.png" alt=""></td>
 			</tr>
 			<tr>
+				<td>По умолчанию функция COUNT() возвращает только ненулевые значения.
+Однако если необходимо подсчитать все записи, даже записи с ошибками
+или нулевыми значениями, рекомендуется использовать символ звездочки *</td>
+				<td><img src="img/F7.png" alt=""></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><img src="img/F8.png" alt=""></td>
+			</tr>
+			<tr>
+				<td>WHERE предназначено для фильтрации неагрегатных данных, а HAVING — для
+фильтрации результатов, содержащих агрегаты</td>
+				<td>
+<pre>
+SELECT
+  BillingCity,
+AVG(Total)
+FROM
+  invoices
+WHERE
+  BillingCity LIKE 'B%'
+GROUP BY
+  BillingCity
+HAVING
+  AVG(Total) > 5
+ORDER BY
+  BillingCity
+</pre>
+				</td>
+			</tr>
+			<tr>
+				<td>Чтобы округлить значение функции AVG() до двух значащих цифр, добавим
+функцию ROUND()</td>
+				<td>
+<pre>
+ROUND(AVG(Total), 2) AS [Average Total]
+</pre>
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>
+<pre>
+SELECT
+  InvoiceDate,
+  BillingAddress,
+  BillingCity,
+  Total
+FROM
+  invoices
+WHERE Total &#60;
+  (SELECT
+  AVG(Total)
+  from
+  invoices)
+ORDER BY
+  Total DESC
+</pre>
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
 				<td></td>
 				<td></td>
 			</tr>
