@@ -557,23 +557,49 @@ ON
 			</tr>
 			<tr>
 				<td>При использовании внутреннего соединения возвращаются только совпадающие записи. диаграммами Венна</td>
-				<td></td>
+				<td><img src="img/INJ.png" alt=""></td>
 			</tr>
 			<tr>
 				<td></td>
+				<td>
+<pre>
+SELECT
+  i.InvoiceId,
+  c.CustomerId,
+  c.Name,
+  c.Address,
+  i.InvoiceDate,
+  i.BillingAddress,
+  i.Total
+FROM
+  invoices AS i
+INNER JOIN
+  customers AS c
+ON
+  i.CustomerId = c.CustomerId
+</pre>
+				</td>
+			</tr>
+			<tr>
+				<td>Левое внешнее соединение LEFT OUTER JOIN соединяет все записи из левой
+таблицы с любыми совпадающими записями из правой таблицы</td>
+				<td>
+				<img src="img/LJN.png" alt="">
+				<img src="img/LJN2.png" alt="">
+				</td>
+			</tr>
+			<tr>
+				<td>Добавление
+данных типа Null показывает, как браузер SQL обрабатывает нашу попытку
+сопоставить пять записей из таблицы invoices только с четырьмя записями из
+таблицы customers</td>
 				<td></td>
 			</tr>
 			<tr>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
+				<td>правого внешнего соединения RIGHT OUTER JOIN
+возвращаются все данные из правой таблицы, а также соответствующая инфор-
+мация из левой таблицы</td>
+				<td><img src="img/RJN.png" alt=""></td>
 			</tr>
 			<tr>
 				<td></td>
