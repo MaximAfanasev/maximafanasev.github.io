@@ -506,19 +506,57 @@ BillingCity LIKE 'd%')
 				</td>
 			</tr>
 			<tr>
-				<td></td>
-				<td></td>
+				<td>Оператор CASE позволяет создать новое временное поле в базе данных</td>
+				<td>
+<pre>
+CASE
+  WHEN TOTAL &#60; 2.00 THEN 'Baseline Purchase'
+  WHEN TOTAL BETWEEN 2.00 AND 6.99 THEN 'Low Purchase'
+WHEN TOTAL BETWEEN 7.00 AND 15.00 THEN 'Target Purchase'
+ELSE 'Top Performers'
+END AS PurchaseType
+</pre>
+				</td>
 			</tr>
 			<tr>
-				<td></td>
-				<td></td>
+				<td>Выберем все поля из таблицы invoices и объединим их со всеми полями в таблице customers. внутреннее соединение, ON в запросе для связи двух таблиц через поле CustomerId</td>
+				<td>
+	<pre>
+SELECT
+*
+FROM
+  invoices
+INNER JOIN
+  customers
+ON
+  invoices.CustomerId = customers.CustomerId
+	</pre>
+				</td>
 			</tr>
 			<tr>
-				<td></td>
-				<td></td>
+				<td>СОКРАЩЕННАЯ ФОРМА</td>
+				<td>
+	<pre>
+SELECT
+*
+FROM
+  invoices AS i
+INNER JOIN
+  customers AS c
+ON
+  i.CustomerId = c.CustomerId
+	</pre>
+				</td>
 			</tr>
 			<tr>
-				<td></td>
+				<td>Нормализация — это процесс организации данных в реляционной базе
+данных. Нормализация включает создание таблиц и установку отношений между
+таблицами</td>
+				<td>Нормализация позволяет уменьшить размеры баз данных, так как не
+надо хранить повторяющиеся поля в одной таблице</td>
+			</tr>
+			<tr>
+				<td>При использовании внутреннего соединения возвращаются только совпадающие записи. диаграммами Венна</td>
 				<td></td>
 			</tr>
 			<tr>
