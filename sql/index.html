@@ -642,52 +642,79 @@ ON
 <pre>
 SELECT
 FROM
+  customers
 WHERE
 COUNT(LastName) AS [NameCount]
-  customers
 LastName LIKE 'B%'
 </pre>
 				</td>
 			</tr>
 			<tr>
 				<td></td>
+				<td><img src="img/F.png" alt=""></td>
+			</tr>
+			<tr>
+				<td>Функция UPPER(X) возвращает копию входной строки X, в которой все символы
+ASCII нижнего регистра преобразованы в их эквивалент в верхнем регистре</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Конкатенация — объединение двух или более строк. Для слияния двух полей
+вместе используется символ ||</td>
+				<td>
+<pre>
+SELECT
+  FirstName,
+  LastName,
+  FirstName || ' ' || LastName
+</pre>
+				</td>
+			</tr>
+			<tr>
+				<td>используем функцию LENGTH() в таком поле, как PostalCode (таблица
+customers), и видим, что длина каждого кода может быть вычислена</td>
+				<td>
+<pre>
+SELECT
+  PostalCode,
+  LENGTH(PostalCode) AS [Postal Code Length]
+</pre>
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><img src="img/F2.png" alt=""></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>
+<pre>
+SELECT
+FROM
+  customers
+WHERE
+  PostalCode,
+SUBSTR(PostalCode,1,5) AS [Five Digit Postal Code]
+  Country = "USA"
+</pre></td>
+			</tr>
+			<tr>
+				<td>Функции UPPER() и LOWER() работают только с символами ASCII</td>
+				<td><img src="img/F3.png" alt=""></td>
+			</tr>
+			<tr>
+				<td>Поэтому, чтобы убрать временной код
+и оставить только информацию о дате, мы использовали функцию DATE()</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>STRFTIME(),
+также известную как функция времени в строковом формате</td>
 				<td></td>
 			</tr>
 			<tr>
 				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
+				<td><img src="img/F4.png" alt=""></td>
 			</tr>
 			<tr>
 				<td></td>
