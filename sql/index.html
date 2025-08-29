@@ -248,6 +248,7 @@
 		::-webkit-scrollbar-thumb:hover {
 			background: var(--accent-secondary);
 		}
+
 	</style>
 </head>
 
@@ -497,7 +498,7 @@ BillingCity LIKE 'd%'
 			</tr>
 			<tr>
 				<td>SQL сначала выполняет поиск данных, удовлетворяющих условиям внутри
-скобок</td>
+					скобок</td>
 				<td>
 					<pre>
 Total > 1.98 AND (BillingCity LIKE 'p%' OR
@@ -508,7 +509,7 @@ BillingCity LIKE 'd%')
 			<tr>
 				<td>Оператор CASE позволяет создать новое временное поле в базе данных</td>
 				<td>
-<pre>
+					<pre>
 CASE
   WHEN TOTAL &#60; 2.00 THEN 'Baseline Purchase'
   WHEN TOTAL BETWEEN 2.00 AND 6.99 THEN 'Low Purchase'
@@ -521,7 +522,7 @@ END AS PurchaseType
 			<tr>
 				<td>Выберем все поля из таблицы invoices и объединим их со всеми полями в таблице customers. внутреннее соединение, ON в запросе для связи двух таблиц через поле CustomerId</td>
 				<td>
-	<pre>
+					<pre>
 SELECT
 *
 FROM
@@ -536,7 +537,7 @@ ON
 			<tr>
 				<td>СОКРАЩЕННАЯ ФОРМА</td>
 				<td>
-	<pre>
+					<pre>
 SELECT
 *
 FROM
@@ -550,10 +551,10 @@ ON
 			</tr>
 			<tr>
 				<td>Нормализация — это процесс организации данных в реляционной базе
-данных. Нормализация включает создание таблиц и установку отношений между
-таблицами</td>
+					данных. Нормализация включает создание таблиц и установку отношений между
+					таблицами</td>
 				<td>Нормализация позволяет уменьшить размеры баз данных, так как не
-надо хранить повторяющиеся поля в одной таблице</td>
+					надо хранить повторяющиеся поля в одной таблице</td>
 			</tr>
 			<tr>
 				<td>При использовании внутреннего соединения возвращаются только совпадающие записи. диаграммами Венна</td>
@@ -562,7 +563,7 @@ ON
 			<tr>
 				<td></td>
 				<td>
-<pre>
+					<pre>
 SELECT
   i.InvoiceId,
   c.CustomerId,
@@ -582,24 +583,119 @@ ON
 			</tr>
 			<tr>
 				<td>Левое внешнее соединение LEFT OUTER JOIN соединяет все записи из левой
-таблицы с любыми совпадающими записями из правой таблицы</td>
+					таблицы с любыми совпадающими записями из правой таблицы</td>
 				<td>
-				<img src="img/LJN.png" alt="">
-				<img src="img/LJN2.png" alt="">
+					<img src="img/LJN.png" alt="">
+					<img src="img/LJN2.png" alt="">
 				</td>
 			</tr>
 			<tr>
 				<td>Добавление
-данных типа Null показывает, как браузер SQL обрабатывает нашу попытку
-сопоставить пять записей из таблицы invoices только с четырьмя записями из
-таблицы customers</td>
+					данных типа Null показывает, как браузер SQL обрабатывает нашу попытку
+					сопоставить пять записей из таблицы invoices только с четырьмя записями из
+					таблицы customers</td>
 				<td></td>
 			</tr>
 			<tr>
 				<td>правого внешнего соединения RIGHT OUTER JOIN
-возвращаются все данные из правой таблицы, а также соответствующая инфор-
-мация из левой таблицы</td>
-				<td><img src="img/RJN.png" alt=""></td>
+					возвращаются все данные из правой таблицы, а также соответствующая инфор-
+					мация из левой таблицы</td>
+				<td>
+				<img src="img/RJN.png" alt="">
+				<img src="img/RJN2.png" alt="">
+				</td>
+			</tr>
+			<tr>
+				<td>Ключевое слово «внешнее» (OUTER) необязательно</td>
+				<td>
+<pre>
+SELECT
+  i.InvoiceId,
+  c.CustomerId,
+  c.Name,
+  c.Address,
+  i.InvoiceDate,
+  i.BillingAddress,
+  i.Total
+FROM
+  invoices AS i
+RIGHT OUTER JOIN
+  customers AS c
+ON
+  i.CustomerId = c.CustomerId
+</pre>
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><img src="img/N.png" alt=""></td>
+			</tr>
+			<tr>
+				<td>IS NULL в условии WHERE вернет только нулевые значения<br>NOT NULL вернет только значения, которые не были нулевыми<br>При работе со значениями NULL необходимо использовать операторы IS
+и NOT, а не оператор равенства =</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>подсчет LastName и использовать псевдоним NameCount для возврата
+значения</td>
+				<td>
+<pre>
+SELECT
+FROM
+WHERE
+COUNT(LastName) AS [NameCount]
+  customers
+LastName LIKE 'B%'
+</pre>
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
 			</tr>
 			<tr>
 				<td></td>
@@ -623,4 +719,6 @@ ON
 			</tr>
 		</table>
 	</div>
-</body></html>
+</body>
+
+</html>
