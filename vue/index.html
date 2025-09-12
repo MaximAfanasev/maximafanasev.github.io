@@ -82,8 +82,11 @@
 			margin: 25px 0;
 			background: var(--bg-secondary);
 			border-radius: 12px;
-			overflow: hidden;
 			box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+		}
+		
+		td:nth-child(2) {
+			overflow: auto;
 		}
 
 		th,
@@ -392,21 +395,20 @@ v-bind="objectOfAttrs
 v-if="seen"
 :href="url"
 @click="doSomething"
-
-
-
-
-
-
+@[eventName]="doSomething"
+&#60;a :[someAttr]="value"> ... &#60;/a>
+&#60;form @submit.prevent="onSubmit">...&#60;/form>
 </code>
 </pre>
 				</td>
 			</tr>
 			<tr>
-				<td></td>
+				<td>Объявление реактивного состояния</td>
 				<td>
 <pre>
 <code lang="vue">
+рекомендуемым способом объявления реактивного состояния является использование ref() функции
+
 </code>
 </pre>
 				</td>
