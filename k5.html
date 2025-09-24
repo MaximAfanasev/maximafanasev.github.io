@@ -152,22 +152,13 @@
             text-align: center;
         }
 
-        .korean-word {
-            font-size: 2.5rem;
-            text-align: center;
-            margin: 20px 0;
-            color: #fff;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-        }
-
         .word-display {
-            font-size: 2rem;
+            font-size: 2.5rem;
             text-align: center;
             margin: 30px 0;
             min-height: 70px;
             color: #fff;
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-            letter-spacing: 2px;
         }
 
         .letters-container {
@@ -184,7 +175,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 1.8rem;
+            font-size: 2rem;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             cursor: pointer;
@@ -297,18 +288,14 @@
                 font-size: 1.5rem;
             }
             
-            .korean-word {
-                font-size: 2rem;
-            }
-            
             .word-display {
-                font-size: 1.7rem;
+                font-size: 2rem;
             }
             
             .letter {
                 width: 50px;
                 height: 50px;
-                font-size: 1.5rem;
+                font-size: 1.7rem;
             }
         }
 
@@ -345,8 +332,7 @@
         </div>
         
         <div class="task-card active" id="task1">
-            <h2>Соберите русскую транскрипцию для слова:</h2>
-            <div class="korean-word">안녕</div>
+            <h2>Соберите слово "Привет" на корейском</h2>
             <div class="word-display" id="word1"></div>
             <div class="letters-container" id="letters1">
                 <!-- Буквы будут добавлены через JavaScript -->
@@ -360,8 +346,7 @@
         </div>
         
         <div class="task-card" id="task2">
-            <h2>Соберите русскую транскрипцию для слова:</h2>
-            <div class="korean-word">안녕하세요</div>
+            <h2>Соберите слово "Здравствуйте" на корейском</h2>
             <div class="word-display" id="word2"></div>
             <div class="letters-container" id="letters2">
                 <!-- Буквы будут добавлены через JavaScript -->
@@ -376,7 +361,7 @@
         
         <div class="completion-message" id="completion">
             <h2>Поздравляем!</h2>
-            <p>Вы успешно собрали русскую транскрипцию корейских слов!</p>
+            <p>Вы успешно собрали корейские приветствия!</p>
             <button class="btn" id="restart">Начать заново</button>
         </div>
     </div>
@@ -403,18 +388,18 @@
             const completion = document.getElementById('completion');
             const restartBtn = document.getElementById('restart');
             
-            // Слова для сборки (русская транскрипция)
+            // Слова для сборки
             const words = {
                 1: {
                     korean: "안녕",
-                    russian: "Аньёнъ",
-                    letters: ["А", "н", "ь", "ё", "н", "ъ"],
+                    russian: "Привет",
+                    letters: ["안", "녕"],
                     shuffled: []
                 },
                 2: {
                     korean: "안녕하세요",
-                    russian: "Аньёнъ-асэйо",
-                    letters: ["А", "н", "ь", "ё", "н", "ъ", "-", "а", "с", "э", "й", "о"],
+                    russian: "Здравствуйте",
+                    letters: ["안", "녕", "하", "세", "요"],
                     shuffled: []
                 }
             };
@@ -523,7 +508,7 @@
             check1.addEventListener('click', function() {
                 const userWord = currentOrder1.join('');
                 
-                if (userWord === words[1].russian) {
+                if (userWord === words[1].korean) {
                     // Правильный ответ
                     word1.style.color = "#00ff88";
                     word1.style.textShadow = "0 0 10px rgba(0, 255, 136, 0.5)";
@@ -550,7 +535,7 @@
                     
                     // Показываем подсказку после 3 попыток
                     if (attemptsCount1 >= 3) {
-                        hint1.textContent = `Правильный ответ: ${words[1].russian}`;
+                        hint1.textContent = `Правильный ответ: ${words[1].korean}`;
                         
                         setTimeout(function() {
                             // Автоматически показываем правильный ответ
@@ -585,7 +570,7 @@
             check2.addEventListener('click', function() {
                 const userWord = currentOrder2.join('');
                 
-                if (userWord === words[2].russian) {
+                if (userWord === words[2].korean) {
                     // Правильный ответ
                     word2.style.color = "#00ff88";
                     word2.style.textShadow = "0 0 10px rgba(0, 255, 136, 0.5)";
@@ -609,7 +594,7 @@
                     
                     // Показываем подсказку после 3 попыток
                     if (attemptsCount2 >= 3) {
-                        hint2.textContent = `Правильный ответ: ${words[2].russian}`;
+                        hint2.textContent = `Правильный ответ: ${words[2].korean}`;
                         
                         setTimeout(function() {
                             // Автоматически показываем правильный ответ
