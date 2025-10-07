@@ -4,33 +4,29 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Title</title>
+	<title></title>
 
-	<meta name="description" content="Подробное описание страницы">
-	<meta name="keywords" content="ключевые, слова, пример">
-	<meta name="author" content="Иван Иванов">
-	<meta name="robots" content="index, follow">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="">
 
-	<meta property="og:title" content="Заголовок для соцсетей">
-	<meta property="og:description" content="Описание для соцсетей">
-	<meta property="og:image" content="https://example.com/og-image.jpg">
-	<meta property="og:url" content="https://example.com/page.html">
-	<meta property="og:type" content="website">
+	<meta property="og:title" content="">
+	<meta property="og:description" content="">
+	<meta property="og:image" content="">
+	<meta property="og:url" content="">
+	<meta property="og:type" content="">
 
-	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:title" content="Заголовок для Twitter">
-	<meta name="twitter:description" content="Описание для Twitter">
-	<meta name="twitter:image" content="https://example.com/twitter-image.jpg">
+	<meta name="twitter:card" content="">
+	<meta name="twitter:title" content="">
+	<meta name="twitter:description" content="">
+	<meta name="twitter:image" content="">
 
-	<meta name="copyright" content="Моя компания">
-	<meta name="geo.region" content="RU">
+	<meta name="copyright" content="">
+	<meta name="geo.region" content="">
 
-	<meta name="robots" content="index, follow">
-	<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 	<meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+	
 	<meta name="slurp" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-	<meta name="yandex" content="index, follow">
-	<meta name="applebot" content="index, follow">
 
 	<meta name="robots" content="noindex">
 	<meta name="robots" content="nofollow">
@@ -39,17 +35,20 @@
 	<meta name="robots" content="noimageindex">
 	<meta name="robots" content="noodp">
 	<meta name="robots" content="notranslate">
-
-	<meta name="googlebot-news" content="noindex">
-	<meta name="googlebot" content="noimageindex">
-	<meta name="yandex" content="none">
-
+	<meta name="robots" content="index, if allow: /private/">
+	<meta name="robots" content="nofollow, if not allow: /public/">
 	<meta name="robots" content="max-snippet:50">
 	<meta name="robots" content="max-image-preview:standard">
 	<meta name="robots" content="max-video-preview:60">
 
-	<meta name="robots" content="index, if allow: /private/">
-	<meta name="robots" content="nofollow, if not allow: /public/">
+	<meta name="googlebot-news" content="noindex">
+	<meta name="googlebot" content="noimageindex">
+	<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+	
+	<meta name="applebot" content="index, follow">
+	
+	<meta name="yandex" content="none">
+	<meta name="yandex" content="index, follow">
 
 	<style>
 		body {
@@ -68,8 +67,8 @@
 <section></section>
 <article></article>
 <aside></aside>
-<footer></footer>
 <address></address>
+<footer></footer>
 <script></script>
 
 <div></div>
@@ -87,19 +86,30 @@
 <hr>
 
 <pre></pre>
+<code></code>
+
 <blockquote></blockquote>
 <q></q>
 <cite></cite>
-<code></code>
+
 <var></var>
+
 <kbd></kbd>
+
 <samp></samp>
+
 <abbr></abbr>
+
 <dfn></dfn>
+
+<bdi></bdi>
+
 <time datetime="2023-12-31"></time>
+
 <details>
 	<summary></summary>
 </details>
+
 <b></b>
 <strong></strong>
 <i></i>
@@ -110,21 +120,17 @@
 <ins></ins>
 <mark></mark>
 <small></small>
+
 <sub></sub>
 <sup></sup>
-<code></code>
-<kbd></kbd>
-<samp></samp>
-<var></var>
-<pre></pre>
+
 <time datetime="2023-10-05"></time>
 <wbr>
 <ruby>
 	<rp></rp>
 	<rt></rt>
-	<rp></rp>
 </ruby>
-<bdi></bdi>
+
 <bdo dir="rtl"></bdo>
 
 <ul>
@@ -240,16 +246,22 @@
 <button onclick="alert('Клик!')"></button>
 
 <div ondblclick="alert('Двойной клик!')"></div>
+
 <div onmousedown="this.style.color='red'"></div>
+
 <div onmouseup="this.style.color='blue'"></div>
+
 <div onmouseover="this.style.backgroundColor='gold';this.style.color='#222'"></div>
+
 <div onmouseout="this.style.backgroundColor='white'; this.style.color='black'"></div>
+
 <div onmousemove="this.textContent='X:'+event.clientX+' Y:'+event.clientY"></div>
+
 <div onwheel="this.textContent='Wheele!'" style="height:50px;overflow:auto"></div>
+
 <div onresize="console.log('Resized')" style="border:1px solid"></div>
-<div onscroll="console.log('Scrolled')" style="height:100px;overflow:auto">
-	<div style="height:200px"></div>
-</div>
+
+<div onscroll="console.log('Scrolled')" style="height:100px;overflow:auto"></div>
 
 <input onkeydown="console.log('Key down:', event.key)" placeholder="">
 <input onkeyup="console.log('Key up:', event.key)" placeholder="">
