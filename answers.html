@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Аккордеон - Вопросы и ответы менеджера проектов</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 0 15px;
+    background: #f9f9f9;
+  }
+  .accordion {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  .accordion-item + .accordion-item {
+    border-top: 1px solid #ccc;
+  }
+  .accordion-header {
+    background: #2c3e50;
+    color: white;
+    cursor: pointer;
+    padding: 15px 20px;
+    font-weight: bold;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .accordion-header:hover {
+    background: #34495e;
+  }
+  .accordion-header::after {
+    content: '+';
+    font-size: 20px;
+    transition: transform 0.3s ease;
+  }
+  .accordion-header.active::after {
+    content: '−';
+  }
+  .accordion-content {
+    display: none;
+    padding: 15px 20px;
+    background: white;
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+
+<h1>Вопросы и ответы менеджера проектов</h1>
+
+<div class="accordion" id="accordion">
+
+  <div class="accordion-item">
+    <div class="accordion-header" tabindex="0">1. В чем, по-вашему, заключается работа менеджера проектов?</div>
+    <div class="accordion-content">
+      Навигатор, координатор, менеджер АСУ на заводе, который смотрит на лампочки и поломки и принимает весомые решения о перенаправлении линии(конвейера) на заводе
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <div class="accordion-header" tabindex="0">2. Как вы считаете должен ли менеджер уметь программировать или это необязательно? В каких языках программирования разбираетесь? Хотя бы базово, чтобы понимать о чем говорят разработчики.</div>
+    <div class="accordion-content">
+      Обязательно, идеальный руководитель - рядовой прошедший погружение, от рядового до полковника
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <div class="accordion-header" tabindex="0">3. Был ли у вас опыт гибкого управления проектами? Объясните, в чем разница между Scrum и Kanban? Что лучше и в каких ситуациях?</div>
+    <div class="accordion-content">
+      Да, разница в подходах, я предпочитаю смешанный стиль, взяв спринты и приоретизацию багфиксов, AGILE!
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <div class="accordion-header" tabindex="0">4. Как вы считаете, существуют ли более эффективные методологии, чем гибкие? Если да, то какие и почему?</div>
+    <div class="accordion-content">
+      Да, это собственный стиль, умение чувствовать настрой и проактивность подчиненных, есть те кто работает в 5 утра и те кто ночной кот, потому что спят все родные и он раскрывается в одиночных прогулках по проекту, главное не увлекаться, иначе будет тыгдык (об этом описано в моей любимой книге по менеджменту)
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <div class="accordion-header" tabindex="0">5. Как вы считаете должен ли менеджер уметь тестировать ПО или это необязательно? Если вы знаете какие-то инструменты/методы тестирования ПО, перечислите их.</div>
+    <div class="accordion-content">
+      Конечно, я совмещал обязанности тестировшика, очень нравится книга про тестирование кота с приземлением на 4 лапы
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <div class="accordion-header" tabindex="0">6. Нужно ли менеджеру проекта понимать и знать продуктовые метрики? Какие метрики обычно используются для оценки продукта? Например, ARPU</div>
+    <div class="accordion-content">
+      Обязательно, user-friendly, яндекс метрики, гугл аналитика, битрикс
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <div class="accordion-header" tabindex="0">7. Каким инструментами или софтом для командной работы пользовались? Например, Trello или Slack.</div>
+    <div class="accordion-content">
+      WB - все были оффлайн(по мне лучше всего), VOXIMPLANT: Slack JIRA CONFLUENCE, Sber: ТГ, Ватцапп, самописный такс-трекер
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <div class="accordion-header" tabindex="0">8. Расскажите, какой у вас был опыт в наборе команд или отдельных ролей? Какие ошибки вы совершали в процессе?</div>
+    <div class="accordion-content">
+      Огромный опыт собеседований, вопросы от html до глубоких познаний гита(squash cherry-pick и тд)
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <div class="accordion-header" tabindex="0">9. Есть ли место менеджеру управления проектами в стартапе? Какие методы и подходы может использовать такой, чтобы усилить результативность?</div>
+    <div class="accordion-content">
+      Да, выпуск ранних версий, после вылизывание до идеала(для конечных пользователей)
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <div class="accordion-header" tabindex="0">10. Какие фреймворки или артефакты продуктовой разработки знаете? Например, Дизайн-мышление, парное программирование итп</div>
+    <div class="accordion-content">
+      JQERY, html 4.0 css, angular2,
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <div class="accordion-header" tabindex="0">11. Расскажите о вашем самом большом фейле, который вы совершали в работе</div>
+    <div class="accordion-content">
+      Нанял осетинца, после увольнения получал угрозы, прокуратура решила вопрос
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const headers = document.querySelectorAll('.accordion-header');
+  headers.forEach(header => {
+    header.addEventListener('click', () => {
+      const active = header.classList.contains('active');
+      // Закрыть все
+      headers.forEach(h => {
+        h.classList.remove('active');
+        h.nextElementSibling.style.display = 'none';
+      });
+      // Если был неактивен - открыть
+      if (!active) {
+        header.classList.add('active');
+        header.nextElementSibling.style.display = 'block';
+      }
+    });
+    // Для доступа с клавиатуры: Enter и Space
+    header.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        header.click();
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
