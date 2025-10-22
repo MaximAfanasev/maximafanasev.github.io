@@ -2,6 +2,7 @@
 	--primary-color: #3498db;
 	--spacing: 16px;
 }
+
 .element {
 	color: var(--primary-color);
 	margin: var(--spacing);
