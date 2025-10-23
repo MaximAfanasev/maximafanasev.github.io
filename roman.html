@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Спортивные достижения Романа</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            color: white;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 100%;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 0;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .hero {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .image-container {
+            width: 100%;
+            height: 400px; /* Увеличил высоту для вертикальных изображений */
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+        
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Сохраняет пропорции изображения */
+            object-position: center; /* Центрирует изображение */
+        }
+        
+        .achievements {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .achievements h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 10px;
+        }
+        
+        .achievement-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+        
+        .achievement-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .quote {
+            font-style: italic;
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Адаптивность для планшетов и больших экранов */
+        @media (min-width: 768px) {
+            .container {
+                max-width: 700px;
+                margin: 0 auto;
+            }
+            
+            .hero {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .image-container {
+                width: calc(50% - 10px); /* Две колонки на планшетах */
+                height: 350px;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 900px;
+            }
+            
+            .hero {
+                flex-direction: row;
+            }
+            
+            .image-container {
+                width: calc(33.333% - 14px); /* Три колонки на десктопах */
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Роман Иванов</h1>
+            <p class="subtitle">Спортивные достижения и рекорды</p>
+        </header>
+        
+        <section class="hero">
+            <div class="image-container">
+                <img src="Roman/1.jpg" alt="Роман на соревнованиях">
+            </div>
+            <div class="image-container">
+                <img src="Roman/2.jpg" alt="Роман с наградой">
+            </div>
+            <div class="image-container">
+                <img src="Roman/3.PNG" alt="Роман в тренировке">
+            </div>
+        </section>
+        
+        <section class="achievements">
+            <h2>Достижения</h2>
+            <div class="achievement-item">
+                <div class="achievement-icon">1</div>
+                <div class="achievement-text">Победитель чемпионата России 2023</div>
+            </div>
+            <div class="achievement-item">
+                <div class="achievement-icon">2</div>
+                <div class="achievement-text">Серебряный призер Кубка Европы 2022</div>
+            </div>
+            <div class="achievement-item">
+                <div class="achievement-icon">3</div>
+                <div class="achievement-text">Рекордсмен страны в беге на 100 метров</div>
+            </div>
+            <div class="achievement-item">
+                <div class="achievement-icon">4</div>
+                <div class="achievement-text">Лучший спортсмен года по версии федерации</div>
+            </div>
+        </section>
+        
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-value">15</div>
+                <div class="stat-label">Золотых медалей</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">8</div>
+                <div class="stat-label">Серебряных медалей</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">5</div>
+                <div class="stat-label">Лет в спорте</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">12</div>
+                <div class="stat-label">Установленных рекордов</div>
+            </div>
+        </div>
+        
+        <section class="quote">
+            <p>"Спорт - это не просто хобби, это образ жизни. Каждая победа - это результат упорного труда и самодисциплины."</p>
+            <p>- Роман Иванов</p>
+        </section>
+        
+        <footer>
+            <p>© 2025 Спортивные достижения Романа. Все права защищены.</p>
+        </footer>
+    </div>
+</body>
+</html>
