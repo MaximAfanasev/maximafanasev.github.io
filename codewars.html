@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeCraft - Обучение программированию для детей</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 2px solid #4CAF50;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-icon {
+            font-size: 2.5rem;
+            color: #4CAF50;
+        }
+        
+        .logo-text {
+            font-size: 2rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .logo-text span {
+            color: #4CAF50;
+        }
+        
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 60px 20px;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+        
+        .feature {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+        
+        .feature h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .feature p {
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+        
+        .registration {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            margin: 0 auto 60px;
+            border: 3px solid #4CAF50;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        
+        .registration h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            color: #4CAF50;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px solid #4CAF50;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 10px #4CAF50;
+        }
+        
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .btn:hover {
+            background: #3d8b40;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        .legal {
+            margin-top: 30px;
+            font-size: 0.9rem;
+            text-align: center;
+            color: #aaa;
+            line-height: 1.5;
+        }
+        
+        .legal a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        
+        .legal a:hover {
+            text-decoration: underline;
+        }
+        
+        .minecraft-elements {
+            display: flex;
+            justify-content: space-around;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+        
+        .pixel-art {
+            width: 80px;
+            height: 80px;
+            image-rendering: pixelated;
+            margin: 10px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            border-top: 2px solid #4CAF50;
+            margin-top: 40px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: #4CAF50;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .registration {
+                padding: 25px;
+            }
+        }
+        
+        /* Minecraft блоки */
+        .block {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            z-index: -1;
+            opacity: 0.7;
+        }
+        
+        .grass {
+            background: linear-gradient(135deg, #5a7e37, #7ea553);
+            border: 2px solid #3d5a23;
+        }
+        
+        .dirt {
+            background: linear-gradient(135deg, #8b6b4c, #a88c6f);
+            border: 2px solid #5d452f;
+        }
+        
+        .stone {
+            background: linear-gradient(135deg, #7f7f7f, #a0a0a0);
+            border: 2px solid #5a5a5a;
+        }
+        
+        .diamond {
+            background: linear-gradient(135deg, #4faeb9, #7fdde9);
+            border: 2px solid #2d7c85;
+        }
+        
+        /* Анимация появления */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease forwards;
+        }
+        
+        /* Эффект печатающего текста */
+        .typewriter {
+            overflow: hidden;
+            border-right: 3px solid #4CAF50;
+            white-space: nowrap;
+            margin: 0 auto;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #4CAF50 }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-cube logo-icon"></i>
+                <div class="logo-text">Code<span>Craft</span></div>
+            </div>
+            <div class="header-text">
+                Образовательная платформа для детей 11+
+            </div>
+        </header>
+        
+        <section class="hero">
+            <h1 class="typewriter">СТАНЬ КИБЕРГЕРОЕМ!</h1>
+            <p>Присоединяйся к нашей уникальной образовательной программе, где ты научишься программированию и этичному хакерству через увлекательные игры в стиле Minecraft!</p>
+            <div class="minecraft-elements">
+                <div class="pixel-art" style="background: linear-gradient(135deg, #5a7e37, #7ea553); border: 2px solid #3d5a23;"></div>
+                <div class="pixel-art" style="background: linear-gradient(135deg, #8b6b4c, #a88c6f); border: 2px solid #5d452f;"></div>
+                <div class="pixel-art" style="background: linear-gradient(135deg, #4faeb9, #7fdde9); border: 2px solid #2d7c85;"></div>
+                <div class="pixel-art" style="background: linear-gradient(135deg, #7f7f7f, #a0a0a0); border: 2px solid #5a5a5a;"></div>
+            </div>
+        </section>
+        
+        <section class="features">
+            <div class="feature fade-in">
+                <i class="fas fa-lock feature-icon"></i>
+                <h3>Этичный хакинг</h3>
+                <p>Узнай, как работают хакеры, чтобы защитить себя и других. Мы учим только защитным методам!</p>
+            </div>
+            <div class="feature fade-in">
+                <i class="fas fa-code feature-icon"></i>
+                <h3>Программирование</h3>
+                <p>Освой Python, JavaScript и другие языки через создание модов для Minecraft и собственных игр.</p>
+            </div>
+            <div class="feature fade-in">
+                <i class="fas fa-shield-alt feature-icon"></i>
+                <h3>Кибербезопасность</h3>
+                <p>Научись защищать свои данные и понимать основы безопасности в интернете.</p>
+            </div>
+        </section>
+        
+        <section class="registration">
+            <h2>Регистрация для поступления</h2>
+            <form id="registration-form">
+                <div class="form-group">
+                    <label for="firstName">Имя</label>
+                    <input type="text" id="firstName" name="firstName" required placeholder="Введите ваше имя">
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Фамилия</label>
+                    <input type="text" id="lastName" name="lastName" required placeholder="Введите вашу фамилию">
+                </div>
+                <div class="form-group">
+                    <label for="nickname">Ник в Telegram</label>
+                    <input type="text" id="nickname" name="nickname" required placeholder="Введите ваш ник в Telegram">
+                </div>
+                <button type="submit" class="btn">Присоединиться к академии</button>
+            </form>
+            
+            <div class="legal">
+                <p>Нажимая кнопку "Присоединиться к академии", вы соглашаетесь с нашими <a href="#">Условиями использования</a> и <a href="#">Политикой конфиденциальности</a>.</p>
+                <p>Мы обязуемся защищать ваши данные в соответствии с законодательством РФ. Все поля обязательны для заполнения.</p>
+                <p>Для детей младше 14 лет регистрация возможна только с согласия родителей.</p>
+            </div>
+        </section>
+        
+        <footer>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-telegram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-vk"></i></a>
+            </div>
+            <p>© 2025 CodeCraft Academy. Все права защищены.</p>
+            <p>Образовательная платформа для детей 11+</p>
+        </footer>
+    </div>
+
+    <script>
+        // Создание Minecraft блоков на фоне
+        function createBlocks() {
+            const blocksContainer = document.body;
+            const blockTypes = ['grass', 'dirt', 'stone', 'diamond'];
+            
+            for (let i = 0; i < 20; i++) {
+                const block = document.createElement('div');
+                block.classList.add('block');
+                block.classList.add(blockTypes[Math.floor(Math.random() * blockTypes.length)]);
+                
+                // Случайное позиционирование
+                block.style.left = `${Math.random() * 100}vw`;
+                block.style.top = `${Math.random() * 100}vh`;
+                
+                blocksContainer.appendChild(block);
+            }
+        }
+        
+        // Обработка формы
+        document.getElementById('registration-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const nickname = document.getElementById('nickname').value;
+            
+            // В реальном приложении здесь был бы AJAX запрос к серверу
+            alert(`Спасибо, ${firstName} ${lastName}! Ваша заявка принята. Мы свяжемся с вами через Telegram (@${nickname}) в течение 24 часов.`);
+            
+            // Очистка формы
+            document.getElementById('registration-form').reset();
+        });
+        
+        // Анимация появления элементов при прокрутке
+        function checkScroll() {
+            const elements = document.querySelectorAll('.feature');
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 50) {
+                    element.classList.add('fade-in');
+                }
+            });
+        }
+        
+        // Инициализация
+        window.addEventListener('load', function() {
+            createBlocks();
+            checkScroll();
+        });
+        
+        window.addEventListener('scroll', checkScroll);
+    </script>
+</body>
+</html>
