@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корейский тренажер: Приветствия</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 50%, #16213e 100%);
+            color: #e0e0e0;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background-attachment: fixed;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 
+                0 10px 30px rgba(255, 20, 147, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.05), 
+                transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-shadow: 
+                0 0 20px rgba(255, 20, 147, 0.5),
+                0 0 40px rgba(0, 191, 255, 0.3);
+            background: linear-gradient(45deg, #ff1493, #00bfff, #da70d6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 200%;
+            animation: gradientShift 3s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .progress {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .progress-step {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            position: relative;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+
+        .progress-step.active {
+            background: linear-gradient(45deg, #ff1493, #00bfff);
+            box-shadow: 0 0 10px rgba(255, 20, 147, 0.5);
+        }
+
+        .progress-step.completed {
+            background: linear-gradient(45deg, #00bfff, #00ff88);
+        }
+
+        .progress-bar {
+            position: absolute;
+            top: 15px;
+            left: 0;
+            height: 2px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: 1;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(to right, #ff1493, #00bfff);
+            transition: width 0.5s ease;
+            width: 0%;
+        }
+
+        .task-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .task-card.active {
+            border-color: rgba(255, 20, 147, 0.3);
+            box-shadow: 0 0 20px rgba(255, 20, 147, 0.2);
+        }
+
+        .task-card.completed {
+            border-color: rgba(0, 191, 255, 0.3);
+            opacity: 0.7;
+        }
+
+        .task-card h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #fff;
+            text-align: center;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .input-field {
+            padding: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.3);
+            color: #fff;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: #ff1493;
+            box-shadow: 0 0 10px rgba(255, 20, 147, 0.3);
+        }
+
+        .input-field.correct {
+            border-color: #00ff88;
+            box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+        }
+
+        .input-field.incorrect {
+            border-color: #ff4444;
+            box-shadow: 0 0 10px rgba(255, 68, 68, 0.3);
+        }
+
+        .btn {
+            padding: 15px 25px;
+            background: linear-gradient(45deg, #ff1493, #00bfff);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+        }
+
+        .attempts {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            margin-top: 15px;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 10px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 1.1rem;
+            border: 1px solid rgba(255, 20, 147, 0.5);
+        }
+
+        .tooltip .tooltiptext::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: rgba(0, 0, 0, 0.8) transparent transparent transparent;
+        }
+
+        .tooltip.show .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .completion-message {
+            text-align: center;
+            padding: 30px;
+            display: none;
+        }
+
+        .completion-message h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ff1493, #00bfff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .completion-message p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .task-card h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Скроллбар */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(#ff1493, #00bfff);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(#ff1493, #00bfff);
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <div class="progress">
+            <div class="progress-step active">1</div>
+            <div class="progress-step">2</div>
+            <div class="progress-bar">
+                <div class="progress-bar-fill"></div>
+            </div>
+        </div>
+        
+        <div class="task-card active" id="task1">
+            <h2>Как будет "Привет" на корейском?</h2>
+            <div class="input-group">
+                <input type="text" class="input-field" id="answer1" placeholder="Введите ответ...">
+                <button class="btn" id="check1">Проверить</button>
+                <div class="attempts" id="attempts1">Попытки: 0/3</div>
+                <div class="tooltip" id="tooltip1">
+                    <span class="tooltiptext">Правильный ответ: 안녕 (Аньёнъ)</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="task-card" id="task2">
+            <h2>Как будет "Здравствуйте" на корейском?</h2>
+            <div class="input-group">
+                <input type="text" class="input-field" id="answer2" placeholder="Введите ответ..." disabled>
+                <button class="btn" id="check2" disabled>Проверить</button>
+                <div class="attempts" id="attempts2">Попытки: 0/3</div>
+                <div class="tooltip" id="tooltip2">
+                    <span class="tooltiptext">Правильный ответ: 안녕하세요 (Аньёнъ-асэйо)</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="completion-message" id="completion">
+            <h2>Поздравляем!</h2>
+            <p>Вы успешно изучили корейские приветствия!</p>
+            <button class="btn" id="restart">Начать заново</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Элементы DOM
+            const task1 = document.getElementById('task1');
+            const task2 = document.getElementById('task2');
+            const answer1 = document.getElementById('answer1');
+            const answer2 = document.getElementById('answer2');
+            const check1 = document.getElementById('check1');
+            const check2 = document.getElementById('check2');
+            const attempts1 = document.getElementById('attempts1');
+            const attempts2 = document.getElementById('attempts2');
+            const tooltip1 = document.getElementById('tooltip1');
+            const tooltip2 = document.getElementById('tooltip2');
+            const progressSteps = document.querySelectorAll('.progress-step');
+            const progressBarFill = document.querySelector('.progress-bar-fill');
+            const completion = document.getElementById('completion');
+            const restartBtn = document.getElementById('restart');
+            
+            // Правильные ответы
+            const correctAnswers = {
+                1: ['안녕', 'аньёнъ', 'аньенг'],
+                2: ['안녕하세요', 'аньёнъ-асэйо', 'аньенгасейо', 'аньёнхасеё']
+            };
+            
+            // Счетчики попыток
+            let attemptsCount1 = 0;
+            let attemptsCount2 = 0;
+            
+            // Проверка первого ответа
+            check1.addEventListener('click', function() {
+                const userAnswer = answer1.value.trim().toLowerCase();
+                
+                if (correctAnswers[1].includes(userAnswer)) {
+                    // Правильный ответ
+                    answer1.classList.add('correct');
+                    task1.classList.remove('active');
+                    task1.classList.add('completed');
+                    
+                    // Активируем вторую задачу
+                    setTimeout(function() {
+                        task2.classList.add('active');
+                        answer2.disabled = false;
+                        check2.disabled = false;
+                        progressSteps[1].classList.add('active');
+                        progressBarFill.style.width = '50%';
+                    }, 500);
+                } else {
+                    // Неправильный ответ
+                    answer1.classList.add('incorrect');
+                    attemptsCount1++;
+                    attempts1.textContent = `Попытки: ${attemptsCount1}/3`;
+                    
+                    // Показываем подсказку после 3 попыток
+                    if (attemptsCount1 >= 3) {
+                        tooltip1.classList.add('show');
+                        setTimeout(function() {
+                            answer1.value = '안녕 (Аньёнъ)';
+                            answer1.classList.remove('incorrect');
+                            answer1.classList.add('correct');
+                            
+                            // Переходим ко второй задаче через 2 секунды
+                            setTimeout(function() {
+                                task1.classList.remove('active');
+                                task1.classList.add('completed');
+                                task2.classList.add('active');
+                                answer2.disabled = false;
+                                check2.disabled = false;
+                                progressSteps[1].classList.add('active');
+                                progressBarFill.style.width = '50%';
+                            }, 2000);
+                        }, 3000);
+                    } else {
+                        // Сбрасываем стиль ошибки через 1 секунду
+                        setTimeout(function() {
+                            answer1.classList.remove('incorrect');
+                        }, 1000);
+                    }
+                }
+            });
+            
+            // Проверка второго ответа
+            check2.addEventListener('click', function() {
+                const userAnswer = answer2.value.trim().toLowerCase();
+                
+                if (correctAnswers[2].includes(userAnswer)) {
+                    // Правильный ответ
+                    answer2.classList.add('correct');
+                    task2.classList.remove('active');
+                    task2.classList.add('completed');
+                    
+                    // Показываем сообщение о завершении
+                    setTimeout(function() {
+                        progressSteps[1].classList.remove('active');
+                        progressSteps[1].classList.add('completed');
+                        progressBarFill.style.width = '100%';
+                        completion.style.display = 'block';
+                    }, 500);
+                } else {
+                    // Неправильный ответ
+                    answer2.classList.add('incorrect');
+                    attemptsCount2++;
+                    attempts2.textContent = `Попытки: ${attemptsCount2}/3`;
+                    
+                    // Показываем подсказку после 3 попыток
+                    if (attemptsCount2 >= 3) {
+                        tooltip2.classList.add('show');
+                        setTimeout(function() {
+                            answer2.value = '안녕하세요 (Аньёнъ-асэйо)';
+                            answer2.classList.remove('incorrect');
+                            answer2.classList.add('correct');
+                            
+                            // Показываем сообщение о завершении через 2 секунды
+                            setTimeout(function() {
+                                task2.classList.remove('active');
+                                task2.classList.add('completed');
+                                progressSteps[1].classList.remove('active');
+                                progressSteps[1].classList.add('completed');
+                                progressBarFill.style.width = '100%';
+                                completion.style.display = 'block';
+                            }, 2000);
+                        }, 3000);
+                    } else {
+                        // Сбрасываем стиль ошибки через 1 секунду
+                        setTimeout(function() {
+                            answer2.classList.remove('incorrect');
+                        }, 1000);
+                    }
+                }
+            });
+            
+            // Обработка нажатия Enter в полях ввода
+            answer1.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    check1.click();
+                }
+            });
+            
+            answer2.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    check2.click();
+                }
+            });
+            
+            // Кнопка перезапуска
+            restartBtn.addEventListener('click', function() {
+                // Сброс всех значений
+                answer1.value = '';
+                answer2.value = '';
+                answer1.classList.remove('correct', 'incorrect');
+                answer2.classList.remove('correct', 'incorrect');
+                answer2.disabled = true;
+                check2.disabled = true;
+                
+                task1.classList.add('active');
+                task1.classList.remove('completed');
+                task2.classList.remove('active', 'completed');
+                
+                attemptsCount1 = 0;
+                attemptsCount2 = 0;
+                attempts1.textContent = 'Попытки: 0/3';
+                attempts2.textContent = 'Попытки: 0/3';
+                
+                tooltip1.classList.remove('show');
+                tooltip2.classList.remove('show');
+                
+                progressSteps[0].classList.add('active');
+                progressSteps[1].classList.remove('active', 'completed');
+                progressBarFill.style.width = '0%';
+                
+                completion.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
