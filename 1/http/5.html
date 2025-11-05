@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Угадай HTTP статус</title>
+    <link rel="stylesheet" href="css.css">
+</head>
+
+<body>
+	<div class="container">
+		<h1>🎮 Угадай HTTP статус</h1>
+
+		<div class="game-info">
+			<div class="score">Счет: <span id="score">0</span></div>
+			<div class="question-count">Вопрос: <span id="question-number">1</span>/<span id="total-questions">4</span></div>
+		</div>
+
+		<div class="status-card">
+			<div class="question" id="question">Что означает статус 200?</div>
+
+			<div class="options" id="options">
+				<!-- Варианты ответов будут добавлены через JavaScript -->
+			</div>
+		</div>
+
+		<div class="controls">
+			<button id="next-btn">Следующий вопрос</button>
+		</div>
+
+		<div class="result" id="result"></div>
+		<div class="score-display" id="final-score"></div>
+		<a href="6.html">LVL 7</a>
+
+	</div>
+
+	<script>
+		const httpStatuses = [{
+				code: "IP",
+				description: "Internet Protocol"
+			},
+			{
+				code: "TCP",
+				description: "Transmission Control Protocol"
+			},
+			{
+				code: "TLS",
+				description: "Transport Layer Security"
+			},
+			{
+				code: "QUIC",
+				description: "Transport protocol over UDP"
+			},
+		];
+
+		// Элементы DOM
+		const questionElement = document.getElementById('question');
+		const optionsElement = document.getElementById('options');
+		const nextButton = document.getElementById('next-btn');
+		const resultElement = document.getElementById('result');
+		const scoreElement = document.getElementById('score');
+		const questionNumberElement = document.getElementById('question-number');
+		const totalQuestionsElement = document.getElementById('total-questions');
+		const finalScoreElement = document.getElementById('final-score');
+
+		// Переменные игры
+		let currentQuestionIndex = 0;
+		let score = 0;
+		let questions = [];
+		let gameFinished = false;
+
+		// Инициализация игры
+		function initGame() {
+			// Создаем вопросы на основе статусов
+			questions = httpStatuses.map(status => {
+				// Создаем неправильные варианты ответов
+				const incorrectOptions = httpStatuses
+					.filter(s => s.code !== status.code)
+					.map(s => s.description)
+					.sort(() => Math.random() - 0.5)
+					.slice(0, 3);
+
+				// Все варианты ответов
+				const options = [status.description, ...incorrectOptions];
+
+				// Перемешиваем варианты ответов
+				for (let i = options.length - 1; i > 0; i--) {
+					const j = Math.floor(Math.random() * (i + 1));
+					[options[i], options[j]] = [options[j], options[i]];
+				}
+
+				return {
+					question: `Что означает статус ${status.code}?`,
+					options: options,
+					answer: status.description
+				};
+			});
+
+			// Перемешиваем вопросы
+			questions.sort(() => Math.random() - 0.5);
+
+			totalQuestionsElement.textContent = questions.length;
+			showQuestion();
+		}
+
+		// Показать текущий вопрос
+		function showQuestion() {
+			if (currentQuestionIndex >= questions.length) {
+				endGame();
+				return;
+			}
+
+			const currentQuestion = questions[currentQuestionIndex];
+			questionElement.textContent = currentQuestion.question;
+			questionNumberElement.textContent = currentQuestionIndex + 1;
+
+			// Очищаем варианты ответов
+			optionsElement.innerHTML = '';
+
+			// Добавляем варианты ответов
+			currentQuestion.options.forEach(option => {
+				const button = document.createElement('div');
+				button.className = 'option';
+				button.textContent = option;
+				button.addEventListener('click', () => selectAnswer(option, button));
+				optionsElement.appendChild(button);
+			});
+
+			// Скрываем результат
+			resultElement.textContent = '';
+			finalScoreElement.textContent = '';
+			nextButton.style.display = 'none';
+		}
+
+		// Обработка выбора ответа
+		function selectAnswer(selectedOption, buttonElement) {
+			if (gameFinished) return;
+
+			const currentQuestion = questions[currentQuestionIndex];
+			const options = document.querySelectorAll('.option');
+
+			// Отключаем все варианты ответов
+			options.forEach(option => {
+				option.style.pointerEvents = 'none';
+			});
+
+			// Проверяем ответ
+			if (selectedOption === currentQuestion.answer) {
+				buttonElement.classList.add('correct');
+				resultElement.textContent = '✅ Правильно!';
+				resultElement.style.color = '#28a745';
+				score++;
+				scoreElement.textContent = score;
+			} else {
+				buttonElement.classList.add('incorrect');
+				resultElement.textContent = '❌ Неправильно!';
+				resultElement.style.color = '#dc3545';
+
+				// Показываем правильный ответ
+				options.forEach(option => {
+					if (option.textContent === currentQuestion.answer) {
+						option.classList.add('correct');
+					}
+				});
+			}
+
+			nextButton.style.display = 'block';
+			currentQuestionIndex++;
+		}
+
+		// Завершение игры
+		function endGame() {
+			gameFinished = true;
+			questionElement.textContent = 'Игра завершена!';
+			optionsElement.innerHTML = '';
+			resultElement.textContent = '';
+			nextButton.style.display = 'none';
+
+			const percentage = Math.round((score / questions.length) * 100);
+			let message;
+
+			if (percentage === 100) {
+				message = '🎉 Идеально! Вы настоящий эксперт по HTTP статусам!';
+			} else if (percentage >= 70) {
+				message = '👍 Отличный результат! Вы хорошо знаете HTTP статусы!';
+			} else if (percentage >= 50) {
+				message = '😊 Неплохо, но есть куда стремиться!';
+			} else {
+				message = '👎 Стоит повторить HTTP статусы еще раз!';
+			}
+
+			finalScoreElement.innerHTML = `
+                Ваш результат: ${score} из ${questions.length}<br>
+                ${message}
+            `;
+
+			// Добавляем кнопку для перезапуска игры
+			const restartButton = document.createElement('button');
+			restartButton.textContent = 'Играть снова';
+			restartButton.addEventListener('click', restartGame);
+			finalScoreElement.appendChild(restartButton);
+		}
+
+		// Перезапуск игры
+		function restartGame() {
+			currentQuestionIndex = 0;
+			score = 0;
+			gameFinished = false;
+			scoreElement.textContent = score;
+			finalScoreElement.textContent = '';
+			initGame();
+		}
+
+		// Обработчик для кнопки "Следующий вопрос"
+		nextButton.addEventListener('click', showQuestion);
+
+		// Запускаем игру при загрузке страницы
+		initGame();
+	</script>
+</body></html>

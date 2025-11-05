@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>HTTP Status Cards</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			margin: 0;
+			background-color: #000;
+		}
+
+		.card-container {
+			width: 500px;
+			position: relative;
+		}
+
+		.card {
+			background-color: #666;
+			border-radius: 10px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+			padding: 30px;
+			text-align: center;
+			min-height: 300px;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+		}
+
+		.code {
+			font-size: 34px;
+			font-weight: bold;
+			color: gold;
+			margin-bottom: 10px;
+		}
+
+		.description {
+			font-size: 16px;
+			line-height: 20px;
+			margin-top: 50px;
+			color: #fff;
+			margin-bottom: 20px;
+		}
+
+		.navigation {
+			display: flex;
+			justify-content: space-between;
+			margin-top: 20px;
+		}
+
+		.nav-arrow {
+			font-size: 24px;
+			cursor: pointer;
+			padding: 10px 20px;
+			background-color: #3498db;
+			color: white;
+			border-radius: 5px;
+			border: none;
+			transition: background-color 0.3s;
+		}
+
+		.nav-arrow:hover {
+			background-color: #2980b9;
+		}
+
+		.counter {
+			color: #7f8c8d;
+			font-size: 14px;
+			margin-top: 10px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="card-container">
+		<div class="card">
+			<div>
+				<div class="code" id="status-code"></div>
+				<div class="description" id="status-description"></div>
+			</div>
+			<div>
+				<div class="navigation">
+					<button class="nav-arrow" id="prev-btn">←</button>
+					<button class="nav-arrow" id="next-btn">→</button>
+				</div>
+				<div class="counter" id="counter">1/49</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		const statusData = [
+
+
+
+
+
+
+
+			
+
+
+
+
+
+
+
+			
+
+
+
+
+			
+
+
+
+
+			
+			
+
+		];
+
+		let currentIndex = 0;
+		const statusCodeElement = document.getElementById('status-code');
+		const statusDescriptionElement = document.getElementById('status-description');
+		const counterElement = document.getElementById('counter');
+		const prevBtn = document.getElementById('prev-btn');
+		const nextBtn = document.getElementById('next-btn');
+
+		function updateCard() {
+			const currentItem = statusData[currentIndex];
+			statusCodeElement.textContent = currentItem.code;
+			statusDescriptionElement.textContent = currentItem.description;
+			counterElement.textContent = `${currentIndex + 1}/${statusData.length}`;
+		}
+
+		prevBtn.addEventListener('click', () => {
+			if (currentIndex > 0) {
+				currentIndex--;
+				updateCard();
+			}
+		});
+
+		nextBtn.addEventListener('click', () => {
+			if (currentIndex < statusData.length - 1) {
+				currentIndex++;
+				updateCard();
+			}
+		});
+
+		// Keyboard navigation
+		document.addEventListener('keydown', (e) => {
+			if (e.key === 'ArrowLeft' && currentIndex > 0) {
+				currentIndex--;
+				updateCard();
+			} else if (e.key === 'ArrowRight' && currentIndex < statusData.length - 1) {
+				currentIndex++;
+				updateCard();
+			}
+		});
+
+		// Initialize
+		updateCard();
+	</script>
+</body></html>

@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Псевдоклассы форм CSS</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .example {
+            margin: 40px 0;
+            padding: 25px;
+            border: 3px solid #e0e0e0;
+            border-radius: 12px;
+            background: #fafafa;
+            transition: transform 0.2s ease;
+        }
+
+        .example:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .example h2 {
+            color: #34495e;
+            margin-top: 0;
+            font-size: 1.8em;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        .description {
+            color: #7f8c8d;
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .demo-area {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #bdc3c7;
+            margin: 20px 0;
+        }
+
+        .demo-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 15px;
+            background: #ecf0f1;
+            border-radius: 8px;
+        }
+
+        .demo-item {
+            padding: 15px;
+            border: 2px solid #95a5a6;
+            border-radius: 6px;
+            background: white;
+        }
+
+        .form-group {
+            margin: 15px 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #bdc3c7;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+        }
+
+        /* Стили для демонстрации псевдоклассов */
+        .checked-demo input:checked + label {
+            background: #ff6b6b !important;
+            color: white !important;
+            border-color: #c0392b !important;
+            font-weight: bold;
+        }
+
+        .disabled-demo input:disabled {
+            background: #4ecdc4 !important;
+            color: white !important;
+            border-color: #16a085 !important;
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .enabled-demo input:enabled {
+            background: #ffe66d !important;
+            color: #2c3e50 !important;
+            border-color: #f39c12 !important;
+            font-weight: bold;
+        }
+
+        .required-demo input:required {
+            background: #6a89cc !important;
+            color: white !important;
+            border-color: #2980b9 !important;
+            font-weight: bold;
+        }
+
+        .optional-demo input:optional {
+            background: #a55eea !important;
+            color: white !important;
+            border-color: #8e44ad !important;
+            font-weight: bold;
+        }
+
+        .valid-demo input:valid {
+            background: #26de81 !important;
+            color: white !important;
+            border-color: #2ecc71 !important;
+            font-weight: bold;
+        }
+
+        .invalid-demo input:invalid {
+            background: #fd9644 !important;
+            color: white !important;
+            border-color: #e67e22 !important;
+            font-weight: bold;
+        }
+
+        .in-range-demo input:in-range {
+            background: #2bcbba !important;
+            color: white !important;
+            border-color: #0fb9b1 !important;
+            font-weight: bold;
+        }
+
+        .out-of-range-demo input:out-of-range {
+            background: #fc5c65 !important;
+            color: white !important;
+            border-color: #eb3b5a !important;
+            font-weight: bold;
+        }
+
+        .placeholder-shown-demo input:placeholder-shown {
+            background: #fed330 !important;
+            color: #2c3e50 !important;
+            border-color: #f7b731 !important;
+            font-weight: bold;
+        }
+
+        .read-only-demo input:read-only {
+            background: #a5b1c2 !important;
+            color: white !important;
+            border-color: #778ca3 !important;
+            font-weight: bold;
+            cursor: not-allowed;
+        }
+
+        .read-write-demo input:read-write {
+            background: #3867d6 !important;
+            color: white !important;
+            border-color: #2d98da !important;
+            font-weight: bold;
+        }
+
+        .placeholder-pseudo-demo input::placeholder {
+            color: #e84393 !important;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .code {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Fira Code', 'Courier New', monospace;
+            margin: 15px 0;
+            overflow-x: auto;
+            font-size: 1.1em;
+        }
+
+        .code .selector {
+            color: #ff79c6;
+        }
+
+        .note {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid #ffc107;
+            margin: 15px 0;
+            color: #856404;
+        }
+
+        .usage-example {
+            background: #d1ecf1;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid #17a2b8;
+            margin: 15px 0;
+            color: #0c5460;
+        }
+
+        .checkbox-group, .radio-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .checkbox-item, .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .demo-container {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .checkbox-group, .radio-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Псевдоклассы форм CSS</h1>
+
+        <!-- :checked -->
+        <div class="example">
+            <h2>:checked {}</h2>
+            <p class="description">Выбирает элементы формы, которые отмечены (checkbox, radio)</p>
+            
+            <div class="code"><span class="selector">input:checked + label</span> {
+    background: #ff6b6b;
+    color: white;
+    font-weight: bold;
+}</div>
+
+            <div class="demo-area">
+                <div class="demo-container">
+                    <div class="demo-item checked-demo">
+                        <h3>Checkbox:</h3>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="check1">
+                                <label for="check1">Не отмечен</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="check2" checked>
+                                <label for="check2">Отмечен (выделен)</label>
+                            </div>
+                        </div>
+
+                        <h3>Radio:</h3>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" name="radio" id="radio1">
+                                <label for="radio1">Radio 1</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="radio" id="radio2" checked>
+                                <label for="radio2">Radio 2 (выделен)</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- :disabled и :enabled -->
+        <div class="example">
+            <h2>:disabled {} и :enabled {}</h2>
+            <p class="description">Выбирает отключенные и доступные для взаимодействия элементы формы</p>
+            
+            <div class="code"><span class="selector">input:disabled</span> {
+    background: #4ecdc4;
+    color: white;
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+<span class="selector">input:enabled</span> {
+    background: #ffe66d;
+    color: #2c3e50;
+    font-weight: bold;
+}</div>
+
+            <div class="demo-area">
+                <div class="demo-container">
+                    <div class="demo-item disabled-demo">
+                        <h3>:disabled</h3>
+                        <div class="form-group">
+                            <input type="text" placeholder="Обычное поле">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Отключенное поле" disabled>
+                        </div>
+                    </div>
+                    
+                    <div class="demo-item enabled-demo">
+                        <h3>:enabled</h3>
+                        <div class="form-group">
+                            <input type="text" placeholder="Доступное поле (выделено)">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Отключенное поле" disabled>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- :required и :optional -->
+        <div class="example">
+            <h2>:required {} и :optional {}</h2>
+            <p class="description">Выбирает обязательные и необязательные для заполнения элементы формы</p>
+            
+            <div class="code"><span class="selector">input:required</span> {
+    background: #6a89cc;
+    color: white;
+    font-weight: bold;
+}
+
+<span class="selector">input:optional</span> {
+    background: #a55eea;
+    color: white;
+    font-weight: bold;
+}</div>
+
+            <div class="demo-area">
+                <div class="demo-container">
+                    <div class="demo-item required-demo">
+                        <h3>:required</h3>
+                        <div class="form-group">
+                            <input type="text" placeholder="Обязательное поле" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Обязательный email" required>
+                        </div>
+                    </div>
+                    
+                    <div class="demo-item optional-demo">
+                        <h3>:optional</h3>
+                        <div class="form-group">
+                            <input type="text" placeholder="Необязательное поле (выделено)">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Обязательное поле" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- :valid и :invalid -->
+        <div class="example">
+            <h2>:valid {} и :invalid {}</h2>
+            <p class="description">Выбирает элементы с валидным и некорректным содержимым</p>
+            
+            <div class="code"><span class="selector">input:valid</span> {
+    background: #26de81;
+    color: white;
+    font-weight: bold;
+}
+
+<span class="selector">input:invalid</span> {
+    background: #fd9644;
+    color: white;
+    font-weight: bold;
+}</div>
+
+            <div class="demo-area">
+                <div class="demo-container">
+                    <div class="demo-item valid-demo">
+                        <h3>:valid (попробуйте ввести корректный email)</h3>
+                        <div class="form-group">
+                            <input type="email" placeholder="Введите email" value="test@example.com">
+                        </div>
+                    </div>
+                    
+                    <div class="demo-item invalid-demo">
+                        <h3>:invalid (попробуйте ввести некорректный email)</h3>
+                        <div class="form-group">
+                            <input type="email" placeholder="Введите email" value="invalid-email">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- :in-range и :out-of-range -->
+        <div class="example">
+            <h2>:in-range {} и :out-of-range {}</h2>
+            <p class="description">Выбирает элементы с значением в допустимом диапазоне и вне его</p>
+            
+            <div class="code"><span class="selector">input:in-range</span> {
+    background: #2bcbba;
+    color: white;
+    font-weight: bold;
+}
+
+<span class="selector">input:out-of-range</span> {
+    background: #fc5c65;
+    color: white;
+    font-weight: bold;
+}</div>
+
+            <div class="demo-area">
+                <div class="demo-container">
+                    <div class="demo-item in-range-demo">
+                        <h3>:in-range (диапазон 1-100)</h3>
+                        <div class="form-group">
+                            <input type="number" min="1" max="100" value="50" placeholder="Введите число">
+                        </div>
+                    </div>
+                    
+                    <div class="demo-item out-of-range-demo">
+                        <h3>:out-of-range (диапазон 1-100)</h3>
+                        <div class="form-group">
+                            <input type="number" min="1" max="100" value="150" placeholder="Введите число">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- :placeholder-shown -->
+        <div class="example">
+            <h2>:placeholder-shown {}</h2>
+            <p class="description">Выбирает элементы, у которых отображается плейсхолдер</p>
+            
+            <div class="code"><span class="selector">input:placeholder-shown</span> {
+    background: #fed330;
+    color: #2c3e50;
+    font-weight: bold;
+}</div>
+
+            <div class="demo-area">
+                <div class="demo-container">
+                    <div class="demo-item placeholder-shown-demo">
+                        <h3>:placeholder-shown (попробуйте ввести текст)</h3>
+                        <div class="form-group">
+                            <input type="text" placeholder="Введите ваше имя">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Поле с текстом" value="Уже есть текст">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- :read-only и :read-write -->
+        <div class="example">
+            <h2>:read-only {} и :read-write {}</h2>
+            <p class="description">Выбирает элементы только для чтения и доступные для редактирования</p>
+            
+            <div class="code"><span class="selector">input:read-only</span> {
+    background: #a5b1c2;
+    color: white;
+    font-weight: bold;
+    cursor: not-allowed;
+}
+
+<span class="selector">input:read-write</span> {
+    background: #3867d6;
+    color: white;
+    font-weight: bold;
+}</div>
+
+            <div class="demo-area">
+                <div class="demo-container">
+                    <div class="demo-item read-only-demo">
+                        <h3>:read-only</h3>
+                        <div class="form-group">
+                            <input type="text" value="Только для чтения" readonly>
+                        </div>
+                    </div>
+                    
+                    <div class="demo-item read-write-demo">
+                        <h3>:read-write</h3>
+                        <div class="form-group">
+                            <input type="text" placeholder="Можно редактировать">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ::placeholder -->
+        <div class="example">
+            <h2>::placeholder {}</h2>
+            <p class="description">Стилизует текст плейсхолдера в полях формы</p>
+            
+            <div class="code"><span class="selector">input::placeholder</span> {
+    color: #e84393;
+    font-weight: bold;
+    font-style: italic;
+}</div>
+
+            <div class="demo-area">
+                <div class="demo-container">
+                    <div class="demo-item placeholder-pseudo-demo">
+                        <h3>::placeholder (двойное двоеточие!)</h3>
+                        <div class="form-group">
+                            <input type="text" placeholder="Красивый плейсхолдер">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Email плейсхолдер">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="note">
+                <strong>Важно:</strong> ::placeholder использует двойное двоеточие (::) в отличие от других псевдоклассов, 
+                потому что это псевдоэлемент, а не псевдокласс.
+            </div>
+        </div>
+
+        <!-- Сводная таблица -->
+        <div class="example">
+            <h2>Сводная таблица псевдоклассов форм</h2>
+            
+            <div class="demo-area">
+                <div class="demo-container">
+                    <div class="demo-item">
+                        <h3>Псевдоклассы состояния форм:</h3>
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <thead>
+                                <tr style="background: #34495e; color: white;">
+                                    <th style="padding: 12px; text-align: left; border: 1px solid #2c3e50;">Псевдокласс</th>
+                                    <th style="padding: 12px; text-align: left; border: 1px solid #2c3e50;">Описание</th>
+                                    <th style="padding: 12px; text-align: left; border: 1px solid #2c3e50;">Пример</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="padding: 10px; border: 1px solid #bdc3c7;"><code>:checked</code></td>
+                                    <td style="padding: 10px; border: 1px solid #bdc3c7;">Отмеченные элементы</td>
+                                    <td style="padding: 10px; border: 1px solid #bdc3c7;"><code>input:checked</code></td>
+                                </tr>
+                                <tr style="background: #f8f9fa;">
+                                    <td style="padding: 10px; border: 1px solid #bdc3c7;"><code>:disabled</code></td>
+                                    <td style="padding: 10px; border: 1px solid #bdc3c7;">Отключенные элементы</td>
+                                    <td style="padding: 10px; border: 1px solid #bdc3c7;"><code>input:disabled</code></td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 10px; border: 1px solid #bdc3c7;"><code>:valid</code></td>
+                                    <td style="padding: 10px; border: 1px solid #bdc3c7;">Валидные значения</td>
+                                    <td style="padding: 10px; border: 1px solid #bdc3c7;"><code>input:valid</code></td>
+                                </tr>
+                                <tr style="background: #f8f9fa;">
+                                    <td style="padding: 10px; border: 1px solid #bdc3c7;"><code>:invalid</code></td>
+                                    <td style="padding: 10px; border: 1px solid #bdc3c7;">Невалидные значения</td>
+                                    <td style="padding: 10px; border: 1px solid #bdc3c7;"><code>input:invalid</code></td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 10px; border: 1px solid #bdc3c7;"><code>:required</code></td>
+                                    <td style="padding: 10px; border: 1px solid #bdc3c7;">Обязательные поля</td>
+                                    <td style="padding: 10px; border: 1px solid #bdc3c7;"><code>input:required</code></td>
+                                </tr>
+                                <tr style="background: #f8f9fa;">
+                                    <td style="padding: 10px; border: 1px solid #bdc3c7;"><code>::placeholder</code></td>
+                                    <td style="padding: 10px; border: 1px solid #bdc3c7;">Стиль плейсхолдера</td>
+                                    <td style="padding: 10px; border: 1px solid #bdc3c7;"><code>input::placeholder</code></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Добавляем интерактивность для демонстрации
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputs = document.querySelectorAll('input');
+            inputs.forEach(input => {
+                input.addEventListener('input', function() {
+                    // Принудительно обновляем стили при изменении
+                    this.style.display = 'none';
+                    this.offsetHeight; // Trigger reflow
+                    this.style.display = 'block';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
