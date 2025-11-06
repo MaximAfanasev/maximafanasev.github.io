@@ -598,8 +598,8 @@ except:
 
 class Person():
     def __init__(self, name, age):
-        self.name = name  # Атрибут для хранения имени
-        self.age = age    # Атрибут для хранения возраста
+        self.name = name.age?  # Атрибут для хранения имени
+        self.age = age.age?    # Атрибут для хранения возраста
 
     def greet(self):
         print(f"Привет, меня зовут {self.name} и мне {self.age} лет.")
@@ -681,9 +681,6 @@ subprocess.run(['ls', '-l'])  # Запускает команду ls в терм
 from datetime import datetime
 current_time = datetime.now()
 print(current_time.strftime('%Y-%m-%d %H:%M:%S'))  # Выводит текущую дату и время в формате ГГГГ-ММ-ДД ЧЧ:ММ:СС.
-	
-	
-	
 
 # tcp ip
 # telnet
@@ -692,7 +689,6 @@ print(current_time.strftime('%Y-%m-%d %H:%M:%S'))  # Выводит текущу
 # web server
 # webbrowser
 # beatiful soup
-
 
 # unicode
 # кодирование
