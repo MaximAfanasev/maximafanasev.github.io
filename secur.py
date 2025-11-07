@@ -1,3 +1,33 @@
+200 OK                   Успешно                      
+201 Created              Ресурс создан                
+202 Accepted             Принято в обработку          
+204 No Content           Нет содержимого              
+300 Multiple Choices     Несколько вариантов ответа   
+301 Moved Permanently    Ресурс перемещен навсегда    
+302 Found                Ресурс временно перемещен    
+304 Not Modified         Контент не изменился         
+400 Bad Request          Ошибка в запросе             
+401 Unauthorized         Требуется вход               
+403 Forbidden            Нет доступа                  
+404 Not Found            Не найдено                   
+500 Server Error         Внутренняя ошибка сервера    
+501 Not Implemented      Функция не реализована       
+502 Bad Gateway          Ошибка шлюза                 
+503 Unavailable          Сервис недоступен         
+
+GET                      Получение данных             
+POST                     Отправка данных              
+HEAD                     Получение заголовков         
+IP                       Internet Protocol            
+TCP                      Transmission Control Protoco"
+TLS                      Transport Layer Security     
+QUIC                     Transport protocol over UDP  
+VoIP                     Voice over IP                
+HTTP                     HyperText Transfer Protocol  
+DNS                      Domain Name System           
+DOM                      Document Object Model        
+URL                      Uniform Resource Locator   
+
 🔹 Компьютерные сети:
 	* ✅ Модель OSI и TCP/IP
 	* ✅ Типы атак
