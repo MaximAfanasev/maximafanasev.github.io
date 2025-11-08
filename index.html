@@ -36,6 +36,7 @@
 			min-height: 100vh;
 			overflow-x: hidden;
 			line-height: 1.6;
+			font-size: 24px;
 		}
 
 		.container {
@@ -237,6 +238,7 @@
 				font-size: 1.5rem;
 			}
 		}
+
 	</style>
 
 	<style>
@@ -547,6 +549,7 @@
 			background: linear-gradient(#ff1493, #00bfff);
 			opacity: 0.8;
 		}
+
 	</style>
 
 
@@ -799,6 +802,12 @@
 			font-size: 1.1rem;
 			border: 1px solid rgba(255, 20, 147, 0.5);
 		}
+		
+		label {
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+		}
 
 		.tooltip .tooltiptext::after {
 			content: "";
@@ -871,6 +880,7 @@
 			background: linear-gradient(#ff1493, #00bfff);
 			opacity: 0.8;
 		}
+
 	</style>
 </head>
 
@@ -878,16 +888,28 @@
 	<h1>999 IN 1</h1>
 	<div class="container">
 		<div class="input-group">
-		<label for="">Привет
-			<input type="text" class="input-field" id="a1" placeholder="Введите слово привет">
+			<label for="">Привет
+				<input type="text" class="input-field" id="a1" placeholder="Привет">
 			</label>
-		<label for="">Аньёнъ
-			<input type="text" class="input-field" id="a2" placeholder="Введите слово Аньёнъ">
+			
+			<label for="">Аньёнъ
+				<input type="text" class="input-field" id="a2" placeholder="Аньёнъ">
 			</label>
-		<label for="a3">안녕
-			<input type="text" class="input-field" id="a3" placeholder="Введите слово 안녕">
+			
+			<label for="a3">DKS SUD
+				<input type="text" class="input-field" id="a3" placeholder="DKS SUD">
+			</label>
+			<img src="1.png" alt="" width="350px">
+			
+			<label for="a4">ㅇ ㅏ ㄴ ㄴ ㅕ ㅇ
+				<input type="text" class="input-field" id="a4" placeholder="ㅇ ㅏ ㄴ ㄴ ㅕ ㅇ">
+			</label>
+			
+			<label for="a6">안녕
+				<input type="text" class="input-field" id="a6" placeholder="안녕">
 			</label>
 		</div>
-		<img src="1.png" alt="" width="350px">
 	</div>
-</body></html>
+</body>
+
+</html>

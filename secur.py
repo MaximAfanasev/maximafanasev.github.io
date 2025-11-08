@@ -28,6 +28,7 @@ DNS                      Domain Name System
 DOM                      Document Object Model        
 URL                      Uniform Resource Locator   
 
+
 🔹 Компьютерные сети:
 	* ✅ Модель OSI и TCP/IP
 	* ✅ Типы атак
