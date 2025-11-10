@@ -1,14 +1,3 @@
-																				# a  abs
-																				# a  as_integer_ratio
-																				# c  chr
-																				# d  divmod
-																				# f  float
-																				# i  int
-																				# i  is_integer
-																				# o  ord
-																				# p  pow
-																				# r  round
-										
 # Пример каждого метода
 
 print(abs(-5))           								# 5
