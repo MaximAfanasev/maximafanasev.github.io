@@ -19,22 +19,6 @@ main {
 	height: 100vh;
 }
 
-h1 {
-	position: relative;
-	color: #cc2836;
-	text-align: center;
-	z-index: 200;
-
-	font-weight: bold;
-
-	text-shadow:
-		1px 1px 0 rgba(255, 255, 255, 0.5),
-		2px 2px 0 rgba(255, 255, 255, 0.3),
-		3px 3px 0 rgba(255, 255, 255, 0.1),
-		4px 4px 0 rgba(0, 0, 0, 0.4);
-
-}
-
 h2 {
 	color: #cc2836;
 	margin-top: 50px;
@@ -44,7 +28,6 @@ h2 {
 .done {
 	position: relative;
 }
-
 
 #imageList {
 	list-style: none;
