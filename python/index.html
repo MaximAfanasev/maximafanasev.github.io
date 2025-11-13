@@ -12,7 +12,55 @@
 	<link rel="stylesheet" href="version5/css/memory.css">
 	<link rel="stylesheet" href="version5/css/snake.css">
 	<link rel="stylesheet" href="version5/css/catch.css">
-	<link rel="stylesheet" href="../../h1.css">
+	<style>
+		h1 {
+			width: 350px;
+			margin: 0 auto;
+			text-shadow:
+				0 0 20px rgba(255, 20, 147, 0.5),
+				0 0 40px rgba(0, 191, 255, 0.3);
+			background: linear-gradient(45deg, #ff1493, #00bfff, #da70d6);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-size: 200% 200%;
+			animation: gradientShift 3s ease infinite;
+			color: var(--primary);
+			position: relative;
+			text-shadow:
+				0 0 20px rgba(255, 20, 147, 0.5),
+				0 0 40px rgba(0, 191, 255, 0.3);
+			background: linear-gradient(45deg, #ff1493, #00bfff, #da70d6);
+			-webkit-background-clip: text;
+			font-size: 24px;
+			font-family: 'Cyber', sans-serif;
+			text-transform: uppercase;
+			letter-spacing: 2px;
+			text-shadow: 0 0 8px var(--primary);
+		}
+
+		@keyframes gradientShift {
+			0% {
+				background-position: 0% 50%;
+			}
+
+			50% {
+				background-position: 100% 50%;
+			}
+
+			100% {
+				background-position: 0% 50%;
+			}
+		}
+
+		ul {
+			list-style: none;
+		}
+
+		li {
+			font-size: 24px;
+		}
+
+	</style>
 </head>
 
 <body>

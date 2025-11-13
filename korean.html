@@ -79,6 +79,7 @@
 				transform: translateX(100%);
 			}
 		}
+
 		@keyframes blink {
 
 			0%,
@@ -213,6 +214,7 @@
 				font-size: 1.5rem;
 			}
 		}
+
 	</style>
 
 	<style>
@@ -278,6 +280,7 @@
 				left: 100%;
 			}
 		}
+
 		@keyframes gradientShift {
 			0% {
 				background-position: 0% 50%;
@@ -505,6 +508,7 @@
 			background: linear-gradient(#ff1493, #00bfff);
 			opacity: 0.8;
 		}
+
 	</style>
 
 
@@ -807,10 +811,10 @@
 		input::placeholder {
 			font-size: 22px;
 		}
+
 	</style>
 
 	<style>
-
 		.subtitle {
 			color: #7f8c8d;
 			margin-bottom: 30px;
@@ -944,14 +948,63 @@
 		.grid input {
 			width: 50px;
 		}
+
 		.python {
 			text-decoration: underline;
 		}
+
+		h1 {
+			width: 350px;
+			margin: 0 auto;
+			text-shadow:
+				0 0 20px rgba(255, 20, 147, 0.5),
+				0 0 40px rgba(0, 191, 255, 0.3);
+			background: linear-gradient(45deg, #ff1493, #00bfff, #da70d6);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-size: 200% 200%;
+			animation: gradientShift 3s ease infinite;
+			color: var(--primary);
+			position: relative;
+			text-shadow:
+				0 0 20px rgba(255, 20, 147, 0.5),
+				0 0 40px rgba(0, 191, 255, 0.3);
+			background: linear-gradient(45deg, #ff1493, #00bfff, #da70d6);
+			-webkit-background-clip: text;
+			font-size: 24px;
+			font-family: 'Cyber', sans-serif;
+			text-transform: uppercase;
+			letter-spacing: 2px;
+			text-shadow: 0 0 8px var(--primary);
+		}
+
+		@keyframes gradientShift {
+			0% {
+				background-position: 0% 50%;
+			}
+
+			50% {
+				background-position: 100% 50%;
+			}
+
+			100% {
+				background-position: 0% 50%;
+			}
+		}
+
+		ul {
+			list-style: none;
+		}
+
+		li {
+			font-size: 24px;
+		}
+
 	</style>
 </head>
 
 <body>
-<h1 class="main"><a  href="index.html">Перейти на главную</a></h1>
+	<h1 class="main"><a href="index.html">Перейти на главную</a></h1>
 	<div class="container">
 		<div class="grid">
 			<input type="text" class="input-field" id="a3" placeholder="п">
@@ -1008,19 +1061,21 @@
 			<input type="text" class="input-field" id="a6" placeholder="안녕">
 		</label>
 	</div>
-	
+
 	<div class="container">
 		<ul>
-			<li>меня зовут Maxim  </li>
+			<li>меня зовут Maxim </li>
 			<li>(na irmeun Maxim)</li>
 			<li>내 이름은 맥심</li>
 		</ul>
 	</div>
-	
+
 	<div class="container">
 		<ul>
 			<li>а вас? (grigo dangxineun?) 리고 당신은? <input type="text" class="input-field" id="a3" placeholder="Введите имя"></li>
 		</ul>
 	</div>
-	
-</body></html>
+
+</body>
+
+</html>
