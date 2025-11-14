@@ -3,44 +3,135 @@
 
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link type="image/x-icon" rel="icon" href="python/pythonsss/img/favicon.ico">
-	<title>Maxim Afanasev</title>
-	<link rel="stylesheet" href="h1.css">
-	<link rel="stylesheet" href="ul.css">
-	<style>
-		body {
-			background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 50%, #16213e 100%);
-			color: #e0e0e0;
-			line-height: 1.6;
-			min-height: 100vh;
-			display: flex;
-			flex-direction: column;
-			gap: 50px;
-			justify-content: center;
-			align-items: center;
-			padding: 20px;
-			background-attachment: fixed;
-		}
-
-		.input-field {
-			padding: 15px;
-			border: 1px solid rgba(255, 255, 255, 0.1);
-			border-radius: 10px;
-			background: rgba(0, 0, 0, 0.3);
-			color: #fff;
-			font-size: 1.2rem;
-			transition: all 0.3s ease;
-		}
-	</style>
+	<title>Корейская головоломка</title>
 </head>
 
+<style>
+	body {
+		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		margin: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100vh;
+		overflow: hidden;
+		background-size: 400% 400%;
+		background-image:
+			radial-gradient(circle at 10% 20%, rgba(0, 255, 157, 0.05) 0%, transparent 20%),
+			radial-gradient(circle at 90% 80%, rgba(0, 184, 255, 0.05) 0%, transparent 20%),
+			linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(10, 10, 30, 0.9));
+		color: white;
+		text-align: center;
+	}
+
+	#game-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 20px;
+	}
+
+	#input-container {
+		display: flex;
+		gap: 10px;
+	}
+
+	input {
+		padding: 10px;
+		width: 30px;
+		height: 30px;
+		font-size: 24px;
+		text-align: center;
+		border: none;
+		border-radius: 10px;
+		outline: none;
+		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+	}
+
+	#finalMessage {
+		display: none;
+		font-size: 24px;
+		padding: 20px;
+		background-color: rgba(0, 0, 0, 0.7);
+		border-radius: 10px;
+	}
+
+	#hint {
+		font-size: 14px;
+		color: rgba(255, 255, 255, 0.7);
+	}
+</style>
+
 <body>
-	<label for="a4">
-		<div class="grid">
-			<input type="text" class="input-field" id="a3" placeholder="안녕">
+	<div id="game-container">
+		<p id="hint">ㅇ ㅏ ㄴ ㄴ ㅕ ㅇ (d k s s u d)</p>
+		<div id="input-container">
+			<input type="text" maxlength="1" class="letter-input" />
+			<input type="text" maxlength="1" class="letter-input" />
+			<input type="text" maxlength="1" class="letter-input" />
+			<input type="text" maxlength="1" class="letter-input" />
+			<input type="text" maxlength="1" class="letter-input" />
+			<input type="text" maxlength="1" class="letter-input" />
 		</div>
-	</label>
+	</div>
 
+	<div id="finalMessage">
+		Поздравляем! Вы ввели правильное слово!
+	</div>
 
-</body></html>
+	<script>
+		const correctSequence = "ㅇㅏㄴㄴㅕㅇ"; // "Привет" на корейском
+		
+		const letterInputs = document.querySelectorAll('.letter-input');
+		
+		// Фокусируемся на первом поле ввода при загрузке страницы
+		letterInputs[0].focus();
+		
+		letterInputs.forEach((input, index) => {
+			input.addEventListener('input', function() {
+				if (this.value.length === 1) {
+					// Переходим к следующему полю
+					if (index < letterInputs.length - 1) {
+						letterInputs[index + 1].focus();
+					} else {
+						checkInput();
+					}
+				}
+			});
+			
+			// Обработка клавиши Backspace
+			input.addEventListener('keydown', function(e) {
+				if (e.key === 'Backspace' && this.value === '' && index > 0) {
+					letterInputs[index - 1].focus();
+				}
+			});
+		});
+
+		function checkInput() {
+			let userInput = '';
+			letterInputs.forEach(input => {
+				userInput += input.value;
+			});
+			
+			if (userInput === correctSequence) {
+				document.getElementById('game-container').style.display = "none";
+				document.getElementById("finalMessage").style.display = "block";
+
+				localStorage.setItem('test_1_done', 'true');
+				localStorage.removeItem('test_1_lake', 'true');
+
+				setTimeout(() => {
+					window.location.href = "../index.html";
+				}, 2000); // Увеличил задержку, чтобы пользователь увидел сообщение
+			} else {
+				// Сброс полей при неправильном вводе
+				letterInputs.forEach(input => {
+					input.value = '';
+				});
+				letterInputs[0].focus();
+				alert("Неправильно! Попробуйте снова.");
+			}
+		}
+	</script>
+</body>
+</html>
