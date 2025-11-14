@@ -6,6 +6,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link type="image/x-icon" rel="icon" href="python/pythonsss/img/favicon.ico">
 	<title>Maxim Afanasev</title>
+	<link rel="stylesheet" href="h1.css">
+	<link rel="stylesheet" href="ul.css">
 	<style>
 		:root {
 			--primary: #00ff9d;
@@ -77,14 +79,6 @@
 				transform: translateX(100%);
 			}
 		}
-
-		h2 {
-			font-family: 'Cyber', sans-serif;
-			text-transform: uppercase;
-			letter-spacing: 2px;
-			text-shadow: 0 0 8px var(--primary);
-		}
-
 
 		@keyframes blink {
 
@@ -210,318 +204,7 @@
 			border-bottom-width: 2px;
 			border-right-width: 2px;
 		}
-
-		@media (max-width: 768px) {
-			.menu-grid {
-				grid-template-columns: 1fr;
-			}
-
-			h2 {
-				font-size: 1.5rem;
-			}
-		}
-
 	</style>
-
-	<style>
-		* {
-			margin: 0;
-			padding: 0;
-			box-sizing: border-box;
-			font-family: 'Segoe UI', 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
-		}
-
-		body {
-			background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 50%, #16213e 100%);
-			color: #e0e0e0;
-			line-height: 1.6;
-			padding: 20px;
-			min-height: 100vh;
-			background-attachment: fixed;
-		}
-
-		.container {
-			max-width: 1200px;
-			margin: 0 auto;
-		}
-
-		header {
-			text-align: center;
-			margin-bottom: 40px;
-			padding: 40px 0;
-			background: linear-gradient(135deg,
-					rgba(255, 20, 147, 0.1) 0%,
-					rgba(0, 191, 255, 0.1) 50%,
-					rgba(138, 43, 226, 0.1) 100%);
-			color: #fff;
-			border-radius: 20px;
-			box-shadow:
-				0 10px 30px rgba(255, 20, 147, 0.2),
-				inset 0 1px 0 rgba(255, 255, 255, 0.1);
-			border: 1px solid rgba(255, 255, 255, 0.05);
-			position: relative;
-			overflow: hidden;
-		}
-
-		header::before {
-			content: '';
-			position: absolute;
-			top: 0;
-			left: -100%;
-			width: 100%;
-			height: 100%;
-			background: linear-gradient(90deg,
-					transparent,
-					rgba(255, 255, 255, 0.1),
-					transparent);
-			animation: shine 3s infinite;
-		}
-
-		@keyframes shine {
-			0% {
-				left: -100%;
-			}
-
-			100% {
-				left: 100%;
-			}
-		}
-
-
-		@keyframes gradientShift {
-			0% {
-				background-position: 0% 50%;
-			}
-
-			50% {
-				background-position: 100% 50%;
-			}
-
-			100% {
-				background-position: 0% 50%;
-			}
-		}
-
-		.subtitle {
-			font-size: 1.2rem;
-			opacity: 0.8;
-			max-width: 800px;
-			margin: 0 auto;
-			color: #b0b0b0;
-		}
-
-		.categories {
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: center;
-			gap: 15px;
-			margin-bottom: 40px;
-		}
-
-		.category-btn {
-			padding: 14px 28px;
-			background: rgba(255, 255, 255, 0.05);
-			border: 1px solid rgba(255, 255, 255, 0.1);
-			border-radius: 50px;
-			cursor: pointer;
-			font-weight: 600;
-			transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-			box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-			color: #ccc;
-			backdrop-filter: blur(10px);
-			position: relative;
-			overflow: hidden;
-		}
-
-		.category-btn::before {
-			content: '';
-			position: absolute;
-			top: 0;
-			left: -100%;
-			width: 100%;
-			height: 100%;
-			background: linear-gradient(90deg,
-					transparent,
-					rgba(255, 255, 255, 0.1),
-					transparent);
-			transition: left 0.5s;
-		}
-
-		.category-btn:hover::before {
-			left: 100%;
-		}
-
-		.category-btn:hover {
-			transform: translateY(-3px) scale(1.05);
-			box-shadow:
-				0 8px 25px rgba(255, 20, 147, 0.3),
-				0 0 0 1px rgba(255, 255, 255, 0.1);
-			color: #fff;
-		}
-
-		.category-btn.active {
-			background: linear-gradient(45deg, #ff1493, #00bfff);
-			color: white;
-			box-shadow:
-				0 0 20px rgba(255, 20, 147, 0.4),
-				0 0 40px rgba(0, 191, 255, 0.2);
-		}
-
-		.phrases-container {
-			display: grid;
-			grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-			gap: 30px;
-		}
-
-		.phrase-card {
-			background: rgba(255, 255, 255, 0.05);
-			border-radius: 20px;
-			padding: 30px;
-			box-shadow:
-				0 8px 32px rgba(0, 0, 0, 0.3),
-				inset 0 1px 0 rgba(255, 255, 255, 0.1);
-			transition: all 0.4s ease;
-			display: flex;
-			flex-direction: column;
-			height: 100%;
-			border: 1px solid rgba(255, 255, 255, 0.05);
-			backdrop-filter: blur(10px);
-			position: relative;
-			overflow: hidden;
-		}
-
-		.phrase-card::after {
-			content: '';
-			position: absolute;
-			top: 0;
-			left: 0;
-			right: 0;
-			height: 1px;
-			background: linear-gradient(90deg,
-					transparent,
-					#ff1493,
-					#00bfff,
-					transparent);
-		}
-
-		.phrase-card:hover {
-			transform: translateY(-8px) scale(1.02);
-			box-shadow:
-				0 15px 40px rgba(255, 20, 147, 0.3),
-				0 0 0 1px rgba(255, 255, 255, 0.1);
-			background: rgba(255, 255, 255, 0.08);
-		}
-
-		.russian {
-			font-size: 1.3rem;
-			font-weight: 600;
-			margin-bottom: 20px;
-			color: #fff;
-			border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-			padding-bottom: 15px;
-			text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-		}
-
-		.korean {
-			font-size: 1.8rem;
-			margin-bottom: 12px;
-			color: #fff;
-			font-weight: 700;
-			text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-		}
-
-		.transcription {
-			color: #00bfff;
-			font-style: italic;
-			margin-bottom: 20px;
-			font-size: 1.1rem;
-			text-shadow: 0 0 10px rgba(0, 191, 255, 0.3);
-		}
-
-		.category-title {
-			font-size: 2.5rem;
-			text-align: center;
-			margin: 40px 0;
-			color: #fff;
-			position: relative;
-			text-shadow: 0 0 20px rgba(255, 20, 147, 0.5);
-		}
-
-		.category-title::after {
-			content: '';
-			display: block;
-			width: 120px;
-			height: 4px;
-			background: linear-gradient(to right, #ff1493, #00bfff);
-			margin: 15px auto;
-			border-radius: 2px;
-			box-shadow: 0 0 10px rgba(255, 20, 147, 0.5);
-		}
-
-		footer {
-			text-align: center;
-			margin-top: 60px;
-			padding: 30px;
-			color: #888;
-			font-size: 0.9rem;
-			border-top: 1px solid rgba(255, 255, 255, 0.1);
-		}
-
-		/* Анимация появления карточек */
-		@keyframes fadeInUp {
-			from {
-				opacity: 0;
-				transform: translateY(30px);
-			}
-
-			to {
-				opacity: 1;
-				transform: translateY(0);
-			}
-		}
-
-		.phrase-card {
-			animation: fadeInUp 0.6s ease forwards;
-		}
-
-		/* Адаптивность */
-		@media (max-width: 768px) {
-			.phrases-container {
-				grid-template-columns: 1fr;
-				gap: 20px;
-			}
-
-			h1 {
-				font-size: 2.2rem;
-			}
-
-			.category-btn {
-				padding: 12px 20px;
-				font-size: 0.9rem;
-			}
-		}
-
-		/* Скроллбар */
-		::-webkit-scrollbar {
-			width: 8px;
-		}
-
-		::-webkit-scrollbar-track {
-			background: rgba(255, 255, 255, 0.05);
-		}
-
-		::-webkit-scrollbar-thumb {
-			background: linear-gradient(#ff1493, #00bfff);
-			border-radius: 4px;
-		}
-
-		::-webkit-scrollbar-thumb:hover {
-			background: linear-gradient(#ff1493, #00bfff);
-			opacity: 0.8;
-		}
-
-	</style>
-
 
 
 	<style>
@@ -582,34 +265,6 @@
 
 			100% {
 				left: 100%;
-			}
-		}
-
-		h1 {
-			text-align: center;
-			font-size: 2.5rem;
-			margin-bottom: 30px;
-			text-shadow:
-				0 0 20px rgba(255, 20, 147, 0.5),
-				0 0 40px rgba(0, 191, 255, 0.3);
-			background: linear-gradient(45deg, #ff1493, #00bfff, #da70d6);
-			-webkit-background-clip: text;
-			-webkit-text-fill-color: transparent;
-			background-size: 200% 200%;
-			animation: gradientShift 3s ease infinite;
-		}
-
-		@keyframes gradientShift {
-			0% {
-				background-position: 0% 50%;
-			}
-
-			50% {
-				background-position: 100% 50%;
-			}
-
-			100% {
-				background-position: 0% 50%;
 			}
 		}
 
@@ -823,10 +478,6 @@
 				padding: 20px;
 			}
 
-			h1 {
-				font-size: 2rem;
-			}
-
 			.task-card h2 {
 				font-size: 1.5rem;
 			}
@@ -858,12 +509,6 @@
 	</style>
 
 	<style>
-		h1 {
-			color: #2c3e50;
-			margin-bottom: 10px;
-			font-size: 24px;
-		}
-
 		.subtitle {
 			color: #7f8c8d;
 			margin-bottom: 30px;
@@ -994,20 +639,9 @@
 			flex-direction: row;
 		}
 
-		.grid input {
-			width: 50px;
-		}
 
 		.python {
 			text-decoration: underline;
-		}
-
-		p {
-			font-size: 20px;
-		}
-
-		.gold {
-			color: gold;
 		}
 
 		h1 {
@@ -1062,13 +696,15 @@
 
 <body>
 	<div class="container">
-		<a class="python" href="korean.html">Korean 안 녕</a>
-		<p>Доступные фразы: <span class="gold">3</span></p>
-	</div>
-	<div class="container">
-		<a class="python" href="python/index.html">Python</a>
-		<p>Доступных тренажеров: <span class="gold">18</span></p>
-	</div>
+			<input type="text" class="input-field" id="a3" placeholder="привет">
+
+		<label for="a4">
+			<div class="grid">
+				<input type="text" class="input-field" id="a3" placeholder="DKS SU D ㅇㅏㄴ ㄴㅕㅇ">
+			</div>
+		</label></div>
+
+
 </body>
 
 </html>
