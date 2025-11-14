@@ -14,7 +14,7 @@
 
 		body {
 			background-color: #000;
-			color: #333;
+			color: #fff;
 			line-height: 1.5;
 			padding: 0;
 			margin: 0;
@@ -137,91 +137,8 @@
 			flex: 1;
 			font-size: 0.95rem;
 		}
-
-		.quiz-container {
-			background: white;
-			border-radius: 10px;
-			padding: 18px;
-			margin-top: 15px;
-			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-		}
-
-		.quiz-question {
-			font-weight: bold;
-			margin-bottom: 12px;
-			font-size: 1rem;
-		}
-
-		.quiz-options {
-			margin-bottom: 15px;
-		}
-
-		.quiz-option {
-			margin-bottom: 8px;
-			padding: 10px;
-			border: 1px solid #e0e0e0;
-			border-radius: 6px;
-			cursor: pointer;
-			transition: all 0.2s;
-			font-size: 0.9rem;
-		}
-
-		.quiz-option:hover {
-			background-color: #f5f5f5;
-		}
-
-		.quiz-option.selected {
-			background-color: #e6f2ff;
-			border-color: #1a5fb4;
-		}
-
-		.quiz-option.correct {
-			background-color: #e6f4ea;
-			border-color: #26a269;
-		}
-
-		.quiz-option.incorrect {
-			background-color: #ffebee;
-			border-color: #c01c28;
-		}
-
-		.quiz-button {
-			background-color: #3584e4;
-			color: white;
-			border: none;
-			padding: 12px 20px;
-			border-radius: 6px;
-			font-weight: bold;
-			cursor: pointer;
-			width: 100%;
-			transition: background-color 0.3s;
-			font-size: 1rem;
-		}
-
-		.quiz-button:hover {
-			background-color: #1a5fb4;
-		}
-
-		.quiz-result {
-			margin-top: 15px;
-			padding: 12px;
-			border-radius: 6px;
-			text-align: center;
-			font-weight: bold;
-			display: none;
-			font-size: 0.95rem;
-		}
-
-		.quiz-result.success {
-			background-color: #e6f4ea;
-			color: #26a269;
-			display: block;
-		}
-
-		.quiz-result.fail {
-			background-color: #ffebee;
-			color: #c01c28;
-			display: block;
+		.accordion-content {
+			color: #222;
 		}
 
 		.nav-buttons {
@@ -270,6 +187,10 @@
 			width: 0%;
 			transition: width 0.3s;
 		}
+		
+		span {
+			color: #222;
+		}
 
 		.accordion {
 			margin-bottom: 10px;
@@ -315,6 +236,9 @@
 		img {
 			border-radius: 10px;
 		}
+		.step-content {
+			color: #fff;
+		}
 	</style>
 </head>
 
@@ -333,11 +257,17 @@
 		<img src="3.png" alt="" width="500">
 	</header>
 
+	<div class="container">
 
-		<div class="section">
-
-			<div class="danger">
-				<p>Штраф за каждый невыбитый чек ОФД - до 10 000 рублей</p>
+		<div class="accordion">
+			<div class="accordion-header">
+				<span>Важная информация</span>
+				<span class="accordion-icon">▼</span>
+			</div>
+			<div class="accordion-content">
+				<div class="danger">
+					<p>Штраф за каждый невыбитый чек ОФД - до 10 000 рублей</p>
+				</div>
 			</div>
 		</div>
 
@@ -395,174 +325,164 @@
 			</div>
 		</div>
 
-		<div class="section">
-			<h2>Способы оплаты</h2>
-
-			<div class="accordion">
-				<div class="accordion-header">
-					<span>Безналичная оплата</span>
-					<span class="accordion-icon">▼</span>
-				</div>
-				<div class="accordion-content">
-					<p><strong>Картой:</strong></p>
-					<ul>
-						<li>Выбрать "Оплата картой"</li>
-						<li>Клиент прикладывает/вставляет карту</li>
-						<li>Сохранить слип-чек до отчетного понедельника</li>
-					</ul>
-
-					<p><strong>QR-код:</strong></p>
-					<ul>
-						<li>Клиент сканирует QR-код</li>
-						<li>Оплачивает в приложении банка</li>
-						<li>Слип-чек не формируется</li>
-					</ul>
-
-					<div class="warning">
-						<p>Всегда проверяйте формирование чека ОФД после оплаты!</p>
-					</div>
-				</div>
+		<div class="accordion">
+			<div class="accordion-header">
+				<span>Способы оплаты</span>
+				<span class="accordion-icon">▼</span>
 			</div>
+			<div class="accordion-content">
+				<div class="accordion">
+					<div class="accordion-header">
+						<span>Безналичная оплата</span>
+						<span class="accordion-icon">▼</span>
+					</div>
+					<div class="accordion-content">
+						<p><strong>Картой:</strong></p>
+						<ul>
+							<li>Выбрать "Оплата картой"</li>
+							<li>Клиент прикладывает/вставляет карту</li>
+							<li>Сохранить слип-чек до отчетного понедельника</li>
+						</ul>
 
-			<div class="accordion">
-				<div class="accordion-header">
-					<span>Наличная оплата</span>
-					<span class="accordion-icon">▼</span>
-				</div>
-				<div class="accordion-content">
-					<ul>
-						<li>Выбрать "Оплата наличными"</li>
-						<li>Ввести полученную сумму</li>
-						<li>Рассчитать и выдать сдачу</li>
-						<li>Передать фискальный чек клиенту</li>
-					</ul>
-					<p>Слип-чек при оплате наличными не формируется</p>
-				</div>
-			</div>
+						<p><strong>QR-код:</strong></p>
+						<ul>
+							<li>Клиент сканирует QR-код</li>
+							<li>Оплачивает в приложении банка</li>
+							<li>Слип-чек не формируется</li>
+						</ul>
 
-			<div class="accordion">
-				<div class="accordion-header">
-					<span>Комбооплата</span>
-					<span class="accordion-icon">▼</span>
+						<div class="warning">
+							<p>Всегда проверяйте формирование чека ОФД после оплаты!</p>
+						</div>
+					</div>
 				</div>
-				<div class="accordion-content">
-					<p>Если клиент оплачивает часть картой, часть наличными:</p>
-					<div class="step">
-						<div class="step-number">1</div>
-						<div class="step-content">Выбрать "Комбооплата"</div>
+
+				<div class="accordion">
+					<div class="accordion-header">
+						<span>Наличная оплата</span>
+						<span class="accordion-icon">▼</span>
 					</div>
-					<div class="step">
-						<div class="step-number">2</div>
-						<div class="step-content">Ввести суммы для каждого способа</div>
+					<div class="accordion-content">
+						<ul>
+							<li>Выбрать "Оплата наличными"</li>
+							<li>Ввести полученную сумму</li>
+							<li>Рассчитать и выдать сдачу</li>
+							<li>Передать фискальный чек клиенту</li>
+						</ul>
+						<p>Слип-чек при оплате наличными не формируется</p>
 					</div>
-					<div class="step">
-						<div class="step-number">3</div>
-						<div class="step-content">Провести безналичную часть</div>
+				</div>
+
+				<div class="accordion">
+					<div class="accordion-header">
+						<span>Комбооплата</span>
+						<span class="accordion-icon">▼</span>
 					</div>
-					<div class="step">
-						<div class="step-number">4</div>
-						<div class="step-content">Принять наличные</div>
+					<div class="accordion-content">
+						<p>Если клиент оплачивает часть картой, часть наличными:</p>
+						<div class="step">
+							<div class="step-number">1</div>
+							<div class="step-content">Выбрать "Комбооплата"</div>
+						</div>
+						<div class="step">
+							<div class="step-number">2</div>
+							<div class="step-content">Ввести суммы для каждого способа</div>
+						</div>
+						<div class="step">
+							<div class="step-number">3</div>
+							<div class="step-content">Провести безналичную часть</div>
+						</div>
+						<div class="step">
+							<div class="step-number">4</div>
+							<div class="step-content">Принять наличные</div>
+						</div>
+						<p>Слип-чеки формируются только для безналичной части</p>
 					</div>
-					<p>Слип-чеки формируются только для безналичной части</p>
 				</div>
 			</div>
 		</div>
 
-		<div class="section">
-			<h2>Контроль чеков ОФД</h2>
-			<p>После каждой оплаты обязательно проверьте формирование чека ОФД:</p>
+		<div class="accordion">
+			<div class="accordion-header">
+				<span>Контроль чеков ОФД</span>
+				<span class="accordion-icon">▼</span>
+			</div>
+			<div class="accordion-content">
+				<p>После каждой оплаты обязательно проверьте формирование чека ОФД:</p>
 
-			<div class="step">
-				<div class="step-number">1</div>
-				<div class="step-content">Нажать на 3 полоски в левом верхнем углу</div>
-			</div>
-			<div class="step">
-				<div class="step-number">2</div>
-				<div class="step-content">Выбрать "Чеки и возвраты"</div>
-			</div>
-			<div class="step">
-				<div class="step-number">3</div>
-				<div class="step-content">Найти свою операцию в списке</div>
-			</div>
+				<div class="step">
+					<div class="step-number">1</div>
+					<div class="step-content">Нажать на 3 полоски в левом верхнем углу</div>
+				</div>
+				<div class="step">
+					<div class="step-number">2</div>
+					<div class="step-content">Выбрать "Чеки и возвраты"</div>
+				</div>
+				<div class="step">
+					<div class="step-number">3</div>
+					<div class="step-content">Найти свою операцию в списке</div>
+				</div>
 
-			<div class="danger">
-				<p>Если операция есть в транзакциях, но отсутствует в чеках ОФД - это ошибка! Необходимо исправить.</p>
+				<div class="danger">
+					<p>Если операция есть в транзакциях, но отсутствует в чеках ОФД - это ошибка! Необходимо исправить.</p>
+				</div>
 			</div>
 		</div>
 
-		<div class="section">
-			<h2>Закрытие смены</h2>
-
-			<div class="step">
-				<div class="step-number">1</div>
-				<div class="step-content">Сформировать X-отчет ("Кассовые операции" → "X-отчет")</div>
+		<div class="accordion">
+			<div class="accordion-header">
+				<span>Закрытие смены</span>
+				<span class="accordion-icon">▼</span>
 			</div>
-			<div class="step">
-				<div class="step-number">2</div>
-				<div class="step-content">Сверить выручку с отчетом</div>
-			</div>
-			<div class="step">
-				<div class="step-number">3</div>
-				<div class="step-content">Проверить отсутствие непереданных чеков ОФД</div>
-			</div>
-			<div class="step">
-				<div class="step-number">4</div>
-				<div class="step-content">Закрыть смену ("Кассовые операции" → "Закрыть смену")</div>
-			</div>
-			<div class="step">
-				<div class="step-number">5</div>
-				<div class="step-content">Касса распечатает Z-отчет</div>
-			</div>
-		</div>
-
-		<div class="section">
-			<h2>Самоинкассация</h2>
-			<p>В конце смены внесите наличные на счет компании:</p>
-
-			<div class="step">
-				<div class="step-number">1</div>
-				<div class="step-content">Посмотреть сумму наличных в Z-отчете</div>
-			</div>
-			<div class="step">
-				<div class="step-number">2</div>
-				<div class="step-content">В банкомате: "Прочие услуги" → "Самоинкассация по логину"</div>
-			</div>
-			<div class="step">
-				<div class="step-number">3</div>
-				<div class="step-content">Ввести логин и пароль</div>
-			</div>
-			<div class="step">
-				<div class="step-number">4</div>
-				<div class="step-content">Внести деньги, выбрав "Выручка от платных услуг"</div>
+			<div class="accordion-content">
+				<div class="step">
+					<div class="step-number">1</div>
+					<div class="step-content">Сформировать X-отчет ("Кассовые операции" → "X-отчет")</div>
+				</div>
+				<div class="step">
+					<div class="step-number">2</div>
+					<div class="step-content">Сверить выручку с отчетом</div>
+				</div>
+				<div class="step">
+					<div class="step-number">3</div>
+					<div class="step-content">Проверить отсутствие непереданных чеков ОФД</div>
+				</div>
+				<div class="step">
+					<div class="step-number">4</div>
+					<div class="step-content">Закрыть смену ("Кассовые операции" → "Закрыть смену")</div>
+				</div>
+				<div class="step">
+					<div class="step-number">5</div>
+					<div class="step-content">Касса распечатает Z-отчет</div>
+				</div>
 			</div>
 		</div>
 
-		<div class="quiz-container">
-			<h2>Проверка знаний</h2>
-			<div class="quiz-question">1. Какой штраф предусмотрен за непробитый чек ОФД?</div>
-			<div class="quiz-options">
-				<div class="quiz-option" data-correct="true">До 10 000 рублей за каждый чек</div>
-				<div class="quiz-option">До 5 000 рублей за смену</div>
-				<div class="quiz-option">Предупреждение от руководства</div>
+		<div class="accordion">
+			<div class="accordion-header">
+				<span>Самоинкассация</span>
+				<span class="accordion-icon">▼</span>
 			</div>
+			<div class="accordion-content">
+				<p>В конце смены внесите наличные на счет компании:</p>
 
-			<div class="quiz-question">2. Сколько чеков формируется при оплате картой?</div>
-			<div class="quiz-options">
-				<div class="quiz-option">Только фискальный чек</div>
-				<div class="quiz-option" data-correct="true">Фискальный чек, чек ОФД и слип-чек</div>
-				<div class="quiz-option">Только чек ОФД</div>
+				<div class="step">
+					<div class="step-number">1</div>
+					<div class="step-content">Посмотреть сумму наличных в Z-отчете</div>
+				</div>
+				<div class="step">
+					<div class="step-number">2</div>
+					<div class="step-content">В банкомате: "Прочие услуги" → "Самоинкассация по логину"</div>
+				</div>
+				<div class="step">
+					<div class="step-number">3</div>
+					<div class="step-content">Ввести логин и пароль</div>
+				</div>
+				<div class="step">
+					<div class="step-number">4</div>
+					<div class="step-content">Внести деньги, выбрав "Выручка от платных услуг"</div>
+				</div>
 			</div>
-
-			<div class="quiz-question">3. Что нужно сделать перед началом работы с кассой?</div>
-			<div class="quiz-options">
-				<div class="quiz-option">Сразу принимать оплату</div>
-				<div class="quiz-option" data-correct="true">Открыть смену и проверить свое ФИО</div>
-				<div class="quiz-option">Распечатать Z-отчет</div>
-			</div>
-
-			<button class="quiz-button" id="check-answers">Проверить ответы</button>
-
-			<div class="quiz-result" id="quiz-result"></div>
 		</div>
 
 		<div class="nav-buttons">
@@ -584,7 +504,7 @@
 
 			// Прогресс-бар
 			function updateProgress() {
-				const sections = document.querySelectorAll('.section, .accordion');
+				const sections = document.querySelectorAll('.accordion');
 				const totalSections = sections.length;
 				const visibleSections = Array.from(sections).filter(section => {
 					const rect = section.getBoundingClientRect();
@@ -599,65 +519,6 @@
 			window.addEventListener('resize', updateProgress);
 			updateProgress();
 
-			// Обработка выбора ответов в тесте
-			const options = document.querySelectorAll('.quiz-option');
-			options.forEach(option => {
-				option.addEventListener('click', function() {
-					// Снимаем выделение со всех вариантов в этом вопросе
-					const parent = this.parentElement;
-					const siblings = parent.querySelectorAll('.quiz-option');
-					siblings.forEach(sibling => {
-						sibling.classList.remove('selected');
-					});
-
-					// Выделяем выбранный вариант
-					this.classList.add('selected');
-				});
-			});
-
-			// Проверка ответов
-			document.getElementById('check-answers').addEventListener('click', function() {
-				let correctAnswers = 0;
-				let totalQuestions = 0;
-
-				// Проверяем каждый вопрос
-				const questionContainers = document.querySelectorAll('.quiz-options');
-				questionContainers.forEach(container => {
-					totalQuestions++;
-
-					const selectedOption = container.querySelector('.quiz-option.selected');
-					if (selectedOption && selectedOption.hasAttribute('data-correct')) {
-						correctAnswers++;
-						selectedOption.classList.add('correct');
-					} else if (selectedOption) {
-						selectedOption.classList.add('incorrect');
-						// Показываем правильный ответ
-						const correctOption = container.querySelector('.quiz-option[data-correct="true"]');
-						if (correctOption) {
-							correctOption.classList.add('correct');
-						}
-					} else {
-						// Если ответ не выбран, показываем правильный
-						const correctOption = container.querySelector('.quiz-option[data-correct="true"]');
-						if (correctOption) {
-							correctOption.classList.add('correct');
-						}
-					}
-				});
-
-				// Показываем результат
-				const resultElement = document.getElementById('quiz-result');
-				const percentage = (correctAnswers / totalQuestions) * 100;
-
-				if (percentage >= 80) {
-					resultElement.textContent = `Поздравляем! Вы ответили правильно на ${correctAnswers} из ${totalQuestions} вопросов. Отличный результат!`;
-					resultElement.className = 'quiz-result success';
-				} else {
-					resultElement.textContent = `Вы ответили правильно на ${correctAnswers} из ${totalQuestions} вопросов. Рекомендуем повторить материал.`;
-					resultElement.className = 'quiz-result fail';
-				}
-			});
-
 			// Навигационные кнопки
 			document.querySelector('.nav-button.next').addEventListener('click', function() {
 				alert('Переход к следующему разделу обучения');
@@ -670,4 +531,5 @@
 			});
 		});
 	</script>
-</body></html>
+</body>
+</html>
