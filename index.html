@@ -84,7 +84,6 @@
 		
 		const letterInputs = document.querySelectorAll('.letter-input');
 		
-		// Фокусируемся на первом поле ввода при загрузке страницы
 		letterInputs[0].focus();
 		
 		letterInputs.forEach((input, index) => {
@@ -121,10 +120,9 @@
 				localStorage.removeItem('test_1_lake', 'true');
 
 				setTimeout(() => {
-					window.location.href = "../index.html";
-				}, 2000); // Увеличил задержку, чтобы пользователь увидел сообщение
+					window.location.href = "0.html";
+				}, 100);
 			} else {
-				// Сброс полей при неправильном вводе
 				letterInputs.forEach(input => {
 					input.value = '';
 				});

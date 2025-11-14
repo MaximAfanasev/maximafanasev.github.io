@@ -20,35 +20,35 @@
 		height: 100vh;
 		overflow: hidden;
 		background-size: 400% 400%;
-			background-image:
-				radial-gradient(circle at 10% 20%, rgba(0, 255, 157, 0.05) 0%, transparent 20%),
-				radial-gradient(circle at 90% 80%, rgba(0, 184, 255, 0.05) 0%, transparent 20%),
-				linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(10, 10, 30, 0.9));
+		background-image:
+			radial-gradient(circle at 10% 20%, rgba(0, 255, 157, 0.05) 0%, transparent 20%),
+			radial-gradient(circle at 90% 80%, rgba(0, 184, 255, 0.05) 0%, transparent 20%),
+			linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(10, 10, 30, 0.9));
+		color: white;
+		text-align: center;
+	}
+
+	#game-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 20px;
+	}
+
+	#input-container {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 10px;
+		max-width: 300px;
 	}
 
 	input {
 		padding: 10px;
-		width: 80%;
-		border: 1px solid #ccc;
-		border-radius: 4px;
-	}
-
-	#result {
-		margin-top: 20px;
-		font-size: 18px;
-		color: #333;
-	}
-
-	#question {
-		font-size: 30px;
-	}
-
-	input[type="text"] {
 		width: 30px;
 		height: 30px;
 		font-size: 24px;
 		text-align: center;
-		margin: 5px;
 		border: none;
 		border-radius: 10px;
 		outline: none;
@@ -61,27 +61,16 @@
 		<div id="input-container">
 			<input type="text" maxlength="1" class="letter-input" />
 			<input type="text" maxlength="1" class="letter-input" />
-			<input type="text" maxlength="1" class="letter-input" /><br>
-			<input type="text" maxlength="1" class="letter-input" /><br>
-			<input type="text" maxlength="1" class="letter-input" /><br>
-			<input type="text" maxlength="1" class="letter-input" />
-			<input type="text" maxlength="1" class="letter-input" /><br>
-			<input type="text" maxlength="1" class="letter-input" /><br>
-			<input type="text" maxlength="1" class="letter-input" /><br>
-			<input type="text" maxlength="1" class="letter-input" /><br>
 			<input type="text" maxlength="1" class="letter-input" />
 			<input type="text" maxlength="1" class="letter-input" />
-		</div>
-		<p id="result"></p>
-	</div>
-
-	<div class="message" id="finalMessage" style="display:none;">
-		<div class="container">
-			<img src="../../img/trophy.png" class="first" alt="">
-			<img src="../../img/trophy2.png" class="second" alt="">
-			<img src="../../img/trophy3.png" class="three" alt="">
-			<img src="../../img/trophy4.png" class="four" alt="">
-			<img src="../../img/trophy5.png" class="five" alt="">
+			<input type="text" maxlength="1" class="letter-input" />
+			<input type="text" maxlength="1" class="letter-input" />
+			<input type="text" maxlength="1" class="letter-input" />
+			<input type="text" maxlength="1" class="letter-input" />
+			<input type="text" maxlength="1" class="letter-input" />
+			<input type="text" maxlength="1" class="letter-input" />
+			<input type="text" maxlength="1" class="letter-input" />
+			<input type="text" maxlength="1" class="letter-input" />
 		</div>
 	</div>
 
@@ -89,38 +78,53 @@
 		const correctSequence = "bbbcdffiltss";
 
 		const letterInputs = document.querySelectorAll('.letter-input');
+		
+		letterInputs[0].focus();
+		
 		letterInputs.forEach((input, index) => {
 			input.addEventListener('input', function() {
 				if (this.value.length === 1) {
-					// Перех
+					// Переходим к следующему полю
 					if (index < letterInputs.length - 1) {
 						letterInputs[index + 1].focus();
 					} else {
 						checkInput();
 					}
-				} else {
-					this.focus();
+				}
+			});
+			
+			// Обработка клавиши Backspace
+			input.addEventListener('keydown', function(e) {
+				if (e.key === 'Backspace' && this.value === '' && index > 0) {
+					letterInputs[index - 1].focus();
 				}
 			});
 		});
 
 		function checkInput() {
 			let userInput = '';
-			letterInputs.forEach(input => userInput += input.value.trim());
-
-			if (userInput.length === 12 && userInput === correctSequence) {
+			letterInputs.forEach(input => {
+				userInput += input.value.trim();
+			});
+			
+			if (userInput === correctSequence) {
 				document.getElementById('game-container').style.display = "none";
-				document.getElementById("finalMessage").style.display = "block";
-
-				localStorage.setItem('test_1_done', 'true');
-				localStorage.removeItem('test_1_lose', 'true');
 
 				setTimeout(() => {
-					window.location.href = "../index.html";
-				}, 3000);
+					window.location.href = "../1.html";
+				}, 100);
 			} else {
 				document.getElementById('result').textContent = 'Попробуйте снова!'; // Сообщение об ошибке
+				
+				// Очищаем поля ввода через небольшую задержку
+				setTimeout(() => {
+					letterInputs.forEach(input => {
+						input.value = '';
+					});
+					letterInputs[0].focus();
+				}, 1000);
 			}
 		}
 	</script>
-</body></html>
+</body>
+</html>
