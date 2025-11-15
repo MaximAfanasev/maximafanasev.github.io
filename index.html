@@ -3,13 +3,67 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>CHOOSE</title>
+	<title>안녕</title>
 	<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-	<div class="flex">
-		<a href="korean1.html">안녕</a>
-		<a href="python1.html">🐍</a>
+	<div id="game-container">
+		<div id="input-container">
+			<input type="text" maxlength="1" class="letter-input" placeholder="ㅇ"/>
+			<input type="text" maxlength="1" class="letter-input" placeholder="ㅏ"/>
+			<input type="text" maxlength="1" class="letter-input" placeholder="ㄴ"/>
+			<input type="text" maxlength="1" class="letter-input" placeholder="ㄴ"/>
+			<input type="text" maxlength="1" class="letter-input" placeholder="ㅕ"/>
+			<input type="text" maxlength="1" class="letter-input" placeholder="ㅇ"/>
+		</div>
 	</div>
-</body></html>
+	
+	<script>
+		const correctSequence = "ㅇㅏㄴㄴㅕㅇ";
+		
+		const letterInputs = document.querySelectorAll('.letter-input');
+		
+		letterInputs[0].focus();
+		
+		letterInputs.forEach((input, index) => {
+			input.addEventListener('input', function() {
+				if (this.value.length === 1) {
+					if (index < letterInputs.length - 1) {
+						letterInputs[index + 1].focus();
+					} else {
+						checkInput();
+					}
+				}
+			});
+			
+			input.addEventListener('keydown', function(e) {
+				if (e.key === 'Backspace' && this.value === '' && index > 0) {
+					letterInputs[index - 1].focus();
+				}
+			});
+		});
+
+		function checkInput() {
+			let userInput = '';
+			letterInputs.forEach(input => {
+				userInput += input.value;
+			});
+			
+			if (userInput === correctSequence) {
+				document.getElementById('game-container').style.display = "none";
+
+				setTimeout(() => {
+					window.location.href = "index.html";
+				}, 100);
+			} else {
+				letterInputs.forEach(input => {
+					input.value = '';
+				});
+				letterInputs[0].focus();
+				alert("Неправильно! Попробуйте снова.");
+			}
+		}
+	</script>
+</body>
+</html>
