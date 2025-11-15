@@ -75,10 +75,6 @@
 		</div>
 	</div>
 
-	<div id="finalMessage">
-		Правильно!
-	</div>
-
 	<script>
 		const correctSequence = "ㅇㅏㄴㄴㅕㅇ"; // "Привет" на корейском
 		
@@ -114,10 +110,6 @@
 			
 			if (userInput === correctSequence) {
 				document.getElementById('game-container').style.display = "none";
-				document.getElementById("finalMessage").style.display = "block";
-
-				localStorage.setItem('test_1_done', 'true');
-				localStorage.removeItem('test_1_lake', 'true');
 
 				setTimeout(() => {
 					window.location.href = "0.html";
