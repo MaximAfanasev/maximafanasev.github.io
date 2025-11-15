@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<title>안녕</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<div id="game-container">
+		<input type="text" id="single-input" placeholder="" />
+		
+		<button id="check-button">안녕</button>
+		<div id="result"></div>
+	</div>
+
+	<script>
+		const correctSequence = "안녕";
+		
+		const singleInput = document.getElementById('single-input');
+		const checkButton = document.getElementById('check-button');
+		const resultElement = document.getElementById('result');
+		
+		singleInput.focus();
+		
+		checkButton.addEventListener('click', checkInput);
+		
+		singleInput.addEventListener('keypress', function(e) {
+			if (e.key === 'Enter') {
+				checkInput();
+			}
+		});
+		
+		singleInput.addEventListener('input', function() {
+			singleInput.classList.remove('correct', 'incorrect');
+			resultElement.textContent = '';
+		});
+		
+		function checkInput() {
+			const userInput = singleInput.value.trim();
+			
+			if (userInput === '') {
+				resultElement.textContent = 'Пожалуйста, введите слово';
+				resultElement.style.color = '#ff6b6b';
+				return;
+			}
+			
+			if (userInput === correctSequence) {
+				singleInput.classList.add('correct');
+				resultElement.textContent = 'Правильно!';
+				resultElement.style.color = '#51cf66';
+				
+				setTimeout(() => {
+					document.getElementById('game-container').style.display = "none";
+					
+					setTimeout(() => {
+						window.location.href = "../index.html";
+					}, 100);
+				}, 100);
+				
+			}
+			}
+		}
+	</script>
+</body>
+</html>

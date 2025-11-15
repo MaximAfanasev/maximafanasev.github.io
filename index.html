@@ -3,125 +3,13 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Корейская головоломка</title>
+	<title>CHOOSE</title>
+	<link rel="stylesheet" href="style.css">
 </head>
 
-<style>
-	body {
-		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-		margin: 0;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		height: 100vh;
-		overflow: hidden;
-		background-size: 400% 400%;
-		background-image:
-			radial-gradient(circle at 10% 20%, rgba(0, 255, 157, 0.05) 0%, transparent 20%),
-			radial-gradient(circle at 90% 80%, rgba(0, 184, 255, 0.05) 0%, transparent 20%),
-			linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(10, 10, 30, 0.9));
-		color: white;
-		text-align: center;
-	}
-
-	#game-container {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 20px;
-	}
-
-	#input-container {
-		display: flex;
-		gap: 10px;
-	}
-
-	input {
-		padding: 10px;
-		width: 30px;
-		height: 30px;
-		font-size: 24px;
-		text-align: center;
-		border: none;
-		border-radius: 10px;
-		outline: none;
-		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-	}
-
-	#finalMessage {
-		display: none;
-		font-size: 24px;
-		padding: 20px;
-		background-color: rgba(0, 0, 0, 0.7);
-		border-radius: 10px;
-	}
-
-	#hint {
-		font-size: 14px;
-		color: rgba(255, 255, 255, 0.7);
-	}
-</style>
-
 <body>
-	<div id="game-container">
-		<p id="hint">ㅇ ㅏ ㄴ ㄴ ㅕ ㅇ (d k s s u d)</p>
-		<div id="input-container">
-			<input type="text" maxlength="1" class="letter-input" />
-			<input type="text" maxlength="1" class="letter-input" />
-			<input type="text" maxlength="1" class="letter-input" />
-			<input type="text" maxlength="1" class="letter-input" />
-			<input type="text" maxlength="1" class="letter-input" />
-			<input type="text" maxlength="1" class="letter-input" />
-		</div>
+	<div class="flex">
+		<a href="korean1.html">안녕</a>
+		<a href="python1.html">🐍</a>
 	</div>
-
-	<script>
-		const correctSequence = "ㅇㅏㄴㄴㅕㅇ"; // "Привет" на корейском
-		
-		const letterInputs = document.querySelectorAll('.letter-input');
-		
-		letterInputs[0].focus();
-		
-		letterInputs.forEach((input, index) => {
-			input.addEventListener('input', function() {
-				if (this.value.length === 1) {
-					// Переходим к следующему полю
-					if (index < letterInputs.length - 1) {
-						letterInputs[index + 1].focus();
-					} else {
-						checkInput();
-					}
-				}
-			});
-			
-			// Обработка клавиши Backspace
-			input.addEventListener('keydown', function(e) {
-				if (e.key === 'Backspace' && this.value === '' && index > 0) {
-					letterInputs[index - 1].focus();
-				}
-			});
-		});
-
-		function checkInput() {
-			let userInput = '';
-			letterInputs.forEach(input => {
-				userInput += input.value;
-			});
-			
-			if (userInput === correctSequence) {
-				document.getElementById('game-container').style.display = "none";
-
-				setTimeout(() => {
-					window.location.href = "0.html";
-				}, 100);
-			} else {
-				letterInputs.forEach(input => {
-					input.value = '';
-				});
-				letterInputs[0].focus();
-				alert("Неправильно! Попробуйте снова.");
-			}
-		}
-	</script>
-</body>
-</html>
+</body></html>
