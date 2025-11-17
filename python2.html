@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Python Types</title>
+	<link rel="stylesheet" href="style.css">
+	<style>
+		input {
+			width: 200px;
+		}
+
+	</style>
+</head>
+
+<body>
+	<div id="game-container">
+		<div id="progress-container">
+			<div class="progress-circle" data-word="bool"></div>
+			<div class="progress-circle" data-word="bytearray"></div>
+			<div class="progress-circle" data-word="bytes"></div>
+			<div class="progress-circle" data-word="complex"></div>
+			<div class="progress-circle" data-word="dict"></div>
+			<div class="progress-circle" data-word="float"></div>
+			<div class="progress-circle" data-word="frozenset"></div>
+			<div class="progress-circle" data-word="int"></div>
+			<div class="progress-circle" data-word="list"></div>
+			<div class="progress-circle" data-word="tuple"></div>
+			<div class="progress-circle" data-word="set"></div>
+			<div class="progress-circle" data-word="str"></div>
+		</div>
+		<div id="input-container">
+			<input type="text" class="letter-input" placeholder="Введите слово" />
+		</div>
+	</div>
+
+	<script>
+		const correctWords = ["bool", "bytearray", "bytes", "complex", "dict", "float", "frozenset", "int", "list", "tuple", "set", "str"];
+		let currentWordIndex = 0;
+
+		const input = document.querySelector('.letter-input');
+		const progressCircles = document.querySelectorAll('.progress-circle');
+
+		input.focus();
+
+		input.addEventListener('input', function() {
+			const userInput = this.value.toLowerCase();
+			const currentWord = correctWords[currentWordIndex];
+
+			if (userInput === currentWord) {
+				// Подсвечиваем текущий кружок зеленым
+				progressCircles[currentWordIndex].classList.add('correct');
+
+				this.value = '';
+				currentWordIndex++;
+
+				if (currentWordIndex >= correctWords.length) {
+					document.getElementById('game-container').style.display = "none";
+					setTimeout(() => {
+						window.location.href = "success.html";
+					}, 100);
+				}
+			} else if (!currentWord.startsWith(userInput)) {
+				this.value = '';
+			}
+		});
+
+		input.addEventListener('keydown', function(e) {
+			if (e.key === 'Enter') {
+				checkInput();
+			}
+		});
+
+		function checkInput() {
+			const userInput = input.value.toLowerCase();
+
+			if (userInput === correctWords[currentWordIndex]) {
+				// Подсвечиваем текущий кружок зеленым
+				progressCircles[currentWordIndex].classList.add('correct');
+
+				input.value = '';
+				currentWordIndex++;
+
+				if (currentWordIndex >= correctWords.length) {
+					document.getElementById('game-container').style.display = "none";
+					setTimeout(() => {
+						window.location.href = "success.html";
+					}, 100);
+				}
+			} else {
+				input.value = '';
+				alert("Неправильно! Попробуйте снова.");
+			}
+		}
+
+	</script>
+
+	<style>
+		#progress-container {
+			display: flex;
+			justify-content: center;
+			gap: 10px;
+			margin-bottom: 20px;
+			flex-wrap: wrap;
+		}
+
+		.progress-circle {
+			width: 15px;
+			height: 15px;
+			border-radius: 50%;
+			border: 2px solid #ccc;
+			background-color: transparent;
+			transition: background-color 0.3s ease;
+		}
+
+		.progress-circle.correct {
+			background-color: #4CAF50;
+			border-color: #4CAF50;
+		}
+
+	</style>
+</body>
+
+</html>
