@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>안녕</title>
+	<link rel="stylesheet" href="style.css">
+	<style>
+		input {
+			width: 100px;
+			height: 40px;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="game-container">
+		<div id="input-container">
+			<input type="text" class="word-input" placeholder="안녕" id="word-input" autocomplete="off">
+		</div>
+		<button class="check-button" id="submit-btn">Check</button>
+	</div>
+
+	<script>
+		const correctWord = "안녕";
+		const wordInput = document.getElementById('word-input');
+		const submitBtn = document.getElementById('submit-btn');
+
+		wordInput.focus();
+
+		submitBtn.addEventListener('click', checkInput);
+
+		wordInput.addEventListener('keydown', function(e) {
+			if (e.key === 'Enter') {
+				checkInput();
+			}
+		});
+
+		function checkInput() {
+			const userInput = wordInput.value.trim();
+
+			if (userInput === correctWord) {
+				setTimeout(() => {
+					window.location.href = "python.html";
+				}, 100);
+			} else {
+				wordInput.value = '';
+				wordInput.focus();
+				alert("Неправильно! Попробуйте снова.");
+			}
+		}
+	</script>
+</body></html>

@@ -38,6 +38,7 @@
 		let currentWordIndex = 0;
 
 		const input = document.querySelector('.letter-input');
+		input.focus();
 		const progressCircles = document.querySelectorAll('.progress-circle');
 
 		input.addEventListener('input', function() {
@@ -81,7 +82,7 @@
 				if (currentWordIndex >= correctWords.length) {
 					document.getElementById('game-container').style.display = "none";
 					setTimeout(() => {
-						window.location.href = "python3.html"; 
+						window.location.href = "python3.html";
 					}, 100);
 				}
 			} else {
