@@ -7,9 +7,8 @@
 	<link rel="stylesheet" href="style.css">
 	<style>
 		input {
-			width: 200px;
+			width: 200px
 		}
-
 	</style>
 </head>
 
@@ -41,8 +40,6 @@
 		const input = document.querySelector('.letter-input');
 		const progressCircles = document.querySelectorAll('.progress-circle');
 
-		input.focus();
-
 		input.addEventListener('input', function() {
 			const userInput = this.value.toLowerCase();
 			const currentWord = correctWords[currentWordIndex];
@@ -57,7 +54,7 @@
 				if (currentWordIndex >= correctWords.length) {
 					document.getElementById('game-container').style.display = "none";
 					setTimeout(() => {
-						window.location.href = "success.html";
+						window.location.href = "index.html";
 					}, 100);
 				}
 			} else if (!currentWord.startsWith(userInput)) {
@@ -92,7 +89,6 @@
 				alert("Неправильно! Попробуйте снова.");
 			}
 		}
-
 	</script>
 
 	<style>
@@ -117,8 +113,5 @@
 			background-color: #4CAF50;
 			border-color: #4CAF50;
 		}
-
 	</style>
-</body>
-
-</html>
+</body></html>

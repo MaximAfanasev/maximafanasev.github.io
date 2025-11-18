@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Тренажер команды print</title>
+	<link rel="stylesheet" href="style.css">
+	<style>
+		input {
+			width: 200px
+		}
+	</style>
+</head>
+
+<body>
+	<div class="flex">
+		<input class="long code-input" type="text" id="codeInput" placeholder="print('안녕 Мир')">
+
+		<button class="check-button" id="executeBtn">check</button>
+		<div class="output" id="output"></div>
+	</div>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			const codeInput = document.getElementById('codeInput');
+			const executeBtn = document.getElementById('executeBtn');
+			const output = document.getElementById('output');
+
+			// Фокус на поле ввода при загрузке страницы
+			codeInput.focus();
+
+			// Обработчик нажатия кнопки
+			executeBtn.addEventListener('click', executeCode);
+
+			// Обработчик нажатия Enter в поле ввода
+			codeInput.addEventListener('keypress', function(e) {
+				if (e.key === 'Enter') {
+					executeCode();
+				}
+			});
+
+			function executeCode() {
+				const userInput = codeInput.value.trim();
+				const correctCommand = "print('안녕 Мир')";
+
+				// Очищаем предыдущий вывод
+				output.innerHTML = '';
+
+				if (userInput === correctCommand) {
+					output.innerHTML = '<span class="correct">✓ Правильно!</span>';
+					setTimeout(() => {
+						window.location.href = "index.html";
+					}, 1000);
+				} else {
+					output.innerHTML = '<span class="incorrect">✗ Неправильно! Проверьте:</span><br>';
+					output.innerHTML += '- Правильность написания "print"<br>';
+					output.innerHTML += '- Наличие скобок и кавычек<br>';
+					output.innerHTML += '- Правильность текста внутри кавычек<br><br>';
+					output.innerHTML += '<span class="correct">Ожидалось: ' + correctCommand + '</span>';
+				}
+			}
+		});
+	</script>
+</body></html>
