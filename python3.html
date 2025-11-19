@@ -14,7 +14,7 @@
 
 <body>
 	<div class="flex">
-		<input class="long code-input" type="text" id="codeInput" placeholder="print('안녕 Мир')" autocomplete="off">
+		<input class="long code-input" type="text" id="codeInput" placeholder="print('Hello world')" autocomplete="off">
 		<button class="check-button" id="executeBtn">check</button>
 		<div class="output" id="output"></div>
 	</div>
@@ -40,7 +40,7 @@
 
 			function executeCode() {
 				const userInput = codeInput.value.trim();
-				const correctCommand = "print('안녕 Мир')";
+				const correctCommand = "print('Hello world')";
 
 				// Очищаем предыдущий вывод
 				output.innerHTML = '';
