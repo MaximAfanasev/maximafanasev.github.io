@@ -154,3 +154,8 @@
 			transform: rotate(360deg);
 		}
 	}
+
+
+	textarea {
+		border-radius: 10px;
+	}

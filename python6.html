@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Тренажер команды print</title>
+	<link rel="stylesheet" href="style.css">
+	<style>
+		input {
+			width: 200px
+		}
+	</style>
+</head>
+
+<body>
+	<div class="flex">
+		<textarea name="" id="" cols="10" rows="12" placeholder="bool
+bytearray
+bytes
+complex
+dict
+float
+frozenset
+int
+list
+tuple
+set
+str
+		"></textarea>
+	</div>
+
+	<script>
+		let types = [
+			'bool',
+			'bytearray',
+			'bytes',
+			'complex',
+			'dict',
+			'float',
+			'frozenset',
+			'int',
+			'list',
+			'tuple',
+			'set',
+			'str'
+		]
+		document.addEventListener('DOMContentLoaded', function() {
+			const codeInput = document.getElementById('codeInput');
+			const executeBtn = document.getElementById('executeBtn');
+			const output = document.getElementById('output');
+
+			// Фокус на поле ввода при загрузке страницы
+			codeInput.focus();
+
+			// Обработчик нажатия кнопки
+			executeBtn.addEventListener('click', executeCode);
+
+			// Обработчик нажатия Enter в поле ввода
+			codeInput.addEventListener('keypress', function(e) {
+				if (e.key === 'Enter') {
+					executeCode();
+				}
+			});
+
+			function executeCode() {
+				const userInput = codeInput.value.trim();
+				const correctCommand = "print('Hello world')";
+
+				// Очищаем предыдущий вывод
+				output.innerHTML = '';
+
+				if (userInput === correctCommand) {
+					setTimeout(() => {
+						window.location.href = "python4.html";
+					}, 100);
+				} else {}
+			}
+		});
+	</script>
+</body></html>
