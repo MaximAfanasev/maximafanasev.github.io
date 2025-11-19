@@ -459,12 +459,10 @@
 					}, 300); // Задержка 2 секунды перед показом следующего вопроса
 				} else {
 					// Показать поздравления
-					document.getElementById("quiz-container").style.display = "none";
-					document.getElementById("finalMessage").style.display = "block";
 					setTimeout(() => {
-						window.location.href = "3.html";
+						window.location.href = "python5.html";
 						startRedirectCountdown()
-					}, 5000); // Задержка 2 секунды перед показом поздравления
+					}, 100);
 				}
 			} else {
 				button.classList.add('wrong');
