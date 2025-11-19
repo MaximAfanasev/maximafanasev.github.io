@@ -9,25 +9,63 @@
 		input {
 			width: 200px
 		}
+
+		ul {
+			margin: 0;
+			padding: 0;
+			gap: 10px;
+			display: flex;
+			flex-wrap: wrap;
+			width: 200px;
+		}
+
+		li {
+			list-style: none;
+			font-size: 10px;
+		}
 	</style>
 </head>
 
 <body>
 	<div id="game-container">
-		<div id="progress-container">
-			<div class="progress-circle" data-word="bool"></div>
-			<div class="progress-circle" data-word="bytearray"></div>
-			<div class="progress-circle" data-word="bytes"></div>
-			<div class="progress-circle" data-word="complex"></div>
-			<div class="progress-circle" data-word="dict"></div>
-			<div class="progress-circle" data-word="float"></div>
-			<div class="progress-circle" data-word="frozenset"></div>
-			<div class="progress-circle" data-word="int"></div>
-			<div class="progress-circle" data-word="list"></div>
-			<div class="progress-circle" data-word="tuple"></div>
-			<div class="progress-circle" data-word="set"></div>
-			<div class="progress-circle" data-word="str"></div>
-		</div>
+		<ul>
+			<li>
+				<div class="progress-circle" data-word="bool"></div>bool
+			</li>
+			<li>
+				<div class="progress-circle" data-word="bytearray"></div>bytearray
+			</li>
+			<li>
+				<div class="progress-circle" data-word="bytes"></div>bytes
+			</li>
+			<li>
+				<div class="progress-circle" data-word="complex"></div>complex
+			</li>
+			<li>
+				<div class="progress-circle" data-word="dict"></div>dict
+			</li>
+			<li>
+				<div class="progress-circle" data-word="float"></div>float
+			</li>
+			<li>
+				<div class="progress-circle" data-word="frozenset"></div>frozenset
+			</li>
+			<li>
+				<div class="progress-circle" data-word="int"></div>int
+			</li>
+			<li>
+				<div class="progress-circle" data-word="list"></div>list
+			</li>
+			<li>
+				<div class="progress-circle" data-word="tuple"></div>tuple
+			</li>
+			<li>
+				<div class="progress-circle" data-word="set"></div>set
+			</li>
+			<li>
+				<div class="progress-circle" data-word="str"></div>str
+			</li>
+		</ul>
 		<div id="input-container">
 			<input type="text" class="letter-input" placeholder="bbbcdffiltss" />
 		</div>
