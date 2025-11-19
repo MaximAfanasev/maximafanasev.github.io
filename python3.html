@@ -14,8 +14,7 @@
 
 <body>
 	<div class="flex">
-		<input class="long code-input" type="text" id="codeInput" placeholder="print('안녕 Мир')">
-
+		<input class="long code-input" type="text" id="codeInput" placeholder="print('안녕 Мир')" autocomplete="off">
 		<button class="check-button" id="executeBtn">check</button>
 		<div class="output" id="output"></div>
 	</div>
@@ -47,16 +46,10 @@
 				output.innerHTML = '';
 
 				if (userInput === correctCommand) {
-					output.innerHTML = '<span class="correct">✓ Правильно!</span>';
 					setTimeout(() => {
 						window.location.href = "python4.html";
 					}, 100);
 				} else {
-					output.innerHTML = '<span class="incorrect">✗ Неправильно! Проверьте:</span><br>';
-					output.innerHTML += '- Правильность написания "print"<br>';
-					output.innerHTML += '- Наличие скобок и кавычек<br>';
-					output.innerHTML += '- Правильность текста внутри кавычек<br><br>';
-					output.innerHTML += '<span class="correct">Ожидалось: ' + correctCommand + '</span>';
 				}
 			}
 		});
