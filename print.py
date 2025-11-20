@@ -31,4 +31,6 @@ print(10* 'a')
 a = [1,2,3]
 print(a)
 
+print(a[2])
+print(a[0:2])
 
