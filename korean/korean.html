@@ -4,32 +4,29 @@
 <head>
 	<meta charset="UTF-8">
 	<title>안녕</title>
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
 	<div id="game-container">
+		<img src="1.png" alt="">
 		<div id="input-container">
-			<input type="text" maxlength="1" class="letter-input" placeholder="ㅇ"/>
-			<input type="text" maxlength="1" class="letter-input" placeholder="ㅏ"/>
-			<input type="text" maxlength="1" class="letter-input" placeholder="ㄹ"/>
-			<input type="text" maxlength="1" class="letter-input" placeholder="ㅣ"/>
-			<input type="text" maxlength="1" class="letter-input" placeholder="ㅇ"/>
-			<input type="text" maxlength="1" class="letter-input" placeholder="ㅏ"/>
-			<input type="text" maxlength="1" class="letter-input" placeholder="ㄷ"/>
-			<input type="text" maxlength="1" class="letter-input" placeholder="ㅡ"/>
-			<input type="text" maxlength="1" class="letter-input" placeholder="ㄴ"/>
-			<input type="text" maxlength="1" class="letter-input" placeholder="ㅏ"/>
+			<input type="text" maxlength="1" class="letter-input" placeholder="ㅇ" />
+			<input type="text" maxlength="1" class="letter-input" placeholder="ㅏ" />
+			<input type="text" maxlength="1" class="letter-input" placeholder="ㄴ" />
+			<input type="text" maxlength="1" class="letter-input" placeholder="ㄴ" />
+			<input type="text" maxlength="1" class="letter-input" placeholder="ㅕ" />
+			<input type="text" maxlength="1" class="letter-input" placeholder="ㅇ" />
 		</div>
 	</div>
 
 	<script>
-		const correctSequence = "ㅇㅏㄹㅣㅇㅏㄷㅡㄴㅏ";
-		
+		const correctSequence = "ㅇㅏㄴㄴㅕㅇ";
+
 		const letterInputs = document.querySelectorAll('.letter-input');
-		
+
 		letterInputs[0].focus();
-		
+
 		letterInputs.forEach((input, index) => {
 			input.addEventListener('input', function() {
 				if (this.value.length === 1) {
@@ -40,7 +37,7 @@
 					}
 				}
 			});
-			
+
 			input.addEventListener('keydown', function(e) {
 				if (e.key === 'Backspace' && this.value === '' && index > 0) {
 					letterInputs[index - 1].focus();
@@ -53,12 +50,12 @@
 			letterInputs.forEach(input => {
 				userInput += input.value;
 			});
-			
+
 			if (userInput === correctSequence) {
 				document.getElementById('game-container').style.display = "none";
 
 				setTimeout(() => {
-					window.location.href = "korean5.html";
+					window.location.href = "korean2.html";
 				}, 100);
 			} else {
 				letterInputs.forEach(input => {
@@ -69,5 +66,4 @@
 			}
 		}
 	</script>
-</body>
-</html>
+</body></html>

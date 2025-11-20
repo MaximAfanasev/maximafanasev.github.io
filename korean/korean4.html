@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>안녕</title>
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="../style.css">
 	<style>
 		input {
 			width: 100px;
@@ -16,13 +16,13 @@
 <body>
 	<div id="game-container">
 		<div id="input-container">
-			<input type="text" class="word-input" placeholder="안녕" id="word-input" autocomplete="off">
+			<input type="text" class="word-input" placeholder="아리아든아" id="word-input" autocomplete="off">
 		</div>
 		<button class="check-button" id="submit-btn">Check</button>
 	</div>
 
 	<script>
-		const correctWord = "안녕";
+		const correctWord = "아리아드나";
 		const wordInput = document.getElementById('word-input');
 		const submitBtn = document.getElementById('submit-btn');
 
@@ -41,7 +41,7 @@
 
 			if (userInput === correctWord) {
 				setTimeout(() => {
-					window.location.href = "korean3.html";
+					window.location.href = "../index.html";
 				}, 100);
 			} else {
 				wordInput.value = '';
