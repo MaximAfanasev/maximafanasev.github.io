@@ -34,3 +34,28 @@ print(a)
 print(a[2])
 print(a[0:2])
 
+a = [1,2]
+b = [3,4]
+c = [a,b]
+print(c)
+
+c.append(4)
+print(c)
+
+del c[2]
+
+c = a + b
+print(c)
+
+print(c)
+
+print(a*5)
+
+a = (1,2,3)
+print(a)
+
+a = {'a': 1, 'b': 2}
+print(a)
+
+a['a'] = 3
+print(a)
