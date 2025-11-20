@@ -10,21 +10,16 @@
 <body>
 	<div id="game-container">
 		<div id="input-container">
-			<input type="text" maxlength="1" class="letter-input" placeholder="ㅇ"/>
+			<input type="text" maxlength="1" class="letter-input" placeholder="ㄹ"/>
 			<input type="text" maxlength="1" class="letter-input" placeholder="ㅏ"/>
 			<input type="text" maxlength="1" class="letter-input" placeholder="ㄹ"/>
-			<input type="text" maxlength="1" class="letter-input" placeholder="ㅣ"/>
+			<input type="text" maxlength="1" class="letter-input" placeholder="ㅏ"/>
 			<input type="text" maxlength="1" class="letter-input" placeholder="ㅇ"/>
-			<input type="text" maxlength="1" class="letter-input" placeholder="ㅏ"/>
-			<input type="text" maxlength="1" class="letter-input" placeholder="ㄷ"/>
-			<input type="text" maxlength="1" class="letter-input" placeholder="ㅡ"/>
-			<input type="text" maxlength="1" class="letter-input" placeholder="ㄴ"/>
-			<input type="text" maxlength="1" class="letter-input" placeholder="ㅏ"/>
 		</div>
 	</div>
 
 	<script>
-		const correctSequence = "ㅇㅏㄹㅣㅇㅏㄷㅡㄴㅏ";
+		const correctSequence = "ㄹㅏㄹㅏㅇ";
 		
 		const letterInputs = document.querySelectorAll('.letter-input');
 		
@@ -58,7 +53,7 @@
 				document.getElementById('game-container').style.display = "none";
 
 				setTimeout(() => {
-					window.location.href = "korean4.html";
+					window.location.href = "korean.html";
 				}, 100);
 			} else {
 				letterInputs.forEach(input => {
