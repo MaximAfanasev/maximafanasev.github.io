@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дыхание и его значение</title>
+    <style>
+        :root {
+            --bg-primary: #121212;
+            --bg-secondary: #1e1e1e;
+            --bg-tertiary: #2d2d2d;
+            --text-primary: #e0e0e0;
+            --text-secondary: #a0a0a0;
+            --accent: #3498db;
+            --accent-hover: #2980b9;
+            --correct: #27ae60;
+            --correct-light: #2ecc71;
+            --incorrect: #c0392b;
+            --incorrect-light: #e74c3c;
+            --border: #404040;
+            --shadow: rgba(0, 0, 0, 0.5);
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #f5f5f5;
+            --bg-secondary: #ffffff;
+            --bg-tertiary: #f8f9fa;
+            --text-primary: #333333;
+            --text-secondary: #666666;
+            --accent: #3498db;
+            --accent-hover: #2980b9;
+            --correct: #27ae60;
+            --correct-light: #2ecc71;
+            --incorrect: #c0392b;
+            --incorrect-light: #e74c3c;
+            --border: #dddddd;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px var(--shadow);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        h1 {
+            color: var(--text-primary);
+            text-align: center;
+            font-size: 1.8rem;
+        }
+
+        .theme-toggle {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .theme-toggle:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        .intro-text {
+            background-color: var(--bg-tertiary);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 4px solid var(--accent);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .question {
+            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: var(--bg-tertiary);
+            border: 1px solid var(--border);
+        }
+
+        .question-title {
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+            font-size: 1.1rem;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option {
+            padding: 14px 18px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+        }
+
+        .option:hover {
+            background-color: var(--accent);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px var(--shadow);
+        }
+
+        .correct {
+            background-color: var(--correct);
+            border-color: var(--correct-light);
+            color: white;
+        }
+
+        .incorrect {
+            background-color: var(--incorrect);
+            border-color: var(--incorrect-light);
+            color: white;
+        }
+
+        .disabled {
+            pointer-events: none;
+        }
+
+        .feedback {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .correct-feedback {
+            background-color: var(--correct);
+            color: white;
+            border-left: 4px solid var(--correct-light);
+        }
+
+        .incorrect-feedback {
+            background-color: var(--incorrect);
+            color: white;
+            border-left: 4px solid var(--incorrect-light);
+        }
+
+        .reset-btn {
+            display: block;
+            margin: 25px auto 10px;
+            padding: 12px 25px;
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .reset-btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px var(--shadow);
+        }
+
+        /* Адаптивность для мобильных устройств */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            
+            .container {
+                padding: 20px;
+                border-radius: 10px;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+                margin-bottom: 20px;
+            }
+            
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .theme-toggle {
+                align-self: flex-end;
+            }
+            
+            .intro-text {
+                padding: 15px;
+                font-size: 0.95rem;
+            }
+            
+            .question {
+                padding: 15px;
+                margin-bottom: 25px;
+            }
+            
+            .question-title {
+                font-size: 1rem;
+                margin-bottom: 15px;
+            }
+            
+            .option {
+                padding: 12px 15px;
+                font-size: 0.95rem;
+            }
+            
+            .feedback {
+                padding: 12px;
+                font-size: 0.9rem;
+            }
+            
+            .reset-btn {
+                padding: 10px 20px;
+                font-size: 0.95rem;
+                width: 100%;
+                max-width: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 1.3rem;
+            }
+            
+            .intro-text {
+                padding: 12px;
+                font-size: 0.9rem;
+            }
+            
+            .question {
+                padding: 12px;
+            }
+            
+            .option {
+                padding: 10px 12px;
+            }
+        }
+
+        /* Анимация появления элементов */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .question {
+            animation: fadeIn 0.5s ease-out;
+        }
+    </style>
+</head>
+<body data-theme="dark">
+    <div class="container">
+        <div class="header">
+            <h1>Дыхание и его значение</h1>
+        </div>
+        <div id="questions-container">
+        </div>
+        
+        <button class="reset-btn" onclick="resetQuiz()">Сбросить ответы</button>
+    </div>
+
+    <script>
+        // Вопросы и ответы
+        const questions = [
+            {
+                question: "Какой газ необходим организму для окислительных процессов?",
+                options: [
+                    { text: "Кислород", correct: true },
+                    { text: "Азот", correct: false },
+                    { text: "Углекислый газ", correct: false },
+                    { text: "Водород", correct: false }
+                ],
+                explanation: "Кислород необходим для окислительных процессов, в результате которых освобождается энергия из питательных веществ."
+            },
+            {
+                question: "Что является основным источником энергии для организма?",
+                options: [
+                    { text: "Солнечный свет", correct: false },
+                    { text: "Химическая энергия питательных веществ", correct: true },
+                    { text: "Тепло окружающей среды", correct: false },
+                    { text: "Электрические импульсы", correct: false }
+                ],
+                explanation: "Основным источником энергии является химическая энергия питательных веществ, которая освобождается в организме в результате окислительных процессов."
+            },
+            {
+                question: "Какой процесс обеспечивает поступление кислорода в организм?",
+                options: [
+                    { text: "Пищеварение", correct: false },
+                    { text: "Кровообращение", correct: false },
+                    { text: "Дыхание", correct: true },
+                    { text: "Выделение", correct: false }
+                ],
+                explanation: "Дыхание - это процесс, обеспечивающий поступление кислорода из окружающей среды в организм."
+            },
+            {
+                question: "Для чего организму нужна энергия?",
+                options: [
+                    { text: "Только для движения", correct: false },
+                    { text: "Только для мышления", correct: false },
+                    { text: "Для всех процессов жизнедеятельности", correct: true },
+                    { text: "Только для поддержания температуры", correct: false }
+                ],
+                explanation: "Организм человека может нормально существовать только при постоянном поступлении энергии, необходимой для всех процессов жизнедеятельности."
+            }
+        ];
+
+        // Функция для перемешивания массива (алгоритм Фишера-Йетса)
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        // Генерация вопросов на странице
+        function generateQuestions() {
+            const container = document.getElementById('questions-container');
+            container.innerHTML = '';
+
+            // Перемешиваем вопросы
+            const shuffledQuestions = shuffleArray([...questions]);
+            
+            shuffledQuestions.forEach((q, index) => {
+                const questionElement = document.createElement('div');
+                questionElement.className = 'question';
+                
+                const questionTitle = document.createElement('div');
+                questionTitle.className = 'question-title';
+                questionTitle.textContent = `${index + 1}. ${q.question}`;
+                
+                const optionsContainer = document.createElement('div');
+                optionsContainer.className = 'options';
+                
+                // Перемешиваем варианты ответов
+                const shuffledOptions = shuffleArray([...q.options]);
+                
+                shuffledOptions.forEach(option => {
+                    const optionElement = document.createElement('div');
+                    optionElement.className = 'option';
+                    optionElement.textContent = option.text;
+                    optionElement.dataset.correct = option.correct;
+                    
+                    optionElement.addEventListener('click', function() {
+                        handleAnswer(this, q.explanation);
+                    });
+                    
+                    optionsContainer.appendChild(optionElement);
+                });
+                
+                const feedback = document.createElement('div');
+                feedback.className = 'feedback';
+                
+                questionElement.appendChild(questionTitle);
+                questionElement.appendChild(optionsContainer);
+                questionElement.appendChild(feedback);
+                
+                container.appendChild(questionElement);
+            });
+        }
+
+        // Обработка выбора ответа
+        function handleAnswer(selectedOption, explanation) {
+            const isCorrect = selectedOption.dataset.correct === 'true';
+            const options = selectedOption.parentElement.children;
+            const feedback = selectedOption.parentElement.nextElementSibling;
+            
+            // Отключаем все варианты ответа для этого вопроса
+            for (let option of options) {
+                option.classList.add('disabled');
+                
+                // Подсвечиваем правильные и неправильные ответы
+                if (option.dataset.correct === 'true') {
+                    option.classList.add('correct');
+                } else if (option === selectedOption && !isCorrect) {
+                    option.classList.add('incorrect');
+                }
+            }
+            
+            // Показываем объяснение
+            feedback.textContent = explanation;
+            feedback.className = `feedback ${isCorrect ? 'correct-feedback' : 'incorrect-feedback'}`;
+            feedback.style.display = 'block';
+        }
+
+        // Сброс викторины
+        function resetQuiz() {
+            generateQuestions();
+        }
+
+        // Переключение темы
+        function toggleTheme() {
+            const body = document.body;
+            const themeToggle = document.getElementById('themeToggle');
+            const themeText = themeToggle.querySelector('span');
+            
+            if (body.dataset.theme === 'dark') {
+                body.dataset.theme = 'light';
+                themeText.textContent = 'Тёмная тема';
+            } else {
+                body.dataset.theme = 'dark';
+                themeText.textContent = 'Светлая тема';
+            }
+        }
+
+        // Инициализация при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            generateQuestions();
+            document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+        });
+    </script>
+</body>
+</html>
