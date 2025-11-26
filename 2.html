@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Физиология внешнего дыхания</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1a6bb3 0%, #0d4d8c 100%);
+            color: white;
+            padding: 30px 0;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        
+        .university {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            margin: 10px 0;
+            text-align: center;
+        }
+        
+        .author {
+            font-size: 1.2rem;
+            text-align: right;
+            font-style: italic;
+        }
+        
+        .content-section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .content-section:hover {
+            transform: translateY(-5px);
+        }
+        
+        h2 {
+            color: #1a6bb3;
+            border-bottom: 2px solid #eaeaea;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        h3 {
+            color: #2c3e50;
+            margin: 20px 0 10px;
+            font-size: 1.4rem;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 20px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .highlight {
+            background-color: #e8f4fd;
+            padding: 15px;
+            border-left: 4px solid #1a6bb3;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .definition {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #3498db;
+        }
+        
+        .term {
+            font-weight: bold;
+            color: #1a6bb3;
+        }
+        
+        .test-section {
+            background-color: #e8f4fd;
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 40px;
+        }
+        
+        .question {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed #ccc;
+        }
+        
+        .question:last-child {
+            border-bottom: none;
+        }
+        
+        .options {
+            margin-top: 10px;
+        }
+        
+        .option {
+            display: block;
+            margin: 8px 0;
+            padding: 10px;
+            background-color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .option:hover {
+            background-color: #f0f8ff;
+        }
+        
+        .option input {
+            margin-right: 10px;
+        }
+        
+        button {
+            background-color: #1a6bb3;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: background-color 0.3s;
+            display: block;
+            margin: 20px auto;
+        }
+        
+        button:hover {
+            background-color: #0d4d8c;
+        }
+        
+        .result {
+            text-align: center;
+            font-size: 1.3rem;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+        }
+        
+        .correct {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .diagram {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .diagram img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .caption {
+            font-style: italic;
+            color: #666;
+            margin-top: 10px;
+            text-align: center;
+        }
+        
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #f2f6fa;
+            color: #1a6bb3;
+            font-weight: 600;
+        }
+        
+        tr:hover {
+            background-color: #f5f9ff;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .university, .author {
+                text-align: center;
+                margin: 10px 0;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div class="university">Волгоградский государственный медицинский университет<br>Кафедра нормальной физиологии</div>
+                <h1>Физиология внешнего дыхания<br>Обмен газов в лёгких</h1>
+                <div class="author">Кудрин Р.А.</div>
+            </div>
+        </header>
+        
+        <section class="content-section">
+            <h2>1. Основные этапы процесса дыхания</h2>
+            <p>Дыхание — это совокупность процессов, обеспечивающих поступление кислорода в организм, окисление субстратов в клетках и удаление углекислого газа.</p>
+            
+            <div class="definition">
+                <p><span class="term">Дыхание</span> – это совокупность процессов, которые обеспечивают поступление кислорода в организм, окисление субстратов в клетках и удаление образовавшегося при этом углекислого газа из организма.</p>
+            </div>
+            
+            <h3>Этапы дыхания:</h3>
+            <ol>
+                <li><span class="term">Внешнее дыхание</span> — обмен воздуха между внешней средой и альвеолами лёгких.</li>
+                <li><span class="term">Газообмен в лёгких</span> — газообмен между альвеолярным воздухом и кровью в лёгочных капиллярах.</li>
+                <li><span class="term">Транспорт газов кровью</span> — перенос газов кровью к тканям.</li>
+                <li><span class="term">Газообмен в тканях</span> — газообмен между кровью и тканями в тканевых капиллярах.</li>
+                <li><span class="term">Внутреннее (клеточное) дыхание</span> — окисление органических веществ в клетках.</li>
+            </ol>
+            
+            <div class="diagram">
+                <!-- Здесь может быть схема этапов дыхания -->
+                <div style="background-color: #f0f8ff; padding: 20px; border-radius: 8px;">
+                    <p style="text-align: center; font-weight: bold;">Схема процесса дыхания</p>
+                    <p>Атмосферный воздух → Внешнее дыхание → Альвеолярный воздух → Газообмен в лёгких → Артериальная кровь → Транспорт газов → Ткани → Газообмен в тканях → Венозная кровь</p>
+                </div>
+                <p class="caption">Схематическое изображение этапов дыхания</p>
+            </div>
+        </section>
+        
+        <section class="content-section">
+            <h2>2. Дыхательный цикл. Механизм вдоха и выдоха</h2>
+            
+            <p><span class="term">Внешнее дыхание</span> включает в себя обмен воздуха между окружающей средой и лёгкими.</p>
+            
+            <h3>Механизм вдоха:</h3>
+            <ul>
+                <li>Сокращение диафрагмы и наружных межрёберных мышц</li>
+                <li>Увеличение объёма грудной клетки</li>
+                <li>Уменьшение внутрилёгочного давления</li>
+                <li>Поступление воздуха в лёгкие по градиенту давления</li>
+            </ul>
+            
+            <h3>Механизм выдоха:</h3>
+            <ul>
+                <li>Расслабление дыхательных мышц</li>
+                <li>Уменьшение объёма грудной клетки</li>
+                <li>Увеличение внутрилёгочного давления</li>
+                <li>Пассивное удаление воздуха из лёгких</li>
+            </ul>
+            
+            <div class="highlight">
+                <p><strong>Важно:</strong> Спокойный вдох — активный процесс, а спокойный выдох — пассивный.</p>
+            </div>
+            
+            <h3>Давление в плевральной полости:</h3>
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th>Фаза дыхания</th>
+                        <th>Давление (мм рт. ст.)</th>
+                    </tr>
+                    <tr>
+                        <td>Конец максимального выдоха</td>
+                        <td>-1...-2</td>
+                    </tr>
+                    <tr>
+                        <td>Конец спокойного выдоха</td>
+                        <td>-2...-3</td>
+                    </tr>
+                    <tr>
+                        <td>Конец спокойного вдоха</td>
+                        <td>-5...-7</td>
+                    </tr>
+                    <tr>
+                        <td>Конец максимального вдоха</td>
+                        <td>-15...-20</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+        
+        <section class="content-section">
+            <h2>3. Вентиляция лёгких. Объёмные характеристики внешнего дыхания</h2>
+            
+            <p><span class="term">Лёгочная вентиляция</span> — движение воздуха в лёгких во время дыхания.</p>
+            
+            <h3>Основные показатели:</h3>
+            <ul>
+                <li><span class="term">Дыхательный объём (ДО)</span> — количество воздуха, поступающее в лёгкие при одном спокойном вдохе (500 мл).</li>
+                <li><span class="term">Минутный объём дыхания (МОД)</span> — количество воздуха, проходящее через лёгкие за одну минуту (6-8 л).</li>
+                <li><span class="term">Воздух вредного пространства</span> — воздух, заполняющий воздухоносные пути и не участвующий в газообмене (140-150 мл).</li>
+                <li><span class="term">Жизненная ёмкость лёгких (ЖЁЛ)</span> — максимальный объём воздуха, который человек может выдохнуть после максимального вдоха (3500 мл).</li>
+            </ul>
+            
+            <div class="highlight">
+                <p><strong>Эффективность дыхания:</strong> Редкое и глубокое дыхание более эффективно для снабжения организма кислородом, так как вентиляция альвеол увеличивается.</p>
+            </div>
+            
+            <h3>Лёгочные объёмы и ёмкости:</h3>
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th>Показатель</th>
+                        <th>Обозначение</th>
+                        <th>Объём (мл)</th>
+                    </tr>
+                    <tr>
+                        <td>Дыхательный объём</td>
+                        <td>ДО</td>
+                        <td>500</td>
+                    </tr>
+                    <tr>
+                        <td>Резервный объём вдоха</td>
+                        <td>РОВд</td>
+                        <td>1500-2500</td>
+                    </tr>
+                    <tr>
+                        <td>Резервный объём выдоха</td>
+                        <td>РОВыд</td>
+                        <td>1000</td>
+                    </tr>
+                    <tr>
+                        <td>Остаточный объём</td>
+                        <td>ОО</td>
+                        <td>1000-1500</td>
+                    </tr>
+                    <tr>
+                        <td>Жизненная ёмкость лёгких</td>
+                        <td>ЖЁЛ</td>
+                        <td>3500-5000</td>
+                    </tr>
+                    <tr>
+                        <td>Общая ёмкость лёгких</td>
+                        <td>ОЁЛ</td>
+                        <td>4000-6000</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+        
+        <section class="content-section">
+            <h2>4. Газообмен в лёгких</h2>
+            
+            <p>Газообмен в лёгких происходит благодаря разнице парциального давления газов в альвеолярном воздухе и крови.</p>
+            
+            <h3>Парциальное давление газов:</h3>
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th>Среда</th>
+                        <th>pO₂ (мм рт. ст.)</th>
+                        <th>pCO₂ (мм рт. ст.)</th>
+                    </tr>
+                    <tr>
+                        <td>Атмосферный воздух</td>
+                        <td>159</td>
+                        <td>0,23</td>
+                    </tr>
+                    <tr>
+                        <td>Альвеолярный воздух</td>
+                        <td>105</td>
+                        <td>40</td>
+                    </tr>
+                    <tr>
+                        <td>Венозная кровь</td>
+                        <td>40</td>
+                        <td>46</td>
+                    </tr>
+                    <tr>
+                        <td>Артериальная кровь</td>
+                        <td>100</td>
+                        <td>40</td>
+                    </tr>
+                    <tr>
+                        <td>Ткани</td>
+                        <td>20</td>
+                        <td>60</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="highlight">
+                <p><strong>Диффузия газов:</strong> Кислород диффундирует из альвеол в кровь, а углекислый газ — из крови в альвеолы по градиенту парциальных давлений.</p>
+            </div>
+        </section>
+        
+        <section class="content-section">
+            <h2>5. Взаимоотношения между вентиляцией и кровообращением</h2>
+            
+            <p>Нормальное газообмен между воздухом и кровью требует строгого соответствия вентиляции и кровотока.</p>
+            
+            <div class="definition">
+                <p><span class="term">Вентиляционно-перфузионное отношение (V/Q)</span> — отношение альвеолярной вентиляции к лёгочному кровотоку. В норме составляет 0,8.</p>
+            </div>
+            
+            <h3>Нарушения вентиляционно-перфузионных отношений:</h3>
+            <ul>
+                <li><span class="term">V/Q > 0,8</span> — преобладание вентиляции над кровотоком (регионарная гипервентиляция)</li>
+                <li><span class="term">V/Q < 0,8</span> — преобладание кровотока над вентиляцией (регионарная гиповентиляция)</li>
+            </ul>
+            
+            <div class="highlight">
+                <p><strong>Важно:</strong> Нарушения вентиляционно-перфузионных отношений — главная причина гипоксемии при неспецифических заболеваниях лёгких.</p>
+            </div>
+        </section>
+        
+        <section class="content-section">
+            <h2>6. Первый вдох новорождённого</h2>
+            
+            <p>Первый вдох новорождённого обусловлен следующими факторами:</p>
+            
+            <ol>
+                <li>Изменение газового состава крови (накопление углекислого газа, уменьшение кислорода) и ацидоз.</li>
+                <li>Резкое усиление потока афферентных импульсов от холодовых и тактильных рецепторов кожи.</li>
+                <li>Устранение рефлекса ныряльщика — торможения дыхательного центра при раздражении рецепторов жидкостью.</li>
+                <li>Расширение грудной клетки после прохождения через родовые пути.</li>
+            </ol>
+            
+            <div class="highlight">
+                <p><strong>Особенности первого вдоха:</strong> При первом вдохе затрачивается в 10-15 раз больше энергии, чем при последующих вдохах. Он более продолжителен, как и первый выдох.</p>
+            </div>
+            
+            <h3>Показатели дыхания новорождённого:</h3>
+            <ul>
+                <li>Минутный объём дыхания (МОД): 1300 мл</li>
+                <li>Жизненная ёмкость лёгких (ЖЁЛ): 120-140 мл</li>
+                <li>Частота дыхания: около 40 в минуту</li>
+            </ul>
+        </section>
+        
+        <section class="test-section">
+            <h2>Тесты для самопроверки</h2>
+            
+            <div class="question">
+                <p><strong>1. Какой процесс является активным?</strong></p>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q1" value="a"> а) Спокойный выдох</label>
+                    <label class="option"><input type="radio" name="q1" value="b"> б) Спокойный вдох</label>
+                    <label class="option"><input type="radio" name="q1" value="c"> в) Оба пассивны</label>
+                </div>
+                <div class="result" id="result1"></div>
+            </div>
+            
+            <div class="question">
+                <p><strong>2. Жизненная ёмкость лёгких (ЖЁЛ) – это:</strong></p>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q2" value="a"> а) Объём воздуха после спокойного выдоха</label>
+                    <label class="option"><input type="radio" name="q2" value="b"> б) Максимальный объём воздуха после максимального вдоха</label>
+                    <label class="option"><input type="radio" name="q2" value="c"> в) Объём воздуха в дыхательных путях</label>
+                </div>
+                <div class="result" id="result2"></div>
+            </div>
+            
+            <div class="question">
+                <p><strong>3. Парциальное давление кислорода в альвеолярном воздухе составляет:</strong></p>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q3" value="a"> а) 40 мм рт. ст.</label>
+                    <label class="option"><input type="radio" name="q3" value="b"> б) 100 мм рт. ст.</label>
+                    <label class="option"><input type="radio" name="q3" value="c"> в) 159 мм рт. ст.</label>
+                </div>
+                <div class="result" id="result3"></div>
+            </div>
+            
+            <div class="question">
+                <p><strong>4. Нормальное вентиляционно-перфузионное отношение (V/Q) составляет:</strong></p>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q4" value="a"> а) 0,4</label>
+                    <label class="option"><input type="radio" name="q4" value="b"> б) 0,8</label>
+                    <label class="option"><input type="radio" name="q4" value="c"> в) 1,2</label>
+                </div>
+                <div class="result" id="result4"></div>
+            </div>
+            
+            <div class="question">
+                <p><strong>5. Какой из перечисленных факторов НЕ является причиной первого вдоха новорождённого?</strong></p>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q5" value="a"> а) Изменение газового состава крови</label>
+                    <label class="option"><input type="radio" name="q5" value="b"> б) Импульсы от тактильных рецепторов</label>
+                    <label class="option"><input type="radio" name="q5" value="c"> в) Снижение температуры окружающей среды</label>
+                    <label class="option"><input type="radio" name="q5" value="d"> г) Увеличение объёма грудной клетки</label>
+                </div>
+                <div class="result" id="result5"></div>
+            </div>
+            
+            <button id="checkAnswers">Проверить ответы</button>
+        </section>
+    </div>
+
+    <script>
+        document.getElementById('checkAnswers').addEventListener('click', function() {
+            const answers = {
+                q1: 'b',
+                q2: 'b',
+                q3: 'b',
+                q4: 'b',
+                q5: 'c'
+            };
+            
+            let score = 0;
+            
+            for (const question in answers) {
+                const selectedOption = document.querySelector(`input[name="${question}"]:checked`);
+                const resultElement = document.getElementById(`result${question.slice(1)}`);
+                
+                if (selectedOption) {
+                    if (selectedOption.value === answers[question]) {
+                        resultElement.textContent = '✓ Правильно!';
+                        resultElement.className = 'result correct';
+                        score++;
+                    } else {
+                        resultElement.textContent = '✗ Неправильно. Попробуйте еще раз.';
+                        resultElement.className = 'result incorrect';
+                    }
+                    resultElement.style.display = 'block';
+                } else {
+                    const resultElement = document.getElementById(`result${question.slice(1)}`);
+                    resultElement.textContent = 'Пожалуйста, выберите ответ.';
+                    resultElement.className = 'result incorrect';
+                    resultElement.style.display = 'block';
+                }
+            }
+            
+            // Показать общий результат
+            const totalResult = document.createElement('div');
+            totalResult.className = 'result';
+            totalResult.style.display = 'block';
+            totalResult.style.marginTop = '20px';
+            totalResult.style.fontSize = '1.4rem';
+            totalResult.style.fontWeight = 'bold';
+            
+            if (score === Object.keys(answers).length) {
+                totalResult.textContent = `Отлично! Вы ответили правильно на все вопросы (${score}/${Object.keys(answers).length})!`;
+                totalResult.className = 'result correct';
+            } else {
+                totalResult.textContent = `Вы ответили правильно на ${score} из ${Object.keys(answers).length} вопросов.`;
+                totalResult.className = 'result incorrect';
+            }
+            
+            // Удалить предыдущий общий результат, если он есть
+            const existingTotalResult = document.querySelector('.total-result');
+            if (existingTotalResult) {
+                existingTotalResult.remove();
+            }
+            
+            totalResult.classList.add('total-result');
+            document.querySelector('.test-section').appendChild(totalResult);
+        });
+    </script>
+</body>
+</html>
