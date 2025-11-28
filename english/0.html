@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>10 самых популярных существительных в английском</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(270deg, #ff9c9c, #a2d5f2);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+        }
+
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            25% {
+                background-position: 50% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            75% {
+                background-position: 50% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .quiz-container {
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            background: white;
+            width: 90%;
+            max-width: 600px;
+            animation: slideIn 0.5s ease-in-out;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .question-text {
+            font-size: 20px;
+            margin-bottom: 25px;
+            font-weight: bold;
+            color: #444;
+        }
+
+        button {
+            margin: 8px;
+            padding: 15px 25px;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            background-color: #f0c14b;
+            color: #111;
+            border: 1px solid #a88734;
+            width: 90%;
+            max-width: 300px;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            background-color: #e6b236;
+        }
+
+        button.correct {
+            background-color: #4caf50;
+            color: white;
+        }
+
+        button.wrong {
+            background-color: #f44336;
+            color: white;
+        }
+
+        #message {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .question-container {
+            display: none;
+        }
+
+        .congratulations {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .trophy {
+            width: 100px;
+            height: auto;
+            margin: 20px auto;
+        }
+
+        .progress {
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .translation {
+            font-style: italic;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        .hint {
+            font-size: 14px;
+            color: #888;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="quiz-container" id="quiz-container">
+        <div class="question-container" id="question1">
+            <h1>10 самых популярных существительных в английском</h1>
+            <div class="progress">Вопрос 1 из 10</div>
+            <div class="question-text">Выберите правильный перевод слова "time":</div>
+            <div id="options1"></div>
+        </div>
+        <div class="question-container" id="question2">
+            <h1>10 самых популярных существительных в английском</h1>
+            <div class="progress">Вопрос 2 из 10</div>
+            <div class="question-text">Выберите правильный перевод слова "person":</div>
+            <div id="options2"></div>
+        </div>
+        <div class="question-container" id="question3">
+            <h1>10 самых популярных существительных в английском</h1>
+            <div class="progress">Вопрос 3 из 10</div>
+            <div class="question-text">Выберите правильный перевод слова "year":</div>
+            <div id="options3"></div>
+        </div>
+        <div class="question-container" id="question4">
+            <h1>10 самых популярных существительных в английском</h1>
+            <div class="progress">Вопрос 4 из 10</div>
+            <div class="question-text">Выберите правильный перевод слова "way":</div>
+            <div id="options4"></div>
+        </div>
+        <div class="question-container" id="question5">
+            <h1>10 самых популярных существительных в английском</h1>
+            <div class="progress">Вопрос 5 из 10</div>
+            <div class="question-text">Выберите правильный перевод слова "day":</div>
+            <div id="options5"></div>
+        </div>
+        <div class="question-container" id="question6">
+            <h1>10 самых популярных существительных в английском</h1>
+            <div class="progress">Вопрос 6 из 10</div>
+            <div class="question-text">Выберите правильный перевод слова "thing":</div>
+            <div id="options6"></div>
+        </div>
+        <div class="question-container" id="question7">
+            <h1>10 самых популярных существительных в английском</h1>
+            <div class="progress">Вопрос 7 из 10</div>
+            <div class="question-text">Выберите правильный перевод слова "man":</div>
+            <div id="options7"></div>
+        </div>
+        <div class="question-container" id="question8">
+            <h1>10 самых популярных существительных в английском</h1>
+            <div class="progress">Вопрос 8 из 10</div>
+            <div class="question-text">Выберите правильный перевод слова "world":</div>
+            <div id="options8"></div>
+        </div>
+        <div class="question-container" id="question9">
+            <h1>10 самых популярных существительных в английском</h1>
+            <div class="progress">Вопрос 9 из 10</div>
+            <div class="question-text">Выберите правильный перевод слова "life":</div>
+            <div id="options9"></div>
+        </div>
+        <div class="question-container" id="question10">
+            <h1>10 самых популярных существительных в английском</h1>
+            <div class="progress">Вопрос 10 из 10</div>
+            <div class="question-text">Выберите правильный перевод слова "part":</div>
+            <div id="options10"></div>
+        </div>
+        
+        <div class="congratulations" id="congratulations">
+            <h1>Поздравляем!</h1>
+            <div class="trophy">🏆</div>
+            <p>Вы успешно завершили викторину по 10 самым популярным существительным в английском языке!</p>
+            <p id="score"></p>
+            <button onclick="location.reload()">Пройти еще раз</button>
+        </div>
+        
+        <div id="message"></div>
+    </div>
+    
+    <script>
+        const questions = [
+            {
+                question: "Выберите правильный перевод слова \"time\":",
+                options: [
+                    { text: "время", correct: true },
+                    { text: "место", correct: false },
+                    { text: "работа", correct: false },
+                    { text: "дом", correct: false }
+                ],
+                optionsContainerId: "options1",
+                hint: "Это слово связано с часами и календарем"
+            },
+            {
+                question: "Выберите правильный перевод слова \"person\":",
+                options: [
+                    { text: "место", correct: false },
+                    { text: "человек", correct: true },
+                    { text: "работа", correct: false },
+                    { text: "дом", correct: false }
+                ],
+                optionsContainerId: "options2",
+                hint: "Это слово обозначает индивидуума"
+            },
+            {
+                question: "Выберите правильный перевод слова \"year\":",
+                options: [
+                    { text: "месяц", correct: false },
+                    { text: "неделя", correct: false },
+                    { text: "год", correct: true },
+                    { text: "день", correct: false }
+                ],
+                optionsContainerId: "options3",
+                hint: "Этот период состоит из 12 месяцев"
+            },
+            {
+                question: "Выберите правильный перевод слова \"way\":",
+                options: [
+                    { text: "дорога", correct: true },
+                    { text: "дом", correct: false },
+                    { text: "город", correct: false },
+                    { text: "страна", correct: false }
+                ],
+                optionsContainerId: "options4",
+                hint: "Это слово также может означать метод или способ"
+            },
+            {
+                question: "Выберите правильный перевод слова \"day\":",
+                options: [
+                    { text: "ночь", correct: false },
+                    { text: "утро", correct: false },
+                    { text: "день", correct: true },
+                    { text: "вечер", correct: false }
+                ],
+                optionsContainerId: "options5",
+                hint: "Это период времени между восходом и заходом солнца"
+            },
+            {
+                question: "Выберите правильный перевод слова \"thing\":",
+                options: [
+                    { text: "мысль", correct: false },
+                    { text: "вещь", correct: true },
+                    { text: "место", correct: false },
+                    { text: "время", correct: false }
+                ],
+                optionsContainerId: "options6",
+                hint: "Это слово обозначает любой материальный объект"
+            },
+            {
+                question: "Выберите правильный перевод слова \"man\":",
+                options: [
+                    { text: "женщина", correct: false },
+                    { text: "ребенок", correct: false },
+                    { text: "мужчина", correct: true },
+                    { text: "семья", correct: false }
+                ],
+                optionsContainerId: "options7",
+                hint: "Это слово также может означать человечество в целом"
+            },
+            {
+                question: "Выберите правильный перевод слова \"world\":",
+                options: [
+                    { text: "город", correct: false },
+                    { text: "страна", correct: false },
+                    { text: "мир", correct: true },
+                    { text: "вселенная", correct: false }
+                ],
+                optionsContainerId: "options8",
+                hint: "Это слово обозначает планету Земля и все, что на ней находится"
+            },
+            {
+                question: "Выберите правильный перевод слова \"life\":",
+                options: [
+                    { text: "смерть", correct: false },
+                    { text: "работа", correct: false },
+                    { text: "жизнь", correct: true },
+                    { text: "любовь", correct: false }
+                ],
+                optionsContainerId: "options9",
+                hint: "Это слово обозначает состояние живых организмов"
+            },
+            {
+                question: "Выберите правильный перевод слова \"part\":",
+                options: [
+                    { text: "целое", correct: false },
+                    { text: "часть", correct: true },
+                    { text: "много", correct: false },
+                    { text: "мало", correct: false }
+                ],
+                optionsContainerId: "options10",
+                hint: "Это слово обозначает фрагмент или элемент целого"
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+
+        function displayQuestion(index) {
+            // Скрыть все вопросы
+            for (let i = 1; i <= 10; i++) {
+                document.getElementById(`question${i}`).style.display = "none";
+            }
+            
+            // Показать текущий вопрос
+            const questionContainer = document.getElementById(`question${index + 1}`);
+            questionContainer.style.display = "block";
+            
+            // Обновить прогресс
+            document.querySelector(`#question${index + 1} .progress`).textContent = `Вопрос ${index + 1} из 10`;
+            
+            const optionsContainer = document.getElementById(`options${index + 1}`);
+            optionsContainer.innerHTML = ''; // Очистить предыдущие варианты
+
+            // Добавить подсказку
+            const hintElement = document.createElement('div');
+            hintElement.className = 'hint';
+            hintElement.textContent = questions[index].hint;
+            optionsContainer.appendChild(hintElement);
+
+            // Перемешать варианты ответов
+            const shuffledOptions = [...questions[index].options].sort(() => Math.random() - 0.5);
+            
+            shuffledOptions.forEach(option => {
+                const button = document.createElement('button');
+                button.textContent = option.text;
+                button.addEventListener('click', () => checkAnswer(option.correct, button, index));
+                optionsContainer.appendChild(button);
+            });
+        }
+
+        function checkAnswer(isCorrect, button, questionIndex) {
+            const allButtons = document.querySelectorAll(`#options${questionIndex + 1} button`);
+            
+            // Отключить все кнопки после выбора ответа
+            allButtons.forEach(btn => {
+                btn.disabled = true;
+                btn.style.cursor = 'not-allowed';
+            });
+            
+            if (isCorrect) {
+                button.classList.add('correct');
+                score++;
+                
+                // Показать следующий вопрос или поздравления, если это последний вопрос
+                if (questionIndex < questions.length - 1) {
+                    setTimeout(() => {
+                        currentQuestion++;
+                        displayQuestion(currentQuestion);
+                    }, 1000);
+                } else {
+                    // Показать поздравления
+                    setTimeout(() => {
+                        document.getElementById(`question${questionIndex + 1}`).style.display = "none";
+                        document.getElementById('congratulations').style.display = "block";
+                        document.getElementById('score').textContent = `Ваш результат: ${score} из ${questions.length}`;
+                    }, 1000);
+                }
+            } else {
+                button.classList.add('wrong');
+                
+                // Подсветить правильный ответ
+                allButtons.forEach(btn => {
+                    if (btn.textContent === questions[questionIndex].options.find(opt => opt.correct).text) {
+                        btn.classList.add('correct');
+                    }
+                });
+                
+                // Показать следующий вопрос или поздравления, если это последний вопрос
+                if (questionIndex < questions.length - 1) {
+                    setTimeout(() => {
+                        currentQuestion++;
+                        displayQuestion(currentQuestion);
+                    }, 1500);
+                } else {
+                    // Показать поздравления
+                    setTimeout(() => {
+                        document.getElementById(`question${questionIndex + 1}`).style.display = "none";
+                        document.getElementById('congratulations').style.display = "block";
+                        document.getElementById('score').textContent = `Ваш результат: ${score} из ${questions.length}`;
+                    }, 1500);
+                }
+            }
+        }
+
+        // Начать викторину с первого вопроса
+        displayQuestion(currentQuestion);
+    </script>
+</body>
+</html>
