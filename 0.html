@@ -3,36 +3,30 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>아리아드나</title>
-	<link rel="stylesheet" href="../style.css">
+	<title>안녕</title>
+	<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+	<h1>안녕 - Анъёнь - Привет</h1>
+	<span>Детям и знакомым</span>
 	<div id="game-container">
 		<div id="input-container">
 			<input type="text" maxlength="1" class="letter-input" placeholder="ㅇ" />
 			<input type="text" maxlength="1" class="letter-input" placeholder="ㅏ" />
 		</div>
 		<div id="input-container">
-			<input type="text" maxlength="1" class="letter-input" placeholder="ㄹ" />
-			<input type="text" maxlength="1" class="letter-input" placeholder="ㅣ" />
-		</div>
-		<div id="input-container">
-			<input type="text" maxlength="1" class="letter-input" placeholder="ㅇ" />
-			<input type="text" maxlength="1" class="letter-input" placeholder="ㅏ" />
-		</div>
-		<div id="input-container">
-			<input type="text" maxlength="1" class="letter-input" placeholder="ㄷ" />
-			<input type="text" maxlength="1" class="letter-input" placeholder="ㅡ" />
-		</div>
-		<div id="input-container">
 			<input type="text" maxlength="1" class="letter-input" placeholder="ㄴ" />
-			<input type="text" maxlength="1" class="letter-input" placeholder="ㅏ" />
+			<input type="text" maxlength="1" class="letter-input" placeholder="ㄴ" />
+		</div>
+		<div id="input-container">
+			<input type="text" maxlength="1" class="letter-input" placeholder="ㅕ" />
+			<input type="text" maxlength="1" class="letter-input" placeholder="ㅇ" />
 		</div>
 	</div>
 
 	<script>
-		const correctSequence = "ㅇㅏㄹㅣㅇㅏㄷㅡㄴㅏ";
+		const correctSequence = "ㅇㅏㄴㄴㅕㅇ";
 
 		const letterInputs = document.querySelectorAll('.letter-input');
 
@@ -66,14 +60,13 @@
 				document.getElementById('game-container').style.display = "none";
 
 				setTimeout(() => {
-					window.location.href = "";
+					window.location.href = "1.html";
 				}, 100);
 			} else {
 				letterInputs.forEach(input => {
 					input.value = '';
 				});
 				letterInputs[0].focus();
-				alert("Неправильно! Попробуйте снова.");
 			}
 		}
 	</script>

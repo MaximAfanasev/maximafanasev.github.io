@@ -1,37 +1,38 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 
 <head>
 	<meta charset="UTF-8">
-	<title>안녕</title>
-	<link rel="stylesheet" href="style.css">
+	<title>아리아드나</title>
+	<link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
-	<div id="game-container"> 감사합니다 - камсахамнида - спасибо
-		<div id="input-container">d = ㅇ
+	<div id="game-container">
+		<div id="input-container">
 			<input type="text" maxlength="1" class="letter-input" placeholder="ㅇ" />
-		</div>
-		<div id="input-container">k = ㅏ
 			<input type="text" maxlength="1" class="letter-input" placeholder="ㅏ" />
 		</div>
-		<div id="input-container">s = ㄴ
-			<input type="text" maxlength="1" class="letter-input" placeholder="ㄴ" />
+		<div id="input-container">
+			<input type="text" maxlength="1" class="letter-input" placeholder="ㄹ" />
+			<input type="text" maxlength="1" class="letter-input" placeholder="ㅣ" />
 		</div>
-		<div id="input-container">s = ㄴ
-			<input type="text" maxlength="1" class="letter-input" placeholder="ㄴ" />
-		</div>
-		<div id="input-container">u = ㅕ
-			<input type="text" maxlength="1" class="letter-input" placeholder="ㅕ" />
-		</div>
-		<div id="input-container">d = ㅇ
+		<div id="input-container">
 			<input type="text" maxlength="1" class="letter-input" placeholder="ㅇ" />
+			<input type="text" maxlength="1" class="letter-input" placeholder="ㅏ" />
+		</div>
+		<div id="input-container">
+			<input type="text" maxlength="1" class="letter-input" placeholder="ㄷ" />
+			<input type="text" maxlength="1" class="letter-input" placeholder="ㅡ" />
+		</div>
+		<div id="input-container">
+			<input type="text" maxlength="1" class="letter-input" placeholder="ㄴ" />
+			<input type="text" maxlength="1" class="letter-input" placeholder="ㅏ" />
 		</div>
 	</div>
 
 	<script>
-		const correctSequence = "ㅇㅏㄴㄴㅕㅇ";
+		const correctSequence = "ㅇㅏㄹㅣㅇㅏㄷㅡㄴㅏ";
 
 		const letterInputs = document.querySelectorAll('.letter-input');
 
@@ -65,13 +66,14 @@
 				document.getElementById('game-container').style.display = "none";
 
 				setTimeout(() => {
-					window.location.href = "1.html";
+					window.location.href = "";
 				}, 100);
 			} else {
 				letterInputs.forEach(input => {
 					input.value = '';
 				});
 				letterInputs[0].focus();
+				alert("Неправильно! Попробуйте снова.");
 			}
 		}
 	</script>

@@ -5,57 +5,10 @@
 	<meta charset="UTF-8">
 	<title>안녕</title>
 	<link rel="stylesheet" href="style.css">
-	<style>
-		.container {
-			display: none;
-			position: fixed;
-			top: 20px;
-			left: 20px;
-			z-index: 1000;
-		}
-		
-		.keyboard-trigger {
-			position: fixed;
-			top: 20px;
-			left: 20px;
-			width: 150px;
-			height: 50px;
-			background: #4CAF50;
-			border-radius: 20px;
-			cursor: pointer;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			color: white;
-			font-weight: bold;
-			font-size: 18px;
-			box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-			z-index: 999;
-			transition: all 0.3s ease;
-		}
-		
-		.keyboard-trigger:hover {
-			transform: scale(1.1);
-			background: #45a049;
-		}
-		
-		.keyboard-trigger:hover + .container,
-		.container:hover {
-			display: block;
-		}
-	</style>
 </head>
 
 <body>
-	<h1>안녕 - Анъёнь - Привет</h1>
-	<span>Детям и знакомым</span>
-	
-	<div class="keyboard-trigger">Алфавит</div>
-	
-	<div class="container">
-	
 		<div class="keyboard">
-		
 			<div class="row">
 				<div class="key">
 					<span class="korean">ㅂ</span>
@@ -73,13 +26,12 @@
 					<span class="korean">ㄱ</span>
 					<span class="english">r</span>
 				</div>
+			</div>
+			<div class="row">
 				<div class="key">
 					<span class="korean">ㅅ</span>
 					<span class="english">t</span>
-			</div>
 				</div>
-			<div class="row">
-			
 				<div class="key">
 					<span class="korean">ㅛ</span>
 					<span class="english">y</span>
@@ -92,6 +44,8 @@
 					<span class="korean">ㅑ</span>
 					<span class="english">i</span>
 				</div>
+			</div>
+			<div class="row">
 				<div class="key">
 					<span class="korean">ㅐ</span>
 					<span class="english">o</span>
@@ -100,9 +54,6 @@
 					<span class="korean">ㅔ</span>
 					<span class="english">p</span>
 				</div>
-			</div>
-
-			<div class="row">
 				<div class="key">
 					<span class="korean">ㅁ</span>
 					<span class="english">a</span>
@@ -111,6 +62,8 @@
 					<span class="korean">ㄴ</span>
 					<span class="english">s</span>
 				</div>
+			</div>
+			<div class="row">
 				<div class="key">
 					<span class="korean">ㅇ</span>
 					<span class="english">d</span>
@@ -127,6 +80,8 @@
 					<span class="korean">ㅗ</span>
 					<span class="english">h</span>
 				</div>
+			</div>
+			<div class="row">
 				<div class="key">
 					<span class="korean">ㅓ</span>
 					<span class="english">j</span>
@@ -139,13 +94,12 @@
 					<span class="korean">ㅣ</span>
 					<span class="english">l</span>
 				</div>
-			</div>
-
-			<div class="row">
 				<div class="key">
 					<span class="korean">ㅋ</span>
 					<span class="english">z</span>
 				</div>
+			</div>
+			<div class="row">
 				<div class="key">
 					<span class="korean">ㅌ</span>
 					<span class="english">x</span>
@@ -162,6 +116,8 @@
 					<span class="korean">ㅠ</span>
 					<span class="english">b</span>
 				</div>
+			</div>
+			<div class="row">
 				<div class="key">
 					<span class="korean">ㅜ</span>
 					<span class="english">n</span>
@@ -172,77 +128,4 @@
 				</div>
 			</div>
 		</div>
-	</div>
-	<div id="game-container">
-		<div id="input-container">
-			<input type="text" maxlength="1" class="letter-input" placeholder="ㅇ" />
-			<input type="text" maxlength="1" class="letter-input" placeholder="ㅏ" />
-		</div>
-		<div id="input-container">
-			<input type="text" maxlength="1" class="letter-input" placeholder="ㄴ" />
-			<input type="text" maxlength="1" class="letter-input" placeholder="ㄴ" />
-		</div>
-		<div id="input-container">
-			<input type="text" maxlength="1" class="letter-input" placeholder="ㅕ" />
-			<input type="text" maxlength="1" class="letter-input" placeholder="ㅇ" />
-		</div>
-	</div>
-	
-	<input type="text" class="long-input" placeholder="안녕">
-	
-
-	<script>
-		const correctSequence = "ㅇㅏㄴㄴㅕㅇ";
-		const correctWord = "안녕";
-
-		const letterInputs = document.querySelectorAll('.letter-input');
-		const longInput = document.querySelector('.long-input');
-
-		letterInputs[0].focus();
-
-		letterInputs.forEach((input, index) => {
-			input.addEventListener('input', function() {
-				if (this.value.length === 1) {
-					if (index < letterInputs.length - 1) {
-						letterInputs[index + 1].focus();
-					} else {
-						checkInput();
-					}
-				}
-			});
-
-			input.addEventListener('keydown', function(e) {
-				if (e.key === 'Backspace' && this.value === '' && index > 0) {
-					letterInputs[index - 1].focus();
-				}
-			});
-		});
-
-		function checkInput() {
-			let userInput = '';
-			letterInputs.forEach(input => {
-				userInput += input.value;
-			});
-
-			if (userInput === correctSequence) {
-				document.getElementById('game-container').style.display = "none";
-				longInput.style.display = "block";
-				longInput.focus();
-
-				// Добавляем проверку для длинного инпута
-				longInput.addEventListener('input', function() {
-					if (this.value === correctWord) {
-						setTimeout(() => {
-							window.location.href = "1.html";
-						}, 100);
-					}
-				});
-			} else {
-				letterInputs.forEach(input => {
-					input.value = '';
-				});
-				letterInputs[0].focus();
-			}
-		}
-	</script>
 </body></html>
