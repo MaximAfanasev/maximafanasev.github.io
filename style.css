@@ -217,3 +217,13 @@
 	.long-input {
 		width: 50px;
 	}
+
+a {
+	display: block;
+	border: 1px solid gold;
+	padding: 10px;
+	border-radius: 20px;
+	font-size: 30px;
+	color: gold;
+	text-decoration: none;
+}
