@@ -172,7 +172,6 @@
 		font-size: 0.9rem;
 	}
 
-	@media (max-width: 768px) {
 		.key {
 			width: 55px;
 			height: 55px;
@@ -189,30 +188,7 @@
 		h1 {
 			font-size: 2.2rem;
 		}
-	}
 
-	@media (max-width: 480px) {
-		.key {
-			width: 45px;
-			height: 45px;
-		}
-
-		.korean {
-			font-size: 1.2rem;
-		}
-
-		.english {
-			font-size: 0.6rem;
-		}
-
-		.row {
-			gap: 0.5rem;
-		}
-
-		h1 {
-			font-size: 1.8rem;
-		}
-	}
 
 	.long-input {
 		width: 50px;
