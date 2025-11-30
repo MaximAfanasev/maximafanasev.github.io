@@ -21,6 +21,7 @@
 		flex-direction: column;
 		align-items: center;
 		gap: 20px;
+		margin-bottom: 30px;
 	}
 
 	input {
@@ -214,3 +215,7 @@
 			font-size: 1.8rem;
 		}
 	}
+
+.long-input {
+	width: 50px;
+}
