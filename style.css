@@ -172,34 +172,33 @@
 		font-size: 0.9rem;
 	}
 
-		.key {
-			width: 55px;
-			height: 55px;
-		}
+	.key {
+		width: 55px;
+		height: 55px;
+	}
 
-		.korean {
-			font-size: 1.4rem;
-		}
+	.korean {
+		font-size: 1.4rem;
+	}
 
-		.english {
-			font-size: 0.7rem;
-		}
+	.english {
+		font-size: 0.7rem;
+	}
 
-		h1 {
-			font-size: 2.2rem;
-		}
-
+	h1 {
+		font-size: 2.2rem;
+	}
 
 	.long-input {
 		width: 50px;
 	}
 
-a {
-	display: block;
-	border: 1px solid gold;
-	padding: 10px;
-	border-radius: 20px;
-	font-size: 30px;
-	color: gold;
-	text-decoration: none;
-}
+	a {
+		display: block;
+		border: 1px solid gold;
+		padding: 10px;
+		border-radius: 20px;
+		font-size: 30px;
+		color: gold;
+		text-decoration: none;
+	}
