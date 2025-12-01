@@ -4,129 +4,182 @@
 <head>
 	<meta charset="UTF-8">
 	<title>안녕</title>
-	<link rel="stylesheet" href="style.css">
+	<style>
+		body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			margin: 0;
+			padding: 20px;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			align-items: center;
+			background-size: 400% 400%;
+			background-image:
+				radial-gradient(circle at 10% 20%, rgba(0, 255, 157, 0.05) 0%, transparent 20%),
+				radial-gradient(circle at 90% 80%, rgba(0, 184, 255, 0.05) 0%, transparent 20%),
+				linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(10, 10, 30, 0.9));
+			color: white;
+			text-align: center;
+		}
+
+		input {
+			padding: 10px;
+			width: 300px;
+			height: 30px;
+			font-size: 24px;
+			text-align: center;
+			border: none;
+			border-radius: 10px;
+			outline: none;
+			margin-bottom: 16px;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+		}
+		textarea {
+			border-radius: 10px;
+			padding: 10px;
+		}
+		pre {
+			border: 1px solid #fff;
+			padding: 10px;
+			border-radius: 10px;
+			text-align: left;
+			font-size: 20px;
+		}
+	</style>
 </head>
 
 <body>
-		<div class="keyboard">
-			<div class="row">
-				<div class="key">
-					<span class="korean">ㅂ</span>
-					<span class="english">q</span>
-				</div>
-				<div class="key">
-					<span class="korean">ㅈ</span>
-					<span class="english">w</span>
-				</div>
-				<div class="key">
-					<span class="korean">ㄷ</span>
-					<span class="english">e</span>
-				</div>
-				<div class="key">
-					<span class="korean">ㄱ</span>
-					<span class="english">r</span>
-				</div>
-			</div>
-			<div class="row">
-				<div class="key">
-					<span class="korean">ㅅ</span>
-					<span class="english">t</span>
-				</div>
-				<div class="key">
-					<span class="korean">ㅛ</span>
-					<span class="english">y</span>
-				</div>
-				<div class="key">
-					<span class="korean">ㅕ</span>
-					<span class="english">u</span>
-				</div>
-				<div class="key">
-					<span class="korean">ㅑ</span>
-					<span class="english">i</span>
-				</div>
-			</div>
-			<div class="row">
-				<div class="key">
-					<span class="korean">ㅐ</span>
-					<span class="english">o</span>
-				</div>
-				<div class="key">
-					<span class="korean">ㅔ</span>
-					<span class="english">p</span>
-				</div>
-				<div class="key">
-					<span class="korean">ㅁ</span>
-					<span class="english">a</span>
-				</div>
-				<div class="key">
-					<span class="korean">ㄴ</span>
-					<span class="english">s</span>
-				</div>
-			</div>
-			<div class="row">
-				<div class="key">
-					<span class="korean">ㅇ</span>
-					<span class="english">d</span>
-				</div>
-				<div class="key">
-					<span class="korean">ㄹ</span>
-					<span class="english">f</span>
-				</div>
-				<div class="key">
-					<span class="korean">ㅎ</span>
-					<span class="english">g</span>
-				</div>
-				<div class="key">
-					<span class="korean">ㅗ</span>
-					<span class="english">h</span>
-				</div>
-			</div>
-			<div class="row">
-				<div class="key">
-					<span class="korean">ㅓ</span>
-					<span class="english">j</span>
-				</div>
-				<div class="key">
-					<span class="korean">ㅏ</span>
-					<span class="english">k</span>
-				</div>
-				<div class="key">
-					<span class="korean">ㅣ</span>
-					<span class="english">l</span>
-				</div>
-				<div class="key">
-					<span class="korean">ㅋ</span>
-					<span class="english">z</span>
-				</div>
-			</div>
-			<div class="row">
-				<div class="key">
-					<span class="korean">ㅌ</span>
-					<span class="english">x</span>
-				</div>
-				<div class="key">
-					<span class="korean">ㅊ</span>
-					<span class="english">c</span>
-				</div>
-				<div class="key">
-					<span class="korean">ㅍ</span>
-					<span class="english">v</span>
-				</div>
-				<div class="key">
-					<span class="korean">ㅠ</span>
-					<span class="english">b</span>
-				</div>
-			</div>
-			<div class="row">
-				<div class="key">
-					<span class="korean">ㅜ</span>
-					<span class="english">n</span>
-				</div>
-				<div class="key">
-					<span class="korean">ㅡ</span>
-					<span class="english">m</span>
-				</div>
-			</div>
-		</div>
-		<a href="0.html">Start</a>
+	<input placeholder="안녕 dkssud" />
+	<input placeholder="하세요 gktpdy" />
+	<input placeholder="아리아드나 dkflemsk" />
+	<input placeholder="사랑해요 tkfkd gody" />
+	<input placeholder="감사합니다 tkfkd gody" />
+	<textarea name="" id="" cols="10" rows="13" placeholder="bool
+bytearray
+bytes
+complex
+dict
+float
+frozenset
+generator
+int
+list
+tuple
+set
+str"></textarea>
+
+
+
+<pre>
+print(8*3.57)
+print(5+30*20)
+print(5+30*20/10)
+
+28.56
+605
+65.0
+</pre>
+
+
+
+<pre>
+a = 100
+print(a)
+
+a = 200
+b = a
+print(b)
+
+a = 'hi'
+print(a)
+
+100
+200
+hi
+</pre>
+
+
+
+
+<pre>
+a = 'h"hehe"ehe'
+print(a)
+
+a = '''long'''
+print(a)
+
+a = 1000
+b = 'N: %s'
+print(b % a)
+
+a = '%s %s'
+print(a % (0,8))
+	
+h"hehe"ehe
+long
+N: 1000
+0 8
+</pre>
+
+
+
+<pre>
+print(10* 'a')
+
+a = [1,2,3]
+print(a)
+
+print(a[2])
+print(a[0:2])
+
+a = [1,2]
+b = [3,4]
+c = [a,b]
+print(c)
+
+aaaaaaaaaa
+[1, 2, 3]
+3
+[1, 2]
+[[1, 2], [3, 4]]
+</pre>
+
+
+
+<pre>
+c.append(4)
+print(c)
+
+del c[2]
+
+c = a + b
+print(c)
+
+print(c)
+
+[[1, 2], [3, 4], 4]
+[1, 2, 3, 4]
+[1, 2, 3, 4]
+</pre>
+
+
+
+<pre>
+print(a*5)
+
+a = (1,2,3)
+print(a)
+
+a = {'a': 1, 'b': 2}
+print(a)
+
+a['a'] = 3
+print(a)
+
+[1, 2, 1, 2, 1, 2, 1, 2, 1, 2]
+(1, 2, 3)
+{'a': 1, 'b': 2}
+{'a': 3, 'b': 2}
+</pre>
+
 </body></html>
