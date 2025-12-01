@@ -33,16 +33,28 @@
 			margin-bottom: 16px;
 			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 		}
+
 		textarea {
 			border-radius: 10px;
 			padding: 10px;
+			margin-bottom: 16px;
 		}
+
 		pre {
+			margin: 0;
+			margin-bottom: 16px;
 			border: 1px solid #fff;
 			padding: 10px;
 			border-radius: 10px;
 			text-align: left;
 			font-size: 20px;
+		}
+		pre:nth-child(even) {
+			filter: blur(3px);
+			color: gold;
+		}
+		pre:hover {
+			filter: none;
 		}
 	</style>
 </head>
@@ -50,9 +62,8 @@
 <body>
 	<input placeholder="안녕 dkssud" />
 	<input placeholder="하세요 gktpdy" />
-	<input placeholder="아리아드나 dkflemsk" />
 	<input placeholder="사랑해요 tkfkd gody" />
-	<input placeholder="감사합니다 tkfkd gody" />
+	<input placeholder="감사합니다 " />
 	<textarea name="" id="" cols="10" rows="13" placeholder="bool
 bytearray
 bytes
@@ -67,21 +78,18 @@ tuple
 set
 str"></textarea>
 
-
-
-<pre>
+	<pre>
 print(8*3.57)
 print(5+30*20)
 print(5+30*20/10)
-
+</pre>
+	<pre>
 28.56
 605
 65.0
 </pre>
 
-
-
-<pre>
+	<pre>
 a = 100
 print(a)
 
@@ -91,16 +99,14 @@ print(b)
 
 a = 'hi'
 print(a)
-
+</pre>
+	<pre>
 100
 200
 hi
 </pre>
 
-
-
-
-<pre>
+	<pre>
 a = 'h"hehe"ehe'
 print(a)
 
@@ -113,16 +119,15 @@ print(b % a)
 
 a = '%s %s'
 print(a % (0,8))
-	
+</pre>
+	<pre>
 h"hehe"ehe
 long
 N: 1000
 0 8
 </pre>
 
-
-
-<pre>
+	<pre>
 print(10* 'a')
 
 a = [1,2,3]
@@ -135,7 +140,8 @@ a = [1,2]
 b = [3,4]
 c = [a,b]
 print(c)
-
+</pre>
+	<pre>
 aaaaaaaaaa
 [1, 2, 3]
 3
@@ -143,9 +149,7 @@ aaaaaaaaaa
 [[1, 2], [3, 4]]
 </pre>
 
-
-
-<pre>
+	<pre>
 c.append(4)
 print(c)
 
@@ -155,16 +159,15 @@ c = a + b
 print(c)
 
 print(c)
-
+</pre>
+	<pre>
 [[1, 2], [3, 4], 4]
 [1, 2, 3, 4]
 [1, 2, 3, 4]
 </pre>
 
-
-
-<pre>
-print(a*5)
+	<pre>
+print(a*3)
 
 a = (1,2,3)
 print(a)
@@ -174,11 +177,11 @@ print(a)
 
 a['a'] = 3
 print(a)
-
-[1, 2, 1, 2, 1, 2, 1, 2, 1, 2]
+</pre>
+	<pre>
+[1, 2, 1, 2, 1, 2]
 (1, 2, 3)
 {'a': 1, 'b': 2}
 {'a': 3, 'b': 2}
 </pre>
-
 </body></html>
