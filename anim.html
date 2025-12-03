@@ -5,7 +5,7 @@
 	<title>Animations</title>
 	<style>
 		body {
-			background: #666;
+			background: #222;
 			display: flex;
 			justify-content: center;
 			align-items: center;
@@ -21,16 +21,15 @@
 			width: 90px;
 			height: 90px;
 			border: 1px solid #555;
-			background: #999;
+			background: #666;
 			box-shadow: 0 0 2px #222;
 		}
 		.a {
-			background: #666;
-			animation: aff 2s ease infinite;
-			transform-origin: right;
 		}
 		.b {
-			
+			background: #444;
+			animation: aff 2s ease infinite;
+			transform-origin: left;
 		}
 		.c {
 			
@@ -41,9 +40,9 @@
 		
 		@keyframes aff {
 			0% {
-			transform: rotateY(0deg)}
-			100% {
 			transform: rotateY(180deg)}
+			100% {
+			transform: rotateY(0deg)}
 		}
 	</style>
 </head>
