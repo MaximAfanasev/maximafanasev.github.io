@@ -11,117 +11,153 @@
 
 <body>
 	<div>안녕</div>
-	<span>Привет</span>
-	<div class="inputs-container">
-		<input type="text" class="input-field" maxlength="1" data-index="0" placeholder="d">
-		<input type="text" class="input-field" maxlength="1" data-index="1" placeholder="k">
-		<input type="text" class="input-field" maxlength="1" data-index="2" placeholder="s">
-		<input type="text" class="input-field" maxlength="1" data-index="3" placeholder="s">
-		<input type="text" class="input-field" maxlength="1" data-index="4" placeholder="u">
-		<input type="text" class="input-field" maxlength="1" data-index="5" placeholder="d">
-	<span class="success-counter">0</span>
-	</div>
-	<a href="korean2.html">-></a>
-	<script>
-		document.addEventListener('DOMContentLoaded', function() {
-			// Целевая последовательность
-			const targetSequence = ['d', 'k', 's', 's', 'u', 'd'];
+	<span>Привет</span><div class="inputs-container">
+	<input type="text" class="input-field" maxlength="1" data-index="0" placeholder="d">
+	<input type="text" class="input-field" maxlength="1" data-index="1" placeholder="k">
+	<input type="text" class="input-field" maxlength="1" data-index="2" placeholder="s">
+	<input type="text" class="input-field" maxlength="1" data-index="3" placeholder="s">
+	<input type="text" class="input-field" maxlength="1" data-index="4" placeholder="u">
+	<input type="text" class="input-field" maxlength="1" data-index="5" placeholder="d">
+	<span class="success-counter" data-counter="0">0</span>
+</div>
 
-			// Получаем все инпуты
-			const inputs = document.querySelectorAll('.input-field');
-			const successCounter = document.querySelector('.success-counter');
+<div class="inputs-container">
+	<input type="text" class="input-field" maxlength="1" data-index="6" placeholder="ㅇ">
+	<input type="text" class="input-field" maxlength="1" data-index="7" placeholder="ㅏ">
+	<input type="text" class="input-field" maxlength="1" data-index="8" placeholder="ㄴ">
+	<input type="text" class="input-field" maxlength="1" data-index="9" placeholder="ㄴ">
+	<input type="text" class="input-field" maxlength="1" data-index="10" placeholder="ㅕ">
+	<input type="text" class="input-field" maxlength="1" data-index="11" placeholder="ㅇ">
+	<span class="success-counter" data-counter="1">0</span>
+</div>
 
-			// Счетчик успешных попыток
-			let successfulAttempts = 0;
+<a href="korean2.html">-></a>
 
-			// Функция для сброса инпутов
-			function resetInputs() {
-				inputs.forEach(input => {
-					input.value = '';
-					input.classList.remove('correct', 'wrong');
-				});
-				// Фокус на первый инпут
-				inputs[0].focus();
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+		// Целевая последовательность
+		const targetSequence = ['d', 'k', 's', 's', 'u', 'd', 'ㅇ', 'ㅏ', 'ㄴ', 'ㄴ', 'ㅕ', 'ㅇ'];
+		
+		// Получаем все инпуты и счетчики
+		const inputs = document.querySelectorAll('.input-field');
+		const counters = document.querySelectorAll('.success-counter');
+		
+		// Массив для хранения счетчиков успешных попыток для каждой строки
+		const successfulAttempts = [0, 0];
+		
+		// Функция для сброса инпутов определенной строки
+		function resetInputs(startIndex, endIndex) {
+			for (let i = startIndex; i <= endIndex; i++) {
+				inputs[i].value = '';
+				inputs[i].classList.remove('correct', 'wrong');
 			}
-
-			// Функция для проверки всей последовательности
-			function checkSequence() {
-				let allCorrect = true;
-
-				inputs.forEach((input, index) => {
-					if (input.value.toLowerCase() === targetSequence[index]) {
-					} else {
-						allCorrect = false;
-					}
-				});
-
-				return allCorrect;
-			}
-
-			// Функция для обработки ввода
-			function handleInput(event) {
-				const input = event.target;
-				const index = parseInt(input.dataset.index);
-
-				// Проверяем введенную букву
-				if (input.value.toLowerCase() === targetSequence[index]) {
-
-					// Переход к следующему инпуту, если это не последний
-					if (index < inputs.length - 1) {
-						inputs[index + 1].focus();
-					}
-				} else {
-				}
-
-				// Проверяем всю последовательность, если все инпуты заполнены
-				const allFilled = Array.from(inputs).every(input => input.value !== '');
-				if (allFilled) {
-					if (checkSequence()) {
-						// Увеличиваем счетчик
-						successfulAttempts++;
-						successCounter.textContent = successfulAttempts;
-
-						// Сбрасываем инпуты после небольшой задержки
-						setTimeout(() => {
-							resetInputs();
-						}, 100);
-					}
+			// Фокус на первый инпут строки
+			inputs[startIndex].focus();
+		}
+		
+		// Функция для проверки последовательности строки
+		function checkSequence(startIndex, endIndex) {
+			let allCorrect = true;
+			
+			for (let i = startIndex; i <= endIndex; i++) {
+				if (inputs[i].value.toLowerCase() !== targetSequence[i]) {
+					allCorrect = false;
+					break;
 				}
 			}
-
-			// Функция для обработки нажатий клавиш
-			function handleKeyDown(event) {
-				const input = event.target;
-				const index = parseInt(input.dataset.index);
-
-				// Обработка Backspace
-				if (event.key === 'Backspace' && input.value === '' && index > 0) {
-					inputs[index - 1].focus();
-				}
-
-				// Обработка стрелок
-				if (event.key === 'ArrowLeft' && index > 0) {
-					inputs[index - 1].focus();
-					event.preventDefault();
-				}
-
-				if (event.key === 'ArrowRight' && index < inputs.length - 1) {
+			
+			return allCorrect;
+		}
+		
+		// Функция для обработки ввода
+		function handleInput(event) {
+			const input = event.target;
+			const index = parseInt(input.dataset.index);
+			
+			// Определяем к какой строке принадлежит инпут
+			const rowIndex = index < 6 ? 0 : 1;
+			const startIndex = rowIndex * 6;
+			const endIndex = startIndex + 5;
+			
+			// Проверяем введенную букву
+			if (input.value.toLowerCase() === targetSequence[index]) {
+				// Переход к следующему инпуту, если это не последний в строке
+				if (index < endIndex) {
 					inputs[index + 1].focus();
-					event.preventDefault();
 				}
 			}
-
-			// Назначаем обработчики событий для инпутов
-			inputs.forEach(input => {
-				input.addEventListener('input', handleInput);
-				input.addEventListener('keydown', handleKeyDown);
-			});
-
-			// Обработчик для кнопки сброса
-			resetBtn.addEventListener('click', resetInputs);
-
-			// Фокус на первый инпут при загрузке
-			inputs[0].focus();
+			
+			// Проверяем всю строку, если все инпуты строки заполнены
+			let allFilled = true;
+			for (let i = startIndex; i <= endIndex; i++) {
+				if (inputs[i].value === '') {
+					allFilled = false;
+					break;
+				}
+			}
+			
+			if (allFilled) {
+				if (checkSequence(startIndex, endIndex)) {
+					// Увеличиваем счетчик для соответствующей строки
+					successfulAttempts[rowIndex]++;
+					counters[rowIndex].textContent = successfulAttempts[rowIndex];
+					
+					// Сбрасываем инпуты этой строки
+					setTimeout(() => {
+						resetInputs(startIndex, endIndex);
+					}, 100);
+				}
+			}
+		}
+		
+		// Функция для обработки нажатий клавиш
+		function handleKeyDown(event) {
+			const input = event.target;
+			const index = parseInt(input.dataset.index);
+			
+			// Определяем границы строки
+			const rowIndex = index < 6 ? 0 : 1;
+			const startIndex = rowIndex * 6;
+			const endIndex = startIndex + 5;
+			
+			// Обработка Backspace
+			if (event.key === 'Backspace' && input.value === '' && index > startIndex) {
+				inputs[index - 1].focus();
+			}
+			
+			// Обработка стрелок
+			if (event.key === 'ArrowLeft' && index > startIndex) {
+				inputs[index - 1].focus();
+				event.preventDefault();
+			}
+			
+			if (event.key === 'ArrowRight' && index < endIndex) {
+				inputs[index + 1].focus();
+				event.preventDefault();
+			}
+			
+			// Переход между строками с помощью стрелок вверх/вниз
+			if (event.key === 'ArrowDown' && rowIndex === 0) {
+				inputs[index + 6].focus();
+				event.preventDefault();
+			}
+			
+			if (event.key === 'ArrowUp' && rowIndex === 1) {
+				inputs[index - 6].focus();
+				event.preventDefault();
+			}
+		}
+		
+		// Назначаем обработчики событий для инпутов
+		inputs.forEach(input => {
+			input.addEventListener('input', handleInput);
+			input.addEventListener('keydown', handleKeyDown);
 		});
-	</script>
-</body></html>
+		
+		// Фокус на первый инпут при загрузке
+		inputs[0].focus();
+	});
+</script>
+</body>
+
+</html>
