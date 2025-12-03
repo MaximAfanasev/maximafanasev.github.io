@@ -12,6 +12,116 @@
 <body>
 	<div>안녕</div>
 	<span>Привет</span>
+	<div class="inputs-container">
+		<input type="text" class="input-field" maxlength="1" data-index="0" placeholder="d">
+		<input type="text" class="input-field" maxlength="1" data-index="1" placeholder="k">
+		<input type="text" class="input-field" maxlength="1" data-index="2" placeholder="s">
+		<input type="text" class="input-field" maxlength="1" data-index="3" placeholder="s">
+		<input type="text" class="input-field" maxlength="1" data-index="4" placeholder="u">
+		<input type="text" class="input-field" maxlength="1" data-index="5" placeholder="d">
+	<span class="success-counter">0</span>
+	</div>
 	<a href="korean2.html">-></a>
-	<div hidden>dks sud</div>
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			// Целевая последовательность
+			const targetSequence = ['d', 'k', 's', 's', 'u', 'd'];
+
+			// Получаем все инпуты
+			const inputs = document.querySelectorAll('.input-field');
+			const successCounter = document.querySelector('.success-counter');
+
+			// Счетчик успешных попыток
+			let successfulAttempts = 0;
+
+			// Функция для сброса инпутов
+			function resetInputs() {
+				inputs.forEach(input => {
+					input.value = '';
+					input.classList.remove('correct', 'wrong');
+				});
+				// Фокус на первый инпут
+				inputs[0].focus();
+			}
+
+			// Функция для проверки всей последовательности
+			function checkSequence() {
+				let allCorrect = true;
+
+				inputs.forEach((input, index) => {
+					if (input.value.toLowerCase() === targetSequence[index]) {
+					} else {
+						allCorrect = false;
+					}
+				});
+
+				return allCorrect;
+			}
+
+			// Функция для обработки ввода
+			function handleInput(event) {
+				const input = event.target;
+				const index = parseInt(input.dataset.index);
+
+				// Проверяем введенную букву
+				if (input.value.toLowerCase() === targetSequence[index]) {
+
+					// Переход к следующему инпуту, если это не последний
+					if (index < inputs.length - 1) {
+						inputs[index + 1].focus();
+					}
+				} else {
+				}
+
+				// Проверяем всю последовательность, если все инпуты заполнены
+				const allFilled = Array.from(inputs).every(input => input.value !== '');
+				if (allFilled) {
+					if (checkSequence()) {
+						// Увеличиваем счетчик
+						successfulAttempts++;
+						successCounter.textContent = successfulAttempts;
+
+						// Сбрасываем инпуты после небольшой задержки
+						setTimeout(() => {
+							resetInputs();
+						}, 100);
+					}
+				}
+			}
+
+			// Функция для обработки нажатий клавиш
+			function handleKeyDown(event) {
+				const input = event.target;
+				const index = parseInt(input.dataset.index);
+
+				// Обработка Backspace
+				if (event.key === 'Backspace' && input.value === '' && index > 0) {
+					inputs[index - 1].focus();
+				}
+
+				// Обработка стрелок
+				if (event.key === 'ArrowLeft' && index > 0) {
+					inputs[index - 1].focus();
+					event.preventDefault();
+				}
+
+				if (event.key === 'ArrowRight' && index < inputs.length - 1) {
+					inputs[index + 1].focus();
+					event.preventDefault();
+				}
+			}
+
+			// Назначаем обработчики событий для инпутов
+			inputs.forEach(input => {
+				input.addEventListener('input', handleInput);
+				input.addEventListener('keydown', handleKeyDown);
+			});
+
+			// Обработчик для кнопки сброса
+			resetBtn.addEventListener('click', resetInputs);
+
+			// Фокус на первый инпут при загрузке
+			inputs[0].focus();
+		});
+	</script>
 </body></html>
