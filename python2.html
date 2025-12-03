@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Python</title>
+	<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+<pre>
+print(4+7.0)
+#11.0
+
+print(True + 2)
+#3
+print(False + 5.0)
+#5.0
+
+print(5.)
+#5.0
+print(05.0)
+#5.0
+print(5e0)
+#5.0
+
+print(float(True))
+#1.0
+print(float(False))
+#0.0
+
+print(float(98))
+#98.0
+print(float('98'))
+#98.0
+
+print(43+2.)
+#45.0
+print(False + 0.)
+#0.0
+print(True + 0.)
+#1.0
+
+a = 1 + \
+    2
+print(a)
+#3
+
+if True:
+    print('True')
+#True
+
+x = 7
+print(5 < x and x < 10)
+#True
+print(5 < x or x < 10)
+#True
+print(5 > x and not x > 10)
+#False
+
+#False
+print(bool(False))
+print(bool(None))
+print(bool(0))
+print(bool(0.0))
+print(bool(''))
+print(bool([]))
+print(bool({}))
+print(bool(set()))
+
+l = 'o'
+if l == 'o' or l == 'a':
+    print('True')
+#True
+
+ls = 'aeoiu'
+if 'a' in ls:
+    print('True')
+#True
+
+lw = {'a', 'i'}
+if 'a' in lw:
+    print('True')
+#True
+
+if a := 3 - 1 >= 0:
+    print('True')
+#True
+</pre>
+	<a href="index.html">-></a>
+</body></html>
