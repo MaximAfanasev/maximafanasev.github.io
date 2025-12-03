@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Animations</title>
+	<style>
+		body {
+			background: #666;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+		}
+		.flex {
+			display: flex;
+			width: 200px;
+			flex-wrap: wrap;
+			transform: rotate(45deg);
+		}
+		.romb {
+			width: 90px;
+			height: 90px;
+			border: 1px solid #555;
+			background: #999;
+			box-shadow: 0 0 2px #222;
+		}
+		.a {
+			background: #666;
+			animation: aff 2s ease infinite;
+			transform-origin: right;
+		}
+		.b {
+			
+		}
+		.c {
+			
+		}
+		.d {
+			background: #666;
+		}
+		
+		@keyframes aff {
+			0% {
+			transform: rotateY(0deg)}
+			100% {
+			transform: rotateY(180deg)}
+		}
+	</style>
+</head>
+<body>
+	<div class="flex">
+		<div class="romb a"></div>
+		<div class="romb b" ></div>
+		<div class="romb c" hidden></div>
+		<div class="romb d" hidden></div>
+	</div>
+</body>
+</html>
