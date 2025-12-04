@@ -6,42 +6,115 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>안녕</title>
 	<link rel="stylesheet" href="style.css">
-
+	<style>
+		input {
+			width: 300px;
+			height: 80px;
+			font-size: 50px;
+		}
+		input::placeholder {
+			font-size: 50px;
+		}
+		a {
+			margin-top: 50px;
+			color: gray;
+			border-color: gray;
+		}
+		span {
+			color: gray;
+		}
+		.counter {
+			font-size: 30px;
+			color: lightgreen;
+			margin-left: 10px;
+		}
+		.input-container {
+			display: flex;
+			align-items: baseline;
+			justify-content: center;
+			margin-bottom: 20px;
+		}
+	</style>
 </head>
 
 <body>
-	<div>사랑해요</div>
-	<span>Люблю</span>
+	<!-- Счетчик правильных ответов -->
 	
-	<div class="inputs-container">
-		<input type="text" class="input-field" maxlength="1" data-index="0" placeholder="t">
-		<input type="text" class="input-field" maxlength="1" data-index="1" placeholder="k">
-		<input type="text" class="input-field" maxlength="1" data-index="2" placeholder="f">
-		<input type="text" class="input-field" maxlength="1" data-index="3" placeholder="k">
-		<input type="text" class="input-field" maxlength="1" data-index="4" placeholder="d">
-		
-		<input type="text" class="input-field" maxlength="1" data-index="6" placeholder="g">
-		<input type="text" class="input-field" maxlength="1" data-index="7" placeholder="o">
-		<input type="text" class="input-field" maxlength="1" data-index="8" placeholder="d">
-		<input type="text" class="input-field" maxlength="1" data-index="9" placeholder="y">
-		<span class="success-counter" data-counter="0">0</span>
+	<div>사랑해요</div>
+	<span>Люблю Сарангхейо</span>
+
+	<div class="input-container">
+		<input type="text" class="input-field" data-index="0-12" placeholder="tkfkdgody" autofocus>
+		<span class="counter" id="scoreCounter1">0</span>
 	</div>
 
-	<div class="inputs-container">
-		<input type="text" class="input-field" maxlength="1" data-index="10" placeholder="ㅅ">
-		<input type="text" class="input-field" maxlength="1" data-index="11" placeholder="ㅏ">
-		<input type="text" class="input-field" maxlength="1" data-index="12" placeholder="ㄹ">
-		<input type="text" class="input-field" maxlength="1" data-index="13" placeholder="ㅏ">
-		<input type="text" class="input-field" maxlength="1" data-index="14" placeholder="ㅇ">
-		<input type="text" class="input-field" maxlength="1" data-index="15" placeholder="ㅎ">
-		<input type="text" class="input-field" maxlength="1" data-index="16" placeholder="ㅐ">
-		<input type="text" class="input-field" maxlength="1" data-index="17" placeholder="ㅇ">
-		<input type="text" class="input-field" maxlength="1" data-index="18" placeholder="ㅛ">
-		<span class="success-counter" data-counter="1">0</span>
+	<div class="input-container">
+		<input type="text" class="input-field" data-index="13-17" placeholder="사랑 해요" maxlength="5">
+		<span class="counter" id="scoreCounter2">0</span>
 	</div>
-	
-	
-	<a href="korean3.html">-></a>
-	<div hidden>tk fkd gody</div>
-	<script src="korean2.js"></script>
-</body></html>
+
+	<a href="korean3.html">→</a>
+
+	<script>
+		// Инициализация счетчиков из localStorage
+		let score1 = localStorage.getItem('koreanQuizScore1') || 0;
+		let score2 = localStorage.getItem('koreanQuizScore2') || 0;
+		
+		document.getElementById('scoreCounter1').textContent = `${score1}`;
+		document.getElementById('scoreCounter2').textContent = `${score2}`;
+		
+		// Обработчики для полей ввода
+		document.querySelectorAll('.input-field').forEach(input => {
+			input.addEventListener('input', function(e) {
+				// Для первого поля (tkfkdgody)
+				if (this.dataset.index === '0-12' && this.value.toLowerCase() === 'tkfkdgody') {
+					updateScore('scoreCounter1', 'koreanQuizScore1');
+					this.value = '';
+					this.style.borderColor = '#4CAF50';
+					setTimeout(() => this.style.borderColor = '', 1000);
+				}
+				
+				// Для второго поля (사랑해요)
+				if (this.dataset.index === '13-17' && this.value === '사랑해요') {
+					updateScore('scoreCounter2', 'koreanQuizScore2');
+					this.value = '';
+					this.style.borderColor = '#4CAF50';
+					setTimeout(() => this.style.borderColor = '', 1000);
+				}
+			});
+		});
+		
+		// Функция обновления счета
+		function updateScore(counterId, storageKey) {
+			// Получаем текущий счет
+			let currentScore = parseInt(localStorage.getItem(storageKey) || 0);
+			currentScore++;
+			
+			// Сохраняем и отображаем
+			localStorage.setItem(storageKey, currentScore);
+			const counter = document.getElementById(counterId);
+			counter.textContent = `${currentScore}`;
+			
+			// Анимация счетчика
+			counter.style.transform = 'scale(1.2)';
+			counter.style.color = 'gold';
+			setTimeout(() => {
+				counter.style.transform = 'scale(1)';
+				counter.style.color = 'lightgreen';
+			}, 300);
+		}
+		
+		// Для сброса счетчиков (можно удалить в рабочей версии)
+		document.addEventListener('keydown', function(e) {
+			if (e.ctrlKey && e.key === 'r') {
+				localStorage.setItem('koreanQuizScore1', 0);
+				localStorage.setItem('koreanQuizScore2', 0);
+				score1 = 0;
+				score2 = 0;
+				document.getElementById('scoreCounter1').textContent = `${score1}`;
+				document.getElementById('scoreCounter2').textContent = `${score2}`;
+			}
+		});
+	</script>
+</body>
+</html>
