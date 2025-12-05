@@ -29,89 +29,40 @@ a {
 	margin-bottom: 20px;
 }
 
-span {
-	margin-bottom: 40px;
-	font-size: 30px;
-}
-
-img {
-	margin: 0 auto;
-	width: 100%;
-	max-width: 450px;
-	border-radius: 10px;
-	margin-bottom: 20px;
-}
-
-pre {
-	font-size: 25px;
-	text-align: left;
-}
-
 input {
 	margin: 0;
 	width: 50px;
 	height: 50px;
-	border-radius: 10px;
+	border-radius: 20px;
 	font-size: 22px;
 	text-align: center;
+	background: gray;
+	width: 300px;
+	height: 80px;
+	font-size: 50px;
 }
 
 input::placeholder {
-	font-size: 22px;
-	text-align: center;
+	font-size: 50px;
 }
 
-* {
-	/*outline: 1px solid #000;*/
+a {
+	border-color: gray;
 }
 
-.inputs-container {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 10px;
-	width: fit-content;
-	margin: 0 auto;
+span {
+	color: gray;
 }
 
-.success-counter {
-	margin-top: 20px;
-	color: lightgreen;
+.counter {
 	font-size: 20px;
+	color: lightgreen;
+	margin-left: 10px;
 }
 
-
-		input {
-			width: 300px;
-			height: 80px;
-			font-size: 50px;
-		}
-		input::placeholder {
-			font-size: 50px;
-		}
-		a {
-			margin-top: 50px;
-			color: gray;
-			border-color: gray;
-		}
-		span {
-			color: gray;
-		}
-		.counter {
-			font-size: 30px;
-			color: lightgreen;
-			margin-left: 10px;
-		}
-		.input-container {
-			display: flex;
-			align-items: baseline;
-			justify-content: center;
-			margin-bottom: 20px;
-		}
-		label {
-			font-size: 20px;
-			display: flex;
-			flex-direction: column;
-			align-items: flex-start;
-			align-content: center;
-			justify-content: center;
-		}
+.input-container {
+	display: flex;
+	align-items: baseline;
+	justify-content: center;
+	margin-bottom: 20px;
+}

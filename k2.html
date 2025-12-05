@@ -14,24 +14,23 @@
 	<div>사랑해요</div>
 	<div class="input-container">
 	<label for="">
-	<span>
-		<input type="text" class="input-field" data-index="0-12" placeholder="" maxlength="5"><span class="counter" id="scoreCounter1">0</span></span></label>
-	</div>
-		
-	<a href="index.html">-></a>
 	
+		<input type="text" class="input-field" data-index="0-12" placeholder="" maxlength="5"><span class="counter" id="sk2">0</span></label>
+	</div>
+	<div hidden>tkfkdgody</div>
+		
 	<script>
 		// Инициализация счетчиков из localStorage
-		let score1 = localStorage.getItem('koreanQuizScore1') || 0;
+		let score1 = localStorage.getItem('k2') || 0;
 		
-		document.getElementById('scoreCounter1').textContent = `${score1}`;
+		document.getElementById('sk2').textContent = `${score1}`;
 		
 		// Обработчики для полей ввода
 		document.querySelectorAll('.input-field').forEach(input => {
 			input.addEventListener('input', function(e) {
 				// Для первого поля (감사합니다)
 				if (this.dataset.index === '0-12' && this.value.toLowerCase() === '사랑해요') {
-					updateScore('scoreCounter1', 'koreanQuizScore1');
+					updateScore('sk2','k2');
 					this.value = '';
 					this.style.borderColor = '#4CAF50';
 					setTimeout(() => this.style.borderColor = '', 100);
@@ -62,9 +61,9 @@
 		// Для сброса счетчиков (можно удалить в рабочей версии)
 		document.addEventListener('keydown', function(e) {
 			if (e.ctrlKey && e.key === 'r') {
-				localStorage.setItem('koreanQuizScore1', 0);
+				localStorage.setItem('k2', 0);
 				score1 = 0;
-				document.getElementById('scoreCounter1').textContent = `${score1}`;
+				document.getElementById('sk2').textContent = `${score1}`;
 			}
 		});
 	</script>
