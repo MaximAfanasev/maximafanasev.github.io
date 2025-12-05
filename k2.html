@@ -13,42 +13,40 @@
 <body>
 	<div>사랑해요</div>
 	<div class="input-container">
-	<label for="">
-	
-		<input type="text" class="input-field" data-index="0-12" placeholder="" maxlength="5"><span class="counter" id="sk2">0</span></label>
+		<label for="">
+			<input type="text" class="input-field" data-index="0-12" placeholder="" maxlength="5"><span class="counter" id="sk2">0</span></label>
 	</div>
 	<div hidden>tkfkdgody</div>
-		
 	<script>
 		// Инициализация счетчиков из localStorage
 		let score1 = localStorage.getItem('k2') || 0;
-		
+
 		document.getElementById('sk2').textContent = `${score1}`;
-		
+
 		// Обработчики для полей ввода
 		document.querySelectorAll('.input-field').forEach(input => {
 			input.addEventListener('input', function(e) {
 				// Для первого поля (감사합니다)
 				if (this.dataset.index === '0-12' && this.value.toLowerCase() === '사랑해요') {
-					updateScore('sk2','k2');
+					updateScore('sk2', 'k2');
 					this.value = '';
 					this.style.borderColor = '#4CAF50';
 					setTimeout(() => this.style.borderColor = '', 100);
 				}
 			});
 		});
-		
+
 		// Функция обновления счета
 		function updateScore(counterId, storageKey) {
 			// Получаем текущий счет
 			let currentScore = parseInt(localStorage.getItem(storageKey) || 0);
 			currentScore++;
-			
+
 			// Сохраняем и отображаем
 			localStorage.setItem(storageKey, currentScore);
 			const counter = document.getElementById(counterId);
 			counter.textContent = `${currentScore}`;
-			
+
 			// Анимация счетчика
 			counter.style.transform = 'scale(1.2)';
 			counter.style.color = 'gold';
@@ -57,7 +55,7 @@
 				counter.style.color = 'lightgreen';
 			}, 300);
 		}
-		
+
 		// Для сброса счетчиков (можно удалить в рабочей версии)
 		document.addEventListener('keydown', function(e) {
 			if (e.ctrlKey && e.key === 'r') {
