@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>안녕</title>
+	<link rel="stylesheet" href="style.css">
+	<style>
+	</style>
+</head>
+
+<body>
+	<div>사랑해요</div>
+	<div class="input-container">
+	<label for="">
+	<span>
+		<input type="text" class="input-field" data-index="0-12" placeholder="" maxlength="5"><span class="counter" id="scoreCounter1">0</span></span></label>
+	</div>
+		
+	<a href="index.html">-></a>
+	
+	<script>
+		// Инициализация счетчиков из localStorage
+		let score1 = localStorage.getItem('koreanQuizScore1') || 0;
+		
+		document.getElementById('scoreCounter1').textContent = `${score1}`;
+		
+		// Обработчики для полей ввода
+		document.querySelectorAll('.input-field').forEach(input => {
+			input.addEventListener('input', function(e) {
+				// Для первого поля (감사합니다)
+				if (this.dataset.index === '0-12' && this.value.toLowerCase() === '사랑해요') {
+					updateScore('scoreCounter1', 'koreanQuizScore1');
+					this.value = '';
+					this.style.borderColor = '#4CAF50';
+					setTimeout(() => this.style.borderColor = '', 100);
+				}
+			});
+		});
+		
+		// Функция обновления счета
+		function updateScore(counterId, storageKey) {
+			// Получаем текущий счет
+			let currentScore = parseInt(localStorage.getItem(storageKey) || 0);
+			currentScore++;
+			
+			// Сохраняем и отображаем
+			localStorage.setItem(storageKey, currentScore);
+			const counter = document.getElementById(counterId);
+			counter.textContent = `${currentScore}`;
+			
+			// Анимация счетчика
+			counter.style.transform = 'scale(1.2)';
+			counter.style.color = 'gold';
+			setTimeout(() => {
+				counter.style.transform = 'scale(1)';
+				counter.style.color = 'lightgreen';
+			}, 300);
+		}
+		
+		// Для сброса счетчиков (можно удалить в рабочей версии)
+		document.addEventListener('keydown', function(e) {
+			if (e.ctrlKey && e.key === 'r') {
+				localStorage.setItem('koreanQuizScore1', 0);
+				score1 = 0;
+				document.getElementById('scoreCounter1').textContent = `${score1}`;
+			}
+		});
+	</script>
+</body></html>

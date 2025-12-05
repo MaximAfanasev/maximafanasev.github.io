@@ -7,79 +7,34 @@
 	<title>안녕</title>
 	<link rel="stylesheet" href="style.css">
 	<style>
-		input {
-			width: 300px;
-			height: 80px;
-			font-size: 50px;
-		}
-		input::placeholder {
-			font-size: 50px;
-		}
-		a {
-			margin-top: 50px;
-			color: gray;
-			border-color: gray;
-		}
-		span {
-			color: gray;
-		}
-		.counter {
-			font-size: 30px;
-			color: lightgreen;
-			margin-left: 10px;
-		}
-		.input-container {
-			display: flex;
-			align-items: baseline;
-			justify-content: center;
-			margin-bottom: 20px;
-		}
 	</style>
 </head>
 
 <body>
-	<!-- Счетчик правильных ответов -->
+	<div>안녕</div>
+	<div class="input-container">
+	<label for="">
+	<span>
+		<input type="text" class="input-field" data-index="0-12" placeholder="" maxlength="5"><span class="counter" id="scoreCounter1">0</span></span></label>
+	</div>
+		
+	<a href="index.html">-></a>
 	
-	<div>사랑해요</div>
-	<span>Люблю Сарангхейо</span>
-
-	<div class="input-container">
-		<input type="text" class="input-field" data-index="0-12" placeholder="tkfkdgody" autofocus>
-		<span class="counter" id="scoreCounter1">0</span>
-	</div>
-
-	<div class="input-container">
-		<input type="text" class="input-field" data-index="13-17" placeholder="사랑 해요" maxlength="5">
-		<span class="counter" id="scoreCounter2">0</span>
-	</div>
-
-	<a href="korean3.html">→</a>
-
 	<script>
 		// Инициализация счетчиков из localStorage
 		let score1 = localStorage.getItem('koreanQuizScore1') || 0;
-		let score2 = localStorage.getItem('koreanQuizScore2') || 0;
 		
 		document.getElementById('scoreCounter1').textContent = `${score1}`;
-		document.getElementById('scoreCounter2').textContent = `${score2}`;
 		
 		// Обработчики для полей ввода
 		document.querySelectorAll('.input-field').forEach(input => {
 			input.addEventListener('input', function(e) {
-				// Для первого поля (tkfkdgody)
-				if (this.dataset.index === '0-12' && this.value.toLowerCase() === 'tkfkdgody') {
+				// Для первого поля (감사합니다)
+				if (this.dataset.index === '0-12' && this.value.toLowerCase() === '안녕') {
 					updateScore('scoreCounter1', 'koreanQuizScore1');
 					this.value = '';
 					this.style.borderColor = '#4CAF50';
-					setTimeout(() => this.style.borderColor = '', 1000);
-				}
-				
-				// Для второго поля (사랑해요)
-				if (this.dataset.index === '13-17' && this.value === '사랑해요') {
-					updateScore('scoreCounter2', 'koreanQuizScore2');
-					this.value = '';
-					this.style.borderColor = '#4CAF50';
-					setTimeout(() => this.style.borderColor = '', 1000);
+					setTimeout(() => this.style.borderColor = '', 100);
 				}
 			});
 		});
@@ -108,13 +63,9 @@
 		document.addEventListener('keydown', function(e) {
 			if (e.ctrlKey && e.key === 'r') {
 				localStorage.setItem('koreanQuizScore1', 0);
-				localStorage.setItem('koreanQuizScore2', 0);
 				score1 = 0;
-				score2 = 0;
 				document.getElementById('scoreCounter1').textContent = `${score1}`;
-				document.getElementById('scoreCounter2').textContent = `${score2}`;
 			}
 		});
 	</script>
-</body>
-</html>
+</body></html>
