@@ -3,324 +3,679 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title></title>
+	<title>WordMaster - Тренажёр для изучения слов</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 	<style>
 		* {
 			margin: 0;
 			padding: 0;
 			box-sizing: border-box;
-			font-family: 'Consolas', 'Monaco', monospace;
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		}
+
+		:root {
+			--primary: #4361ee;
+			--secondary: #3a0ca3;
+			--accent: #f72585;
+			--light: #f8f9fa;
+			--dark: #212529;
+			--gray: #6c757d;
+			--success: #4cc9f0;
 		}
 
 		body {
 			background: linear-gradient(135deg, #111 0%, #222 100%);
 			min-height: 100vh;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			padding: 20px;
+			color: var(--light);
+			line-height: 1.6;
+			overflow-x: hidden;
 		}
 
 		.container {
 			max-width: 1200px;
+			margin: 0 auto;
+			padding: 0 20px;
+		}
+
+		/* Header */
+		header {
+			padding: 25px 0;
+			position: fixed;
 			width: 100%;
-			background: #222;
-			border-radius: 20px;
-			padding: 40px;
-			box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-		}
-
-		h1 {
-			text-align: center;
-			color: #333;
-			margin-bottom: 10px;
-			font-size: 2.5em;
-		}
-
-		.subtitle {
-			text-align: center;
-			color: #666;
-			margin-bottom: 40px;
-			font-size: 1.1em;
-		}
-
-		.instructions {
-			background: #333;
-			border-left: 4px solid #667eea;
-			padding: 15px;
-			margin-bottom: 30px;
-			border-radius: 0 10px 10px 0;
-		}
-
-		.instructions p {
-			color: #555;
-			line-height: 1.6;
-		}
-
-		table {
-			width: 100%;
-			border-collapse: collapse;
-			border-radius: 10px;
-			overflow: hidden;
-			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-		}
-
-		th {
-			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-			color: white;
-			padding: 20px;
-			text-align: left;
-			font-size: 1.2em;
-			font-weight: 600;
-		}
-
-		td {
-			padding: 20px;
-			border-bottom: 1px solid #222;
-			vertical-align: top;
-			position: relative;
+			top: 0;
+			z-index: 1000;
+			background: rgba(17, 17, 17, 0.95);
+			backdrop-filter: blur(10px);
+			border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 			transition: all 0.3s ease;
 		}
 
-		tr:hover td {
-			background-color: #333;
+		.header-content {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
 		}
 
-		.code-column {
-			width: 50%;
-			background: #333;
+		.logo {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			font-size: 1.8rem;
+			font-weight: 700;
+			color: var(--light);
+			text-decoration: none;
 		}
 
-		.answer-column {
-			width: 50%;
+		.logo i {
+			color: var(--accent);
+		}
+
+		.logo span {
+			color: var(--success);
+		}
+
+		nav ul {
+			display: flex;
+			list-style: none;
+			gap: 30px;
+		}
+
+		nav a {
+			color: var(--light);
+			text-decoration: none;
+			font-weight: 500;
+			transition: color 0.3s ease;
+			font-size: 1.1rem;
+		}
+
+		nav a:hover {
+			color: var(--success);
+		}
+
+		.cta-button {
+			background: linear-gradient(to right, var(--primary), var(--secondary));
+			color: white;
+			border: none;
+			padding: 12px 28px;
+			border-radius: 50px;
+			font-weight: 600;
+			font-size: 1.1rem;
+			cursor: pointer;
+			transition: all 0.3s ease;
+			text-decoration: none;
+			display: inline-block;
+			box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+		}
+
+		.cta-button:hover {
+			transform: translateY(-3px);
+			box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4);
+		}
+
+		/* Hero Section */
+		.hero {
+			padding: 180px 0 100px;
+			text-align: center;
 			position: relative;
 			overflow: hidden;
 		}
 
-		.blur-overlay {
-			filter: blur(5px);
-			transition: filter 0.3s ease;
+		.hero h1 {
+			font-size: 3.5rem;
+			margin-bottom: 20px;
+			line-height: 1.2;
+			background: linear-gradient(90deg, var(--success), var(--primary));
+			-webkit-background-clip: text;
+			background-clip: text;
+			color: transparent;
+			animation: fadeInUp 1s ease-out;
+		}
+
+		.hero p {
+			font-size: 1.3rem;
+			max-width: 800px;
+			margin: 0 auto 40px;
+			color: #ccc;
+			animation: fadeInUp 1s ease-out 0.2s both;
+		}
+
+		.hero-buttons {
+			display: flex;
+			justify-content: center;
+			gap: 20px;
+			animation: fadeInUp 1s ease-out 0.4s both;
+		}
+
+		.hero-buttons .cta-button {
+			padding: 15px 35px;
+			font-size: 1.2rem;
+		}
+
+		.secondary-button {
+			background: transparent;
+			border: 2px solid var(--primary);
+			color: var(--primary);
+		}
+
+		.secondary-button:hover {
+			background: rgba(67, 97, 238, 0.1);
+		}
+
+		/* Features */
+		.features {
+			padding: 100px 0;
+		}
+
+		.section-title {
+			text-align: center;
+			font-size: 2.5rem;
+			margin-bottom: 60px;
+			position: relative;
+		}
+
+		.section-title:after {
+			content: '';
+			display: block;
+			width: 80px;
+			height: 4px;
+			background: var(--accent);
+			margin: 15px auto;
+			border-radius: 2px;
+		}
+
+		.features-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+			gap: 40px;
+		}
+
+		.feature-card {
+			background: rgba(255, 255, 255, 0.05);
+			border-radius: 15px;
+			padding: 30px;
+			text-align: center;
+			transition: transform 0.3s ease, box-shadow 0.3s ease;
+			border: 1px solid rgba(255, 255, 255, 0.1);
+		}
+
+		.feature-card:hover {
+			transform: translateY(-10px);
+			box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+		}
+
+		.feature-icon {
+			width: 80px;
+			height: 80px;
+			background: linear-gradient(135deg, var(--primary), var(--secondary));
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin: 0 auto 25px;
+			font-size: 2rem;
+		}
+
+		.feature-card h3 {
+			font-size: 1.5rem;
+			margin-bottom: 15px;
+			color: var(--success);
+		}
+
+		/* How it works */
+		.how-it-works {
+			padding: 100px 0;
+			background: rgba(0, 0, 0, 0.3);
+		}
+
+		.steps {
+			display: flex;
+			justify-content: center;
+			flex-wrap: wrap;
+			gap: 40px;
+			margin-top: 60px;
+		}
+
+		.step {
+			flex: 1;
+			min-width: 250px;
+			max-width: 300px;
+			text-align: center;
+			position: relative;
+		}
+
+		.step-number {
+			width: 60px;
+			height: 60px;
+			background: linear-gradient(135deg, var(--accent), #ff2d95);
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 1.8rem;
+			font-weight: 700;
+			margin: 0 auto 25px;
+			box-shadow: 0 5px 15px rgba(247, 37, 133, 0.3);
+		}
+
+		.step h3 {
+			font-size: 1.4rem;
+			margin-bottom: 15px;
+		}
+
+		/* CTA Section */
+		.cta-section {
+			padding: 100px 0;
+			text-align: center;
+		}
+
+		.cta-section h2 {
+			font-size: 2.8rem;
+			margin-bottom: 20px;
+		}
+
+		.cta-section p {
+			font-size: 1.2rem;
+			max-width: 700px;
+			margin: 0 auto 40px;
+			color: #ccc;
+		}
+
+		/* Footer */
+		footer {
+			padding: 60px 0 30px;
+			background: rgba(0, 0, 0, 0.5);
+			border-top: 1px solid rgba(255, 255, 255, 0.1);
+		}
+
+		.footer-content {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			gap: 40px;
+			margin-bottom: 40px;
+		}
+
+		.footer-column {
+			flex: 1;
+			min-width: 250px;
+		}
+
+		.footer-column h3 {
+			font-size: 1.3rem;
+			margin-bottom: 25px;
+			color: var(--success);
+		}
+
+		.footer-links {
+			list-style: none;
+		}
+
+		.footer-links li {
+			margin-bottom: 12px;
+		}
+
+		.footer-links a {
+			color: #ccc;
+			text-decoration: none;
+			transition: color 0.3s ease;
+		}
+
+		.footer-links a:hover {
+			color: var(--success);
+		}
+
+		.copyright {
+			text-align: center;
+			padding-top: 30px;
+			border-top: 1px solid rgba(255, 255, 255, 0.1);
+			color: #aaa;
+			font-size: 0.9rem;
+		}
+
+		/* Animations */
+		@keyframes fadeInUp {
+			from {
+				opacity: 0;
+				transform: translateY(30px);
+			}
+
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		@keyframes float {
+
+			0%,
+			100% {
+				transform: translateY(0);
+			}
+
+			50% {
+				transform: translateY(-10px);
+			}
+		}
+
+		.floating {
+			animation: float 3s ease-in-out infinite;
+		}
+
+		/* Mobile Navigation */
+		.mobile-menu-btn {
+			display: none;
+			background: none;
+			border: none;
+			color: white;
+			font-size: 1.5rem;
 			cursor: pointer;
 		}
 
-		.answer-column:hover .blur-overlay {
-			filter: blur(0);
-		}
+		/* Responsive Design */
+		@media (max-width: 992px) {
+			.hero h1 {
+				font-size: 2.8rem;
+			}
 
-		.hover-hint {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			background: rgba(102, 126, 234, 0.9);
-			color: white;
-			padding: 8px 16px;
-			border-radius: 20px;
-			font-size: 14px;
-			opacity: 0;
-			transition: opacity 0.3s ease;
-			pointer-events: none;
-			z-index: 2;
-			white-space: nowrap;
-		}
+			.section-title {
+				font-size: 2.2rem;
+			}
 
-		.answer-column:hover .hover-hint {
-			opacity: 1;
-		}
-
-		code {
-			display: block;
-			background: #333;
-			color: #abb2bf;
-			padding: 15px;
-			border-radius: 8px;
-			margin: 5px 0;
-			font-size: 14px;
-			line-height: 1.5;
-			overflow-x: auto;
-		}
-
-		.output {
-			background: #333;
-			color: #fff;
-			border-left: 3px solid #3498db;
-			padding: 12px 15px;
-			margin: 8px 0;
-			border-radius: 0 5px 5px 0;
-		}
-
-		.comment {
-			color: #5c6370;
-			font-style: italic;
-			margin: 5px 0;
-			padding-left: 10px;
-			border-left: 2px solid #5c6370;
-		}
-
-		tr:nth-child(even) td {
-			background-color: #333;
-		}
-
-		tr:nth-child(even):hover td {
-			background-color: #333;
-		}
-
-		.footer {
-			text-align: center;
-			margin-top: 30px;
-			color: #666;
-			font-size: 0.9em;
+			.features-grid {
+				grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+			}
 		}
 
 		@media (max-width: 768px) {
-			.container {
+			header {
+				padding: 15px 0;
+			}
+
+			.mobile-menu-btn {
+				display: block;
+			}
+
+			nav {
+				position: fixed;
+				top: 70px;
+				left: 0;
+				width: 100%;
+				background: rgba(17, 17, 17, 0.98);
+				padding: 20px;
+				transform: translateY(-100%);
+				opacity: 0;
+				visibility: hidden;
+				transition: all 0.3s ease;
+			}
+
+			nav.active {
+				transform: translateY(0);
+				opacity: 1;
+				visibility: visible;
+			}
+
+			nav ul {
+				flex-direction: column;
+				gap: 20px;
+			}
+
+			.hero {
+				padding: 150px 0 80px;
+			}
+
+			.hero h1 {
+				font-size: 2.3rem;
+			}
+
+			.hero p {
+				font-size: 1.1rem;
+			}
+
+			.hero-buttons {
+				flex-direction: column;
+				align-items: center;
+			}
+
+			.steps {
+				flex-direction: column;
+				align-items: center;
+			}
+
+			.step {
+				max-width: 100%;
+			}
+
+			.cta-section h2 {
+				font-size: 2.2rem;
+			}
+		}
+
+		@media (max-width: 480px) {
+			.hero h1 {
+				font-size: 1.9rem;
+			}
+
+			.section-title {
+				font-size: 1.8rem;
+			}
+
+			.feature-card {
 				padding: 20px;
 			}
 
-			th,
-			td {
-				padding: 15px 10px;
+			.cta-button {
+				padding: 10px 20px;
+				font-size: 1rem;
 			}
+		}
 
-			code {
-				font-size: 12px;
-				padding: 10px;
-			}
+		/* Floating elements for visual interest */
+		.floating-element {
+			position: absolute;
+			border-radius: 50%;
+			background: rgba(255, 255, 255, 0.03);
+			z-index: -1;
+		}
+
+		.floating-element:nth-child(1) {
+			width: 300px;
+			height: 300px;
+			top: 10%;
+			left: 5%;
+			animation: float 6s ease-in-out infinite;
+		}
+
+		.floating-element:nth-child(2) {
+			width: 200px;
+			height: 200px;
+			bottom: 20%;
+			right: 8%;
+			animation: float 8s ease-in-out infinite reverse;
 		}
 	</style>
 </head>
 
 <body>
-	<div class="container">
-		<table>
-			<thead>
-				<tr>
-					<th>Код Python</th>
-					<th>Результат выполнения</th>
-				</tr>
-			</thead>
-			<tbody>
-				<!-- Строка 1 -->
-				<tr>
-					<td class="code-column">
-						<code>a = 7<br>print(a)</code>
-					</td>
-					<td class="answer-column">
-						<div class="blur-overlay">
-							<div class="output">7</div>
-						</div>
-					</td>
-				</tr>
+	<!-- Header -->
+	<header>
+		<div class="container header-content">
+			<a href="#" class="logo">
+				<i class="fas fa-brain"></i>
+				Word<span>MEMO</span>
+			</a>
 
-				<!-- Строка 2 -->
-				<tr>
-					<td class="code-column">
-						<code>b = a<br>print(b)</code>
-					</td>
-					<td class="answer-column">
-						<div class="blur-overlay">
-							<div class="output">7</div>
-						</div>
-					</td>
-				</tr>
+			<a href="tel:+79616845033" class="cta-button">Доступно по подписке</a>
+		</div>
+	</header>
 
-				<!-- Строка 3 -->
-				<tr>
-					<td class="code-column">
-						<code>print(4 + \<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3)</code>
-					</td>
-					<td class="answer-column">
-						<div class="blur-overlay">
-							<div class="output">7</div>
-						</div>
-					</td>
-				</tr>
+	<!-- Hero Section -->
+	<section class="hero">
+		<div class="floating-element"></div>
+		<div class="floating-element"></div>
 
-				<!-- Строка 4 -->
-				<tr>
-					<td class="code-column">
-						<code>c = True<br>if c:<br>&nbsp;&nbsp;&nbsp;&nbsp;print('True')</code>
-					</td>
-					<td class="answer-column">
-						<div class="blur-overlay">
-							<div class="output">True</div>
-						</div>
-					</td>
-				</tr>
+		<div class="container">
+			<h1>Не можете вспомнить слово? Хотите запомнить навсегда?</h1>
+			<p>WordMaster - это интеллектуальный тренажёр для запоминания слов с персональным подбором материала. Увеличьте словарный запас в 3 раза быстрее с помощью нашей уникальной методики!</p>
 
-				<!-- Строка 5 -->
-				<tr>
-					<td class="code-column">
-						<code>if c:<br>&nbsp;&nbsp;&nbsp;&nbsp;if False:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print('False')</code>
-					</td>
-					<td class="answer-column">
-						<div class="blur-overlay">
-							<div class="output">-</div>
-						</div>
-					</td>
-				</tr>
+			<div class="hero-buttons">
+				<a href="tel:+79616845033" class="cta-button">Вложите в себя</a>
+			</div>
+		</div>
+	</section>
 
-				<!-- Строка 6 -->
-				<tr>
-					<td class="code-column">
-						<code>d = 7<br>print(d==7)</code>
-					</td>
-					<td class="answer-column">
-						<div class="blur-overlay">
-							<div class="output">True</div>
-						</div>
-					</td>
-				</tr>
+	<!-- Features Section -->
+	<section class="features" id="features">
+		<div class="container">
+			<h2 class="section-title">Почему мы?</h2>
 
-				<!-- Строка 7 -->
-				<tr>
-					<td class="code-column">
-						<code>print((5&lt;d) and (d&lt;10))</code>
-					</td>
-					<td class="answer-column">
-						<div class="blur-overlay">
-							<div class="output">True</div>
-						</div>
-					</td>
-				</tr>
+			<div class="features-grid">
+				<div class="feature-card floating">
+					<div class="feature-icon">
+						<i class="fas fa-user-cog"></i>
+					</div>
+					<h3>Персональный набор слов</h3>
+					<p>Алгоритм подбирает слова именно для вашего уровня и целей. Загрузите свой список или доверьтесь нашей интеллектуальной системе.</p>
+				</div>
 
-				<!-- Строка 8 -->
-				<tr>
-					<td class="code-column">
-						<code>e = 1<br>while e &lt;= 5:<br>&nbsp;&nbsp;&nbsp;&nbsp;print(e)<br>&nbsp;&nbsp;&nbsp;&nbsp;e += 1</code>
-					</td>
-					<td class="answer-column">
-						<div class="blur-overlay">
-							<div class="output">1 2 3 4 5</div>
-						</div>
-					</td>
-				</tr>
+				<div class="feature-card floating" style="animation-delay: 0.2s;">
+					<div class="feature-icon">
+						<i class="fas fa-brain"></i>
+					</div>
+					<h3>Умное повторение</h3>
+					<p>Система интервального повторения (Spaced Repetition) запоминает ваши слабые места и показывает слова в идеальный момент для запоминания.</p>
+				</div>
 
-				<!-- Строка 9 -->
-				<tr>
-					<td class="code-column">
-						<code>for x in range(1,5):<br>&nbsp;&nbsp;&nbsp;&nbsp;print(x)</code>
-					</td>
-					<td class="answer-column">
-						<div class="blur-overlay">
-							<div class="output">1 2 3 4</div>
-						</div>
-					</td>
-				</tr>
+				<div class="feature-card floating" style="animation-delay: 0.4s;">
+					<div class="feature-icon">
+						<i class="fas fa-gamepad"></i>
+					</div>
+					<h3>Игровой формат</h3>
+					<p>Интерактивные упражнения, квесты и мини-игры делают процесс обучения увлекательным и эффективным.</p>
+				</div>
 
-				<!-- Строка 10 -->
-				<tr>
-					<td class="code-column">
-						<code>x = input()<br>print(x)</code>
-					</td>
-					<td class="answer-column">
-						<div class="blur-overlay">
-							<div class="output">введенное пользователем значение</div>
-						</div>
-					</td>
-				</tr>
-			</tbody>
-		</table>
+				<div class="feature-card floating" style="animation-delay: 0.6s;">
+					<div class="feature-icon">
+						<i class="fas fa-chart-line"></i>
+					</div>
+					<h3>Отслеживание прогресса</h3>
+					<p>Детальная статистика и визуализация прогресса помогут видеть результаты и мотивируют заниматься регулярно.</p>
+				</div>
 
-	</div>
+				<div class="feature-card floating" style="animation-delay: 0.8s;">
+					<div class="feature-icon">
+						<i class="fas fa-language"></i>
+					</div>
+					<h3>15+ языков</h3>
+					<p>Английский, испанский, немецкий, французский, китайский и многие другие языки с носителями для произношения.</p>
+				</div>
+
+				<div class="feature-card floating" style="animation-delay: 1s;">
+					<div class="feature-icon">
+						<i class="fas fa-mobile-alt"></i>
+					</div>
+					<h3>Всегда с собой</h3>
+					<p>Занимайтесь где угодно: на телефоне, планшете или компьютере. Синхронизация прогресса между устройствами.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- How it works -->
+	<section class="how-it-works" id="how-it-works">
+		<div class="container">
+			<h2 class="section-title">Всего 3 шага к результату</h2>
+
+			<div class="steps">
+				<div class="step">
+					<div class="step-number">1</div>
+					<h3>Выберите цель</h3>
+					<p>Определите, для чего вам нужен язык: путешествия, работа, экзамен или просто для себя. Мы подберем оптимальную программу.</p>
+				</div>
+
+				<div class="step">
+					<div class="step-number">2</div>
+					<h3>Получите персональный набор</h3>
+					<p>Наша система создаст для вас уникальный набор слов и упражнений, основанный на вашем уровне и целях.</p>
+				</div>
+
+				<div class="step">
+					<div class="step-number">3</div>
+					<h3>Занимайтесь и отслеживайте прогресс</h3>
+					<p>Ежедневные короткие тренировки по 10-15 минут и детальная статистика вашего прогресса.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- CTA Section -->
+	<section class="cta-section" id="cta">
+		<div class="container">
+			<h2>Закажите персональный набор слов под себя!</h2>
+			<p>Начните сегодня. Первые 10 слов со скидкой 50%</p>
+			<div class="contact-links">
+				<a href="tel:+79616845033" class="cta-button">
+					Позвонить
+				</a>
+			</div>
+			<div>почта maximafanasyevtodo@yandex.ru</div>
+		</div>
+	</section>
+
+	<!-- Footer -->
+	<footer>
+		<div class="copyright">
+			<p>&copy; 2025 WordMemo. Все права защищены.</p>
+		</div>
+	</footer>
+
+	<script>
+		// Mobile menu toggle
+		const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+		const mainNav = document.getElementById('mainNav');
+
+		mobileMenuBtn.addEventListener('click', () => {
+			mainNav.classList.toggle('active');
+			mobileMenuBtn.innerHTML = mainNav.classList.contains('active') ?
+				'<i class="fas fa-times"></i>' :
+				'<i class="fas fa-bars"></i>';
+		});
+
+		// Close mobile menu when clicking on a link
+		document.querySelectorAll('nav a').forEach(link => {
+			link.addEventListener('click', () => {
+				mainNav.classList.remove('active');
+				mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+			});
+		});
+
+		// Header scroll effect
+		window.addEventListener('scroll', () => {
+			const header = document.querySelector('header');
+			if (window.scrollY > 50) {
+				header.style.padding = '10px 0';
+				header.style.background = 'rgba(17, 17, 17, 0.98)';
+			} else {
+				header.style.padding = '25px 0';
+				header.style.background = 'rgba(17, 17, 17, 0.95)';
+			}
+		});
+
+		// Smooth scroll for anchor links
+		document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+			anchor.addEventListener('click', function(e) {
+				e.preventDefault();
+
+				const targetId = this.getAttribute('href');
+				if (targetId === '#') return;
+
+				const targetElement = document.querySelector(targetId);
+				if (targetElement) {
+					window.scrollTo({
+						top: targetElement.offsetTop - 80,
+						behavior: 'smooth'
+					});
+				}
+			});
+		});
+	</script>
 </body></html>

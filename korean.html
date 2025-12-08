@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>한국어 마스터 - Тренажёр корейского языка</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: 'Segoe UI', 'Malgun Gothic', sans-serif;
+			padding: 20px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			min-height: 100vh;
+			background: linear-gradient(135deg, #0a0a2a 0%, #1a1a3a 100%);
+			color: white;
+			text-align: center;
+			overflow-x: hidden;
+		}
+
+		.container {
+			max-width: 1000px;
+			width: 100%;
+			padding: 20px;
+		}
+
+		.header {
+			margin-bottom: 30px;
+		}
+
+		.logo {
+			font-size: 2.5rem;
+			font-weight: bold;
+			margin-bottom: 10px;
+			color: #ff6b6b;
+			text-shadow: 0 0 10px rgba(255, 107, 107, 0.3);
+		}
+
+		.subtitle {
+			font-size: 1.2rem;
+			color: #aaa;
+			margin-bottom: 30px;
+		}
+
+		.language-selector {
+			display: flex;
+			justify-content: center;
+			gap: 10px;
+			margin-bottom: 30px;
+		}
+
+		.lang-btn {
+			padding: 8px 16px;
+			background: rgba(255, 255, 255, 0.1);
+			border: 1px solid rgba(255, 255, 255, 0.2);
+			color: white;
+			border-radius: 20px;
+			cursor: pointer;
+			transition: all 0.3s;
+		}
+
+		.lang-btn.active {
+			background: #4d6fff;
+			border-color: #4d6fff;
+		}
+
+		.main-content {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 30px;
+		}
+
+		/* Карточка слова */
+		.word-card {
+			background: rgba(255, 255, 255, 0.05);
+			border: 1px solid rgba(255, 255, 255, 0.1);
+			border-radius: 20px;
+			padding: 30px;
+			width: 100%;
+			max-width: 600px;
+			backdrop-filter: blur(10px);
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+			transition: transform 0.3s;
+		}
+
+		.word-card:hover {
+			transform: translateY(-5px);
+		}
+
+		.korean-word {
+			font-size: 5rem;
+			font-weight: bold;
+			margin-bottom: 10px;
+			color: #4d6fff;
+			text-shadow: 0 0 15px rgba(77, 111, 255, 0.5);
+		}
+
+		.romanization {
+			font-size: 1.5rem;
+			color: #aaa;
+			margin-bottom: 20px;
+			font-style: italic;
+		}
+
+		.meaning {
+			font-size: 1.8rem;
+			margin-bottom: 25px;
+			color: #ffd93d;
+		}
+
+		.category {
+			display: inline-block;
+			background: rgba(255, 107, 107, 0.2);
+			color: #ff6b6b;
+			padding: 5px 15px;
+			border-radius: 15px;
+			font-size: 0.9rem;
+			margin-bottom: 20px;
+		}
+
+		/* Ввод и проверка */
+		.input-section {
+			width: 100%;
+			max-width: 600px;
+		}
+
+		.input-label {
+			display: block;
+			font-size: 1.2rem;
+			margin-bottom: 15px;
+			color: #aaa;
+		}
+
+		.input-container {
+			display: flex;
+			gap: 15px;
+			align-items: center;
+			justify-content: center;
+			margin-bottom: 20px;
+		}
+
+		.input-field {
+			width: 300px;
+			height: 70px;
+			border-radius: 15px;
+			border: 2px solid rgba(255, 255, 255, 0.2);
+			background: rgba(0, 0, 0, 0.3);
+			color: white;
+			font-size: 1.8rem;
+			text-align: center;
+			outline: none;
+			transition: all 0.3s;
+			padding: 0 20px;
+		}
+
+		.input-field:focus {
+			border-color: #4d6fff;
+			box-shadow: 0 0 10px rgba(77, 111, 255, 0.5);
+		}
+
+		.input-field.correct {
+			border-color: #6bcf7f;
+			background: rgba(107, 207, 127, 0.1);
+		}
+
+		.input-field.incorrect {
+			border-color: #ff6b6b;
+			background: rgba(255, 107, 107, 0.1);
+		}
+
+		.check-btn {
+			width: 70px;
+			height: 70px;
+			border-radius: 50%;
+			border: none;
+			background: #4d6fff;
+			color: white;
+			font-size: 1.5rem;
+			cursor: pointer;
+			transition: all 0.3s;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.check-btn:hover {
+			background: #3a5bff;
+			transform: scale(1.05);
+		}
+
+		.check-btn:active {
+			transform: scale(0.95);
+		}
+
+		.hint-btn {
+			padding: 10px 20px;
+			background: rgba(255, 255, 255, 0.1);
+			border: 1px solid rgba(255, 255, 255, 0.2);
+			color: white;
+			border-radius: 10px;
+			cursor: pointer;
+			margin-bottom: 15px;
+			transition: all 0.3s;
+		}
+
+		.hint-btn:hover {
+			background: rgba(255, 255, 255, 0.2);
+		}
+
+		.hint {
+			font-size: 1.1rem;
+			color: #aaa;
+			margin-bottom: 20px;
+			min-height: 24px;
+		}
+
+		/* Статистика */
+		.stats {
+			display: flex;
+			justify-content: center;
+			gap: 30px;
+			margin-top: 20px;
+		}
+
+		.stat-item {
+			background: rgba(255, 255, 255, 0.05);
+			border-radius: 15px;
+			padding: 15px 25px;
+			min-width: 120px;
+		}
+
+		.stat-value {
+			font-size: 2rem;
+			font-weight: bold;
+			color: #ffd93d;
+		}
+
+		.stat-label {
+			font-size: 0.9rem;
+			color: #aaa;
+			margin-top: 5px;
+		}
+
+		/* Объяснения */
+		.explanation {
+			background: rgba(255, 255, 255, 0.05);
+			border: 1px solid rgba(255, 255, 255, 0.1);
+			border-radius: 20px;
+			padding: 25px;
+			width: 100%;
+			max-width: 600px;
+			margin-top: 20px;
+			text-align: left;
+		}
+
+		.explanation h3 {
+			color: #4d6fff;
+			margin-bottom: 15px;
+			font-size: 1.5rem;
+		}
+
+		.explanation-content {
+			font-size: 1.1rem;
+			line-height: 1.6;
+			color: #ccc;
+		}
+
+		.grammar-points {
+			margin-top: 15px;
+			padding-left: 20px;
+		}
+
+		.grammar-points li {
+			margin-bottom: 10px;
+		}
+
+		.example {
+			background: rgba(255, 255, 255, 0.03);
+			padding: 10px 15px;
+			border-radius: 10px;
+			margin: 10px 0;
+			border-left: 3px solid #4d6fff;
+		}
+
+		.example-korean {
+			color: #ffd93d;
+			font-weight: bold;
+		}
+
+		.example-translation {
+			color: #aaa;
+			font-style: italic;
+		}
+
+		/* Кнопки навигации */
+		.navigation {
+			display: flex;
+			gap: 15px;
+			margin-top: 20px;
+		}
+
+		.nav-btn {
+			padding: 12px 25px;
+			background: rgba(255, 255, 255, 0.1);
+			border: 1px solid rgba(255, 255, 255, 0.2);
+			color: white;
+			border-radius: 10px;
+			cursor: pointer;
+			transition: all 0.3s;
+			font-size: 1rem;
+		}
+
+		.nav-btn:hover {
+			background: rgba(255, 255, 255, 0.2);
+		}
+
+		.nav-btn.primary {
+			background: #4d6fff;
+			border-color: #4d6fff;
+		}
+
+		.nav-btn.primary:hover {
+			background: #3a5bff;
+		}
+
+		/* Футер */
+		.footer {
+			margin-top: 40px;
+			color: #666;
+			font-size: 0.9rem;
+			padding: 20px;
+			border-top: 1px solid rgba(255, 255, 255, 0.1);
+			width: 100%;
+		}
+
+		/* Мобильная адаптация */
+		@media (max-width: 768px) {
+			.korean-word {
+				font-size: 3.5rem;
+			}
+
+			.meaning {
+				font-size: 1.5rem;
+			}
+
+			.input-container {
+				flex-direction: column;
+			}
+
+			.input-field {
+				width: 100%;
+				max-width: 300px;
+				height: 60px;
+				font-size: 1.5rem;
+			}
+
+			.check-btn {
+				width: 60px;
+				height: 60px;
+			}
+
+			.stats {
+				flex-wrap: wrap;
+				gap: 15px;
+			}
+
+			.stat-item {
+				min-width: 100px;
+				padding: 12px 20px;
+			}
+
+			.stat-value {
+				font-size: 1.5rem;
+			}
+		}
+
+		@media (max-width: 480px) {
+			body {
+				padding: 10px;
+			}
+
+			.korean-word {
+				font-size: 2.8rem;
+			}
+
+			.meaning {
+				font-size: 1.3rem;
+			}
+
+			.word-card {
+				padding: 20px;
+			}
+
+			.explanation {
+				padding: 20px;
+			}
+		}
+
+		/* Анимации */
+		@keyframes fadeIn {
+			from {
+				opacity: 0;
+				transform: translateY(20px);
+			}
+
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		@keyframes pulse {
+			0% {
+				transform: scale(1);
+			}
+
+			50% {
+				transform: scale(1.05);
+			}
+
+			100% {
+				transform: scale(1);
+			}
+		}
+
+		.fade-in {
+			animation: fadeIn 0.5s ease-out;
+		}
+
+		.pulse {
+			animation: pulse 0.5s ease-in-out;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<div class="header">
+			<div class="logo">한국어 마스터</div>
+			<div class="subtitle">Тренажёр для изучения корейских слов и выражений</div>
+		</div>
+
+		<div class="main-content">
+			<!-- Карточка слова -->
+			<div class="word-card fade-in" id="wordCard">
+				<div class="category" id="wordCategory">ПРИВЕТСТВИЕ</div>
+				<div class="korean-word" id="koreanWord">안녕</div>
+				<div class="romanization" id="romanization">annyeong</div>
+				<div class="meaning" id="wordMeaning">Привет</div>
+			</div>
+
+			<!-- Ввод и проверка -->
+			<div class="input-section">
+				<div class="input-label">Выберите корейскую раскладку и напечатайте dkssud или влыыгв</div>
+				<div class="input-container">
+					<input type="text" class="input-field" id="userInput" placeholder="" autocomplete="off">
+					<button class="check-btn" id="checkBtn">
+						<i class="fas fa-check"></i>
+					</button>
+				</div>
+
+				<button class="hint-btn" id="hintBtn">Показать подсказку</button>
+				<div class="hint" id="hintText"></div>
+			</div>
+
+			<!-- Статистика -->
+			<div class="stats">
+				<div class="stat-item">
+					<div class="stat-value" id="correctCount">0</div>
+					<div class="stat-label">Правильно</div>
+				</div>
+				<div class="stat-item">
+					<div class="stat-value" id="streakCount">0</div>
+					<div class="stat-label">Серия</div>
+				</div>
+				<div class="stat-item">
+					<div class="stat-value" id="totalCount">0</div>
+					<div class="stat-label">Всего слов</div>
+				</div>
+				<div class="stat-item">
+					<div class="stat-value" id="accuracy">0%</div>
+					<div class="stat-label">Точность</div>
+				</div>
+			</div>
+
+			<!-- Навигация -->
+			<div class="navigation">
+				<button class="nav-btn" id="prevBtn">
+					<i class="fas fa-arrow-left"></i> Предыдущее
+				</button>
+				<button class="nav-btn primary" id="nextBtn">
+					Следующее слово <i class="fas fa-arrow-right"></i>
+				</button>
+				<button class="nav-btn" id="resetBtn">
+					<i class="fas fa-redo"></i> Сброс
+				</button>
+			</div>
+
+			<!-- Объяснения -->
+			<div class="explanation fade-in">
+				<h3>📚 Объяснение слова "안녕하세요"</h3>
+				<div class="explanation-content">
+					<p><strong>안녕하세요</strong> - это стандартное вежливое приветствие в корейском языке, которое используется в большинстве ситуаций.</p>
+
+					<p><strong>Разбор слова:</strong></p>
+					<ul class="grammar-points">
+						<li><strong>안녕</strong> (annyeong) - означает "мир", "спокойствие", "благополучие"</li>
+						<li><strong>하세요</strong> (haseyo) - вежливая форма глагола "하다" (делать)</li>
+						<li>Дословно: "Будьте благополучны" или "Находитесь в мире"</li>
+					</ul>
+
+					<p><strong>Использование:</strong></p>
+					<div class="example">
+						<div class="example-korean">안녕하세요, 저는 마리아입니다.</div>
+						<div class="example-translation">Здравствуйте, меня зовут Мария.</div>
+					</div>
+
+					<div class="example">
+						<div class="example-korean">안녕하세요? 어떻게 지내세요?</div>
+						<div class="example-translation">Здравствуйте! Как дела?</div>
+					</div>
+
+					<p><strong>Альтернативные формы:</strong></p>
+					<ul class="grammar-points">
+						<li><strong>안녕</strong> (annyeong) - неформальное, для друзей</li>
+						<li><strong>안녕하십니까</strong> (annyeonghasimnikka) - более формальное</li>
+					</ul>
+
+					<p><strong>Совет по произношению:</strong> Произносится как "ан-нён-ха-сейо". Обратите внимание на двойное "н" в начале.</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="footer">
+			<p>한국어 마스터 - Тренажёр корейского языка • Используйте клавишу Enter для проверки слова</p>
+			<p>© 2023 Все права защищены • Для корректного отображения корейских символов убедитесь, что у вас установлены корейские шрифты</p>
+		</div>
+	</div>
+
+	<!-- Font Awesome для иконок -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+
+	<script>
+		// База слов корейского языка
+		const koreanWords = [{
+			korean: "안녕",
+			romanization: "annyeon",
+			meaning: "Привет",
+			category: "ПРИВЕТСТВИЕ",
+			explanation: "Стандартное вежливое приветствие. Состоит из '안녕' (мир/спокойствие). Дословно: 'Будьте благополучны'.",
+			examples: [
+				"안녕, 저는 학생입니다. (Привет, я студент.)",
+			],
+			hints: ["Начинается с '안'", "5 слогов", "Вежливая форма"]
+		}];
+
+		// Инициализация приложения
+		let currentIndex = 0;
+		let correctAnswers = parseInt(localStorage.getItem('correctAnswers')) || 0;
+		let totalAttempts = parseInt(localStorage.getItem('totalAttempts')) || 0;
+		let currentStreak = parseInt(localStorage.getItem('currentStreak')) || 0;
+		let bestStreak = parseInt(localStorage.getItem('bestStreak')) || 0;
+
+		// Элементы DOM
+		const koreanWordEl = document.getElementById('koreanWord');
+		const romanizationEl = document.getElementById('romanization');
+		const meaningEl = document.getElementById('wordMeaning');
+		const categoryEl = document.getElementById('wordCategory');
+		const userInputEl = document.getElementById('userInput');
+		const checkBtn = document.getElementById('checkBtn');
+		const hintBtn = document.getElementById('hintBtn');
+		const hintText = document.getElementById('hintText');
+		const correctCountEl = document.getElementById('correctCount');
+		const streakCountEl = document.getElementById('streakCount');
+		const totalCountEl = document.getElementById('totalCount');
+		const accuracyEl = document.getElementById('accuracy');
+		const prevBtn = document.getElementById('prevBtn');
+		const nextBtn = document.getElementById('nextBtn');
+		const resetBtn = document.getElementById('resetBtn');
+		const wordCard = document.getElementById('wordCard');
+		const explanationEl = document.querySelector('.explanation-content');
+
+		// Инициализация статистики
+		function updateStats() {
+			correctCountEl.textContent = correctAnswers;
+			streakCountEl.textContent = currentStreak;
+			totalCountEl.textContent = totalAttempts;
+
+			const accuracy = totalAttempts > 0 ? Math.round((correctAnswers / totalAttempts) * 100) : 0;
+			accuracyEl.textContent = `${accuracy}%`;
+
+			// Сохранение в localStorage
+			localStorage.setItem('correctAnswers', correctAnswers);
+			localStorage.setItem('totalAttempts', totalAttempts);
+			localStorage.setItem('currentStreak', currentStreak);
+			localStorage.setItem('bestStreak', bestStreak);
+		}
+
+		// Загрузка слова
+		function loadWord(index) {
+			const word = koreanWords[index];
+
+			koreanWordEl.textContent = word.korean;
+			romanizationEl.textContent = word.romanization;
+			meaningEl.textContent = word.meaning;
+			categoryEl.textContent = word.category;
+
+			// Обновляем объяснение
+			updateExplanation(word);
+
+			// Сброс поля ввода
+			userInputEl.value = '';
+			userInputEl.className = 'input-field';
+			hintText.textContent = '';
+
+			// Анимация карточки
+			wordCard.classList.remove('fade-in');
+			void wordCard.offsetWidth; // Перезапуск анимации
+			wordCard.classList.add('fade-in');
+
+			// Фокус на поле ввода
+			userInputEl.focus();
+		}
+
+		// Обновление объяснения
+		function updateExplanation(word) {
+			let html = `
+                <p><strong>${word.korean}</strong> - ${word.explanation}</p>
+            `;
+
+			if (word.examples && word.examples.length > 0) {
+				html += `<p><strong>Примеры использования:</strong></p>`;
+				word.examples.forEach(example => {
+					// Разделяем корейский текст и перевод
+					const parts = example.split(' (');
+					const korean = parts[0];
+					const translation = parts[1] ? parts[1].replace(')', '') : '';
+
+					html += `
+                        <div class="example">
+                            <div class="example-korean">${korean}</div>
+                            <div class="example-translation">${translation}</div>
+                        </div>
+                    `;
+				});
+			}
+
+			explanationEl.innerHTML = html;
+		}
+
+		// Проверка ответа
+		function checkAnswer() {
+			const userAnswer = userInputEl.value.trim();
+			const correctAnswer = koreanWords[currentIndex].korean;
+
+			if (!userAnswer) return;
+
+			totalAttempts++;
+
+			if (userAnswer === correctAnswer) {
+				// Правильный ответ
+				userInputEl.className = 'input-field correct';
+				correctAnswers++;
+				currentStreak++;
+
+				if (currentStreak > bestStreak) {
+					bestStreak = currentStreak;
+				}
+
+				// Анимация успеха
+				wordCard.classList.add('pulse');
+				setTimeout(() => wordCard.classList.remove('pulse'), 500);
+
+				// Автоматический переход через 1.5 секунды
+				setTimeout(() => {
+					currentIndex = (currentIndex + 1) % koreanWords.length;
+					loadWord(currentIndex);
+				}, 1500);
+			} else {
+				// Неправильный ответ
+				userInputEl.className = 'input-field incorrect';
+				currentStreak = 0;
+
+				// Показать правильный ответ
+				hintText.textContent = `Правильный ответ: ${correctAnswer}`;
+				hintText.style.color = '#ff6b6b';
+			}
+
+			updateStats();
+		}
+
+		// Показать подсказку
+		function showHint() {
+			const hints = koreanWords[currentIndex].hints;
+			const randomHint = hints[Math.floor(Math.random() * hints.length)];
+			hintText.textContent = `Подсказка: ${randomHint}`;
+			hintText.style.color = '#4d6fff';
+		}
+
+		// Смена языка интерфейса
+		function setLanguage(lang) {
+			const langBtns = document.querySelectorAll('.lang-btn');
+			langBtns.forEach(btn => btn.classList.remove('active'));
+			event.target.classList.add('active');
+
+			// Здесь можно добавить логику смены языка интерфейса
+			alert(`Язык интерфейса изменен на: ${lang === 'korean' ? 'Корейский' : lang === 'english' ? 'Английский' : 'Русский'}`);
+		}
+
+		// Инициализация
+		document.addEventListener('DOMContentLoaded', () => {
+			loadWord(currentIndex);
+			updateStats();
+
+			// Обработчики событий
+			checkBtn.addEventListener('click', checkAnswer);
+			hintBtn.addEventListener('click', showHint);
+
+			userInputEl.addEventListener('keypress', (e) => {
+				if (e.key === 'Enter') {
+					checkAnswer();
+				}
+			});
+
+			prevBtn.addEventListener('click', () => {
+				currentIndex = (currentIndex - 1 + koreanWords.length) % koreanWords.length;
+				loadWord(currentIndex);
+			});
+
+			nextBtn.addEventListener('click', () => {
+				currentIndex = (currentIndex + 1) % koreanWords.length;
+				loadWord(currentIndex);
+			});
+
+			resetBtn.addEventListener('click', () => {
+				if (confirm('Вы уверены, что хотите сбросить всю статистику?')) {
+					correctAnswers = 0;
+					totalAttempts = 0;
+					currentStreak = 0;
+					bestStreak = 0;
+					localStorage.clear();
+					updateStats();
+					loadWord(currentIndex);
+				}
+			});
+
+			// Горячие клавиши
+			document.addEventListener('keydown', (e) => {
+				// Ctrl + стрелки для навигации
+				if (e.ctrlKey) {
+					if (e.key === 'ArrowLeft') {
+						currentIndex = (currentIndex - 1 + koreanWords.length) % koreanWords.length;
+						loadWord(currentIndex);
+					} else if (e.key === 'ArrowRight') {
+						currentIndex = (currentIndex + 1) % koreanWords.length;
+						loadWord(currentIndex);
+					}
+				}
+
+				// Ctrl + R для сброса (только для разработки)
+				if (e.ctrlKey && e.key === 'r') {
+					e.preventDefault();
+					resetBtn.click();
+				}
+
+				// Ctrl + H для подсказки
+				if (e.ctrlKey && e.key === 'h') {
+					e.preventDefault();
+					showHint();
+				}
+			});
+		});
+	</script>
+</body></html>

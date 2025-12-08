@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .contact-link {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            text-align: center;
+            font-size: 16px;
+        }
+        .contact-link:hover {
+            background-color: #0056b3;
+        }
+        .phone-link {
+            background-color: #28a745;
+        }
+        .phone-link:hover {
+            background-color: #1e7e34;
+        }
+        .email-link {
+            background-color: #17a2b8;
+        }
+        .email-link:hover {
+            background-color: #117a8b;
+        }
+    </style>
+</head>
+<body>
+    <div class="contact-links">
+        <a href="tel:+79616845033" class="contact-link phone-link">
+            Позвонить: 8 (961) 684-50-33
+        </a>
+        
+        <a href="mailto:maximafanasyevtodo@yandex.ru" class="contact-link email-link">
+            Написать письмо: maximafanasyevtodo@yandex.ru
+        </a>
+    </div>
+
+    <script>
+        // Дополнительная проверка для мобильных устройств
+        document.addEventListener('DOMContentLoaded', function() {
+            const phoneLink = document.querySelector('a[href^="tel:"]');
+            const emailLink = document.querySelector('a[href^="mailto:"]');
+            
+            // Для телефонной ссылки добавляем подтверждение на десктопах
+            if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                phoneLink.addEventListener('click', function(e) {
+                    if (!confirm('Вы собираетесь позвонить по номеру: 8 (961) 684-50-33. Продолжить?')) {
+                        e.preventDefault();
+                    }
+                });
+            }
+            
+            // Для email ссылки можно добавить дополнительную логику
+            emailLink.addEventListener('click', function() {
+                console.log('Открывается почтовый клиент для отправки письма');
+            });
+        });
+    </script>
+</body>
+</html>
