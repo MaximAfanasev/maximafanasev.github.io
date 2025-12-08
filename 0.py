@@ -1,43 +1,28 @@
-a = 7
-print(a)
-# 7
-
-b = a
-print(b)
-# 7
-
-print(4 + \
-      3)
-# 7
-
-c = True
-if c:
-    print('True')
-# True
-
-c = False
-if c:
-    if False:
-        print('False')
-# -
-
-d = 7
-print(d==7)
-# True
-
-print((5<d) and (d<10))
-# True
-
-e = 1
-while e <= 5:
-    print(e)
-    e += 1
-# 1 2 3 4 5
-
-for x in range(1,5):
-    print(x)
-# 1 2 3 4
-
-x = input()
-print(x)
-# if press a printed a
+print(type(True))
+# <class 'bool'>
+print(type(bytearray(b'hh')))
+# <class 'bytearray'>
+a = b'aaaa'
+print(type(a))
+# <class 'bytes'>
+print(type(3j))
+# <class 'complex'>
+print(type({}))
+# <class 'dict'>
+print(type(1.0))
+# <class 'float'>
+print(type(frozenset[1,2]))
+# <class 'types.GenericAlias'>
+b = (x for x in range(1,2))
+print(type(b))
+# <class 'generator'>
+print(type(4))
+# <class 'int'>
+print(type([]))
+# <class 'list'>
+print(type((1,2)))
+# <class 'tuple'>
+print(type(set[1,2]))
+# <class 'types.GenericAlias'>
+print(type('a'))
+# <class 'str'>
