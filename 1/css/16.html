@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Демонстрация свойств текста: гипены, переполнение, тень и направление</title>
+<!-- Подключение шрифта для стильного вида -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+<style>
+  body {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: 'Roboto', sans-serif;
+    margin: 20px;
+    line-height: 1.6;
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 700;
+    font-size: 2em;
+    color: #ffffff;
+  }
+
+  /* Общий стиль для секций */
+  .section {
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  /* При наведении эффект */
+  .section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  }
+
+  h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    color: #ffffff;
+  }
+
+  /* Общие стили для параграфов */
+p {
+    margin-top: 10px;
+    font-size: 1em;
+    line-height: 1.5;
+
+    /* Общие свойства для демонстрации */
+    text-indent:20px; /* сдвиг первой строки */
+    letter-spacing:1px; /* межсимвольное расстояние */
+    word-spacing:2px; /* межсловное расстояние */
+
+    /* Для демонстрации свойств по умолчанию */
+    white-space: normal; 
+}
+
+/* Стиль для гипенов */
+.hyphens-none {
+   hyphens:none; 
+}
+
+.hyphens-manual {
+   hyphens:manual; 
+}
+
+.hyphens-auto {
+   hyphens:auto; 
+}
+
+/* Стиль для text-overflow */
+.overflow-ellipsis {
+   white-space: nowrap; 
+   overflow: hidden; 
+   text-overflow: ellipsis; 
+}
+
+/* Стиль для text-shadow */
+.text-shadow-demo {
+   text-shadow:1px 1px 2px rgba(0,0,0,0.5); 
+}
+
+/* Стиль для направления текста */
+.direction-ltr {
+   direction:ltr; 
+}
+
+.direction-rtl {
+   direction:rtr; 
+}
+
+/* Стиль для unicode-bidi */
+.bidi-normal {
+   unicode-bidi:normal; 
+}
+</style>
+</head>
+<body>
+
+<h1>Демонстрация свойств текста</h1>
+
+<!-- Гипены -->
+<div class="section">
+<h2>Гипены (hyphens)</h2>
+<p class="hyphens-none">
+Это пример текста с отключенными автоматическими дефисами (hyphens:none). Текст не будет автоматически разбиваться с помощью дефисов.
+</p>
+<p class="hyphens-manual">
+Это пример текста с разрешением ручных дефисов (hyphens:manual). Только там, где явно указаны дефисы (&shy;) или мягкий перенос (&shy;) — произойдет перенос.
+</p>
+<p class="hyphens-auto">
+Это пример текста с автоматическими дефисами (hyphens:auto). Браузер будет стараться разбивать слова по правилам языка.
+</p>
+</div>
+
+<!-- Переполнение -->
+<div class="section">
+<h2>Обработка переполнения (text-overflow)</h2>
+<p class="overflow-ellipsis">
+Это очень длинный текст без переноса, который не помещается в контейнер и будет обрезан с добавлением многоточия...
+</p>
+</div>
+
+<!-- Тень текста -->
+<div class="section">
+<h2>Тень текста (text-shadow)</h2>
+<p class="text-shadow-demo">
+Этот текст имеет тень с смещением на (1px,1px), размытие — 2px и полупрозрачный черный цвет.
+</p>
+</div>
+
+<!-- Направление текста -->
+<div class="section">
+<h2>Направление текста (direction)</h2>
+<p class="direction-ltr">
+Это текст слева направо (LTR). Обычно используется для английского и большинства языков.
+</p>
+<p class="direction-rtl" style="margin-top:10px;">
+Это текст справа налево (RTL). Используется для арабского или иврита.
+</p>
+</div>
+
+<!-- Unicode-бидии -->
+<div class="section">
+<h2>Unicode-бидии (unicode-bidi)</h2>
+<p class="bidi-normal">
+Это стандартное поведение без особых изменений порядка символов.
+</p>
+</div>
+
+</body>
+</html>

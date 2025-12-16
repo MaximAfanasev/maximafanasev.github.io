@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Демонстрация свойств фона</title>
+<style>
+  body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .section {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    color: #333;
+  }
+
+  /* Общие стили для демонстрационных блоков */
+.demo-box {
+    width: 300px;
+    height: 150px;
+    border: 2px solid #ccc;
+    margin-top: 10px;
+}
+
+/* Различные фоны для демонстрации */
+.bg-color {
+    background-color: #fff; /* белый фон */
+}
+
+.bg-image-url {
+    background-image: url("https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80");
+}
+
+.bg-gradient {
+    background-image: linear-gradient(to top, black, white);
+}
+
+/* Повтор изображений */
+.repeat-no {
+    background-repeat: no-repeat;
+}
+.repeat-x {
+    background-repeat: repeat-x;
+}
+.repeat-y {
+    background-repeat: repeat-y;
+}
+
+/* Позиционирование */
+.pos-center {
+    background-position: center;
+}
+.pos-offset {
+    background-position: 10px 20px;
+}
+
+/* Размеры изображений */
+.size-cover {
+    background-size: cover;
+}
+.size-contain {
+    background-size: contain;
+}
+.size-fixed {
+    background-size: 100px 50px;
+}
+
+/* Прикрепление фона при прокрутке */
+.attachment-scroll {
+    background-attachment: scroll; /* по умолчанию */
+}
+.attachment-fixed {
+    background-attachment: fixed; /* фиксированный фон */
+}
+
+/* Область отображения фона */
+.clip-border-box {
+    background-clip: border-box; /* занимает всю область за границами блока */
+}
+.clip-padding-box {
+    background-clip: padding-box; /* начинается от внутреннего отступа */
+}
+
+/* Смесь фона (по умолчанию) */
+.blend-normal {
+    background-blend-mode: normal; 
+}
+</style>
+</head>
+<body>
+
+<h1>Демонстрация свойств фона в CSS</h1>
+
+<!-- Белый цвет фона -->
+<div class="section">
+<h2>Цвет фона (background-color)</h2>
+<div class="demo-box bg-color">
+Это просто белый фон.
+</div>
+</div>
+
+<!-- Фон с изображением из URL -->
+<div class="section">
+<h2>Фон с изображением (background-image)</h2>
+<div class="demo-box bg-image-url" style="background-size:auto; height:auto;">
+Это изображение из интернета в качестве фона.
+</div>
+</div>
+
+<!-- Градиент -->
+<div class="section">
+<h2>Градиент (linear-gradient)</h2>
+<div class="demo-box bg-gradient" style="height:auto;">
+Градиент от черного к белому сверху вниз.
+</div>
+</div>
+
+<!-- Повтор изображений -->
+<div class="section">
+<h2>Повтор изображения (background-repeat)</h2>
+<div class="demo-box repeat-no" style="background-image:url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80'); height:auto;">
+Без повторения.
+</div>
+<div class="demo-box repeat-x" style="background-image:url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80'); height:auto;">
+Повтор по горизонтали.
+</div>
+<div class="demo-box repeat-y" style="background-image:url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80'); height:auto;">
+Повтор по вертикали.
+</div>
+</div>
+
+<!-- Позиционирование изображения -->
+<div class="section">
+<h2>Положение изображения (background-position)</h2>
+<div class="demo-box pos-center" style="
+background-image:url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80');
+height:auto;">
+Центр изображения.
+</div>
+<div class="demo-box pos-offset" style="
+background-image:url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80');
+height:auto;">
+Смещение на (10px,20px).
+</div>
+</div>
+
+<!-- Размер изображения -->
+<div class="section">
+<h2>Размер изображения (background-size)</h2>
+<div class="demo-box size-cover" style="
+background-image:url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80');
+height:auto;">
+Масштабирование для покрытия блока.
+</div>
+<div class="demo-box size-contain" style="
+background-image:url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80');
+height:auto;">
+Масштабирование для полного отображения.
+</div>
+<div class="demo-box size-fixed" style="
+background-image:url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80');
+height:auto;">
+Фиксированный размер (100x50 px).
+</div>
+</div>
+
+<!-- Прикрепление фона при прокрутке -->
+<div class="section">
+<h2>Прикрепление фона (background-attachment)</h2>
+<div style="
+height:200px; overflow-y:auto; border:1px solid #ccc; padding-right:10px;"
+class="">
+<p style="
+margin-top:-50px; 
+background-image:url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80');
+height:auto; 
+background-repeat:no-repeat; 
+background-size:auto;"
+class="attachment-scroll">
+Прокручивайте этот блок — фон будет прокручиваться вместе с содержимым.
+</p></div>
+
+<div style="
+height:200px; overflow-y:auto; border:1px solid #ccc; padding-right:10px;"
+class="">
+<p style="
+margin-top:-50px; 
+height:auto; 
+background-image:url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80');
+background-repeat:no-repeat; 
+background-size:auto; 
+position:absolute;"
+class="attachment-fixed">
+Этот блок — фон фиксирован при прокрутке страницы.
+</p></div>
+</div>
+
+<!-- Область отображения фона -->
+<div class="section">
+<h2>Область отображения фона (background-clip)</h2>
+<p style="
+width:300px; height:100px; padding:10px; border-radius:8px;"
+class="bg-border clip-border-box"
+style="">
+<span style="
+display:inline-block; width:100%; height:100%;"
+class="bg-border clip-border-box"
+style="">
+Фон занимает всю область за границами блока (border-box).
+</span></p>
+
+<p style="
+width:300px; height:auto; padding:10px; border-radius:8px;"
+class="bg-padding clip-padding-box"
+style="">
+Фон начинается от внутреннего отступа (padding-box).
+</p>
+</div>
+
+<!-- Смесь фона -->
+<div class="section">
+<h2>Смешивание фонов (background-blend-mode)</h2>
+<div style="
+width:300px;height:auto;padding:px;border-radius:px;background:
+linear-gradient(to right, red, yellow);
+"
+class="">
+<p style="
+margin-top:-50px;padding-top:px;padding-bottom:px;padding-left:px;padding-right:px;text-align:center;"
+class="">
+Этот блок показывает смешивание режимов фоновых слоёв. В данном случае — обычное отображение без смешивания.
+</p></div>
+</div>
+
+<script>
+// Можно добавить скрипты для динамических эффектов или демонстраций
+// В текущем примере все свойства статичны
+</script>
+
+</body>
+</html>
