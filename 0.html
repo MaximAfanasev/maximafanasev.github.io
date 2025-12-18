@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Академия Кибергероев | Прокачка IT-навыков</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #00ff9d;
+            --secondary: #00b8ff;
+            --dark: #0a0a14;
+            --darker: #050510;
+            --gray: #1a1a2e;
+            --light: #e6e6ff;
+            --neon-glow: 0 0 10px var(--primary), 0 0 20px var(--primary);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Roboto', sans-serif;
+        }
+
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(0, 255, 157, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(0, 184, 255, 0.05) 0%, transparent 20%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB4PSIwIiB5PSIwIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgwLCAyNTUsIDE1NywgMC4wMykiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjcGF0dGVybikiLz48L3N2Zz4=');
+            opacity: 0.5;
+            z-index: -1;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .logo-icon {
+            color: var(--primary);
+            text-shadow: var(--neon-glow);
+            animation: pulse 2s infinite;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+            text-shadow: var(--neon-glow);
+            position: relative;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            color: #a0a0d0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 18px 45px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: var(--darker);
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            margin: 20px 10px;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 20px rgba(0, 255, 157, 0.3);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--secondary), var(--primary));
+            transition: left 0.5s;
+            z-index: -1;
+        }
+
+        .cta-button:hover::before {
+            left: 0;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 255, 157, 0.5);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            box-shadow: none;
+        }
+
+        .cta-secondary:hover {
+            background: rgba(0, 255, 157, 0.1);
+        }
+
+        /* Mission Section */
+        .section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 70px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        .mission-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .mission-card {
+            background: var(--gray);
+            border-radius: 15px;
+            padding: 40px 30px;
+            transition: var(--transition);
+            border: 1px solid rgba(0, 255, 157, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mission-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 15px 30px rgba(0, 255, 157, 0.15);
+        }
+
+        .mission-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+        }
+
+        .mission-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        /* Specializations */
+        .specializations {
+            background-color: var(--darker);
+        }
+
+        .spec-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .spec-card {
+            background: linear-gradient(145deg, var(--gray), #151525);
+            border-radius: 10px;
+            padding: 30px;
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+
+        .spec-card:hover {
+            border-color: var(--secondary);
+            box-shadow: 0 10px 25px rgba(0, 184, 255, 0.2);
+        }
+
+        .spec-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .spec-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 255, 157, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+
+        .spec-card h3 {
+            font-size: 1.5rem;
+        }
+
+        .spec-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .tech-tag {
+            background: rgba(0, 184, 255, 0.15);
+            color: var(--secondary);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(0, 184, 255, 0.3);
+        }
+
+        /* Curriculum */
+        .curriculum-timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .curriculum-timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 50px;
+            padding-left: 80px;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: 18px;
+            top: 0;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--darker);
+            border: 3px solid var(--primary);
+            z-index: 1;
+        }
+
+        .timeline-content {
+            background: var(--gray);
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .timeline-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 100px 0;
+            background: linear-gradient(135deg, rgba(0, 255, 157, 0.05), rgba(0, 184, 255, 0.05));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 255, 157, 0.1) 0%, transparent 70%);
+            top: -150px;
+            right: -150px;
+        }
+
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 184, 255, 0.1) 0%, transparent 70%);
+            bottom: -150px;
+            left: -150px;
+        }
+
+        .price {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin: 30px 0;
+            text-shadow: var(--neon-glow);
+        }
+
+        .price span {
+            font-size: 1.5rem;
+            color: var(--light);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--darker);
+            padding: 60px 0 30px;
+            text-align: center;
+            border-top: 1px solid rgba(0, 255, 157, 0.1);
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            color: var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary);
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            background: var(--primary);
+            color: var(--darker);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            margin-top: 40px;
+            color: #6b6b8a;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section {
+                padding: 70px 0;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .mission-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline-item {
+                padding-left: 60px;
+            }
+            
+            .curriculum-timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-marker {
+                left: 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cta-button {
+                display: block;
+                margin: 15px auto;
+                width: 90%;
+                text-align: center;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="logo floating">
+                <i class="fas fa-shield-alt logo-icon"></i>
+                <span>Академия Кибергероев</span>
+            </div>
+            
+            <h1>Твой код <span>изменит будущее</span></h1>
+            
+            <p>
+                Пока одни учат писать "Hello World", мы готовим к реальным миссиям: 
+                от борьбы с уязвимостями в безопасности до создания систем, которые 
+                изменят цифровой ландшафт завтрашнего дня.
+            </p>
+            
+            <div>
+                <a href="#enroll" class="cta-button">Начать миссию</a>
+                <a href="#program" class="cta-button cta-secondary">Изучить программу</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Мы не школа. Мы — база подготовки цифровых защитников</h2>
+            
+            <div class="mission-cards">
+                <div class="mission-card">
+                    <div class="card-icon">
+                        <i class="fas fa-bug"></i>
+                    </div>
+                    <h3>Боевое погружение</h3>
+                    <p>Работаем с реальными кейсами компаний-партнёров. Никаких абстрактных задач — только то, с чем сталкиваются IT-герои ежедневно.</p>
+                </div>
+                
+                <div class="mission-card">
+                    <div class="card-icon">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <h3>Гибридные технологии</h3>
+                    <p>Fullstack, DevOps, AI, Cybersecurity — собираем уникальный стек под твою специализацию будущего.</p>
+                </div>
+                
+                <div class="mission-card">
+                    <div class="card-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Отряд, а не группа</h3>
+                    <p>Командная работа над проектами, менторство от senior-разработчиков и комьюнити единомышленников.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specializations -->
+    <section class="section specializations" id="program">
+        <div class="container">
+            <h2 class="section-title">Выбери свою специализацию</h2>
+            
+            <div class="spec-grid">
+                <div class="spec-card">
+                    <div class="spec-header">
+                        <div class="spec-icon">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <h3>Backend-Магистр</h3>
+                    </div>
+                    <p>Строим несокрушимое ядро систем, микросервисы и высоконагруженные API.</p>
+                    <div class="spec-tech">
+                        <span class="tech-tag">Python/Go</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">Redis</span>
+                    </div>
+                </div>
+                
+                <div class="spec-card">
+                    <div class="spec-header">
+                        <div class="spec-icon">
+                            <i class="fas fa-desktop"></i>
+                        </div>
+                        <h3>Фронтенд-Ниндзя</h3>
+                    </div>
+                    <p>Создаем интуитивные и мощные интерфейсы, которые оживляют данные.</p>
+                    <div class="spec-tech">
+                        <span class="tech-tag">React/Vue</span>
+                        <span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">WebGL</span>
+                        <span class="tech-tag">PWA</span>
+                    </div>
+                </div>
+                
+                <div class="spec-card">
+                    <div class="spec-header">
+                        <div class="spec-icon">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <h3>DevOps-Шаман</h3>
+                    </div>
+                    <p>Оживляем инфраструктуру, автоматизируем развертывание и обеспечиваем бесперебойную работу.</p>
+                    <div class="spec-tech">
+                        <span class="tech-tag">Kubernetes</span>
+                        <span class="tech-tag">AWS/GCP</span>
+                        <span class="tech-tag">Terraform</span>
+                        <span class="tech-tag">GitLab CI</span>
+                    </div>
+                </div>
+                
+                <div class="spec-card">
+                    <div class="spec-header">
+                        <div class="spec-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>Data-Провидец</h3>
+                    </div>
+                    <p>Превращаем данные в стратегии, предсказываем тренды и строим интеллектуальные системы.</p>
+                    <div class="spec-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">SQL</span>
+                        <span class="tech-tag">ML</span>
+                        <span class="tech-tag">Tableau</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Curriculum -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Программа подготовки</h2>
+            
+            <div class="curriculum-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>МОДУЛЬ 1: Базовая подготовка (8 недель)</h3>
+                        <p>Основы алгоритмов, работа с Git, командная строка, основы сетей, введение в выбранную специализацию.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>МОДУЛЬ 2: Продвинутые техники (10 недель)</h3>
+                        <p>Углубленное изучение стека технологий, архитектура приложений, оптимизация, безопасность.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>МОДУЛЬ 3: Боевые миссии (12 недель)</h3>
+                        <p>Реальные проекты для компаний-партнеров, хакатоны, подготовка портфолио, собеседования.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta-section" id="enroll">
+        <div class="container">
+            <h2 class="section-title">Готов вступить в ряды кибергероев?</h2>
+            
+            <p>Набор на новый поток закроется через:</p>
+            
+            <div style="font-size: 2rem; margin: 30px 0; color: var(--primary);">
+                <span id="countdown">7 дней 12:45:32</span>
+            </div>
+            
+            <div class="price">
+                29 900₽ <span>/мес</span>
+            </div>
+            
+            <p style="max-width: 700px; margin: 0 auto 40px;">
+                Включает: полный доступ к курсам, личного ментора, проектные задачи, 
+                участие в хакатонах, сертификат и помощь в трудоустройстве.
+            </p>
+            
+            <a href="#enroll-form" class="cta-button" style="font-size: 1.5rem; padding: 20px 50px;">
+                <i class="fas fa-rocket"></i> Забронировать место
+            </a>
+            
+            <p style="margin-top: 30px; color: #a0a0d0;">
+                Первые 20 героев получат набор мерча и консультацию от CTO IT-компании
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                Академия Кибергероев
+            </div>
+            
+            <p style="max-width: 600px; margin: 0 auto 30px;">
+                База подготовки цифровых защитников нового поколения. 
+                Готовим не просто разработчиков, а архитекторов будущего.
+            </p>
+            
+            <div class="social-links">
+                <a href="#" class="social-icon">
+                    <i class="fab fa-telegram"></i>
+                </a>
+                <a href="#" class="social-icon">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="#" class="social-icon">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="#" class="social-icon">
+                    <i class="fab fa-vk"></i>
+                </a>
+            </div>
+            
+            <div class="copyright">
+                © 2024 Академия Кибергероев. Все права защищены. 
+                <br>Это тренировочный проект, созданный для демонстрации.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Countdown Timer
+        function updateCountdown() {
+            const now = new Date();
+            const target = new Date();
+            target.setDate(now.getDate() + 7);
+            
+            const diff = target - now;
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById('countdown').textContent = 
+                `${days} дней ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+        
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add floating animation to mission cards on hover
+        document.querySelectorAll('.mission-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.classList.add('floating');
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.classList.remove('floating');
+            });
+        });
+    </script>
+</body>
+</html>
