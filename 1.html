@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ввод корейских символов: Спасибо</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: #121212;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background-color: #1e1e1e;
+            border-radius: 15px;
+            padding: 30px;
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .word-info {
+            color: #4a9eff;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .translation {
+            color: #888;
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+        
+        .symbols-display {
+            font-size: 3.5rem;
+            letter-spacing: 10px;
+            margin: 30px 0;
+            color: #ffffff;
+            font-weight: bold;
+        }
+        
+        .input-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 40px 0;
+        }
+        
+        .char-input {
+            width: 70px;
+            height: 80px;
+            font-size: 2.5rem;
+            text-align: center;
+            border: 3px solid #333;
+            border-radius: 10px;
+            background-color: #2a2a2a;
+            transition: all 0.3s ease;
+            color: #ffffff;
+        }
+        
+        .char-input:focus {
+            outline: none;
+            border-color: #4a9eff;
+            background-color: #333;
+        }
+        
+        .char-input.correct {
+            border-color: #4caf50;
+            background-color: #2a3a2a;
+        }
+        
+        @media (max-width: 768px) {
+            .symbols-display {
+                font-size: 2.5rem;
+                letter-spacing: 5px;
+            }
+            
+            .char-input {
+                width: 60px;
+                height: 70px;
+                font-size: 2rem;
+            }
+            
+            .input-container {
+                gap: 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .symbols-display {
+                font-size: 2rem;
+                letter-spacing: 3px;
+            }
+            
+            .char-input {
+                width: 50px;
+                height: 60px;
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="word-info">감사합니다 Спасибо Камсамнида rka tk gkq sl ek</div>
+        <div class="symbols-display">ㄱ ㅏ ㅁ ㅅ ㅏ ㅎ ㅏ ㅂ ㄴ ㅣ ㄷ ㅏ</div>
+        <div class="input-container" id="inputContainer"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const targetSymbols = ['ㄱ', 'ㅏ', 'ㅁ', 'ㅅ', 'ㅏ', 'ㅎ', 'ㅏ', 'ㅂ', 'ㄴ', 'ㅣ', 'ㄷ', 'ㅏ'];
+            const inputContainer = document.getElementById('inputContainer');
+            
+            // Создаем поля ввода
+            let inputElements = [];
+            
+            for (let i = 0; i < targetSymbols.length; i++) {
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.maxLength = 1;
+                input.className = 'char-input';
+                input.dataset.index = i;
+                
+                input.addEventListener('input', handleInput);
+                input.addEventListener('keydown', handleKeyDown);
+                input.addEventListener('focus', handleFocus);
+                
+                inputContainer.appendChild(input);
+                inputElements.push(input);
+            }
+            
+            inputElements[0].focus();
+            
+            function handleInput(e) {
+                const input = e.target;
+                const index = parseInt(input.dataset.index);
+                const value = input.value;
+                
+                input.classList.remove('correct');
+                
+                if (value) {
+                    if (value === targetSymbols[index]) {
+                        input.classList.add('correct');
+                        
+                        // Проверяем, все ли символы введены правильно
+                        setTimeout(() => {
+                            checkAllInputs();
+                        }, 100);
+                    }
+                    
+                    if (index < inputElements.length - 1) {
+                        inputElements[index + 1].focus();
+                    }
+                }
+            }
+            
+            function handleKeyDown(e) {
+                const input = e.target;
+                const index = parseInt(input.dataset.index);
+                
+                if (e.key === 'Backspace' && !input.value && index > 0) {
+                    inputElements[index - 1].focus();
+                }
+            }
+            
+            function handleFocus(e) {
+                e.target.select();
+            }
+            
+            function checkAllInputs() {
+                let allCorrect = true;
+                
+                for (let i = 0; i < inputElements.length; i++) {
+                    if (inputElements[i].value !== targetSymbols[i]) {
+                        allCorrect = false;
+                        break;
+                    }
+                }
+                
+                if (allCorrect) {
+                    // Очищаем все поля через 500мс
+                    setTimeout(() => {
+                        inputElements.forEach(input => {
+                            input.value = '';
+                            input.classList.remove('correct');
+                        });
+                        inputElements[0].focus();
+                    }, 500);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
