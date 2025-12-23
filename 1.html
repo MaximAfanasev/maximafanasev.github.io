@@ -8,8 +8,7 @@
 </head>
 <body>
     <div class="container">
-        <div class="word-info">감사합니다 rka tk gkq sl ek</div>
-        <div class="symbols-display"></div>
+        <div class="word-info">rka tk gkq sl ek</div>
         <div class="input-container" id="inputContainer"></div>
     </div>
 
@@ -28,6 +27,12 @@
                 input.className = 'char-input';
                 input.dataset.index = i;
                 
+                // Для мобильных устройств устанавливаем атрибуты для лучшей клавиатуры
+                input.setAttribute('inputmode', 'text');
+                input.setAttribute('autocomplete', 'off');
+                input.setAttribute('autocapitalize', 'none');
+                input.setAttribute('spellcheck', 'false');
+                
                 input.addEventListener('input', handleInput);
                 input.addEventListener('keydown', handleKeyDown);
                 input.addEventListener('focus', handleFocus);
@@ -41,11 +46,16 @@
             function handleInput(e) {
                 const input = e.target;
                 const index = parseInt(input.dataset.index);
-                const value = input.value;
+                let value = input.value;
                 
+                // Очищаем предыдущие стили
                 input.classList.remove('correct');
                 
                 if (value) {
+                    // Преобразуем в нижний регистр для сравнения
+                    value = value.toLowerCase();
+                    
+                    // Проверяем, совпадает ли введенный символ с целевым (в любом регистре)
                     if (value === targetSymbols[index]) {
                         input.classList.add('correct');
                         
@@ -55,8 +65,12 @@
                         }, 100);
                     }
                     
+                    // Автоматический переход к следующему полю
                     if (index < inputElements.length - 1) {
-                        inputElements[index + 1].focus();
+                        // Небольшая задержка для мобильных устройств
+                        setTimeout(() => {
+                            inputElements[index + 1].focus();
+                        }, 50);
                     }
                 }
             }
@@ -65,36 +79,84 @@
                 const input = e.target;
                 const index = parseInt(input.dataset.index);
                 
-                if (e.key === 'Backspace' && !input.value && index > 0) {
+                if (e.key === 'Backspace') {
+                    // Если поле пустое и нажали Backspace, переходим к предыдущему полю
+                    if (!input.value && index > 0) {
+                        // Небольшая задержка для правильной обработки
+                        setTimeout(() => {
+                            inputElements[index - 1].focus();
+                            // Выделяем текст в предыдущем поле
+                            inputElements[index - 1].select();
+                        }, 10);
+                    }
+                }
+                
+                // Обработка стрелок для навигации
+                if (e.key === 'ArrowRight' && index < inputElements.length - 1) {
+                    e.preventDefault();
+                    inputElements[index + 1].focus();
+                    inputElements[index + 1].select();
+                }
+                
+                if (e.key === 'ArrowLeft' && index > 0) {
+                    e.preventDefault();
                     inputElements[index - 1].focus();
+                    inputElements[index - 1].select();
                 }
             }
             
             function handleFocus(e) {
-                e.target.select();
+                // Выделяем текст при фокусе
+                setTimeout(() => {
+                    e.target.select();
+                }, 10);
             }
             
             function checkAllInputs() {
                 let allCorrect = true;
                 
                 for (let i = 0; i < inputElements.length; i++) {
-                    if (inputElements[i].value !== targetSymbols[i]) {
+                    const value = inputElements[i].value.toLowerCase();
+                    if (value !== targetSymbols[i]) {
                         allCorrect = false;
                         break;
                     }
                 }
                 
                 if (allCorrect) {
-                    // Очищаем все поля через 500мс
+                    // Добавляем визуальную анимацию для всех полей
+                    inputElements.forEach(input => {
+                        input.classList.add('correct');
+                        input.style.transform = 'scale(1.1)';
+                        input.style.transition = 'all 0.3s ease';
+                    });
+                    
+                    // Через секунду очищаем все поля
                     setTimeout(() => {
                         inputElements.forEach(input => {
                             input.value = '';
                             input.classList.remove('correct');
+                            input.style.transform = '';
                         });
                         inputElements[0].focus();
-                    }, 500);
+                    }, 1000);
                 }
             }
+            
+            // Добавляем обработчик для быстрой проверки по Ctrl+Enter
+            document.addEventListener('keydown', (e) => {
+                if (e.ctrlKey && e.key === 'Enter') {
+                    e.preventDefault();
+                    checkAllInputs();
+                }
+            });
+            
+            // Для мобильных устройств: предотвращаем появление панели предсказаний
+            inputElements.forEach(input => {
+                input.addEventListener('touchstart', function(e) {
+                    this.focus();
+                }, {passive: true});
+            });
         });
     </script>
 </body>
