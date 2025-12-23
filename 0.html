@@ -3,223 +3,488 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ввод корейских символов</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Корейские символы - Латинские буквы</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a2980 0%, #26d0ce 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .header {
+            margin-bottom: 30px;
+        }
+
+        .title {
+            font-size: 32px;
+            font-weight: bold;
+            color: #1a2980;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #666;
+        }
+
+        .current-symbol-container {
+            margin: 40px 0;
+            padding: 30px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+            border: 3px solid #1a2980;
+        }
+
+        .current-symbol {
+            font-size: 100px;
+            font-weight: bold;
+            color: #1a2980;
+            margin-bottom: 20px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .question {
+            font-size: 22px;
+            color: #444;
+            font-weight: 600;
+        }
+
+        .keyboard-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            margin: 40px 0;
+        }
+
+        .key-btn {
+            padding: 20px 10px;
+            font-size: 24px;
+            font-weight: bold;
+            background: white;
+            border: 3px solid #ddd;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 70px;
+        }
+
+        .key-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .key-btn.correct {
+            background: #4CAF50;
+            color: white;
+            border-color: #388E3C;
+        }
+
+        .key-btn.incorrect {
+            background: #f44336;
+            color: white;
+            border-color: #d32f2f;
+        }
+
+        .key-btn.selected {
+            border-color: #1a2980;
+            background: #e3f2fd;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(26, 41, 128, 0.2);
+        }
+
+        .message {
+            font-size: 20px;
+            margin: 30px 0;
+            padding: 20px;
+            border-radius: 12px;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .message.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .message.success {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            border: 2px solid #4CAF50;
+        }
+
+        .message.error {
+            background-color: #ffebee;
+            color: #c62828;
+            border: 2px solid #f44336;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border: 2px solid #e9ecef;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 28px;
+            font-weight: bold;
+            color: #1a2980;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .controls {
+            margin-top: 30px;
+        }
+
+        .control-btn {
+            padding: 15px 30px;
+            font-size: 18px;
+            background: #1a2980;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+        }
+
+        .control-btn:hover {
+            background: #0d1a5e;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(26, 41, 128, 0.3);
+        }
+
+        .progress-bar {
+            height: 10px;
+            background: #e9ecef;
+            border-radius: 5px;
+            margin: 30px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #1a2980, #26d0ce);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        @media (max-width: 768px) {
+            .keyboard-container {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+            }
+            
+            .key-btn {
+                padding: 15px 5px;
+                font-size: 20px;
+                min-height: 60px;
+            }
+            
+            .current-symbol {
+                font-size: 80px;
+                height: 100px;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .keyboard-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .current-symbol {
+                font-size: 60px;
+                height: 80px;
+            }
+            
+            .title {
+                font-size: 24px;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        
-        <div class="word-info" id="wordDisplay">안녕</div>
-        
-        <div class="buttons-container" id="buttonsContainer"></div>
-        
-        <div class="input-container" id="inputContainer"></div>
-        
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <div class="current-symbol-container">
+            <div class="current-symbol" id="currentSymbol">ㅂ</div>
+        </div>
+
+        <div class="keyboard-container" id="keyboardContainer"></div>
+
         <div class="message" id="message"></div>
-        
+
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-value" id="score">0</div>
+                <div class="stat-label">Счёт</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="correctCount">0</div>
+                <div class="stat-label">Правильно</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="totalQuestions">0</div>
+                <div class="stat-label">Всего</div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button class="control-btn" id="nextBtn">Следующий символ</button>
+            <button class="control-btn" id="resetBtn">Начать заново</button>
+        </div>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Целевые символы для слова "안녕" (6 символов)
-            const targetSymbols = ['ㅇ', 'ㅏ', 'ㄴ', 'ㄴ', 'ㅕ', 'ㅇ'];
-            
-            // Уникальные символы для кнопок (4 кнопки)
-            const uniqueSymbols = ['ㅇ', 'ㅏ', 'ㄴ', 'ㅕ'];
-            
-            const buttonsContainer = document.getElementById('buttonsContainer');
-            const inputContainer = document.getElementById('inputContainer');
-            const message = document.getElementById('message');
-            
-            let currentSymbols = [...uniqueSymbols]; // Для кнопок используем только уникальные
-            let inputElements = [];
-            let currentInputIndex = 0;
-            
-            // Инициализация кнопок (4 кнопки)
-            function initButtons() {
-                buttonsContainer.innerHTML = '';
-                currentSymbols.forEach((symbol, index) => {
-                    const button = document.createElement('button');
-                    button.className = 'symbol-btn';
-                    button.textContent = symbol;
-                    button.dataset.symbol = symbol;
-                    button.dataset.index = index;
-                    
-                    button.addEventListener('click', () => handleButtonClick(symbol));
-                    
-                    buttonsContainer.appendChild(button);
-                });
-            }
-            
-            // Инициализация полей ввода (6 полей)
-            function initInputs() {
-                inputContainer.innerHTML = '';
-                inputElements = [];
-                currentInputIndex = 0;
+            // Пары корейский символ → латинская буква
+            const symbolPairs = [
+                { korean: 'ㅂ', latin: 'q' },
+                { korean: 'ㅈ', latin: 'w' },
+                { korean: 'ㄷ', latin: 'e' },
+                { korean: 'ㄱ', latin: 'r' },
+                { korean: 'ㅅ', latin: 't' },
+                { korean: 'ㅛ', latin: 'y' },
+                { korean: 'ㅕ', latin: 'u' },
+                { korean: 'ㅑ', latin: 'i' },
+                { korean: 'ㅐ', latin: 'o' },
+                { korean: 'ㅔ', latin: 'p' }
+            ];
+
+            // Все доступные латинские буквы для кнопок
+            const allLatinLetters = ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'];
+
+            // DOM элементы
+            const currentSymbolEl = document.getElementById('currentSymbol');
+            const keyboardContainer = document.getElementById('keyboardContainer');
+            const messageEl = document.getElementById('message');
+            const scoreEl = document.getElementById('score');
+            const correctCountEl = document.getElementById('correctCount');
+            const totalQuestionsEl = document.getElementById('totalQuestions');
+            const nextBtn = document.getElementById('nextBtn');
+            const resetBtn = document.getElementById('resetBtn');
+            const progressFill = document.getElementById('progressFill');
+
+            // Игровые переменные
+            let score = 0;
+            let correctAnswers = 0;
+            let totalQuestions = 0;
+            let currentPairIndex = 0;
+            let canSelect = true;
+            let usedSymbols = new Set();
+
+            // Инициализация игры
+            function initGame() {
+                score = 0;
+                correctAnswers = 0;
+                totalQuestions = 0;
+                currentPairIndex = 0;
+                canSelect = true;
+                usedSymbols.clear();
                 
-                // 6 полей для полного слова
-                for (let i = 0; i < targetSymbols.length; i++) {
-                    const input = document.createElement('input');
-                    input.type = 'text';
-                    input.maxLength = 1;
-                    input.className = 'char-input';
-                    input.dataset.index = i;
-                    input.readOnly = true;
-                    
-                    input.addEventListener('click', () => {
-                        // При клике на поле ввода, фокусируем его
-                        input.focus();
-                    });
-                    
-                    input.addEventListener('keydown', handleKeyDown);
-                    
-                    inputContainer.appendChild(input);
-                    inputElements.push(input);
-                }
-                
-                // Выделяем первое поле
-                inputElements[0].classList.add('selected');
-            }
-            
-            // Обработчик клика по кнопке с символом
-            function handleButtonClick(symbol) {
-                if (currentInputIndex < inputElements.length) {
-                    const currentInput = inputElements[currentInputIndex];
-                    
-                    // Убираем выделение с текущего поля
-                    currentInput.classList.remove('selected');
-                    
-                    // Вводим символ
-                    currentInput.value = symbol;
-                    
-                    // Проверяем правильность (сравниваем с targetSymbols)
-                    if (symbol === targetSymbols[currentInputIndex]) {
-                        currentInput.classList.add('correct');
-                        currentInput.classList.remove('incorrect');
-                    } else {
-                        currentInput.classList.add('incorrect');
-                        currentInput.classList.remove('correct');
-                    }
-                    
-                    // Переходим к следующему полю
-                    currentInputIndex++;
-                    
-                    // Выделяем следующее поле
-                    if (currentInputIndex < inputElements.length) {
-                        inputElements[currentInputIndex].classList.add('selected');
-                    }
-                    
-                    // Проверяем, все ли поля заполнены
-                    if (currentInputIndex === inputElements.length) {
-                        setTimeout(checkAllInputs, 100);
-                    }
-                }
-            }
-            
-            // Обработчик нажатия клавиш
-            function handleKeyDown(e) {
-                const input = e.target;
-                const index = parseInt(input.dataset.index);
-                
-                if (e.key === 'Backspace' || e.key === 'Delete') {
-                    e.preventDefault();
-                    
-                    // Очищаем текущее поле
-                    input.value = '';
-                    input.classList.remove('correct', 'incorrect', 'selected');
-                    
-                    // Если поле не пустое и не первое, возвращаемся к предыдущему
-                    if (index > 0 && currentInputIndex === index + 1) {
-                        currentInputIndex = index;
-                    }
-                    
-                    // Выделяем текущее поле
-                    inputElements[currentInputIndex].classList.add('selected');
-                }
-                
-                // Блокируем ввод с клавиатуры (только кнопки)
-                if (e.key.length === 1) {
-                    e.preventDefault();
-                }
-            }
-            
-            // Проверка всех полей ввода
-            function checkAllInputs() {
-                let allCorrect = true;
-                
-                // Проверяем все 6 полей
-                for (let i = 0; i < inputElements.length; i++) {
-                    if (inputElements[i].value !== targetSymbols[i]) {
-                        allCorrect = false;
-                        break;
-                    }
-                }
-                
-                if (allCorrect) {
-                    showMessage('', 'success');
-                    
-                    // Анимация кнопок
-                    const buttons = document.querySelectorAll('.symbol-btn');
-                    buttons.forEach(btn => {
-                        btn.classList.add('correct');
-                    });
-                    
-                    // Автосброс и перемешивание через 2 секунды
-                    setTimeout(() => {
-                        resetGame();
-                        shuffleButtons(); // Добавлено перемешивание после правильного ввода
-                    }, 100);
-                } else {
-                    showMessage('', 'error');
-                }
-            }
-            
-            // Перемешивание кнопок
-            function shuffleButtons() {
-                // Перемешиваем массив уникальных символов
-                for (let i = currentSymbols.length - 1; i > 0; i--) {
-                    const j = Math.floor(Math.random() * (i + 1));
-                    [currentSymbols[i], currentSymbols[j]] = [currentSymbols[j], currentSymbols[i]];
-                }
-                
-                initButtons();
-            }
-            
-            // Сброс игры
-            function resetGame() {
-                initInputs();
-                
-                // Сбрасываем стили кнопок
-                const buttons = document.querySelectorAll('.symbol-btn');
-                buttons.forEach(btn => {
-                    btn.classList.remove('correct', 'incorrect');
-                });
-                
+                updateStats();
+                updateProgressBar();
+                showNextSymbol();
                 hideMessage();
             }
-            
+
+            // Показать следующий символ
+            function showNextSymbol() {
+                canSelect = true;
+                
+                // Если использованы все символы, перемешиваем заново
+                if (usedSymbols.size >= symbolPairs.length) {
+                    usedSymbols.clear();
+                }
+                
+                // Выбираем случайный символ из еще не использованных
+                let availableSymbols = symbolPairs.filter((_, index) => !usedSymbols.has(index));
+                
+                if (availableSymbols.length === 0) {
+                    // Все символы использованы, начинаем заново
+                    usedSymbols.clear();
+                    availableSymbols = [...symbolPairs];
+                }
+                
+                const randomIndex = Math.floor(Math.random() * availableSymbols.length);
+                currentPairIndex = symbolPairs.findIndex(pair => 
+                    pair.korean === availableSymbols[randomIndex].korean
+                );
+                
+                usedSymbols.add(currentPairIndex);
+                
+                // Отображаем корейский символ
+                currentSymbolEl.textContent = symbolPairs[currentPairIndex].korean;
+                
+                // Создаем кнопки с латинскими буквами
+                createKeyboardButtons();
+                
+                // Обновляем статистику
+                totalQuestions++;
+                updateStats();
+                updateProgressBar();
+            }
+
+            // Создание кнопок клавиатуры
+            function createKeyboardButtons() {
+                keyboardContainer.innerHTML = '';
+                
+                // Перемешиваем буквы для кнопок
+                const shuffledLetters = [...allLatinLetters].sort(() => Math.random() - 0.5);
+                
+                shuffledLetters.forEach(letter => {
+                    const button = document.createElement('button');
+                    button.className = 'key-btn';
+                    button.textContent = letter.toUpperCase();
+                    button.dataset.letter = letter;
+                    
+                    button.addEventListener('click', () => handleLetterClick(letter));
+                    
+                    keyboardContainer.appendChild(button);
+                });
+            }
+
+            // Обработчик клика по букве
+            function handleLetterClick(selectedLetter) {
+                if (!canSelect) return;
+                
+                canSelect = false;
+                
+                const correctLetter = symbolPairs[currentPairIndex].latin;
+                const isCorrect = selectedLetter === correctLetter;
+                
+                // Находим все кнопки
+                const buttons = document.querySelectorAll('.key-btn');
+                
+                // Снимаем выделение со всех кнопок
+                buttons.forEach(btn => btn.classList.remove('selected'));
+                
+                // Находим выбранную кнопку и выделяем её
+                const selectedButton = Array.from(buttons).find(
+                    btn => btn.dataset.letter === selectedLetter
+                );
+                if (selectedButton) {
+                    selectedButton.classList.add('selected');
+                    selectedButton.classList.add(isCorrect ? 'correct' : 'incorrect');
+                }
+                
+                // Подсвечиваем правильную кнопку
+                const correctButton = Array.from(buttons).find(
+                    btn => btn.dataset.letter === correctLetter
+                );
+                if (correctButton && !isCorrect) {
+                    setTimeout(() => {
+                        correctButton.classList.add('correct');
+                    }, 500);
+                }
+                
+                // Обновляем счет
+                if (isCorrect) {
+                    score += 10;
+                    correctAnswers++;
+                    showMessage('Правильно!', 'success');
+                } else {
+                    score = Math.max(0, score - 5);
+                    showMessage(`Неправильно. Правильный ответ: ${correctLetter.toUpperCase()}`, 'error');
+                }
+                
+                updateStats();
+                
+                // Автоматически переходим к следующему символу через 2 секунды
+                setTimeout(() => {
+                    showNextSymbol();
+                }, 2000);
+            }
+
             // Показать сообщение
             function showMessage(text, type) {
-                message.textContent = text;
-                message.className = `message show ${type}`;
-                
-                // Автоматически скрыть сообщение через 3 секунды
-                setTimeout(hideMessage, 100);
+                messageEl.textContent = text;
+                messageEl.className = `message show ${type}`;
             }
-            
+
             // Скрыть сообщение
             function hideMessage() {
-                message.classList.remove('show');
+                messageEl.classList.remove('show');
             }
-            
-            // Инициализация игры с автоматическим перемешиванием
-            shuffleButtons(); // Добавлено перемешивание при загрузке
-            initInputs();
-            
-            // Показываем приветственное сообщение
-            setTimeout(() => {
-                showMessage('', 'success');
-            }, 100);
+
+            // Обновить статистику
+            function updateStats() {
+                scoreEl.textContent = score;
+                correctCountEl.textContent = correctAnswers;
+                totalQuestionsEl.textContent = totalQuestions;
+            }
+
+            // Обновить прогресс-бар
+            function updateProgressBar() {
+                const progress = (usedSymbols.size / symbolPairs.length) * 100;
+                progressFill.style.width = `${progress}%`;
+            }
+
+            // Обработчики событий для кнопок
+            nextBtn.addEventListener('click', showNextSymbol);
+            resetBtn.addEventListener('click', initGame);
+
+            // Обработчик нажатия клавиш на клавиатуре
+            document.addEventListener('keydown', (e) => {
+                if (!canSelect) return;
+                
+                const key = e.key.toLowerCase();
+                
+                // Проверяем, что нажатая клавиша есть в списке доступных букв
+                if (allLatinLetters.includes(key)) {
+                    handleLetterClick(key);
+                }
+            });
+
+            // Начать игру
+            initGame();
         });
     </script>
 </body>

@@ -3,160 +3,223 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ввод корейских символов: Спасибо</title>
+    <title>Ввод корейских символов</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <div class="word-info">rka tk gkq sl ek</div>
+        
+        <div class="word-info" id="wordDisplay">안녕</div>
+        
+        <div class="buttons-container" id="buttonsContainer"></div>
+        
         <div class="input-container" id="inputContainer"></div>
+        
+        <div class="message" id="message"></div>
+        
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const targetSymbols = ['r','k','a','t','k','g','k','q','s','l','e','k'];
+            // Целевые символы для слова "안녕" (6 символов)
+            const targetSymbols = ['ㅇ', 'ㅏ', 'ㄴ', 'ㄴ', 'ㅕ', 'ㅇ'];
+            
+            // Уникальные символы для кнопок (4 кнопки)
+            const uniqueSymbols = ['ㅇ', 'ㅏ', 'ㄴ', 'ㅕ'];
+            
+            const buttonsContainer = document.getElementById('buttonsContainer');
             const inputContainer = document.getElementById('inputContainer');
+            const message = document.getElementById('message');
             
-            // Создаем поля ввода
+            let currentSymbols = [...uniqueSymbols]; // Для кнопок используем только уникальные
             let inputElements = [];
+            let currentInputIndex = 0;
             
-            for (let i = 0; i < targetSymbols.length; i++) {
-                const input = document.createElement('input');
-                input.type = 'text';
-                input.maxLength = 1;
-                input.className = 'char-input';
-                input.dataset.index = i;
-                
-                // Для мобильных устройств устанавливаем атрибуты для лучшей клавиатуры
-                input.setAttribute('inputmode', 'text');
-                input.setAttribute('autocomplete', 'off');
-                input.setAttribute('autocapitalize', 'none');
-                input.setAttribute('spellcheck', 'false');
-                
-                input.addEventListener('input', handleInput);
-                input.addEventListener('keydown', handleKeyDown);
-                input.addEventListener('focus', handleFocus);
-                
-                inputContainer.appendChild(input);
-                inputElements.push(input);
+            // Инициализация кнопок (4 кнопки)
+            function initButtons() {
+                buttonsContainer.innerHTML = '';
+                currentSymbols.forEach((symbol, index) => {
+                    const button = document.createElement('button');
+                    button.className = 'symbol-btn';
+                    button.textContent = symbol;
+                    button.dataset.symbol = symbol;
+                    button.dataset.index = index;
+                    
+                    button.addEventListener('click', () => handleButtonClick(symbol));
+                    
+                    buttonsContainer.appendChild(button);
+                });
             }
             
-            inputElements[0].focus();
-            
-            function handleInput(e) {
-                const input = e.target;
-                const index = parseInt(input.dataset.index);
-                let value = input.value;
+            // Инициализация полей ввода (6 полей)
+            function initInputs() {
+                inputContainer.innerHTML = '';
+                inputElements = [];
+                currentInputIndex = 0;
                 
-                // Очищаем предыдущие стили
-                input.classList.remove('correct');
-                
-                if (value) {
-                    // Преобразуем в нижний регистр для сравнения
-                    value = value.toLowerCase();
+                // 6 полей для полного слова
+                for (let i = 0; i < targetSymbols.length; i++) {
+                    const input = document.createElement('input');
+                    input.type = 'text';
+                    input.maxLength = 1;
+                    input.className = 'char-input';
+                    input.dataset.index = i;
+                    input.readOnly = true;
                     
-                    // Проверяем, совпадает ли введенный символ с целевым (в любом регистре)
-                    if (value === targetSymbols[index]) {
-                        input.classList.add('correct');
-                        
-                        // Проверяем, все ли символы введены правильно
-                        setTimeout(() => {
-                            checkAllInputs();
-                        }, 100);
+                    input.addEventListener('click', () => {
+                        // При клике на поле ввода, фокусируем его
+                        input.focus();
+                    });
+                    
+                    input.addEventListener('keydown', handleKeyDown);
+                    
+                    inputContainer.appendChild(input);
+                    inputElements.push(input);
+                }
+                
+                // Выделяем первое поле
+                inputElements[0].classList.add('selected');
+            }
+            
+            // Обработчик клика по кнопке с символом
+            function handleButtonClick(symbol) {
+                if (currentInputIndex < inputElements.length) {
+                    const currentInput = inputElements[currentInputIndex];
+                    
+                    // Убираем выделение с текущего поля
+                    currentInput.classList.remove('selected');
+                    
+                    // Вводим символ
+                    currentInput.value = symbol;
+                    
+                    // Проверяем правильность (сравниваем с targetSymbols)
+                    if (symbol === targetSymbols[currentInputIndex]) {
+                        currentInput.classList.add('correct');
+                        currentInput.classList.remove('incorrect');
+                    } else {
+                        currentInput.classList.add('incorrect');
+                        currentInput.classList.remove('correct');
                     }
                     
-                    // Автоматический переход к следующему полю
-                    if (index < inputElements.length - 1) {
-                        // Небольшая задержка для мобильных устройств
-                        setTimeout(() => {
-                            inputElements[index + 1].focus();
-                        }, 50);
+                    // Переходим к следующему полю
+                    currentInputIndex++;
+                    
+                    // Выделяем следующее поле
+                    if (currentInputIndex < inputElements.length) {
+                        inputElements[currentInputIndex].classList.add('selected');
+                    }
+                    
+                    // Проверяем, все ли поля заполнены
+                    if (currentInputIndex === inputElements.length) {
+                        setTimeout(checkAllInputs, 100);
                     }
                 }
             }
             
+            // Обработчик нажатия клавиш
             function handleKeyDown(e) {
                 const input = e.target;
                 const index = parseInt(input.dataset.index);
                 
-                if (e.key === 'Backspace') {
-                    // Если поле пустое и нажали Backspace, переходим к предыдущему полю
-                    if (!input.value && index > 0) {
-                        // Небольшая задержка для правильной обработки
-                        setTimeout(() => {
-                            inputElements[index - 1].focus();
-                            // Выделяем текст в предыдущем поле
-                            inputElements[index - 1].select();
-                        }, 10);
+                if (e.key === 'Backspace' || e.key === 'Delete') {
+                    e.preventDefault();
+                    
+                    // Очищаем текущее поле
+                    input.value = '';
+                    input.classList.remove('correct', 'incorrect', 'selected');
+                    
+                    // Если поле не пустое и не первое, возвращаемся к предыдущему
+                    if (index > 0 && currentInputIndex === index + 1) {
+                        currentInputIndex = index;
                     }
+                    
+                    // Выделяем текущее поле
+                    inputElements[currentInputIndex].classList.add('selected');
                 }
                 
-                // Обработка стрелок для навигации
-                if (e.key === 'ArrowRight' && index < inputElements.length - 1) {
+                // Блокируем ввод с клавиатуры (только кнопки)
+                if (e.key.length === 1) {
                     e.preventDefault();
-                    inputElements[index + 1].focus();
-                    inputElements[index + 1].select();
-                }
-                
-                if (e.key === 'ArrowLeft' && index > 0) {
-                    e.preventDefault();
-                    inputElements[index - 1].focus();
-                    inputElements[index - 1].select();
                 }
             }
             
-            function handleFocus(e) {
-                // Выделяем текст при фокусе
-                setTimeout(() => {
-                    e.target.select();
-                }, 10);
-            }
-            
+            // Проверка всех полей ввода
             function checkAllInputs() {
                 let allCorrect = true;
                 
+                // Проверяем все 6 полей
                 for (let i = 0; i < inputElements.length; i++) {
-                    const value = inputElements[i].value.toLowerCase();
-                    if (value !== targetSymbols[i]) {
+                    if (inputElements[i].value !== targetSymbols[i]) {
                         allCorrect = false;
                         break;
                     }
                 }
                 
                 if (allCorrect) {
-                    // Добавляем визуальную анимацию для всех полей
-                    inputElements.forEach(input => {
-                        input.classList.add('correct');
-                        input.style.transform = 'scale(1.1)';
-                        input.style.transition = 'all 0.3s ease';
+                    showMessage('', 'success');
+                    
+                    // Анимация кнопок
+                    const buttons = document.querySelectorAll('.symbol-btn');
+                    buttons.forEach(btn => {
+                        btn.classList.add('correct');
                     });
                     
-                    // Через секунду очищаем все поля
+                    // Автосброс и перемешивание через 2 секунды
                     setTimeout(() => {
-                        inputElements.forEach(input => {
-                            input.value = '';
-                            input.classList.remove('correct');
-                            input.style.transform = '';
-                        });
-                        inputElements[0].focus();
-                    }, 1000);
+                        resetGame();
+                        shuffleButtons(); // Добавлено перемешивание после правильного ввода
+                    }, 100);
+                } else {
+                    showMessage('', 'error');
                 }
             }
             
-            // Добавляем обработчик для быстрой проверки по Ctrl+Enter
-            document.addEventListener('keydown', (e) => {
-                if (e.ctrlKey && e.key === 'Enter') {
-                    e.preventDefault();
-                    checkAllInputs();
+            // Перемешивание кнопок
+            function shuffleButtons() {
+                // Перемешиваем массив уникальных символов
+                for (let i = currentSymbols.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [currentSymbols[i], currentSymbols[j]] = [currentSymbols[j], currentSymbols[i]];
                 }
-            });
+                
+                initButtons();
+            }
             
-            // Для мобильных устройств: предотвращаем появление панели предсказаний
-            inputElements.forEach(input => {
-                input.addEventListener('touchstart', function(e) {
-                    this.focus();
-                }, {passive: true});
-            });
+            // Сброс игры
+            function resetGame() {
+                initInputs();
+                
+                // Сбрасываем стили кнопок
+                const buttons = document.querySelectorAll('.symbol-btn');
+                buttons.forEach(btn => {
+                    btn.classList.remove('correct', 'incorrect');
+                });
+                
+                hideMessage();
+            }
+            
+            // Показать сообщение
+            function showMessage(text, type) {
+                message.textContent = text;
+                message.className = `message show ${type}`;
+                
+                // Автоматически скрыть сообщение через 3 секунды
+                setTimeout(hideMessage, 100);
+            }
+            
+            // Скрыть сообщение
+            function hideMessage() {
+                message.classList.remove('show');
+            }
+            
+            // Инициализация игры с автоматическим перемешиванием
+            shuffleButtons(); // Добавлено перемешивание при загрузке
+            initInputs();
+            
+            // Показываем приветственное сообщение
+            setTimeout(() => {
+                showMessage('', 'success');
+            }, 100);
         });
     </script>
 </body>
