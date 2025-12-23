@@ -111,7 +111,7 @@
                     
                     // Проверяем, все ли поля заполнены
                     if (currentInputIndex === inputElements.length) {
-                        setTimeout(checkAllInputs, 300);
+                        setTimeout(checkAllInputs, 100);
                     }
                 }
             }
@@ -168,9 +168,9 @@
                     setTimeout(() => {
                         resetGame();
                         shuffleButtons(); // Добавлено перемешивание после правильного ввода
-                    }, 2000);
+                    }, 100);
                 } else {
-                    showMessage('Попробуйте еще раз', 'error');
+                    showMessage('', 'error');
                 }
             }
             
@@ -204,7 +204,7 @@
                 message.className = `message show ${type}`;
                 
                 // Автоматически скрыть сообщение через 3 секунды
-                setTimeout(hideMessage, 3000);
+                setTimeout(hideMessage, 100);
             }
             
             // Скрыть сообщение
@@ -219,7 +219,7 @@
             // Показываем приветственное сообщение
             setTimeout(() => {
                 showMessage('', 'success');
-            }, 500);
+            }, 100);
         });
     </script>
 </body>
