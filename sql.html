@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Типы данных SQL</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e6e6e6;
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-top: 30px;
+        }
+
+        .title {
+            font-size: 3.5rem;
+            background: linear-gradient(90deg, #00dbde, #fc00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #a0a0c0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .data-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .type-card {
+            background: rgba(30, 30, 46, 0.8);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(100, 100, 150, 0.2);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .type-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border-color: #00dbde;
+        }
+
+        .type-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .type-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #00dbde, #fc00ff);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .type-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .type-description {
+            color: #b0b0d0;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .examples {
+            background: rgba(40, 40, 60, 0.6);
+            border-radius: 10px;
+            padding: 15px;
+            border-left: 4px solid #00dbde;
+        }
+
+        .example-title {
+            color: #00dbde;
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .example-item {
+            background: rgba(50, 50, 70, 0.5);
+            padding: 8px 15px;
+            border-radius: 6px;
+            margin: 5px 0;
+            font-family: 'Courier New', monospace;
+            color: #8aff80;
+            font-size: 0.95rem;
+        }
+
+        .code-section {
+            background: rgba(20, 20, 30, 0.9);
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(100, 100, 150, 0.3);
+        }
+
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .code-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sql-icon {
+            color: #f39c12;
+            font-size: 2rem;
+        }
+
+        .code-block {
+            background: #0d0d15;
+            border-radius: 15px;
+            padding: 25px;
+            overflow-x: auto;
+            border: 1px solid rgba(100, 100, 150, 0.2);
+        }
+
+        .sql-keyword {
+            color: #3498db;
+            font-weight: bold;
+        }
+
+        .sql-function {
+            color: #9b59b6;
+        }
+
+        .sql-table {
+            color: #2ecc71;
+        }
+
+        .sql-comment {
+            color: #7f8c8d;
+            font-style: italic;
+        }
+
+        .sql-number {
+            color: #f39c12;
+        }
+
+        pre {
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            line-height: 1.5;
+            white-space: pre-wrap;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 30px;
+            color: #a0a0c0;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(100, 100, 150, 0.2);
+        }
+
+        .highlight {
+            color: #00dbde;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .data-types {
+                grid-template-columns: 1fr;
+            }
+            
+            .title {
+                font-size: 2.5rem;
+            }
+            
+            .type-card, .code-section {
+                padding: 20px;
+            }
+        }
+
+        .glow-effect {
+            position: relative;
+        }
+
+        .glow-effect::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #00dbde, #fc00ff, #00dbde);
+            border-radius: 22px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .glow-effect:hover::before {
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="title">Типы данных SQL</h1>
+            <p class="subtitle">Основные категории типов данных в SQL для эффективной работы с базами данных</p>
+        </header>
+
+        <div class="data-types">
+            <!-- Числовые типы -->
+            <div class="type-card glow-effect">
+                <div class="type-header">
+                    <div class="type-icon">#</div>
+                    <h2 class="type-title">Числовые типы</h2>
+                </div>
+                <p class="type-description">Используются для хранения числовых значений, включая целые числа и числа с плавающей запятой.</p>
+                <div class="examples">
+                    <div class="example-title">Примеры типов:</div>
+                    <div class="example-item">INTEGER, INT</div>
+                    <div class="example-item">DECIMAL(p, s)</div>
+                    <div class="example-item">FLOAT, REAL</div>
+                    <div class="example-item">NUMERIC</div>
+                    <div class="example-item">SMALLINT, BIGINT</div>
+                </div>
+                <div class="examples" style="margin-top: 15px; border-left-color: #fc00ff;">
+                    <div class="example-title">Категории:</div>
+                    <div class="example-item">✅ <span class="highlight">Целые числа</span> - INTEGER, SMALLINT, BIGINT</div>
+                    <div class="example-item">✅ <span class="highlight">Числа с плавающей запятой</span> - FLOAT, REAL, DOUBLE</div>
+                    <div class="example-item">✅ <span class="highlight">Точные числа</span> - DECIMAL, NUMERIC</div>
+                </div>
+            </div>
+
+            <!-- Символьные типы -->
+            <div class="type-card glow-effect">
+                <div class="type-header">
+                    <div class="type-icon">ABC</div>
+                    <h2 class="type-title">Символьные типы</h2>
+                </div>
+                <p class="type-description">Предназначены для хранения текстовой информации, строковых значений и символов.</p>
+                <div class="examples">
+                    <div class="example-title">Примеры типов:</div>
+                    <div class="example-item">CHAR(n) - фиксированная длина</div>
+                    <div class="example-item">VARCHAR(n) - переменная длина</div>
+                    <div class="example-item">TEXT - большие тексты</div>
+                    <div class="example-item">NCHAR, NVARCHAR</div>
+                    <div class="example-item">CLOB (Character Large Object)</div>
+                </div>
+                <div class="examples" style="margin-top: 15px; border-left-color: #00ff88;">
+                    <div class="example-title">Особенности:</div>
+                    <div class="example-item">📝 Хранение текстовых данных</div>
+                    <div class="example-item">🔤 Поддержка разных кодировок</div>
+                    <div class="example-item">📏 Контроль длины строк</div>
+                </div>
+            </div>
+
+            <!-- Дата и время -->
+            <div class="type-card glow-effect">
+                <div class="type-header">
+                    <div class="type-icon">📅</div>
+                    <h2 class="type-title">Дата и время</h2>
+                </div>
+                <p class="type-description">Специальные типы для работы с датами, временем и временными метками.</p>
+                <div class="examples">
+                    <div class="example-title">Примеры типов:</div>
+                    <div class="example-item">DATE - только дата</div>
+                    <div class="example-item">TIME - только время</div>
+                    <div class="example-item">DATETIME - дата и время</div>
+                    <div class="example-item">TIMESTAMP - метка времени</div>
+                    <div class="example-item">YEAR - только год</div>
+                </div>
+                <div class="examples" style="margin-top: 15px; border-left-color: #ffaa00;">
+                    <div class="example-title">Функции:</div>
+                    <div class="example-item">🕐 Хранение временных данных</div>
+                    <div class="example-item">📊 Временные интервалы</div>
+                    <div class="example-item">⚡ Автоматические метки времени</div>
+                </div>
+            </div>
+
+            <!-- Логический тип -->
+            <div class="type-card glow-effect">
+                <div class="type-header">
+                    <div class="type-icon">✓✗</div>
+                    <h2 class="type-title">Логический тип</h2>
+                </div>
+                <p class="type-description">Используется для хранения логических значений TRUE (истина) и FALSE (ложь).</p>
+                <div class="examples">
+                    <div class="example-title">Примеры типов:</div>
+                    <div class="example-item">BOOLEAN</div>
+                    <div class="example-item">BOOL</div>
+                    <div class="example-item">BIT(1) - в некоторых СУБД</div>
+                </div>
+                <div class="examples" style="margin-top: 15px; border-left-color: #ff3366;">
+                    <div class="example-title">Использование:</div>
+                    <div class="example-item">✅ Флаги состояний</div>
+                    <div class="example-item">✅ Булева логика в запросах</div>
+                    <div class="example-item">✅ Условия WHERE</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="code-section glow-effect">
+            <div class="code-header">
+                <h2 class="code-title">
+                    <span class="sql-icon">⚡</span>
+                    Пример SQL запроса
+                </h2>
+            </div>
+            <div class="code-block">
+                <pre><span class="sql-keyword">SELECT</span> * 
+<span class="sql-keyword">FROM</span> <span class="sql-table">products</span>
+<span class="sql-keyword">LIMIT</span> <span class="sql-number">10</span>;
+
+<span class="sql-comment">-- Этот запрос возвращает первые 10 записей из таблицы products</span>
+<span class="sql-comment">-- SELECT * - выбирает все столбцы</span>
+<span class="sql-comment">-- FROM products - указывает таблицу-источник</span>
+<span class="sql-comment">-- LIMIT 10 - ограничивает результат 10 записями</span></pre>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2024 SQL Типы данных | Изучение основ баз данных</p>
+            <p style="margin-top: 10px; font-size: 0.8rem; color: #666699;">
+                Числовые • Символьные • Дата и время • Логические
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
