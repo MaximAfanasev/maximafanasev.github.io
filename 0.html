@@ -322,7 +322,7 @@
     </style>
 </head>
 <body>
-    <div class="container">ㅂ q<br>ㅈ w<br> ㄷ e<br> ㄱ r<br> ㅅ t<br> ㅛ y<br> ㅕ u<br> ㅑ i<br> ㅐ o<br> ㅔ p
+    <div class="container">
 
         <div class="current-symbol-container">
             <div class="current-symbol" id="currentSymbol">ㅂ</div>
@@ -330,14 +330,15 @@
 
         <div class="keyboard-container" id="keyboardContainer"></div>
 
-        <div class="hint-container">
+        <div class="hint-container" hidden>
             <button class="hint-btn" id="hintBtn">Показать подсказку (-10 очков)</button>
             <div class="hint-cost">Используйте подсказку, чтобы увидеть правильный ответ</div>
             <div class="hint-content" id="hintContent"></div>
         </div>
 
-        <div class="message" id="message"></div>
+        <div class="message" id="message" hidden></div>
 
+       <div hidden>
         <div class="stats">
             <div class="stat-item">
                 <div class="stat-value" id="score">0</div>
@@ -352,14 +353,14 @@
                 <div class="stat-label">Всего</div>
             </div>
         </div>
-
-        <div class="progress-bar">
+</div>
+        <div class="progress-bar" hidden>
             <div class="progress-fill" id="progressFill"></div>
         </div>
 
-        <div class="controls">
-            <button class="control-btn" id="nextBtn">Следующий символ</button>
-            <button class="control-btn" id="resetBtn">Начать заново</button>
+        <div class="controls" >
+            <button class="control-btn" id="nextBtn" hidden>Следующий символ</button>
+            <button class="control-btn" id="resetBtn" hidden>Начать заново</button>
         </div>
     </div>
 
@@ -380,7 +381,7 @@
             ];
 
             // Все доступные латинские буквы для кнопок
-            const allLatinLetters = ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'];
+            const allLatinLetters = ['ㅂ q', 'ㅈ w', 'ㄷ e', 'ㄱ r', 'ㅅ t', 'ㅛy', 'ㅕ u', 'ㅑ i', 'ㅐ o', 'ㅔ p'];
 
             // DOM элементы
             const currentSymbolEl = document.getElementById('currentSymbol');
@@ -514,7 +515,7 @@
                 if (correctButton && !isCorrect) {
                     setTimeout(() => {
                         correctButton.classList.add('correct');
-                    }, 500);
+                    }, 100);
                 }
                 
                 // Обновляем счет
@@ -535,7 +536,7 @@
                 // Автоматически переходим к следующему символу через 2 секунды
                 setTimeout(() => {
                     showNextSymbol();
-                }, 2000);
+                }, 100);
             }
 
             // Показать подсказку
@@ -573,7 +574,7 @@
                 // Автоматически скрыть сообщение через 3 секунды
                 setTimeout(() => {
                     hideMessage();
-                }, 3000);
+                }, 100);
             }
 
             // Скрыть сообщение
