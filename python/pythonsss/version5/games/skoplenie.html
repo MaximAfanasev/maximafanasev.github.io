@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Скопление</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #1e1e1e;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    canvas {
+      border: 2px solid gray;
+      border-radius: 10px;
+      padding: 10px;
+      background: #1e1e1e;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="gameCanvas" width="400" height="600"></canvas>
+  <script>
+    const canvas = document.getElementById("gameCanvas");
+    const ctx = canvas.getContext("2d");
+
+    const basketWidth = 80;
+    const basketHeight = 20;
+    const objectSize = 30;
+
+    let basketX = canvas.width / 2 - basketWidth / 2;
+    let objectX = Math.random() * (canvas.width - objectSize);
+    let objectY = 0;
+
+    document.addEventListener("mousemove", moveBasket);
+
+    function moveBasket(event) {
+      const mouseX = event.clientX - canvas.offsetLeft;
+      if (mouseX > 0 && mouseX < canvas.width) {
+        basketX = mouseX - basketWidth / 2;
+      }
+    }
+
+    function drawBasket() {
+      ctx.fillStyle = "blue";
+      ctx.fillRect(basketX, canvas.height - basketHeight, basketWidth, basketHeight);
+    }
+
+    function drawFallingObject() {
+      ctx.fillStyle = "red";
+      ctx.fillRect(objectX, objectY, objectSize, objectSize);
+    }
+
+    function resetFallingObject() {
+      objectX = Math.random() * (canvas.width - objectSize);
+      objectY = 0;
+    }
+
+    function update() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      drawBasket();
+      drawFallingObject();
+
+      objectY += 4; // Скорость падения объекта
+
+      if (objectY + objectSize > canvas.height) {
+        resetFallingObject(); // Сбросить объект, если он упал
+      }
+
+      // Проверка на ловлю объекта
+      if (
+        objectY + objectSize > canvas.height - basketHeight &&
+        objectY + objectSize < canvas.height &&
+        objectX + objectSize > basketX &&
+        objectX < basketX + basketWidth
+      ) {
+        resetFallingObject(); // Сбросить объект, если он пойман
+      }
+
+      // Отображение счета
+      ctx.font = "20px Arial";
+      ctx.fillStyle = "black";
+
+        requestAnimationFrame(update);
+      }
+
+      // Начать игру
+      update();
+  </script>
+</body></html>
