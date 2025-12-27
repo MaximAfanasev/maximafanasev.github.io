@@ -265,15 +265,25 @@
             <span id="themeIcon">🌙</span>
         </button>
         
-        <div class="korean-word">안녕</div>
+        <div class="korean-word">감사합니다</div>
         
         <div class="inputs-container">
-            <input type="text" class="input-box" maxlength="1" data-index="0" placeholder="d">
+            <input type="text" class="input-box" maxlength="1" data-index="0" placeholder="r">
             <input type="text" class="input-box" maxlength="1" data-index="1" placeholder="k">
-            <input type="text" class="input-box" maxlength="1" data-index="2" placeholder="s">
-            <input type="text" class="input-box" maxlength="1" data-index="3" placeholder="s">
-            <input type="text" class="input-box" maxlength="1" data-index="4" placeholder="u">
-            <input type="text" class="input-box" maxlength="1" data-index="5" placeholder="d">
+            <input type="text" class="input-box" maxlength="1" data-index="2" placeholder="a">
+            
+            <input type="text" class="input-box" maxlength="1" data-index="3" placeholder="t">
+            <input type="text" class="input-box" maxlength="1" data-index="4" placeholder="k">
+            
+            <input type="text" class="input-box" maxlength="1" data-index="5" placeholder="g">
+            <input type="text" class="input-box" maxlength="1" data-index="5" placeholder="k">
+            <input type="text" class="input-box" maxlength="1" data-index="5" placeholder="q">
+            
+            <input type="text" class="input-box" maxlength="1" data-index="5" placeholder="s">
+            <input type="text" class="input-box" maxlength="1" data-index="5" placeholder="l">
+            
+            <input type="text" class="input-box" maxlength="1" data-index="5" placeholder="e">
+            <input type="text" class="input-box" maxlength="1" data-index="5" placeholder="k">
         </div>
         
         <div class="result-message" id="resultMessage" hidden></div>
@@ -289,7 +299,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Целевые символы для слова "안녕"
-            const targetCharacters = ['ㅇ', 'ㅏ', 'ㄴ', 'ㄴ', 'ㅕ', 'ㅇ'];
+            const targetCharacters = ['ㄱ', 'ㅏ', 'ㅁ', 'ㅅ', 'ㅏ', 'ㅎ', 'ㅏ', 'ㅂ', 'ㄴ', 'ㅣ', 'ㄷ', 'ㅏ'];
             
             // Получаем элементы
             const inputBoxes = document.querySelectorAll('.input-box');
@@ -363,7 +373,7 @@
                         resetInputs();
                         resultMessage.textContent = '';
                         resultMessage.className = 'result-message';
-                    }, 100);
+                    }, 1000);
                 } else {
                     resultMessage.textContent = '';
                     resultMessage.className = 'result-message';
