@@ -329,40 +329,57 @@
 
 			<nav class="menu-section">
 				<div class="menu-grid">
-					<h2>PYTHON</h2>
+					<h2>PYTHON типы данных</h2>
 					<div class="menu-item">
-						<a href="python/pythonsss/index.html" target="_blank">Типы данных</a>
+						<a href="python/pythonsss/index.html" target="_blank">5 тренажеров</a>
 					</div>
 				</div>
 			</nav>
 		</div>
-		<script>
-			document.addEventListener('DOMContentLoaded', () => {
-				const terminal = document.querySelector('.terminal');
-				terminal.style.opacity = '0';
-				terminal.style.transform = 'translateY(20px)';
+
+		<div class="terminal">
+			<div class="corner corner-tl"></div>
+			<div class="corner corner-tr"></div>
+			<div class="corner corner-bl"></div>
+			<div class="corner corner-br"></div>
+
+			<nav class="menu-section">
+				<div class="menu-grid">
+					<h2>PYTHON Basa</h2>
+					<div class="menu-item">
+						<a href="python/pythonsss/base/0.html" target="_blank">START</a>
+					</div>
+				</div>
+			</nav>
+		</div>
+	</div>
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+			const terminal = document.querySelector('.terminal');
+			terminal.style.opacity = '0';
+			terminal.style.transform = 'translateY(20px)';
+
+			setTimeout(() => {
+				terminal.style.transition = 'opacity 0.5s, transform 0.5s';
+				terminal.style.opacity = '1';
+				terminal.style.transform = 'translateY(0)';
+			}, 300);
+
+			setInterval(() => {
+				const randomGlow = document.createElement('div');
+				randomGlow.style.position = 'absolute';
+				randomGlow.style.width = Math.random() * 100 + 'px';
+				randomGlow.style.height = '1px';
+				randomGlow.style.background = `rgba(0, 255, 157, ${Math.random() * 0.3})`;
+				randomGlow.style.top = Math.random() * 100 + '%';
+				randomGlow.style.left = Math.random() * 100 + '%';
+				randomGlow.style.boxShadow = `0 0 ${Math.random() * 10 + 5}px rgba(0, 255, 157, 0.7)`;
+				terminal.appendChild(randomGlow);
 
 				setTimeout(() => {
-					terminal.style.transition = 'opacity 0.5s, transform 0.5s';
-					terminal.style.opacity = '1';
-					terminal.style.transform = 'translateY(0)';
+					randomGlow.remove();
 				}, 300);
-
-				setInterval(() => {
-					const randomGlow = document.createElement('div');
-					randomGlow.style.position = 'absolute';
-					randomGlow.style.width = Math.random() * 100 + 'px';
-					randomGlow.style.height = '1px';
-					randomGlow.style.background = `rgba(0, 255, 157, ${Math.random() * 0.3})`;
-					randomGlow.style.top = Math.random() * 100 + '%';
-					randomGlow.style.left = Math.random() * 100 + '%';
-					randomGlow.style.boxShadow = `0 0 ${Math.random() * 10 + 5}px rgba(0, 255, 157, 0.7)`;
-					terminal.appendChild(randomGlow);
-
-					setTimeout(() => {
-						randomGlow.remove();
-					}, 300);
-				}, 100);
-			});
-		</script>
+			}, 100);
+		});
+	</script>
 </body></html>
