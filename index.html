@@ -290,16 +290,29 @@
 			<div class="corner corner-br"></div>
 
 			<nav class="menu-section">
-			<h2>Korean</h2>
+				<h2>Mobile</h2>
 				<div class="menu-grid">
 					<div class="menu-item">
 						<a href="korean/0.html" target="_blank">안녕</a>
 					</div>
 					<div class="menu-item">
-						<a href="korean/1.html" target="_blank">안녕</a>
-					</div>
-					<div class="menu-item">
 						<a href="korean/2.html" target="_blank">감사합니다</a>
+					</div>
+				</div>
+			</nav>
+		</div>
+
+		<div class="terminal">
+			<div class="corner corner-tl"></div>
+			<div class="corner corner-tr"></div>
+			<div class="corner corner-bl"></div>
+			<div class="corner corner-br"></div>
+
+			<nav class="menu-section">
+				<h2>Desktop</h2>
+				<div class="menu-grid">
+					<div class="menu-item">
+						<a href="korean/1.html" target="_blank">안녕</a>
 					</div>
 					<div class="menu-item">
 						<a href="korean/3.html" target="_blank">감사합니다</a>
@@ -307,9 +320,7 @@
 				</div>
 			</nav>
 		</div>
-	</div>
 
-	<div class="container">
 		<div class="terminal">
 			<div class="corner corner-tl"></div>
 			<div class="corner corner-tr"></div>
@@ -318,41 +329,40 @@
 
 			<nav class="menu-section">
 				<div class="menu-grid">
-				<h2>PYTHON</h2>
+					<h2>PYTHON</h2>
 					<div class="menu-item">
 						<a href="python/pythonsss/index.html" target="_blank">Типы данных</a>
 					</div>
 				</div>
 			</nav>
 		</div>
-	</div>
-	<script>
-		document.addEventListener('DOMContentLoaded', () => {
-			const terminal = document.querySelector('.terminal');
-			terminal.style.opacity = '0';
-			terminal.style.transform = 'translateY(20px)';
-
-			setTimeout(() => {
-				terminal.style.transition = 'opacity 0.5s, transform 0.5s';
-				terminal.style.opacity = '1';
-				terminal.style.transform = 'translateY(0)';
-			}, 300);
-
-			setInterval(() => {
-				const randomGlow = document.createElement('div');
-				randomGlow.style.position = 'absolute';
-				randomGlow.style.width = Math.random() * 100 + 'px';
-				randomGlow.style.height = '1px';
-				randomGlow.style.background = `rgba(0, 255, 157, ${Math.random() * 0.3})`;
-				randomGlow.style.top = Math.random() * 100 + '%';
-				randomGlow.style.left = Math.random() * 100 + '%';
-				randomGlow.style.boxShadow = `0 0 ${Math.random() * 10 + 5}px rgba(0, 255, 157, 0.7)`;
-				terminal.appendChild(randomGlow);
+		<script>
+			document.addEventListener('DOMContentLoaded', () => {
+				const terminal = document.querySelector('.terminal');
+				terminal.style.opacity = '0';
+				terminal.style.transform = 'translateY(20px)';
 
 				setTimeout(() => {
-					randomGlow.remove();
+					terminal.style.transition = 'opacity 0.5s, transform 0.5s';
+					terminal.style.opacity = '1';
+					terminal.style.transform = 'translateY(0)';
 				}, 300);
-			}, 100);
-		});
-	</script>
+
+				setInterval(() => {
+					const randomGlow = document.createElement('div');
+					randomGlow.style.position = 'absolute';
+					randomGlow.style.width = Math.random() * 100 + 'px';
+					randomGlow.style.height = '1px';
+					randomGlow.style.background = `rgba(0, 255, 157, ${Math.random() * 0.3})`;
+					randomGlow.style.top = Math.random() * 100 + '%';
+					randomGlow.style.left = Math.random() * 100 + '%';
+					randomGlow.style.boxShadow = `0 0 ${Math.random() * 10 + 5}px rgba(0, 255, 157, 0.7)`;
+					terminal.appendChild(randomGlow);
+
+					setTimeout(() => {
+						randomGlow.remove();
+					}, 300);
+				}, 100);
+			});
+		</script>
 </body></html>
