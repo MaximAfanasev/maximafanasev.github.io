@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body {
+			background: #000;
+		}
+	</style>
+</head>
+<body>
+	
+	<script>
+		"use strict";
+		
+		let value = true
+		console.log(typeof(value))
+		value = String(value)
+		console.log(typeof(value))
+		value = Number(value)
+		console.log(typeof(value))
+		
+		console.log(typeof('3'/'2'))
+		console.log(typeof('a'/2))
+		console.log(Number('  a  '))
+		console.log(Number('123z'))
+		console.log(Number(true))
+		console.log(Number(false))
+		
+		console.log(Boolean('a'))
+		console.log(Boolean(''))
+		console.log(Boolean(1))
+		console.log(Boolean(0))
+	</script>
+</body>
+</html>
