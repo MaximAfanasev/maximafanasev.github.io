@@ -16,7 +16,7 @@
 		
 		let x = 1
 		x = -x 
-		console.log(x)
+		console.log(x) // -1
 		
 		console.log(5%2) // 2 2 1 - берет остаток от деления
 		console.log(8%3) // 2
@@ -25,10 +25,9 @@
 		console.log(2**2) // 4
 		console.log(4**(1/2)) // корень
 		
-		
 		console.log('a' + 'b') // 'ab'
 		console.log('1' + 2) // '12'
-		console.log(2 + 2 + '1') // 4 + '1'
+		console.log(2 + 2 + '1') // 4 + '1' = '41'
 		console.log(6 - '2') // 4
 		
 		x = 1
@@ -41,6 +40,28 @@
 		let a = '5'
 		let b = '3'
 		console.log(+a + +b) // 8
+		
+		let c = 3 - (a = b + 1) // -28
+		console.log(c)
+		
+		let d = c * 2 // -56
+		console.log(d)
+		
+		let e = 1
+		e++
+		console.log(e) // 2
+		
+		e--
+		console.log(e) // 1
+		
+		++e
+		console.log(e) // 2 сразу увеличивает
+		
+		a = 1 + 2, 3 + 4
+		console.log(a) // 3
+		
+		a = (1 + 2, 3 + 4)
+		console.log(a) // 7
 	</script>
 </body>
 </html>
