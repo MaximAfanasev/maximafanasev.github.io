@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body {
+			background: #000;
+		}
+	</style>
+</head>
+
+<body>
+
+	<script>
+		"use strict";
+		
+		console.log( true || true );   // true
+		console.log( false || true );  // true
+		console.log( true || false );  // true
+		console.log( false || false ); // false
+		console.log( 1 || 0 ); // 1
+		console.log( true || 'a' ); // true
+		console.log( null || 1 ); // 1
+		console.log( null || 0 || 1 ); // 1
+		console.log( undefined || null || 0 ); // 0 посл
+		
+		let a = 0
+		a ||= 'x'
+		console.log(a) // x
+		
+		console.log( true && true );   // true
+		console.log( false && true );  // false
+		console.log( true && false );  // false
+		console.log( false && false ); // false
+		
+		console.log(!true) // false
+		console.log(!!true) // true
+		
+		console.log(!0) // true
+		console.log(!!0) // false
+	</script>
+</body></html>
