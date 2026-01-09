@@ -224,9 +224,6 @@ function showMessage() {
 showMessage();
 showMessage();
 
-
-
-
 let userName = 'Вася';
 
 function showMessage() {

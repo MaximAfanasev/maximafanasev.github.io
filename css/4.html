@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Псевдоклассы CSS - nth-child и not</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .example {
+            margin: 40px 0;
+            padding: 25px;
+            border: 3px solid #e0e0e0;
+            border-radius: 12px;
+            background: #fafafa;
+            transition: transform 0.2s ease;
+        }
+
+        .example:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .example h2 {
+            color: #34495e;
+            margin-top: 0;
+            font-size: 1.8em;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        .description {
+            color: #7f8c8d;
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .demo-area {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #bdc3c7;
+            margin: 20px 0;
+        }
+
+        .demo-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 15px;
+            background: #ecf0f1;
+            border-radius: 8px;
+        }
+
+        .demo-item {
+            padding: 15px;
+            border: 2px solid #95a5a6;
+            border-radius: 6px;
+            background: white;
+        }
+
+        .demo-item span, .demo-item div, .demo-item p, .demo-item li {
+            display: inline-block;
+            padding: 8px 12px;
+            margin: 5px;
+            border-radius: 4px;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+        }
+
+        .demo-item li {
+            display: block;
+            margin: 5px 0;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Стили для демонстрации псевдоклассов */
+        .nth-child-2-demo span:nth-child(2) {
+            background: #ff6b6b !important;
+            color: white;
+            border-color: #c0392b;
+            font-weight: bold;
+        }
+
+        .nth-child-odd-demo span:nth-child(odd) {
+            background: #4ecdc4 !important;
+            color: white;
+            border-color: #16a085;
+            font-weight: bold;
+        }
+
+        .nth-child-even-demo span:nth-child(even) {
+            background: #ffe66d !important;
+            color: #2c3e50;
+            border-color: #f39c12;
+            font-weight: bold;
+        }
+
+        .nth-child-formula-demo span:nth-child(3n+1) {
+            background: #6a89cc !important;
+            color: white;
+            border-color: #2980b9;
+            font-weight: bold;
+        }
+
+        .nth-last-child-demo span:nth-last-child(2) {
+            background: #a55eea !important;
+            color: white;
+            border-color: #8e44ad;
+            font-weight: bold;
+        }
+
+        .nth-of-type-demo p:nth-of-type(2) {
+            background: #fd9644 !important;
+            color: white;
+            border-color: #e67e22;
+            font-weight: bold;
+        }
+
+        .nth-last-of-type-demo span:nth-last-of-type(2) {
+            background: #26de81 !important;
+            color: white;
+            border-color: #2ecc71;
+            font-weight: bold;
+        }
+
+        .not-class-demo div:not(.ignore) {
+            background: #fc5c65 !important;
+            color: white;
+            border-color: #eb3b5a;
+            font-weight: bold;
+        }
+
+        .not-id-demo div:not(#banner) {
+            background: #fed330 !important;
+            color: #2c3e50;
+            border-color: #f7b731;
+            font-weight: bold;
+        }
+
+        .not-first-child-demo li:not(:first-child) {
+            background: #2bcbba !important;
+            color: white;
+            border-color: #0fb9b1;
+            font-weight: bold;
+        }
+
+        .code {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Fira Code', 'Courier New', monospace;
+            margin: 15px 0;
+            overflow-x: auto;
+            font-size: 1.1em;
+        }
+
+        .code .selector {
+            color: #ff79c6;
+        }
+
+        .code .comment {
+            color: #6272a4;
+        }
+
+        .result {
+            background: #e8f5e8;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 5px solid #27ae60;
+            margin: 15px 0;
+        }
+
+        .note {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid #ffc107;
+            margin: 15px 0;
+            color: #856404;
+        }
+
+        .formula-explanation {
+            background: #d1ecf1;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid #17a2b8;
+            margin: 15px 0;
+            color: #0c5460;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .demo-container {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Псевдоклассы CSS - nth-child и :not()</h1>
+
+        <!-- :nth-child(2) -->
+        <div class="example">
+            <h2>:nth-child(2) {}</h2>
+            <p class="description">Выбирает второй дочерний элемент родителя</p>
+            
+            <div class="code"><span class="selector">:nth-child(2)</span> {
+    background: #ff6b6b;
+    color: white;
+    font-weight: bold;
+}</div>
+
+            <div class="demo-area">
+                <div class="demo-container">
+                    <div class="demo-item nth-child-2-demo">
+                        <h3>Пример:</h3>
+                        <span>1. Первый элемент</span>
+                        <span>2. Второй элемент (выделен)</span>
+                        <span>3. Третий элемент</span>
+                        <span>4. Четвертый элемент</span>
+                        <span>5. Пятый элемент</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- :nth-child(odd) -->
+        <div class="example">
+            <h2>:nth-child(odd) {}</h2>
+            <p class="description">Выбирает нечетные дочерние элементы (1, 3, 5, ...)</p>
+            
+            <div class="code"><span class="selector">:nth-child(odd)</span> {
+    background: #4ecdc4;
+    color: white;
+    font-weight: bold;
+}</div>
+
+            <div class="demo-area">
+                <div class="demo-container">
+                    <div class="demo-item nth-child-odd-demo">
+                        <h3>Пример (6 элементов):</h3>
+                        <span>1. Нечетный (выделен)</span>
+                        <span>2. Четный</span>
+                        <span>3. Нечетный (выделен)</span>
+                        <span>4. Четный</span>
+                        <span>5. Нечетный (выделен)</span>
+                        <span>6. Четный</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- :nth-child(even) -->
+        <div class="example">
+            <h2>:nth-child(even) {}</h2>
+            <p class="description">Выбирает четные дочерние элементы (2, 4, 6, ...)</p>
+            
+            <div class="code"><span class="selector">:nth-child(even)</span> {
+    background: #ffe66d;
+    color: #2c3e50;
+    font-weight: bold;
+}</div>
+
+            <div class="demo-area">
+                <div class="demo-container">
+                    <div class="demo-item nth-child-even-demo">
+                        <h3>Пример (6 элементов):</h3>
+                        <span>1. Нечетный</span>
+                        <span>2. Четный (выделен)</span>
+                        <span>3. Нечетный</span>
+                        <span>4. Четный (выделен)</span>
+                        <span>5. Нечетный</span>
+                        <span>6. Четный (выделен)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- :nth-child(3n+1) -->
+        <div class="example">
+            <h2>:nth-child(3n+1) {}</h2>
+            <p class="description">Выбирает элементы по формуле: 1, 4, 7, 10, ...</p>
+            
+            <div class="code"><span class="selector">:nth-child(3n+1)</span> {
+    background: #6a89cc;
+    color: white;
+    font-weight: bold;
+}</div>
+
+            <div class="formula-explanation">
+                <strong>Формула 3n+1:</strong><br>
+                n = 0 → 3*0+1 = 1<br>
+                n = 1 → 3*1+1 = 4<br>
+                n = 2 → 3*2+1 = 7<br>
+                n = 3 → 3*3+1 = 10<br>
+                и так далее...
+            </div>
+
+            <div class="demo-area">
+                <div class="demo-container">
+                    <div class="demo-item nth-child-formula-demo">
+                        <h3>Пример (9 элементов):</h3>
+                        <span>1. Выделен (3*0+1)</span>
+                        <span>2.</span>
+                        <span>3.</span>
+                        <span>4. Выделен (3*1+1)</span>
+                        <span>5.</span>
+                        <span>6.</span>
+                        <span>7. Выделен (3*2+1)</span>
+                        <span>8.</span>
+                        <span>9.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- :nth-last-child(2) -->
+        <div class="example">
+            <h2>:nth-last-child(2) {}</h2>
+            <p class="description">Выбирает предпоследний дочерний элемент</p>
+            
+            <div class="code"><span class="selector">:nth-last-child(2)</span> {
+    background: #a55eea;
+    color: white;
+    font-weight: bold;
+}</div>
+
+            <div class="demo-area">
+                <div class="demo-container">
+                    <div class="demo-item nth-last-child-demo">
+                        <h3>Пример (5 элементов):</h3>
+                        <span>1. Первый</span>
+                        <span>2. Второй</span>
+                        <span>3. Предпоследний (выделен)</span>
+                        <span>4. Последний</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- :nth-of-type(2) -->
+        <div class="example">
+            <h2>:nth-of-type(2) {}</h2>
+            <p class="description">Выбирает второй элемент определённого типа среди братьев</p>
+            
+            <div class="code"><span class="selector">p:nth-of-type(2)</span> {
+    background: #fd9644;
+    color: white;
+    font-weight: bold;
+}</div>
+
+            <div class="demo-area">
+                <div class="demo-container">
+                    <div class="demo-item nth-of-type-demo">
+                        <h3>Пример:</h3>
+                        <div>Div элемент</div>
+                        <p>1. Первый параграф</p>
+                        <span>Span элемент</span>
+                        <p>2. Второй параграф (выделен)</p>
+                        <div>Другой div</div>
+                        <p>3. Третий параграф</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="note">
+                <strong>Примечание:</strong> Считаются только элементы указанного типа (p), игнорируя другие
+            </div>
+        </div>
+
+        <!-- :nth-last-of-type(2) -->
+        <div class="example">
+            <h2>:nth-last-of-type(2) {}</h2>
+            <p class="description">Выбирает предпоследний элемент определённого типа среди братьев</p>
+            
+            <div class="code"><span class="selector">span:nth-last-of-type(2)</span> {
+    background: #26de81;
+    color: white;
+    font-weight: bold;
+}</div>
+
+            <div class="demo-area">
+                <div class="demo-container">
+                    <div class="demo-item nth-last-of-type-demo">
+                        <h3>Пример:</h3>
+                        <span>1. Первый span</span>
+                        <div>Div элемент</div>
+                        <span>2. Второй span</span>
+                        <p>Параграф</p>
+                        <span>3. Предпоследний span (выделен)</span>
+                        <span>4. Последний span</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- :not(.ignore) -->
+        <div class="example">
+            <h2>:not(.ignore) {}</h2>
+            <p class="description">Выбирает все элементы, у которых нет класса 'ignore'</p>
+            
+            <div class="code"><span class="selector">div:not(.ignore)</span> {
+    background: #fc5c65;
+    color: white;
+    font-weight: bold;
+}</div>
+
+            <div class="demo-area">
+                <div class="demo-container">
+                    <div class="demo-item not-class-demo">
+                        <h3>Пример:</h3>
+                        <div class="normal">Обычный div (выделен)</div>
+                        <div class="ignore">Div с классом ignore</div>
+                        <div class="normal">Другой обычный div (выделен)</div>
+                        <div class="special">Div с другим классом (выделен)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- div:not(#banner) -->
+        <div class="example">
+            <h2>div:not(#banner) {}</h2>
+            <p class="description">Выбирает все div, кроме тех, у которых есть id 'banner'</p>
+            
+            <div class="code"><span class="selector">div:not(#banner)</span> {
+    background: #fed330;
+    color: #2c3e50;
+    font-weight: bold;
+}</div>
+
+            <div class="demo-area">
+                <div class="demo-container">
+                    <div class="demo-item not-id-demo">
+                        <h3>Пример:</h3>
+                        <div id="content">Обычный div (выделен)</div>
+                        <div id="banner">Div с id banner</div>
+                        <div id="sidebar">Другой div (выделен)</div>
+                        <div>Анонимный div (выделен)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- li:not(:first-child) -->
+        <div class="example">
+            <h2>li:not(:first-child) {}</h2>
+            <p class="description">Выбирает все li, кроме первого ребенка в списке</p>
+            
+            <div class="code"><span class="selector">li:not(:first-child)</span> {
+    background: #2bcbba;
+    color: white;
+    font-weight: bold;
+}</div>
+
+            <div class="demo-area">
+                <div class="demo-container">
+                    <div class="demo-item not-first-child-demo">
+                        <h3>Пример списка:</h3>
+                        <ul>
+                            <li>Первый элемент (не выделен)</li>
+                            <li>Второй элемент (выделен)</li>
+                            <li>Третий элемент (выделен)</li>
+                            <li>Четвертый элемент (выделен)</li>
+                            <li>Пятый элемент (выделен)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="note">
+                <strong>Примечание:</strong> Можно комбинировать :not() с другими псевдоклассами
+            </div>
+        </div>
+    </div>
+</body>
+</html>
