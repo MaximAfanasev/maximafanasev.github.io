@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>안녕</title>
+	<link type="image/x-icon" rel="icon" href="../flag.png">
+    <title>감사합니다</title>
     <style>
         * {
             margin: 0;
@@ -265,14 +266,25 @@
             <span id="themeIcon">🌙</span>
         </button>
         
-        <div class="korean-word">안녕</div>
+        <div class="korean-word">감사합니다</div>
+        <span hidden>rka tk gkq sl ek</span>
         
         <div class="inputs-container">
             <input type="text" class="input-box" maxlength="1" data-index="0">
             <input type="text" class="input-box" maxlength="1" data-index="1">
             <input type="text" class="input-box" maxlength="1" data-index="2">
+            
             <input type="text" class="input-box" maxlength="1" data-index="3">
             <input type="text" class="input-box" maxlength="1" data-index="4">
+            
+            <input type="text" class="input-box" maxlength="1" data-index="5">
+            <input type="text" class="input-box" maxlength="1" data-index="5">
+            <input type="text" class="input-box" maxlength="1" data-index="5">
+            
+            <input type="text" class="input-box" maxlength="1" data-index="5">
+            <input type="text" class="input-box" maxlength="1" data-index="5">
+            
+            <input type="text" class="input-box" maxlength="1" data-index="5">
             <input type="text" class="input-box" maxlength="1" data-index="5">
         </div>
         
@@ -289,7 +301,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Целевые символы для слова "안녕"
-            const targetCharacters = ['ㅇ', 'ㅏ', 'ㄴ', 'ㄴ', 'ㅕ', 'ㅇ'];
+            const targetCharacters = ['ㄱ', 'ㅏ', 'ㅁ', 'ㅅ', 'ㅏ', 'ㅎ', 'ㅏ', 'ㅂ', 'ㄴ', 'ㅣ', 'ㄷ', 'ㅏ'];
             
             // Получаем элементы
             const inputBoxes = document.querySelectorAll('.input-box');
@@ -363,7 +375,7 @@
                         resetInputs();
                         resultMessage.textContent = '';
                         resultMessage.className = 'result-message';
-                    }, 100);
+                    }, 1000);
                 } else {
                     resultMessage.textContent = '';
                     resultMessage.className = 'result-message';
