@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Примеры CSS-селекторов</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .example {
+            margin: 30px 0;
+            padding: 20px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .example h2 {
+            color: #2c3e50;
+            margin-top: 0;
+        }
+
+        .example p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .demo-area {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+
+        /* Стили для демонстрации селекторов */
+        .demo-div p {
+            background-color: #ffe6e6;
+            padding: 5px;
+            margin: 5px 0;
+        }
+
+        .demo-div > p {
+            border-left: 4px solid #ff6b6b;
+        }
+
+        .demo-div + p {
+            background-color: #4ecdc4;
+            color: white;
+            padding: 10px;
+            font-weight: bold;
+        }
+
+        .demo-div ~ p {
+            border-bottom: 2px dashed #45b7d1;
+            padding: 5px;
+        }
+
+        a[title] {
+            background-color: #ffeaa7;
+            padding: 2px 5px;
+            text-decoration: none;
+            border-radius: 3px;
+        }
+
+        .code {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+
+        .result {
+            background: #e8f5e8;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #4caf50;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Примеры CSS-селекторов</h1>
+
+        <!-- Пример 1: div p -->
+        <div class="example">
+            <h2>1. div p {}</h2>
+            <p>Выбирает ВСЕ элементы &lt;p&gt;, которые находятся внутри &lt;div&gt; (любой уровень вложенности)</p>
+            
+            <div class="code">div p {
+    background-color: #ffe6e6;
+    padding: 5px;
+}</div>
+
+            <div class="demo-area">
+                <div class="demo-div">
+                    <p>Параграф 1 (прямой потомок)</p>
+                    <span>
+                        <p>Параграф 2 (вложенный через span)</p>
+                    </span>
+                    <div>
+                        <p>Параграф 3 (вложенный через другой div)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Пример 2: div > p -->
+        <div class="example">
+            <h2>2. div > p {}</h2>
+            <p>Выбирает только ПРЯМЫХ потомков &lt;p&gt; элемента &lt;div&gt; (первый уровень вложенности)</p>
+            
+            <div class="code">div > p {
+    border-left: 4px solid #ff6b6b;
+}</div>
+
+            <div class="demo-area">
+                <div class="demo-div">
+                    <p>Параграф 1 (прямой потомок - будет выделен)</p>
+                    <span>
+                        <p>Параграф 2 (не прямой потомок - не будет выделен)</p>
+                    </span>
+                    <div>
+                        <p>Параграф 3 (не прямой потомок - не будет выделен)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Пример 3: div + p -->
+        <div class="example">
+            <h2>3. div + p {}</h2>
+            <p>Выбирает первый элемент &lt;p&gt;, который идет НЕПОСРЕДСТВЕННО после &lt;div&gt;</p>
+            
+            <div class="code">div + p {
+    background-color: #4ecdc4;
+    color: white;
+    padding: 10px;
+}</div>
+
+            <div class="demo-area">
+                <div class="demo-div">Это div</div>
+                <p>Параграф сразу после div (будет выделен)</p>
+                <p>Второй параграф после div (не будет выделен)</p>
+                <span>Какой-то span</span>
+                <p>Еще один параграф (не будет выделен)</p>
+            </div>
+        </div>
+
+        <!-- Пример 4: div ~ p -->
+        <div class="example">
+            <h2>4. div ~ p {}</h2>
+            <p>Выбирает ВСЕ элементы &lt;p&gt;, которые идут после &lt;div&gt; (не обязательно непосредственно)</p>
+            
+            <div class="code">div ~ p {
+    border-bottom: 2px dashed #45b7d1;
+    padding: 5px;
+}</div>
+
+            <div class="demo-area">
+                <div class="demo-div">Это div</div>
+                <p>Параграф 1 после div (будет выделен)</p>
+                <span>Какой-то span между ними</span>
+                <p>Параграф 2 после div (будет выделен)</p>
+                <p>Параграф 3 после div (будет выделен)</p>
+            </div>
+        </div>
+
+        <!-- Пример 5: a[title] -->
+        <div class="example">
+            <h2>5. a[title] {}</h2>
+            <p>Выбирает все элементы &lt;a&gt;, у которых есть атрибут title (независимо от его значения)</p>
+            
+            <div class="code">a[title] {
+    background-color: #ffeaa7;
+    padding: 2px 5px;
+}</div>
+
+            <div class="demo-area">
+                <p>
+                    <a href="#" title="Подсказка 1">Ссылка с title</a> |
+                    <a href="#">Ссылка без title</a> |
+                    <a href="#" title="Другая подсказка">Еще ссылка с title</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

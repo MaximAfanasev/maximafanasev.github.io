@@ -7,9 +7,23 @@
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+<button id="off">Off</button>
 <div>Таблица - это?</div>
-<div class="blur">двумерная сетка</div>
-<textarea name="" id="" cols="30" rows="1"></textarea>
+<div class="blur">двухмерная сетка, состоящая из строк и столбцов</div>
+<textarea name="" id="" cols="47" rows="1"></textarea>
+
+<div>Что относится к данным?</div>
+<div class="blur">имена числа даты символы</div>
+<textarea name="" id="" cols="24" rows="1"></textarea>
 </body>
+
+<script>
+	let button = document.getElementById('off')
+	button.addEventListener('click', function() {
+		const blurs = document.querySelectorAll('.blur')
+		blurs.forEach(elem => {
+			elem.classList.toggle('off')
+		})
+	})
+	</script>
 </html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body {
+			background: #000;
+		}
+	</style>
+</head>
+<body>
+	
+	<script>
+		"use strict";
+		
+		let message
+		message = 'hello'
+		console.log(message) // hello
+		
+		let hello = message
+		console.log(hello) // hello
+		
+		let $ = 1
+		let _ = 2
+		console.log($, _) // 1 2
+		
+		const COLOR_RED = '#F00'
+		console.log(COLOR_RED) // #F00
+		
+		let number = 123
+		console.log(number) // 123
+		console.log(1/0) // Infinity
+		console.log(Infinity) // Infinity
+		console.log('a'/2) // NaN
+		console.log(NaN+1) // NaN
+		console.log(NaN*2) // NaN
+		console.log(123n) // 123n
+		console.log('a') // a
+		console.log("a") // a
+		console.log(`a`) // a
+		console.log(`${COLOR_RED}`) // #F00
+		console.log(`${1+2}`) // 3
+		console.log(4>1) // true
+		console.log(4<1) // false
+		console.log(null) // null
+		console.log(undefined) // undefined
+		console.log(typeof(5)) // number
+		console.log(typeof(10n)) // bigint
+		console.log(typeof(true)) // boolean
+		console.log(typeof('a')) // string
+		console.log(typeof(`1+2`)) // string
+		console.log(typeof(NaN)) // number
+		console.log(typeof(null)) // object
+		console.log(typeof(undefined)) // undefined
+		console.log(typeof(Math)) // object
+		console.log(typeof(Symbol('id'))) // symbol
+	</script>
+</body>
+</html>
