@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h1>Шилдт Уолтер SQL</h1>
+<h1>Шилдс Уолтер SQL</h1>
 <button id="off">Off / On</button>
 <div class="date">12 января 2025</div>
 <div>Таблица - это?</div>
@@ -36,7 +36,7 @@
 <div class="blur">поля или атрибуты</div>
 
 <div>Реляционная база данных?</div>
-<div class="blur">множество таблиц</div>
+<div class="blur">множетсво таблиц</div>
 
 <div>Что обязательно содержит таблица?</div>
 <div class="blur">первичный ключ</div>
@@ -47,8 +47,8 @@
 <div>Внешний ключ?</div>
 <div class="blur">соответствует первичному ключу</div>
 
-<div>Связи между таблицами?</div>
-<div class="blur">один-к-одному, один-ко-многим, многие-ко-многим</div>
+<div>Внешний ключ?</div>
+<div class="blur">соответствует первичному ключу</div>
 
 <img src="../img/3.png" alt="">
 
@@ -60,135 +60,13 @@
 <div>Числовые типы данных?</div>
 <div class="blur">целые и с плавающей точкой</div>
 
-<div>Символьные типы данных?</div>
-<div class="blur">CHAR, VARCHAR, TEXT</div>
 
-<div>Типы данных даты и времени?</div>
-<div class="blur">DATE, TIME, DATETIME, TIMESTAMP</div>
 
-<div>Что такое SQL?</div>
-<div class="blur">Structured Query Language — язык структурированных запросов</div>
 
-<div>Основные подмножества SQL?</div>
-<div class="blur">DDL (Data Definition Language), DML (Data Manipulation Language), DCL (Data Control Language)</div>
 
-<div>Команды DDL?</div>
-<div class="blur">CREATE, ALTER, DROP, TRUNCATE</div>
 
-<div>Команды DML?</div>
-<div class="blur">SELECT, INSERT, UPDATE, DELETE</div>
 
-<div>Создание таблицы?</div>
-<div class="blur">CREATE TABLE table_name (column1 datatype, column2 datatype, ...);</div>
-
-<div>Выборка всех данных из таблицы?</div>
-<div class="blur">SELECT * FROM table_name;</div>
-
-<div>Выборка конкретных столбцов?</div>
-<div class="blur">SELECT column1, column2 FROM table_name;</div>
-
-<div>Фильтрация строк с WHERE?</div>
-<div class="blur">SELECT * FROM table_name WHERE condition;</div>
-
-<div>Операторы сравнения в WHERE?</div>
-<div class="blur">=, <>, <, >, <=, >=, BETWEEN, LIKE, IN</div>
-
-<div>Сортировка результатов?</div>
-<div class="blur">ORDER BY column1 [ASC|DESC], column2 [ASC|DESC];</div>
-
-<div>Ограничение числа строк?</div>
-<div class="blur">LIMIT number; (или TOP в некоторых СУБД)</div>
-
-<div>Агрегатные функции?</div>
-<div class="blur">COUNT(), SUM(), AVG(), MIN(), MAX()</div>
-
-<div>Группировка данных?</div>
-<div class="blur">GROUP BY column1, column2;</div>
-
-<div>Фильтрация групп?</div>
-<div class="blur">HAVING condition;</div>
-
-<div>Разница между WHERE и HAVING?</div>
-<div class="blur">WHERE фильтрует строки, HAVING фильтрует группы</div>
-
-<div>Добавление записей?</div>
-<div class="blur">INSERT INTO table_name (column1, column2) VALUES (value1, value2);</div>
-
-<div>Обновление записей?</div>
-<div class="blur">UPDATE table_name SET column1 = value1 WHERE condition;</div>
-
-<div>Удаление записей?</div>
-<div class="blur">DELETE FROM table_name WHERE condition;</div>
-
-<div>Очистка таблицы?</div>
-<div class="blur">TRUNCATE TABLE table_name;</div>
-
-<div>Удаление таблицы?</div>
-<div class="blur">DROP TABLE table_name;</div>
-
-<div>Изменение структуры таблицы?</div>
-<div class="blur">ALTER TABLE table_name ADD column_name datatype;</div>
-
-<div>Типы соединений (JOIN)?</div>
-<div class="blur">INNER JOIN, LEFT JOIN, RIGHT JOIN, FULL OUTER JOIN, CROSS JOIN</div>
-
-<div>INNER JOIN?</div>
-<div class="blur">Возвращает строки, где есть соответствие в обеих таблицах</div>
-
-<div>LEFT JOIN?</div>
-<div class="blur">Все строки из левой таблицы + совпадения из правой</div>
-
-<div>Подзапросы?</div>
-<div class="blur">Запрос внутри другого запроса</div>
-
-<div>Виды подзапросов?</div>
-<div class="blur">В SELECT, FROM, WHERE, с IN, EXISTS, ANY, ALL</div>
-
-<div>Оконные функции?</div>
-<div class="blur">ROW_NUMBER(), RANK(), DENSE_RANK(), SUM() OVER()</div>
-
-<div>Представления (VIEW)?</div>
-<div class="blur">Виртуальная таблица на основе результата SELECT</div>
-
-<div>Создание представления?</div>
-<div class="blur">CREATE VIEW view_name AS SELECT ...;</div>
-
-<div>Индексы?</div>
-<div class="blur">Ускоряют поиск данных, но замедляют вставку/обновление</div>
-
-<div>Транзакции?</div>
-<div class="blur">Группа операций, выполняемая как единое целое (ACID)</div>
-
-<div>ACID?</div>
-<div class="blur">Atomicity, Consistency, Isolation, Durability</div>
-
-<div>Нормализация базы данных?</div>
-<div class="blur">Процесс организации данных для уменьшения избыточности</div>
-
-<div>Первая нормальная форма (1NF)?</div>
-<div class="blur">Каждое поле содержит только атомарные значения, нет повторяющихся групп</div>
-
-<div>Вторая нормальная форма (2NF)?</div>
-<div class="blur">1NF + все неключевые атрибуты зависят от всего первичного ключа</div>
-
-<div>Третья нормальная форма (3NF)?</div>
-<div class="blur">2NF + нет транзитивных зависимостей</div>
-
-<div>Что такое NULL?</div>
-<div class="blur">Специальное значение, означающее отсутствие данных</div>
-
-<div>Работа с NULL?</div>
-<div class="blur">IS NULL, IS NOT NULL, COALESCE(), NULLIF()</div>
-
-<div>Объединение результатов?</div>
-<div class="blur">UNION, UNION ALL, INTERSECT, EXCEPT</div>
-
-<div>Хранимые процедуры?</div>
-<div class="blur">Предварительно скомпилированный код SQL, хранящийся в БД</div>
-
-<div>Триггеры?</div>
-<div class="blur">Код, автоматически выполняемый при определенных событиях</div>
-
+ 
 </body>
 
 <script>
@@ -199,5 +77,5 @@
 			elem.classList.toggle('off')
 		})
 	})
-</script>
+	</script>
 </html>
