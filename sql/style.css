@@ -11,11 +11,9 @@ div {
 
 .blur {
 	color: gold;
-	filter: blur(3px)
 }
 .blur:hover {
 	filter: blur(0px);
-	transition: 5s;
 }
 
 textarea {
@@ -24,7 +22,7 @@ textarea {
 }
 
 .blur.off {
-	filter: blur(0px)
+	filter: blur(3px)
 }
 
 button {
@@ -42,4 +40,13 @@ img {
 	margin: 20px 0;
 	border-radius: 20px;
 	width: 600px;
+}
+
+.date {
+	margin: 10px 0;
+	color: aqua;
+	border: 2px dotted;
+	width: fit-content;
+	padding: 5px 20px;
+	border-radius: 10px;
 }
