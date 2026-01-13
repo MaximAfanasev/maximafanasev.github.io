@@ -11,7 +11,7 @@ div {
 
 .blur {
 	color: gold;
-	filter: blur(5px)
+	filter: blur(3px)
 }
 .blur:hover {
 	filter: blur(0px);
@@ -36,4 +36,10 @@ button {
 	font-size: 20px;
 	font-weight: bold;
 	border: 2px solid gold;
+}
+
+img {
+	margin: 20px 0;
+	border-radius: 20px;
+	width: 600px;
 }
