@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>SQL</title>
+	<link type="image/x-icon" rel="icon" href="sql.png">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div>Таблица - это?</div>
+<div class="blur">двухмерная сетка, состоящая из строк и столбцов</div>
+
+<div>Что относится к данным?</div>
+<div class="blur">имена числа даты символы</div>
+
+<img src="../img/1.png" alt="">
+
+<div>Что содержат все базы?</div>
+<div class="blur">метаданные</div>
+
+<div>Что такое метаданные?</div>
+<div class="blur">описывают структуру и форматирование </div>
+
+<div>Роль базы данных?</div>
+<div class="blur">упростить взаимодействие, организацию и анализ связанных данных</div>
+
+<div class="date">13 января 2025</div>
+
+<div>Как называются строки?</div>
+<div class="blur">записи или кортежи</div>
+
+<div>Как называются столбцы?</div>
+<div class="blur">поля или атрибуты</div>
+
+<div>Реляционная база данных?</div>
+<div class="blur">множетсво таблиц</div>
+
+<div>Что обязательно содержит таблица?</div>
+<div class="blur">первичный ключ</div>
+
+<div>Каким должен быть ключ?</div>
+<div class="blur">не пустым и уникальным</div>
+
+<div>Внешний ключ?</div>
+<div class="blur">соответствует первичному ключу</div>
+
+<div>Внешний ключ?</div>
+<div class="blur">соответствует первичному ключу</div>
+
+<img src="../img/3.png" alt="">
+
+<div>parentId?</div>
+<div class="blur">соответствует первичному ключу parent_info и внешний ключ для lab_orders</div>
+
+<img src="../img/4.png" alt="">
+
+<div>Числовые типы данных?</div>
+<div class="blur">целые и с плавающей точкой</div>
+
+
+
+
+
+
+
+ 
+</body>
+
+<script>
+	let button = document.getElementById('off')
+	button.addEventListener('click', function() {
+		const blurs = document.querySelectorAll('.blur')
+		blurs.forEach(elem => {
+			elem.classList.toggle('off')
+		})
+	})
+	</script>
+</html>

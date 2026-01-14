@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link type="image/x-icon" rel="icon" href="sql.png">
+    <title>Таблица - это?</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #121212;
+            color: #f0f0f0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background-image: radial-gradient(circle at 15% 50%, rgba(30, 30, 60, 0.8) 0%, rgba(10, 10, 20, 0.9) 100%);
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background-color: rgba(25, 25, 35, 0.9);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(100, 100, 150, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #3498db, #9b59b6, #e74c3c);
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffffff;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(to right, #3498db, #9b59b6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(100, 100, 150, 0.3);
+        }
+
+        .question-container {
+            background-color: rgba(40, 40, 60, 0.8);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border-left: 5px solid #3498db;
+        }
+
+        .question {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+
+        .answer-hint {
+            font-size: 1rem;
+            color: #b0b0d0;
+            font-style: italic;
+            margin-top: 10px;
+        }
+
+        .input-container {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        input {
+            flex: 1;
+            min-width: 200px;
+            padding: 18px 20px;
+            font-size: 1.1rem;
+            background-color: rgba(50, 50, 70, 0.9);
+            border: 2px solid rgba(100, 100, 150, 0.5);
+            border-radius: 12px;
+            color: #f0f0f0;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
+        }
+
+        input::placeholder {
+            color: #8888aa;
+        }
+
+        button {
+            padding: 18px 30px;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #2980b9, #1c5a7a);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(52, 152, 219, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .counter-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 25px;
+            background-color: rgba(40, 40, 60, 0.8);
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border-left: 5px solid #9b59b6;
+        }
+
+        .counter-label {
+            font-size: 1.2rem;
+            color: #b0b0d0;
+            margin-bottom: 10px;
+        }
+
+        .counter-value {
+            font-size: 4rem;
+            font-weight: 800;
+            color: #9b59b6;
+            text-shadow: 0 0 15px rgba(155, 89, 182, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .counter-value.increment {
+            transform: scale(1.2);
+            color: #e74c3c;
+        }
+
+        .feedback {
+            height: 30px;
+            text-align: center;
+            margin-top: 15px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .feedback.correct {
+            color: #2ecc71;
+        }
+
+        .feedback.incorrect {
+            color: #e74c3c;
+        }
+
+        .instructions {
+            background-color: rgba(30, 30, 45, 0.9);
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 30px;
+            font-size: 1rem;
+            color: #b0b0d0;
+            border-left: 5px solid #2ecc71;
+        }
+
+        .instructions h3 {
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .instructions ul {
+            padding-left: 20px;
+        }
+
+        .instructions li {
+            margin-bottom: 8px;
+        }
+
+        .table-icon {
+            text-align: center;
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: #3498db;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 25px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .question {
+                font-size: 1.2rem;
+            }
+            
+            .input-container {
+                flex-direction: column;
+            }
+            
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Таблица - это?</h1>
+        
+        <div class="table-icon">📊</div>
+        
+        <div class="input-container">
+            <input type="text" id="answerInput" placeholder="Введите правильное определение здесь...">
+            <button id="submitBtn">?</button>
+        </div>
+        
+        <div class="feedback" id="feedback"></div>
+        
+        <div class="counter-container">
+            <div class="counter-label">Правильно:</div>
+            <div class="counter-value" id="counter">0</div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const answerInput = document.getElementById('answerInput');
+            const submitBtn = document.getElementById('submitBtn');
+            const counter = document.getElementById('counter');
+            const feedback = document.getElementById('feedback');
+            
+            // Правильный ответ
+            const correctAnswer = "двухмерная сетка, состоящая из строк и столбцов";
+            
+            // Начальное значение счётчика
+            let correctCount = 0;
+            
+            // Функция для проверки ответа
+            function checkAnswer() {
+                const userAnswer = answerInput.value.trim().toLowerCase();
+                const normalizedCorrectAnswer = correctAnswer.toLowerCase();
+                
+                // Проверяем, совпадает ли ответ (можно учитывать небольшие вариации)
+                if (userAnswer === normalizedCorrectAnswer || 
+                    userAnswer === "двумерная сетка, состоящая из строк и столбцов") {
+                    
+                    // Увеличиваем счётчик
+                    correctCount++;
+                    counter.textContent = correctCount;
+                    
+                    // Добавляем анимацию увеличения
+                    counter.classList.add('increment');
+                    setTimeout(() => {
+                        counter.classList.remove('increment');
+                    }, 300);
+                    
+                    // Показываем сообщение об успехе
+                    feedback.textContent = "Правильно! Ответ засчитан.";
+                    feedback.className = "feedback correct";
+                    
+                    // Очищаем поле ввода
+                    answerInput.value = '';
+                    
+                    // Фокусируемся на поле ввода для следующего ответа
+                    answerInput.focus();
+                } else {
+                    // Показываем сообщение об ошибке
+                    feedback.textContent = "Неправильно. Попробуйте ещё раз.";
+                    feedback.className = "feedback incorrect";
+                    
+                    // Подсвечиваем поле ввода красным
+                    answerInput.style.borderColor = "#e74c3c";
+                    setTimeout(() => {
+                        answerInput.style.borderColor = "";
+                    }, 1000);
+                }
+                
+                // Скрываем сообщение через 3 секунды
+                setTimeout(() => {
+                    feedback.textContent = '';
+                    feedback.className = "feedback";
+                }, 3000);
+            }
+            
+            // Обработчик клика на кнопку
+            submitBtn.addEventListener('click', checkAnswer);
+            
+            // Обработчик нажатия Enter в поле ввода
+            answerInput.addEventListener('keypress', function(event) {
+                if (event.key === 'Enter') {
+                    checkAnswer();
+                }
+            });
+            
+            // Фокусируемся на поле ввода при загрузке страницы
+            answerInput.focus();
+            
+            // Добавляем небольшой эффект при загрузке счётчика
+            setTimeout(() => {
+                counter.style.transform = "scale(1.1)";
+                setTimeout(() => {
+                    counter.style.transform = "scale(1)";
+                }, 300);
+            }, 500);
+        });
+    </script>
+</body>
+</html>
