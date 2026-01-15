@@ -50,3 +50,12 @@ img {
 	padding: 5px 20px;
 	border-radius: 10px;
 }
+
+.nebo {
+	--nb-r:16px;
+}
+
+img {
+	--nb-w:16px;
+	--nb-h:16px;
+}
