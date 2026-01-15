@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link type="image/x-icon" rel="icon" href="sql.png">
+    <link type="image/x-icon" rel="icon" href="sql.png">
     <title>Таблица - это?</title>
     <style>
         * {
@@ -26,7 +26,7 @@
         }
 
         .container {
-            max-width: 800px;
+            max-width: 900px;
             width: 100%;
             background-color: rgba(25, 25, 35, 0.9);
             border-radius: 20px;
@@ -67,6 +67,7 @@
             border-radius: 15px;
             margin-bottom: 30px;
             border-left: 5px solid #3498db;
+            text-align: center;
         }
 
         .question {
@@ -76,63 +77,139 @@
             margin-bottom: 15px;
         }
 
-        .answer-hint {
+        .instructions {
             font-size: 1rem;
             color: #b0b0d0;
             font-style: italic;
             margin-top: 10px;
         }
 
-        .input-container {
+        .buttons-container {
             display: flex;
-            gap: 15px;
-            margin-bottom: 40px;
             flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: rgba(30, 30, 45, 0.7);
+            border-radius: 15px;
+            min-height: 200px;
+            align-items: center;
         }
 
-        input {
-            flex: 1;
-            min-width: 200px;
-            padding: 18px 20px;
-            font-size: 1.1rem;
-            background-color: rgba(50, 50, 70, 0.9);
-            border: 2px solid rgba(100, 100, 150, 0.5);
-            border-radius: 12px;
-            color: #f0f0f0;
-            transition: all 0.3s ease;
-        }
-
-        input:focus {
-            outline: none;
-            border-color: #3498db;
-            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
-        }
-
-        input::placeholder {
-            color: #8888aa;
-        }
-
-        button {
-            padding: 18px 30px;
-            background: linear-gradient(135deg, #3498db, #2980b9);
-            color: white;
+        .word-button {
+            padding: 18px 25px;
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: #ecf0f1;
             border: none;
             border-radius: 12px;
             font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            min-width: 120px;
+            text-align: center;
+        }
+
+        .word-button:hover {
+            background: linear-gradient(135deg, #34495e, #2c3e50);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .word-button:active {
+            transform: translateY(0);
+        }
+
+        .word-button.correct {
+            background: linear-gradient(135deg, #27ae60, #219653);
+            color: white;
+        }
+
+        .word-button.incorrect {
+            background: linear-gradient(135deg, #c0392b, #e74c3c);
+            color: white;
+        }
+
+        .word-button.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        .answer-sequence {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: rgba(40, 40, 60, 0.8);
+            border-radius: 15px;
+            min-height: 80px;
+            align-items: center;
+            border: 2px dashed rgba(100, 100, 150, 0.3);
+        }
+
+        .sequence-item {
+            padding: 15px 20px;
+            background-color: rgba(52, 152, 219, 0.2);
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #3498db;
+            min-width: 100px;
+            text-align: center;
+            border: 2px solid rgba(52, 152, 219, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .sequence-item.filled {
+            background-color: rgba(46, 204, 113, 0.2);
+            color: #2ecc71;
+            border-color: rgba(46, 204, 113, 0.5);
+        }
+
+        .controls-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .control-button {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #checkBtn {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
             box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
         }
 
-        button:hover {
+        #checkBtn:hover {
             background: linear-gradient(135deg, #2980b9, #1c5a7a);
             transform: translateY(-2px);
             box-shadow: 0 6px 15px rgba(52, 152, 219, 0.4);
         }
 
-        button:active {
-            transform: translateY(0);
+        #resetBtn {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            box-shadow: 0 4px 10px rgba(231, 76, 60, 0.3);
+        }
+
+        #resetBtn:hover {
+            background: linear-gradient(135deg, #c0392b, #a93226);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(231, 76, 60, 0.4);
         }
 
         .counter-container {
@@ -183,29 +260,6 @@
             color: #e74c3c;
         }
 
-        .instructions {
-            background-color: rgba(30, 30, 45, 0.9);
-            padding: 20px;
-            border-radius: 12px;
-            margin-top: 30px;
-            font-size: 1rem;
-            color: #b0b0d0;
-            border-left: 5px solid #2ecc71;
-        }
-
-        .instructions h3 {
-            color: #ffffff;
-            margin-bottom: 10px;
-        }
-
-        .instructions ul {
-            padding-left: 20px;
-        }
-
-        .instructions li {
-            margin-bottom: 8px;
-        }
-
         .table-icon {
             text-align: center;
             font-size: 4rem;
@@ -226,11 +280,22 @@
                 font-size: 1.2rem;
             }
             
-            .input-container {
-                flex-direction: column;
+            .buttons-container {
+                padding: 15px;
             }
             
-            button {
+            .word-button {
+                padding: 15px 20px;
+                min-width: 100px;
+                font-size: 1rem;
+            }
+            
+            .controls-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .control-button {
                 width: 100%;
             }
         }
@@ -240,9 +305,18 @@
     <div class="container">
         <h1>Что обязательно содержит таблица?</h1>
         
-        <div class="input-container">
-            <input type="text" id="answerInput" placeholder="Введите правильное определение здесь...">
-            <button id="submitBtn">?</button>
+        <div class="answer-sequence" id="answerSequence">
+            <div class="sequence-item">?</div>
+            <div class="sequence-item">?</div>
+        </div>
+        
+        <div class="buttons-container" id="buttonsContainer">
+            <!-- Кнопки будут созданы динамически -->
+        </div>
+        
+        <div class="controls-container">
+            <button class="control-button" id="checkBtn">Проверить</button>
+            <button class="control-button" id="resetBtn">Сбросить</button>
         </div>
         
         <div class="feedback" id="feedback"></div>
@@ -255,26 +329,95 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const answerInput = document.getElementById('answerInput');
-            const submitBtn = document.getElementById('submitBtn');
+            const buttonsContainer = document.getElementById('buttonsContainer');
+            const answerSequence = document.getElementById('answerSequence');
+            const checkBtn = document.getElementById('checkBtn');
+            const resetBtn = document.getElementById('resetBtn');
             const counter = document.getElementById('counter');
             const feedback = document.getElementById('feedback');
             
-            // Правильный ответ
-            const correctAnswer = "";
+            // Правильная последовательность слов
+            const correctSequence = [
+                "первичный",
+                "ключ",   
+            ];
+            
+            // Перемешанная последовательность слов
+            let shuffledWords = [...correctSequence];
+            
+            // Выбранные слова пользователем
+            let selectedWords = [];
             
             // Начальное значение счётчика
             let correctCount = 0;
             
+            // Функция для перемешивания массива
+            function shuffleArray(array) {
+                const newArray = [...array];
+                for (let i = newArray.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+                }
+                return newArray;
+            }
+            
+            // Функция для инициализации кнопок
+            function initButtons() {
+                buttonsContainer.innerHTML = '';
+                shuffledWords = shuffleArray(correctSequence);
+                
+                shuffledWords.forEach((word, index) => {
+                    const button = document.createElement('button');
+                    button.className = 'word-button';
+                    button.textContent = word;
+                    button.dataset.word = word;
+                    button.dataset.index = index;
+                    
+                    button.addEventListener('click', function() {
+                        if (selectedWords.length < correctSequence.length) {
+                            // Добавляем слово в последовательность
+                            selectedWords.push(word);
+                            
+                            // Обновляем отображение последовательности
+                            updateSequenceDisplay();
+                            
+                            // Делаем кнопку неактивной
+                            button.classList.add('disabled');
+                            button.disabled = true;
+                            
+                            // Проверяем, заполнена ли вся последовательность
+                            if (selectedWords.length === correctSequence.length) {
+                                checkBtn.focus();
+                            }
+                        }
+                    });
+                    
+                    buttonsContainer.appendChild(button);
+                });
+            }
+            
+            // Функция для обновления отображения последовательности
+            function updateSequenceDisplay() {
+                const sequenceItems = answerSequence.querySelectorAll('.sequence-item');
+                
+                sequenceItems.forEach((item, index) => {
+                    if (index < selectedWords.length) {
+                        item.textContent = selectedWords[index];
+                        item.classList.add('filled');
+                    } else {
+                        item.textContent = '?';
+                        item.classList.remove('filled');
+                    }
+                });
+            }
+            
             // Функция для проверки ответа
             function checkAnswer() {
-                const userAnswer = answerInput.value.trim().toLowerCase();
-                const normalizedCorrectAnswer = correctAnswer.toLowerCase();
+                // Проверяем, совпадает ли последовательность
+                const isCorrect = selectedWords.length === correctSequence.length && 
+                                 selectedWords.every((word, index) => word === correctSequence[index]);
                 
-                // Проверяем, совпадает ли ответ (можно учитывать небольшие вариации)
-                if (userAnswer === normalizedCorrectAnswer || 
-                    userAnswer === "первичный ключ") {
-                    
+                if (isCorrect) {
                     // Увеличиваем счётчик
                     correctCount++;
                     counter.textContent = correctCount;
@@ -286,45 +429,64 @@
                     }, 300);
                     
                     // Показываем сообщение об успехе
-                    feedback.textContent = "Правильно! Ответ засчитан.";
+                    feedback.textContent = "Правильно! Вы собрали определение верно.";
                     feedback.className = "feedback correct";
                     
-                    // Очищаем поле ввода
-                    answerInput.value = '';
+                    // Подсвечиваем кнопки зелёным
+                    const buttons = document.querySelectorAll('.word-button');
+                    buttons.forEach(button => {
+                        button.classList.add('correct');
+                    });
                     
-                    // Фокусируемся на поле ввода для следующего ответа
-                    answerInput.focus();
+                    // Отключаем все кнопки
+                    buttons.forEach(button => {
+                        button.disabled = true;
+                    });
+                    
+                    // Автоматически сбрасываем через 3 секунды
+                    setTimeout(() => {
+                        resetGame();
+                    }, 3000);
                 } else {
                     // Показываем сообщение об ошибке
-                    feedback.textContent = "Неправильно. Попробуйте ещё раз.";
+                    feedback.textContent = "Неправильная последовательность. Попробуйте ещё раз.";
                     feedback.className = "feedback incorrect";
                     
-                    // Подсвечиваем поле ввода красным
-                    answerInput.style.borderColor = "#e74c3c";
+                    // Подсвечиваем кнопки красным
+                    const buttons = document.querySelectorAll('.word-button');
+                    buttons.forEach(button => {
+                        button.classList.add('incorrect');
+                    });
+                    
+                    // Скрываем сообщение через 3 секунды
                     setTimeout(() => {
-                        answerInput.style.borderColor = "";
-                    }, 1000);
+                        feedback.textContent = '';
+                        feedback.className = "feedback";
+                        
+                        // Убираем красную подсветку
+                        buttons.forEach(button => {
+                            button.classList.remove('incorrect');
+                        });
+                    }, 3000);
                 }
-                
-                // Скрываем сообщение через 3 секунды
-                setTimeout(() => {
-                    feedback.textContent = '';
-                    feedback.className = "feedback";
-                }, 3000);
             }
             
-            // Обработчик клика на кнопку
-            submitBtn.addEventListener('click', checkAnswer);
+            // Функция для сброса игры
+            function resetGame() {
+                selectedWords = [];
+                updateSequenceDisplay();
+                initButtons();
+                feedback.textContent = '';
+                feedback.className = "feedback";
+            }
             
-            // Обработчик нажатия Enter в поле ввода
-            answerInput.addEventListener('keypress', function(event) {
-                if (event.key === 'Enter') {
-                    checkAnswer();
-                }
-            });
+            // Обработчики событий
+            checkBtn.addEventListener('click', checkAnswer);
+            resetBtn.addEventListener('click', resetGame);
             
-            // Фокусируемся на поле ввода при загрузке страницы
-            answerInput.focus();
+            // Инициализация при загрузке
+            initButtons();
+            updateSequenceDisplay();
             
             // Добавляем небольшой эффект при загрузке счётчика
             setTimeout(() => {
