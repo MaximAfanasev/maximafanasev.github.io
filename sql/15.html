@@ -88,30 +88,30 @@
             overflow-wrap: break-word;
         }
         
-        .keyword {
+        .sql-code .keyword {
             color: #ff79c6;
             font-weight: bold;
         }
         
-        .alias {
+        .sql-code .alias {
             color: #8be9fd;
             font-style: italic;
         }
         
-        .column {
+        .sql-code .column {
             color: #50fa7b;
         }
         
-        .table {
+        .sql-code .table {
             color: #f1fa8c;
         }
         
-        .operator {
+        .sql-code .operator {
             color: #ffb74d;
             font-weight: bold;
         }
         
-        .number {
+        .sql-code .number {
             color: #ff5252;
             font-weight: bold;
         }
@@ -376,17 +376,18 @@
                 <i class="fas fa-calculator"></i>
                 <span>SQL-запрос с арифметическими операторами</span>
             </div>
-            <pre class="sql-code">SELECT
-    Total <span class="keyword">AS</span> <span class="alias">[Original Amount]</span>,
-    Total <span class="operator">+</span> <span class="number">10</span> <span class="keyword">AS</span> <span class="alias">[Addition Operator]</span>,
-    Total <span class="operator">-</span> <span class="number">10</span> <span class="keyword">AS</span> <span class="alias">[Subtraction Operator]</span>,
-    Total <span class="operator">/</span> <span class="number">10</span> <span class="keyword">AS</span> <span class="alias">[Division Operator]</span>,
-    Total <span class="operator">*</span> <span class="number">10</span> <span class="keyword">AS</span> <span class="alias">[Multiplication Operator]</span>,
-    Total <span class="operator">%</span> <span class="number">10</span> <span class="keyword">AS</span> <span class="alias">[Modulo Operator]</span>
-<span class="keyword">FROM</span>
-    <span class="table">invoices</span>
-<span class="keyword">ORDER BY</span>
-    Total <span class="keyword">DESC</span>;</pre>
+            <div class="sql-code" id="sql-code-element">
+SELECT
+    Total AS [Original Amount],
+    Total + 10 AS [Addition Operator],
+    Total - 10 AS [Subtraction Operator],
+    Total / 10 AS [Division Operator],
+    Total * 10 AS [Multiplication Operator],
+    Total % 10 AS [Modulo Operator]
+FROM
+    invoices
+ORDER BY
+    Total DESC;</div>
         </div>
         
         <div class="explanation">
@@ -545,11 +546,11 @@
             });
         }
         
-        // Функция для обновления SQL-запроса
+        // Функция для обновления SQL-запроса с подсветкой синтаксиса
         function updateSQL() {
-            const sqlCode = document.querySelector('.sql-code');
+            const sqlCodeElement = document.getElementById('sql-code-element');
             
-            const newSQL = `SELECT
+            let sqlText = `SELECT
     Total AS [Original Amount],
     Total + ${calculationValue} AS [Addition Operator],
     Total - ${calculationValue} AS [Subtraction Operator],
@@ -561,49 +562,22 @@ FROM
 ORDER BY
     Total DESC;`;
             
-            sqlCode.textContent = newSQL;
-            highlightSQL();
-        }
-        
-        // Функция для подсветки синтаксиса SQL
-        function highlightSQL() {
-            const sqlCode = document.querySelector('.sql-code');
-            let html = sqlCode.textContent;
+            // Применяем подсветку синтаксиса
+            sqlText = sqlText
+                .replace(/(SELECT|AS|FROM|ORDER BY|DESC)/g, '<span class="keyword">$1</span>')
+                .replace(/\[(.*?)\]/g, '<span class="alias">[$1]</span>')
+                .replace(/invoices/g, '<span class="table">invoices</span>')
+                .replace(/Total/g, '<span class="column">Total</span>')
+                .replace(/[+\-*/%]/g, '<span class="operator">$&</span>')
+                .replace(/\b\d+\b/g, '<span class="number">$&</span>');
             
-            // Подсветка ключевых слов
-            const keywords = ['SELECT', 'AS', 'FROM', 'ORDER BY', 'DESC'];
-            keywords.forEach(keyword => {
-                const regex = new RegExp(`\\b${keyword}\\b`, 'g');
-                html = html.replace(regex, `<span class="keyword">${keyword}</span>`);
-            });
-            
-            // Подсветка псевдонимов
-            html = html.replace(/\[(.*?)\]/g, `<span class="alias">[$1]</span>`);
-            
-            // Подсветка названия таблицы
-            html = html.replace(/\binvoices\b/g, `<span class="table">invoices</span>`);
-            
-            // Подсветка операторов
-            html = html.replace(/\+/g, `<span class="operator">+</span>`);
-            html = html.replace(/-/g, `<span class="operator">-</span>`);
-            html = html.replace(/\//g, `<span class="operator">/</span>`);
-            html = html.replace(/\*/g, `<span class="operator">*</span>`);
-            html = html.replace(/%/g, `<span class="operator">%</span>`);
-            
-            // Подсветка чисел
-            const numberRegex = /\b(\d+)\b/g;
-            html = html.replace(numberRegex, `<span class="number">$1</span>`);
-            
-            // Подсветка поля Total
-            html = html.replace(/\bTotal\b/g, `<span class="column">Total</span>`);
-            
-            sqlCode.innerHTML = html;
+            sqlCodeElement.innerHTML = sqlText;
         }
         
         // Инициализация при загрузке страницы
         document.addEventListener('DOMContentLoaded', function() {
             renderTable();
-            highlightSQL();
+            updateSQL();
             
             // Настройка ввода числа для вычислений
             const numberInput = document.getElementById('number-value');
