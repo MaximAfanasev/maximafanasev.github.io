@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Арифметические операторы</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #5c6bc0 0%, #3949ab 100%);
+            color: #fff;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #ff9800, #ff5722);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+        
+        .sql-container {
+            background: #0d1b2a;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-left: 5px solid #ff9800;
+            position: relative;
+            overflow-x: auto;
+        }
+        
+        .sql-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: #ff9800;
+            font-size: 18px;
+        }
+        
+        .sql-title i {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+        
+        .sql-code {
+            font-family: 'Courier New', monospace;
+            font-size: 15px;
+            line-height: 1.6;
+            color: #e0e0e0;
+            white-space: pre-wrap;
+            overflow-wrap: break-word;
+        }
+        
+        .keyword {
+            color: #ff79c6;
+            font-weight: bold;
+        }
+        
+        .alias {
+            color: #8be9fd;
+            font-style: italic;
+        }
+        
+        .column {
+            color: #50fa7b;
+        }
+        
+        .table {
+            color: #f1fa8c;
+        }
+        
+        .operator {
+            color: #ffb74d;
+            font-weight: bold;
+        }
+        
+        .number {
+            color: #ff5252;
+            font-weight: bold;
+        }
+        
+        .explanation {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 15px;
+        }
+        
+        .explanation h3 {
+            color: #ff9800;
+            margin-bottom: 15px;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .explanation h3 i {
+            margin-right: 10px;
+        }
+        
+        .explanation p {
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        
+        .operators-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        .operator-card {
+            background: rgba(255, 152, 0, 0.15);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .operator-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 152, 0, 0.25);
+        }
+        
+        .operator-symbol {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ff9800;
+            margin-bottom: 8px;
+        }
+        
+        .operator-name {
+            font-size: 14px;
+            color: #ffcc80;
+            margin-bottom: 5px;
+        }
+        
+        .operator-desc {
+            font-size: 12px;
+            color: #ffe0b2;
+        }
+        
+        .calculation-controls {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(255, 152, 0, 0.15);
+            border-radius: 10px;
+        }
+        
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .control-label {
+            font-size: 14px;
+            color: #ffcc80;
+        }
+        
+        .number-input {
+            width: 70px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 152, 0, 0.5);
+            border-radius: 6px;
+            color: white;
+            padding: 8px;
+            font-size: 16px;
+            text-align: center;
+        }
+        
+        .number-input:focus {
+            outline: none;
+            border-color: #ff9800;
+            box-shadow: 0 0 0 2px rgba(255, 152, 0, 0.3);
+        }
+        
+        .apply-btn {
+            background: #ff9800;
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .apply-btn:hover {
+            background: #ff5722;
+        }
+        
+        .note {
+            background: rgba(255, 152, 0, 0.15);
+            border-left: 4px solid #ff9800;
+            padding: 12px;
+            margin-top: 20px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .note p {
+            font-size: 14px;
+            color: #ffe0b2;
+        }
+        
+        .result-container {
+            margin-top: 25px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 20px;
+            overflow-x: auto;
+        }
+        
+        .result-title {
+            color: #ff9800;
+            margin-bottom: 15px;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .result-title i {
+            margin-right: 10px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            min-width: 550px;
+        }
+        
+        th {
+            background-color: rgba(255, 152, 0, 0.3);
+            color: #fff3e0;
+            padding: 12px 8px;
+            text-align: right;
+            font-weight: 600;
+            position: relative;
+        }
+        
+        th:first-child {
+            text-align: left;
+        }
+        
+        th .operator-icon {
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 12px;
+            opacity: 0.7;
+        }
+        
+        td {
+            padding: 12px 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: #e0e0e0;
+            text-align: right;
+            font-family: 'Courier New', monospace;
+        }
+        
+        td:first-child {
+            text-align: left;
+            font-weight: bold;
+            color: #50fa7b;
+        }
+        
+        tr:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            opacity: 0.8;
+            color: #bbdefb;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 24px;
+            }
+            
+            .sql-code {
+                font-size: 13px;
+            }
+            
+            th, td {
+                padding: 10px 6px;
+                font-size: 13px;
+            }
+            
+            .operators-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .calculation-controls {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            table {
+                min-width: 500px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .sql-code {
+                font-size: 12px;
+                line-height: 1.5;
+            }
+            
+            table {
+                min-width: 450px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Арифметические операторы в SQL</h1>
+            <p>SQL поддерживает основные арифметические операторы для выполнения математических операций над данными прямо в запросе.</p>
+        </div>
+        
+        <div class="sql-container">
+            <div class="sql-title">
+                <i class="fas fa-calculator"></i>
+                <span>SQL-запрос с арифметическими операторами</span>
+            </div>
+            <pre class="sql-code">SELECT
+    Total <span class="keyword">AS</span> <span class="alias">[Original Amount]</span>,
+    Total <span class="operator">+</span> <span class="number">10</span> <span class="keyword">AS</span> <span class="alias">[Addition Operator]</span>,
+    Total <span class="operator">-</span> <span class="number">10</span> <span class="keyword">AS</span> <span class="alias">[Subtraction Operator]</span>,
+    Total <span class="operator">/</span> <span class="number">10</span> <span class="keyword">AS</span> <span class="alias">[Division Operator]</span>,
+    Total <span class="operator">*</span> <span class="number">10</span> <span class="keyword">AS</span> <span class="alias">[Multiplication Operator]</span>,
+    Total <span class="operator">%</span> <span class="number">10</span> <span class="keyword">AS</span> <span class="alias">[Modulo Operator]</span>
+<span class="keyword">FROM</span>
+    <span class="table">invoices</span>
+<span class="keyword">ORDER BY</span>
+    Total <span class="keyword">DESC</span>;</pre>
+        </div>
+        
+        <div class="explanation">
+            <h3><i class="fas fa-lightbulb"></i> Объяснение запроса</h3>
+            <p>Этот запрос демонстрирует все основные арифметические операторы SQL, применяя их к полю Total таблицы invoices:</p>
+            
+            <div class="operators-grid">
+                <div class="operator-card">
+                    <div class="operator-symbol">+</div>
+                    <div class="operator-name">Сложение</div>
+                    <div class="operator-desc">Добавляет значение к полю</div>
+                </div>
+                <div class="operator-card">
+                    <div class="operator-symbol">-</div>
+                    <div class="operator-name">Вычитание</div>
+                    <div class="operator-desc">Вычитает значение из поля</div>
+                </div>
+                <div class="operator-card">
+                    <div class="operator-symbol">/</div>
+                    <div class="operator-name">Деление</div>
+                    <div class="operator-desc">Делит поле на значение</div>
+                </div>
+                <div class="operator-card">
+                    <div class="operator-symbol">*</div>
+                    <div class="operator-name">Умножение</div>
+                    <div class="operator-desc">Умножает поле на значение</div>
+                </div>
+                <div class="operator-card">
+                    <div class="operator-symbol">%</div>
+                    <div class="operator-name">Модуль</div>
+                    <div class="operator-desc">Остаток от деления</div>
+                </div>
+            </div>
+            
+            <div class="calculation-controls">
+                <div class="control-group">
+                    <span class="control-label">Изменить значение:</span>
+                    <input type="number" id="number-value" class="number-input" value="10" min="1" max="100">
+                </div>
+                <button id="apply-calculation" class="apply-btn">
+                    <i class="fas fa-sync-alt"></i> Применить
+                </button>
+            </div>
+            
+            <div class="note">
+                <p><i class="fas fa-info-circle"></i> <strong>Примечание:</strong> Арифметические операторы в SQL выполняются слева направо, но умножение и деление имеют приоритет над сложением и вычитанием. Используйте скобки для изменения порядка вычислений: (Total + 10) * 5.</p>
+            </div>
+        </div>
+        
+        <div class="result-container">
+            <div class="result-title">
+                <div>
+                    <i class="fas fa-table"></i>
+                    <span>Результаты вычислений</span>
+                </div>
+                <div style="font-size: 14px; color: #ffcc80;">
+                    Сортировка: Total <i class="fas fa-sort-down"></i>
+                </div>
+            </div>
+            <table id="invoices-table">
+                <thead>
+                    <tr>
+                        <th>Invoice #</th>
+                        <th>
+                            <i class="fas fa-equals operator-icon"></i>
+                            Original Amount
+                        </th>
+                        <th>
+                            <i class="fas fa-plus operator-icon"></i>
+                            + Value
+                        </th>
+                        <th>
+                            <i class="fas fa-minus operator-icon"></i>
+                            - Value
+                        </th>
+                        <th>
+                            <i class="fas fa-divide operator-icon"></i>
+                            ÷ Value
+                        </th>
+                        <th>
+                            <i class="fas fa-times operator-icon"></i>
+                            × Value
+                        </th>
+                        <th>
+                            <i class="fas fa-percentage operator-icon"></i>
+                            % Value
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="invoices-data">
+                    <!-- Данные будут вставлены через JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>SQL Арифметические операторы | Адаптивная страница для мобильных устройств</p>
+    </div>
+
+    <script>
+        // Генерация тестовых данных (счетов)
+        const generateInvoices = () => {
+            const invoices = [];
+            
+            for (let i = 1; i <= 15; i++) {
+                // Генерируем случайную сумму от 50 до 1000
+                const total = Math.floor(Math.random() * (1000 - 50 + 1)) + 50;
+                
+                invoices.push({
+                    id: i,
+                    invoiceNumber: `INV-${String(i).padStart(3, '0')}`,
+                    total: total
+                });
+            }
+            
+            // Сортируем по убыванию суммы
+            return invoices.sort((a, b) => b.total - a.total);
+        };
+        
+        // Данные для таблицы
+        let invoices = generateInvoices();
+        let calculationValue = 10;
+        
+        // Функция для выполнения вычислений
+        const calculateOperations = (total, value) => {
+            return {
+                addition: total + value,
+                subtraction: total - value,
+                division: (total / value).toFixed(2),
+                multiplication: total * value,
+                modulo: total % value
+            };
+        };
+        
+        // Функция для отрисовки таблицы
+        function renderTable() {
+            const tbody = document.getElementById('invoices-data');
+            tbody.innerHTML = '';
+            
+            invoices.forEach(invoice => {
+                const operations = calculateOperations(invoice.total, calculationValue);
+                const row = document.createElement('tr');
+                
+                row.innerHTML = `
+                    <td>${invoice.invoiceNumber}</td>
+                    <td>$${invoice.total.toFixed(2)}</td>
+                    <td>$${operations.addition.toFixed(2)}</td>
+                    <td>$${operations.subtraction.toFixed(2)}</td>
+                    <td>$${operations.division}</td>
+                    <td>$${operations.multiplication.toFixed(2)}</td>
+                    <td>$${operations.modulo.toFixed(2)}</td>
+                `;
+                
+                tbody.appendChild(row);
+            });
+        }
+        
+        // Функция для обновления SQL-запроса
+        function updateSQL() {
+            const sqlCode = document.querySelector('.sql-code');
+            
+            const newSQL = `SELECT
+    Total AS [Original Amount],
+    Total + ${calculationValue} AS [Addition Operator],
+    Total - ${calculationValue} AS [Subtraction Operator],
+    Total / ${calculationValue} AS [Division Operator],
+    Total * ${calculationValue} AS [Multiplication Operator],
+    Total % ${calculationValue} AS [Modulo Operator]
+FROM
+    invoices
+ORDER BY
+    Total DESC;`;
+            
+            sqlCode.textContent = newSQL;
+            highlightSQL();
+        }
+        
+        // Функция для подсветки синтаксиса SQL
+        function highlightSQL() {
+            const sqlCode = document.querySelector('.sql-code');
+            let html = sqlCode.textContent;
+            
+            // Подсветка ключевых слов
+            const keywords = ['SELECT', 'AS', 'FROM', 'ORDER BY', 'DESC'];
+            keywords.forEach(keyword => {
+                const regex = new RegExp(`\\b${keyword}\\b`, 'g');
+                html = html.replace(regex, `<span class="keyword">${keyword}</span>`);
+            });
+            
+            // Подсветка псевдонимов
+            html = html.replace(/\[(.*?)\]/g, `<span class="alias">[$1]</span>`);
+            
+            // Подсветка названия таблицы
+            html = html.replace(/\binvoices\b/g, `<span class="table">invoices</span>`);
+            
+            // Подсветка операторов
+            html = html.replace(/\+/g, `<span class="operator">+</span>`);
+            html = html.replace(/-/g, `<span class="operator">-</span>`);
+            html = html.replace(/\//g, `<span class="operator">/</span>`);
+            html = html.replace(/\*/g, `<span class="operator">*</span>`);
+            html = html.replace(/%/g, `<span class="operator">%</span>`);
+            
+            // Подсветка чисел
+            const numberRegex = /\b(\d+)\b/g;
+            html = html.replace(numberRegex, `<span class="number">$1</span>`);
+            
+            // Подсветка поля Total
+            html = html.replace(/\bTotal\b/g, `<span class="column">Total</span>`);
+            
+            sqlCode.innerHTML = html;
+        }
+        
+        // Инициализация при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            renderTable();
+            highlightSQL();
+            
+            // Настройка ввода числа для вычислений
+            const numberInput = document.getElementById('number-value');
+            const applyButton = document.getElementById('apply-calculation');
+            
+            // Установка начального значения
+            numberInput.value = calculationValue;
+            
+            // Обработчик кнопки применения
+            applyButton.addEventListener('click', function() {
+                const newValue = parseInt(numberInput.value);
+                
+                if (newValue && newValue > 0 && newValue <= 100) {
+                    calculationValue = newValue;
+                    renderTable();
+                    updateSQL();
+                    
+                    // Анимация кнопки
+                    this.innerHTML = '<i class="fas fa-check"></i> Применено';
+                    this.style.background = '#4CAF50';
+                    
+                    setTimeout(() => {
+                        this.innerHTML = '<i class="fas fa-sync-alt"></i> Применить';
+                        this.style.background = '';
+                    }, 1500);
+                } else {
+                    alert('Пожалуйста, введите число от 1 до 100');
+                    numberInput.value = calculationValue;
+                }
+            });
+            
+            // Enter для применения изменений
+            numberInput.addEventListener('keyup', function(event) {
+                if (event.key === 'Enter') {
+                    applyButton.click();
+                }
+            });
+            
+            // Анимация при клике на SQL код
+            document.querySelector('.sql-code').addEventListener('click', function() {
+                this.style.transform = 'scale(1.02)';
+                this.style.transition = 'transform 0.3s ease';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 300);
+            });
+            
+            // Анимация карточек операторов
+            document.querySelectorAll('.operator-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    const symbol = this.querySelector('.operator-symbol').textContent;
+                    let value = calculationValue;
+                    
+                    // Изменяем значение в зависимости от оператора
+                    switch(symbol) {
+                        case '+': value += 5; break;
+                        case '-': value = Math.max(1, value - 5); break;
+                        case '*': value *= 2; break;
+                        case '/': value = Math.max(1, Math.floor(value / 2)); break;
+                        case '%': value = value > 10 ? 10 : value; break;
+                    }
+                    
+                    if (value > 100) value = 100;
+                    
+                    numberInput.value = value;
+                    applyButton.click();
+                });
+            });
+        });
+    </script>
+</body>
+</html>
