@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		inputBoxes[0].focus();
 	}
 
-	// Функция для проверки ввода
+	// Функция для проверки ввода (без учета регистра)
 	function checkInput() {
 		let allCorrect = true;
 
@@ -27,7 +27,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 			if (value === '') {
 				allCorrect = false;
-			} else if (value === targetCharacters[index]) {
+			} else if (value.toLowerCase() === targetCharacters[index].toLowerCase()) {
+				// Сравниваем в нижнем регистре для регистронезависимой проверки
 				input.classList.add('correct');
 			} else {
 				input.classList.add('incorrect');
@@ -40,12 +41,16 @@ document.addEventListener('DOMContentLoaded', function () {
 			// Ждем 1 секунду, затем очищаем инпуты
 			setTimeout(() => {
 				resetInputs();
-				resultMessage.textContent = '';
-				resultMessage.className = 'result-message';
+				if (resultMessage) {
+					resultMessage.textContent = '';
+					resultMessage.className = 'result-message';
+				}
 			}, 100);
 		} else {
-			resultMessage.textContent = '';
-			resultMessage.className = 'result-message';
+			if (resultMessage) {
+				resultMessage.textContent = '';
+				resultMessage.className = 'result-message';
+			}
 		}
 	}
 
