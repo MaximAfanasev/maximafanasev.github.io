@@ -56,8 +56,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	// Обработчики событий для инпутов
 	inputBoxes.forEach((input, index) => {
-		// При вводе символа
+		// При вводе символа - автоматически преобразуем в нижний регистр
 		input.addEventListener('input', function (e) {
+			// Преобразуем введенное значение в нижний регистр
+			if (e.target.value !== e.target.value.toLowerCase()) {
+				e.target.value = e.target.value.toLowerCase();
+			}
+
 			// Автоматически переходим к следующему инпуту
 			if (e.target.value !== '') {
 				if (index < inputBoxes.length - 1) {
@@ -68,8 +73,37 @@ document.addEventListener('DOMContentLoaded', function () {
 			checkInput();
 		});
 
+		// При вставке текста (paste) - также преобразуем в нижний регистр
+		input.addEventListener('paste', function (e) {
+			e.preventDefault();
+			const pastedText = (e.clipboardData || window.clipboardData).getData('text');
+			const lowerText = pastedText.toLowerCase();
+			
+			// Вставляем только первый символ, если это однобуквенное поле
+			if (input.maxLength === 1) {
+				input.value = lowerText.charAt(0);
+			} else {
+				input.value = lowerText;
+			}
+			
+			checkInput();
+		});
+
 		// При нажатии клавиш (для удобства навигации)
 		input.addEventListener('keydown', function (e) {
+			// Преобразуем вводимые буквы в нижний регистр
+			if (e.key.length === 1 && e.key.match(/[a-zA-Z]/) && e.key !== e.key.toLowerCase()) {
+				e.preventDefault();
+				input.value = e.key.toLowerCase();
+				checkInput();
+				
+				// Автоматически переходим к следующему инпуту
+				if (index < inputBoxes.length - 1) {
+					setTimeout(() => inputBoxes[index + 1].focus(), 10);
+				}
+				return;
+			}
+
 			if (e.key === 'Backspace' && e.target.value === '' && index > 0) {
 				inputBoxes[index - 1].focus();
 			}
