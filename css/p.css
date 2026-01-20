@@ -176,7 +176,7 @@ h1 {
 }
 
 .korean-word {
-	font-size: 120px;
+	font-size: 50px;
 	color: var(--korean-word-color);
 	margin-bottom: 40px;
 	text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1);
@@ -291,7 +291,7 @@ h1 {
 	}
 
 	.korean-word {
-		font-size: 80px;
+	font-size: 50px;
 	}
 
 	.input-box {
@@ -309,7 +309,7 @@ h1 {
 	}
 
 	.korean-word {
-		font-size: 60px;
+	font-size: 50px;
 	}
 }
 
