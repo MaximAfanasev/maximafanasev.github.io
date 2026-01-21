@@ -25,60 +25,40 @@
 
 			<nav class="menu-section">
 				<div class="menu-grid">
-					<h2>Да
-					</h2>
 					<div class="menu-item">
-						<a href="words/yes/i.html" target="_blank">네</a>
-						<a href="words/yes/l.html" target="_blank">korean</a>
-						<a href="words/yes/r.html" target="_blank">ru</a>
+						<a href="words/yes.html" target="_blank">Да</a>
 					</div>
-				</div>
-				<div class="menu-grid">
-					<h2>Нет
-					</h2>
 					<div class="menu-item">
-						<a href="words/no/i.html" target="_blank">아니요</a>
-						<a href="words/no/l.html" target="_blank">korean</a>
-						<a href="words/no/r.html" target="_blank">ru</a>
+						<a href="words/no.html" target="_blank">Нет</a>
 					</div>
-				</div>
-				<div class="menu-grid">
-					<h2>Привет
-					</h2>
 					<div class="menu-item">
-						<a href="words/hi/i.html" target="_blank">안녕</a>
-						<a href="words/hi/l.html" target="_blank">korean</a>
-						<a href="words/hi/r.html" target="_blank">ru</a>
+						<a href="words/hi.html" target="_blank">Привет</a>
 					</div>
-				</div>
-				<div class="menu-grid">
-					<h2>Извините
-					</h2>
 					<div class="menu-item">
-						<a href="words/sorry/i.html" target="_blank">죄송합니다</a>
-						<a href="words/sorry/l.html" target="_blank">korean</a>
-						<a href="words/sorry/r.html" target="_blank">ru</a>
+						<a href="words/hello.html" target="_blank">Здравствуйте</a>
 					</div>
-				</div>
-				<div class="menu-grid">
-					<h2>Спасибо
-					</h2>
 					<div class="menu-item">
-						<a href="words/thanks/i.html" target="_blank">감사합니다</a>
-						<a href="words/thanks/l.html" target="_blank">korean</a>
-						<a href="words/thanks/r.html" target="_blank">ru</a>
+						<a href="words/sorry.html" target="_blank">Извините</a>
 					</div>
-				</div>
-				<div class="menu-grid">
-					<h2>Здравствуйте
-					</h2>
 					<div class="menu-item">
-						<a href="words/hello/l.html" target="_blank">안녕 하십니까</a>
+						<a href="words/thanks.html" target="_blank">Спасибо</a>
 					</div>
 				</div>
 			</nav>
 		</div>
-
+<button class="clear-progress-btn" onclick="showConfirmation()">Reload</button>
+	
+	<!-- Модальное окно подтверждения -->
+	<div id="confirmationModal" class="confirmation-modal">
+		<div class="confirmation-content">
+			<h3>Очистить весь прогресс?</h3>
+			<p>Это действие удалит все пройденные слова и вернет их в начальное состояние. Это действие нельзя отменить.</p>
+			<div class="confirmation-buttons">
+				<button class="confirm-btn" onclick="clearProgress()">Да, очистить</button>
+				<button class="cancel-btn" onclick="hideConfirmation()">Отмена</button>
+			</div>
+		</div>
+	</div>
 	</div>
 	<script src="js/index.js"></script>
 </body></html>

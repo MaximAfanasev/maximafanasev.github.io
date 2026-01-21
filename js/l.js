@@ -15,6 +15,16 @@ document.addEventListener('DOMContentLoaded', function () {
 		inputBoxes[0].focus();
 	}
 
+	// Функция для сохранения прогресса в localStorage
+	function markWordAsCompleted() {
+		// Получаем текущий путь файла (например: words/yes.html)
+		const currentPath = window.location.pathname;
+		const fileName = currentPath.split('/').pop().split('.')[0]; // Извлекаем имя файла без расширения
+		
+		// Сохраняем в localStorage
+		localStorage.setItem(`completed_${fileName}`, 'true');
+	}
+
 	// Функция для проверки ввода (без учета регистра)
 	function checkInput() {
 		let allCorrect = true;
@@ -38,13 +48,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
 		// Если все правильно
 		if (allCorrect) {
-			// Ждем 1 секунду, затем очищаем инпуты
+			// Помечаем слово как пройденное
+			markWordAsCompleted();
+			
+			// Ждем 1 секунду, затем переходим на главную страницу
 			setTimeout(() => {
-				resetInputs();
-				if (resultMessage) {
-					resultMessage.textContent = '';
-					resultMessage.className = 'result-message';
-				}
+				window.location.href = '../index.html';
 			}, 100);
 		} else {
 			if (resultMessage) {
