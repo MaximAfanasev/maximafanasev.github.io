@@ -317,7 +317,7 @@ img {
 }
 
 .confirmation-content {
-	background-color: white;
+	background-color: #888;
 	padding: 30px;
 	border-radius: 10px;
 	text-align: center;
@@ -334,7 +334,7 @@ img {
 }
 
 .confirm-btn {
-	background-color: #ff4444;
+	background-color: lightseagreen;
 	color: white;
 	border: none;
 	padding: 10px 20px;
@@ -344,7 +344,7 @@ img {
 }
 
 .cancel-btn {
-	background-color: #666;
+	background-color: #ff4444;
 	color: white;
 	border: none;
 	padding: 10px 20px;
@@ -354,7 +354,7 @@ img {
 }
 
 .confirm-btn:hover {
-	background-color: #cc0000;
+	background-color: limegreen;
 }
 
 .cancel-btn:hover {
