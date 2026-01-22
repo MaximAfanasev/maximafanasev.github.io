@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Демонстрация CSS-позиционирования</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #2d3748;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(90deg, #4c51bf 0%, #667eea 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            padding: 30px;
+        }
+
+        @media (max-width: 900px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .controls {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .demo-area {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            min-height: 500px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        h2 {
+            color: #4c51bf;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        h3 {
+            color: #667eea;
+            margin: 15px 0 10px;
+        }
+
+        .control-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #4a5568;
+        }
+
+        select, input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            background: white;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        select:focus, input:focus {
+            border-color: #667eea;
+            outline: none;
+        }
+
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-family: 'Fira Code', 'Courier New', monospace;
+            overflow-x: auto;
+            line-height: 1.5;
+        }
+
+        .property {
+            color: #81e6d9;
+        }
+
+        .value {
+            color: #feb2b2;
+        }
+
+        .demo-box {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            font-weight: bold;
+            text-align: center;
+            padding: 15px;
+        }
+
+        .position-container {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            background: #edf2f7;
+            border: 3px dashed #cbd5e0;
+            border-radius: 10px;
+            margin-top: 20px;
+            overflow: auto;
+        }
+
+        .reference-element {
+            width: 120px;
+            height: 120px;
+            background: #48bb78;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            opacity: 0.8;
+        }
+
+        .position-info {
+            margin-top: 30px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #f8f9fa;
+            color: #718096;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .highlight {
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .example-text {
+            margin-top: 15px;
+            padding: 15px;
+            background: #fff5f5;
+            border-radius: 8px;
+            border-left: 4px solid #feb2b2;
+        }
+
+        .sticky-demo {
+            background: #feebc8;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            height: 200px;
+            overflow-y: auto;
+        }
+
+        .sticky-element {
+            position: sticky;
+            top: 10px;
+            background: #dd6b20;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>CSS Позиционирование</h1>
+            <p class="subtitle">Интерактивная демонстрация свойств position: static, relative, absolute, fixed и sticky</p>
+        </header>
+
+        <div class="content">
+            <div class="controls">
+                <h2>Управление свойствами</h2>
+                
+                <div class="control-group">
+                    <label for="position">Position:</label>
+                    <select id="position">
+                        <option value="static">static (по умолчанию)</option>
+                        <option value="relative">relative</option>
+                        <option value="absolute">absolute</option>
+                        <option value="fixed">fixed</option>
+                        <option value="sticky">sticky</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label for="top">Top:</label>
+                    <input type="text" id="top" placeholder="0px" value="0px">
+                </div>
+
+                <div class="control-group">
+                    <label for="right">Right:</label>
+                    <input type="text" id="right" placeholder="0px" value="0px">
+                </div>
+
+                <div class="control-group">
+                    <label for="bottom">Bottom:</label>
+                    <input type="text" id="bottom" placeholder="0px" value="0px">
+                </div>
+
+                <div class="control-group">
+                    <label for="left">Left:</label>
+                    <input type="text" id="left" placeholder="0px" value="0px">
+                </div>
+
+                <div class="control-group">
+                    <label for="zindex">Z-Index:</label>
+                    <input type="number" id="zindex" placeholder="0" min="0" max="100" value="0">
+                </div>
+
+                <div class="position-info">
+                    <h3>Объяснение position:</h3>
+                    <p id="position-explanation">Элемент располагается в нормальном потоке документа. Свойства top, right, bottom, left и z-index не применяются.</p>
+                    
+                    <div class="example-text" id="position-example">
+                        <p>Пример: все элементы по умолчанию имеют position: static. Они отображаются в обычном потоке документа.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="demo-area">
+                <h2>Демонстрационная область</h2>
+                
+                <div class="position-container">
+                    <div class="reference-element">Родительский элемент</div>
+                    <div class="demo-box" id="demo-element">
+                        Демо-элемент
+                    </div>
+                </div>
+
+                <div class="code-block" id="css-code">
+                    <span class="property">#demo-element</span> {<br>
+                    &nbsp;&nbsp;<span class="property">position</span>: <span class="value">static</span>;<br>
+                    &nbsp;&nbsp;<span class="property">top</span>: <span class="value">0px</span>;<br>
+                    &nbsp;&nbsp;<span class="property">right</span>: <span class="value">0px</span>;<br>
+                    &nbsp;&nbsp;<span class="property">bottom</span>: <span class="value">0px</span>;<br>
+                    &nbsp;&nbsp;<span class="property">left</span>: <span class="value">0px</span>;<br>
+                    &nbsp;&nbsp;<span class="property">z-index</span>: <span class="value">0</span>;<br>
+                    }
+                </div>
+
+                <div class="sticky-demo">
+                    <h3>Демонстрация sticky (прокрутите для просмотра):</h3>
+                    <div class="sticky-element">Это sticky-элемент</div>
+                    <p>Содержимое для прокрутки...</p>
+                    <p>Позиционирование sticky позволяет элементу переключаться между relative и fixed в зависимости от прокрутки.</p>
+                    <p>Прокрутите вниз, чтобы увидеть эффект.</p>
+                    <p>Элемент будет прилипать к верху, когда вы прокручиваете.</p>
+                    <p>Продолжайте прокручивать...</p>
+                    <p>Еще немного...</p>
+                    <p>Почти там...</p>
+                    <p>Готово! Теперь элемент зафиксирован вверху.</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Используйте элементы управления для изменения свойств позиционирования и наблюдения за результатом в реальном времени.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const demoElement = document.getElementById('demo-element');
+            const cssCode = document.getElementById('css-code');
+            const positionExplanation = document.getElementById('position-explanation');
+            const positionExample = document.getElementById('position-example');
+            
+            const controls = {
+                position: document.getElementById('position'),
+                top: document.getElementById('top'),
+                right: document.getElementById('right'),
+                bottom: document.getElementById('bottom'),
+                left: document.getElementById('left'),
+                zindex: document.getElementById('zindex')
+            };
+
+            const explanations = {
+                static: 'Элемент располагается в нормальном потоке документа. Свойства top, right, bottom, left и z-index не применяются.',
+                relative: 'Элемент смещается относительно своего исходного положения, сохраняя место в потоке. Другие элементы не занимают его место.',
+                absolute: 'Элемент удаляется из нормального потока и позиционируется относительно ближайшего позиционированного предка.',
+                fixed: 'Элемент фиксируется относительно окна браузера и остается на месте при прокрутке страницы.',
+                sticky: 'Элемент ведет себя как relative до тех пор, пока не достигнет заданного порога, после чего становится fixed.'
+            };
+
+            const examples = {
+                static: '<p>Пример: все элементы по умолчанию имеют position: static. Они отображаются в обычном потоке документа.</p>',
+                relative: '<p>Пример: если установить position: relative и top: 20px, элемент сместится на 20px вниз от своей обычной позиции, но пространство, которое он занимал, останется незанятым.</p>',
+                absolute: '<p>Пример: position: absolute с left: 0 и top: 0 поместит элемент в левый верхний угол его ближайшего позиционированного родителя.</p>',
+                fixed: '<p>Пример: position: fixed с bottom: 0 и right: 0 создаст элемент, который всегда будет в правом нижнем углу viewport, даже при прокрутке страницы.</p>',
+                sticky: '<p>Пример: position: sticky с top: 0 создаст элемент, который будет прилипать к верху окна, когда пользователь прокручивает страницу.</p>'
+            };
+
+            // Обновление CSS и внешнего вида
+            function updateDemo() {
+                const position = controls.position.value;
+                const top = controls.top.value;
+                const right = controls.right.value;
+                const bottom = controls.bottom.value;
+                const left = controls.left.value;
+                const zindex = controls.zindex.value;
+
+                // Применяем стили к демо-элементу
+                demoElement.style.position = position;
+                demoElement.style.top = top || 'auto';
+                demoElement.style.right = right || 'auto';
+                demoElement.style.bottom = bottom || 'auto';
+                demoElement.style.left = left || 'auto';
+                demoElement.style.zIndex = zindex;
+
+                // Обновляем отображаемый CSS код
+                cssCode.innerHTML = `<span class="property">#demo-element</span> {<br>
+  <span class="property">position</span>: <span class="value">${position}</span>;<br>
+  <span class="property">top</span>: <span class="value">${top || 'auto'}</span>;<br>
+  <span class="property">right</span>: <span class="value">${right || 'auto'}</span>;<br>
+  <span class="property">bottom</span>: <span class="value">${bottom || 'auto'}</span>;<br>
+  <span class="property">left</span>: <span class="value">${left || 'auto'}</span>;<br>
+  <span class="property">z-index</span>: <span class="value">${zindex}</span>;<br>
+}`;
+
+                // Обновляем объяснение и пример
+                positionExplanation.textContent = explanations[position];
+                positionExample.innerHTML = examples[position];
+            }
+
+            // Добавляем обработчики событий для всех элементов управления
+            for (const control in controls) {
+                controls[control].addEventListener('input', updateDemo);
+                controls[control].addEventListener('change', updateDemo);
+            }
+
+            // Инициализация
+            updateDemo();
+        });
+    </script>
+</body>
+</html>

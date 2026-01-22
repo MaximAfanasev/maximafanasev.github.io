@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Демонстрация свойств текста</title>
+<!-- Подключение шрифта Google Fonts для стильного вида -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+<style>
+  body {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: 'Roboto', sans-serif;
+    margin: 20px;
+    line-height: 1.6;
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 700;
+    font-size: 2em;
+    color: #ffffff;
+  }
+
+  /* Общий стиль для блоков */
+  .section {
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  /* При наведении чуть поднимаем и усиливаем тень */
+  .section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  }
+
+  h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    color: #ffffff;
+  }
+
+  /* Стиль текста внутри блоков */
+  p {
+    margin-top: 10px;
+    font-size: 1em;
+    line-height: 1.5;
+    max-width: calc(100% - 40px);
+    
+    /* Общие свойства для демонстрации */
+    text-indent: 20px; /* сдвиг первой строки */
+    letter-spacing: 1px; /* межсимвольное расстояние */
+    word-spacing: 2px; /* межсловное расстояние */
+    
+    /* По умолчанию - стандартное поведение */
+    white-space: normal; 
+      
+      }
+  
+/* Специальные классы для разных вариантов white-space, word-break и word-wrap */
+
+.white-normal {
+   white-space: normal; 
+}
+
+.white-nowrap {
+   white-space: nowrap; 
+}
+
+.white-pre {
+   white-space: pre; 
+}
+
+/* Для демонстрации word-break */
+.break-normal {
+   word-break: normal; 
+}
+
+.break-break-all {
+   word-break: break-all; 
+}
+
+.break-keep-all {
+   word-break: keep-all; 
+}
+
+/* Для демонстрации word-wrap */
+.wrap-normal {
+   word-wrap: normal; 
+}
+
+.wrap-break-word {
+   word-wrap: break-word; 
+}
+</style>
+</head>
+<body>
+
+<h1>Демонстрация свойств текста</h1>
+
+<!-- Блок с обычным поведением -->
+<div class="section">
+<h2>Стандартное поведение (white-space: normal)</h2>
+<p class="white-normal">
+Это пример текста с стандартным поведением. Текст переносится по мере необходимости, сохраняет все пробелы и переносы.
+</p>
+</div>
+
+<!-- Блок без переноса -->
+<div class="section">
+<h2>Без переноса (white-space: nowrap)</h2>
+<p class="white-nowrap">
+Это очень длинный текст без переносов. Он не будет переноситься на новую строку и выйдет за границы контейнера при необходимости.
+</p>
+</div>
+
+<!-- Блок с сохранением всех пробелов и переносов -->
+<div class="section">
+<h2>С сохранением пробелов (white-space: pre)</h2>
+<p class="white-pre">
+Это     текст с     сохранёнными
+пробелами и
+переносами.
+</p>
+</div>
+
+<!-- Демонстрация word-break -->
+<div class="section">
+<h2>Перенос слов (word-break)</h2>
+<p class="break-normal">
+Этот текст использует стандартное поведение переноса слов.
+</p>
+<p class="break-break-all">
+Этот текст использует break-all — переносит слова в любом месте при необходимости.
+</p>
+<p class="break-keep-all">
+Этот текст использует keep-all — не переносит слова, только в случае автоматического переноса.
+</p>
+</div>
+
+<!-- Демонстрация word-wrap -->
+<div class="section">
+<h2>Обёртывание длинных слов (word-wrap)</h2>
+<p class="wrap-normal">
+Этот текст использует стандартное поведение обёртывания.
+</p>
+<p class="wrap-break-word">
+Этот текст использует break-word — длинные слова переносятся на следующую строку при переполнении.
+</p>
+</div>
+
+</body>
+</html>
