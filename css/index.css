@@ -263,9 +263,7 @@ a:hover {
 
 img {
 	display: block;
-	border-radius: 20px;
 	margin: 0 auto;
-	margin-top: 20px;
 }
 
 .menu-item.done {
@@ -282,21 +280,16 @@ img {
 	position: fixed;
 	bottom: 20px;
 	right: 20px;
-	background-color: lightskyblue;
+	background-color: transparent;
 	color: #222;
 	font-weight: bold;
 	border: none;
-	border-radius: 10px;
 	padding: 10px 15px;
 	cursor: pointer;
 	font-size: 14px;
 	z-index: 1000;
 	transition: background-color 0.3s;
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.clear-progress-btn:hover {
-	background-color: #cc0000;
 }
 
 .clear-progress-btn:active {

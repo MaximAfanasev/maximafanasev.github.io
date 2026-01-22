@@ -291,7 +291,7 @@ h1 {
 	}
 
 	.korean-word {
-	font-size: 50px;
+		font-size: 50px;
 	}
 
 	.input-box {
@@ -309,7 +309,7 @@ h1 {
 	}
 
 	.korean-word {
-	font-size: 50px;
+		font-size: 50px;
 	}
 }
 
@@ -317,10 +317,3 @@ span {
 	color: gold;
 }
 
-.r {
-	padding: 10px 20px;
-	border-radius: 20px;
-	font-size: 20px;
-	background: none;
-	color: gold;
-}
