@@ -258,10 +258,84 @@
 			display: block;
 			margin: 0 auto;
 		}
+
+		@keyframes slide {
+			0% {
+				top: 0;
+			}
+			50% {}
+			100% {
+				top: 100px;
+			}
+		}
+
+		.spider {
+			position: absolute;
+			width: 30px;
+			height: 30px;
+			top: 100px;
+			left: 40px;
+			border-radius: 50%;
+			transform: rotate(180deg);
+
+			animation-name: slide;
+			/* Название анимации */
+			animation-duration: 4s;
+			/* Длительность — 2 секунды */
+			animation-timing-function: ease;
+			/* Функция плавности */
+			animation-delay: 0s;
+			/* Без задержки */
+			animation-iteration-count: 1;
+			/* Бесконечное повторение */
+			animation-direction: normal;
+			/* Направление: вперед */
+			animation-fill-mode: both;
+			/* Сохранять стили до/после */
+			animation-play-state: running;
+			/* Состояние: воспроизводится */
+		}
+		
+		@keyframes web {
+			0% {
+				height: 0;
+			}
+			50% {}
+			100% {
+				height: 100px;
+			}
+		}
+
+		.line {
+			width: 1px;
+			height: 100px;
+			background: gray;
+			position: absolute;
+			left: 54px;
+
+			animation-name: web;
+			/* Название анимации */
+			animation-duration: 4s;
+			/* Длительность — 2 секунды */
+			animation-timing-function: ease;
+			/* Функция плавности */
+			animation-delay: 0s;
+			/* Без задержки */
+			animation-iteration-count: 1;
+			/* Бесконечное повторение */
+			animation-direction: normal;
+			/* Направление: вперед */
+			animation-fill-mode: both;
+			/* Сохранять стили до/после */
+			animation-play-state: running;
+			/* Состояние: воспроизводится */
+		}
 	</style>
 </head>
 
 <body>
+	<div class="line"></div>
+	<img src="img/spiderman.png" class="spider" alt="" width="30">
 	<h1>KOREAN</h1>
 	<img src="img/flag.png" alt="" width="50">
 
@@ -273,7 +347,7 @@
 			<div class="corner corner-br"></div>
 
 			<nav class="menu-section">
-			<h2>Иероглифы</h2>
+				<h2>Иероглифы</h2>
 				<div class="menu-grid">
 					<div class="menu-item">
 						<a href="words0/1.html">Да</a>
@@ -283,7 +357,7 @@
 			</nav>
 
 			<nav class="menu-section">
-			<h2>Печать</h2>
+				<h2>Печать</h2>
 				<div class="menu-grid">
 					<div class="menu-item">
 						<a href="words/1.html">Да</a>
