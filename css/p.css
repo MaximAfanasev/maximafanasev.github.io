@@ -210,6 +210,10 @@ a {
 	width: 110px;
 }
 
-.wrap {
-	
+.three.v {
+	width: 50px;
 }
+.three.v input:nth-child(3) {
+	width: 50px;
+}
+
