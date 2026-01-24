@@ -27,7 +27,7 @@ body {
 	border-radius: 15px;
 	padding: 30px;
 	width: 100%;
-	max-width: 600px;
+	max-width: 700px;
 	text-align: center;
 	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
@@ -87,42 +87,6 @@ span {
 .char-input.correct {
 	border-color: #4caf50;
 	background-color: #2a3a2a;
-}
-
-@media (max-width: 768px) {
-	.symbols-display {
-		font-size: 2.5rem;
-		letter-spacing: 5px;
-	}
-
-	.char-input {
-		width: 60px;
-		height: 70px;
-		font-size: 2rem;
-	}
-
-	.input-container {
-		gap: 10px;
-	}
-}
-
-@media (max-width: 480px) {
-	.symbols-display {
-		font-size: 2rem;
-		letter-spacing: 3px;
-	}
-
-	.char-input {
-		width: 50px;
-		height: 60px;
-		font-size: 1.8rem;
-	}
-}
-
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
 }
 
 :root {
@@ -190,8 +154,8 @@ h1 {
 }
 
 .input-box {
-	width: 70px;
-	height: 70px;
+	width: 50px;
+	height: 50px;
 	font-size: 40px;
 	text-align: center;
 	border: 3px solid var(--input-border);
@@ -218,16 +182,15 @@ h1 {
 	background-color: rgba(244, 67, 54, 0.1);
 }
 
-.hint {
-	color: var(--hint-color);
-	margin-top: 15px;
-	font-size: 16px;
-	transition: color 0.3s ease;
-}
 
 span {
 	color: gold;
 	font-size: 30px;
+	filter: blur(5px);
+}
+
+span:hover {
+	filter: blur(0px);
 }
 
 a {
@@ -235,3 +198,18 @@ a {
 	text-decoration: none;
 }
 
+.three {
+	display: flex;
+	flex-wrap: wrap;
+	width: 110px;
+	gap: 10px;
+	justify-content: center;
+}
+
+.three input:nth-child(3) {
+	width: 110px;
+}
+
+.wrap {
+	
+}
