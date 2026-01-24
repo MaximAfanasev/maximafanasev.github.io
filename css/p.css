@@ -235,3 +235,9 @@ a {
 	text-decoration: none;
 }
 
+.r {
+	padding: 10px;
+	border-radius: 10px;
+	background: transparent;
+	color: #fff;
+}
