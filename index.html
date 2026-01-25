@@ -121,6 +121,7 @@
 		}
 
 		.menu-grid {
+			position: relative;
 			display: grid;
 			grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 			gap: 15px;
@@ -138,18 +139,7 @@
 		}
 
 		.menu-item:hover {
-			transform: translateY(-5px);
 			box-shadow: 0 5px 15px rgba(0, 184, 255, 0.3);
-			border-color: var(--primary);
-		}
-
-		.menu-item::before {
-			content: ">";
-			position: absolute;
-			left: 10px;
-			color: var(--accent);
-			opacity: 0;
-			transition: opacity 0.3s;
 		}
 
 		.menu-item:hover::before {
@@ -261,11 +251,16 @@
 
 		@keyframes slide {
 			0% {
-				top: 0;
+				top: -10px;
 			}
-			50% {}
+
+			99% {
+				top: 138px;
+				transform: rotate(180deg);
+			}
 			100% {
-				top: 100px;
+				top: 138px;
+				transform: rotate(120deg) translateX(5px);
 			}
 		}
 
@@ -273,10 +268,11 @@
 			position: absolute;
 			width: 30px;
 			height: 30px;
-			top: 100px;
-			left: 40px;
+			top: -10px;
+			left: 36px;
 			border-radius: 50%;
 			transform: rotate(180deg);
+			z-index: 20;
 
 			animation-name: slide;
 			/* Название анимации */
@@ -295,23 +291,27 @@
 			animation-play-state: running;
 			/* Состояние: воспроизводится */
 		}
-		
+
 		@keyframes web {
 			0% {
 				height: 0;
 			}
-			50% {}
+			99% {
+				height: 158px;
+			}
 			100% {
-				height: 100px;
+				height: 0;
 			}
 		}
 
 		.line {
 			width: 1px;
 			height: 100px;
-			background: gray;
+			background: #666;
 			position: absolute;
-			left: 54px;
+			top: -10px;
+			left: 50px;
+			z-index: 10;
 
 			animation-name: web;
 			/* Название анимации */
@@ -330,12 +330,20 @@
 			animation-play-state: running;
 			/* Состояние: воспроизводится */
 		}
+
+		* {
+			outline: 1px solid gold //
+		}
+
+		.web {
+			position: absolute;
+			left: -4px;
+			top: -4px;
+		}
 	</style>
 </head>
 
 <body>
-	<div class="line"></div>
-	<img src="img/spiderman.png" class="spider" alt="" width="30">
 	<h1>KOREAN</h1>
 	<img src="img/flag.png" alt="" width="50">
 
@@ -346,9 +354,44 @@
 			<div class="corner corner-bl"></div>
 			<div class="corner corner-br"></div>
 
+			<div class="line"></div>
+			<img src="img/spiderman.png" class="spider" alt="" width="30">
+
 			<nav class="menu-section">
 				<h2>Иероглифы</h2>
 				<div class="menu-grid">
+					<div class="web"><svg width="50" height="50" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+							<!-- Круги паутины -->
+							<circle cx="25" cy="25" r="4" fill="#8B4513" opacity="0.7" />
+							<circle cx="25" cy="25" r="8" fill="none" stroke="#fff" stroke-width="0.5" stroke-dasharray="1,2" />
+							<circle cx="25" cy="25" r="12" fill="none" stroke="#fff" stroke-width="0.5" stroke-dasharray="1,2" />
+							<circle cx="25" cy="25" r="16" fill="none" stroke="#fff" stroke-width="0.5" stroke-dasharray="1,2" />
+							<circle cx="25" cy="25" r="20" fill="none" stroke="#fff" stroke-width="0.5" stroke-dasharray="1,2" />
+
+							<!-- Радиальные линии паутины -->
+							<line x1="25" y1="25" x2="5" y2="5" stroke="lightgray" stroke-width="0.5" />
+							<line x1="25" y1="25" x2="45" y2="5" stroke="lightgray" stroke-width="0.5" />
+							<line x1="25" y1="25" x2="45" y2="45" stroke="lightgray" stroke-width="0.5" />
+							<line x1="25" y1="25" x2="5" y2="45" stroke="lightgray" stroke-width="0.5" />
+							<line x1="25" y1="25" x2="25" y2="5" stroke="lightgray" stroke-width="0.5" />
+							<line x1="25" y1="25" x2="45" y2="25" stroke="lightgray" stroke-width="0.5" />
+							<line x1="25" y1="25" x2="25" y2="45" stroke="lightgray" stroke-width="0.5" />
+							<line x1="25" y1="25" x2="5" y2="25" stroke="lightgray" stroke-width="0.5" />
+
+							<!-- Спиральная нить (упрощенная) -->
+							<path d="M25,25 Q30,20 35,25 T45,25" stroke="#A0522D" stroke-width="0.3" fill="none" />
+							<path d="M25,25 Q20,30 25,35 T25,45" stroke="#A0522D" stroke-width="0.3" fill="none" />
+							<path d="M25,25 Q30,30 35,35 T45,45" stroke="#A0522D" stroke-width="0.3" fill="none" />
+							<path d="M25,25 Q20,20 15,15 T5,5" stroke="#A0522D" stroke-width="0.3" fill="none" />
+
+							<!-- Паук (упрощенный) -->
+							<circle cx="25" cy="25" r="2" fill="#222" />
+							<line x1="23" y1="23" x2="21" y2="21" stroke="#222" stroke-width="1" />
+							<line x1="27" y1="23" x2="29" y2="21" stroke="#222" stroke-width="1" />
+							<line x1="23" y1="27" x2="21" y2="29" stroke="#222" stroke-width="1" />
+							<line x1="27" y1="27" x2="29" y2="29" stroke="#222" stroke-width="1" />
+						</svg>
+					</div>
 					<div class="menu-item">
 						<a href="words0/1.html">Да</a>
 						<a href="words0/2.html">Нет</a>
