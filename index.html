@@ -351,17 +351,17 @@
 
 		@keyframes one {
 			0% {
-				width: 0px;
 			transform: rotate(4deg) translateX(7px) translateY(12px);
 			}
 
 			100% {
-			width: 165px;
+			width: calc(100vw-50px);
 			}
 		}
 
 		.one {
 			position: absolute;
+			width: calc(43%);
 			height: 1px;
 			background: #555;
 			transform: rotate(4deg) translateX(7px) translateY(12px);
