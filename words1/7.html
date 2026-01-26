@@ -1,37 +1,27 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link type="image/x-icon" rel="icon" href="../../img/flag.png">
-    <title>이니요</title>
-    <link rel="stylesheet" href="../../css/p.css">
-    <style>
-        .input-box {
-            width: 250px;
-            font-size: 18px;
-        }
-        .correct {
-            background-color: #d4edda;
-            border-color: #c3e6cb;
-        }
-        .incorrect {
-            background-color: #f8d7da;
-            border-color: #f5c6cb;
-        }
-    </style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link type="image/x-icon" rel="icon" href="../../img/flag.png">
+	<title>잘지냈어여</title>
+	<link rel="stylesheet" href="../../css/p.css">
+	<style>
+	.input-box {
+		width: 250px;}
+	</style>
 </head>
 
 <body>
-    <div class="container">
-        <div class="inputs-container">
-            <input type="text" class="input-box">
-        </div>
-        <span>아니요</span>
-    </div>
+	<div class="container">
+		<div class="inputs-container">
+			<input type="text" class="input-box">
+		</div>
+		<span>чаль чинэссоё?</span>
+	</div>
 
-    <script>
-        const targetCharacters = ['아니요'];
+	<script>
+		const targetCharacters = ['잘지냈어여'];
         let isResetting = false; // Флаг для предотвращения ввода во время сброса
         
         document.addEventListener('DOMContentLoaded', function () {
@@ -65,7 +55,7 @@
                     return;
                 } else if (value === targetCharacters[0]) {
                     // Правильный ввод
-										window.location.href = "3.html"
+										window.location.href = "../index.html"
                     
                     // Ждем 1 секунду, затем очищаем инпут
                     setTimeout(() => {
@@ -123,6 +113,5 @@
                 inputBox.focus();
             }, 100);
         });
-    </script>
-</body>
-</html>
+	</script>
+</body></html>
