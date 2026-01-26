@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link type="image/x-icon" rel="icon" href="../../img/flag.png">
-	<title>잘지냈어여</title>
+	<title>저는 이에요</title>
 	<link rel="stylesheet" href="../../css/p.css">
 	<style>
 	.input-box {
@@ -17,11 +17,11 @@
 		<div class="inputs-container">
 			<input type="text" class="input-box">
 		</div>
-		<span>чаль чинэссоё?</span>
+		<span>чонын иеё</span>
 	</div>
 
 	<script>
-		const targetCharacters = ['잘지냈어여'];
+		const targetCharacters = ['저는 이에요'];
         let isResetting = false; // Флаг для предотвращения ввода во время сброса
         
         document.addEventListener('DOMContentLoaded', function () {
@@ -55,7 +55,7 @@
                     return;
                 } else if (value === targetCharacters[0]) {
                     // Правильный ввод
-										window.location.href = "8.html"
+										window.location.href = "../index.html"
                     
                     // Ждем 1 секунду, затем очищаем инпут
                     setTimeout(() => {
