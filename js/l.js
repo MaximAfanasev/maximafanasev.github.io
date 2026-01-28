@@ -3,6 +3,9 @@ document.addEventListener('DOMContentLoaded', function () {
 	const inputBoxes = document.querySelectorAll('.input-box');
 	const html = document.documentElement;
 
+	// Получаем URL из глобальной конфигурации (если она существует)
+	const successUrl = window.gameConfig ? window.gameConfig.successUrl : null;
+
 	// Функция для очистки и сброса инпутов
 	function resetInputs() {
 		inputBoxes.forEach(input => {
@@ -38,14 +41,32 @@ document.addEventListener('DOMContentLoaded', function () {
 
 		// Если все правильно
 		if (allCorrect) {
-			// Ждем 1 секунду, затем очищаем инпуты
+			// Добавляем визуальную обратную связь (пульсацию)
+			inputBoxes.forEach(input => {
+				input.classList.add('success-pulse');
+			});
+
+			// Ждем 1 секунду для анимации
 			setTimeout(() => {
-				resetInputs();
-				if (resultMessage) {
-					resultMessage.textContent = '';
-					resultMessage.className = 'result-message';
+				if (successUrl) {
+					// Если указан URL в конфиге - переходим на новую страницу
+					console.log('Переход на страницу:', successUrl);
+					window.location.href = successUrl;
+				} else {
+					// Если конфига нет - стандартное поведение
+					resetInputs();
+					inputBoxes.forEach(input => {
+						input.classList.remove('success-pulse');
+					});
+					
+					if (resultMessage) {
+						resultMessage.textContent = '';
+						resultMessage.className = 'result-message';
+					}
+					
+					console.log('Конфигурация не найдена. Стандартное поведение.');
 				}
-			}, 100);
+			}, 300);
 		} else {
 			if (resultMessage) {
 				resultMessage.textContent = '';
@@ -120,4 +141,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	// Автофокус на первый инпут при загрузке
 	inputBoxes[0].focus();
+	
+	// Логирование для отладки
+	if (successUrl) {
+		console.log('Конфигурация загружена. При успехе переход на:', successUrl);
+	} else {
+		console.log('Конфигурация не найдена. Будет использовано стандартное поведение.');
+	}
 });
