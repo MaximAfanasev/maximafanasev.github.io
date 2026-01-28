@@ -13,6 +13,7 @@
 		<div class="word-info" id="wordDisplay">저는 이에요</div>
 		<div class="buttons-container" id="buttonsContainer"></div>
 		<div class="input-container" id="inputContainer"></div>
+		<span>чонын иеё</span>
 		<button onclick="window.location.reload()" class="r"><img src="../../img/r.png" alt="" width="30">Restart</button>
 	</div>
 
@@ -20,5 +21,9 @@
 		const targetSymbols = ['ㅈ','ㅓ','ㄴ','ㅡ','ㄴ','ㅇ','ㅣ','ㅇ','ㅔ','ㅇ','ㅛ'];
 		const uniqueSymbols = ['ㅈ','ㅓ','ㄴ','ㅡ','ㅇ','ㅔ','ㅛ', 'ㅣ'];
 	</script>
-	<script src="../js/ierog.js"></script>
+	<script src="../js/ierog.js"></script>	<script>
+window.gameConfig = {
+	successUrl: '../words/1.html'
+};
+</script>
 </body></html>

@@ -114,11 +114,9 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 	}
 
-	// Проверка всех полей ввода
 	function checkAllInputs() {
 		let allCorrect = true;
 
-		// Проверяем все 6 полей
 		for (let i = 0; i < inputElements.length; i++) {
 			if (inputElements[i].value !== targetSymbols[i]) {
 				allCorrect = false;
@@ -127,16 +125,14 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 
 		if (allCorrect) {
-			// Анимация кнопок
 			const buttons = document.querySelectorAll('.symbol-btn');
 			buttons.forEach(btn => {
 				btn.classList.add('correct');
 			});
 
-			// Автосброс и перемешивание через 2 секунды
 			setTimeout(() => {
-				resetGame();
-				shuffleButtons(); // Добавлено перемешивание после правильного ввода
+				// Используем глобальную переменную
+				window.location.href = window.gameConfig.successUrl;
 			}, 100);
 		}
 	}

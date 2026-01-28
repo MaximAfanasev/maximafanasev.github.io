@@ -255,13 +255,13 @@
 			}
 
 			99% {
-				top: 138px;
+				top: 240px;
 				transform: rotate(180deg);
 			}
 
 			100% {
-				top: 138px;
-				transform: rotate(120deg) translateX(5px);
+				top: 240px;
+				transform: rotate(180deg) rotate(-70deg);
 			}
 		}
 
@@ -270,7 +270,7 @@
 			width: 30px;
 			height: 30px;
 			top: -10px;
-			left: 36px;
+			left: calc(50% - 160px);
 			border-radius: 50%;
 			transform: rotate(180deg);
 			z-index: 20;
@@ -297,37 +297,30 @@
 			outline: 1px solid gold //
 		}
 
-		.web {
-			position: absolute;
-			left: -4px;
-			top: -4px;
-		}
-
-
 
 		@keyframes web {
 			0% {
-				top: -75px;
+				top: -250px;
 			}
 
 			99% {
-				top: 77px;
+				top: 0;
 			}
 
 			100% {
-				top: -75px;
+				top: -250px;
 			}
 		}
 
 		.b {
 			position: absolute;
-			width: 158px;
-			height: 3px;
+			height: 249px;
+			width: 1px;
 			left: -28px;
+			left: calc(50% - 146px);
 			top: 65px;
-			background: lightgray;
-			mask: url("data:image/svg+xml,%3Csvg width='158' height='3' viewBox='0 0 158 3' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,1.5 Q5,0.5 10,1.5 T20,1.5 T30,1.5 T40,1.5 T50,1.5 T60,1.5 T70,1.5 T80,1.5 T90,1.5 T100,1.5 T110,1.5 T120,1.5 T130,1.5 T140,1.5 T150,1.5' stroke='black' stroke-width='1' fill='none'/%3E%3C/svg%3E") center/contain no-repeat;
-			transform: rotate(90deg);
+			z-index: 10;
+			background: #888;
 
 			animation-name: web;
 			/* Название анимации */
@@ -346,17 +339,17 @@
 			animation-play-state: running;
 			/* Состояние: воспроизводится */
 		}
-		
-		
+
+
 
 		@keyframes one {
 			0% {
-			width: 0;
-			transform: rotate(4deg) translateX(7px) translateY(12px);
+				width: 0;
+				transform: rotate(4deg) translateX(7px) translateY(12px);
 			}
 
 			100% {
-			width: calc(43%);
+				width: calc(43%);
 			}
 		}
 
@@ -387,83 +380,29 @@
 </head>
 
 <body>
-	<h1>KOREAN</h1>
-	<img src="img/flag.png" alt="" width="50">
-
+	<div class="b"></div>
+	<img src="img/spiderman.png" class="spider" alt="" width="30">
 	<div class="container">
 		<div class="terminal">
 			<div class="corner corner-tl"></div>
 			<div class="corner corner-tr"></div>
 			<div class="corner corner-bl"></div>
 			<div class="corner corner-br"></div>
-
-			<div class="b"></div>
-			<img src="img/spiderman.png" class="spider" alt="" width="30">
-
-			<nav class="menu-section">
-				<h2>Lvl 1</h2>
-				<div class="menu-grid">
-					<div class="web"><svg width="50" height="50" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
-							<!-- Круги паутины -->
-							<circle cx="25" cy="25" r="4" fill="#8B4513" opacity="0.7" />
-							<circle cx="25" cy="25" r="8" fill="none" stroke="#fff" stroke-width="0.5" stroke-dasharray="1,2" />
-							<circle cx="25" cy="25" r="12" fill="none" stroke="#fff" stroke-width="0.5" stroke-dasharray="1,2" />
-							<circle cx="25" cy="25" r="16" fill="none" stroke="#fff" stroke-width="0.5" stroke-dasharray="1,2" />
-							<circle cx="25" cy="25" r="20" fill="none" stroke="#fff" stroke-width="0.5" stroke-dasharray="1,2" />
-
-
-							<!-- Спиральная нить (упрощенная) -->
-							<path d="M25,25 Q30,20 35,25 T45,25" stroke="#A0522D" stroke-width="0.3" fill="none" />
-							<path d="M25,25 Q20,30 25,35 T25,45" stroke="#A0522D" stroke-width="0.3" fill="none" />
-							<path d="M25,25 Q30,30 35,35 T45,45" stroke="#A0522D" stroke-width="0.3" fill="none" />
-							<path d="M25,25 Q20,20 15,15 T5,5" stroke="#A0522D" stroke-width="0.3" fill="none" />
-
-							<!-- Паук (упрощенный) -->
-							<circle cx="25" cy="25" r="2" fill="#222" />
-							<line x1="23" y1="23" x2="21" y2="21" stroke="#222" stroke-width="1" />
-							<line x1="27" y1="23" x2="29" y2="21" stroke="#222" stroke-width="1" />
-							<line x1="23" y1="27" x2="21" y2="29" stroke="#222" stroke-width="1" />
-							<line x1="27" y1="27" x2="29" y2="29" stroke="#222" stroke-width="1" />
-						</svg>
-					</div>
-					<div class="menu-item">
-					<div class="one"></div>
-						<a href="words0/1.html">Да</a>
-						<a href="words0/2.html">Нет</a>
-						<a href="words0/3.html">Привет</a>
-						<a href="words0/4.html">Здравствуйте</a>
-						<a href="words0/5.html">Спасибо</a>
-						<a href="words0/6.html">Извините</a>
-						<a href="words0/7.html">Как вы?</a>
-						<a href="words0/8.html">Меня зовут</a>
-					</div>
-				</div>
-			</nav>
+			<h1>KOREAN</h1>
+			<img src="img/flag.png" alt="" width="50">
 
 			<nav class="menu-section">
-				<h2>LVL 2</h2>
 				<div class="menu-grid">
 					<div class="menu-item">
-						<a href="words/1.html">Да</a>
-						<a href="words/2.html">Нет</a>
-						<a href="words/3.html">Привет</a>
-						<a href="words/4.html">Здравствуйте</a>
-						<a href="words/5.html">Спасибо</a>
-						<a href="words/6.html">Извините</a>
-						<a href="words/7.html">Как вы?</a>
-						<a href="words/8.html">Меня зовут</a>
-					</div>
-				</div>
-			</nav>
-
-			<nav class="menu-section">
-				<h2>LVL 3</h2>
-				<div class="menu-grid">
-					<div class="menu-item">
-						<a href="words1/1.html">START</a>
+						<a href="words0/1.html">START</a>
 					</div>
 				</div>
 			</nav>
 		</div>
 	</div>
+	<script>
+	setTimeout(function() {
+    window.location.href = "words0/1.html";
+}, 4000);
+	</script>
 </body></html>
