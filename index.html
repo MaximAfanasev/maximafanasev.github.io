@@ -368,6 +368,140 @@
 			left: -3px;
 			top: -3px;
 		}
+		
+		@keyframes flyAnimation {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+    width: 2px;
+    height: 2px;
+    background: #fff;
+  }
+  10% {
+    transform: translate(20px, -15px) rotate(5deg);
+    width: 6px;
+    height: 4px;
+    background: #333;
+  }
+  20% {
+    transform: translate(40px, 10px) rotate(-3deg);
+    width: 8px;
+    height: 5px;
+    background: #222;
+  }
+  30% {
+    transform: translate(60px, -20px) rotate(7deg);
+    width: 10px;
+    height: 7px;
+    background: #111;
+  }
+  40% {
+    transform: translate(80px, 5px) rotate(-5deg);
+    width: 12px;
+    height: 8px;
+    background: #000;
+  }
+  50% {
+    transform: translate(100px, -25px) rotate(4deg);
+    width: 14px;
+    height: 9px;
+    background: #000;
+  }
+  60% {
+    transform: translate(80px, 15px) rotate(-6deg);
+    width: 12px;
+    height: 8px;
+    background: #111;
+  }
+  70% {
+    transform: translate(60px, -10px) rotate(3deg);
+    width: 10px;
+    height: 7px;
+    background: #222;
+  }
+  80% {
+    transform: translate(40px, -5px) rotate(-4deg);
+    width: 8px;
+    height: 5px;
+    background: #333;
+  }
+  90% {
+    transform: translate(20px, 10px) rotate(2deg);
+    width: 4px;
+    height: 3px;
+    background: #555;
+  }
+}
+
+.fly {
+  position: absolute;
+  left: 50px;
+  top: 50px;
+  width: 2px;
+  height: 2px;
+  background: #fff;
+  border-radius: 50%;
+  animation: flyAnimation 3s infinite ease-in-out;
+}
+
+.fly::before,
+.fly::after {
+  content: '';
+  position: absolute;
+  background: rgba(150, 150, 150, 0.7);
+  border-radius: 50%;
+  opacity: 0;
+  animation: wingsFlap 0.1s infinite alternate;
+}
+
+@keyframes wingsFlap {
+  0%, 40% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50%, 60% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.2);
+  }
+}
+
+/* Появление крыльев в середине анимации */
+.fly::before {
+  width: 12px;
+  height: 12px;
+  top: -6px;
+  left: 5px;
+}
+
+.fly::after {
+  width: 10px;
+  height: 10px;
+  top: -5px;
+  right: 5px;
+}
+
+/* Активация крыльев с 40% до 60% анимации */
+@keyframes wingsAppear {
+  0%, 40% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  45%, 55% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  60%, 100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+.fly::before,
+.fly::after {
+  animation: wingsAppear 3s infinite ease-in-out;
+}
 	</style>
 </head>
 
@@ -375,6 +509,8 @@
 <div class="sp2">
 	<img src="img/spiderman.png" class="" alt="" width="30">
 </div>
+
+<div class="fly"></div>
 
 <body>
 	<div class="a">
