@@ -376,10 +376,21 @@
 			animation-play-state: running;
 			/* Состояние: воспроизводится */
 		}
+		table {
+			width: fit-content;
+			margin: 0 auto;
+		}
+		table td {
+			border: 1px solid #444;
+			border-radius: 10px;
+			padding: 0 10px;
+		}
 	</style>
 </head>
 
 <body>
+	<h1>KOREAN</h1>
+	<img src="img/flag.png" alt="" width="50">
 	<div class="b"></div>
 	<img src="img/spiderman.png" class="spider" alt="" width="30">
 	<div class="container">
@@ -388,20 +399,33 @@
 			<div class="corner corner-tr"></div>
 			<div class="corner corner-bl"></div>
 			<div class="corner corner-br"></div>
-			<h1>KOREAN</h1>
-			<img src="img/flag.png" alt="" width="50">
 
 			<nav class="menu-section">
-			<h2>Изучено</h2>
+				<h2>TYPES</h2>
 				<div class="menu-grid">
 					<div class="menu-item">
-						<a href="words/1.html">Да</a>
+						<table>
+							<tr>
+								<th></th>
+								<td>по-корейски</td>
+								<td>по-русски</td>
+								<td>произношение</td>
+							</tr>
+							<tr>
+								<th>Да</th>
+								<td>
+									<a href="words/yes/1.html">1</a>
+								</td>
+								<td><a href="words/yes/3.html">2</a></td>
+								<td><a href="words/yes/2.html">3</a></td>
+							</tr>
+						</table>
 						<a href="words/2.html">Нет</a>
 						<a href="words/3.html">Привет</a>
 						<a href="words/4.html">Спасибо</a>
 					</div>
 				</div>
-			<h2>Повторение</h2>
+				<h2>REPEAT</h2>
 				<div class="menu-grid">
 					<div class="menu-item">
 						<a href="words/5.html">Здравствуйте</a>
