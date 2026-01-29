@@ -276,26 +276,28 @@
 			padding: 0 10px;
 		}
 
-		.a {}
-
-
-		@keyframes web2 {
+		@keyframes web {
 			0% {}
 
+			99% {
+				transform: rotate(140deg);
+			}
+
 			100% {
+				display: none;
 				transform: rotate(140deg);
 			}
 		}
 
 		.a {
 			position: absolute;
-			width: 150px;
+			width: 160px;
 			height: 1px;
 			background: #555;
 			left: 150px;
 			transform-origin: left top;
 
-			animation-name: web2;
+			animation-name: web;
 			/* Название анимации */
 			animation-duration: 4s;
 			/* Длительность — 2 секунды */
@@ -303,7 +305,7 @@
 			/* Функция плавности */
 			animation-delay: 0;
 			/* Без задержки */
-			animation-iteration-count: infinite;
+			animation-iteration-count: 1;
 			/* Бесконечное повторение */
 			animation-direction: normal;
 			/* Направление: вперед */
@@ -312,20 +314,64 @@
 			animation-play-state: running;
 			/* Состояние: воспроизводится */
 		}
-		.spider2 {
+
+		.spider {
 			position: absolute;
 			left: 140px;
 			top: -15px;
-			transform: rotate(90deg)
+			transform: rotate(90deg);
+		}
+
+		@keyframes sp2 {
+			0% {
+				display: none;
+			transform: rotate(90deg);
+			}
+
+			99% {
+				display: none;
+			}
+
+			100% {
+			transform: rotate(135deg);
+				display: block;
+			}
+		}
+
+		.sp2 {
+			position: absolute;
+			left: 0;
+			top: 90px;
+			transform: rotate(90deg);
+
+			animation-name: sp2;
+			/* Название анимации */
+			animation-duration: 4s;
+			/* Длительность — 2 секунды */
+			animation-timing-function: ease-in-out;
+			/* Функция плавности */
+			animation-delay: 0;
+			/* Без задержки */
+			animation-iteration-count: 1;
+			/* Бесконечное повторение */
+			animation-direction: normal;
+			/* Направление: вперед */
+			animation-fill-mode: both;
+			/* Сохранять стили до/после */
+			animation-play-state: running;
+			/* Состояние: воспроизводится */
 		}
 	</style>
 </head>
 
+	<div class="sp2">
+		<img src="img/spiderman.png" class="" alt="" width="30">
+	</div>
 <body>
 	<div class="a">
-		<div class="s"></div>
 		<div class="d">
-	<img src="img/spiderman.png" class="spider2" alt="" width="30"></div>
+			<img src="img/spiderman.png" class="spider" alt="" width="30">
+		</div>
 	</div>
 	<h1>KOREAN</h1>
 	<img src="img/flag.png" alt="" width="50">
