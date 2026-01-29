@@ -47,11 +47,11 @@ typeof Math // "object"  (1)
 typeof null // "object"  (2)
 typeof alert // "function"  (3)
 
-//let age2 = prompt('Сколько тебе лет?', 100);
-//console.log(`Тебе ${age2} лет!`); // Тебе 100 лет!
+//let a = prompt('Сколько тебе лет?', 100);
+//console.log(`Тебе ${a} лет!`); // Тебе 100 лет!
 
-//let isBoss = confirm("Ты здесь главный?");
-//console.log( isBoss ); // true, если нажата OK
+//let a = confirm("Ты здесь главный?");
+//console.log( a ); // true, если нажата OK
 
 typeof true // boolean
 typeof String(true) // string
