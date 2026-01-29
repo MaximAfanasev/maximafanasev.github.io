@@ -266,116 +266,6 @@
 			}
 		}
 
-		.spider {
-			position: absolute;
-			width: 30px;
-			height: 30px;
-			top: -10px;
-			left: calc(50% - 160px);
-			border-radius: 50%;
-			transform: rotate(180deg);
-			z-index: 20;
-
-			animation-name: slide;
-			/* Название анимации */
-			animation-duration: 4s;
-			/* Длительность — 2 секунды */
-			animation-timing-function: ease;
-			/* Функция плавности */
-			animation-delay: 0s;
-			/* Без задержки */
-			animation-iteration-count: 1;
-			/* Бесконечное повторение */
-			animation-direction: normal;
-			/* Направление: вперед */
-			animation-fill-mode: both;
-			/* Сохранять стили до/после */
-			animation-play-state: running;
-			/* Состояние: воспроизводится */
-		}
-
-		* {
-			outline: 1px solid gold //
-		}
-
-
-		@keyframes web {
-			0% {
-				top: -250px;
-			}
-
-			99% {
-				top: 0;
-			}
-
-			100% {
-				top: -250px;
-			}
-		}
-
-		.b {
-			position: absolute;
-			height: 249px;
-			width: 1px;
-			left: -28px;
-			left: calc(50% - 146px);
-			top: 65px;
-			z-index: 10;
-			background: #888;
-
-			animation-name: web;
-			/* Название анимации */
-			animation-duration: 4s;
-			/* Длительность — 2 секунды */
-			animation-timing-function: ease;
-			/* Функция плавности */
-			animation-delay: 0s;
-			/* Без задержки */
-			animation-iteration-count: 1;
-			/* Бесконечное повторение */
-			animation-direction: normal;
-			/* Направление: вперед */
-			animation-fill-mode: both;
-			/* Сохранять стили до/после */
-			animation-play-state: running;
-			/* Состояние: воспроизводится */
-		}
-
-		@keyframes one {
-			0% {
-				width: 0;
-				transform: rotate(4deg) translateX(7px) translateY(12px);
-			}
-
-			100% {
-				width: calc(43%);
-			}
-		}
-
-		.one {
-			position: absolute;
-			height: 1px;
-			background: #555;
-			transform: rotate(4deg) translateX(7px) translateY(12px);
-
-			animation-name: one;
-			/* Название анимации */
-			animation-duration: 0.3s;
-			/* Длительность — 2 секунды */
-			animation-timing-function: ease-in-out;
-			/* Функция плавности */
-			animation-delay: 4s;
-			/* Без задержки */
-			animation-iteration-count: 1;
-			/* Бесконечное повторение */
-			animation-direction: normal;
-			/* Направление: вперед */
-			animation-fill-mode: both;
-			/* Сохранять стили до/после */
-			animation-play-state: running;
-			/* Состояние: воспроизводится */
-		}
-
 		table {
 			width: fit-content;
 			margin: 0 auto;
@@ -385,14 +275,60 @@
 			border-radius: 10px;
 			padding: 0 10px;
 		}
+
+		.a {}
+
+
+		@keyframes web2 {
+			0% {}
+
+			100% {
+				transform: rotate(140deg);
+			}
+		}
+
+		.a {
+			position: absolute;
+			width: 150px;
+			height: 1px;
+			background: #555;
+			left: 150px;
+			transform-origin: left top;
+
+			animation-name: web2;
+			/* Название анимации */
+			animation-duration: 4s;
+			/* Длительность — 2 секунды */
+			animation-timing-function: ease-in-out;
+			/* Функция плавности */
+			animation-delay: 0;
+			/* Без задержки */
+			animation-iteration-count: infinite;
+			/* Бесконечное повторение */
+			animation-direction: normal;
+			/* Направление: вперед */
+			animation-fill-mode: both;
+			/* Сохранять стили до/после */
+			animation-play-state: running;
+			/* Состояние: воспроизводится */
+		}
+		.spider2 {
+			position: absolute;
+			left: 140px;
+			top: -15px;
+			transform: rotate(90deg)
+		}
 	</style>
 </head>
 
 <body>
+	<div class="a">
+		<div class="s"></div>
+		<div class="d">
+	<img src="img/spiderman.png" class="spider2" alt="" width="30"></div>
+	</div>
 	<h1>KOREAN</h1>
 	<img src="img/flag.png" alt="" width="50">
-	<div class="b"></div>
-	<img src="img/spiderman.png" class="spider" alt="" width="30">
 	<div class="container">
 		<div class="terminal">
 			<div class="corner corner-tl"></div>
