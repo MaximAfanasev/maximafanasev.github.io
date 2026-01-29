@@ -255,13 +255,13 @@
 			}
 
 			99% {
-				top: 240px;
+				top: 145px;
 				transform: rotate(180deg);
 			}
 
 			100% {
-				top: 240px;
-				transform: rotate(180deg) rotate(-70deg);
+				top: 145px;
+				transform: rotate(180deg);
 			}
 		}
 
@@ -300,7 +300,7 @@
 
 		@keyframes web {
 			0% {
-				top: -250px;
+				top: -155px;
 			}
 
 			99% {
@@ -308,13 +308,13 @@
 			}
 
 			100% {
-				top: -250px;
+				top: 0;
 			}
 		}
 
 		.b {
 			position: absolute;
-			height: 249px;
+			height: 155px;
 			width: 1px;
 			left: -28px;
 			left: calc(50% - 146px);
@@ -340,46 +340,11 @@
 			/* Состояние: воспроизводится */
 		}
 
-
-
-		@keyframes one {
-			0% {
-				width: 0;
-				transform: rotate(4deg) translateX(7px) translateY(12px);
-			}
-
-			100% {
-				width: calc(43%);
-			}
-		}
-
-		.one {
-			position: absolute;
-			height: 1px;
-			background: #555;
-			transform: rotate(4deg) translateX(7px) translateY(12px);
-
-			animation-name: one;
-			/* Название анимации */
-			animation-duration: 0.3s;
-			/* Длительность — 2 секунды */
-			animation-timing-function: ease-in-out;
-			/* Функция плавности */
-			animation-delay: 4s;
-			/* Без задержки */
-			animation-iteration-count: 1;
-			/* Бесконечное повторение */
-			animation-direction: normal;
-			/* Направление: вперед */
-			animation-fill-mode: both;
-			/* Сохранять стили до/после */
-			animation-play-state: running;
-			/* Состояние: воспроизводится */
-		}
 		table {
 			width: fit-content;
 			margin: 0 auto;
 		}
+
 		table td {
 			border-radius: 10px;
 			padding: 0 10px;
@@ -391,6 +356,7 @@
 	<h1>KOREAN</h1>
 	<img src="img/flag.png" alt="" width="50">
 	<div class="b"></div>
+	<div class="с"></div>
 	<img src="img/spiderman.png" class="spider" alt="" width="30">
 	<div class="container">
 		<div class="terminal">
@@ -410,7 +376,7 @@
 								<td><img src="img/russia.png" alt="" width="30"></td>
 								<td><img src="img/talking.png" alt="" width="30"></td>
 							</tr>
-							
+
 							<tr>
 								<td><a href="words/yes/0.html">Да</a></td>
 								<td>
@@ -419,7 +385,7 @@
 								<td><a href="words/yes/2.html">2</a></td>
 								<td><a href="words/yes/3.html">3</a></td>
 							</tr>
-							
+
 							<tr>
 								<td><a href="words/no/0.html">Нет</a></td>
 								<td>
