@@ -105,7 +105,10 @@ span {
 		gap: 10px;
 	}
 }
-
+input::placeholder {
+	color: #111;
+	opacity: 0.2;
+}
 @media (max-width: 480px) {
 	.symbols-display {
 		font-size: 2rem;
