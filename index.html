@@ -524,6 +524,97 @@
 		.fly::after {
 			animation: wingsAppear 3s infinite ease-in-out;
 		}
+
+
+		@keyframes web2 {
+			0% {
+				width: 0;
+				transform: rotate(-10deg);
+			}
+
+			99% {
+				width: 100px;
+				transform: rotate(-10deg);
+			}
+
+			100% {
+				width: 0;
+				transform: rotate(-10deg);
+			}
+		}
+
+
+		@keyframes web3 {
+			0% {
+				top: 55px;
+				width: 0;
+				transform: rotate(-12deg);
+			}
+
+			99% {
+				width: 60px;
+				transform: rotate(-12deg);
+			}
+
+			100% {
+				width: 0;
+				transform: rotate(-12deg);
+			}
+		}
+
+
+		@keyframes web4 {
+			0% {
+				width: 0;
+				top: 58px;
+				transform: rotate(-14deg);
+			}
+
+			99% {
+				width: 80px;
+				transform: rotate(-14deg);
+			}
+
+			100% {
+				width: 0;
+				transform: rotate(-14deg);
+			}
+		}
+
+		.web2,.web3,.web4 {
+			position: absolute;
+			left: 30px;
+			top: 50px;
+			width: 100px;
+			height: 1px;
+			background: #666;
+			transform: rotate(-10deg);
+			transform-origin: top;
+			animation-name: web2;
+			/* Название анимации */
+			animation-duration: 1s;
+			/* Длительность — 2 секунды */
+			animation-timing-function: ease-in-out;
+			/* Функция плавности */
+			animation-delay: 4s;
+			/* Без задержки */
+			animation-iteration-count: 1;
+			/* Бесконечное повторение */
+			animation-direction: normal;
+			/* Направление: вперед */
+			animation-fill-mode: both;
+			/* Сохранять стили до/после */
+			animation-play-state: running;
+			/* Состояние: воспроизводится */
+		}
+		.web3 {
+			animation-name: web3;
+			animation-delay: 5s;
+		}
+		.web4 {
+			animation-name: web4;
+			animation-delay: 6s;
+		}
 	</style>
 </head>
 
@@ -531,6 +622,10 @@
 <div class="sp2">
 	<img src="img/spiderman.png" class="" alt="" width="30">
 </div>
+
+<div class="web2"></div>
+<div class="web3"></div>
+<div class="web4"></div>
 
 <div class="fly"></div>
 
