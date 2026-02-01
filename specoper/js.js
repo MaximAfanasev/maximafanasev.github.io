@@ -13,7 +13,7 @@ let $ = 1;
 let _ = 2;
 $ + _; // 3
 
-const a = "F" // F
+const A = "F" // F
 
 1/0 // Infinity
 "a"/2 // NaN
