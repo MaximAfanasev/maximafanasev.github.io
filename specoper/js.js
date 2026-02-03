@@ -46,6 +46,8 @@ typeof Symbol("a") // "symbol"
 typeof Math // "object"  (1)
 typeof null // "object"  (2)
 typeof alert // "function"  (3)
+typeof true // boolean
+typeof String(true) // string
 
 //let a = prompt('Сколько тебе лет?', 100);
 //console.log(`Тебе ${a} лет!`); // Тебе 100 лет!
@@ -53,22 +55,21 @@ typeof alert // "function"  (3)
 //let a = confirm("Ты здесь главный?");
 //console.log( a ); // true, если нажата OK
 
-typeof true // boolean
-typeof String(true) // string
+
+Number("a") // NaN
+Number("123z") // NaN
+
 
 "6" / "2" // 3
 Number("1"); // 1
-
-Number("a") // NaN
-
 Number("   123   ") // 123
-Number("123z") // NaN
 Number(true) // 1
 Number(false) // 0
 
 Boolean(1) // true
-Boolean(0) // false
 Boolean("Привет!") // true
+
+Boolean(0) // false
 Boolean("") // false
 
 let x = 1;
