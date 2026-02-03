@@ -626,10 +626,101 @@
 	margin: 0 auto;
 	gap: 10px;
 }
+
+		@keyframes spiderman {
+			0% {
+				top: -180px;
+			}
+
+			100% {
+				top: 0;
+			}
+		}
+		
 		.spiderman {
 			position: absolute;
 			right: -40px;
+
+			animation-name: spiderman;
+			/* Название анимации */
+			animation-duration: 2.5s;
+			/* Длительность — 2 секунды */
+			animation-timing-function: ease-in;
+			/* Функция плавности */
+			animation-delay: 3s;
+			/* Без задержки */
+			animation-iteration-count: 1;
+			/* Бесконечное повторение */
+			animation-direction: normal;
+			/* Направление: вперед */
+			animation-fill-mode: both;
+			/* Сохранять стили до/после */
+			animation-play-state: running;
+			/* Состояние: воспроизводится */
 		}
+
+		@keyframes harry {
+			0% {
+				left: -300px;
+			}
+
+			100% {
+				left: 900px;
+			}
+		}
+
+		.harry,.snitch {
+			position: absolute;
+			left: 0;
+			top: 90px;
+
+			animation-name: harry;
+			/* Название анимации */
+			animation-duration: 2.5s;
+			/* Длительность — 2 секунды */
+			animation-timing-function: ease-in;
+			/* Функция плавности */
+			animation-delay: 0;
+			/* Без задержки */
+			animation-iteration-count: 1;
+			/* Бесконечное повторение */
+			animation-direction: normal;
+			/* Направление: вперед */
+			animation-fill-mode: both;
+			/* Сохранять стили до/после */
+			animation-play-state: running;
+			/* Состояние: воспроизводится */
+		}
+
+		@keyframes snitch {
+			0% {
+				left: -150px;
+			}
+
+			100% {
+				left: 1050px;
+			}
+		}
+		
+		.snitch {
+			animation-name: snitch;
+			/* Название анимации */
+			animation-duration: 2.5s;
+			/* Длительность — 2 секунды */
+			animation-timing-function: ease-in;
+			/* Функция плавности */
+			animation-delay: 0;
+			/* Без задержки */
+			animation-iteration-count: 1;
+			/* Бесконечное повторение */
+			animation-direction: normal;
+			/* Направление: вперед */
+			animation-fill-mode: both;
+			/* Сохранять стили до/после */
+			animation-play-state: running;
+			/* Состояние: воспроизводится */
+		}
+		
 	</style>
 </head>
 
@@ -649,6 +740,8 @@
 		<img src="img/spiderman.png" class="spider" alt="" width="30">
 	</div>
 	<img class="spiderman" src="img/2.png" alt="" width="200">
+	<img class="harry" src="img/1.png" alt="" width="100">
+	<img class="snitch" src="img/3.png" alt="" width="50">
 	<h1>KOREAN</h1>
 	<div class="flex">
 	<img src="img/russia.png" alt="" width="50">
