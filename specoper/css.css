@@ -190,10 +190,6 @@ text-transform: none; /* без изменений регистра */
 text-transform: uppercase; /* все буквы в верхний регистр */
 text-transform: lowercase; /* все буквы в нижний регистр */
 text-transform: capitalize; /* первая буква каждого слова в верхний регистр */
-
-
-
-
 text-indent: 20px; /* сдвиг первой строки на 20 пикселей */
 
 letter-spacing: 1px; /* добавляет по 1 пикселю между символами */
