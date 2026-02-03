@@ -620,12 +620,12 @@
 			animation-delay: 6s;
 		}
 
-.flex {
-	display: flex;
-	width: fit-content;
-	margin: 0 auto;
-	gap: 10px;
-}
+		.flex {
+			display: flex;
+			width: fit-content;
+			margin: 0 auto;
+			gap: 10px;
+		}
 
 		@keyframes spiderman {
 			0% {
@@ -636,10 +636,10 @@
 				top: 0;
 			}
 		}
-		
+
 		.spiderman {
 			position: absolute;
-			right: -40px;
+			right: 0px;
 
 			animation-name: spiderman;
 			/* Название анимации */
@@ -673,7 +673,8 @@
 			}
 		}
 
-		.harry,.snitch {
+		.harry,
+		.snitch {
 			position: absolute;
 			left: 0;
 			top: 90px;
@@ -709,7 +710,7 @@
 				display: none;
 			}
 		}
-		
+
 		.snitch {
 			animation-name: snitch;
 			/* Название анимации */
@@ -728,7 +729,6 @@
 			animation-play-state: running;
 			/* Состояние: воспроизводится */
 		}
-		
 	</style>
 </head>
 
@@ -752,8 +752,9 @@
 	<img class="snitch" src="img/3.png" alt="" width="50">
 	<h1>KOREAN</h1>
 	<div class="flex">
-	<img src="img/russia.png" alt="" width="50">
-	<img src="img/flag.png" alt="" width="50"></div>
+		<img src="img/russia.png" alt="" width="50">
+		<img src="img/flag.png" alt="" width="50">
+	</div>
 	<div class="container">
 		<div class="terminal">
 			<div class="corner corner-tl"></div>
