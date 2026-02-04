@@ -121,3 +121,16 @@ document.addEventListener('DOMContentLoaded', function () {
 	// Автофокус на первый инпут при загрузке
 	inputBoxes[0].focus();
 });
+
+document.getElementById('hidePlaceholderBtn').addEventListener('click', function() {
+    // Находим все input элементы
+    const inputBoxes = document.querySelectorAll('.input-box');
+    
+    // Добавляем класс к каждому input
+    inputBoxes.forEach(input => {
+        input.classList.add('placeholder-hidden');
+    });
+    
+    // Меняем текст кнопки (опционально)
+    this.textContent = 'DONE';
+});

@@ -235,3 +235,15 @@ a {
 	background: transparent;
 	color: #fff;
 }
+
+.placeholder-hidden::placeholder {
+    color: transparent !important;
+}
+
+button {
+	background: transparent;
+	margin-top: 20px;
+	color: gold;
+	padding: 5px 10px;
+	border-radius: 10px;
+}
