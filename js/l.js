@@ -123,14 +123,16 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 document.getElementById('hidePlaceholderBtn').addEventListener('click', function() {
-    // Находим все input элементы
     const inputBoxes = document.querySelectorAll('.input-box');
     
-    // Добавляем класс к каждому input
+    // Переключаем класс у всех input
     inputBoxes.forEach(input => {
-        input.classList.add('placeholder-hidden');
+        input.classList.toggle('placeholder-hidden');
     });
     
-    // Меняем текст кнопки (опционально)
-    this.textContent = 'DONE';
+    // Проверяем, есть ли класс у первого input
+    const isHidden = inputBoxes[0] && inputBoxes[0].classList.contains('placeholder-hidden');
+    
+    // Устанавливаем текст в зависимости от состояния
+    this.textContent = isHidden ? '🤫' : '👀';
 });

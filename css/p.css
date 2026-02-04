@@ -106,8 +106,12 @@ span {
 	}
 }
 input::placeholder {
-	color: #111;
 	opacity: 0.2;
+	color: transparent;
+}
+
+.placeholder-hidden::placeholder {
+	color: #111 !important;
 }
 @media (max-width: 480px) {
 	.symbols-display {
@@ -236,14 +240,11 @@ a {
 	color: #fff;
 }
 
-.placeholder-hidden::placeholder {
-    color: transparent !important;
-}
-
 button {
 	background: transparent;
 	margin-top: 20px;
 	color: gold;
 	padding: 5px 10px;
-	border-radius: 10px;
+	border-radius: 50%;
+	font-size: 30px;
 }
