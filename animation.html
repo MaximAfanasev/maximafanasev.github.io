@@ -647,6 +647,77 @@
 			/* Длительность — 2 секунды */
 			animation-timing-function: ease-in;
 			/* Функция плавности */
+			animation-delay: 3s;
+			/* Без задержки */
+			animation-iteration-count: 1;
+			/* Бесконечное повторение */
+			animation-direction: normal;
+			/* Направление: вперед */
+			animation-fill-mode: both;
+			/* Сохранять стили до/после */
+			animation-play-state: running;
+			/* Состояние: воспроизводится */
+		}
+
+		@keyframes harry {
+			0% {
+				left: -300px;
+			}
+
+			99% {
+				left: 900px;
+			}
+
+			100% {
+				display: none;
+			}
+		}
+
+		.harry,
+		.snitch {
+			position: absolute;
+			left: 0;
+			top: 90px;
+
+			animation-name: harry;
+			/* Название анимации */
+			animation-duration: 2.5s;
+			/* Длительность — 2 секунды */
+			animation-timing-function: ease-in;
+			/* Функция плавности */
+			animation-delay: 0;
+			/* Без задержки */
+			animation-iteration-count: 1;
+			/* Бесконечное повторение */
+			animation-direction: normal;
+			/* Направление: вперед */
+			animation-fill-mode: both;
+			/* Сохранять стили до/после */
+			animation-play-state: running;
+			/* Состояние: воспроизводится */
+		}
+
+		@keyframes snitch {
+			0% {
+				left: -150px;
+			}
+
+			99% {
+				left: 1050px;
+			}
+
+			100% {
+				display: none;
+			}
+		}
+
+		.snitch {
+			animation-name: snitch;
+			/* Название анимации */
+			animation-duration: 2.5s;
+			/* Длительность — 2 секунды */
+			animation-timing-function: ease-in;
+			/* Функция плавности */
 			animation-delay: 0;
 			/* Без задержки */
 			animation-iteration-count: 1;
@@ -660,47 +731,24 @@
 		}
 	</style>
 </head>
-<body>
-	<img class="spiderman" src="img/2.png" alt="" width="200">
-	<h1>KOREAN</h1>
-	<div class="flex">
-		<img src="img/russia.png" alt="" width="50">
-		<img src="img/flag.png" alt="" width="50">
-	</div>
-	<div class="container">
-		<div class="terminal">
-			<div class="corner corner-tl"></div>
-			<div class="corner corner-tr"></div>
-			<div class="corner corner-bl"></div>
-			<div class="corner corner-br"></div>
 
-			<nav class="menu-section">
-				<div class="menu-grid">
-					<div class="menu-item">
-						<a href="animation.html">Animation</a>
-						<a href="words/0.html">Алфавит q-p</a>
-					</div>
-					<div class="menu-item">
-						<a href="words/1.html">Да Нэ</a>
-						<a href="words/2.html">Нет Анийо</a>
-					</div>
-					<div class="menu-item">
-						<a href="words/3.html">Привет Аньёнъ</a>
-						<a href="words/5.html">Здравствуйте Аньёнъ Хащимникка</a>
-					</div>
-					<div class="menu-item">
-						<a href="words/4.html">Спасибо Камсамнида</a>
-						<a href="words/6.html">Извините Чуесонамнида</a>
-					</div>
-					<div class="menu-item">
-						<a href="words/7.html">Как вы? Чаль Чинесойо</a>
-						<a href="words/8.html">Меня зовут Чонын иеё/её</a>
-					</div>
-					<div class="menu-item">
-						<a href="words/9.html">Умоляю Чебаль</a>
-					</div>
-				</div>
-			</nav>
-		</div>
+<div class="web"><img src="img/output-onlinepngtools.png" alt=""></div>
+<div class="sp2">
+	<img src="img/spiderman.png" class="" alt="" width="30">
+</div>
+
+<div class="web2"></div>
+<div class="web3"></div>
+<div class="web4"></div>
+
+<div class="fly"></div>
+
+<body>
+	<div class="a">
+		<img src="img/spiderman.png" class="spider" alt="" width="30">
 	</div>
+	<img class="spiderman" src="img/2.png" alt="" width="200">
+	<img class="harry" src="img/1.png" alt="" width="100">
+	<img class="snitch" src="img/3.png" alt="" width="50">
+	<h1>Animation</h1>
 </body></html>
