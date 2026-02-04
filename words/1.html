@@ -6,96 +6,16 @@
     <link type="image/x-icon" rel="icon" href="../../img/flag.png">
     <title>네</title>
     <link rel="stylesheet" href="../../css/p.css">
-    <style>
-        /* Стили для компактного таймера */
-        .compact-timer {
-            position: fixed;
-          	top: 20px;
-            left: calc(50% - 110px);
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: 10px;
-            padding: 12px 15px;
-            z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            min-width: 150px;
-        }
-        
-        .timer-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 8px;
-            font-size: 0.9rem;
-            color: #FFD700;
-        }
-        
-        .timer-number {
-            font-size: 1.4rem;
-            font-weight: bold;
-            color: white;
-            text-align: center;
-            margin-bottom: 8px;
-            font-family: monospace;
-        }
-        
-        .sticks-container {
-            display: flex;
-            justify-content: center;
-            gap: 3px;
-            margin-bottom: 5px;
-            height: 30px;
-            align-items: flex-end;
-        }
-        
-        .stick {
-            width: 8px;
-            background-color: #FFD700;
-            border-radius: 1px;
-            transition: all 0.4s ease;
-            opacity: 1;
-            box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
-        }
-        
-        .stick.inactive {
-            opacity: 0.2;
-            transform: scaleY(0.7);
-        }
-        
-        .progress-container {
-            width: 100%;
-            height: 3px;
-            background-color: rgba(255, 255, 255, 0.2);
-            border-radius: 2px;
-            overflow: hidden;
-        }
-        
-        .progress-bar {
-            height: 100%;
-            background-color: #FFD700;
-            width: 100%;
-            transition: width 1s linear;
-            border-radius: 2px;
-        }
-        
-        .timer-message {
-            font-size: 0.7rem;
-            color: rgba(255, 255, 255, 0.7);
-            text-align: center;
-            margin-top: 5px;
-        }
-    </style>
+    <link rel="stylesheet" href="../../css/timer.css">
 </head>
 
 <body>
     <!-- Компактный таймер -->
     <div class="compact-timer" id="compactTimer">
         <div class="timer-header">
-            <span>⏱️ Таймер</span>
-            <span id="timerCount">10с</span>
+            ⏱️
         </div>
-        <div class="timer-number" id="timerNumber">10</div>
+        <div class="timer-number" id="timerNumber"></div>
         <div class="sticks-container" id="sticksContainer"></div>
         <div class="progress-container">
             <div class="progress-bar" id="progressBar"></div>
@@ -116,115 +36,6 @@
         const targetCharacters = ['ㄴ', 'ㅔ'];
     </script>
     <script src="../../js/l.js"></script>
-    
-    <script>
-        // Компактный таймер обратного отсчета
-        document.addEventListener('DOMContentLoaded', function() {
-            // Создаем палочки для визуализации
-            const sticksContainer = document.getElementById('sticksContainer');
-            for (let i = 0; i < 10; i++) {
-                const stick = document.createElement('div');
-                stick.className = 'stick';
-                stick.style.height = `${15 + (i % 3)}px`; // Разная высота для визуального интереса
-                sticksContainer.appendChild(stick);
-            }
-            
-            // Начальное значение таймера
-            let timeLeft = 9;
-            const timerNumber = document.getElementById('timerNumber');
-            const timerCount = document.getElementById('timerCount');
-            const progressBar = document.getElementById('progressBar');
-            const timerMessage = document.getElementById('timerMessage');
-            const allSticks = document.querySelectorAll('.stick');
-            
-            // Функция обновления таймера
-            function updateCompactTimer() {
-                // Обновляем отображение времени
-                timerNumber.textContent = timeLeft;
-                timerCount.textContent = `${timeLeft}с`;
-                
-                // Обновляем прогресс-бар
-                const progressWidth = (timeLeft / 10) * 100;
-                progressBar.style.width = `${progressWidth}%`;
-                
-                // Обновляем палочки
-                const activeSticks = 10 - timeLeft;
-                allSticks.forEach((stick, index) => {
-                    if (index < activeSticks) {
-                        stick.classList.add('inactive');
-                    } else {
-                        stick.classList.remove('inactive');
-                    }
-                });
-                
-                // Обновляем сообщение
-                if (timeLeft <= 3) {
-                    timerMessage.textContent = "Уходи...";
-                    timerMessage.style.color = "#FFD700";
-                } else if (timeLeft <= 6) {
-                    timerMessage.textContent = "Или";
-                    timerMessage.style.color = "#FFD700";
-                } else {
-                    timerMessage.textContent = "Проходи уровень...";
-                    timerMessage.style.color = "#FFD700";
-                }
-                
-                // Уменьшаем время
-                timeLeft--;
-                
-                // Когда время истекло
-                if (timeLeft < 0) {
-                    clearInterval(timerInterval);
-                    
-                    // Анимация завершения
-                    timerNumber.textContent = "0";
-                    timerCount.textContent = "0с";
-                    progressBar.style.width = "0%";
-                    
-                    // Делаем все палочки неактивными
-                    allSticks.forEach(stick => {
-                        stick.classList.add('inactive');
-                    });
-                    
-                    timerMessage.textContent = "HASTA LA VISTA...";
-                    timerMessage.style.color = "#FFD700";
-                    
-                    // Перенаправление через 0.5 секунды после завершения таймера
-                    setTimeout(() => {
-                        window.location.href = "../index.html"; // Раскомментируйте и измените на нужный URL
-                        
-                        // Для демонстрации - просто скрываем таймер
-                        document.getElementById('compactTimer').style.opacity = '0';
-                        setTimeout(() => {
-                            document.getElementById('compactTimer').style.display = 'none';
-                        }, 500);
-                    }, 500);
-                }
-            }
-            
-            // Запускаем таймер
-            const timerInterval = setInterval(updateCompactTimer, 1000);
-            
-            // Инициализируем отображение
-            updateCompactTimer();
-            
-            // Добавляем возможность закрыть таймер (опционально)
-            const timerHeader = document.querySelector('.timer-header');
-            let closeTimer = document.createElement('span');
-            closeTimer.innerHTML = '✕';
-            closeTimer.style.cursor = 'pointer';
-            closeTimer.style.fontSize = '0.8rem';
-            closeTimer.style.marginLeft = '5px';
-            closeTimer.addEventListener('click', function() {
-                clearInterval(timerInterval);
-                document.getElementById('compactTimer').style.opacity = '0';
-                setTimeout(() => {
-                    document.getElementById('compactTimer').style.display = 'none';
-                }, 300);
-            });
-            
-            document.querySelector('.timer-header').appendChild(closeTimer);
-        });
-    </script>
+    <script src="../../js/timer.js"></script>
 </body>
 </html>
