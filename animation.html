@@ -654,24 +654,18 @@
 		}
 
 		@keyframes harry {
-			0% {
-				left: -300px;
-			}
+			0% {}
 
-			99% {
-				left: 900px;
-			}
+			99% {}
 
-			100% {
-				display: none;
-			}
+			100% {}
 		}
 
 		.harry,
 		.snitch {
 			position: absolute;
-			left: 0;
-			top: 90px;
+			left: 200px;
+			top: 250px;
 
 			animation-name: harry;
 			/* Название анимации */
@@ -692,20 +686,16 @@
 		}
 
 		@keyframes snitch {
-			0% {
-				left: -150px;
-			}
+			0% {}
 
-			99% {
-				left: 1050px;
-			}
+			99% {}
 
-			100% {
-				display: none;
-			}
+			100% {}
 		}
 
 		.snitch {
+			left: 350px;
+			top: 250px;
 			animation-name: snitch;
 			/* Название анимации */
 			animation-duration: 2.5s;
@@ -723,24 +713,14 @@
 			animation-play-state: running;
 			/* Состояние: воспроизводится */
 		}
-		/* Анимация пульсации пламени */
-		@keyframes flyiron {
-			0% {
-				right: -1000px;
-			}
-
-			100% {
-				right: 1000px;
-				
-			}
-		}
 
 		.iron-man-container {
 			position: relative;
 			width: 200px;
 			height: 60px;
-			transform: rotate(90deg);
-			top: 100px;
+			transform: rotate(180deg);
+			left: 100px;
+			top: 350px;
 			animation-name: flyiron;
 			/* Название анимации */
 			animation-duration: 4s;
@@ -789,7 +769,7 @@
 		.flame-right {
 			position: absolute;
 			bottom: 111px;
-    right: 14px;
+			right: 14px;
 			width: 15px;
 			height: 30px;
 			background: linear-gradient(to top,
@@ -818,6 +798,7 @@
 				transform: scaleY(1.1);
 			}
 		}
+
 		.iron {
 			position: absolute;
 			left: 40%;
@@ -842,9 +823,9 @@
 		<img src="img/spiderman.png" class="spider" alt="" width="30">
 	</div>
 	<img class="spiderman" src="img/2.png" alt="" width="200">
-	<img class="harry" src="img/1.png" alt="" width="100">
-	<img class="snitch" src="img/3.png" alt="" width="50">
-	<h1>NE PIXAR</h1>
+	<img class="harry" src="img/1.png" alt="" width="150">
+	<img class="snitch" src="img/3.png" alt="" width="40">
+	<h1>Animation</h1>
 
 	<div class="iron-man-container">
 		<!-- Замените src на путь к вашему изображению -->

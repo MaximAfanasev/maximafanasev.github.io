@@ -28,8 +28,8 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 		
 		isTimerRunning = true;
-		timerMessage.textContent = "Работай";
-		timerMessage.style.color = "#90EE90";
+		timerMessage.textContent = "Печатай!";
+		timerMessage.style.color = "#FFA500";
 		
 		timerInterval = setInterval(updateCompactTimer, 1000);
 	}
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		
 		isTimerRunning = false;
 		timerMessage.textContent = "Молодец!";
-		timerMessage.style.color = "#FFA500";
+		timerMessage.style.color = "#90EE90";
 	}
 
 	// Функция сброса таймера бездействия
