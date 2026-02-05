@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		timeLeft--;
 
 		// Когда время истекло
-		if (timeLeft < 1) {
+		if (timeLeft < 0) {
 			clearInterval(timerInterval);
 
 			// Анимация завершения
