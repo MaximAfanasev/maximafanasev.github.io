@@ -6,9 +6,21 @@
 	<link type="image/x-icon" rel="icon" href="../../img/flag.png">
 	<title>안녕 하십니까</title>
 	<link rel="stylesheet" href="../../css/p.css">
+	<link rel="stylesheet" href="../../css/t.css">
 </head>
 
 <body>
+    <div class="compact-timer" id="compactTimer">
+        <div class="timer-header">
+            ⏱️
+        </div>
+        <div class="timer-number" id="timerNumber"></div>
+        <div class="sticks-container" id="sticksContainer"></div>
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        <div class="timer-message" id="timerMessage">Перенаправление...</div>
+    </div>
 	<div class="container">
 		<div class="inputs-container">
 			<input type="text" class="input-box" maxlength="1" placeholder="ㅇ">
@@ -34,5 +46,6 @@
 			const targetCharacters = ['ㅇ', 'ㅏ', 'ㄴ', 'ㄴ', 'ㅕ', 'ㅇ', 'ㅎ','ㅏ', 'ㅅ','ㅣ','ㅂ', 'ㄴ','ㅣ', 'ㄲ','ㅏ',];
 	</script>
 	<script src="../../js/l.js"></script>
+	<script src="../../js/t.js"></script>
 </body></html>
 
