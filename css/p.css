@@ -185,6 +185,7 @@ h1 {
 	justify-content: center;
 	gap: 10px;
 	flex-wrap: wrap;
+	margin-bottom: 20px;
 }
 
 .input-box {
@@ -247,4 +248,16 @@ button {
 	padding: 5px 10px;
 	border-radius: 50%;
 	font-size: 30px;
+}
+
+.word-counter {
+	color: greenyellow;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.korean-word {
+	color: cornflowerblue;
+	font-size: 60px;
+	margin-bottom: 20px;
 }

@@ -10,9 +10,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	// Начальное значение таймера
 	let timeLeft = 10;
-	const timerNumber = document.getElementById('timerNumber');
-	const progressBar = document.getElementById('progressBar');
-	const timerMessage = document.getElementById('timerMessage');
 	const allSticks = document.querySelectorAll('.stick');
 	
 	// Переменные для управления таймером
@@ -28,8 +25,6 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 		
 		isTimerRunning = true;
-		timerMessage.textContent = "Печатай!";
-		timerMessage.style.color = "#FFA500";
 		
 		timerInterval = setInterval(updateCompactTimer, 1000);
 	}
@@ -42,8 +37,6 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 		
 		isTimerRunning = false;
-		timerMessage.textContent = "Молодец!";
-		timerMessage.style.color = "#90EE90";
 	}
 
 	// Функция сброса таймера бездействия
@@ -74,11 +67,6 @@ document.addEventListener('DOMContentLoaded', function () {
 	// Функция обновления таймера
 	function updateCompactTimer() {
 		// Обновляем отображение времени
-		timerNumber.textContent = timeLeft;
-
-		// Обновляем прогресс-бар
-		const progressWidth = (timeLeft / 10) * 100;
-		progressBar.style.width = `${progressWidth}%`;
 
 		// Обновляем палочки
 		const activeSticks = 10 - timeLeft;
@@ -90,18 +78,6 @@ document.addEventListener('DOMContentLoaded', function () {
 			}
 		});
 
-		// Обновляем сообщение
-		if (timeLeft <= 3) {
-			timerMessage.textContent = "Уходи...";
-			timerMessage.style.color = "#FFD700";
-		} else if (timeLeft <= 6) {
-			timerMessage.textContent = "Или";
-			timerMessage.style.color = "#FFD700";
-		} else {
-			timerMessage.textContent = "Проходи уровень...";
-			timerMessage.style.color = "#FFD700";
-		}
-
 		// Уменьшаем время
 		timeLeft--;
 
@@ -109,17 +85,10 @@ document.addEventListener('DOMContentLoaded', function () {
 		if (timeLeft < 0) {
 			clearInterval(timerInterval);
 
-			// Анимация завершения
-			timerNumber.textContent = "0";
-			progressBar.style.width = "0%";
-
 			// Делаем все палочки неактивными
 			allSticks.forEach(stick => {
 				stick.classList.add('inactive');
 			});
-
-			timerMessage.textContent = "HASTA LA VISTA...";
-			timerMessage.style.color = "#FFD700";
 
 			// Перенаправление через 0.5 секунды после завершения таймера
 			setTimeout(() => {

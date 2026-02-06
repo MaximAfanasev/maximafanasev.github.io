@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link type="image/x-icon" rel="icon" href="../../img/flag.png">
     <title>네</title>
-    <link rel="stylesheet" href="../../css/p.css">
-    <link rel="stylesheet" href="../../css/t.css">
+    <link rel="stylesheet" href="../css/p.css">
+    <link rel="stylesheet" href="../css/t.css">
 </head>
 
 <body>
@@ -14,19 +14,18 @@
         <div class="timer-header">
             ⏱️
         </div>
-        <div class="timer-number" id="timerNumber"></div>
         <div class="sticks-container" id="sticksContainer"></div>
-        <div class="progress-container">
-            <div class="progress-bar" id="progressBar"></div>
-        </div>
-        <div class="timer-message" id="timerMessage">Перенаправление...</div>
+        <div class="word-counter" id="wordCounter">0</div>
     </div>
     
     <div class="container">
+       <div class="korean-word">네</div>
         <div class="inputs-container">
             <input type="text" class="input-box" maxlength="1" placeholder="ㄴ">
             <input type="text" class="input-box" maxlength="1" placeholder="ㅔ">
         </div>
+        <span>Да Нэ</span>
+        <span>sp</span>
         <button id="hidePlaceholderBtn">👀</button>
     </div>
 
@@ -34,7 +33,7 @@
     <script>
         const targetCharacters = ['ㄴ', 'ㅔ'];
     </script>
-    <script src="../../js/l.js"></script>
-    <script src="../../js/t.js"></script>
+    <script src="../js/l.js"></script>
+    <script src="../js/t.js"></script>
 </body>
 </html>

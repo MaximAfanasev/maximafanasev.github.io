@@ -2,6 +2,8 @@ document.addEventListener('DOMContentLoaded', function () {
 	// Получаем элементы
 	const inputBoxes = document.querySelectorAll('.input-box');
 	const html = document.documentElement;
+	const wordCounter = document.getElementById('wordCounter');
+	let correctWordsCount = 0;
 
 	// Функция для очистки и сброса инпутов
 	function resetInputs() {
@@ -38,6 +40,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 		// Если все правильно
 		if (allCorrect) {
+			// Увеличиваем счетчик
+			correctWordsCount++;
+			wordCounter.textContent = correctWordsCount;
+			
 			// Ждем 1 секунду, затем очищаем инпуты
 			setTimeout(() => {
 				resetInputs();
