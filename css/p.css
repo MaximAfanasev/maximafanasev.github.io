@@ -56,6 +56,7 @@ span {
 	color: gold;
 	display: block;
 	margin-bottom: 20px;
+	font-size: 17px;
 }
 
 .input-container {
@@ -222,11 +223,6 @@ h1 {
 	margin-top: 15px;
 	font-size: 16px;
 	transition: color 0.3s ease;
-}
-
-span {
-	color: gold;
-	font-size: 30px;
 }
 
 a {
