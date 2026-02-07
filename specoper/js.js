@@ -1,14 +1,4 @@
-let $ = 1;
-let _ = 2;
-$ + _; // 3
 
-const A = "F" // F
-
-1/0 // Infinity
-"a"/2 // NaN
-NaN+1 // NaN
-3*NaN // NaN
-"a"/2-1 // NaN
 
 typeof(1n) //bingint
 
