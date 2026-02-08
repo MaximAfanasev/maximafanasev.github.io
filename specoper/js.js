@@ -1,15 +1,33 @@
+// БАЗОВЫЕ
 
+"use strict";
 
-typeof(1n) //bingint
+(3 +
+1
++2); // 6
 
-"a"
-'a'
-`${str}` // a
-`${1 + 2}` // результат: 3
+let a;
+a = 'a'; // a
+
+let $ = 1;
+let _ = 2;
+$ + _; // 3
+
+const A = 'F'; // F
+
+1/0 // Infinity
+
+//NaN
+'a'/2
+NaN + 1
+3*NaN
+'a'/2-1
 
 4 > 1 // true
 
 a // undefined
+
+typeof(1n) //bingint
 typeof 5 // number
 typeof(5) // number
 
@@ -34,22 +52,29 @@ typeof String(true) // string
 //let a = confirm("Ты здесь главный?");
 //console.log( a ); // true, если нажата OK
 
+// СТРОКИ
+"a"
+'a'
+`${str}` // a
+`${1 + 2}` // результат: 3
+
+"a" + "b" // ab
+
+'1' + 2 // "12"
+2 + '1' // "21"
+
+2 + 2 + '1' // 41
+
+// ЧИСЛА
 
 Number("a") // NaN
 Number("123z") // NaN
-
 
 "6" / "2" // 3
 Number("1"); // 1
 Number("   123   ") // 123
 Number(true) // 1
 Number(false) // 0
-
-Boolean(1) // true
-Boolean("Привет!") // true
-
-Boolean(0) // false
-Boolean("") // false
 
 let x = 1;
 x = -x; // -1
@@ -65,13 +90,6 @@ y - x // 2, бинарный минус вычитает значения
 2 ** 3 // 2³ = 8
 2 ** 4 // 2⁴ = 16
 4 ** (1/2) // 2
-
-"a" + "b" // ab
-
-'1' + 2 // "12"
-2 + '1' // "21"
-
-2 + 2 + '1' // 41
 
 6 - '2' // 4
 '6' / '2' // 3
@@ -122,6 +140,14 @@ a = 1 + 2, 3 + 4 // 3
 2 > 1  // true (верно)
 2 == 1 // false (неверно)
 2 != 1 // true (верно)
+
+// БУЛЕВЫ
+
+Boolean(1) // true
+Boolean("Привет!") // true
+
+Boolean(0) // false
+Boolean("") // false
 
 let result = 5 > 4 // true
 
