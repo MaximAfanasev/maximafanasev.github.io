@@ -361,16 +361,13 @@
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1><i class="fas fa-language"></i> Учим корейские слова</h1>
-        </header>
         <div class="words-grid" id="wordsContainer">
             <!-- Слова будут добавлены через JavaScript -->
         </div>
 
         <div class="controls">
             <button class="action-btn check-all-btn" id="checkAllBtn">
-                <i class="fas fa-check-double"></i> Проверить все ответы
+                <i class="fas fa-check-double"></i> Проверить все
             </button>
             <button class="action-btn reset-btn" id="resetBtn">
                 <i class="fas fa-redo"></i> Сбросить все
@@ -403,71 +400,51 @@
                 id: 1, 
                 russian: "Да", 
                 korean: "네", 
-                link: "#",
-                hint: "Простое согласие"
             },
             { 
                 id: 2, 
                 russian: "Нет", 
                 korean: "아니요", 
-                link: "#",
-                hint: "Отрицание"
             },
             { 
                 id: 3, 
                 russian: "Привет", 
                 korean: "안녕", 
-                link: "#",
-                hint: "Неформальное приветствие"
             },
             { 
                 id: 4, 
                 russian: "Спасибо", 
                 korean: "감사합니다", 
-                link: "#",
-                hint: "Выражение благодарности"
             },
             { 
                 id: 5, 
                 russian: "Здравствуйте", 
                 korean: "안녕하십니까", 
-                link: "#",
-                hint: "Формальное приветствие"
             },
             { 
                 id: 6, 
                 russian: "Извините", 
                 korean: "죄송합니다", 
-                link: "#",
-                hint: "Извинение"
             },
             { 
                 id: 7, 
                 russian: "Как Вы?", 
                 korean: "잘지냈어여", 
-                link: "#",
-                hint: "Вопрос о самочувствии"
             },
             { 
                 id: 8, 
                 russian: "Меня зовут", 
                 korean: "저는이에요", 
-                link: "#",
-                hint: "Представление себя"
             },
             { 
                 id: 9, 
                 russian: "Умоляю", 
                 korean: "제발", 
-                link: "#",
-                hint: "Просьба"
             },
             { 
                 id: 10, 
                 russian: "Пожалуйста", 
                 korean: "괜찬아요", 
-                link: "#",
-                hint: "Положительный ответ"
             }
         ];
 
@@ -495,23 +472,15 @@
                 wordCard.id = `word-${word.id}`;
                 
                 wordCard.innerHTML = `
-                    <div class="word-header">
-                        <div class="word-number">${word.id}</div>
-                        <a href="${word.link}" class="word-link" target="_blank">
-                            <i class="fas fa-question-circle"></i> Подсказка
-                        </a>
-                    </div>
                     <div class="russian-word">${word.russian}</div>
                     <div class="korean-word" id="korean-${word.id}">${word.korean}</div>
                     <div class="input-container">
-                        <input type="text" class="input-field" id="input-${word.id}" placeholder="Введите перевод на корейском...">
+                        <input type="text" class="input-field" id="input-${word.id}" placeholder="...">
                         <button class="check-btn" data-id="${word.id}">
-                            <i class="fas fa-check"></i> Проверить
+                            <i class="fas fa-check"></i>
                         </button>
                     </div>
                     <div class="result" id="result-${word.id}"></div>
-                    <div class="correct-answer" id="correct-answer-${word.id}">
-                        <small><i class="fas fa-info-circle"></i> Подсказка: ${word.hint}</small>
                     </div>
                 `;
                 
@@ -588,15 +557,11 @@
             const normalizedCorrectAnswer = word.korean.replace(/\s+/g, ' ').toLowerCase();
             
             if (normalizedUserAnswer === normalizedCorrectAnswer && userAnswer !== '') {
-                resultElement.innerHTML = `<i class="fas fa-check-circle"></i> Правильно!`;
                 resultElement.className = "result correct";
-                resultElement.style.display = "block";
                 inputField.style.borderColor = "#4caf50";
                 inputField.style.backgroundColor = "rgba(76, 175, 80, 0.1)";
             } else {
-                resultElement.innerHTML = `<i class="fas fa-times-circle"></i> Неверно. Вы ввели: "${userAnswer || '(пусто)'}"`;
                 resultElement.className = "result incorrect";
-                resultElement.style.display = "block";
                 inputField.style.borderColor = "#f44336";
                 inputField.style.backgroundColor = "rgba(244, 67, 54, 0.1)";
             }
