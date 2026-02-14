@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+    <h1>Счетчик посещений</h1>
+    <p>Количество посещений: <span id="visit-counter">0</span></p>
+    <p id="last-visit-time">Загрузка...</p>
+	<script>
+		class VisitTracker {
+			constructor() {
+				this.counterElement = document.getElementById('visit-counter');
+				this.timeElement = document.getElementById('last-visit-time');
+				this.minimumInterval = 2 * 60 * 1000; // 2 минуты в миллисекундах
+			}
+
+			init() {
+				// Проверяем, была ли страница открыта в текущей сессии
+				if (!sessionStorage.getItem('pageOpened')) {
+					this.handleNewVisit();
+					sessionStorage.setItem('pageOpened', 'true');
+				} else {
+					this.displayCurrentStats();
+				}
+
+				// Очищаем флаг при закрытии вкладки
+				window.addEventListener('beforeunload', () => {
+					sessionStorage.removeItem('pageOpened');
+				});
+			}
+
+			handleNewVisit() {
+				const lastVisitData = localStorage.getItem('visitData');
+				const now = Date.now();
+
+				if (!lastVisitData) {
+					// Первый визит на сайт
+					this.saveVisit(now, 1);
+					this.displayMessage('Первый визит', 1);
+				} else {
+					const data = JSON.parse(lastVisitData);
+					const timeDiff = now - data.lastVisitTime;
+
+					if (timeDiff >= this.minimumInterval) {
+						// Прошло больше 2 минут - увеличиваем счетчик
+						const newCount = data.count + 1;
+						this.saveVisit(now, newCount);
+						this.displayTimeDiff(timeDiff, newCount);
+					} else {
+						// Прошло меньше 2 минут
+						this.displayMessage(`Счетчик не изменился. Последний визит был ${Math.round(timeDiff / 1000)} сек назад`, data.count);
+					}
+				}
+			}
+
+			saveVisit(time, count) {
+				const visitData = {
+					lastVisitTime: time,
+					count: count
+				};
+				localStorage.setItem('visitData', JSON.stringify(visitData));
+			}
+
+			displayTimeDiff(timeDiff, count) {
+				const minutes = Math.floor(timeDiff / 60000);
+				const seconds = Math.floor((timeDiff % 60000) / 1000);
+				this.displayMessage(`Вы зашли спустя ${minutes} мин ${seconds} сек`, count);
+			}
+
+			displayMessage(message, count) {
+				if (this.timeElement) {
+					this.timeElement.textContent = message;
+				}
+				if (this.counterElement) {
+					this.counterElement.textContent = count;
+				}
+			}
+
+			displayCurrentStats() {
+				const data = localStorage.getItem('visitData');
+				if (data) {
+					const visitData = JSON.parse(data);
+					this.displayMessage('Текущая сессия', visitData.count);
+				}
+			}
+		}
+
+		// Инициализация
+		document.addEventListener('DOMContentLoaded', () => {
+			const tracker = new VisitTracker();
+			tracker.init();
+		});
+	</script>
+</body>
+</html>
