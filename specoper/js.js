@@ -1,33 +1,6 @@
-// БАЗОВЫЕ
 
-"use strict";
 
-(3 +
-1
-+2); // 6
-
-let a;
-a = 'a'; // a
-
-let $ = 1;
-let _ = 2;
-$ + _; // 3
-
-const A = 'F'; // F
-
-1/0 // Infinity
-
-//NaN
-'a'/2
-NaN + 1
-3*NaN
-'a'/2-1
-
-4 > 1 // true
-
-a // undefined
-
-typeof(1n) //bingint
+typeof(1n) // bingint
 typeof 5 // number
 typeof(5) // number
 
