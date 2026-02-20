@@ -1,5 +1,3 @@
-
-
 typeof(1n) // bingint
 typeof 5 // number
 typeof(5) // number
