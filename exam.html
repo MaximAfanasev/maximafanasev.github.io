@@ -1,127 +1,127 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>안녕하십니까</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>안녕하십니까</title>
 	<link type="image/x-icon" rel="icon" href="../../img/flag.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../css/exam.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<link rel="stylesheet" href="../css/exam.css">
 </head>
+
 <body>
-    <div class="container">
-        <div class="words-grid" id="wordsContainer">
-            <!-- Слова будут добавлены через JavaScript -->
-        </div>
+	<div class="container">
+		<div class="words-grid" id="wordsContainer">
+			<!-- Слова будут добавлены через JavaScript -->
+		</div>
 
-        <div class="controls">
-            <button class="action-btn check-all-btn" id="checkAllBtn">
-                <i class="fas fa-check-double"></i> Проверить все
-            </button>
-            <button class="action-btn reset-btn" id="resetBtn">
-                <i class="fas fa-redo"></i> Сбросить все
-            </button>
-        </div>
+		<div class="controls">
+			<button class="action-btn check-all-btn" id="checkAllBtn">
+				<i class="fas fa-check-double"></i> Проверить все
+			</button>
+			<button class="action-btn reset-btn" id="resetBtn">
+				<i class="fas fa-redo"></i> Сбросить все
+			</button>
+		</div>
 
-        <div class="stats">
-            <h3><i class="fas fa-chart-bar"></i> Ваш прогресс</h3>
-            <div class="stats-info">
-                <div class="stat-item">
-                    <div class="stat-value" id="correctCount">0</div>
-                    <div class="stat-label">Правильно</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value" id="totalCount">10</div>
-                    <div class="stat-label">Всего слов</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value" id="percentage">0%</div>
-                    <div class="stat-label">Точность</div>
-                </div>
-            </div>
-        </div>
-    </div>
+		<div class="stats">
+			<h3><i class="fas fa-chart-bar"></i> Ваш прогресс</h3>
+			<div class="stats-info">
+				<div class="stat-item">
+					<div class="stat-value" id="correctCount">0</div>
+					<div class="stat-label">Правильно</div>
+				</div>
+				<div class="stat-item">
+					<div class="stat-value" id="totalCount">10</div>
+					<div class="stat-label">Всего слов</div>
+				</div>
+				<div class="stat-item">
+					<div class="stat-value" id="percentage">0%</div>
+					<div class="stat-label">Точность</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-    <script>
-        // Массив слов для изучения
-        const words = [
-            { 
-                id: 1, 
-                russian: "Да Нэ", 
-                korean: "네", 
-            },
-            { 
-                id: 2, 
-                russian: "Нет Анийо", 
-                korean: "아니요", 
-            },
-            { 
-                id: 3, 
-                russian: "Привет Аньёнъ", 
-                korean: "안녕", 
-            },
-            { 
-                id: 4, 
-                russian: "Спасибо Камсамнида", 
-                korean: "감사합니다", 
-            },
-            { 
-                id: 5, 
-                russian: "Здравствуйте Аньёнъ Хащимникка", 
-                korean: "안녕하십니까", 
-            },
-            { 
-                id: 6, 
-                russian: "Извините Чуесонамнида", 
-                korean: "죄송합니다", 
-            },
-            { 
-                id: 7, 
-                russian: "Как Вы? Чаль Чинесойо", 
-                korean: "잘지냈어여", 
-            },
-            { 
-                id: 8, 
-                russian: "Меня зовут Чонын иеё", 
-                korean: "저는이에요", 
-            },
-            { 
-                id: 9, 
-                russian: "Умоляю Чебаль", 
-                korean: "제발", 
-            },
-            { 
-                id: 10, 
-                russian: "Пожалуйста Куэнчанэйо", 
-                korean: "괜찬아요", 
-            }
-        ];
+	<script>
+		// Массив слов для изучения
+		const words = [{
+				id: 1,
+				russian: "Да Нэ",
+				korean: "네",
+			},
+			{
+				id: 2,
+				russian: "Нет Анийо",
+				korean: "아니요",
+			},
+			{
+				id: 3,
+				russian: "Привет Аньёнъ",
+				korean: "안녕",
+			},
+			{
+				id: 4,
+				russian: "Спасибо Камсамнида",
+				korean: "감사합니다",
+			},
+			{
+				id: 5,
+				russian: "Здравствуйте Аньёнъ Хащимникка",
+				korean: "안녕하십니까",
+			},
+			{
+				id: 6,
+				russian: "Извините Чуесонамнида",
+				korean: "죄송합니다",
+			},
+			{
+				id: 7,
+				russian: "Как Вы? Чаль Чинесойо",
+				korean: "잘지냈어여",
+			},
+			{
+				id: 8,
+				russian: "Меня зовут Чонын иеё",
+				korean: "저는이에요",
+			},
+			{
+				id: 9,
+				russian: "Умоляю Чебаль",
+				korean: "제발",
+			},
+			{
+				id: 10,
+				russian: "Пожалуйста Куэнчанэйо",
+				korean: "괜찬아요",
+			}
+		];
 
-       
-        // Переменные для отслеживания состояния
-        let correctAnswers = 0;
-        const totalWords = words.length;
 
-        // DOM элементы
-        const wordsContainer = document.getElementById('wordsContainer');
-        const checkAllBtn = document.getElementById('checkAllBtn');
-        const resetBtn = document.getElementById('resetBtn');
-        const correctCountElement = document.getElementById('correctCount');
-        const totalCountElement = document.getElementById('totalCount');
-        const percentageElement = document.getElementById('percentage');
+		// Переменные для отслеживания состояния
+		let correctAnswers = 0;
+		const totalWords = words.length;
 
-        // Инициализация страницы
-        function initPage() {
-            // Обновляем счетчики
-            totalCountElement.textContent = totalWords;
-            
-            // Создаем карточки для каждого слова
-            words.forEach(word => {
-                const wordCard = document.createElement('div');
-                wordCard.className = 'word-card';
-                wordCard.id = `word-${word.id}`;
-                
-                wordCard.innerHTML = `
+		// DOM элементы
+		const wordsContainer = document.getElementById('wordsContainer');
+		const checkAllBtn = document.getElementById('checkAllBtn');
+		const resetBtn = document.getElementById('resetBtn');
+		const correctCountElement = document.getElementById('correctCount');
+		const totalCountElement = document.getElementById('totalCount');
+		const percentageElement = document.getElementById('percentage');
+
+		// Инициализация страницы
+		function initPage() {
+			// Обновляем счетчики
+			totalCountElement.textContent = totalWords;
+
+			// Создаем карточки для каждого слова
+			words.forEach(word => {
+				const wordCard = document.createElement('div');
+				wordCard.className = 'word-card';
+				wordCard.id = `word-${word.id}`;
+
+				wordCard.innerHTML = `
                     <div class="russian-word">${word.russian}</div>
                     <div class="korean-word" id="korean-${word.id}">${word.korean}</div>
                     <div class="input-container">
@@ -130,219 +130,218 @@
                     <div class="result" id="result-${word.id}"></div>
                     </div>
                 `;
-                
-                wordsContainer.appendChild(wordCard);
-                
-                // Добавляем обработчик для поля ввода (Enter для проверки)
-                const inputField = wordCard.querySelector('.input-field');
-                inputField.addEventListener('keypress', (e) => {
-                    if (e.key === 'Enter') {
-                        checkWord(word.id);
-                    }
-                });
-                
-                // Показываем подсказку при фокусе на поле ввода
-                inputField.addEventListener('focus', () => {
-                    const answerElement = document.getElementById(`correct-answer-${word.id}`);
-                    if (answerElement) {
-                        answerElement.classList.add('show-answer');
-                    }
-                });
-                
-                inputField.addEventListener('blur', () => {
-                    const answerElement = document.getElementById(`correct-answer-${word.id}`);
-                    if (answerElement) {
-                        answerElement.classList.remove('show-answer');
-                    }
-                });
-            });
-            
-            // Инициализируем скрытие корейских слов после загрузки
-            setTimeout(() => {
-                words.forEach(word => {
-                    const koreanElement = document.getElementById(`korean-${word.id}`);
-                    if (koreanElement) {
-                        koreanElement.textContent = '???';
-                    }
-                });
-            }, 100);
-            
-            // Обработчики для кнопок
-            checkAllBtn.addEventListener('click', checkAllWords);
-            resetBtn.addEventListener('click', resetAll);
-            
-            // Инициализируем статистику после создания всех элементов
-            setTimeout(() => {
-                updateStats();
-            }, 100);
-        }
 
-        // Проверка одного слова
-        function checkWord(wordId) {
-            const word = words.find(w => w.id === wordId);
-            const inputField = document.getElementById(`input-${wordId}`);
-            const resultElement = document.getElementById(`result-${wordId}`);
-            const koreanElement = document.getElementById(`korean-${wordId}`);
-            
-            if (!inputField || !resultElement || !koreanElement || !word) {
-                console.error(`Элементы для слова ${wordId} не найдены`);
-                return;
-            }
-            
-            const userAnswer = inputField.value.trim();
-            
-            // Показываем правильный ответ
-            koreanElement.textContent = word.korean;
-            koreanElement.style.color = '#4caf50';
-            
-            // Сравниваем ответы (без учета регистра и лишних пробелов)
-            const normalizedUserAnswer = userAnswer.replace(/\s+/g, ' ').toLowerCase();
-            const normalizedCorrectAnswer = word.korean.replace(/\s+/g, ' ').toLowerCase();
-            
-            if (normalizedUserAnswer === normalizedCorrectAnswer && userAnswer !== '') {
-                resultElement.className = "result correct";
-                inputField.style.borderColor = "#4caf50";
-                inputField.style.backgroundColor = "rgba(76, 175, 80, 0.1)";
-            } else {
-                resultElement.className = "result incorrect";
-                inputField.style.borderColor = "#f44336";
-                inputField.style.backgroundColor = "rgba(244, 67, 54, 0.1)";
-            }
-            
-            // Обновляем статистику
-            updateStats();
-        }
+				wordsContainer.appendChild(wordCard);
 
-        // Проверка всех слов
-        function checkAllWords() {
-            words.forEach(word => checkWord(word.id));
-        }
+				// Добавляем обработчик для поля ввода (Enter для проверки)
+				const inputField = wordCard.querySelector('.input-field');
+				inputField.addEventListener('keypress', (e) => {
+					if (e.key === 'Enter') {
+						checkWord(word.id);
+					}
+				});
 
-        // Сброс всех полей
-        function resetAll() {
-            words.forEach(word => {
-                const inputField = document.getElementById(`input-${word.id}`);
-                const resultElement = document.getElementById(`result-${word.id}`);
-                const koreanElement = document.getElementById(`korean-${word.id}`);
-                
-                if (inputField) {
-                    inputField.value = "";
-                    inputField.style.borderColor = "#444";
-                    inputField.style.backgroundColor = "#2d2d2d";
-                }
-                
-                if (resultElement) {
-                    resultElement.style.display = "none";
-                }
-                
-                if (koreanElement) {
-                    koreanElement.textContent = '???';
-                    koreanElement.style.color = '#ff9800';
-                }
-            });
-            
-            // Сброс статистики
-            correctAnswers = 0;
-            updateStats();
-            
-            // Показать сообщение о сбросе
-            showToast('Все поля сброшены!', 'info');
-        }
+				// Показываем подсказку при фокусе на поле ввода
+				inputField.addEventListener('focus', () => {
+					const answerElement = document.getElementById(`correct-answer-${word.id}`);
+					if (answerElement) {
+						answerElement.classList.add('show-answer');
+					}
+				});
 
-        // Обновление статистики
-        function updateStats() {
-            // Подсчитываем правильные ответы
-            correctAnswers = 0;
-            words.forEach(word => {
-                const inputField = document.getElementById(`input-${word.id}`);
-                
-                // Проверяем, существует ли поле ввода
-                if (!inputField) {
-                    console.warn(`Поле ввода для слова ${word.id} не найдено`);
-                    return;
-                }
-                
-                const userAnswer = inputField.value.trim();
-                const normalizedUserAnswer = userAnswer.replace(/\s+/g, ' ').toLowerCase();
-                const normalizedCorrectAnswer = word.korean.replace(/\s+/g, ' ').toLowerCase();
-                
-                if (normalizedUserAnswer === normalizedCorrectAnswer && userAnswer !== "") {
-                    correctAnswers++;
-                }
-            });
-            
-            // Обновляем элементы статистики
-            if (correctCountElement) {
-                correctCountElement.textContent = correctAnswers;
-            }
-            
-            if (totalCountElement) {
-                totalCountElement.textContent = totalWords;
-            }
-            
-            // Вычисляем процент правильных ответов
-            const percentage = totalWords > 0 ? Math.round((correctAnswers / totalWords) * 100) : 0;
-            
-            if (percentageElement) {
-                percentageElement.textContent = `${percentage}%`;
-                
-                // Меняем цвет процента в зависимости от результата
-                if (percentage === 100) {
-                    percentageElement.style.color = "#4caf50";
-                    if (correctAnswers === totalWords) {
-                        showToast('Отлично! Все ответы правильные! 🎉', 'success');
-                    }
-                } else if (percentage >= 70) {
-                    percentageElement.style.color = "#ff9800";
-                } else if (percentage >= 40) {
-                    percentageElement.style.color = "#ff9800";
-                } else {
-                    percentageElement.style.color = "#f44336";
-                }
-            }
-        }
+				inputField.addEventListener('blur', () => {
+					const answerElement = document.getElementById(`correct-answer-${word.id}`);
+					if (answerElement) {
+						answerElement.classList.remove('show-answer');
+					}
+				});
+			});
 
-        // Функция для показа уведомлений
-        function showToast(message, type) {
-            // Создаем элемент тоста
-            const toast = document.createElement('div');
-            toast.textContent = message;
-            toast.style.position = 'fixed';
-            toast.style.bottom = '20px';
-            toast.style.right = '20px';
-            toast.style.padding = '12px 20px';
-            toast.style.borderRadius = '8px';
-            toast.style.color = '#fff';
-            toast.style.fontWeight = 'bold';
-            toast.style.zIndex = '1000';
-            toast.style.boxShadow = '0 4px 12px rgba(0,0,0,0.3)';
-            toast.style.animation = 'fadeIn 0.3s, fadeOut 0.3s 2.7s';
-            
-            if (type === 'success') {
-                toast.style.backgroundColor = '#4caf50';
-            } else if (type === 'error') {
-                toast.style.backgroundColor = '#f44336';
-            } else {
-                toast.style.backgroundColor = '#2196f3';
-            }
-            
-            document.body.appendChild(toast);
-            
-            // Удаляем тост через 3 секунды
-            setTimeout(() => {
-                if (toast.parentNode) {
-                    toast.parentNode.removeChild(toast);
-                }
-            }, 3000);
-        }
+			// Инициализируем скрытие корейских слов после загрузки
+			setTimeout(() => {
+				words.forEach(word => {
+					const koreanElement = document.getElementById(`korean-${word.id}`);
+					if (koreanElement) {
+						koreanElement.textContent = '*';
+					}
+				});
+			}, 100);
 
-        // Инициализируем страницу после полной загрузки DOM
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initPage);
-        } else {
-            // DOM уже загружен
-            initPage();
-        }
-    </script>
-</body>
-</html>
+			// Обработчики для кнопок
+			checkAllBtn.addEventListener('click', checkAllWords);
+			resetBtn.addEventListener('click', resetAll);
+
+			// Инициализируем статистику после создания всех элементов
+			setTimeout(() => {
+				updateStats();
+			}, 100);
+		}
+
+		// Проверка одного слова
+		function checkWord(wordId) {
+			const word = words.find(w => w.id === wordId);
+			const inputField = document.getElementById(`input-${wordId}`);
+			const resultElement = document.getElementById(`result-${wordId}`);
+			const koreanElement = document.getElementById(`korean-${wordId}`);
+
+			if (!inputField || !resultElement || !koreanElement || !word) {
+				console.error(`Элементы для слова ${wordId} не найдены`);
+				return;
+			}
+
+			const userAnswer = inputField.value.trim();
+
+			// Показываем правильный ответ
+			koreanElement.textContent = word.korean;
+			koreanElement.style.color = '#4caf50';
+
+			// Сравниваем ответы (без учета регистра и лишних пробелов)
+			const normalizedUserAnswer = userAnswer.replace(/\s+/g, ' ').toLowerCase();
+			const normalizedCorrectAnswer = word.korean.replace(/\s+/g, ' ').toLowerCase();
+
+			if (normalizedUserAnswer === normalizedCorrectAnswer && userAnswer !== '') {
+				resultElement.className = "result correct";
+				inputField.style.borderColor = "#4caf50";
+				inputField.style.backgroundColor = "rgba(76, 175, 80, 0.1)";
+			} else {
+				resultElement.className = "result incorrect";
+				inputField.style.borderColor = "#f44336";
+				inputField.style.backgroundColor = "rgba(244, 67, 54, 0.1)";
+			}
+
+			// Обновляем статистику
+			updateStats();
+		}
+
+		// Проверка всех слов
+		function checkAllWords() {
+			words.forEach(word => checkWord(word.id));
+		}
+
+		// Сброс всех полей
+		function resetAll() {
+			words.forEach(word => {
+				const inputField = document.getElementById(`input-${word.id}`);
+				const resultElement = document.getElementById(`result-${word.id}`);
+				const koreanElement = document.getElementById(`korean-${word.id}`);
+
+				if (inputField) {
+					inputField.value = "";
+					inputField.style.borderColor = "#444";
+					inputField.style.backgroundColor = "#2d2d2d";
+				}
+
+				if (resultElement) {
+					resultElement.style.display = "none";
+				}
+
+				if (koreanElement) {
+					koreanElement.textContent = '???';
+					koreanElement.style.color = '#ff9800';
+				}
+			});
+
+			// Сброс статистики
+			correctAnswers = 0;
+			updateStats();
+
+			// Показать сообщение о сбросе
+			showToast('Все поля сброшены!', 'info');
+		}
+
+		// Обновление статистики
+		function updateStats() {
+			// Подсчитываем правильные ответы
+			correctAnswers = 0;
+			words.forEach(word => {
+				const inputField = document.getElementById(`input-${word.id}`);
+
+				// Проверяем, существует ли поле ввода
+				if (!inputField) {
+					console.warn(`Поле ввода для слова ${word.id} не найдено`);
+					return;
+				}
+
+				const userAnswer = inputField.value.trim();
+				const normalizedUserAnswer = userAnswer.replace(/\s+/g, ' ').toLowerCase();
+				const normalizedCorrectAnswer = word.korean.replace(/\s+/g, ' ').toLowerCase();
+
+				if (normalizedUserAnswer === normalizedCorrectAnswer && userAnswer !== "") {
+					correctAnswers++;
+				}
+			});
+
+			// Обновляем элементы статистики
+			if (correctCountElement) {
+				correctCountElement.textContent = correctAnswers;
+			}
+
+			if (totalCountElement) {
+				totalCountElement.textContent = totalWords;
+			}
+
+			// Вычисляем процент правильных ответов
+			const percentage = totalWords > 0 ? Math.round((correctAnswers / totalWords) * 100) : 0;
+
+			if (percentageElement) {
+				percentageElement.textContent = `${percentage}%`;
+
+				// Меняем цвет процента в зависимости от результата
+				if (percentage === 100) {
+					percentageElement.style.color = "#4caf50";
+					if (correctAnswers === totalWords) {
+						showToast('Отлично! Все ответы правильные! 🎉', 'success');
+					}
+				} else if (percentage >= 70) {
+					percentageElement.style.color = "#ff9800";
+				} else if (percentage >= 40) {
+					percentageElement.style.color = "#ff9800";
+				} else {
+					percentageElement.style.color = "#f44336";
+				}
+			}
+		}
+
+		// Функция для показа уведомлений
+		function showToast(message, type) {
+			// Создаем элемент тоста
+			const toast = document.createElement('div');
+			toast.textContent = message;
+			toast.style.position = 'fixed';
+			toast.style.bottom = '20px';
+			toast.style.right = '20px';
+			toast.style.padding = '12px 20px';
+			toast.style.borderRadius = '8px';
+			toast.style.color = '#fff';
+			toast.style.fontWeight = 'bold';
+			toast.style.zIndex = '1000';
+			toast.style.boxShadow = '0 4px 12px rgba(0,0,0,0.3)';
+			toast.style.animation = 'fadeIn 0.3s, fadeOut 0.3s 2.7s';
+
+			if (type === 'success') {
+				toast.style.backgroundColor = '#4caf50';
+			} else if (type === 'error') {
+				toast.style.backgroundColor = '#f44336';
+			} else {
+				toast.style.backgroundColor = '#2196f3';
+			}
+
+			document.body.appendChild(toast);
+
+			// Удаляем тост через 3 секунды
+			setTimeout(() => {
+				if (toast.parentNode) {
+					toast.parentNode.removeChild(toast);
+				}
+			}, 3000);
+		}
+
+		// Инициализируем страницу после полной загрузки DOM
+		if (document.readyState === 'loading') {
+			document.addEventListener('DOMContentLoaded', initPage);
+		} else {
+			// DOM уже загружен
+			initPage();
+		}
+	</script>
+</body></html>
