@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Учим цвета с дочкой</title>
+    <style>
+        /* Стили для красивого оформления */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff; /* Светлый фон */
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        p {
+            color: #555;
+            font-size: 1.2em;
+        }
+        .container {
+            display: flex;          /* Выстраиваем карточки в ряд */
+            flex-wrap: wrap;        /* Если не влезут, переносим на новую строку */
+            justify-content: center; /* Выравниваем по центру */
+            gap: 25px;              /* Отступы между карточками */
+            max-width: 1000px;
+            margin: 30px auto;
+        }
+        .color-card {
+            background-color: white;
+            border: 3px solid #ddd;
+            border-radius: 15px;    /* Скругленные углы */
+            padding: 20px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1); /* Тень */
+            cursor: pointer;         /* Меняем курсор на "пальчик", как на кнопке */
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+            width: 180px;            /* Фиксированная ширина карточки */
+        }
+        .color-card:hover {
+            transform: scale(1.05);  /* Немного увеличиваем при наведении */
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            border-color: #ffb6c1;   /* Меняем цвет рамки при наведении (нежный розовый) */
+        }
+        .color-card img {
+            width: 150px;            /* Ширина картинки */
+            height: 150px;           /* Высота картинки */
+            object-fit: cover;       /* Картинка красиво впишется в квадрат, не искажаясь */
+            border-radius: 10px;
+            border: 2px solid #eee;
+            background-color: #fafafa; /* Фон на случай, если картинка не загрузится */
+        }
+        /* Если картинка не загрузится, покажем хотя бы цветной фон */
+        .color-card.red  { background-color: red; }
+        .color-card.yellow { background-color: yellow; }
+        .color-card { background-color: #fff; }
+
+
+        .color-name {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #333;
+            text-transform: uppercase; /* Название цвета заглавными */
+            letter-spacing: 1px;
+        }
+        footer {
+            margin-top: 40px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🌸 САША 🌸</h1>
+
+    <div class="container">
+        <div class="color-card red" onclick="playSound('red')">
+            <div class="color-name">Красный</div>
+        </div>
+
+        <div class="color-card yellow" onclick="playSound('yellow')">
+            <div class="color-name">Желтый</div>
+        </div>
+
+        <div class="color-card horosho" onclick="playSound('horosho')">
+            <div class="color-name">Хорошо</div>
+        </div>
+
+        <div class="color-card ydobno" onclick="playSound('ydobno')">
+            <div class="color-name">Удобно</div>
+        </div>
+    </div>
+
+    <script>
+        // Эта функция будет проигрывать MP3 файл, когда мы нажимаем на карточку.
+        function playSound(color) {
+            // Создаем новый объект Audio для каждого нажатия.
+            // Это позволяет звукам не накладываться друг на друга, а начинаться заново.
+            
+            let audio = null;
+
+            // Определяем, какой MP3 файл нужно проиграть, в зависимости от нажатого цвета.
+            // ВАЖНО: замените 'red.mp3', 'blue.mp3' и т.д. на свои реальные имена файлов!
+            if (color === 'red') {
+                audio = new Audio('red.mp3');
+            } else if (color === 'yellow') {
+                audio = new Audio('yellow.mp3');
+            } else if (color === 'horosho') {
+                audio = new Audio('horosho.mp3');
+            } else if (color === 'ydobno') {
+                audio = new Audio('ydobno.mp3');
+            } else {
+                console.log("Неизвестный цвет");
+                return; // Если цвет не найден, выходим из функции
+            }
+
+            // Добавляем небольшую хитрость: иногда браузеры блокируют авто-воспроизведение,
+            // но по нажатию на элемент это всегда работает. Этого кода достаточно.
+            audio.play().catch(error => {
+                // Если произошла ошибка (например, файл не найден), покажем предупреждение.
+                console.error("Ошибка воспроизведения:", error);
+                alert("Не удалось воспроизвести файл. Проверьте, лежит ли файл '"+ color + ".mp3' в нужной папке.");
+            });
+        }
+
+        // Небольшое пояснение для родителей:
+        console.log("Сайт работает! Если звук не играет, проверьте имена файлов MP3 в папке и в коде (внутри функции playSound).");
+    </script>
+
+</body>
+</html>
