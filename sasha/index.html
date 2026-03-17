@@ -92,6 +92,18 @@
         <div class="color-card ydobno" onclick="playSound('ydobno')">
             <div class="color-name">Удобно</div>
         </div>
+
+        <div class="color-card ydobno" onclick="playSound('yes')">
+            <div class="color-name">Да</div>
+        </div>
+
+        <div class="color-card ydobno" onclick="playSound('tort')">
+            <div class="color-name">🎂</div>
+        </div>
+
+        <div class="color-card ydobno" onclick="playSound('name')">
+            <div class="color-name">Саша</div>
+        </div>
     </div>
 
     <script>
@@ -112,6 +124,12 @@
                 audio = new Audio('horosho.mp3');
             } else if (color === 'ydobno') {
                 audio = new Audio('ydobno.mp3');
+            } else if (color === 'yes') {
+                audio = new Audio('yes.mp3');
+            } else if (color === 'tort') {
+                audio = new Audio('tort.mp3');
+            } else if (color === 'name') {
+                audio = new Audio('name.mp3');
             } else {
                 console.log("Неизвестный цвет");
                 return; // Если цвет не найден, выходим из функции
