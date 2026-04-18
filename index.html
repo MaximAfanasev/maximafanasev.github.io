@@ -1,501 +1,77 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <link type="image/x-icon" rel="icon" href="img/flag.png">
-    <title>Maxim Afanasev | Слайдер Голубики</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link type="image/x-icon" rel="icon" href="img/flag.png">
+	<title>Maxim Afanasev</title>
+	<style>
+		:root {
+			--primary: #00ff9d;
+			--secondary: #00b8ff;
+			--accent: #ff00aa;
+			--bg: #0a0a14;
+			--text: #e0e0ff;
+			--panel: rgba(10, 20, 30, 0.8);
+			--glow: 0 0 10px var(--primary);
+		}
 
-        :root {
-            --primary: #00ff9d;
-            --secondary: #00b8ff;
-            --accent: #ff00aa;
-            --bg: #0a0a14;
-            --text: #e0e0ff;
-            --panel: rgba(10, 20, 30, 0.75);
-            --glow: 0 0 12px var(--primary);
-            --glass-border: rgba(0, 255, 157, 0.25);
-        }
+		@font-face {
+			font-family: 'Cyber';
+			font-weight: normal;
+			font-style: normal;
+		}
 
-        @font-face {
-            font-family: 'Cyber';
-            src: local('Courier New'), monospace;
-            font-weight: normal;
-            font-style: normal;
-        }
-
-        body {
-            font-family: 'Courier New', 'Fira Code', monospace;
-            background-color: var(--bg);
-            color: var(--text);
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            overflow-x: hidden;
-            line-height: 1.6;
-            padding: 20px;
-            background-image:
-                radial-gradient(circle at 15% 30%, rgba(0, 255, 157, 0.08) 0%, transparent 35%),
-                radial-gradient(circle at 85% 70%, rgba(0, 184, 255, 0.07) 0%, transparent 40%),
-                repeating-linear-gradient(45deg, rgba(0, 255, 157, 0.02) 0px, rgba(0, 255, 157, 0.02) 2px, transparent 2px, transparent 8px);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* основной контейнер слайдера */
-        .slider-container {
-            width: 100%;
-            max-width: 800px;
-            margin: 30px auto;
-            background: rgba(5, 10, 18, 0.65);
-            backdrop-filter: blur(8px);
-            border-radius: 42px;
-            padding: 25px 20px 30px;
-            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.5), 0 0 0 1px var(--glass-border), var(--glow);
-            transition: box-shadow 0.3s ease;
-            border: 1px solid rgba(0, 255, 157, 0.3);
-        }
-
-        .slider-container:hover {
-            box-shadow: 0 25px 40px rgba(0, 0, 0, 0.6), 0 0 0 1px var(--primary), 0 0 18px var(--primary);
-        }
-
-        /* окно просмотра */
-        .slider-viewport {
-            position: relative;
-            width: 100%;
-            border-radius: 28px;
-            overflow: hidden;
-            background: #01010c;
-            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.6), 0 8px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .slider-track {
-            display: flex;
-            transition: transform 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-            will-change: transform;
-        }
-
-        .slide {
-            flex: 0 0 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 10px 0;
-        }
-
-        .slide img {
-            width: 90%;
-            max-width: 550px;
-            height: auto;
-            max-height: 450px;
-            object-fit: cover;
-            border-radius: 24px;
-            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(0, 255, 157, 0.3);
-            transition: all 0.3s ease;
-            display: block;
-            margin: 0 auto;
-            background: #0f121f;
-        }
-
-        .slide img:hover {
-            transform: scale(1.01);
-            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.6), 0 0 0 2px var(--primary);
-        }
-
-        /* панель навигации */
-        .slider-controls {
-            display: flex;
-            justify-content: center;
-            gap: 35px;
-            margin-top: 35px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        /* стили для кнопок в стиле киберпанк/неон */
-        .nav-btn {
-            background: rgba(0, 15, 25, 0.75);
-            backdrop-filter: blur(8px);
-            border: 1.5px solid var(--primary);
-            color: var(--primary);
-            font-size: 1.9rem;
-            font-weight: bold;
-            width: 70px;
-            height: 70px;
-            border-radius: 60px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            font-family: monospace;
-            letter-spacing: 2px;
-            box-shadow: 0 0 6px rgba(0, 255, 157, 0.3);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background-color: rgba(0, 20, 30, 0.8);
-        }
-
-        .nav-btn:hover {
-            background: var(--primary);
-            color: #0a0a14;
-            box-shadow: 0 0 18px var(--primary);
-            transform: scale(1.05);
-            border-color: white;
-        }
-
-        .nav-btn:active {
-            transform: scale(0.96);
-        }
-
-        /* индикаторы (dots) */
-        .dots-panel {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-            background: rgba(0, 0, 0, 0.45);
-            backdrop-filter: blur(4px);
-            padding: 8px 22px;
-            border-radius: 60px;
-            border: 1px solid rgba(0, 255, 157, 0.4);
-        }
-
-        .dot {
-            width: 14px;
-            height: 14px;
-            background-color: rgba(224, 224, 255, 0.4);
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.25s ease;
-            border: none;
-            padding: 0;
-            box-shadow: 0 0 2px rgba(0, 255, 157, 0.4);
-        }
-
-        .dot.active {
-            background-color: var(--primary);
-            box-shadow: 0 0 12px var(--primary);
-            width: 18px;
-            height: 18px;
-            transform: scale(1.1);
-            border: 1px solid rgba(255,255,200,0.7);
-        }
-
-        .dot:hover {
-            background-color: var(--secondary);
-            transform: scale(1.2);
-            box-shadow: 0 0 8px var(--secondary);
-        }
-
-        /* заголовок и текстовый акцент */
-        h1 {
-            font-size: 3.2rem;
-            text-align: center;
-            font-family: 'Courier New', monospace;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 0 8px rgba(0, 255, 157, 0.3);
-            margin-bottom: 0.25rem;
-            margin-top: 0.5rem;
-        }
-
-        .sub {
-            text-align: center;
-            color: var(--primary);
-            font-size: 0.9rem;
-            opacity: 0.9;
-            border-bottom: 1px dashed rgba(0, 255, 157, 0.4);
-            display: inline-block;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
-        }
-
-        footer {
-            margin-top: 30px;
-            font-size: 0.8rem;
-            text-align: center;
-            opacity: 0.6;
-            font-family: monospace;
-        }
-
-        /* адаптивность */
-        @media (max-width: 650px) {
-            body {
-                padding: 15px;
-            }
-            .nav-btn {
-                width: 55px;
-                height: 55px;
-                font-size: 1.5rem;
-            }
-            .slider-container {
-                padding: 18px 12px 22px;
-            }
-            .dots-panel {
-                gap: 12px;
-                padding: 6px 16px;
-            }
-            h1 {
-                font-size: 2.3rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .slide img {
-                width: 95%;
-                max-height: 320px;
-            }
-            .nav-btn {
-                width: 50px;
-                height: 50px;
-                font-size: 1.3rem;
-            }
-        }
-
-        /* доп. эффект для красоты */
-        .slider-container::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, var(--primary), transparent, var(--secondary));
-            border-radius: 44px;
-            z-index: -1;
-            opacity: 0.2;
-            pointer-events: none;
-        }
-        .slider-container {
-            position: relative;
-        }
-    </style>
+		body {
+			font-family: 'Courier New', monospace;
+			background-color: var(--bg);
+			color: var(--text);
+			margin: 0;
+			padding: 0;
+			min-height: 100vh;
+			overflow-x: hidden;
+			line-height: 1.6;
+			padding: 20px;
+			background-image:
+				radial-gradient(circle at 15% 30%, rgba(0, 255, 157, 0.08) 0%, transparent 35%),
+				radial-gradient(circle at 85% 70%, rgba(0, 184, 255, 0.07) 0%, transparent 40%),
+				repeating-linear-gradient(45deg, rgba(0, 255, 157, 0.02) 0px, rgba(0, 255, 157, 0.02) 2px, transparent 2px, transparent 8px);
+			font-size: 20px;
+		}
+		.wrap {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			gap: 20px;
+			
+		}
+		a {
+			color: gold;
+			display: flex;
+			flex-direction: column;
+			gap: 20px;
+			border: 1px solid gray;
+			width: fit-content;
+			padding: 20px;
+			border-radius: 20px;
+			text-decoration: none;
+			font-size: 30px;
+			max-width: 200px;
+		}
+		
+		img {
+			border-radius: 10px;
+		}
+	</style>
 </head>
+
 <body>
-
-<h1>ГОЛУБИКА</h1>
-<div style="text-align: center; margin-bottom: 5px;">
-<h2>Харди Блю</h2>
-</div>
-
-<div class="slider-container">
-    <div class="slider-viewport">
-        <div class="slider-track" id="sliderTrack">
-            <!-- 3 картинки с исходными путями, которые вы указали: hardiblue/1.png, hardiblue/2.jpg, hardiblue/3.jpg -->
-            <div class="slide"><img src="hardiblue/1.png" alt="Голубика 1" loading="eager"></div>
-            <div class="slide"><img src="hardiblue/2.jpg" alt="Голубика 2" loading="eager"></div>
-            <div class="slide"><img src="hardiblue/3.jpg" alt="Голубика 3" loading="eager"></div>
-        </div>
-    </div>
-
-    <div class="slider-controls">
-        <button class="nav-btn" id="prevBtn" aria-label="Предыдущий слайд">◀</button>
-        <div class="dots-panel" id="dotsContainer"></div>
-        <button class="nav-btn" id="nextBtn" aria-label="Следующий слайд">▶</button>
-    </div>
-</div>
-
-<p>Созревание 5 августа</p>
-<p>Урожай до 9кг</p>
-<p>Высота 2 метра</p>
-
-<script>
-    (function() {
-        // -------- НАСТРОЙКИ СЛАЙДЕРА ----------
-        const track = document.getElementById('sliderTrack');
-        const prevButton = document.getElementById('prevBtn');
-        const nextButton = document.getElementById('nextBtn');
-        const dotsContainer = document.getElementById('dotsContainer');
-        
-        // количество слайдов (строго 3 картинки, но код гибкий)
-        const slides = Array.from(document.querySelectorAll('.slide'));
-        const totalSlides = slides.length;  // = 3
-        
-        if (totalSlides === 0) return;
-        
-        let currentIndex = 0;          // индекс текущего активного слайда (0-based)
-        let isTransitioning = false;    // блокировка спама кнопками во время анимации
-        let autoTimer = null;            // (опционально) для автопрокрутки, но по ТЗ не нужно, оставим без авто, но можно при желании
-        // но чтобы не мешать, никакой автосмены. только кнопки и точки
-        
-        // Функция обновления позиции слайдера
-        function updateSlider(instant = false) {
-            if (!track) return;
-            const slideWidth = 100; // проценты, каждый слайд 100% ширины контейнера
-            const newTranslate = -currentIndex * slideWidth;
-            
-            if (instant) {
-                track.style.transition = 'none';
-                track.style.transform = `translateX(${newTranslate}%)`;
-                // форсируем перерисовку, чтобы transition не вернулся
-                void track.offsetHeight; // reflow
-                track.style.transition = 'transform 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1)';
-            } else {
-                track.style.transform = `translateX(${newTranslate}%)`;
-            }
-            
-            // обновляем активные точки
-            updateDotsActive();
-        }
-        
-        // обновить состояние точек
-        function updateDotsActive() {
-            const dots = document.querySelectorAll('.dot');
-            dots.forEach((dot, idx) => {
-                if (idx === currentIndex) {
-                    dot.classList.add('active');
-                } else {
-                    dot.classList.remove('active');
-                }
-            });
-        }
-        
-        // переход к слайду по индексу с блокировкой на время анимации
-        function goToSlide(index, fromAuto = false) {
-            if (isTransitioning) return false;
-            if (index < 0) index = 0;
-            if (index >= totalSlides) index = totalSlides - 1;
-            if (index === currentIndex) return false;
-            
-            isTransitioning = true;
-            currentIndex = index;
-            updateSlider(false);
-            
-            // разблокируем после завершения анимации (0.5s)
-            setTimeout(() => {
-                isTransitioning = false;
-            }, 520);
-            return true;
-        }
-        
-        // следующий слайд
-        function nextSlide() {
-            if (isTransitioning) return;
-            let newIndex = currentIndex + 1;
-            if (newIndex >= totalSlides) {
-                // эффект "зацикливания" — можно и без зацикливания, но кнопки могут быть заблокированы на последней.
-                // по желанию: либо остановка, либо зациклить. Я сделаю приятный loop (бесконечная карусель) с переходом к первому
-                newIndex = 0;
-            }
-            goToSlide(newIndex);
-        }
-        
-        // предыдущий слайд
-        function prevSlide() {
-            if (isTransitioning) return;
-            let newIndex = currentIndex - 1;
-            if (newIndex < 0) {
-                newIndex = totalSlides - 1;   // зацикливание
-            }
-            goToSlide(newIndex);
-        }
-        
-        // создать точки-индикаторы
-        function generateDots() {
-            if (!dotsContainer) return;
-            dotsContainer.innerHTML = '';
-            for (let i = 0; i < totalSlides; i++) {
-                const dot = document.createElement('button');
-                dot.classList.add('dot');
-                if (i === currentIndex) dot.classList.add('active');
-                dot.setAttribute('data-index', i);
-                dot.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    if (isTransitioning) return;
-                    const targetIdx = parseInt(dot.getAttribute('data-index'), 10);
-                    if (!isNaN(targetIdx) && targetIdx !== currentIndex) {
-                        goToSlide(targetIdx);
-                    }
-                });
-                dotsContainer.appendChild(dot);
-            }
-        }
-        
-        // Обработчики кнопок с блокировкой частых нажатий
-        function attachEvents() {
-            if (prevButton) {
-                prevButton.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    prevSlide();
-                });
-            }
-            if (nextButton) {
-                nextButton.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    nextSlide();
-                });
-            }
-            
-            // Добавим поддержку клавиатуры (стрелки влево/вправо) — приятный бонус
-            window.addEventListener('keydown', (e) => {
-                if (e.key === 'ArrowLeft') {
-                    e.preventDefault();
-                    prevSlide();
-                } else if (e.key === 'ArrowRight') {
-                    e.preventDefault();
-                    nextSlide();
-                }
-            });
-        }
-        
-        // Проверка загрузки изображений (чтобы не было дёрганий, но не критично)
-        function preloadImages() {
-            // простая загрузка для предотвращения багов, если пути не найдены - но слайдер всё равно работает
-            const images = document.querySelectorAll('.slide img');
-            images.forEach(img => {
-                if (!img.complete) {
-                    img.style.opacity = '0.9';
-                    img.onload = () => { img.style.opacity = '1'; };
-                } else {
-                    img.style.opacity = '1';
-                }
-            });
-        }
-        
-        // инициализация
-        function initSlider() {
-            generateDots();
-            attachEvents();
-            // устанавливаем начальное положение без анимации
-            track.style.transition = 'transform 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1)';
-            currentIndex = 0;
-            updateSlider(true); // моментально ставим первый слайд
-            preloadImages();
-            
-            // Дополнительная проверка: если изображения не загрузились, но это не сломает интерфейс.
-            // При ошибке загрузки картинки - покажется стандартный значок, но слайдер продолжит работу
-            // и пользователь может листать.
-        }
-        
-        // также обработаем ресайз, чтобы позиция не сбилась (но при изменении размера окна transform остается корректен)
-        window.addEventListener('resize', () => {
-            if (!isTransitioning) {
-                // просто синхронизируем позицию — transform в процентах не сбивается, но чтобы быть уверенными, принудительно обновим без анимации?
-                // сброс transition на мгновение и возврат (необязательно, но для идеала)
-                if (track) {
-                    const currentTransform = `translateX(-${currentIndex * 100}%)`;
-                    track.style.transition = 'none';
-                    track.style.transform = currentTransform;
-                    void track.offsetHeight;
-                    track.style.transition = 'transform 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1)';
-                }
-            }
-        });
-        
-        // запуск
-        initSlider();
-    })();
-</script>
-</body>
-</html>
+	<h1>Голубика</h1>
+	
+	<div class="wrap">
+	<a href="hardiblue/index.html">Харди Блю <img src="hardiblue/1.png" alt="" width="200px"></a>
+	
+	<a href="erliblue/index.html">Ерли Блю <img src="erliblue/1.jpg" alt="" width="200px"></a>
+	</div>
+</body></html>
