@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link type="image/x-icon" rel="icon" href="img/flag.png">
+	<title>Голубика</title>
+	<style>
+		:root {
+			--primary: #00ff9d;
+			--secondary: #00b8ff;
+			--accent: #ff00aa;
+			--bg: #0a0a14;
+			--text: #e0e0ff;
+			--panel: rgba(10, 20, 30, 0.8);
+			--glow: 0 0 10px var(--primary);
+		}
+
+		@font-face {
+			font-family: 'Cyber';
+			font-weight: normal;
+			font-style: normal;
+		}
+
+		body {
+			font-family: 'Courier New', monospace;
+			background-color: var(--bg);
+			color: var(--text);
+			margin: 0 auto;
+			max-width: 500px;
+			padding: 0;
+			line-height: 1.6;
+			padding: 20px;
+			background-image:
+				radial-gradient(circle at 15% 30%, rgba(0, 255, 157, 0.08) 0%, transparent 35%),
+				radial-gradient(circle at 85% 70%, rgba(0, 184, 255, 0.07) 0%, transparent 40%),
+				repeating-linear-gradient(45deg, rgba(0, 255, 157, 0.02) 0px, rgba(0, 255, 157, 0.02) 2px, transparent 2px, transparent 8px);
+			font-size: 20px;
+		}
+		
+		img {
+			border-radius: 20px;
+			margin: 0 auto;
+			width: 100%;
+			max-width: 500px;
+			margin-bottom: 20px;
+			cursor: pointer;
+			transition: transform 0.3s ease, opacity 0.3s ease;
+		}
+		
+		img:hover {
+			transform: scale(1.02);
+			opacity: 0.9;
+		}
+		
+		p {
+			max-width: 500px;
+		}
+		
+		h1 {
+			max-width: 500px;
+		}
+		
+		/* Стили для модального окна на весь экран */
+		.fullscreen-modal {
+			display: none;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.95);
+			z-index: 9999;
+			cursor: pointer;
+			justify-content: center;
+			align-items: center;
+			backdrop-filter: blur(5px);
+		}
+		
+		.fullscreen-modal img {
+			max-width: 90%;
+			max-height: 90%;
+			width: auto;
+			height: auto;
+			object-fit: contain;
+			border-radius: 10px;
+			margin: 0;
+			box-shadow: 0 0 30px rgba(0, 255, 157, 0.3);
+		}
+		
+		.fullscreen-modal.show {
+			display: flex;
+			animation: fadeIn 0.3s ease;
+		}
+		
+		@keyframes fadeIn {
+			from {
+				opacity: 0;
+			}
+			to {
+				opacity: 1;
+			}
+		}
+		
+		.close-hint {
+			position: absolute;
+			bottom: 30px;
+			left: 50%;
+			transform: translateX(-50%);
+			color: white;
+			background: rgba(0,0,0,0.7);
+			padding: 8px 16px;
+			border-radius: 20px;
+			font-size: 14px;
+			font-family: 'Courier New', monospace;
+			pointer-events: none;
+			z-index: 10000;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Спартан</h1>
+	<p>Созревание 20 июля</p>
+	<p>Урожай до 8кг</p>
+	<p>Высота 2 метра</p>
+	<img src="1.jpg" alt="Харди Блю фото 1">
+	<img src="2.jpg" alt="Харди Блю фото 2">
+	<img src="3.jpg" alt="Харди Блю фото 3">
+
+	<!-- Модальное окно для полноэкранного просмотра -->
+	<div id="fullscreenModal" class="fullscreen-modal">
+		<img id="fullscreenImage" src="" alt="Полноэкранное изображение">
+		<div class="close-hint">Нажмите в любом месте, чтобы закрыть</div>
+	</div>
+
+	<script>
+		// Получаем все изображения на странице
+		const images = document.querySelectorAll('img');
+		const modal = document.getElementById('fullscreenModal');
+		const fullscreenImg = document.getElementById('fullscreenImage');
+		
+		// Добавляем обработчик клика на каждое изображение
+		images.forEach(img => {
+			img.addEventListener('click', function(e) {
+				e.stopPropagation(); // Предотвращаем всплытие события
+				fullscreenImg.src = this.src; // Устанавливаем src полноэкранного изображения
+				fullscreenImg.alt = this.alt; // Копируем alt текст
+				modal.classList.add('show'); // Показываем модальное окно
+				document.body.style.overflow = 'hidden'; // Блокируем прокрутку страницы
+			});
+		});
+		
+		// Закрываем модальное окно при клике на фон
+		modal.addEventListener('click', function() {
+			modal.classList.remove('show');
+			document.body.style.overflow = ''; // Восстанавливаем прокрутку
+			setTimeout(() => {
+				fullscreenImg.src = ''; // Очищаем src после закрытия
+			}, 300);
+		});
+		
+		// Закрытие по клавише Escape
+		document.addEventListener('keydown', function(e) {
+			if (e.key === 'Escape' && modal.classList.contains('show')) {
+				modal.classList.remove('show');
+				document.body.style.overflow = '';
+				setTimeout(() => {
+					fullscreenImg.src = '';
+				}, 300);
+			}
+		});
+	</script>
+</body>
+
+</html>
