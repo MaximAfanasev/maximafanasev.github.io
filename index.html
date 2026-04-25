@@ -63,13 +63,33 @@
 		img {
 			border-radius: 10px;
 		}
+		
+		.block {
+			width: 200px;
+			height: 120px;
+			background: #aaa;
+			position: relative;
+			overflow: hidden;
+		}
+		
+		.block::after {
+			position: absolute;
+			content: "";
+			width: 50px;
+			height: 70px;
+			left: -20px;
+			top: -30px;
+			z-index: 10;
+			background: #0a0a14;
+			transform: rotate(45deg);
+		}
 	</style>
 </head>
 
 <body>
-	<h1>Дизайн и вёрстка</h1>
+	<h1>Animations</h1>
 	
-	<div>
+	<div class="block">
 		
 	</div>
 	
