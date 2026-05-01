@@ -37,60 +37,58 @@
 				radial-gradient(circle at 15% 30%, rgba(0, 255, 157, 0.08) 0%, transparent 35%),
 				radial-gradient(circle at 85% 70%, rgba(0, 184, 255, 0.07) 0%, transparent 40%),
 				repeating-linear-gradient(45deg, rgba(0, 255, 157, 0.02) 0px, rgba(0, 255, 157, 0.02) 2px, transparent 2px, transparent 8px);
-			font-size: 20px;
+			font-size: 32px;
 		}
-		.wrap {
-			display: flex;
-			flex-direction: row;
-			flex-wrap: wrap;
-			gap: 20px;
-			
-		}
-		a {
-			color: gold;
-			display: flex;
-			flex-direction: column;
-			gap: 20px;
-			border: 1px solid gray;
-			width: fit-content;
-			padding: 20px;
-			border-radius: 20px;
-			text-decoration: none;
-			font-size: 30px;
-			max-width: 200px;
-		}
-		
-		img {
-			border-radius: 10px;
-		}
-		
-		.block {
-			width: 200px;
-			height: 120px;
-			background: #aaa;
-			position: relative;
-			overflow: hidden;
-		}
-		
-		.block::after {
-			position: absolute;
-			content: "";
-			width: 50px;
-			height: 70px;
-			left: -20px;
-			top: -30px;
-			z-index: 10;
-			background: #0a0a14;
-			transform: rotate(45deg);
-		}
+		input {
+			border-radius: 5px;
+			background: #333;
+			color: #fff;
+			height: 40px;
+			font-size: 32px;
+			}
 	</style>
 </head>
 
 <body>
-	<h1>Animations</h1>
+	<h1>?!</h1>
+	 <div>a + b = c</div>
+	 <div>a = ?</div>
+	 <input type="text" id="myInput" oninput="checkInput()">
+	 <span id="result"></span>
 	 
-	<div class="block">
+	 <input type="text" id="myInput2" oninput="checkInput2()">
+	 <span id="result2"></span>
+	 <div>b = ?</div>
 		
-	</div>
+		<script>
+        function checkInput() {
+            let inputValue = document.getElementById('myInput').value;
+            let result = document.getElementById('result');
+            
+            if (inputValue === 'c-b') {
+                result.innerHTML = '✅';
+                result.style.color = 'green';
+            } else if (inputValue.length > 0) {
+                result.innerHTML = '❌';
+                result.style.color = 'red';
+            } else {
+                result.innerHTML = '';
+            }
+        }
+        function checkInput2() {
+            let inputValue = document.getElementById('myInput2').value;
+            let result2 = document.getElementById('result2');
+            
+            if (inputValue === '-c+b') {
+                result2.innerHTML = '✅';
+                result2.style.color = 'green';
+            } else if (inputValue.length > 0) {
+                result2.innerHTML = '❌';
+                result2.style.color = 'red';
+            } else {
+                result2.innerHTML = '';
+            }
+        }
 	
+	</script>
 </body></html>
