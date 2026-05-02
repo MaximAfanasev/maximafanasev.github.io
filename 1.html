@@ -62,8 +62,8 @@
 	 <div>b = ?</div>
 	 <input type="text" id="myInput3" oninput="checkInput3()">
 	 <span id="result3"></span>
-	 
-	 <input type="text">
+	 <input type="text" id="myInput4" oninput="checkInput4()">
+	 <span id="result4"></span>
 		
 		<script>
         function checkInput() {
@@ -106,6 +106,20 @@
                 result3.style.color = 'red';
             } else {
                 result3.innerHTML = '';
+            }
+        }
+        function checkInput4() {
+            let inputValue = document.getElementById('myInput4').value;
+            let result3 = document.getElementById('result4');
+            
+            if (inputValue === '-a+c') {
+                result4.innerHTML = '✅';
+                result4.style.color = 'green';
+            } else if (inputValue.length > 0) {
+                result4.innerHTML = '❌';
+                result4.style.color = 'red';
+            } else {
+                result4.innerHTML = '';
             }
         }
 	
