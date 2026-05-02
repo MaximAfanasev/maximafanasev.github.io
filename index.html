@@ -4,8 +4,8 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link type="image/x-icon" rel="icon" href="img/flag.png">
-	<title>Maxim Afanasev</title>
+	<link type="image/x-icon" rel="icon" href="math.png">
+	<title>Математика</title>
 	<style>
 		:root {
 			--primary: #00ff9d;
@@ -46,49 +46,21 @@
 			height: 40px;
 			font-size: 32px;
 			}
+		a {
+			color: gold;
+			text-decoration: none;
+			display: block;
+			border: 2px solid;
+			width: fit-content;
+			padding: 10px 20px;
+			border-radius: 10px;
+		}
 	</style>
 </head>
 
 <body>
-	<h1>?!</h1>
-	 <div>a + b = c</div>
-	 <div>a = ?</div>
-	 <input type="text" id="myInput" oninput="checkInput()">
-	 <span id="result"></span>
-	 
-	 <input type="text" id="myInput2" oninput="checkInput2()">
-	 <span id="result2"></span>
-	 <div>b = ?</div>
+	<a href="1.html">1</a>
 		
 		<script>
-        function checkInput() {
-            let inputValue = document.getElementById('myInput').value;
-            let result = document.getElementById('result');
-            
-            if (inputValue === 'c-b') {
-                result.innerHTML = '✅';
-                result.style.color = 'green';
-            } else if (inputValue.length > 0) {
-                result.innerHTML = '❌';
-                result.style.color = 'red';
-            } else {
-                result.innerHTML = '';
-            }
-        }
-        function checkInput2() {
-            let inputValue = document.getElementById('myInput2').value;
-            let result2 = document.getElementById('result2');
-            
-            if (inputValue === '-c+b') {
-                result2.innerHTML = '✅';
-                result2.style.color = 'green';
-            } else if (inputValue.length > 0) {
-                result2.innerHTML = '❌';
-                result2.style.color = 'red';
-            } else {
-                result2.innerHTML = '';
-            }
-        }
-	
 	</script>
 </body></html>
