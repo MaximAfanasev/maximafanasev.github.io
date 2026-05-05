@@ -39,6 +39,7 @@
 				repeating-linear-gradient(45deg, rgba(0, 255, 157, 0.02) 0px, rgba(0, 255, 157, 0.02) 2px, transparent 2px, transparent 8px);
 			font-size: 32px;
 		}
+
 		input {
 			border-radius: 5px;
 			background: #333;
@@ -47,81 +48,84 @@
 			font-size: 32px;
 			margin-top: 10px;
 			margin-bottom: 10px;
-			}
+			width: 100%;
+		}
 	</style>
 </head>
 
 <body>
-	 <div>a + b = c</div>
-	 <div>a = ?</div>
-	 <input type="text" id="myInput" oninput="checkInput()">
-	 <span id="result"></span>
-	 
-	 <input type="text" id="myInput2" oninput="checkInput2()">
-	 <span id="result2"></span>
-	 <div>b = ?</div>
-	 <input type="text" id="myInput3" oninput="checkInput3()">
-	 <span id="result3"></span>
-	 <input type="text" id="myInput4" oninput="checkInput4()">
-	 <span id="result4"></span>
-		
-		<script>
-        function checkInput() {
-            let inputValue = document.getElementById('myInput').value;
-            let result = document.getElementById('result');
-            
-            if (inputValue === 'c-b') {
-                result.innerHTML = '✅';
-                result.style.color = 'green';
-            } else if (inputValue.length > 0) {
-                result.innerHTML = '❌';
-                result.style.color = 'red';
-            } else {
-                result.innerHTML = '';
-            }
-        }
-        function checkInput2() {
-            let inputValue = document.getElementById('myInput2').value;
-            let result2 = document.getElementById('result2');
-            
-            if (inputValue === '-b+c') {
-                result2.innerHTML = '✅';
-                result2.style.color = 'green';
-            } else if (inputValue.length > 0) {
-                result2.innerHTML = '❌';
-                result2.style.color = 'red';
-            } else {
-                result2.innerHTML = '';
-            }
-        }
-        function checkInput3() {
-            let inputValue = document.getElementById('myInput3').value;
-            let result3 = document.getElementById('result3');
-            
-            if (inputValue === 'c-a') {
-                result3.innerHTML = '✅';
-                result3.style.color = 'green';
-            } else if (inputValue.length > 0) {
-                result3.innerHTML = '❌';
-                result3.style.color = 'red';
-            } else {
-                result3.innerHTML = '';
-            }
-        }
-        function checkInput4() {
-            let inputValue = document.getElementById('myInput4').value;
-            let result3 = document.getElementById('result4');
-            
-            if (inputValue === '-a+c') {
-                result4.innerHTML = '✅';
-                result4.style.color = 'green';
-            } else if (inputValue.length > 0) {
-                result4.innerHTML = '❌';
-                result4.style.color = 'red';
-            } else {
-                result4.innerHTML = '';
-            }
-        }
-	
+	<div>a + b = c</div>
+	<div>a = ?</div>
+	<input type="text" id="myInput" oninput="checkInput()">
+	<span id="result"></span>
+
+	<input type="text" id="myInput2" oninput="checkInput2()">
+	<span id="result2"></span>
+	<div>b = ?</div>
+	<input type="text" id="myInput3" oninput="checkInput3()">
+	<span id="result3"></span>
+	<input type="text" id="myInput4" oninput="checkInput4()">
+	<span id="result4"></span>
+
+	<script>
+		function checkInput() {
+			let inputValue = document.getElementById('myInput').value;
+			let result = document.getElementById('result');
+
+			if (inputValue === 'c-b') {
+				result.innerHTML = '✅';
+				result.style.color = 'green';
+			} else if (inputValue.length > 0) {
+				result.innerHTML = '❌';
+				result.style.color = 'red';
+			} else {
+				result.innerHTML = '';
+			}
+		}
+
+		function checkInput2() {
+			let inputValue = document.getElementById('myInput2').value;
+			let result2 = document.getElementById('result2');
+
+			if (inputValue === '-b+c') {
+				result2.innerHTML = '✅';
+				result2.style.color = 'green';
+			} else if (inputValue.length > 0) {
+				result2.innerHTML = '❌';
+				result2.style.color = 'red';
+			} else {
+				result2.innerHTML = '';
+			}
+		}
+
+		function checkInput3() {
+			let inputValue = document.getElementById('myInput3').value;
+			let result3 = document.getElementById('result3');
+
+			if (inputValue === 'c-a') {
+				result3.innerHTML = '✅';
+				result3.style.color = 'green';
+			} else if (inputValue.length > 0) {
+				result3.innerHTML = '❌';
+				result3.style.color = 'red';
+			} else {
+				result3.innerHTML = '';
+			}
+		}
+
+		function checkInput4() {
+			let inputValue = document.getElementById('myInput4').value;
+			let result3 = document.getElementById('result4');
+
+			if (inputValue === '-a+c') {
+				result4.innerHTML = '✅';
+				result4.style.color = 'green';
+			} else if (inputValue.length > 0) {
+				result4.innerHTML = '❌';
+				result4.style.color = 'red';
+			} else {
+				result4.innerHTML = '';
+			}
+		}
 	</script>
 </body></html>
