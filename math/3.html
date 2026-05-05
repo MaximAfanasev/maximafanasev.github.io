@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link type="image/x-icon" rel="icon" href="../math/math.png">
+	<title>Математика</title>
+	<style>
+		:root {
+			--primary: #00ff9d;
+			--secondary: #00b8ff;
+			--accent: #ff00aa;
+			--bg: #0a0a14;
+			--text: #e0e0ff;
+			--panel: rgba(10, 20, 30, 0.8);
+			--glow: 0 0 10px var(--primary);
+		}
+
+		@font-face {
+			font-family: 'Cyber';
+			font-weight: normal;
+			font-style: normal;
+		}
+
+		body {
+			font-family: 'Courier New', monospace;
+			background-color: var(--bg);
+			color: var(--text);
+			margin: 0;
+			padding: 0;
+			min-height: 100vh;
+			overflow-x: hidden;
+			line-height: 1.6;
+			padding: 20px;
+			background-image:
+				radial-gradient(circle at 15% 30%, rgba(0, 255, 157, 0.08) 0%, transparent 35%),
+				radial-gradient(circle at 85% 70%, rgba(0, 184, 255, 0.07) 0%, transparent 40%),
+				repeating-linear-gradient(45deg, rgba(0, 255, 157, 0.02) 0px, rgba(0, 255, 157, 0.02) 2px, transparent 2px, transparent 8px);
+			font-size: 32px;
+		}
+
+		input {
+			border-radius: 5px;
+			background: #333;
+			color: #fff;
+			height: 40px;
+			font-size: 32px;
+			margin-top: 10px;
+			margin-bottom: 10px;
+			width: 100%;
+		}
+
+		.gold {
+			color: gold;
+		}
+
+		.green {
+			color: lightcoral;
+		}
+
+		.line {
+			border: 1px solid;
+			width: fit-content;
+			padding: 10px;
+			border-radius: 15px;
+			margin-top: 20px;
+			margin-bottom: 20px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="gold">a - b = c</div>
+	<div class="line">
+		<div class="green">a = b + c</div>
+		<div class="green">a = c + b</div>
+	</div>
+	<div class="line">
+		<div>b = a - c</div>
+		<div>b = -c + a</div>
+	</div>
+
+
+	<script>
+	</script>
+</body></html>
