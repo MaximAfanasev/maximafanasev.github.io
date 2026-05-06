@@ -94,7 +94,6 @@ print(type('a'))
 # full text
 
 
-
 print(abs(-5))           								
 # 5
 print(2.5.as_integer_ratio()) 					
