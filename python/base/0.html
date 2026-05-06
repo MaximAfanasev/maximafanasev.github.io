@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Викторина: Угадай вывод Python кода</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            color: #333;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            margin-top: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2980b9;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+        
+        .question-container {
+            background-color: #f1f8ff;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .question-number {
+            font-size: 1rem;
+            color: #3498db;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .question-code {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            overflow-x: auto;
+            white-space: pre;
+            line-height: 1.5;
+        }
+        
+        .answer-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .input-group {
+            display: flex;
+            gap: 10px;
+        }
+        
+        input {
+            flex-grow: 1;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+        
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 15px 25px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            font-weight: bold;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        .feedback {
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 10px;
+            display: none;
+        }
+        
+        .correct {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+        
+        .incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 25px;
+        }
+        
+        .controls button {
+            background-color: #95a5a6;
+        }
+        
+        .controls button:hover {
+            background-color: #7f8c8d;
+        }
+        
+        .controls .next-btn {
+            background-color: #27ae60;
+        }
+        
+        .controls .next-btn:hover {
+            background-color: #219653;
+        }
+        
+        .game-complete {
+            text-align: center;
+            padding: 40px;
+            display: none;
+        }
+        
+        .game-complete h2 {
+            color: #27ae60;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .game-complete p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .restart-btn {
+            background-color: #e74c3c;
+            font-size: 1.2rem;
+            padding: 15px 30px;
+        }
+        
+        .restart-btn:hover {
+            background-color: #c0392b;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .input-group {
+                flex-direction: column;
+            }
+            
+            .controls {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .controls button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Викторина по Python</h1>
+            <p class="subtitle">Угадай, что выведет код. Вопросы перемешиваются случайным образом.</p>
+        </header>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-value" id="current-question">1</div>
+                <div class="stat-label">Вопрос</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="total-questions">3</div>
+                <div class="stat-label">Всего вопросов</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="correct-count">0</div>
+                <div class="stat-label">Правильно</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="incorrect-count">0</div>
+                <div class="stat-label">Неправильно</div>
+            </div>
+        </div>
+        
+        <div id="quiz-container">
+            <div class="question-container">
+                <div class="question-number">Вопрос <span id="question-num">1</span> из <span id="question-total">3</span></div>
+                <div class="question-code" id="question-code"></div>
+                <div class="answer-form">
+                    <div class="input-group">
+                        <input type="text" id="answer-input" placeholder="Введите ответ (например: 7)" autocomplete="off">
+                        <button id="check-btn">Проверить</button>
+                    </div>
+                    <div class="feedback" id="feedback"></div>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <button id="prev-btn">Предыдущий</button>
+                <button id="next-btn" class="next-btn">Следующий</button>
+            </div>
+        </div>
+        
+        <div id="game-complete" class="game-complete">
+            <h2>Викторина завершена!</h2>
+            <p>Вы ответили правильно на <span id="final-correct">0</span> из <span id="final-total">0</span> вопросов.</p>
+            <button id="restart-btn" class="restart-btn">Начать заново</button>
+        </div>
+    </div>
+
+    <script>
+        // Вопросы для викторины
+        const questions = [
+            {
+                code: 'a = 7\nprint(a)',
+                answer: '7',
+                explanation: 'Переменной a присваивается значение 7, затем выводится значение переменной a.'
+            },
+            {
+                code: 'b = a\nprint(b)',
+                answer: '7',
+                explanation: 'Переменной b присваивается значение переменной a (которое равно 7), затем выводится значение переменной b.'
+            },
+            {
+                code: 'print(4 + \\\n      3)',
+                answer: '7',
+                explanation: 'Обратный слэш позволяет продолжить выражение на следующей строке. 4 + 3 = 7.'
+            },
+            {
+                code: 'x = 5\ny = 3\nprint(x + y)',
+                answer: '8',
+                explanation: 'Переменной x присваивается 5, переменной y - 3, затем выводится их сумма.'
+            },
+            {
+                code: 'name = "Python"\nprint("Hello " + name)',
+                answer: 'Hello Python',
+                explanation: 'Конкатенация строк: "Hello " и значение переменной name ("Python").'
+            },
+            {
+                code: 'num = 10\nprint(num * 2)',
+                answer: '20',
+                explanation: 'Умножение числа 10 на 2 дает 20.'
+            },
+            {
+                code: 'a = 2\nb = 3\nprint(a ** b)',
+                answer: '8',
+                explanation: 'Оператор ** означает возведение в степень: 2 в степени 3 = 8.'
+            },
+            {
+                code: 'text = "code"\nprint(text * 3)',
+                answer: 'codecodecode',
+                explanation: 'Умножение строки на число повторяет строку указанное количество раз.'
+            }
+        ];
+
+        // Переменные состояния
+        let currentQuestionIndex = 0;
+        let shuffledQuestions = [];
+        let userAnswers = [];
+        let correctCount = 0;
+        let incorrectCount = 0;
+        
+        // DOM элементы
+        const questionCodeElement = document.getElementById('question-code');
+        const answerInputElement = document.getElementById('answer-input');
+        const checkButton = document.getElementById('check-btn');
+        const feedbackElement = document.getElementById('feedback');
+        const prevButton = document.getElementById('prev-btn');
+        const nextButton = document.getElementById('next-btn');
+        const currentQuestionElement = document.getElementById('current-question');
+        const totalQuestionsElement = document.getElementById('total-questions');
+        const correctCountElement = document.getElementById('correct-count');
+        const incorrectCountElement = document.getElementById('incorrect-count');
+        const quizContainer = document.getElementById('quiz-container');
+        const gameCompleteContainer = document.getElementById('game-complete');
+        const finalCorrectElement = document.getElementById('final-correct');
+        const finalTotalElement = document.getElementById('final-total');
+        const restartButton = document.getElementById('restart-btn');
+        const questionNumElement = document.getElementById('question-num');
+        const questionTotalElement = document.getElementById('question-total');
+        
+        // Инициализация викторины
+        function initQuiz() {
+            // Перемешиваем вопросы случайным образом
+            shuffledQuestions = [...questions].sort(() => Math.random() - 0.5);
+            
+            // Сброс состояния
+            currentQuestionIndex = 0;
+            userAnswers = new Array(shuffledQuestions.length).fill(null);
+            correctCount = 0;
+            incorrectCount = 0;
+            
+            // Обновление UI
+            updateStats();
+            showQuestion();
+            quizContainer.style.display = 'block';
+            gameCompleteContainer.style.display = 'none';
+            
+            // Фокус на поле ввода
+            answerInputElement.focus();
+        }
+        
+        // Показать текущий вопрос
+        function showQuestion() {
+            const question = shuffledQuestions[currentQuestionIndex];
+            questionCodeElement.textContent = question.code;
+            questionNumElement.textContent = currentQuestionIndex + 1;
+            questionTotalElement.textContent = shuffledQuestions.length;
+            
+            // Очистка поля ввода и сброс обратной связи
+            answerInputElement.value = userAnswers[currentQuestionIndex] || '';
+            feedbackElement.textContent = '';
+            feedbackElement.className = 'feedback';
+            
+            // Обновление состояния кнопок
+            prevButton.disabled = currentQuestionIndex === 0;
+            nextButton.disabled = currentQuestionIndex === shuffledQuestions.length - 1;
+            nextButton.textContent = currentQuestionIndex === shuffledQuestions.length - 1 ? 'Завершить' : 'Следующий';
+            
+            // Если ответ уже дан, показываем правильный/неправильный
+            if (userAnswers[currentQuestionIndex] !== null) {
+                const isCorrect = userAnswers[currentQuestionIndex] === question.answer;
+                showFeedback(isCorrect, question.answer, question.explanation);
+            }
+            
+            // Фокус на поле ввода
+            answerInputElement.focus();
+        }
+        
+        // Обновление статистики
+        function updateStats() {
+            currentQuestionElement.textContent = currentQuestionIndex + 1;
+            totalQuestionsElement.textContent = shuffledQuestions.length;
+            correctCountElement.textContent = correctCount;
+            incorrectCountElement.textContent = incorrectCount;
+        }
+        
+        // Проверка ответа
+        function checkAnswer() {
+            const userAnswer = answerInputElement.value.trim();
+            const correctAnswer = shuffledQuestions[currentQuestionIndex].answer;
+            const explanation = shuffledQuestions[currentQuestionIndex].explanation;
+            
+            if (!userAnswer) {
+                alert('Пожалуйста, введите ответ!');
+                answerInputElement.focus();
+                return;
+            }
+            
+            // Сохраняем ответ пользователя
+            userAnswers[currentQuestionIndex] = userAnswer;
+            
+            // Проверяем правильность
+            const isCorrect = userAnswer === correctAnswer;
+            
+            // Обновляем счетчики
+            if (isCorrect && (userAnswers[currentQuestionIndex] !== shuffledQuestions[currentQuestionIndex].answer || 
+                (userAnswers[currentQuestionIndex] === shuffledQuestions[currentQuestionIndex].answer && 
+                 !feedbackElement.classList.contains('correct')))) {
+                correctCount++;
+            } else if (!isCorrect && userAnswers[currentQuestionIndex] !== shuffledQuestions[currentQuestionIndex].answer) {
+                incorrectCount++;
+            }
+            
+            updateStats();
+            showFeedback(isCorrect, correctAnswer, explanation);
+        }
+        
+        // Показать обратную связь
+        function showFeedback(isCorrect, correctAnswer, explanation) {
+            if (isCorrect) {
+                feedbackElement.textContent = `Правильно! ${explanation}`;
+                feedbackElement.className = 'feedback correct';
+            } else {
+                feedbackElement.textContent = `Неправильно. Правильный ответ: ${correctAnswer}. ${explanation}`;
+                feedbackElement.className = 'feedback incorrect';
+            }
+        }
+        
+        // Перейти к следующему вопросу
+        function nextQuestion() {
+            if (currentQuestionIndex < shuffledQuestions.length - 1) {
+                currentQuestionIndex++;
+                showQuestion();
+            } else {
+                // Завершить викторину
+                completeQuiz();
+            }
+        }
+        
+        // Перейти к предыдущему вопросу
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                showQuestion();
+            }
+        }
+        
+        // Завершить викторину
+        function completeQuiz() {
+            // Пересчитываем правильные ответы
+            let finalCorrect = 0;
+            for (let i = 0; i < shuffledQuestions.length; i++) {
+                if (userAnswers[i] === shuffledQuestions[i].answer) {
+                    finalCorrect++;
+                }
+            }
+            
+            // Показываем экран завершения
+            finalCorrectElement.textContent = finalCorrect;
+            finalTotalElement.textContent = shuffledQuestions.length;
+            quizContainer.style.display = 'none';
+            gameCompleteContainer.style.display = 'block';
+        }
+        
+        // Обработчики событий
+        checkButton.addEventListener('click', checkAnswer);
+        
+        answerInputElement.addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                checkAnswer();
+            }
+        });
+        
+        nextButton.addEventListener('click', nextQuestion);
+        prevButton.addEventListener('click', prevQuestion);
+        restartButton.addEventListener('click', initQuiz);
+        
+        // Инициализация при загрузке
+        window.addEventListener('DOMContentLoaded', initQuiz);
+    </script>
+</body>
+</html>

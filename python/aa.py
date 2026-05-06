@@ -1,0 +1,851 @@
+a = 7
+print(a)    												
+# 7
+
+b = a
+print(b)    												
+# 7
+
+print(4 + \
+      3)    												
+# 7
+
+c = True
+if c:
+    print('True') 									
+# True
+
+if c:
+    if False:
+        print('False')  						
+# -
+
+d = 7
+print(d==7) 												
+# True
+
+print((5<d) and (d<10)) 						
+# True
+
+e = 1
+while e <= 5:
+    print(e)
+    e += 1   												
+# 1 2 3 4 5
+
+for x in range(1,5):
+    print(x) 												
+# 1 2 3 4
+
+x = input()
+print(x)
+
+print(type(True))                				
+# bool
+print(type(bytearray(b'hh')))    				
+# bytearray
+a = b'aaaa'
+print(type(a))                   				
+# bytes
+print(type(3j))                  				
+# complex
+print(type({}))                  				
+# dict
+print(type(1.0))                 				
+# float
+print(type(frozenset[1,2]))      				
+# frozenset
+
+b = (x for x in range(1,2))
+
+print(type(b))                   				
+# generator
+print(type(4))                   				
+# int
+print(type([]))                  				
+# list
+print(type((1,2)))               				
+# tuple
+print(type(set[1,2]))            				
+# set
+print(type('a'))                 				
+# str
+
+# типы файлов
+# csv
+# xml
+# html
+# json
+# yaml
+# excel
+# hdf5
+# database
+# sql
+# db-api
+# sql lite
+# my sql
+# postgre sql
+# sql achemy
+# no sql
+# memcashed
+# redis
+# hesh
+# bit
+# full text
+
+
+
+print(abs(-5))           								
+# 5
+print(2.5.as_integer_ratio()) 					
+#(5, 2)
+print(chr(65))           								
+# A
+print(divmod(10, 3))     								
+# (3, 1)
+
+print(float(True))       								
+# 1.0
+print(float(1))          								
+# 1.0
+print(float('99'))       								
+# 99.0
+print(float(98.6))       								
+# 98.6
+
+print(int(True))         								
+# 1
+print(int(False))        								
+# 0
+print(int(1.0e4))        								
+# 10000
+print(int(98.6))         								
+# 98
+print(int('99'))         								
+# 99
+print(int('+12'))        								
+# 12
+print(int('10', 2))      								
+# 2
+
+d = 5.0
+print(d.is_integer())    								
+# True
+print(ord('A'))          								
+# 65
+print(pow(2, 3))         								
+# 8
+print(round(3.14159))    								
+# 3
+
+print(1+1)     					 								
+# 2
+print(+123)    					 								
+# 123
+print(-123)    					 								
+# -123
+print(1-1)     					 								
+# 0
+print(4-10)    					 								
+# -6
+print(1*2)     					 								
+# 2
+print(7/2)     					 								
+# 3.5
+print(7//2)    					 								
+# 3
+print(9//5)    					 								
+# 1
+print(7%3)     					 								
+# 1
+print(9%5)     					 								
+# 4
+print(2**3)    					 								
+# 8
+print(4 + 7.0) 					 								
+# 11.0
+
+print(0b10)    					 								
+# 2
+print(0o10)    					 								
+# 8
+print(0x10)    					 								
+# 16
+
+print(7==5)              								
+# False
+print(5==5)              								
+# True
+print(5!=3)              								
+# True
+print(5>3)               								
+# True
+print(5<3)               								
+# False
+print(5>=5)              								
+# True
+print(5<=3)              								
+# False
+
+print(5&3)     					 								
+# 1 (101 & 011 = 001)
+print(5|3)     					 								
+# 7 (101 | 011 = 111)
+print(5^3)     					 								
+# 6 (101 ^ 011 = 110)
+print(~5)      					 								
+# -6
+print(5 << 1)  					 								
+# 10
+print(5 >> 1)  					 								
+# 2
+
+a = 10
+print(a.bit_length())    								
+# 4
+
+b = 3 + 4j
+print(b)                 								
+# 3 + 4j
+
+print(b.conjugate())     								
+# 3 - 4j
+
+print(float.fromhex('0x1.ffffp10')) 		
+# 2047.984375
+
+c = 3 + 4j
+print(c.imag)            								
+# 4.0
+
+print(c.real)            								
+# 3.0
+
+
+print(bool(True))       									
+# True
+print(bool(1))          									
+# True
+print(bool(45))         									
+# True
+print(bool(-45))        									
+# True
+print(bool([1, 2]))     									
+# True
+print(bool("x"))        									
+# True
+print(bool({1: "x"}))   									
+# True
+
+print(bool(False))      									
+# False
+print(bool(None))       									
+# False
+print(bool(0))          									
+# False
+print(bool(0.0))        									
+# False
+print(bool({}))         									
+# False
+print(bool([]))         									
+# False
+print(bool(""))         									
+# False
+print(bool(()))         									
+# False
+print(bool(set()))      									
+# False
+
+
+
+
+print(len('abc'))       												
+# 3
+print('A man.\n P')     												
+# A man.
+                        												
+#  P
+print(type('a'))        												
+# <class 'str'>
+print(type("b"))        												
+# <class 'str'>
+print(type('''c'''))    												
+# <class 'str'>
+print('a' + 'b')        												
+# 'ab'
+print('a' * 4)          												
+# 'aaaa'
+
+
+multi_line = '''Это
+многострочная
+строка.'''
+
+print(multi_line)
+
+																								
+# [start : end : step]
+print('ab'[0])          												
+# 'a'
+print('abc'[:])         												
+# 'abc'
+print('abc'[1:])        												
+# 'bc'
+print('abc'[1:2])       												
+# 'b'
+print('abc'[-2:])       												
+# 'bc'
+print('abcdefj'[::2])   												
+# 'acej'
+
+text = "Hello"
+
+print(text[::-1])       												
+# 'olleH'
+
+print("Он сказал: \"Привет!\"")									
+# Он сказал: "Привет!"
+
+
+print('abc'.capitalize(), 'capitalize')   
+# Abc
+
+print('a'.center(3))               
+# ' a '
+
+text = "Hello, world!"
+print(text.count('l'))             
+# 3
+
+print('a'.endswith('a'))           
+# True
+
+print('abc'.find('b'))	         
+# 1
+
+print('{}'.format('str'))          
+# 'str'
+print('{} {}'.format('Hello', 'world'))  
+# Hello world													 
+# 'Hello world'
+
+name = "Alice"
+age = 25
+print(f"Меня зовут {name}, мне {age} лет.")
+# Меня зовут Alice, мне 25 лет.
+
+print(''.join(['a', 'b']))         
+# 'ab'
+print(','.join(['a', 'b']))        
+# 'a,b'
+
+a1 = 'aoiu'
+print('a' in a1)        
+# True
+
+print('abc'.isalpha())               
+# True
+print('abc123'.isalpha())            
+# False
+
+print('abc123'.isalnum(), 'isalnum') 
+# True
+
+print('123'.isdecimal())            
+# True
+
+print('a'.islower())                 
+# True
+
+print('   '.isspace())              
+# True
+
+print('Abc Cde'.istitle( ))             
+# True
+
+print('a'.isupper())                 
+# False
+print('A'.isupper())                 
+# True
+
+print('a'.ljust(5, '-'))           
+# 'a----'
+
+text = "  abc  "
+print(text.lstrip())               
+# 'abc  '
+
+print('ab'.replace('a', 'c'))      
+# 'cb'
+
+print('ab'.rfind('a'))             
+# 0
+
+print('a'.rjust(5, '-'))           
+# '----a'
+
+text = "  abc  "
+print(text.rstrip())               
+# '  abc'
+
+print('a'.startswith('a'))         
+# True
+
+print(' abc '.strip())             
+# 'abc'
+
+print(str(98.6))        
+# '98.6'
+print(str(1.0e4))       
+# '10000.0'
+print(str(True))        
+# 'True'
+
+print('abc def hij'.title(), ', title') 
+# Abc Def Hij
+
+print('abc'.upper(), ', upper')    
+# ABC
+
+
+
+a2 = []
+print(a2)               
+# []
+
+print(['a', 'b'][1])    
+# 'b'
+print([1] * 3)          
+# [1, 1, 1]
+print([1] + [2])        
+# [1, 2]
+
+print(['a', 'b', 'c'][1:])      
+# ['b', 'c']
+print(['a', 'b', 'c'][-1:])     
+# ['c']
+print(['a', 'b', 'c'][:1])      
+# ['a']
+print(['a', 'b', 'c'][:-2])     
+# ['a']
+
+j1 = [1, 2, 3, 4]
+j1[1:3] = [5, 6]
+print(j1)                
+# [1, 5, 6, 4]
+
+# вставка в массив
+# очищение
+# копирование массива
+# подсчет элементов
+# удаление элемента
+# добавление массива в массив
+# генератор по массиву
+# проверка в массиве
+# индекс элемента
+# вставка в массив
+# длина массива
+# массив из всего
+# минимальный
+# максимальный
+# выдернуть последний
+# удаление 
+# разворот массива
+# сортировка
+# строка в массив
+# суммирование
+# манипуляция двумя массивами
+		
+		
+a = [1, 2]
+a.append(3)
+print(a)  		  
+# [1, 2, 3]
+
+b = [1, 2, 3]
+b.clear()
+print(b)  		  
+# []
+
+c = [1, 2, 3]
+d = c.copy()
+print(d)  		  
+# [1, 2, 3]
+
+e = [1, 1, 2, 3]
+print(e.count(1))  	  
+# 2
+
+p = [1, 2, 3]
+del p[1]
+print(p, ', del')          
+# [1, 3]
+
+f = [1, 2]
+f.extend([3, 4])
+print(f)  		  
+# [1, 2, 3, 4]
+
+m = [x for x in range(5)]
+print(m)                 
+# [0, 1, 2, 3, 4]
+		
+n = [1, 2, 3, 4, 5]
+filtered = [x for x in n if x > 2]
+print(filtered) 		
+# [3, 4, 5]
+
+print(1 in [1, 2])       
+# True
+
+g = [1, 2, 3, 2]
+print(g.index(2))  	  
+# 1
+
+h = [1, 2, 3]
+h.insert(1, 1.5)
+print(h)  		  
+# [1, 1.5, 2, 3]
+
+r = [1, 2, 3]
+print(len(r)) 		
+# 3
+
+b1 = list()
+print(b1)               
+# []
+
+print(list('abc'))      
+# ['a', 'b', 'c']
+
+p = [1, 2, 3]
+print(min(p))  		
+# 1
+print(max(p))  		
+# 3
+
+i = [1, 2, 3]
+print(i.pop())  		  
+# 3
+print(i)  		  
+# [1, 2]
+
+j = [1, 2, 3, 2]
+j.remove(2)
+print(j)  		  
+# [1, 3, 2]
+
+k = [1, 2, 3]
+k.reverse()
+print(k)  		  
+# [3, 2, 1]
+
+l = [3, 1, 2]
+l.sort()
+print(l)  		  
+# [1, 2, 3]
+
+print('a,b,c'.split(','))  
+# ['a', 'b', 'c']
+
+q = [1, 2, 3]
+print(sum(q))  		
+# 6
+
+for _ in zip([1, 2, 3], [4, 5, 6]):
+    print(_)             
+# (1, 4), (2, 5), (3, 6)
+
+
+
+
+# создание словаря
+# обращение к элементу
+# объединение словарей
+
+a2 = {}
+print(a2)              						  
+# {}
+
+d = {'a': 1, 'b': 2}
+print(d['a'])         						  
+# 1
+
+print({'a': 1} | {'b': 2})          
+# {'a': 1, 'b': 2} 
+print({**{'a': 1}, **{'b': 2}})     
+# {'a': 1, 'b': 2}
+
+# очищение
+# копирование
+# удаление
+# создание словаря
+# получение ключа
+# проверка наличия
+# генератор
+# получение всех элементов
+# получение всех ключей
+# выдергивание по ключу
+# выдергивание по связке
+# установление дефолтного
+# получение всех значений
+# объединение вместе
+
+
+a = {'a': 1}
+a.clear()
+print(a)                 
+# {}
+
+b = {'a': 1, 'b': 2}
+c = b.copy()
+print(c)                 
+# {'a': 1, 'b': 2}
+
+p = {'a': 1, 'b': 2}
+del(p['a'])
+print(p, ', del')        
+# {'b': 2}
+
+b1 = dict()
+print(b1)               						
+# {}
+
+print(dict([('a', 1), ('b', 2)]))   
+# {'a': 1, 'b': 2}
+print(dict(a=1, b=2))               
+# {'a': 1, 'b': 2}
+
+e = {'a': 1, 'b': 2}
+print(e.get('a'))     			
+# 1
+print(e.get('c'))     			
+# None
+print(e.get('c', 0))  			
+# 0
+
+print('a' in {'a': 1}) 		        
+# True
+
+m = {x: x*2 for x in range(3)}
+print(m)              							
+# {0: 0, 1: 2, 2: 4}
+
+f = {'a': 1, 'b': 2}
+print(f.items())      			
+# dict_items([('a', 1), ('b', 2)])
+
+for k, v in {'a': 1, 'b': 2}.items():
+    print(k, v)        							
+# a 1, b 2
+		
+n = {'a': 1, 'b': 2, 'c': 3}
+filtered = {k: v for k, v in n.items() if v > 1}
+print(filtered)       							
+# {'b': 2, 'c': 3}
+
+g = {'a': 1, 'b': 2}
+print(g.keys())       			
+# dict_keys(['a', 'b'])
+
+h = {'a': 1, 'b': 2}
+print(h.pop('a'))     			
+# 1
+print(h)              			
+# {'b': 2}
+
+i = {'a': 1, 'b': 2}
+print(i.popitem())    			
+# ('b', 2)
+print(i)              			
+# {'a': 1}
+
+j = {'a': 1}
+j.setdefault('a', 2)  			
+# 1
+j.setdefault('b', 2)  			
+# 2
+print(j)              			
+# {'a': 1, 'b': 2}
+
+m = {'b': 2, 'a': 1, 'c': 3}
+print(sorted(m))               
+# ['a', 'b', 'c']
+print(sorted(m.items()))       
+# [('a', 1), ('b', 2), ('c', 3)]
+print(sorted(m.values()))      
+# [1, 2, 3]
+print(sorted(m, key=m.get))    
+# ['a', 'b', 'c'] (по значениям)
+
+l = {'a': 1, 'b': 2}
+print(l.values())     			
+# dict_values([1, 2])
+
+k = {'a': 1, 'b': 2}
+k.update({'c': 3})
+print(k)              			
+# {'a': 1, 'b': 2, 'c': 3}
+
+
+
+def do_nothing():
+    pass
+
+do_nothing()
+
+
+
+
+
+def make_a_sound():
+    print('quack')
+
+make_a_sound()
+
+
+
+
+
+def agree():
+    return True
+
+if agree():
+    print('agree')
+
+
+
+
+def echo(a):
+    return print(a + ' ' + a);
+echo('xxx')
+
+
+
+
+
+
+def print_args(*args):
+    print(args)
+
+print_args(3,2,1,'wait!')
+
+
+
+
+
+def print_kwargs(**kwargs):
+    print(kwargs)
+
+print_kwargs(a='1', b='2')
+
+
+
+
+
+def a(x):
+    def b():
+        return x
+    return b
+
+print(a('Duck')())
+print(a('Quack')())
+
+
+
+print(sum(range(1, 101)))
+
+
+try:
+    print(a('a')())
+except:
+    print('fail')
+
+
+
+    
+
+class Person():
+def __init__(self, name, age):
+		self.name = name  # Атрибут для хранения имени
+		self.age = age    # Атрибут для хранения возраста
+
+    def greet(self):
+        print(f"Привет, меня зовут {self.name} и мне {self.age} лет.")
+
+# Создание экземпляра класса Person
+person1 = Person("Иван", 30)
+person1.greet()  # Вывод: Привет, меня зовут Иван и мне 30 лет.
+
+
+
+
+
+class A:
+    def method_a(self):
+        print("Метод A")
+
+class B:
+    def method_b(self):
+        print("Метод B")
+
+class C(A, B):  # Наследует от A и B
+    def method_c(self):
+        print("Метод C")
+		
+		
+
+
+
+# Создание файла
+with open('example.txt', 'w') as f:
+    f.write('Hello, World!')
+# Проверка существования файла
+import os
+file_exists = os.path.exists('example.txt')
+print(file_exists)  # True, если файл существует
+# Тип файла
+import mimetypes
+file_type = mimetypes.guess_type('example.txt')[0]
+print(file_type)  # Например, 'text/plain'
+# Папка (создание каталога)
+os.makedirs('new_folder', exist_ok=True)  # Создаёт папку, если она не существует
+# Копирование файла
+import shutil
+shutil.copy('example.txt', 'copy_of_example.txt')
+# Имя файла
+file_name = os.path.basename('path/to/example.txt')
+print(file_name)  # 'example.txt'
+# Ссылка на файл (символическая ссылка)
+os.symlink('example.txt', 'link_to_example.txt')
+# Изменение разрешения (права доступа)
+import stat
+os.chmod('example.txt', stat.S_IRUSR | stat.S_IWUSR)  # Устанавливает права чтения и записи для владельца
+# Изменение владельца файла (требуются права администратора)
+import os
+os.chown('example.txt', uid, gid)  # uid и gid - идентификаторы пользователя и группы
+# abspath (абсолютный путь)
+absolute_path = os.path.abspath('example.txt')
+print(absolute_path)
+# Удаление файла
+os.remove('copy_of_example.txt')
+# Создание каталога
+os.mkdir('new_directory')  # Создаёт новый каталог
+# Удаление каталога
+os.rmdir('new_directory')  # Удаляет пустой каталог
+# Содержимое каталога
+files = os.listdir('.')
+print(files)  # Список файлов и папок в текущем каталоге
+# Изменение каталога (переход в другой каталог)
+os.chdir('/path/to/directory')  # Меняет текущий рабочий каталог на указанный путь
+# Совпадающие файлы (поиск одинаковых файлов)
+import filecmp
+are_equal = filecmp.cmp('file1.txt', 'file2.txt')
+print(are_equal)  # True, если файлы идентичны, иначе False.
+# Программы и процессы (запуск процесса)
+import subprocess
+subprocess.run(['ls', '-l'])  # Запускает команду ls в терминале (Linux/Mac)
+# Календарь и часы (текущая дата и время)
+from datetime import datetime
+current_time = datetime.now()
+print(current_time.strftime('%Y-%m-%d %H:%M:%S'))  # Выводит текущую дату и время в формате ГГГГ-ММ-ДД ЧЧ:ММ:СС.

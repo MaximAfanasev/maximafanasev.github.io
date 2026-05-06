@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Maxim Afanasev</title>
+  <link type="image/x-icon" rel="icon" href="../../img/favicon.ico">
+	<link rel="icon" type="image/x-icon" href="/img/favicon.png">
+	<link rel="stylesheet" href="../../style/win.css">
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			margin: 0;
+			padding: 20px;
+			height: 100vh;
+			background: linear-gradient(to bottom, #ff7e5f, #feb47b);
+			color: #000;
+		}
+
+		#all {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
+
+		h1 {
+			text-align: center;
+			color: #222;
+		}
+
+		.container {
+			display: flex;
+			justify-content: space-around;
+			width: 100%;
+			margin-bottom: 20px;
+		}
+
+		.column {
+			width: 150px;
+			height: 340px;
+			border: 2px solid #ccc;
+			border-radius: 20px;
+			background: rgba(255, 255, 255, 0.1);
+			position: relative;
+			padding: 10px;
+		}
+
+		.column h2 {
+			text-align: center;
+		}
+
+		.cards {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			margin-top: 20px;
+		}
+
+		.card {
+			width: 100px;
+			padding: 15px;
+			/* Увеличиваем padding */
+			margin: 5px;
+			background-color: rgba(255, 255, 255, 0.8);
+			/* Полупрозрачный белый */
+			border-radius: 15px;
+			/* Скругление углов */
+			text-align: center;
+			cursor: move;
+			user-select: none;
+			transition: transform 0.2s;
+			/* Плавный эффект при наведении */
+			color: #000;
+			font-weight: bold;
+		}
+
+		.card:hover {
+			transform: scale(1.05);
+			/* Увеличение карточки при наведении */
+		}
+
+		.card.green {
+			background-color: green;
+			color: #fff;
+			padding: 5px;
+			border-radius: 10px;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="all">
+		<h1>MAY VARY</h1>
+		<div class="container">
+			<div class="column" id="yes-column" ondrop="drop(event)" ondragover="allowDrop(event)">
+				<h2>YES</h2>
+			</div>
+			<div class="column" id="no-column" ondrop="drop(event)" ondragover="allowDrop(event)">
+				<h2>NO</h2>
+			</div>
+		</div>
+		<div class="cards" id="card-container">
+			<div class="card" draggable="true" ondragstart="drag(event)">list</div>
+			<div class="card" draggable="true" ondragstart="drag(event)">bytearray</div>
+			<div class="card" draggable="true" ondragstart="drag(event)">set</div>
+			<div class="card" draggable="true" ondragstart="drag(event)">dict</div>
+			<div class="card" draggable="true" ondragstart="drag(event)">bool</div>
+			<div class="card" draggable="true" ondragstart="drag(event)">int</div>
+			<div class="card" draggable="true" ondragstart="drag(event)">float</div>
+			<div class="card" draggable="true" ondragstart="drag(event)">complex</div>
+			<div class="card" draggable="true" ondragstart="drag(event)">str</div>
+			<div class="card" draggable="true" ondragstart="drag(event)">tuple</div>
+			<div class="card" draggable="true" ondragstart="drag(event)">bytes</div>
+			<div class="card" draggable="true" ondragstart="drag(event)">frozenset</div>
+		</div>
+	</div>
+
+	<div class="message" id="finalMessage">
+		<div class="container">
+			<img src="../../img/trophy.png" class="first" alt="">
+			<img src="../../img/trophy2.png" class="second" alt="">
+			<img src="../../img/trophy3.png" class="three" alt="">
+			<img src="../../img/trophy4.png" class="four" alt="">
+			<img src="../../img/trophy5.png" class="five" alt="">
+		</div>
+	</div>
+	<script>
+		let totalCardsYes = 4; // Общее количество карточек для столбца "ДА"
+		let totalCardsNo = 7; // Общее количество карточек для столбца "НЕТ"
+		let totalCards = totalCardsYes + totalCardsNo; // Общее количество карточек
+		let currentCards = totalCards; // Количество оставшихся карточек
+		let yesColumnCards = 0; // Количество карточек в столбце "ДА"
+		let noColumnCards = 0; // Количество карточек в столбце "НЕТ"
+
+		function allowDrop(event) {
+			event.preventDefault();
+		}
+
+		function drag(event) {
+			event.dataTransfer.setData("text", event.target.innerHTML);
+		}
+
+		function drop(event) {
+			event.preventDefault();
+			const data = event.dataTransfer.getData("text");
+			const validYes = ['list', 'bytearray', 'set', 'dict'];
+			const validNo = ['bool', 'int', 'float', 'complex', 'str', 'tuple', 'bytes', 'frozenset'];
+
+			const dropzoneId = event.target.id;
+
+			if (dropzoneId === "yes-column" && validYes.includes(data)) {
+				addCardToColumn(data, event.target);
+				yesColumnCards++; // Увеличиваем счетчик карточек в столбце "ДА"
+			} else if (dropzoneId === "no-column" && validNo.includes(data)) {
+				addCardToColumn(data, event.target);
+				noColumnCards++; // Увеличиваем счетчик карточек в столбце "НЕТ"
+			} else {
+				alert("Неверное место для этой карточки!");
+			}
+		}
+
+		function addCardToColumn(data, column) {
+			const card = document.createElement("div");
+			card.className = "card green";
+			card.innerHTML = data;
+			column.appendChild(card);
+			removeCard(data);
+			checkAllCardsAdded(); // Проверка после добавления карточки
+		}
+
+		function removeCard(cardContent) {
+			const cards = document.getElementById("card-container").children;
+			for (let i = 0; i < cards.length; i++) {
+				if (cards[i].innerHTML === cardContent) {
+					cards[i].remove();
+					currentCards--; // Уменьшаем количество оставшихся карточек
+					break; // Прерываем цикл после удаления
+				}
+			}
+		}
+
+		function checkAllCardsAdded() {
+			console.log(`Карточки в "ДА": ${yesColumnCards}, Карточки в "НЕТ": ${noColumnCards}`);
+			// Проверка, что все карточки размещены по столбцам
+			if (yesColumnCards === totalCardsYes && noColumnCards === totalCardsNo) {
+				console.log("Все карточки размещены, выполняем редирект...");
+				document.getElementById('all').style.display = "none";
+				document.getElementById("finalMessage").style.display = "block";
+			}
+		}
+	</script>
+</body></html>
