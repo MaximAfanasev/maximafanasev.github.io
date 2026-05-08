@@ -36,6 +36,7 @@
 	tr:nth-child(5) td:nth-child(2n-1),
 	tr:nth-child(7) td:nth-child(2n-1) {
 		background: #fff;
+		position: relative;
 	}
 
 	tr:nth-child(2) td:nth-child(2n),
@@ -43,6 +44,21 @@
 	tr:nth-child(6) td:nth-child(2n),
 	tr:nth-child(8) td:nth-child(2n) {
 		background: #fff;
+		position: relative;
+	}
+	
+	tr:nth-child(7) td:nth-child(5) img {
+		animation: slide 2s ease-in-out infinite;
+		position: absolute;
+	}
+	
+	@keyframes slide {
+		0% {
+			
+		}
+		100% {
+			transform: translateY(-87px)
+		}
 	}
 </style>
 
@@ -111,12 +127,12 @@
 		<tr>
 			<td><img src="peshka.png" alt=""></td>
 			<td><img src="1.png" alt=""></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
+			<td><img src="1.png" alt=""></td>
+			<td><img src="1.png" alt=""></td>
+			<td><img src="1.png" alt=""></td>
+			<td><img src="1.png" alt=""></td>
+			<td><img src="1.png" alt=""></td>
+			<td><img src="1.png" alt=""></td>
 		</tr>
 		<tr>
 			<td></td>
