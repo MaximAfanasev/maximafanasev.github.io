@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link type="image/x-icon" rel="icon" href="../../img/flag.png">
-	<title>안녕</title>
+	<title>Time</title>
 	<link rel="stylesheet" href="../../css/t.css">
 	<style>
 	* {
@@ -355,22 +355,18 @@ button {
 		<div class="word-counter" id="wordCounter">0</div>
 	</div>
 	<div class="container">
-		<div class="korean-word">안녕</div>
+		<div class="korean-word">Время</div>
 		<div class="inputs-container">
-			<input type="text" class="input-box" maxlength="1" placeholder="ㅇ">
-			<input type="text" class="input-box" maxlength="1" placeholder="ㅏ">
-			<input type="text" class="input-box" maxlength="1" placeholder="ㄴ">
-			<input type="text" class="input-box" maxlength="1" placeholder="ㄴ">
-			<input type="text" class="input-box" maxlength="1" placeholder="ㅕ">
-			<input type="text" class="input-box" maxlength="1" placeholder="ㅇ">
+			<input type="text" class="input-box" maxlength="1" placeholder="t">
+			<input type="text" class="input-box" maxlength="1" placeholder="i">
+			<input type="text" class="input-box" maxlength="1" placeholder="m">
+			<input type="text" class="input-box" maxlength="1" placeholder="e">
 		</div>
-		<span>Привет (Аньёнъ)</span>
 		<button id="hidePlaceholderBtn">👀</button>
-		<a href="2.html">-></a>
 	</div>
 
 	<script>
-		const targetCharacters = ['ㅇ', 'ㅏ', 'ㄴ', 'ㄴ', 'ㅕ', 'ㅇ'];
+		const targetCharacters = ['t', 'i', 'm', 'e'];
 	</script>
 	<script>
 	document.addEventListener('DOMContentLoaded', function () {
@@ -612,7 +608,7 @@ document.getElementById('hidePlaceholderBtn').addEventListener('click', function
 
 			// Перенаправление через 0.5 секунды после завершения таймера
 			setTimeout(() => {
-				window.location.href = "../index.html"; // Раскомментируйте и измените на нужный URL
+				window.location.href = "../2.html"; // Раскомментируйте и измените на нужный URL
 
 				// Для демонстрации - просто скрываем таймер
 				document.getElementById('compactTimer').style.opacity = '0';

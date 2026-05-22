@@ -355,7 +355,7 @@ button {
 		<div class="word-counter" id="wordCounter">0</div>
 	</div>
 	<div class="container">
-		<div class="korean-word">안녕 하세요</div>
+		<div class="korean-word">안녕</div>
 		<div class="inputs-container">
 			<input type="text" class="input-box" maxlength="1" placeholder="ㅇ">
 			<input type="text" class="input-box" maxlength="1" placeholder="ㅏ">
@@ -363,20 +363,14 @@ button {
 			<input type="text" class="input-box" maxlength="1" placeholder="ㄴ">
 			<input type="text" class="input-box" maxlength="1" placeholder="ㅕ">
 			<input type="text" class="input-box" maxlength="1" placeholder="ㅇ">
-			
-			<input type="text" class="input-box" maxlength="1" placeholder="ㅎ">
-			<input type="text" class="input-box" maxlength="1" placeholder="ㅏ">
-			<input type="text" class="input-box" maxlength="1" placeholder="ㅅ">
-			<input type="text" class="input-box" maxlength="1" placeholder="ㅔ">
-			<input type="text" class="input-box" maxlength="1" placeholder="ㅇ">
-			<input type="text" class="input-box" maxlength="1" placeholder="ㅛ">
 		</div>
-		<span>Привет (Аньёнъ Асейо) dks sud gk tp dy</span>
+		<span>Привет (Аньёнъ)</span>
 		<button id="hidePlaceholderBtn">👀</button>
-		<a href="3.html">-></a>
+		<a href="2.html">-></a>
 	</div>
+
 	<script>
-		const targetCharacters = ['ㅇ', 'ㅏ', 'ㄴ', 'ㄴ', 'ㅕ', 'ㅇ', 'ㅎ', 'ㅏ', 'ㅅ', 'ㅔ', 'ㅇ', 'ㅛ'];
+		const targetCharacters = ['ㅇ', 'ㅏ', 'ㄴ', 'ㄴ', 'ㅕ', 'ㅇ'];
 	</script>
 	<script>
 	document.addEventListener('DOMContentLoaded', function () {
@@ -618,7 +612,7 @@ document.getElementById('hidePlaceholderBtn').addEventListener('click', function
 
 			// Перенаправление через 0.5 секунды после завершения таймера
 			setTimeout(() => {
-				window.location.href = "../index.html"; // Раскомментируйте и измените на нужный URL
+				window.location.href = "../1.html"; // Раскомментируйте и измените на нужный URL
 
 				// Для демонстрации - просто скрываем таймер
 				document.getElementById('compactTimer').style.opacity = '0';
