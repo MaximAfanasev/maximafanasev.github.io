@@ -1,0 +1,34 @@
+print('a') # a
+print("b") # 
+print('''c''') # 
+
+print(str(98.6)) # 98.6
+print(str(1.0e4)) # 10000.0
+print(str(True)) # True
+
+print('\tabc') # 	abc
+print('a\tbc') # a	bc
+print('ab\tc') # ab	c
+
+print('a' 'b') # ab
+print('Na'*4 + ' Batman') # NaNaNaNa Batman
+a = 'abcde'
+print(a[0]) # a
+print(a[2]) # c
+print(a[-1]) # e
+# print(a[5])
+# IndexError: string index out of range
+
+print(a)
+c = a.replace('a', 'X') # Xbcde
+print(c)
+
+print(a.replace('a', 'X')) # Xbcde
+
+print(len(a)) # 5
+
+print(a.split()) # ['abcde']
+
+print('a,b,c'.split()) # ['a,b,c']
+
+print('a,b,c'.split(',')) # ['a', 'b', 'c']
