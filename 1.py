@@ -32,3 +32,30 @@ print(a.split()) # ['abcde']
 print('a,b,c'.split()) # ['a,b,c']
 
 print('a,b,c'.split(',')) # ['a', 'b', 'c']
+
+print(','.join(['a','b','c'])) # a,b,c
+
+print('abc'.startswith('a')) # True
+
+print('abc'.endswith('c')) # True
+
+print('abc'.find('a')) # 0
+print('abc'.find('b')) # 1
+
+print('aaa'.count('a')) # 3
+
+print('123'.isalnum()) # True
+
+
+
+
+
+
+
+
+
+
+
+
+
+
