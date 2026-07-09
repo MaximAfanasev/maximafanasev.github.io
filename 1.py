@@ -1,12 +1,8 @@
 a = 7
-print(a)
-
-# 7
+print(a) # 7
 
 b = a
-print(b) 
-
-# 7
+print(b) # 7
 
 a = 1
 z = 1
@@ -16,10 +12,8 @@ a0 = 1
 a_ = 1
 print(a, z, A, Z, a0, a_) # 1 1 1 1 1 1
 	
-	
-
-
 #0a = 1 Invalid decimal literal
+
 a = 95
 a = a - 3
 print(a) # 92
@@ -141,3 +135,49 @@ print('abc'.ljust(10)) #abc
 print('abc'.rjust(10)) #       abc
 
 print('abc'.replace('a', 'X')) # Xbc
+
+
+
+
+a = open(name, mode)
+a = open('1.txt')
+
+# name - имя файла;
+#mode — r означает чтение w означает запись
+# t (или ничего) означает, что файл текстовый b означает, что файл бинарный
+
+
+a = open('1.txt', 'wt')
+a.write('lalal')
+a.close()
+
+# в той же папке должен быть файл 1.txt
+# откроет добавит строку lalal закроет и сохранит
+
+
+b = 'tratata'
+a = open('1.txt', 'wt')
+print(b, file=a)
+a.close()
+
+#откроет запишет строку тратата и сохранит
+# функция print() добавляет пробел после каждого аргумента и символ новой строки в конце
+
+b = 'tratata'
+a = open('1.txt', 'wt')
+print(b, file=a)
+print(b, file=a)
+a.close()
+
+# tratata
+# tratata
+
+b = 'tratata'
+a = open('1.txt', 'wt')
+print(b, file=a, sep='', end='')
+print(b, file=a, sep='', end='')
+a.close()
+
+# tratatatratata
+
+
