@@ -1,371 +1,377 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Основы</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Основы</title>
 	<link rel="icon" type="image/png" href="../../favicon.png">
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+	<style>
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
 
-        body {
-            background: linear-gradient(145deg, #1e293b, #0f172a);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
-            padding: 1rem;
-            margin: 0;
-        }
+		body {
+			background: linear-gradient(145deg, #1e293b, #0f172a);
+			min-height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+			padding: 1rem;
+			margin: 0;
+		}
 
-        .card {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border-radius: 2.5rem;
-            padding: 2.5rem 2rem;
-            max-width: 550px;
-            width: 100%;
-            box-shadow: 0 25px 45px -10px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.05);
-            transition: box-shadow 0.2s;
-        }
+		.card {
+			background: rgba(255, 255, 255, 0.08);
+			backdrop-filter: blur(8px);
+			-webkit-backdrop-filter: blur(8px);
+			border-radius: 2.5rem;
+			padding: 2.5rem 2rem;
+			max-width: 550px;
+			width: 100%;
+			box-shadow: 0 25px 45px -10px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.05);
+			transition: box-shadow 0.2s;
+		}
 
-        .code-block {
-            background: #0b1120;
-            border-radius: 1.5rem;
-            padding: 1.5rem 1.8rem;
-            margin-bottom: 2rem;
-            border-left: 4px solid #facc15;
-            box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.6);
-            font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
-            font-size: 1.2rem;
-            line-height: 2rem;
-            color: #e2e8f0;
-            word-break: break-word;
-        }
+		.code-block {
+			background: #0b1120;
+			border-radius: 1.5rem;
+			padding: 1.5rem 1.8rem;
+			margin-bottom: 2rem;
+			border-left: 4px solid #facc15;
+			box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.6);
+			font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+			font-size: 1.2rem;
+			line-height: 2rem;
+			color: #e2e8f0;
+			word-break: break-word;
+		}
 
-        .code-block div {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
+		.code-block div {
+			display: flex;
+			align-items: center;
+			gap: 0.75rem;
+		}
 
-        .code-block .prompt {
-            color: #94a3b8;
-            user-select: none;
-            font-weight: 300;
-        }
+		.code-block .prompt {
+			color: #94a3b8;
+			user-select: none;
+			font-weight: 300;
+		}
 
-        .code-block .variable {
-            color: #f472b6;
-        }
+		.code-block .variable {
+			color: #f472b6;
+		}
 
-        .code-block .operator {
-            color: #facc15;
-        }
+		.code-block .operator {
+			color: #facc15;
+		}
 
-        .code-block .number {
-            color: #60a5fa;
-        }
+		.code-block .number {
+			color: #60a5fa;
+		}
 
-        .code-block .function {
-            color: #34d399;
-        }
+		.code-block .function {
+			color: #34d399;
+		}
 
-        .code-block .paren {
-            color: #cbd5e1;
-        }
+		.code-block .paren {
+			color: #cbd5e1;
+		}
 
-        .input-area {
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-            margin-top: 0.5rem;
-        }
+		.input-area {
+			display: flex;
+			flex-direction: column;
+			gap: 1.2rem;
+			margin-top: 0.5rem;
+		}
 
-        .input-wrapper {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 0.75rem;
-            background: #1e293b;
-            padding: 0.4rem 0.4rem 0.4rem 1.5rem;
-            border-radius: 100px;
-            border: 1px solid #334155;
-            transition: border 0.2s, background 0.2s, box-shadow 0.2s;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        }
+		.input-wrapper {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			gap: 0.75rem;
+			background: #1e293b;
+			padding: 0.4rem 0.4rem 0.4rem 1.5rem;
+			border-radius: 100px;
+			border: 1px solid #334155;
+			transition: border 0.2s, background 0.2s, box-shadow 0.2s;
+			box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+		}
 
-        .input-wrapper:focus-within {
-            border-color: #facc15;
-            background: #253247;
-            box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.2), 0 8px 18px rgba(0, 0, 0, 0.5);
-        }
+		.input-wrapper:focus-within {
+			border-color: #facc15;
+			background: #253247;
+			box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.2), 0 8px 18px rgba(0, 0, 0, 0.5);
+		}
 
-        .input-wrapper label {
-            color: #cbd5e1;
-            font-weight: 500;
-            font-size: 1rem;
-            letter-spacing: 0.3px;
-            white-space: nowrap;
-        }
+		.input-wrapper label {
+			color: #cbd5e1;
+			font-weight: 500;
+			font-size: 1rem;
+			letter-spacing: 0.3px;
+			white-space: nowrap;
+		}
 
-        .input-wrapper input {
-            flex: 1;
-            min-width: 80px;
-            background: transparent;
-            border: none;
-            padding: 0.7rem 0.2rem;
-            font-size: 1.3rem;
-            font-weight: 500;
-            color: #f1f5f9;
-            outline: none;
-            font-family: 'JetBrains Mono', monospace;
-            text-align: center;
-        }
+		.input-wrapper input {
+			flex: 1;
+			min-width: 80px;
+			background: transparent;
+			border: none;
+			padding: 0.7rem 0.2rem;
+			font-size: 1.3rem;
+			font-weight: 500;
+			color: #f1f5f9;
+			outline: none;
+			font-family: 'JetBrains Mono', monospace;
+			text-align: center;
+		}
 
-        .input-wrapper input::placeholder {
-            color: #475569;
-            font-weight: 300;
-            font-size: 1rem;
-            opacity: 0.7;
-        }
+		.input-wrapper input::placeholder {
+			color: #475569;
+			font-weight: 300;
+			font-size: 1rem;
+			opacity: 0.7;
+		}
 
-        .input-wrapper input[type="number"]::-webkit-inner-spin-button,
-        .input-wrapper input[type="number"]::-webkit-outer-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
-        .input-wrapper input[type="number"] {
-            -moz-appearance: textfield;
-        }
+		.input-wrapper input[type="number"]::-webkit-inner-spin-button,
+		.input-wrapper input[type="number"]::-webkit-outer-spin-button {
+			-webkit-appearance: none;
+			margin: 0;
+		}
 
-        .check-btn {
-            background: #facc15;
-            border: none;
-            border-radius: 40px;
-            padding: 0.65rem 1.8rem;
-            font-weight: 600;
-            font-size: 1rem;
-            color: #0f172a;
-            cursor: pointer;
-            transition: all 0.15s ease;
-            box-shadow: 0 4px 8px rgba(250, 204, 21, 0.3);
-            letter-spacing: 0.3px;
-            white-space: nowrap;
-        }
+		.input-wrapper input[type="number"] {
+			-moz-appearance: textfield;
+		}
 
-        .check-btn:hover {
-            background: #fde047;
-            transform: scale(1.02);
-            box-shadow: 0 8px 16px rgba(250, 204, 21, 0.4);
-        }
+		.check-btn {
+			background: #facc15;
+			border: none;
+			border-radius: 40px;
+			padding: 0.65rem 1.8rem;
+			font-weight: 600;
+			font-size: 1rem;
+			color: #0f172a;
+			cursor: pointer;
+			transition: all 0.15s ease;
+			box-shadow: 0 4px 8px rgba(250, 204, 21, 0.3);
+			letter-spacing: 0.3px;
+			white-space: nowrap;
+		}
 
-        .check-btn:active {
-            transform: scale(0.96);
-            background: #eab308;
-        }
+		.check-btn:hover {
+			background: #fde047;
+			transform: scale(1.02);
+			box-shadow: 0 8px 16px rgba(250, 204, 21, 0.4);
+		}
 
-        .message-box {
-            min-height: 3rem;
-            padding: 0.6rem 1rem;
-            border-radius: 60px;
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(4px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 500;
-            font-size: 1.1rem;
-            border: 1px solid transparent;
-            transition: all 0.25s ease;
-            text-align: center;
-            margin-top: 0.3rem;
-        }
+		.check-btn:active {
+			transform: scale(0.96);
+			background: #eab308;
+		}
 
-        .message-box.success {
-            background: rgba(52, 211, 153, 0.15);
-            border-color: #34d399;
-            color: #6ee7b7;
-            box-shadow: 0 0 12px rgba(52, 211, 153, 0.1);
-        }
+		.message-box {
+			min-height: 3rem;
+			padding: 0.6rem 1rem;
+			border-radius: 60px;
+			background: rgba(15, 23, 42, 0.6);
+			backdrop-filter: blur(4px);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-weight: 500;
+			font-size: 1.1rem;
+			border: 1px solid transparent;
+			transition: all 0.25s ease;
+			text-align: center;
+			margin-top: 0.3rem;
+		}
 
-        .message-box.error {
-            background: rgba(251, 113, 133, 0.12);
-            border-color: #f87171;
-            color: #fca5a5;
-            box-shadow: 0 0 12px rgba(251, 113, 133, 0.08);
-        }
+		.message-box.success {
+			background: rgba(52, 211, 153, 0.15);
+			border-color: #34d399;
+			color: #6ee7b7;
+			box-shadow: 0 0 12px rgba(52, 211, 153, 0.1);
+		}
 
-        .message-box.neutral {
-            color: #94a3b8;
-            border-color: #334155;
-        }
+		.message-box.error {
+			background: rgba(251, 113, 133, 0.12);
+			border-color: #f87171;
+			color: #fca5a5;
+			box-shadow: 0 0 12px rgba(251, 113, 133, 0.08);
+		}
 
-        .hint {
-            color: #64748b;
-            font-size: 0.85rem;
-            text-align: center;
-            margin-top: 0.5rem;
-            letter-spacing: 0.2px;
-        }
+		.message-box.neutral {
+			color: #94a3b8;
+			border-color: #334155;
+		}
 
-        .hint span {
-            background: #1e293b;
-            padding: 0.1rem 0.8rem;
-            border-radius: 30px;
-            font-family: monospace;
-            color: #cbd5e1;
-        }
+		.hint {
+			color: #64748b;
+			font-size: 0.85rem;
+			text-align: center;
+			margin-top: 0.5rem;
+			letter-spacing: 0.2px;
+		}
 
-        @media (max-width: 480px) {
-            .card {
-                padding: 1.8rem 1.2rem;
-            }
-            .code-block {
-                font-size: 1rem;
-                padding: 1rem 1.2rem;
-            }
-            .input-wrapper {
-                flex-wrap: wrap;
-                justify-content: center;
-                border-radius: 2rem;
-                padding: 0.6rem 1rem;
-            }
-            .input-wrapper input {
-                font-size: 1.2rem;
-                width: 100%;
-                text-align: center;
-            }
-            .check-btn {
-                width: 100%;
-                justify-content: center;
-                padding: 0.75rem;
-            }
-            .message-box {
-                font-size: 1rem;
-                padding: 0.5rem 0.8rem;
-            }
-        }
-    </style>
+		.hint span {
+			background: #1e293b;
+			padding: 0.1rem 0.8rem;
+			border-radius: 30px;
+			font-family: monospace;
+			color: #cbd5e1;
+		}
+
+		@media (max-width: 480px) {
+			.card {
+				padding: 1.8rem 1.2rem;
+			}
+
+			.code-block {
+				font-size: 1rem;
+				padding: 1rem 1.2rem;
+			}
+
+			.input-wrapper {
+				flex-wrap: wrap;
+				justify-content: center;
+				border-radius: 2rem;
+				padding: 0.6rem 1rem;
+			}
+
+			.input-wrapper input {
+				font-size: 1.2rem;
+				width: 100%;
+				text-align: center;
+			}
+
+			.check-btn {
+				width: 100%;
+				justify-content: center;
+				padding: 0.75rem;
+			}
+
+			.message-box {
+				font-size: 1rem;
+				padding: 0.5rem 0.8rem;
+			}
+		}
+	</style>
 </head>
+
 <body>
 
-<div class="card">
-    <!-- Блок с "кодом" Python -->
-    <div class="code-block">
-        <div><span class="prompt">&gt;</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">7</span></div>
-        <div><span class="prompt">&gt;</span> <span class="function">print</span><span class="paren">(</span><span class="variable">a</span><span class="paren">)</span></div>
-        
-    </div>
+	<div class="card">
+		<!-- Блок с "кодом" Python -->
+		<div class="code-block">
+			<div><span class="prompt">&gt;</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">7</span></div>
+			<div><span class="prompt">&gt;</span> <span class="function">print</span><span class="paren">(</span><span class="variable">a</span><span class="paren">)</span></div>
 
-    <!-- Поле ввода + кнопка -->
-    <div class="input-area">
-        <div class="input-wrapper">
-            <label for="answerInput">Ответ:</label>
-            <input type="number" id="answerInput" placeholder="введите число" value="" step="1" autofocus>
-            <button class="check-btn" id="checkBtn">Проверить</button>
-        </div>
+		</div>
 
-        <!-- Блок для сообщения -->
-        <div id="messageBox" class="message-box neutral">
-            ✦ введите число и нажмите «Проверить»
-        </div>
-    </div>
-</div>
+		<!-- Поле ввода + кнопка -->
+		<div class="input-area">
+			<div class="input-wrapper">
+				<label for="answerInput">Ответ:</label>
+				<input type="number" id="answerInput" placeholder="введите число" value="" step="1" autofocus>
+				<button class="check-btn" id="checkBtn">Проверить</button>
+			</div>
 
-<script>
-    (function() {
-        const input = document.getElementById('answerInput');
-        const checkBtn = document.getElementById('checkBtn');
-        const messageBox = document.getElementById('messageBox');
+			<!-- Блок для сообщения -->
+			<div id="messageBox" class="message-box neutral">
+				✦ введите число и нажмите «Проверить»
+			</div>
+		</div>
+	</div>
 
-        // Эталонное значение
-        const TARGET = 7;
+	<script>
+		(function() {
+			const input = document.getElementById('answerInput');
+			const checkBtn = document.getElementById('checkBtn');
+			const messageBox = document.getElementById('messageBox');
 
-        // Функция обновления сообщения
-        function setMessage(text, type = 'neutral') {
-            messageBox.textContent = text;
-            // Убираем все классы состояний
-            messageBox.classList.remove('success', 'error', 'neutral');
-            // Добавляем нужный
-            messageBox.classList.add(type);
-        }
+			// Эталонное значение
+			const TARGET = 7;
 
-        // Основная проверка
-        function validateAnswer() {
-            const rawValue = input.value.trim();
+			// Функция обновления сообщения
+			function setMessage(text, type = 'neutral') {
+				messageBox.textContent = text;
+				// Убираем все классы состояний
+				messageBox.classList.remove('success', 'error', 'neutral');
+				// Добавляем нужный
+				messageBox.classList.add(type);
+			}
 
-            // Если поле пустое — напоминаем
-            if (rawValue === '') {
-                setMessage('⏳ поле пустое, введите число', 'neutral');
-                return;
-            }
+			// Основная проверка
+			function validateAnswer() {
+				const rawValue = input.value.trim();
 
-            const numeric = Number(rawValue);
-            // Проверка, что это число (и не NaN, и не бесконечность, и целое)
-            if (!Number.isFinite(numeric) || !Number.isInteger(numeric)) {
-                setMessage('⚠️ введите целое число (например, 7)', 'error');
-                return;
-            }
+				// Если поле пустое — напоминаем
+				if (rawValue === '') {
+					setMessage('⏳ поле пустое, введите число', 'neutral');
+					return;
+				}
 
-            // Сравнение с эталоном
-            if (numeric === TARGET) {
-                setMessage(`✅ Верно! print(a) → ${TARGET}`, 'success');
-                // Небольшая анимация-подсветка для удовольствия
-                input.style.transition = 'box-shadow 0.2s';
-                input.style.boxShadow = '0 0 0 3px #34d399';
-                setTimeout(() => {
-                    input.style.boxShadow = 'none';
-                }, 600);
-            } else {
-                setMessage(`❌ Неверно. Вы ввели ${numeric}, а должно быть ${TARGET}`, 'error');
-                input.style.transition = 'box-shadow 0.15s';
-                input.style.boxShadow = '0 0 0 3px #f87171';
-                setTimeout(() => {
-                    input.style.boxShadow = 'none';
-                }, 500);
-            }
-        }
+				const numeric = Number(rawValue);
+				// Проверка, что это число (и не NaN, и не бесконечность, и целое)
+				if (!Number.isFinite(numeric) || !Number.isInteger(numeric)) {
+					setMessage('⚠️ введите целое число (например, 7)', 'error');
+					return;
+				}
 
-        // Обработчики
-        checkBtn.addEventListener('click', validateAnswer);
+				// Сравнение с эталоном
+				if (numeric === TARGET) {
+					setMessage(`✅ Верно! print(a) → ${TARGET}`, 'success');
+					// Небольшая анимация-подсветка для удовольствия
+					input.style.transition = 'box-shadow 0.2s';
+					input.style.boxShadow = '0 0 0 3px #34d399';
+					setTimeout(() => {
+						input.style.boxShadow = 'none';
+					}, 600);
+				} else {
+					setMessage(`❌ Неверно. Вы ввели ${numeric}, а должно быть ${TARGET}`, 'error');
+					input.style.transition = 'box-shadow 0.15s';
+					input.style.boxShadow = '0 0 0 3px #f87171';
+					setTimeout(() => {
+						input.style.boxShadow = 'none';
+					}, 500);
+				}
+			}
 
-        // Проверка по нажатию Enter в поле ввода
-        input.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                validateAnswer();
-            }
-        });
+			// Обработчики
+			checkBtn.addEventListener('click', validateAnswer);
 
-        // При загрузке устанавливаем нейтральное сообщение (уже есть в HTML, но продублируем)
-        // Дополнительно: если пользователь начинает печатать, убираем "ошибку/успех" (опционально)
-        input.addEventListener('input', function() {
-            // Если сообщение было success/error, сбрасываем на нейтральное (не сразу, но при вводе)
-            if (messageBox.classList.contains('success') || messageBox.classList.contains('error')) {
-                // но только если поле не пустое, иначе покажем "введите число"
-                if (this.value.trim() === '') {
-                    setMessage('✎ введите число', 'neutral');
-                } else {
-                    // Мягкий нейтральный статус, но без сброса значения
-                    setMessage('✎ редактирование...', 'neutral');
-                }
-            }
-        });
+			// Проверка по нажатию Enter в поле ввода
+			input.addEventListener('keydown', (e) => {
+				if (e.key === 'Enter') {
+					e.preventDefault();
+					validateAnswer();
+				}
+			});
 
-        // Небольшой фокус: при загрузке автофокус уже есть, но подсветим
-        input.focus();
+			// При загрузке устанавливаем нейтральное сообщение (уже есть в HTML, но продублируем)
+			// Дополнительно: если пользователь начинает печатать, убираем "ошибку/успех" (опционально)
+			input.addEventListener('input', function() {
+				// Если сообщение было success/error, сбрасываем на нейтральное (не сразу, но при вводе)
+				if (messageBox.classList.contains('success') || messageBox.classList.contains('error')) {
+					// но только если поле не пустое, иначе покажем "введите число"
+					if (this.value.trim() === '') {
+						setMessage('✎ введите число', 'neutral');
+					} else {
+						// Мягкий нейтральный статус, но без сброса значения
+						setMessage('✎ редактирование...', 'neutral');
+					}
+				}
+			});
 
-        // Доп. обработка для очистки от случайных пробелов
-        // (поле type="number" само фильтрует, но на всякий случай)
-    })();
-</script>
+			// Небольшой фокус: при загрузке автофокус уже есть, но подсветим
+			input.focus();
 
-</body>
-</html>
+			// Доп. обработка для очистки от случайных пробелов
+			// (поле type="number" само фильтрует, но на всякий случай)
+		})();
+	</script>
+
+</body></html>

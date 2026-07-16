@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="image/png" href="../../favicon.png">
+	<title>1</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			min-height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background: radial-gradient(ellipse at 50% 20%, #0f172a, #020617);
+			font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+			padding: 1.5rem;
+		}
+
+		.card {
+			background: rgba(255, 255, 255, 0.04);
+			backdrop-filter: blur(20px) saturate(180%);
+			-webkit-backdrop-filter: blur(20px) saturate(180%);
+			border-radius: 3rem;
+			padding: 2.8rem 2.5rem;
+			max-width: 780px;
+			width: 100%;
+			border: 1px solid rgba(255, 255, 255, 0.06);
+			box-shadow: 0 50px 100px -30px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+			transition: box-shadow 0.3s ease;
+		}
+
+		.card:hover {
+			box-shadow: 0 60px 120px -25px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+		}
+
+		.header {
+			text-align: center;
+			margin-bottom: 2rem;
+		}
+
+		.header .icon {
+			font-size: 2.2rem;
+			display: block;
+			margin-bottom: 0.2rem;
+		}
+
+		.header h2 {
+			font-size: 1.3rem;
+			font-weight: 500;
+			color: #e2e8f0;
+			letter-spacing: -0.3px;
+		}
+
+		.header .sub {
+			color: #94a3b8;
+			font-size: 0.85rem;
+			margin-top: 0.3rem;
+		}
+
+		.header .sub strong {
+			color: #facc15;
+		}
+
+		/* Блок с примерами операций */
+		.operations-grid {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 0.8rem;
+			background: #080d1a;
+			border-radius: 1.8rem;
+			padding: 1.5rem;
+			border: 1px solid rgba(255, 255, 255, 0.04);
+			box-shadow: inset 0 2px 12px rgba(0, 0, 0, 0.5);
+			margin-bottom: 2rem;
+		}
+
+		.op-item {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			background: rgba(255, 255, 255, 0.02);
+			border-radius: 1.2rem;
+			padding: 0.8rem 0.5rem;
+			border: 1px solid rgba(255, 255, 255, 0.04);
+			transition: all 0.2s ease;
+		}
+
+		.op-item.completed {
+			border-color: #34d399;
+			background: rgba(52, 211, 153, 0.05);
+		}
+
+		.op-item .op-symbol {
+			font-size: 2rem;
+			font-weight: 600;
+			color: #facc15;
+			font-family: 'JetBrains Mono', monospace;
+		}
+
+		.op-item .op-name {
+			font-size: 0.65rem;
+			color: #64748b;
+			margin-top: 0.1rem;
+			text-transform: uppercase;
+			letter-spacing: 0.3px;
+		}
+
+		.op-item .op-example {
+			font-size: 0.7rem;
+			color: #475569;
+			margin-top: 0.2rem;
+			font-family: 'JetBrains Mono', monospace;
+		}
+
+		.op-item .status-dot {
+			display: inline-block;
+			width: 8px;
+			height: 8px;
+			border-radius: 50%;
+			background: #2d3a4f;
+			margin-top: 0.3rem;
+			transition: background 0.3s ease;
+		}
+
+		.op-item.completed .status-dot {
+			background: #34d399;
+			box-shadow: 0 0 12px rgba(52, 211, 153, 0.3);
+		}
+
+		/* Поля ввода */
+		.input-section {
+			display: flex;
+			flex-direction: column;
+			gap: 1.2rem;
+		}
+
+		.input-row {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			gap: 0.6rem;
+			background: rgba(15, 23, 42, 0.6);
+			padding: 0.3rem 0.3rem 0.3rem 1.5rem;
+			border-radius: 100px;
+			border: 1px solid #2d3a4f;
+			transition: border 0.25s, background 0.25s, box-shadow 0.25s;
+			box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+		}
+
+		.input-row:focus-within {
+			border-color: #facc15;
+			background: #1a253a;
+			box-shadow: 0 0 0 4px rgba(250, 204, 21, 0.06), 0 8px 24px rgba(0, 0, 0, 0.5);
+		}
+
+		.input-row label {
+			color: #94a3b8;
+			font-weight: 500;
+			font-size: 0.9rem;
+			white-space: nowrap;
+			display: flex;
+			align-items: center;
+			gap: 0.3rem;
+		}
+
+		.input-row label .num {
+			color: #60a5fa;
+			font-weight: 600;
+			font-size: 0.75rem;
+			background: rgba(96, 165, 250, 0.08);
+			padding: 0.05rem 0.5rem;
+			border-radius: 20px;
+		}
+
+		.input-row input {
+			flex: 1;
+			min-width: 60px;
+			background: transparent;
+			border: none;
+			padding: 0.7rem 0.2rem;
+			font-size: 1.1rem;
+			font-weight: 500;
+			color: #f1f5f9;
+			outline: none;
+			font-family: 'JetBrains Mono', 'Fira Code', monospace;
+			text-align: center;
+			letter-spacing: 0.5px;
+		}
+
+		.input-row input::placeholder {
+			color: #475569;
+			font-weight: 300;
+			font-size: 0.85rem;
+			opacity: 0.5;
+		}
+
+		.input-row input:focus::placeholder {
+			opacity: 0.2;
+		}
+
+		.input-row .check-btn {
+			background: #facc15;
+			border: none;
+			border-radius: 60px;
+			padding: 0.5rem 1.4rem;
+			font-weight: 600;
+			font-size: 0.85rem;
+			color: #0f172a;
+			cursor: pointer;
+			transition: all 0.15s ease;
+			box-shadow: 0 4px 16px rgba(250, 204, 21, 0.1);
+			white-space: nowrap;
+			font-family: 'Inter', sans-serif;
+		}
+
+		.input-row .check-btn:hover {
+			background: #fde047;
+			transform: scale(1.03);
+			box-shadow: 0 8px 28px rgba(250, 204, 21, 0.2);
+		}
+
+		.input-row .check-btn:active {
+			transform: scale(0.95);
+			background: #eab308;
+		}
+
+		.input-row .check-btn:disabled {
+			opacity: 0.3;
+			cursor: not-allowed;
+			transform: none;
+			box-shadow: none;
+		}
+
+		.input-row .status-icon {
+			font-size: 1.2rem;
+			min-width: 1.8rem;
+			text-align: center;
+		}
+
+		/* Сообщение */
+		.message-box {
+			min-height: 3rem;
+			padding: 0.6rem 1.2rem;
+			border-radius: 60px;
+			background: rgba(15, 23, 42, 0.5);
+			backdrop-filter: blur(4px);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-weight: 500;
+			font-size: 0.95rem;
+			border: 1px solid transparent;
+			transition: all 0.3s ease;
+			text-align: center;
+			gap: 0.6rem;
+			flex-wrap: wrap;
+		}
+
+		.message-box .icon {
+			font-size: 1.1rem;
+		}
+
+		.message-box.neutral {
+			color: #94a3b8;
+			border-color: #2d3a4f;
+		}
+
+		.message-box.success {
+			background: rgba(52, 211, 153, 0.06);
+			border-color: #34d399;
+			color: #6ee7b7;
+			box-shadow: 0 0 24px rgba(52, 211, 153, 0.02);
+		}
+
+		.message-box.error {
+			background: rgba(251, 113, 133, 0.04);
+			border-color: #f87171;
+			color: #fca5a5;
+			box-shadow: 0 0 24px rgba(251, 113, 133, 0.01);
+		}
+
+		.message-box.complete {
+			background: rgba(250, 204, 21, 0.06);
+			border-color: #facc15;
+			color: #facc15;
+			box-shadow: 0 0 24px rgba(250, 204, 21, 0.02);
+		}
+
+		.progress-bar {
+			width: 100%;
+			height: 4px;
+			background: #1e293b;
+			border-radius: 4px;
+			overflow: hidden;
+			margin-top: 0.2rem;
+		}
+
+		.progress-bar .fill {
+			height: 100%;
+			background: linear-gradient(90deg, #facc15, #34d399);
+			border-radius: 4px;
+			transition: width 0.5s ease;
+			width: 0%;
+		}
+
+		.hint {
+			color: #64748b;
+			font-size: 0.75rem;
+			text-align: center;
+			margin-top: 0.2rem;
+			opacity: 0.7;
+		}
+
+		.hint kbd {
+			background: #1e293b;
+			padding: 0.05rem 0.6rem;
+			border-radius: 20px;
+			font-family: 'JetBrains Mono', monospace;
+			color: #cbd5e1;
+			font-size: 0.7rem;
+			border: 1px solid #334155;
+		}
+
+		@media (max-width: 600px) {
+			.card {
+				padding: 1.8rem 1.2rem;
+				border-radius: 2rem;
+			}
+
+			.operations-grid {
+				grid-template-columns: repeat(3, 1fr);
+				gap: 0.5rem;
+				padding: 1rem;
+			}
+
+			.op-item .op-symbol {
+				font-size: 1.5rem;
+			}
+
+			.op-item .op-name {
+				font-size: 0.55rem;
+			}
+
+			.input-row {
+				padding: 0.3rem 0.3rem 0.3rem 1rem;
+				border-radius: 60px;
+			}
+
+			.input-row input {
+				font-size: 1rem;
+				padding: 0.5rem 0.1rem;
+				min-width: 40px;
+			}
+
+			.input-row .check-btn {
+				padding: 0.4rem 1rem;
+				font-size: 0.75rem;
+			}
+
+			.message-box {
+				font-size: 0.85rem;
+				padding: 0.4rem 0.8rem;
+				min-height: 2.5rem;
+			}
+
+			.header h2 {
+				font-size: 1.1rem;
+			}
+		}
+
+		@media (max-width: 400px) {
+			.operations-grid {
+				grid-template-columns: repeat(2, 1fr);
+			}
+
+			.input-row {
+				flex-wrap: wrap;
+				justify-content: center;
+				padding: 0.5rem 0.6rem;
+				border-radius: 1.5rem;
+			}
+
+			.input-row input {
+				width: 100%;
+				text-align: center;
+			}
+
+			.input-row .check-btn {
+				width: 100%;
+			}
+
+			.input-row label {
+				font-size: 0.8rem;
+			}
+		}
+
+		.card {
+			animation: fadeUp 0.5s ease forwards;
+		}
+
+		@keyframes fadeUp {
+			0% {
+				opacity: 0;
+				transform: translateY(20px) scale(0.97);
+			}
+
+			100% {
+				opacity: 1;
+				transform: translateY(0) scale(1);
+			}
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="card">
+
+		<div class="header">
+			<span class="icon">🧮</span>
+			<h2>Все типы операций Python</h2>
+			<div class="sub">введите каждый оператор в соответствующее поле · <strong>6</strong> операций</div>
+		</div>
+
+		<!-- Сетка с операциями (статус) -->
+		<div class="operations-grid" id="operationsGrid">
+			<div class="op-item" data-op="+">
+				<span class="op-symbol">+</span>
+				<span class="op-name">сложение</span>
+				<span class="op-example">5 + 3 = 8</span>
+				<span class="status-dot"></span>
+			</div>
+			<div class="op-item" data-op="-">
+				<span class="op-symbol">−</span>
+				<span class="op-name">вычитание</span>
+				<span class="op-example">5 − 3 = 2</span>
+				<span class="status-dot"></span>
+			</div>
+			<div class="op-item" data-op="*">
+				<span class="op-symbol">*</span>
+				<span class="op-name">умножение</span>
+				<span class="op-example">5 * 3 = 15</span>
+				<span class="status-dot"></span>
+			</div>
+			<div class="op-item" data-op="/">
+				<span class="op-symbol">/</span>
+				<span class="op-name">деление</span>
+				<span class="op-example">5 / 2 = 2.5</span>
+				<span class="status-dot"></span>
+			</div>
+			<div class="op-item" data-op="//">
+				<span class="op-symbol">//</span>
+				<span class="op-name">целочисл. деление</span>
+				<span class="op-example">5 // 2 = 2</span>
+				<span class="status-dot"></span>
+			</div>
+			<div class="op-item" data-op="%">
+				<span class="op-symbol">%</span>
+				<span class="op-name">остаток</span>
+				<span class="op-example">5 % 2 = 1</span>
+				<span class="status-dot"></span>
+			</div>
+		</div>
+
+		<!-- Прогресс -->
+		<div class="progress-bar">
+			<div class="fill" id="progressFill"></div>
+		</div>
+
+		<!-- Поля ввода -->
+		<div class="input-section" id="inputSection">
+			<!-- Поля будут сгенерированы скриптом -->
+		</div>
+
+		<!-- Сообщение -->
+		<div id="messageBox" class="message-box neutral" style="margin-top: 1rem;">
+			<span class="icon">💡</span> введите оператор в каждое поле и нажмите «OK»
+		</div>
+
+		<div class="hint">
+			<kbd>Enter</kbd> для проверки текущего поля · <span id="progressText">0 / 6</span> выполнено
+		</div>
+	</div>
+
+	<script>
+		(function() {
+			const OPERATIONS = ['+', '-', '*', '/', '//', '%'];
+			const OP_NAMES = {
+				'+': 'сложение',
+				'-': 'вычитание',
+				'*': 'умножение',
+				'/': 'деление',
+				'//': 'целочисл. деление',
+				'%': 'остаток'
+			};
+
+			const grid = document.getElementById('operationsGrid');
+			const inputSection = document.getElementById('inputSection');
+			const messageBox = document.getElementById('messageBox');
+			const progressFill = document.getElementById('progressFill');
+			const progressText = document.getElementById('progressText');
+
+			let completed = new Array(OPERATIONS.length).fill(false);
+			let inputs = [];
+
+			// Функция обновления прогресса
+			function updateProgress() {
+				const done = completed.filter(v => v).length;
+				const total = OPERATIONS.length;
+				const percent = (done / total) * 100;
+				progressFill.style.width = percent + '%';
+				progressText.textContent = `${done} / ${total}`;
+
+				// Обновляем статус в сетке
+				document.querySelectorAll('.op-item').forEach((el, idx) => {
+					if (completed[idx]) {
+						el.classList.add('completed');
+					} else {
+						el.classList.remove('completed');
+					}
+				});
+
+				// Проверка на полное завершение
+				if (done === total) {
+					setMessage('🎉 Поздравляем! Вы ввели все 6 операций!', 'complete', '🏆');
+					// Отключаем все кнопки
+					document.querySelectorAll('.check-btn').forEach(btn => btn.disabled = true);
+					// Делаем все поля readonly
+					document.querySelectorAll('.op-input').forEach(inp => inp.readOnly = true);
+				}
+			}
+
+			function setMessage(text, type = 'neutral', icon = '') {
+				messageBox.innerHTML = icon ? `<span class="icon">${icon}</span> ${text}` : text;
+				messageBox.classList.remove('neutral', 'success', 'error', 'complete');
+				messageBox.classList.add(type);
+			}
+
+			// Создание полей ввода
+			function createInputs() {
+				inputSection.innerHTML = '';
+				inputs = [];
+
+				OPERATIONS.forEach((op, idx) => {
+					const row = document.createElement('div');
+					row.className = 'input-row';
+
+					const label = document.createElement('label');
+					label.htmlFor = `input-${idx}`;
+					label.innerHTML = `
+                    <span class="num">${idx + 1}</span>
+                    ${OP_NAMES[op]}
+                `;
+
+					const input = document.createElement('input');
+					input.type = 'text';
+					input.id = `input-${idx}`;
+					input.className = 'op-input';
+					input.placeholder = `введите ${op}`;
+					input.spellcheck = false;
+					input.autocomplete = 'off';
+					input.dataset.index = idx;
+					input.dataset.expected = op;
+
+					const statusIcon = document.createElement('span');
+					statusIcon.className = 'status-icon';
+					statusIcon.id = `status-${idx}`;
+					statusIcon.textContent = '⬜';
+
+					const btn = document.createElement('button');
+					btn.className = 'check-btn';
+					btn.textContent = 'OK';
+					btn.dataset.index = idx;
+
+					row.appendChild(label);
+					row.appendChild(input);
+					row.appendChild(btn);
+					row.appendChild(statusIcon);
+					inputSection.appendChild(row);
+
+					inputs.push({
+						input,
+						btn,
+						statusIcon,
+						row
+					});
+
+					// Обработчик для кнопки
+					btn.addEventListener('click', function() {
+						checkInput(parseInt(this.dataset.index));
+					});
+
+					// Обработчик Enter
+					input.addEventListener('keydown', function(e) {
+						if (e.key === 'Enter') {
+							e.preventDefault();
+							const idx = parseInt(this.dataset.index);
+							if (!completed[idx]) {
+								checkInput(idx);
+							}
+						}
+					});
+
+					// При вводе сбрасываем статус, если поле уже было проверено
+					input.addEventListener('input', function() {
+						const idx = parseInt(this.dataset.index);
+						if (completed[idx]) {
+							// Если пользователь меняет правильный ответ — сбрасываем
+							completed[idx] = false;
+							const statusIcon = document.getElementById(`status-${idx}`);
+							statusIcon.textContent = '⬜';
+							updateProgress();
+							setMessage('✏️ редактирование...', 'neutral', '⌨️');
+							// Включаем кнопку обратно
+							const btn = document.querySelector(`.check-btn[data-index="${idx}"]`);
+							if (btn) btn.disabled = false;
+							this.readOnly = false;
+						}
+					});
+				});
+			}
+
+			// Проверка одного поля
+			function checkInput(idx) {
+				if (completed[idx]) {
+					setMessage(`✅ Операция «${OPERATIONS[idx]}» уже введена верно`, 'success', '✓');
+					return;
+				}
+
+				const input = inputs[idx].input;
+				const statusIcon = inputs[idx].statusIcon;
+				const value = input.value.trim();
+				const expected = OPERATIONS[idx];
+
+				if (value === '') {
+					setMessage(`поле #${idx + 1} пустое, введите «${expected}»`, 'error', '⚠️');
+					return;
+				}
+
+				if (value === expected) {
+					completed[idx] = true;
+					statusIcon.textContent = '✅';
+					input.style.borderColor = '#34d399';
+					setMessage(`✅ Верно! «${expected}» — ${OP_NAMES[expected]}`, 'success', '✓');
+					updateProgress();
+
+					// Делаем поле readonly и отключаем кнопку
+					input.readOnly = true;
+					const btn = document.querySelector(`.check-btn[data-index="${idx}"]`);
+					if (btn) btn.disabled = true;
+
+					// Автофокус на следующее пустое поле
+					const nextIdx = completed.findIndex((val, i) => !val && i > idx);
+					if (nextIdx !== -1) {
+						inputs[nextIdx].input.focus();
+					} else {
+						// Если все заполнены, фокус не нужен
+						const allDone = completed.every(v => v);
+						if (allDone) {
+							setMessage('🎉 Отлично! Все 6 операций введены!', 'complete', '🏆');
+						}
+					}
+				} else {
+					statusIcon.textContent = '❌';
+					input.style.borderColor = '#f87171';
+					setMessage(`❌ Неверно. Ожидается «${expected}», вы ввели «${value}»`, 'error', '❌');
+					setTimeout(() => {
+						input.style.borderColor = '';
+					}, 800);
+					// Сбрасываем статус иконки через секунду
+					setTimeout(() => {
+						if (!completed[idx]) {
+							statusIcon.textContent = '⬜';
+						}
+					}, 1200);
+				}
+			}
+
+			// Инициализация
+			createInputs();
+
+			// Устанавливаем начальный прогресс
+			updateProgress();
+			setMessage('💡 введите оператор в каждое поле и нажмите «OK» или Enter', 'neutral', '📝');
+
+			// Фокус на первое поле
+			if (inputs.length > 0) {
+				inputs[0].input.focus();
+			}
+
+			// Добавляем обработчик глобальный для Escape (сброс сообщений)
+			document.addEventListener('keydown', (e) => {
+				if (e.key === 'Escape') {
+					const allDone = completed.every(v => v);
+					if (!allDone) {
+						setMessage('✏️ продолжайте вводить операторы', 'neutral', '⌨️');
+					}
+				}
+			});
+
+			console.log('🧮 Страница с операциями готова!');
+		})();
+	</script>
+
+</body></html>

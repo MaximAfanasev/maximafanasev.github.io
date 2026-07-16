@@ -1,582 +1,598 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Введите буквы: b b c d f g i l t s</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Введите буквы: b b c d f g i l t s</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
 
-        body {
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: radial-gradient(ellipse at 50% 20%, #1a1a2e, #0a0a15);
-            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
-            padding: 1.5rem;
-        }
+		body {
+			min-height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background: radial-gradient(ellipse at 50% 20%, #1a1a2e, #0a0a15);
+			font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+			padding: 1.5rem;
+		}
 
-        .card {
-            background: rgba(255, 255, 255, 0.04);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            border-radius: 3rem;
-            padding: 2.8rem 2.5rem;
-            max-width: 700px;
-            width: 100%;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            box-shadow: 0 50px 100px -30px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-            transition: box-shadow 0.3s ease;
-        }
+		.card {
+			background: rgba(255, 255, 255, 0.04);
+			backdrop-filter: blur(20px) saturate(180%);
+			-webkit-backdrop-filter: blur(20px) saturate(180%);
+			border-radius: 3rem;
+			padding: 2.8rem 2.5rem;
+			max-width: 700px;
+			width: 100%;
+			border: 1px solid rgba(255, 255, 255, 0.06);
+			box-shadow: 0 50px 100px -30px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+			transition: box-shadow 0.3s ease;
+		}
 
-        .card:hover {
-            box-shadow: 0 60px 120px -25px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-        }
+		.card:hover {
+			box-shadow: 0 60px 120px -25px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+		}
 
-        /* Заголовок */
-        .header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
+		/* Заголовок */
+		.header {
+			text-align: center;
+			margin-bottom: 2rem;
+		}
 
-        .header .icon {
-            font-size: 2.5rem;
-            margin-bottom: 0.3rem;
-            display: block;
-        }
+		.header .icon {
+			font-size: 2.5rem;
+			margin-bottom: 0.3rem;
+			display: block;
+		}
 
-        .header h2 {
-            font-size: 1.3rem;
-            font-weight: 500;
-            color: #e2e8f0;
-            letter-spacing: -0.3px;
-        }
+		.header h2 {
+			font-size: 1.3rem;
+			font-weight: 500;
+			color: #e2e8f0;
+			letter-spacing: -0.3px;
+		}
 
-        .header .sub {
-            color: #94a3b8;
-            font-size: 0.9rem;
-            margin-top: 0.3rem;
-            font-weight: 400;
-        }
+		.header .sub {
+			color: #94a3b8;
+			font-size: 0.9rem;
+			margin-top: 0.3rem;
+			font-weight: 400;
+		}
 
-        .header .sub strong {
-            color: #facc15;
-            font-weight: 600;
-        }
+		.header .sub strong {
+			color: #facc15;
+			font-weight: 600;
+		}
 
-        /* Блок с буквами для ввода */
-        .letters-display {
-            background: #080d1a;
-            border-radius: 2rem;
-            padding: 1.8rem 2rem;
-            border-left: 5px solid #facc15;
-            box-shadow: inset 0 2px 12px rgba(0, 0, 0, 0.7), 0 8px 24px rgba(0, 0, 0, 0.4);
-            margin-bottom: 2.2rem;
-        }
+		/* Блок с буквами для ввода */
+		.letters-display {
+			background: #080d1a;
+			border-radius: 2rem;
+			padding: 1.8rem 2rem;
+			border-left: 5px solid #facc15;
+			box-shadow: inset 0 2px 12px rgba(0, 0, 0, 0.7), 0 8px 24px rgba(0, 0, 0, 0.4);
+			margin-bottom: 2.2rem;
+		}
 
-        .letters-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 0.6rem 1.2rem;
-        }
+		.letters-grid {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 0.6rem 1.2rem;
+		}
 
-        .letter-item {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(250, 204, 21, 0.06);
-            border: 1px solid rgba(250, 204, 21, 0.12);
-            border-radius: 12px;
-            padding: 0.3rem 0.8rem;
-            font-family: 'JetBrains Mono', 'Fira Code', monospace;
-            font-size: 1.6rem;
-            font-weight: 600;
-            color: #facc15;
-            min-width: 2.8rem;
-            min-height: 3.2rem;
-            transition: all 0.2s ease;
-        }
+		.letter-item {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			background: rgba(250, 204, 21, 0.06);
+			border: 1px solid rgba(250, 204, 21, 0.12);
+			border-radius: 12px;
+			padding: 0.3rem 0.8rem;
+			font-family: 'JetBrains Mono', 'Fira Code', monospace;
+			font-size: 1.6rem;
+			font-weight: 600;
+			color: #facc15;
+			min-width: 2.8rem;
+			min-height: 3.2rem;
+			transition: all 0.2s ease;
+		}
 
-        .letter-item:hover {
-            background: rgba(250, 204, 21, 0.1);
-            transform: translateY(-2px);
-        }
+		.letter-item:hover {
+			background: rgba(250, 204, 21, 0.1);
+			transform: translateY(-2px);
+		}
 
-        .letter-item .pos {
-            font-size: 0.55rem;
-            color: #64748b;
-            font-weight: 400;
-            margin-left: 0.3rem;
-            background: rgba(255,255,255,0.04);
-            padding: 0.05rem 0.4rem;
-            border-radius: 8px;
-        }
+		.letter-item .pos {
+			font-size: 0.55rem;
+			color: #64748b;
+			font-weight: 400;
+			margin-left: 0.3rem;
+			background: rgba(255, 255, 255, 0.04);
+			padding: 0.05rem 0.4rem;
+			border-radius: 8px;
+		}
 
-        .divider {
-            border: none;
-            border-top: 1px solid rgba(255, 255, 255, 0.04);
-            margin: 0.6rem 0 0.8rem 0;
-        }
+		.divider {
+			border: none;
+			border-top: 1px solid rgba(255, 255, 255, 0.04);
+			margin: 0.6rem 0 0.8rem 0;
+		}
 
-        .question-tag {
-            display: inline-block;
-            background: rgba(250, 204, 21, 0.06);
-            padding: 0.2rem 1.2rem;
-            border-radius: 60px;
-            font-size: 0.7rem;
-            color: #facc15;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            font-weight: 500;
-            margin-bottom: 0.2rem;
-        }
+		.question-tag {
+			display: inline-block;
+			background: rgba(250, 204, 21, 0.06);
+			padding: 0.2rem 1.2rem;
+			border-radius: 60px;
+			font-size: 0.7rem;
+			color: #facc15;
+			letter-spacing: 0.5px;
+			text-transform: uppercase;
+			font-weight: 500;
+			margin-bottom: 0.2rem;
+		}
 
-        .hint-text {
-            color: #94a3b8;
-            font-size: 0.85rem;
-            font-family: 'Inter', sans-serif;
-            font-weight: 400;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
+		.hint-text {
+			color: #94a3b8;
+			font-size: 0.85rem;
+			font-family: 'Inter', sans-serif;
+			font-weight: 400;
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			flex-wrap: wrap;
+		}
 
-        .hint-text code {
-            background: #1e293b;
-            padding: 0.1rem 0.6rem;
-            border-radius: 8px;
-            color: #e2e8f0;
-            font-size: 0.8rem;
-        }
+		.hint-text code {
+			background: #1e293b;
+			padding: 0.1rem 0.6rem;
+			border-radius: 8px;
+			color: #e2e8f0;
+			font-size: 0.8rem;
+		}
 
-        /* Поле ввода и кнопка */
-        .input-area {
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-        }
+		/* Поле ввода и кнопка */
+		.input-area {
+			display: flex;
+			flex-direction: column;
+			gap: 1.2rem;
+		}
 
-        .input-row {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 0.8rem;
-            background: rgba(15, 23, 42, 0.6);
-            padding: 0.3rem 0.3rem 0.3rem 1.8rem;
-            border-radius: 100px;
-            border: 1px solid #2d3a4f;
-            transition: border 0.25s, background 0.25s, box-shadow 0.25s;
-            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
-        }
+		.input-row {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			gap: 0.8rem;
+			background: rgba(15, 23, 42, 0.6);
+			padding: 0.3rem 0.3rem 0.3rem 1.8rem;
+			border-radius: 100px;
+			border: 1px solid #2d3a4f;
+			transition: border 0.25s, background 0.25s, box-shadow 0.25s;
+			box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+		}
 
-        .input-row:focus-within {
-            border-color: #facc15;
-            background: #1a253a;
-            box-shadow: 0 0 0 4px rgba(250, 204, 21, 0.06), 0 8px 24px rgba(0, 0, 0, 0.5);
-        }
+		.input-row:focus-within {
+			border-color: #facc15;
+			background: #1a253a;
+			box-shadow: 0 0 0 4px rgba(250, 204, 21, 0.06), 0 8px 24px rgba(0, 0, 0, 0.5);
+		}
 
-        .input-row label {
-            color: #94a3b8;
-            font-weight: 500;
-            font-size: 0.95rem;
-            letter-spacing: 0.3px;
-            white-space: nowrap;
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-        }
+		.input-row label {
+			color: #94a3b8;
+			font-weight: 500;
+			font-size: 0.95rem;
+			letter-spacing: 0.3px;
+			white-space: nowrap;
+			display: flex;
+			align-items: center;
+			gap: 0.4rem;
+		}
 
-        .input-row label .accent {
-            color: #facc15;
-            font-weight: 600;
-        }
+		.input-row label .accent {
+			color: #facc15;
+			font-weight: 600;
+		}
 
-        .input-row input {
-            flex: 1;
-            min-width: 120px;
-            background: transparent;
-            border: none;
-            padding: 0.75rem 0.2rem;
-            font-size: 1.2rem;
-            font-weight: 500;
-            color: #f1f5f9;
-            outline: none;
-            font-family: 'JetBrains Mono', 'Fira Code', monospace;
-            text-align: left;
-            letter-spacing: 0.5px;
-        }
+		.input-row input {
+			flex: 1;
+			min-width: 120px;
+			background: transparent;
+			border: none;
+			padding: 0.75rem 0.2rem;
+			font-size: 1.2rem;
+			font-weight: 500;
+			color: #f1f5f9;
+			outline: none;
+			font-family: 'JetBrains Mono', 'Fira Code', monospace;
+			text-align: left;
+			letter-spacing: 0.5px;
+		}
 
-        .input-row input::placeholder {
-            color: #475569;
-            font-weight: 300;
-            font-size: 0.9rem;
-            opacity: 0.6;
-            letter-spacing: 0.3px;
-        }
+		.input-row input::placeholder {
+			color: #475569;
+			font-weight: 300;
+			font-size: 0.9rem;
+			opacity: 0.6;
+			letter-spacing: 0.3px;
+		}
 
-        .input-row input:focus::placeholder {
-            opacity: 0.3;
-        }
+		.input-row input:focus::placeholder {
+			opacity: 0.3;
+		}
 
-        .btn-check {
-            background: #facc15;
-            border: none;
-            border-radius: 60px;
-            padding: 0.7rem 2rem;
-            font-weight: 600;
-            font-size: 1rem;
-            color: #0f172a;
-            cursor: pointer;
-            transition: all 0.15s ease;
-            box-shadow: 0 4px 16px rgba(250, 204, 21, 0.15);
-            white-space: nowrap;
-            letter-spacing: 0.3px;
-            font-family: 'Inter', sans-serif;
-        }
+		.btn-check {
+			background: #facc15;
+			border: none;
+			border-radius: 60px;
+			padding: 0.7rem 2rem;
+			font-weight: 600;
+			font-size: 1rem;
+			color: #0f172a;
+			cursor: pointer;
+			transition: all 0.15s ease;
+			box-shadow: 0 4px 16px rgba(250, 204, 21, 0.15);
+			white-space: nowrap;
+			letter-spacing: 0.3px;
+			font-family: 'Inter', sans-serif;
+		}
 
-        .btn-check:hover {
-            background: #fde047;
-            transform: scale(1.03);
-            box-shadow: 0 8px 28px rgba(250, 204, 21, 0.25);
-        }
+		.btn-check:hover {
+			background: #fde047;
+			transform: scale(1.03);
+			box-shadow: 0 8px 28px rgba(250, 204, 21, 0.25);
+		}
 
-        .btn-check:active {
-            transform: scale(0.95);
-            background: #eab308;
-        }
+		.btn-check:active {
+			transform: scale(0.95);
+			background: #eab308;
+		}
 
-        .message-box {
-            min-height: 3.4rem;
-            padding: 0.7rem 1.2rem;
-            border-radius: 60px;
-            background: rgba(15, 23, 42, 0.5);
-            backdrop-filter: blur(4px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 500;
-            font-size: 1rem;
-            border: 1px solid transparent;
-            transition: all 0.3s ease;
-            text-align: center;
-            gap: 0.6rem;
-            flex-wrap: wrap;
-        }
+		.message-box {
+			min-height: 3.4rem;
+			padding: 0.7rem 1.2rem;
+			border-radius: 60px;
+			background: rgba(15, 23, 42, 0.5);
+			backdrop-filter: blur(4px);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-weight: 500;
+			font-size: 1rem;
+			border: 1px solid transparent;
+			transition: all 0.3s ease;
+			text-align: center;
+			gap: 0.6rem;
+			flex-wrap: wrap;
+		}
 
-        .message-box .icon {
-            font-size: 1.2rem;
-            line-height: 1;
-        }
+		.message-box .icon {
+			font-size: 1.2rem;
+			line-height: 1;
+		}
 
-        .message-box .answer-preview {
-            background: rgba(255, 255, 255, 0.04);
-            padding: 0.1rem 0.8rem;
-            border-radius: 20px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
-            color: #e2e8f0;
-        }
+		.message-box .answer-preview {
+			background: rgba(255, 255, 255, 0.04);
+			padding: 0.1rem 0.8rem;
+			border-radius: 20px;
+			font-family: 'JetBrains Mono', monospace;
+			font-size: 0.9rem;
+			color: #e2e8f0;
+		}
 
-        .message-box.neutral {
-            color: #94a3b8;
-            border-color: #2d3a4f;
-        }
+		.message-box.neutral {
+			color: #94a3b8;
+			border-color: #2d3a4f;
+		}
 
-        .message-box.success {
-            background: rgba(52, 211, 153, 0.08);
-            border-color: #34d399;
-            color: #6ee7b7;
-            box-shadow: 0 0 24px rgba(52, 211, 153, 0.03);
-        }
+		.message-box.success {
+			background: rgba(52, 211, 153, 0.08);
+			border-color: #34d399;
+			color: #6ee7b7;
+			box-shadow: 0 0 24px rgba(52, 211, 153, 0.03);
+		}
 
-        .message-box.error {
-            background: rgba(251, 113, 133, 0.06);
-            border-color: #f87171;
-            color: #fca5a5;
-            box-shadow: 0 0 24px rgba(251, 113, 133, 0.02);
-        }
+		.message-box.error {
+			background: rgba(251, 113, 133, 0.06);
+			border-color: #f87171;
+			color: #fca5a5;
+			box-shadow: 0 0 24px rgba(251, 113, 133, 0.02);
+		}
 
-        .message-box .highlight-diff {
-            background: rgba(248, 113, 113, 0.15);
-            padding: 0.1rem 0.4rem;
-            border-radius: 6px;
-            color: #fca5a5;
-            font-family: 'JetBrains Mono', monospace;
-        }
+		.message-box .highlight-diff {
+			background: rgba(248, 113, 113, 0.15);
+			padding: 0.1rem 0.4rem;
+			border-radius: 6px;
+			color: #fca5a5;
+			font-family: 'JetBrains Mono', monospace;
+		}
 
-        .hint {
-            color: #64748b;
-            font-size: 0.8rem;
-            text-align: center;
-            margin-top: 0.3rem;
-            letter-spacing: 0.2px;
-            opacity: 0.8;
-        }
+		.hint {
+			color: #64748b;
+			font-size: 0.8rem;
+			text-align: center;
+			margin-top: 0.3rem;
+			letter-spacing: 0.2px;
+			opacity: 0.8;
+		}
 
-        .hint kbd {
-            background: #1e293b;
-            padding: 0.1rem 0.8rem;
-            border-radius: 30px;
-            font-family: 'JetBrains Mono', monospace;
-            color: #cbd5e1;
-            font-size: 0.75rem;
-            border: 1px solid #334155;
-        }
+		.hint kbd {
+			background: #1e293b;
+			padding: 0.1rem 0.8rem;
+			border-radius: 30px;
+			font-family: 'JetBrains Mono', monospace;
+			color: #cbd5e1;
+			font-size: 0.75rem;
+			border: 1px solid #334155;
+		}
 
-        .hint strong {
-            color: #facc15;
-        }
+		.hint strong {
+			color: #facc15;
+		}
 
-        @media (max-width: 520px) {
-            .card {
-                padding: 1.8rem 1.2rem;
-                border-radius: 2rem;
-            }
-            .letters-display {
-                padding: 1.2rem 1rem;
-            }
-            .letter-item {
-                font-size: 1.2rem;
-                min-width: 2.2rem;
-                min-height: 2.6rem;
-                padding: 0.2rem 0.5rem;
-            }
-            .letters-grid {
-                gap: 0.4rem 0.8rem;
-            }
-            .input-row {
-                padding: 0.3rem 0.3rem 0.3rem 1.2rem;
-                border-radius: 60px;
-            }
-            .input-row input {
-                font-size: 1rem;
-                padding: 0.6rem 0.1rem;
-                min-width: 80px;
-            }
-            .btn-check {
-                padding: 0.6rem 1.2rem;
-                font-size: 0.9rem;
-            }
-            .message-box {
-                font-size: 0.9rem;
-                padding: 0.5rem 1rem;
-                min-height: 2.8rem;
-            }
-            .header h2 {
-                font-size: 1.1rem;
-            }
-        }
+		@media (max-width: 520px) {
+			.card {
+				padding: 1.8rem 1.2rem;
+				border-radius: 2rem;
+			}
 
-        @media (max-width: 400px) {
-            .input-row {
-                flex-wrap: wrap;
-                justify-content: center;
-                padding: 0.5rem 0.8rem;
-                border-radius: 2rem;
-            }
-            .input-row input {
-                width: 100%;
-                text-align: center;
-                font-size: 1.1rem;
-            }
-            .btn-check {
-                width: 100%;
-                justify-content: center;
-            }
-            .letter-item {
-                font-size: 1rem;
-                min-width: 1.8rem;
-                min-height: 2.2rem;
-                padding: 0.1rem 0.4rem;
-            }
-            .letter-item .pos {
-                display: none;
-            }
-        }
+			.letters-display {
+				padding: 1.2rem 1rem;
+			}
 
-        .card {
-            animation: fadeUp 0.5s ease forwards;
-        }
-        @keyframes fadeUp {
-            0% { opacity: 0; transform: translateY(20px) scale(0.97); }
-            100% { opacity: 1; transform: translateY(0) scale(1); }
-        }
-    </style>
+			.letter-item {
+				font-size: 1.2rem;
+				min-width: 2.2rem;
+				min-height: 2.6rem;
+				padding: 0.2rem 0.5rem;
+			}
+
+			.letters-grid {
+				gap: 0.4rem 0.8rem;
+			}
+
+			.input-row {
+				padding: 0.3rem 0.3rem 0.3rem 1.2rem;
+				border-radius: 60px;
+			}
+
+			.input-row input {
+				font-size: 1rem;
+				padding: 0.6rem 0.1rem;
+				min-width: 80px;
+			}
+
+			.btn-check {
+				padding: 0.6rem 1.2rem;
+				font-size: 0.9rem;
+			}
+
+			.message-box {
+				font-size: 0.9rem;
+				padding: 0.5rem 1rem;
+				min-height: 2.8rem;
+			}
+
+			.header h2 {
+				font-size: 1.1rem;
+			}
+		}
+
+		@media (max-width: 400px) {
+			.input-row {
+				flex-wrap: wrap;
+				justify-content: center;
+				padding: 0.5rem 0.8rem;
+				border-radius: 2rem;
+			}
+
+			.input-row input {
+				width: 100%;
+				text-align: center;
+				font-size: 1.1rem;
+			}
+
+			.btn-check {
+				width: 100%;
+				justify-content: center;
+			}
+
+			.letter-item {
+				font-size: 1rem;
+				min-width: 1.8rem;
+				min-height: 2.2rem;
+				padding: 0.1rem 0.4rem;
+			}
+
+			.letter-item .pos {
+				display: none;
+			}
+		}
+
+		.card {
+			animation: fadeUp 0.5s ease forwards;
+		}
+
+		@keyframes fadeUp {
+			0% {
+				opacity: 0;
+				transform: translateY(20px) scale(0.97);
+			}
+
+			100% {
+				opacity: 1;
+				transform: translateY(0) scale(1);
+			}
+		}
+	</style>
 </head>
+
 <body>
 
-<div class="card">
+	<div class="card">
 
-    <!-- Заголовок -->
+		<!-- Заголовок -->
 
-    <!-- Блок с отображением букв (подсказка) -->
-    <div class="letters-display">
-    <div class="header">
-        <span class="icon">⌨️</span>
-        <h2>Введите первые буквы типов данных</h2>
-        <div class="sub">
-            <strong>12 букв</strong>
-        </div>
-    </div>
-        <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.8rem;">
-            <span class="question-tag">📝 буквы нужно вводить через пробел</span>
-            <span class="hint-text">
-            </span>
-        </div>
-        <div style="margin-top: 0.6rem; color: #475569; font-size: 0.7rem; text-align: center; border-top: 1px solid rgba(255,255,255,0.03); padding-top: 0.5rem;">
-            <span style="background: rgba(250,204,21,0.04); padding: 0.1rem 0.8rem; border-radius: 20px;"></span>
-        </div>
-    </div>
+		<!-- Блок с отображением букв (подсказка) -->
+		<div class="letters-display">
+			<div class="header">
+				<span class="icon">⌨️</span>
+				<h2>Введите первые буквы типов данных</h2>
+				<div class="sub">
+					<strong>12 букв</strong>
+				</div>
+			</div>
+			<div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.8rem;">
+				<span class="question-tag">📝 буквы нужно вводить через пробел</span>
+				<span class="hint-text">
+				</span>
+			</div>
+			<div style="margin-top: 0.6rem; color: #475569; font-size: 0.7rem; text-align: center; border-top: 1px solid rgba(255,255,255,0.03); padding-top: 0.5rem;">
+				<span style="background: rgba(250,204,21,0.04); padding: 0.1rem 0.8rem; border-radius: 20px;"></span>
+			</div>
+		</div>
 
-    <!-- Поле ввода -->
-    <div class="input-area">
-        <div class="input-row">
-            <label for="answerInput">
-                <span>✏️</span> Ваш ответ:
-            </label>
-            <input 
-                type="text" 
-                id="answerInput" 
-                placeholder="" 
-                value="" 
-                autofocus
-                spellcheck="false"
-                autocomplete="off"
-            >
-            <button class="btn-check" id="checkBtn">Проверить</button>
-        </div>
+		<!-- Поле ввода -->
+		<div class="input-area">
+			<div class="input-row">
+				<label for="answerInput">
+					<span>✏️</span> Ваш ответ:
+				</label>
+				<input type="text" id="answerInput" placeholder="" value="" autofocus spellcheck="false" autocomplete="off">
+				<button class="btn-check" id="checkBtn">Проверить</button>
+			</div>
 
-        <div id="messageBox" class="message-box neutral">
-            <span class="icon">💡</span> введите буквы через пробел и нажмите «Проверить»
-        </div>
+			<div id="messageBox" class="message-box neutral">
+				<span class="icon">💡</span> введите буквы через пробел и нажмите «Проверить»
+			</div>
 
-        <div class="hint">
-            <kbd>Enter</kbd> для быстрой проверки 
-        </div>
-    </div>
-</div>
+			<div class="hint">
+				<kbd>Enter</kbd> для быстрой проверки
+			</div>
+		</div>
+	</div>
 
-<script>
-    (function() {
-        const input = document.getElementById('answerInput');
-        const checkBtn = document.getElementById('checkBtn');
-        const messageBox = document.getElementById('messageBox');
+	<script>
+		(function() {
+			const input = document.getElementById('answerInput');
+			const checkBtn = document.getElementById('checkBtn');
+			const messageBox = document.getElementById('messageBox');
 
-        // Правильный ответ: массив букв (в нижнем регистре)
-        const TARGET = ['b', 'b', 'b', 'c', 'd', 'f','f', 'g', 'i', 'l', 't', 's','s'];
-        const TARGET_STR = TARGET.join(' ');
+			// Правильный ответ: массив букв (в нижнем регистре)
+			const TARGET = ['b', 'b', 'b', 'c', 'd', 'f', 'f', 'g', 'i', 'l', 't', 's', 's'];
+			const TARGET_STR = TARGET.join(' ');
 
-        function normalizeInput(str) {
-            // Удаляем лишние пробелы, приводим к нижнему регистру
-            return str.trim().toLowerCase().replace(/\s+/g, ' ').split(' ');
-        }
+			function normalizeInput(str) {
+				// Удаляем лишние пробелы, приводим к нижнему регистру
+				return str.trim().toLowerCase().replace(/\s+/g, ' ').split(' ');
+			}
 
-        function setMessage(text, type = 'neutral', icon = '') {
-            messageBox.innerHTML = icon ? `<span class="icon">${icon}</span> ${text}` : text;
-            messageBox.classList.remove('success', 'error', 'neutral');
-            messageBox.classList.add(type);
-        }
+			function setMessage(text, type = 'neutral', icon = '') {
+				messageBox.innerHTML = icon ? `<span class="icon">${icon}</span> ${text}` : text;
+				messageBox.classList.remove('success', 'error', 'neutral');
+				messageBox.classList.add(type);
+			}
 
-        function validate() {
-            const raw = input.value;
+			function validate() {
+				const raw = input.value;
 
-            if (raw.trim() === '') {
-                setMessage('поле пустое, введите буквы через пробел', 'neutral', '✏️');
-                return;
-            }
+				if (raw.trim() === '') {
+					setMessage('поле пустое, введите буквы через пробел', 'neutral', '✏️');
+					return;
+				}
 
-            const parts = normalizeInput(raw);
+				const parts = normalizeInput(raw);
 
-            // Проверка на пустые элементы (двойные пробелы уже обработаны)
-            if (parts.length === 0 || (parts.length === 1 && parts[0] === '')) {
-                setMessage('введите буквы через пробел', 'neutral', '⚠️');
-                return;
-            }
+				// Проверка на пустые элементы (двойные пробелы уже обработаны)
+				if (parts.length === 0 || (parts.length === 1 && parts[0] === '')) {
+					setMessage('введите буквы через пробел', 'neutral', '⚠️');
+					return;
+				}
 
-            // Проверка, что все элементы — это буквы (только латиница)
-            const isValidChars = parts.every(p => /^[a-zA-Z]$/.test(p));
-            if (!isValidChars) {
-                setMessage('используйте только латинские буквы (a-z)', 'error', '⚠️');
-                return;
-            }
+				// Проверка, что все элементы — это буквы (только латиница)
+				const isValidChars = parts.every(p => /^[a-zA-Z]$/.test(p));
+				if (!isValidChars) {
+					setMessage('используйте только латинские буквы (a-z)', 'error', '⚠️');
+					return;
+				}
 
-            // Сравниваем с правильным ответом
-            const isCorrect = parts.length === TARGET.length && parts.every((p, i) => p === TARGET[i]);
+				// Сравниваем с правильным ответом
+				const isCorrect = parts.length === TARGET.length && parts.every((p, i) => p === TARGET[i]);
 
-            if (isCorrect) {
-                setMessage(
-                    `✅ Абсолютно верно! «${parts.join(' ')}» — правильная последовательность!`,
-                    'success',
-                    '🎉'
-                );
-                input.style.transition = 'box-shadow 0.2s';
-                input.style.boxShadow = '0 0 0 3px #34d399';
-                setTimeout(() => { input.style.boxShadow = 'none'; }, 700);
-            } else {
-                // Формируем понятное сообщение об ошибке
-                let errorMsg = '';
-                if (parts.length !== TARGET.length) {
-                    errorMsg = `должно быть ${TARGET.length} букв, вы ввели ${parts.length}`;
-                } else {
-                    // Находим первую несовпадающую позицию
-                    let diffIndex = -1;
-                    for (let i = 0; i < TARGET.length; i++) {
-                        if (parts[i] !== TARGET[i]) {
-                            diffIndex = i;
-                            break;
-                        }
-                    }
-                    if (diffIndex !== -1) {
-                        errorMsg = `ошибка на позиции ${diffIndex + 1}: ожидается «${TARGET[diffIndex]}», вы ввели «${parts[diffIndex] || '?'}»`;
-                    } else {
-                        errorMsg = 'неверная последовательность';
-                    }
-                }
-                setMessage(
-                    `❌ Неверно. ${errorMsg}`,
-                    'error',
-                    '😅'
-                );
-                input.style.transition = 'box-shadow 0.15s';
-                input.style.boxShadow = '0 0 0 3px #f87171';
-                setTimeout(() => { input.style.boxShadow = 'none'; }, 500);
-            }
-        }
+				if (isCorrect) {
+					setMessage(
+						`✅ Абсолютно верно! «${parts.join(' ')}» — правильная последовательность!`,
+						'success',
+						'🎉'
+					);
+					input.style.transition = 'box-shadow 0.2s';
+					input.style.boxShadow = '0 0 0 3px #34d399';
+					setTimeout(() => {
+						input.style.boxShadow = 'none';
+					}, 700);
+				} else {
+					// Формируем понятное сообщение об ошибке
+					let errorMsg = '';
+					if (parts.length !== TARGET.length) {
+						errorMsg = `должно быть ${TARGET.length} букв, вы ввели ${parts.length}`;
+					} else {
+						// Находим первую несовпадающую позицию
+						let diffIndex = -1;
+						for (let i = 0; i < TARGET.length; i++) {
+							if (parts[i] !== TARGET[i]) {
+								diffIndex = i;
+								break;
+							}
+						}
+						if (diffIndex !== -1) {
+							errorMsg = `ошибка на позиции ${diffIndex + 1}: ожидается «${TARGET[diffIndex]}», вы ввели «${parts[diffIndex] || '?'}»`;
+						} else {
+							errorMsg = 'неверная последовательность';
+						}
+					}
+					setMessage(
+						`❌ Неверно. ${errorMsg}`,
+						'error',
+						'😅'
+					);
+					input.style.transition = 'box-shadow 0.15s';
+					input.style.boxShadow = '0 0 0 3px #f87171';
+					setTimeout(() => {
+						input.style.boxShadow = 'none';
+					}, 500);
+				}
+			}
 
-        // Обработчики
-        checkBtn.addEventListener('click', validate);
+			// Обработчики
+			checkBtn.addEventListener('click', validate);
 
-        input.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                validate();
-            }
-        });
+			input.addEventListener('keydown', (e) => {
+				if (e.key === 'Enter') {
+					e.preventDefault();
+					validate();
+				}
+			});
 
-        input.addEventListener('input', function() {
-            if (messageBox.classList.contains('success') || messageBox.classList.contains('error')) {
-                if (this.value.trim() === '') {
-                    setMessage('введите буквы через пробел', 'neutral', '✏️');
-                } else {
-                    setMessage('редактирование...', 'neutral', '⌨️');
-                }
-            }
-        });
+			input.addEventListener('input', function() {
+				if (messageBox.classList.contains('success') || messageBox.classList.contains('error')) {
+					if (this.value.trim() === '') {
+						setMessage('введите буквы через пробел', 'neutral', '✏️');
+					} else {
+						setMessage('редактирование...', 'neutral', '⌨️');
+					}
+				}
+			});
 
-        input.focus();
+			input.focus();
 
-        if (input.value.trim() === '') {
-            setMessage('введите буквы через пробел и нажмите «Проверить»', 'neutral', '💡');
-        }
-    })();
-</script>
+			if (input.value.trim() === '') {
+				setMessage('введите буквы через пробел и нажмите «Проверить»', 'neutral', '💡');
+			}
+		})();
+	</script>
 
-</body>
-</html>
+</body></html>

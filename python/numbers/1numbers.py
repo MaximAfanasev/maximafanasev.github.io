@@ -5,7 +5,7 @@ print(0) # 0
 
 # print(05)
 # leading zeros in decimal integer
-# literals are not permitted;
+# literals are not permitted
 # use an Oo prefix for octal integers
 
 print(+123) # 123
