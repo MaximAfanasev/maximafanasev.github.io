@@ -1,6 +1,6 @@
 print('a') # a
-print("b") # 
-print('''c''') # 
+print("b") # b
+print('''c''') # c
 
 print(str(98.6)) # 98.6
 print(str(1.0e4)) # 10000.0

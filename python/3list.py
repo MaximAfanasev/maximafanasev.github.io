@@ -11,3 +11,7 @@ print(list(c))
 d = '1/2/4'
 e = d.split('/')
 print(e)
+
+g = 'a/b//c/d///e'
+print(g.split('/'))
+print(g.split('//'))

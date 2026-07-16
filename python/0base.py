@@ -11,7 +11,7 @@ Z = 1
 a0 = 1
 a_ = 1
 print(a, z, A, Z, a0, a_) # 1 1 1 1 1 1
-	
+
 #0a = 1 Invalid decimal literal
 
 a = 95
