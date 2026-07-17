@@ -25,6 +25,8 @@ print(c)
 
 print(a.replace('a', 'X')) # Xbcde
 
+print('abc'.replace('a', 'X')) # Xbc
+
 print(len(a)) # 5
 
 print(a.split()) # ['abcde']
@@ -50,18 +52,16 @@ print('abc...'.strip('.')) # abc
 
 print('abc'.capitalize()) # Abc
 
-print('abc'.title()) # Abc
-
 print('abc'.upper()) # ABC
 
 print('ABC'.lower()) # abc
 
 print('aBc'.swapcase()) #AbC
 
-print('abc'.center(10)) #    abc
+print('abc'.center(10)) #    abc ???
 
 print('abc'.ljust(10)) #abc
 
 print('abc'.rjust(10)) #       abc
 
-print('abc'.replace('a', 'X')) # Xbc
+print('abc'.title()) # Abc
