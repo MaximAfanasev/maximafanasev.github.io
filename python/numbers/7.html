@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>7</title>
+	<link rel="icon" type="image/png" href="../../favicon.png">
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			min-height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background: radial-gradient(ellipse at 50% 20%, #0f172a, #020617);
+			font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+			padding: 1.5rem;
+		}
+
+		.card {
+			background: rgba(255, 255, 255, 0.04);
+			backdrop-filter: blur(20px) saturate(180%);
+			-webkit-backdrop-filter: blur(20px) saturate(180%);
+			border-radius: 3rem;
+			padding: 2.8rem 2.5rem;
+			max-width: 780px;
+			width: 100%;
+			border: 1px solid rgba(255, 255, 255, 0.06);
+			box-shadow: 0 50px 100px -30px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+			transition: box-shadow 0.3s ease;
+		}
+
+		.card:hover {
+			box-shadow: 0 60px 120px -25px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+		}
+
+		.header {
+			text-align: center;
+			margin-bottom: 1.8rem;
+		}
+
+		.header .icon {
+			font-size: 2.2rem;
+			display: block;
+			margin-bottom: 0.2rem;
+		}
+
+		.header h2 {
+			font-size: 1.2rem;
+			font-weight: 500;
+			color: #e2e8f0;
+			letter-spacing: -0.3px;
+		}
+
+		.header .sub {
+			color: #94a3b8;
+			font-size: 0.85rem;
+			margin-top: 0.2rem;
+		}
+
+		.header .sub strong {
+			color: #facc15;
+		}
+
+		.expressions {
+			display: flex;
+			flex-direction: column;
+			gap: 0.6rem;
+			margin-bottom: 1.5rem;
+		}
+
+		.expr-item {
+			display: flex;
+			align-items: center;
+			gap: 0.8rem;
+			background: rgba(15, 23, 42, 0.4);
+			border-radius: 1.2rem;
+			padding: 0.6rem 1.2rem;
+			border: 1px solid #2d3a4f;
+			transition: all 0.25s ease;
+		}
+
+		.expr-item:focus-within {
+			border-color: #facc15;
+			background: rgba(250, 204, 21, 0.03);
+			box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.04);
+		}
+
+		.expr-item.correct {
+			border-color: #34d399;
+			background: rgba(52, 211, 153, 0.04);
+		}
+
+		.expr-item.wrong {
+			border-color: #f87171;
+			background: rgba(248, 113, 113, 0.04);
+		}
+
+		.expr-item .number {
+			color: #64748b;
+			font-weight: 600;
+			font-size: 0.75rem;
+			min-width: 1.8rem;
+			font-family: 'JetBrains Mono', monospace;
+		}
+
+		.expr-item .code {
+			font-family: 'JetBrains Mono', 'Fira Code', monospace;
+			color: #e2e8f0;
+			font-size: 0.9rem;
+			min-width: 150px;
+			flex-shrink: 0;
+		}
+
+		.expr-item .code .func {
+			color: #34d399;
+		}
+
+		.expr-item .code .paren {
+			color: #94a3b8;
+		}
+
+		.expr-item .code .num {
+			color: #60a5fa;
+		}
+
+		.expr-item .code .str {
+			color: #fbbf24;
+		}
+
+		.expr-item .code .bool {
+			color: #f472b6;
+		}
+
+		.expr-item .arrow {
+			color: #475569;
+			font-size: 0.8rem;
+			margin: 0 0.2rem;
+		}
+
+		.expr-item input {
+			flex: 1;
+			min-width: 60px;
+			background: transparent;
+			border: none;
+			padding: 0.4rem 0.2rem;
+			font-size: 0.95rem;
+			font-weight: 500;
+			color: #f1f5f9;
+			outline: none;
+			font-family: 'JetBrains Mono', monospace;
+			text-align: left;
+		}
+
+		.expr-item input::placeholder {
+			color: #475569;
+			font-weight: 300;
+			font-size: 0.8rem;
+			opacity: 0.5;
+		}
+
+		.expr-item input:focus::placeholder {
+			opacity: 0.2;
+		}
+
+		.expr-item input:disabled {
+			opacity: 0.6;
+			cursor: not-allowed;
+		}
+
+		.expr-item .status-icon {
+			font-size: 1.2rem;
+			min-width: 1.8rem;
+			text-align: center;
+		}
+
+		.expr-item .check-btn {
+			background: #facc15;
+			border: none;
+			border-radius: 40px;
+			padding: 0.3rem 1rem;
+			font-weight: 600;
+			font-size: 0.75rem;
+			color: #0f172a;
+			cursor: pointer;
+			transition: all 0.15s ease;
+			box-shadow: 0 2px 10px rgba(250, 204, 21, 0.08);
+			white-space: nowrap;
+			font-family: 'Inter', sans-serif;
+		}
+
+		.expr-item .check-btn:hover:not(:disabled) {
+			background: #fde047;
+			transform: scale(1.04);
+		}
+
+		.expr-item .check-btn:active:not(:disabled) {
+			transform: scale(0.93);
+			background: #eab308;
+		}
+
+		.expr-item .check-btn:disabled {
+			opacity: 0.3;
+			cursor: not-allowed;
+			transform: none;
+		}
+
+		.progress-container {
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+			margin: 0.5rem 0 0.8rem 0;
+		}
+
+		.progress-bar {
+			flex: 1;
+			height: 4px;
+			background: #1e293b;
+			border-radius: 4px;
+			overflow: hidden;
+		}
+
+		.progress-bar .fill {
+			height: 100%;
+			background: linear-gradient(90deg, #facc15, #34d399);
+			border-radius: 4px;
+			transition: width 0.5s ease;
+			width: 0%;
+		}
+
+		.progress-text {
+			color: #94a3b8;
+			font-size: 0.8rem;
+			font-weight: 500;
+			min-width: 3.5rem;
+			text-align: right;
+			font-family: 'JetBrains Mono', monospace;
+		}
+
+		.message-box {
+			min-height: 2.8rem;
+			padding: 0.5rem 1.2rem;
+			border-radius: 60px;
+			background: rgba(15, 23, 42, 0.5);
+			backdrop-filter: blur(4px);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-weight: 500;
+			font-size: 0.9rem;
+			border: 1px solid transparent;
+			transition: all 0.3s ease;
+			text-align: center;
+			gap: 0.6rem;
+			flex-wrap: wrap;
+			margin-top: 0.8rem;
+		}
+
+		.message-box .icon {
+			font-size: 1rem;
+		}
+
+		.message-box.neutral {
+			color: #94a3b8;
+			border-color: #2d3a4f;
+		}
+
+		.message-box.success {
+			background: rgba(52, 211, 153, 0.05);
+			border-color: #34d399;
+			color: #6ee7b7;
+		}
+
+		.message-box.error {
+			background: rgba(248, 113, 113, 0.04);
+			border-color: #f87171;
+			color: #fca5a5;
+		}
+
+		.message-box.complete {
+			background: rgba(250, 204, 21, 0.05);
+			border-color: #facc15;
+			color: #facc15;
+		}
+
+		.hint {
+			color: #64748b;
+			font-size: 0.7rem;
+			text-align: center;
+			margin-top: 0.4rem;
+			opacity: 0.5;
+		}
+
+		.hint kbd {
+			background: #1e293b;
+			padding: 0.05rem 0.5rem;
+			border-radius: 16px;
+			font-family: 'JetBrains Mono', monospace;
+			color: #cbd5e1;
+			font-size: 0.65rem;
+			border: 1px solid #334155;
+		}
+
+		@media (max-width: 650px) {
+			.card {
+				padding: 1.8rem 1.2rem;
+				border-radius: 2rem;
+			}
+
+			.expr-item {
+				flex-wrap: wrap;
+				padding: 0.5rem 0.8rem;
+				gap: 0.3rem;
+			}
+
+			.expr-item .code {
+				font-size: 0.8rem;
+				min-width: 110px;
+			}
+
+			.expr-item input {
+				font-size: 0.85rem;
+				min-width: 50px;
+			}
+
+			.expr-item .check-btn {
+				padding: 0.2rem 0.8rem;
+				font-size: 0.7rem;
+			}
+
+			.header h2 {
+				font-size: 1rem;
+			}
+		}
+
+		@media (max-width: 420px) {
+			.expr-item .code {
+				min-width: 70px;
+				font-size: 0.7rem;
+			}
+
+			.expr-item input {
+				font-size: 0.75rem;
+				min-width: 40px;
+				width: 50px;
+			}
+
+			.expr-item .number {
+				font-size: 0.65rem;
+				min-width: 1.4rem;
+			}
+
+			.expr-item .status-icon {
+				font-size: 1rem;
+				min-width: 1.4rem;
+			}
+
+			.expr-item .arrow {
+				display: none;
+			}
+		}
+
+		.card {
+			animation: fadeUp 0.5s ease forwards;
+		}
+
+		@keyframes fadeUp {
+			0% {
+				opacity: 0;
+				transform: translateY(20px) scale(0.97);
+			}
+
+			100% {
+				opacity: 1;
+				transform: translateY(0) scale(1);
+			}
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="card">
+
+		<div class="header">
+			<span class="icon">🔢</span>
+			<h2>Преобразование в float()</h2>
+			<div class="sub"><strong>5</strong> выражений · введите результат</div>
+		</div>
+
+		<div class="expressions" id="expressionsContainer">
+			<!-- будут сгенерированы скриптом -->
+		</div>
+
+		<div class="progress-container">
+			<div class="progress-bar">
+				<div class="fill" id="progressFill"></div>
+			</div>
+			<span class="progress-text" id="progressText">0 / 5</span>
+		</div>
+
+		<div id="messageBox" class="message-box neutral">
+			<span class="icon">💡</span> введите результат и нажмите «✓» или Enter
+		</div>
+
+		<div class="hint">
+			<kbd>Enter</kbd> для проверки · <kbd>Tab</kbd> для перехода
+		</div>
+	</div>
+
+	<script>
+		(function() {
+			const items = [{
+					expr: 'print(float(True))',
+					answer: '1.0'
+				},
+				{
+					expr: 'print(float(False))',
+					answer: '0.0'
+				},
+				{
+					expr: 'print(float(98))',
+					answer: '98.0'
+				},
+				{
+					expr: "print(float('1.5'))",
+					answer: '1.5'
+				},
+				{
+					expr: "print(float('99'))",
+					answer: '99.0'
+				}
+			];
+
+			const container = document.getElementById('expressionsContainer');
+			const progressFill = document.getElementById('progressFill');
+			const progressText = document.getElementById('progressText');
+			const messageBox = document.getElementById('messageBox');
+
+			let completed = new Array(items.length).fill(false);
+			let inputs = [];
+
+			function setMessage(text, type = 'neutral', icon = '') {
+				messageBox.innerHTML = icon ? `<span class="icon">${icon}</span> ${text}` : text;
+				messageBox.classList.remove('neutral', 'success', 'error', 'complete');
+				messageBox.classList.add(type);
+			}
+
+			function updateProgress() {
+				const done = completed.filter(v => v).length;
+				const total = items.length;
+				const percent = (done / total) * 100;
+				progressFill.style.width = percent + '%';
+				progressText.textContent = `${done} / ${total}`;
+
+				if (done === total) {
+					setMessage('🎉 Поздравляем! Все 5 выражений решены верно!', 'complete', '🏆');
+				}
+			}
+
+			function createExpressions() {
+				container.innerHTML = '';
+				inputs = [];
+
+				items.forEach((item, idx) => {
+					const div = document.createElement('div');
+					div.className = 'expr-item';
+					div.dataset.index = idx;
+
+					const number = document.createElement('span');
+					number.className = 'number';
+					number.textContent = `${idx + 1}.`;
+
+					const code = document.createElement('span');
+					code.className = 'code';
+					code.innerHTML = item.expr;
+
+					const arrow = document.createElement('span');
+					arrow.className = 'arrow';
+					arrow.textContent = '→';
+
+					const input = document.createElement('input');
+					input.type = 'text';
+					input.id = `input-${idx}`;
+					input.placeholder = '?...';
+					input.spellcheck = false;
+					input.autocomplete = 'off';
+					input.dataset.index = idx;
+					input.dataset.answer = item.answer;
+
+					const status = document.createElement('span');
+					status.className = 'status-icon';
+					status.id = `status-${idx}`;
+					status.textContent = '⬜';
+
+					const btn = document.createElement('button');
+					btn.className = 'check-btn';
+					btn.textContent = '✓';
+					btn.dataset.index = idx;
+
+					div.appendChild(number);
+					div.appendChild(code);
+					div.appendChild(arrow);
+					div.appendChild(input);
+					div.appendChild(btn);
+					div.appendChild(status);
+
+					container.appendChild(div);
+
+					inputs.push({
+						input,
+						btn,
+						status,
+						div
+					});
+
+					btn.addEventListener('click', function() {
+						const idx = parseInt(this.dataset.index);
+						if (!completed[idx]) {
+							checkInput(idx);
+						}
+					});
+
+					input.addEventListener('keydown', function(e) {
+						if (e.key === 'Enter') {
+							e.preventDefault();
+							const idx = parseInt(this.dataset.index);
+							if (!completed[idx]) {
+								checkInput(idx);
+							}
+						}
+					});
+
+					input.addEventListener('input', function() {
+						const idx = parseInt(this.dataset.index);
+						if (completed[idx]) {
+							completed[idx] = false;
+							const statusIcon = document.getElementById(`status-${idx}`);
+							statusIcon.textContent = '⬜';
+							div.classList.remove('correct', 'wrong');
+							btn.disabled = false;
+							input.disabled = false;
+							updateProgress();
+							setMessage('✏️ редактирование...', 'neutral', '⌨️');
+						}
+					});
+				});
+			}
+
+			function checkInput(idx) {
+				if (completed[idx]) {
+					setMessage(`✅ Выражение ${idx + 1} уже решено верно`, 'success', '✓');
+					return;
+				}
+
+				const input = inputs[idx].input;
+				const status = inputs[idx].status;
+				const div = inputs[idx].div;
+				const btn = inputs[idx].btn;
+				const value = input.value.trim();
+				const expected = items[idx].answer;
+
+				if (value === '') {
+					setMessage(`поле ${idx + 1} пустое, введите результат`, 'error', '⚠️');
+					return;
+				}
+
+				const isCorrect = value === expected;
+
+				if (isCorrect) {
+					completed[idx] = true;
+					status.textContent = '✅';
+					div.classList.add('correct');
+					div.classList.remove('wrong');
+					input.disabled = true;
+					btn.disabled = true;
+					setMessage(`✅ Верно! ${items[idx].expr} → ${expected}`, 'success', '✓');
+					updateProgress();
+
+					const nextIdx = completed.findIndex((val, i) => !val && i > idx);
+					if (nextIdx !== -1) {
+						inputs[nextIdx].input.focus();
+					} else {
+						const allDone = completed.every(v => v);
+						if (allDone) {
+							setMessage('🎉 Отлично! Все 5 выражений решены!', 'complete', '🏆');
+						}
+					}
+				} else {
+					status.textContent = '❌';
+					div.classList.add('wrong');
+					div.classList.remove('correct');
+					setMessage(`❌ Неверно. ${items[idx].expr} → ожидается «${expected}», вы ввели «${value}»`, 'error', '❌');
+					setTimeout(() => {
+						if (!completed[idx]) {
+							status.textContent = '⬜';
+							div.classList.remove('wrong');
+						}
+					}, 1500);
+				}
+			}
+
+			createExpressions();
+			updateProgress();
+			setMessage('💡 введите результат и нажмите «✓» или Enter', 'neutral', '📝');
+
+			if (inputs.length > 0) {
+				setTimeout(() => inputs[0].input.focus(), 100);
+			}
+
+			document.addEventListener('keydown', (e) => {
+				if (e.key === 'Escape') {
+					const allDone = completed.every(v => v);
+					if (!allDone) {
+						setMessage('✏️ продолжайте вводить ответы', 'neutral', '⌨️');
+					}
+				}
+			});
+
+			console.log('🔢 Страница с float() преобразованиями готова!');
+		})();
+	</script>
+
+</body></html>

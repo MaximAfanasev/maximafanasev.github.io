@@ -6,7 +6,6 @@
 	<link rel="icon" type="image/png" href="favicon.png">
 	<title>Python</title>
 	<style>
-		/* ----- Сброс и база ----- */
 		* {
 			margin: 0;
 			padding: 0;
@@ -25,10 +24,10 @@
 		}
 
 		.pagination-wrapper {
-			margin-bottom: 40px;
+			position: relative;
+			margin-bottom: 80px;
 			background: rgba(255, 255, 255, 0.6);
 			backdrop-filter: blur(16px) saturate(180%);
-			-webkit-backdrop-filter: blur(16px) saturate(180%);
 			border-radius: 4rem;
 			padding: 2rem 2.8rem;
 			box-shadow:
@@ -41,11 +40,33 @@
 			width: 100%;
 		}
 		
+		.pagination-wrapper:nth-child(1)::after {
+			position: absolute;
+			content: "";
+			width: 0px;
+			border: 1px dashed aqua;
+			height: 80px;
+			background: transparent;
+			bottom: -85px;
+			right: 70px;
+		}
+		
+		.pagination-wrapper:nth-child(1)::before {
+			position: absolute;
+			content: "";
+			width: 0px;
+			border: 1px dashed aqua;
+			height: 80px;
+			background: transparent;
+			bottom: -85px;
+			left: 70px;
+		}
+
 		.pagination-wrapper:nth-child(1) {
 			background: url("1.png") no-repeat right top 20px;
 			background-size: contain;
 		}
-		
+
 		.pagination-wrapper:nth-child(2) {
 			background: url("2.jpeg") no-repeat right top 30%;
 			background-size: cover;
@@ -305,7 +326,7 @@
 			background: #b9c8e6;
 			border-radius: 20px;
 		}
-		
+
 		h2 {
 			margin-bottom: 32px;
 		}
@@ -315,24 +336,29 @@
 <body>
 
 	<div class="pagination-wrapper">
-	<span> lvl 1</span>
-	<h2>Основы 🤓</h2>
+		<span> lvl 1</span>
+		<h2>Основы 🤓</h2>
 		<ul class="pagination">
-				<a class="page-link" href="python/base/1.html">1</a>
-				<a class="page-link" href="python/base/2.html">2</a>
-				<a class="page-link" href="python/base/3.html">3</a>
-				<a class="page-link" href="python/base/4.html">4</a>
-				<a class="page-link" href="python/base/5.html">5</a>
-				<a class="page-link" href="python/base/6.html">6</a>
+			<a class="page-link" href="python/base/1.html">1</a>
+			<a class="page-link" href="python/base/2.html">2</a>
+			<a class="page-link" href="python/base/3.html">3</a>
+			<a class="page-link" href="python/base/4.html">4</a>
+			<a class="page-link" href="python/base/5.html">5</a>
+			<a class="page-link" href="python/base/6.html">6</a>
 		</ul>
 	</div>
 
 	<div class="pagination-wrapper">
-	<span>lvl 2</span>
-	<h2>4исла 🔢</h2>
+		<span>lvl 2</span>
+		<h2>4исла 🔢</h2>
 		<ul class="pagination">
-				<a class="page-link" href="python/numbers/1.html">1</a>
-				<a class="page-link" href="python/numbers/2.html">2</a>
+			<a class="page-link" href="python/numbers/1.html">1</a>
+			<a class="page-link" href="python/numbers/2.html">2</a>
+			<a class="page-link" href="python/numbers/3.html">3</a>
+			<a class="page-link" href="python/numbers/4.html">4</a>
+			<a class="page-link" href="python/numbers/5.html">5</a>
+			<a class="page-link" href="python/numbers/6.html">6</a>
+			<a class="page-link" href="python/numbers/7.html">7</a>
 		</ul>
 	</div>
 

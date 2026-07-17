@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>4</title>
+	<link rel="icon" type="image/png" href="../../favicon.png">
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			min-height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background: radial-gradient(ellipse at 50% 20%, #0f172a, #020617);
+			font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+			padding: 1.5rem;
+		}
+
+		.card {
+			background: rgba(255, 255, 255, 0.04);
+			backdrop-filter: blur(20px) saturate(180%);
+			-webkit-backdrop-filter: blur(20px) saturate(180%);
+			border-radius: 3rem;
+			padding: 2.8rem 2.5rem;
+			max-width: 760px;
+			width: 100%;
+			border: 1px solid rgba(255, 255, 255, 0.06);
+			box-shadow: 0 50px 100px -30px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+			transition: box-shadow 0.3s ease;
+		}
+
+		.card:hover {
+			box-shadow: 0 60px 120px -25px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+		}
+
+		.header {
+			text-align: center;
+			margin-bottom: 1.8rem;
+		}
+
+		.header .icon {
+			font-size: 2.5rem;
+			display: block;
+			margin-bottom: 0.2rem;
+		}
+
+		.header h2 {
+			font-size: 1.2rem;
+			font-weight: 500;
+			color: #e2e8f0;
+			letter-spacing: -0.3px;
+		}
+
+		.header .sub {
+			color: #94a3b8;
+			font-size: 0.85rem;
+			margin-top: 0.2rem;
+		}
+
+		/* Блок с кодом */
+		.code-block {
+			background: #080d1a;
+			border-radius: 1.8rem;
+			padding: 1.8rem 2rem;
+			border-left: 5px solid #f87171;
+			box-shadow: inset 0 2px 12px rgba(0, 0, 0, 0.7), 0 8px 24px rgba(0, 0, 0, 0.4);
+			margin-bottom: 2rem;
+		}
+
+		.code-line {
+			display: flex;
+			align-items: center;
+			gap: 0.8rem;
+			flex-wrap: wrap;
+			font-family: 'JetBrains Mono', 'Fira Code', monospace;
+			font-size: 1.4rem;
+			line-height: 2.8rem;
+			color: #e2e8f0;
+		}
+
+		.code-line .prompt {
+			color: #64748b;
+			user-select: none;
+			font-weight: 300;
+			font-size: 1rem;
+		}
+
+		.code-line .func {
+			color: #34d399;
+		}
+
+		.code-line .paren {
+			color: #94a3b8;
+		}
+
+		.code-line .num {
+			color: #60a5fa;
+		}
+
+		.code-line .op {
+			color: #facc15;
+		}
+
+		.code-line .divider-op {
+			color: #f87171;
+			font-weight: 600;
+		}
+
+		.code-line .highlight-error {
+			background: rgba(248, 113, 113, 0.08);
+			border-radius: 4px;
+		}
+
+		.question-label {
+			display: inline-block;
+			background: rgba(248, 113, 113, 0.08);
+			padding: 0.15rem 1rem;
+			border-radius: 60px;
+			font-size: 0.65rem;
+			color: #f87171;
+			letter-spacing: 0.5px;
+			text-transform: uppercase;
+			font-weight: 600;
+		}
+
+		.code-block .desc {
+			color: #94a3b8;
+			font-size: 0.85rem;
+			font-family: 'Inter', sans-serif;
+			font-weight: 400;
+			margin-top: 0.3rem;
+			border-top: 1px solid rgba(255, 255, 255, 0.04);
+			padding-top: 0.5rem;
+		}
+
+		/* Варианты ответов */
+		.options {
+			display: flex;
+			flex-direction: column;
+			gap: 0.7rem;
+			margin: 1.5rem 0 1.2rem 0;
+		}
+
+		.option {
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+			background: rgba(15, 23, 42, 0.5);
+			border: 2px solid #2d3a4f;
+			border-radius: 1.2rem;
+			padding: 0.8rem 1.2rem;
+			cursor: pointer;
+			transition: all 0.2s ease;
+		}
+
+		.option:hover:not(.disabled) {
+			border-color: #facc15;
+			background: rgba(250, 204, 21, 0.04);
+			transform: translateX(4px);
+		}
+
+		.option .radio {
+			width: 22px;
+			height: 22px;
+			border-radius: 50%;
+			border: 2px solid #475569;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-shrink: 0;
+			transition: all 0.2s ease;
+		}
+
+		.option .radio .dot {
+			width: 10px;
+			height: 10px;
+			border-radius: 50%;
+			background: transparent;
+			transition: all 0.2s ease;
+		}
+
+		.option.selected .radio {
+			border-color: #facc15;
+		}
+
+		.option.selected .radio .dot {
+			background: #facc15;
+			box-shadow: 0 0 12px rgba(250, 204, 21, 0.3);
+		}
+
+		.option .letter {
+			color: #64748b;
+			font-weight: 600;
+			font-size: 0.85rem;
+			flex-shrink: 0;
+		}
+
+		.option .text {
+			color: #e2e8f0;
+			font-size: 0.95rem;
+			font-weight: 400;
+			line-height: 1.4;
+		}
+
+		.option .text .highlight {
+			color: #f87171;
+			font-weight: 600;
+		}
+
+		.option.correct {
+			border-color: #34d399;
+			background: rgba(52, 211, 153, 0.06);
+		}
+
+		.option.correct .radio {
+			border-color: #34d399;
+		}
+
+		.option.correct .radio .dot {
+			background: #34d399;
+			box-shadow: 0 0 12px rgba(52, 211, 153, 0.3);
+		}
+
+		.option.wrong {
+			border-color: #f87171;
+			background: rgba(248, 113, 113, 0.06);
+		}
+
+		.option.wrong .radio {
+			border-color: #f87171;
+		}
+
+		.option.wrong .radio .dot {
+			background: #f87171;
+			box-shadow: 0 0 12px rgba(248, 113, 113, 0.3);
+		}
+
+		.option.disabled {
+			cursor: default;
+			opacity: 0.7;
+		}
+
+		.option.disabled:hover {
+			transform: none;
+			border-color: #2d3a4f;
+			background: rgba(15, 23, 42, 0.5);
+		}
+
+		.option.correct.disabled:hover,
+		.option.wrong.disabled:hover {
+			border-color: inherit;
+			background: inherit;
+		}
+
+		.option .badge {
+			font-size: 0.6rem;
+			padding: 0.05rem 0.5rem;
+			border-radius: 20px;
+			font-weight: 600;
+			text-transform: uppercase;
+			letter-spacing: 0.3px;
+			margin-left: auto;
+			flex-shrink: 0;
+		}
+
+		.badge.correct-badge {
+			background: rgba(52, 211, 153, 0.15);
+			color: #34d399;
+		}
+
+		.badge.wrong-badge {
+			background: rgba(248, 113, 113, 0.15);
+			color: #f87171;
+		}
+
+		/* Кнопка проверки */
+		.btn-check {
+			width: 100%;
+			background: #facc15;
+			border: none;
+			border-radius: 60px;
+			padding: 0.9rem;
+			font-weight: 600;
+			font-size: 1.05rem;
+			color: #0f172a;
+			cursor: pointer;
+			transition: all 0.15s ease;
+			box-shadow: 0 4px 16px rgba(250, 204, 21, 0.1);
+			font-family: 'Inter', sans-serif;
+			margin-top: 0.2rem;
+		}
+
+		.btn-check:hover:not(:disabled) {
+			background: #fde047;
+			transform: scale(1.01);
+			box-shadow: 0 8px 28px rgba(250, 204, 21, 0.2);
+		}
+
+		.btn-check:active:not(:disabled) {
+			transform: scale(0.97);
+			background: #eab308;
+		}
+
+		.btn-check:disabled {
+			opacity: 0.4;
+			cursor: not-allowed;
+		}
+
+		/* Сообщение */
+		.message-box {
+			min-height: 3rem;
+			padding: 0.6rem 1.2rem;
+			border-radius: 60px;
+			background: rgba(15, 23, 42, 0.5);
+			backdrop-filter: blur(4px);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-weight: 500;
+			font-size: 0.95rem;
+			border: 1px solid transparent;
+			transition: all 0.3s ease;
+			text-align: center;
+			gap: 0.6rem;
+			flex-wrap: wrap;
+			margin-top: 1rem;
+		}
+
+		.message-box .icon {
+			font-size: 1.1rem;
+		}
+
+		.message-box.neutral {
+			color: #94a3b8;
+			border-color: #2d3a4f;
+		}
+
+		.message-box.success {
+			background: rgba(52, 211, 153, 0.06);
+			border-color: #34d399;
+			color: #6ee7b7;
+		}
+
+		.message-box.error {
+			background: rgba(248, 113, 113, 0.04);
+			border-color: #f87171;
+			color: #fca5a5;
+		}
+
+		.message-box.info {
+			background: rgba(250, 204, 21, 0.04);
+			border-color: #facc15;
+			color: #facc15;
+		}
+
+		.hint {
+			color: #64748b;
+			font-size: 0.75rem;
+			text-align: center;
+			margin-top: 0.5rem;
+			opacity: 0.6;
+		}
+
+		.hint kbd {
+			background: #1e293b;
+			padding: 0.05rem 0.6rem;
+			border-radius: 20px;
+			font-family: 'JetBrains Mono', monospace;
+			color: #cbd5e1;
+			font-size: 0.7rem;
+			border: 1px solid #334155;
+		}
+
+		@media (max-width: 550px) {
+			.card {
+				padding: 1.8rem 1.2rem;
+				border-radius: 2rem;
+			}
+
+			.code-line {
+				font-size: 1.1rem;
+				line-height: 2.2rem;
+			}
+
+			.code-block {
+				padding: 1.2rem 1.2rem;
+			}
+
+			.option {
+				padding: 0.6rem 0.8rem;
+				border-radius: 1rem;
+			}
+
+			.option .text {
+				font-size: 0.85rem;
+			}
+
+			.option .letter {
+				font-size: 0.75rem;
+			}
+
+			.header h2 {
+				font-size: 1rem;
+			}
+
+			.btn-check {
+				padding: 0.7rem;
+				font-size: 0.95rem;
+			}
+		}
+
+		@media (max-width: 400px) {
+			.option {
+				flex-wrap: wrap;
+				gap: 0.3rem;
+			}
+
+			.option .badge {
+				margin-left: 0;
+				width: 100%;
+				text-align: center;
+			}
+
+			.option .text {
+				font-size: 0.8rem;
+			}
+		}
+
+		.card {
+			animation: fadeUp 0.5s ease forwards;
+		}
+
+		@keyframes fadeUp {
+			0% {
+				opacity: 0;
+				transform: translateY(20px) scale(0.97);
+			}
+
+			100% {
+				opacity: 1;
+				transform: translateY(0) scale(1);
+			}
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="card">
+
+		<div class="header">
+			<span class="icon">🐍</span>
+			<h2>Что произойдет при выполнении?</h2>
+			<div class="sub">выберите правильный вариант</div>
+		</div>
+
+		<!-- Блок с кодом -->
+		<div class="code-block">
+			<div class="code-line">
+				<span class="prompt">❯</span>
+				<span class="func">print</span><span class="paren">(</span>
+				<span class="num">5</span>
+				<span class="op divider-op">/</span>
+				<span class="num">0</span>
+				<span class="paren">)</span>
+				<span style="font-size: 0.7rem; color: #64748b; margin-left: 0.5rem;">⬅ что будет?</span>
+			</div>
+			<div class="desc">
+				<span class="question-label">⚠️ ошибка</span>
+				<span style="color: #94a3b8; margin-left: 0.5rem;">какой результат вызовет этот код?</span>
+			</div>
+		</div>
+
+		<!-- Варианты ответов -->
+		<div class="options" id="optionsContainer">
+			<!-- A -->
+			<div class="option" data-index="0">
+				<span class="letter">A</span>
+				<div class="radio"><span class="dot"></span></div>
+				<span class="text">Выведет <strong>0</strong></span>
+			</div>
+			<!-- B (правильный) -->
+			<div class="option" data-index="1">
+				<span class="letter">B</span>
+				<div class="radio"><span class="dot"></span></div>
+				<span class="text">ZeroDivisionError: division by zero</span>
+			</div>
+			<!-- C -->
+			<div class="option" data-index="2">
+				<span class="letter">C</span>
+				<div class="radio"><span class="dot"></span></div>
+				<span class="text">Выведет <strong>inf</strong> (бесконечность)</span>
+			</div>
+			<!-- D -->
+			<div class="option" data-index="3">
+				<span class="letter">D</span>
+				<div class="radio"><span class="dot"></span></div>
+				<span class="text">Выведет <strong>None</strong></span>
+			</div>
+		</div>
+
+		<!-- Кнопка проверки -->
+		<button class="btn-check" id="checkBtn">Проверить ответ</button>
+
+		<!-- Сообщение -->
+		<div id="messageBox" class="message-box neutral">
+			<span class="icon">💡</span> выберите вариант и нажмите «Проверить ответ»
+		</div>
+
+		<div class="hint">
+			<kbd>1-4</kbd> для быстрого выбора · <kbd>Enter</kbd> для проверки
+		</div>
+	</div>
+
+	<script>
+		(function() {
+			const options = document.querySelectorAll('.option');
+			const checkBtn = document.getElementById('checkBtn');
+			const messageBox = document.getElementById('messageBox');
+
+			let selectedIndex = -1;
+			let isAnswered = false;
+
+			// Правильный ответ — индекс 1 (вариант B)
+			const CORRECT_INDEX = 1;
+			const CORRECT_TEXT = 'ZeroDivisionError: division by zero';
+
+			function setMessage(text, type = 'neutral', icon = '') {
+				messageBox.innerHTML = icon ? `<span class="icon">${icon}</span> ${text}` : text;
+				messageBox.classList.remove('neutral', 'success', 'error', 'info');
+				messageBox.classList.add(type);
+			}
+
+			function resetOptions() {
+				options.forEach((opt, idx) => {
+					opt.classList.remove('selected', 'correct', 'wrong', 'disabled');
+					const badge = opt.querySelector('.badge');
+					if (badge) badge.remove();
+				});
+			}
+
+			function selectOption(index) {
+				if (isAnswered) return;
+
+				// Сбрасываем выделение у всех
+				options.forEach(opt => opt.classList.remove('selected'));
+
+				// Выделяем выбранный
+				options[index].classList.add('selected');
+				selectedIndex = index;
+
+				// Обновляем сообщение
+				const letter = String.fromCharCode(65 + index);
+				setMessage(`Выбран вариант ${letter}`, 'neutral', '📌');
+			}
+
+			function handleCheck() {
+				if (isAnswered) {
+					setMessage('Вы уже ответили на вопрос', 'info', 'ℹ️');
+					return;
+				}
+
+				if (selectedIndex === -1) {
+					setMessage('Пожалуйста, выберите вариант ответа', 'error', '⚠️');
+					return;
+				}
+
+				// Блокируем все опции
+				options.forEach(opt => opt.classList.add('disabled'));
+				isAnswered = true;
+
+				// Отмечаем правильный и неправильные
+				options.forEach((opt, idx) => {
+					const letter = String.fromCharCode(65 + idx);
+					if (idx === CORRECT_INDEX) {
+						opt.classList.add('correct');
+						const badge = document.createElement('span');
+						badge.className = 'badge correct-badge';
+						badge.textContent = '✓ правильный';
+						opt.appendChild(badge);
+					} else if (idx === selectedIndex && idx !== CORRECT_INDEX) {
+						opt.classList.add('wrong');
+						const badge = document.createElement('span');
+						badge.className = 'badge wrong-badge';
+						badge.textContent = '✗ неверно';
+						opt.appendChild(badge);
+					}
+				});
+
+				// Проверяем, правильный ли выбран
+				if (selectedIndex === CORRECT_INDEX) {
+					setMessage('✅ Абсолютно верно! В Python деление на ноль вызывает исключение ZeroDivisionError.', 'success', '🎉');
+				} else {
+					const selectedLetter = String.fromCharCode(65 + selectedIndex);
+					setMessage(`❌ Неверно. Вариант ${selectedLetter} — неправильный. Правильный ответ: B. ${CORRECT_TEXT}`, 'error', '😅');
+				}
+
+				checkBtn.disabled = true;
+				checkBtn.textContent = '✅ Ответ дан';
+			}
+
+			// Обработчики для опций
+			options.forEach((opt, idx) => {
+				opt.addEventListener('click', function() {
+					if (isAnswered) return;
+					selectOption(idx);
+				});
+
+				// Для клавиатуры
+				opt.addEventListener('keydown', (e) => {
+					if (e.key === 'Enter' || e.key === ' ') {
+						e.preventDefault();
+						if (!isAnswered) selectOption(idx);
+					}
+				});
+			});
+
+			// Кнопка проверки
+			checkBtn.addEventListener('click', handleCheck);
+
+			// Горячие клавиши: 1-4 для выбора, Enter для проверки
+			document.addEventListener('keydown', (e) => {
+				if (e.key >= '1' && e.key <= '4') {
+					const idx = parseInt(e.key) - 1;
+					if (idx < options.length && !isAnswered) {
+						selectOption(idx);
+						e.preventDefault();
+					}
+				}
+				if (e.key === 'Enter') {
+					// Если фокус не на инпуте (их нет)
+					if (document.activeElement?.tagName !== 'INPUT') {
+						e.preventDefault();
+						handleCheck();
+					}
+				}
+				// Escape для сброса сообщения (если не отвечено)
+				if (e.key === 'Escape' && !isAnswered) {
+					setMessage('выберите вариант и нажмите «Проверить ответ»', 'neutral', '💡');
+				}
+			});
+
+			// Фокус на первую опцию для доступности
+			options[0].setAttribute('tabindex', '0');
+			options[0].focus();
+
+			console.log('🐍 Вопрос про print(5/0) готов!');
+		})();
+	</script>
+
+</body></html>
