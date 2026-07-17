@@ -258,6 +258,12 @@
 		}
 
 		/* Адаптив: на маленьких экранах уменьшаем размер */
+		@media (min-width: 700px) {
+			.pagination-wrapper {
+				min-height: 300px;
+				max-width: 600px;
+			}
+		}
 		@media (max-width: 500px) {
 			.pagination-wrapper {
 				padding: 1.6rem 1.2rem;
