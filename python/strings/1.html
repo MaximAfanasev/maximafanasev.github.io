@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>🧙 Python Arena — строки и методы</title>
+	<style>
+		/* ========== ГЛОБАЛЬНЫЕ СТИЛИ ========== */
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			font-family: 'Segoe UI', 'Orbitron', system-ui, sans-serif;
+			background: #0b0e1a;
+			min-height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: flex-start;
+			padding: 20px;
+			background-image:
+				radial-gradient(ellipse at 20% 50%, rgba(88, 60, 180, 0.15) 0%, transparent 60%),
+				radial-gradient(ellipse at 80% 50%, rgba(30, 144, 255, 0.10) 0%, transparent 60%),
+				radial-gradient(ellipse at 50% 0%, rgba(120, 80, 255, 0.05) 0%, transparent 40%);
+			background-attachment: fixed;
+		}
+
+		/* ========== КОНТЕЙНЕР С НЕОНОВЫМ СВЕЧЕНИЕМ ========== */
+		.game-container {
+			max-width: 1060px;
+			width: 100%;
+			background: linear-gradient(145deg, #12162a, #0a0d1a);
+			border-radius: 40px;
+			padding: 32px 28px 28px;
+			box-shadow:
+				0 0 60px rgba(99, 102, 241, 0.15),
+				0 0 120px rgba(99, 102, 241, 0.05),
+				inset 0 1px 0 rgba(255, 255, 255, 0.03);
+			border: 1px solid rgba(99, 102, 241, 0.15);
+			position: relative;
+			overflow: hidden;
+			margin-top: 10px;
+		}
+
+		.game-container::before {
+			content: '';
+			position: absolute;
+			top: -50%;
+			left: -50%;
+			width: 200%;
+			height: 200%;
+			background: conic-gradient(from 0deg at 50% 50%, transparent, rgba(99, 102, 241, 0.02), transparent, rgba(168, 85, 247, 0.02), transparent);
+			animation: rotateGlow 30s linear infinite;
+			pointer-events: none;
+		}
+
+		@keyframes rotateGlow {
+			0% {
+				transform: rotate(0deg);
+			}
+
+			100% {
+				transform: rotate(360deg);
+			}
+		}
+
+		/* ========== ШАПКА ========== */
+		.header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			flex-wrap: wrap;
+			gap: 16px 20px;
+			margin-bottom: 24px;
+			position: relative;
+			z-index: 2;
+		}
+
+		.title-group {
+			display: flex;
+			align-items: center;
+			gap: 14px;
+		}
+
+		.title-group h1 {
+			font-size: 1.9rem;
+			font-weight: 800;
+			background: linear-gradient(135deg, #a78bfa, #60a5fa, #34d399);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-clip: text;
+			letter-spacing: 0.5px;
+			text-shadow: 0 0 40px rgba(99, 102, 241, 0.2);
+		}
+
+		.title-group .badge-rpg {
+			background: rgba(251, 191, 36, 0.15);
+			border: 1px solid rgba(251, 191, 36, 0.3);
+			color: #fbbf24;
+			font-size: 0.7rem;
+			font-weight: 700;
+			padding: 4px 14px;
+			border-radius: 40px;
+			letter-spacing: 1px;
+			text-transform: uppercase;
+		}
+
+		/* ========== СТАТЫ (HP / XP / LVL) ========== */
+		.stats-panel {
+			display: flex;
+			align-items: center;
+			gap: 16px 24px;
+			flex-wrap: wrap;
+			background: rgba(255, 255, 255, 0.03);
+			padding: 8px 20px 8px 18px;
+			border-radius: 60px;
+			border: 1px solid rgba(255, 255, 255, 0.04);
+			backdrop-filter: blur(4px);
+		}
+
+		.stat-item {
+			display: flex;
+			align-items: center;
+			gap: 6px;
+			font-size: 0.85rem;
+			font-weight: 600;
+			color: #c8d0e6;
+		}
+
+		.stat-item .icon {
+			font-size: 1.1rem;
+		}
+
+		.stat-item .value {
+			font-family: 'Orbitron', 'Segoe UI', monospace;
+			font-weight: 700;
+			font-size: 1.05rem;
+			min-width: 28px;
+		}
+
+		.stat-item .value.highlight {
+			color: #a78bfa;
+		}
+
+		.stat-item .value.gold {
+			color: #fbbf24;
+		}
+
+		.stat-item .value.green {
+			color: #34d399;
+		}
+
+		.xp-bar-wrap {
+			width: 100px;
+			height: 6px;
+			background: rgba(255, 255, 255, 0.06);
+			border-radius: 20px;
+			overflow: hidden;
+		}
+
+		.xp-bar-fill {
+			height: 100%;
+			width: 0%;
+			background: linear-gradient(90deg, #a78bfa, #60a5fa);
+			border-radius: 20px;
+			transition: width 0.5s ease;
+		}
+
+		/* ========== ПОДСКАЗКА ========== */
+		.quest-log {
+			background: rgba(99, 102, 241, 0.06);
+			border: 1px solid rgba(99, 102, 241, 0.10);
+			border-radius: 16px;
+			padding: 10px 18px;
+			margin-bottom: 24px;
+			font-size: 0.85rem;
+			color: #94a3b8;
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			flex-wrap: wrap;
+			position: relative;
+			z-index: 2;
+		}
+
+		.quest-log strong {
+			color: #e2e8f0;
+		}
+
+		.quest-log .key {
+			background: rgba(255, 255, 255, 0.06);
+			padding: 2px 12px;
+			border-radius: 12px;
+			font-family: monospace;
+			font-size: 0.75rem;
+			color: #a78bfa;
+			border: 1px solid rgba(167, 139, 250, 0.15);
+		}
+
+		.quest-log .hint {
+			background: rgba(251, 191, 36, 0.08);
+			border: 1px solid rgba(251, 191, 36, 0.12);
+			padding: 2px 12px;
+			border-radius: 12px;
+			font-size: 0.75rem;
+			color: #fbbf24;
+		}
+
+		/* ========== СПИСОК ЗАДАНИЙ ========== */
+		.task-grid {
+			display: flex;
+			flex-direction: column;
+			gap: 12px;
+			position: relative;
+			z-index: 2;
+			max-height: 560px;
+			overflow-y: auto;
+			padding-right: 4px;
+		}
+
+		.task-grid::-webkit-scrollbar {
+			width: 4px;
+		}
+
+		.task-grid::-webkit-scrollbar-track {
+			background: rgba(255, 255, 255, 0.02);
+			border-radius: 10px;
+		}
+
+		.task-grid::-webkit-scrollbar-thumb {
+			background: rgba(167, 139, 250, 0.3);
+			border-radius: 10px;
+		}
+
+		/* ========== КАРТОЧКА ЗАДАНИЯ ========== */
+		.task-card {
+			background: rgba(255, 255, 255, 0.02);
+			border-radius: 18px;
+			border: 1px solid rgba(255, 255, 255, 0.04);
+			padding: 14px 18px 14px 20px;
+			transition: all 0.2s ease;
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			gap: 12px 16px;
+			position: relative;
+		}
+
+		.task-card::before {
+			content: '';
+			position: absolute;
+			inset: 0;
+			border-radius: 18px;
+			padding: 1px;
+			background: linear-gradient(135deg, rgba(167, 139, 250, 0.05), transparent);
+			-webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+			-webkit-mask-composite: xor;
+			mask-composite: exclude;
+			pointer-events: none;
+		}
+
+		.task-card.correct {
+			border-color: rgba(52, 211, 153, 0.25);
+			background: rgba(52, 211, 153, 0.04);
+			box-shadow: 0 0 20px rgba(52, 211, 153, 0.02);
+		}
+
+		.task-card.wrong {
+			border-color: rgba(239, 68, 68, 0.20);
+			background: rgba(239, 68, 68, 0.04);
+		}
+
+		.task-card.completed {
+			opacity: 0.7;
+		}
+
+		.task-number {
+			font-family: 'Orbitron', monospace;
+			font-size: 0.7rem;
+			font-weight: 700;
+			color: #475569;
+			min-width: 28px;
+			letter-spacing: 0.5px;
+		}
+
+		.code-line {
+			font-family: 'JetBrains Mono', 'Fira Code', monospace;
+			background: rgba(0, 0, 0, 0.50);
+			padding: 8px 14px;
+			border-radius: 12px;
+			font-size: 0.85rem;
+			color: #cbd5e1;
+			flex: 1 1 200px;
+			overflow-x: auto;
+			white-space: pre-wrap;
+			word-break: break-all;
+			border: 1px solid rgba(255, 255, 255, 0.03);
+		}
+
+		.code-line .comment {
+			color: #4b5563;
+		}
+
+		.code-line .hint-text {
+			color: #fbbf24;
+			font-style: italic;
+		}
+
+		.answer-area {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			gap: 8px 10px;
+			margin-left: auto;
+		}
+
+		.answer-area input {
+			font-family: 'JetBrains Mono', monospace;
+			background: rgba(0, 0, 0, 0.5);
+			border: 1px solid rgba(255, 255, 255, 0.08);
+			border-radius: 30px;
+			padding: 8px 16px;
+			font-size: 0.85rem;
+			color: #e2e8f0;
+			min-width: 140px;
+			transition: 0.15s;
+			outline: none;
+			caret-color: #a78bfa;
+		}
+
+		.answer-area input::placeholder {
+			color: #475569;
+			font-size: 0.75rem;
+		}
+
+		.answer-area input:focus {
+			border-color: rgba(167, 139, 250, 0.4);
+			box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.08);
+		}
+
+		.answer-area input.correct {
+			border-color: #34d399;
+			background: rgba(52, 211, 153, 0.06);
+		}
+
+		.answer-area input.wrong {
+			border-color: #ef4444;
+			background: rgba(239, 68, 68, 0.06);
+		}
+
+		.btn-check {
+			background: linear-gradient(135deg, #6366f1, #8b5cf6);
+			border: none;
+			color: white;
+			font-weight: 600;
+			padding: 8px 18px;
+			border-radius: 30px;
+			font-size: 0.8rem;
+			cursor: pointer;
+			transition: 0.15s;
+			box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+			border: 1px solid rgba(255, 255, 255, 0.05);
+			letter-spacing: 0.3px;
+		}
+
+		.btn-check:hover {
+			transform: scale(0.96);
+			box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+		}
+
+		.btn-check:active {
+			transform: scale(0.92);
+		}
+
+		.btn-hint {
+			background: rgba(251, 191, 36, 0.08);
+			border: 1px solid rgba(251, 191, 36, 0.12);
+			color: #fbbf24;
+			padding: 6px 14px;
+			border-radius: 20px;
+			font-size: 0.7rem;
+			cursor: pointer;
+			transition: 0.15s;
+			font-weight: 600;
+		}
+
+		.btn-hint:hover {
+			background: rgba(251, 191, 36, 0.15);
+		}
+
+		.result-badge {
+			font-weight: 600;
+			font-size: 0.75rem;
+			padding: 2px 14px;
+			border-radius: 40px;
+			background: rgba(255, 255, 255, 0.04);
+			color: #64748b;
+			min-width: 70px;
+			text-align: center;
+		}
+
+		.result-badge.ok {
+			background: rgba(52, 211, 153, 0.12);
+			color: #34d399;
+			border: 1px solid rgba(52, 211, 153, 0.15);
+		}
+
+		.result-badge.fail {
+			background: rgba(239, 68, 68, 0.10);
+			color: #f87171;
+			border: 1px solid rgba(239, 68, 68, 0.12);
+		}
+
+		/* ========== ФУТЕР ========== */
+		.footer-actions {
+			margin-top: 24px;
+			padding-top: 18px;
+			border-top: 1px solid rgba(255, 255, 255, 0.04);
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			flex-wrap: wrap;
+			gap: 14px;
+			position: relative;
+			z-index: 2;
+		}
+
+		.btn-reset {
+			background: rgba(255, 255, 255, 0.03);
+			border: 1px solid rgba(255, 255, 255, 0.06);
+			color: #94a3b8;
+			padding: 8px 24px;
+			border-radius: 40px;
+			font-weight: 500;
+			font-size: 0.85rem;
+			cursor: pointer;
+			transition: 0.15s;
+		}
+
+		.btn-reset:hover {
+			background: rgba(255, 255, 255, 0.06);
+			color: #e2e8f0;
+		}
+
+		.progress-text {
+			font-size: 0.85rem;
+			color: #64748b;
+		}
+
+		.progress-text strong {
+			color: #e2e8f0;
+		}
+
+		/* ========== АНИМАЦИЯ ДЛЯ НОВЫХ ДОСТИЖЕНИЙ ========== */
+		@keyframes glowPulse {
+			0% {
+				box-shadow: 0 0 10px rgba(167, 139, 250, 0.1);
+			}
+
+			50% {
+				box-shadow: 0 0 30px rgba(167, 139, 250, 0.2);
+			}
+
+			100% {
+				box-shadow: 0 0 10px rgba(167, 139, 250, 0.1);
+			}
+		}
+
+		.task-card.just-completed {
+			animation: glowPulse 0.8s ease 2;
+		}
+
+		@keyframes floatUp {
+			0% {
+				opacity: 1;
+				transform: translateY(0);
+			}
+
+			100% {
+				opacity: 0;
+				transform: translateY(-30px);
+			}
+		}
+
+		.float-msg {
+			position: fixed;
+			font-weight: 700;
+			font-size: 1.2rem;
+			pointer-events: none;
+			animation: floatUp 1.2s ease forwards;
+			z-index: 999;
+		}
+
+		/* ========== АДАПТИВ ========== */
+		@media (max-width: 700px) {
+			.game-container {
+				padding: 18px 14px;
+			}
+
+			.title-group h1 {
+				font-size: 1.3rem;
+			}
+
+			.stats-panel {
+				padding: 6px 14px;
+				gap: 10px;
+			}
+
+			.stat-item {
+				font-size: 0.75rem;
+			}
+
+			.xp-bar-wrap {
+				width: 60px;
+			}
+
+			.task-card {
+				flex-direction: column;
+				align-items: stretch;
+				gap: 8px;
+			}
+
+			.answer-area {
+				margin-left: 0;
+			}
+
+			.answer-area input {
+				width: 100%;
+				min-width: unset;
+			}
+
+			.code-line {
+				font-size: 0.75rem;
+			}
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="game-container" id="gameApp">
+		<!-- ===== ШАПКА ===== -->
+		<div class="header">
+			<div class="title-group">
+				<h1>⚔️ Python Arena</h1>
+				<span class="badge-rpg">✦ квест: строки</span>
+			</div>
+			<div class="stats-panel">
+				<div class="stat-item">
+					<span class="icon">❤️</span>
+					<span class="value green" id="hpDisplay">3</span>
+				</div>
+				<div class="stat-item">
+					<span class="icon">⭐</span>
+					<span class="value gold" id="xpDisplay">0</span>
+				</div>
+				<div class="stat-item">
+					<span class="icon">🏆</span>
+					<span class="value highlight" id="levelDisplay">1</span>
+				</div>
+				<div class="xp-bar-wrap">
+					<div class="xp-bar-fill" id="xpBarFill" style="width:0%"></div>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- ===== СПИСОК ЗАДАНИЙ ===== -->
+		<div class="task-grid" id="taskContainer"></div>
+
+		<!-- ===== ФУТЕР ===== -->
+		<div class="footer-actions">
+			<button class="btn-reset" id="resetBtn">⟳ Сбросить прогресс</button>
+			<span class="progress-text" id="progressText">Выполнено: <strong>0</strong> / <span id="totalCount">0</span></span>
+		</div>
+	</div>
+
+	<script>
+		(function() {
+			// ==================== ДАННЫЕ ====================
+			const tasksData = [
+				// Базовые строки
+				{
+					code: `print('a')`,
+					expected: 'a'
+				},
+				{
+					code: `print("b")`,
+					expected: 'b'
+				},
+				{
+					code: `print('''c''')`,
+					expected: 'c'
+				},
+
+				// Преобразование типов
+				{
+					code: `print(str(98.6))`,
+					expected: '98.6'
+				},
+				{
+					code: `print(str(1.0e4))`,
+					expected: '10000.0'
+				},
+				{
+					code: `print(str(True))`,
+					expected: 'True'
+				},
+
+				// Табуляция — замена на пробелы для удобства ввода
+				{
+					code: `print('\\tabc')  3 пробела`,
+					expected: '   abc',
+				},
+				{
+					code: `print('a\\tbc')  3 пробела`,
+					expected: 'a   bc',
+				},
+				{
+					code: `print('ab\\tc')  3 пробела`,
+					expected: 'ab   c',
+				},
+
+				// Конкатенация и умножение
+				{
+					code: `print('a' 'b')`,
+					expected: 'ab'
+				},
+				{
+					code: `print('Na'*4 + ' Batman')`,
+					expected: 'NaNaNaNa Batman'
+				},
+
+				// Индексация
+				{
+					code: `a = 'abcde'\\nprint(a[0])`,
+					expected: 'a'
+				},
+				{
+					code: `a = 'abcde'\\nprint(a[2])`,
+					expected: 'c'
+				},
+				{
+					code: `a = 'abcde'\\nprint(a[-1])`,
+					expected: 'e'
+				},
+
+				// Переменные и методы
+				{
+					code: `a = 'abcde'\\nprint(a)`,
+					expected: 'abcde'
+				},
+				{
+					code: `c = a.replace('a', 'X')\\nprint(c)`,
+					expected: 'Xbcde'
+				},
+				{
+					code: `print(a.replace('a', 'X'))`,
+					expected: 'Xbcde'
+				},
+
+				// Длина и сплит
+				{
+					code: `print(len(a))`,
+					expected: '5'
+				},
+				{
+					code: `print(a.split())`,
+					expected: "['abcde']"
+				},
+				{
+					code: `print('a,b,c'.split())`,
+					expected: "['a,b,c']"
+				},
+				{
+					code: `print('a,b,c'.split(','))`,
+					expected: "['a', 'b', 'c']"
+				},
+				{
+					code: `print(','.join(['a','b','c']))`,
+					expected: 'a,b,c'
+				},
+
+				// Методы проверки
+				{
+					code: `print('abc'.startswith('a'))`,
+					expected: 'True'
+				},
+				{
+					code: `print('abc'.endswith('c'))`,
+					expected: 'True'
+				},
+				{
+					code: `print('abc'.find('a'))`,
+					expected: '0'
+				},
+				{
+					code: `print('abc'.find('b'))`,
+					expected: '1'
+				},
+				{
+					code: `print('aaa'.count('a'))`,
+					expected: '3'
+				},
+				{
+					code: `print('123'.isalnum())`,
+					expected: 'True'
+				},
+				{
+					code: `print('abc...'.strip('.'))`,
+					expected: 'abc'
+				},
+
+				// Регистр
+				{
+					code: `print('abc'.capitalize())`,
+					expected: 'Abc'
+				},
+				{
+					code: `print('abc'.title())`,
+					expected: 'Abc'
+				},
+				{
+					code: `print('abc'.upper())`,
+					expected: 'ABC'
+				},
+				{
+					code: `print('ABC'.lower())`,
+					expected: 'abc'
+				},
+				{
+					code: `print('aBc'.swapcase())`,
+					expected: 'AbC'
+				},
+
+				// Выравнивание
+				{
+					code: `print('abc'.center(10))`,
+					expected: '   abc    '
+				},
+				{
+					code: `print('abc'.ljust(10))`,
+					expected: 'abc       '
+				},
+				{
+					code: `print('abc'.rjust(10))`,
+					expected: '       abc'
+				},
+				{
+					code: `print('abc'.replace('a', 'X'))`,
+					expected: 'Xbc'
+				}
+			];
+
+			// ==================== СОСТОЯНИЕ ====================
+			let userAnswers = new Array(tasksData.length).fill('');
+			let results = new Array(tasksData.length).fill(null);
+
+			let hp = 3;
+			let xp = 0;
+			let level = 1;
+			const XP_PER_LEVEL = 8;
+
+			// DOM-ссылки
+			const container = document.getElementById('taskContainer');
+			const hpDisplay = document.getElementById('hpDisplay');
+			const xpDisplay = document.getElementById('xpDisplay');
+			const levelDisplay = document.getElementById('levelDisplay');
+			const xpBarFill = document.getElementById('xpBarFill');
+			const progressText = document.getElementById('progressText');
+			const totalCountSpan = document.getElementById('totalCount');
+
+			// ==================== ВСПОМОГАТЕЛЬНЫЕ ====================
+			function getCorrectCount() {
+				return results.filter(r => r === true).length;
+			}
+
+			function getWrongCount() {
+				return results.filter(r => r === false).length;
+			}
+
+			function updateUI() {
+				const total = tasksData.length;
+				const correct = getCorrectCount();
+				const wrong = getWrongCount();
+
+				hp = Math.max(0, 3 - wrong);
+				hpDisplay.textContent = hp;
+
+				xp = correct;
+				xpDisplay.textContent = xp;
+
+				level = Math.floor(xp / XP_PER_LEVEL) + 1;
+				levelDisplay.textContent = level;
+
+				const xpInLevel = xp % XP_PER_LEVEL;
+				const percent = (xpInLevel / XP_PER_LEVEL) * 100;
+				xpBarFill.style.width = Math.min(100, percent) + '%';
+
+				progressText.innerHTML = `Выполнено: <strong>${correct}</strong> / ${total}`;
+				totalCountSpan.textContent = total;
+			}
+
+			function showFloatingMsg(text, x, y, color = '#a78bfa') {
+				const el = document.createElement('div');
+				el.className = 'float-msg';
+				el.textContent = text;
+				el.style.left = x + 'px';
+				el.style.top = y + 'px';
+				el.style.color = color;
+				el.style.textShadow = `0 0 20px ${color}40`;
+				document.body.appendChild(el);
+				setTimeout(() => el.remove(), 1400);
+			}
+
+			// ==================== РЕНДЕР ====================
+			let isRendering = false;
+
+			function render() {
+				if (isRendering) return;
+				isRendering = true;
+
+				const scrollPos = container.scrollTop;
+				const activeElement = document.activeElement;
+				let activeIndex = null;
+				if (activeElement && activeElement.classList.contains('answer-input')) {
+					activeIndex = parseInt(activeElement.dataset.index);
+				}
+
+				let html = '';
+				for (let i = 0; i < tasksData.length; i++) {
+					const task = tasksData[i];
+					const answer = userAnswers[i] || '';
+					const result = results[i];
+
+					let cardClass = 'task-card';
+					let inputClass = '';
+					let badgeText = '⏳ ожидание';
+					let badgeClass = 'result-badge';
+
+					if (result === true) {
+						cardClass += ' correct completed';
+						inputClass = 'correct';
+						badgeText = '✅ верно!';
+						badgeClass += ' ok';
+					} else if (result === false) {
+						cardClass += ' wrong';
+						inputClass = 'wrong';
+						badgeText = '❌ ошибка';
+						badgeClass += ' fail';
+					}
+
+					let codeDisplay = task.code.replace(/\\n/g, '\n');
+					// Добавляем подсказку если есть
+					if (task.hint) {
+						codeDisplay += ` <span class="hint-text">(подсказка: ${task.hint})</span>`;
+					}
+
+					html += `
+                    <div class="${cardClass}" data-index="${i}">
+                        <span class="task-number">#${i+1}</span>
+                        <div class="code-line">${codeDisplay}</div>
+                        <div class="answer-area">
+                            <input type="text" class="answer-input ${inputClass}" data-index="${i}" value="${answer}" placeholder="введи вывод..." spellcheck="false" autocomplete="off" />
+                            <button class="btn-check" data-index="${i}">⚡ Проверить</button>
+                            <span class="${badgeClass}">${badgeText}</span>
+                        </div>
+                    </div>
+                `;
+				}
+				container.innerHTML = html;
+
+				container.scrollTop = scrollPos;
+
+				if (activeIndex !== null) {
+					const input = document.querySelector(`.answer-input[data-index="${activeIndex}"]`);
+					if (input) {
+						input.focus();
+						input.setSelectionRange(input.value.length, input.value.length);
+					}
+				}
+
+				document.querySelectorAll('.btn-check').forEach(btn => {
+					btn.addEventListener('click', function(e) {
+						e.preventDefault();
+						const idx = parseInt(this.dataset.index);
+						checkTask(idx);
+					});
+				});
+
+				document.querySelectorAll('.answer-input').forEach(inp => {
+					inp.addEventListener('keydown', function(e) {
+						if (e.key === 'Enter') {
+							e.preventDefault();
+							const idx = parseInt(this.dataset.index);
+							checkTask(idx);
+						}
+					});
+					inp.addEventListener('input', function() {
+						const idx = parseInt(this.dataset.index);
+						userAnswers[idx] = this.value;
+						if (results[idx] !== null) {
+							results[idx] = null;
+							render();
+							updateUI();
+						}
+					});
+				});
+
+				updateUI();
+				isRendering = false;
+			}
+
+			// ==================== ПРОВЕРКА ====================
+			function checkTask(index) {
+				const input = document.querySelector(`.answer-input[data-index="${index}"]`);
+				if (!input) return;
+
+				const userValue = input.value;
+				userAnswers[index] = userValue;
+
+				const expected = tasksData[index].expected;
+
+				// Специальная обработка для табуляции: если пользователь ввел пробелы, 
+				// а ожидается табуляция, то заменяем \t на 3 пробела для сравнения
+				let normalizedUser = userValue;
+				let normalizedExpected = expected;
+
+				// Если ожидаемый ответ содержит \t, заменяем на 3 пробела для удобства
+				if (expected.includes('\t')) {
+					normalizedExpected = expected.replace(/\t/g, '   ');
+					normalizedUser = userValue.replace(/\t/g, '   ');
+				}
+
+				const isCorrect = (normalizedUser === normalizedExpected);
+
+				if (results[index] === true) {
+					if (!isCorrect) {
+						results[index] = false;
+						render();
+						updateUI();
+						const rect = input.getBoundingClientRect();
+						showFloatingMsg('⚠️ Было верно, не меняй!', rect.left, rect.top - 30, '#fbbf24');
+						return;
+					}
+					return;
+				}
+
+				results[index] = isCorrect;
+
+				const rect = input.getBoundingClientRect();
+				if (isCorrect) {
+					showFloatingMsg('✨ +1 XP', rect.left, rect.top - 30, '#34d399');
+					const card = input.closest('.task-card');
+					if (card) {
+						card.classList.add('just-completed');
+						setTimeout(() => card.classList.remove('just-completed'), 1800);
+					}
+				} else {
+					showFloatingMsg('💔 -1 HP', rect.left, rect.top - 30, '#f87171');
+				}
+
+				render();
+				updateUI();
+
+				if (hp === 0) {
+					setTimeout(() => {
+						alert('💀 Ты потерял все жизни! Нажми "Сбросить прогресс", чтобы начать заново.');
+					}, 300);
+				}
+
+				const total = tasksData.length;
+				const correct = getCorrectCount();
+				if (correct === total) {
+					setTimeout(() => {
+						alert('🎉 ПОЗДРАВЛЯЮ! Ты завершил квест! Ты — настоящий мастер строк!');
+					}, 400);
+				}
+			}
+
+			// ==================== СБРОС ====================
+			function resetAll() {
+				userAnswers = new Array(tasksData.length).fill('');
+				results = new Array(tasksData.length).fill(null);
+				render();
+				updateUI();
+				const firstInput = document.querySelector('.answer-input');
+				if (firstInput) firstInput.focus();
+			}
+
+			// ==================== ИНИЦИАЛИЗАЦИЯ ====================
+			document.getElementById('resetBtn').addEventListener('click', resetAll);
+			render();
+			updateUI();
+
+			console.log('🧙 Python Arena загружена! Удачи!');
+		})();
+	</script>
+
+</body></html>
