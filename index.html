@@ -101,6 +101,11 @@
 			background-size: cover;
 			color: #fff;
 		}
+		
+		.pagination-wrapper:nth-child(2) {
+			position: relative;
+			transform: rotateY(-50deg);
+		}
 
 		.pagination-wrapper:hover {
 			box-shadow:
@@ -264,6 +269,7 @@
 				max-width: 600px;
 			}
 		}
+
 		@media (max-width: 500px) {
 			.pagination-wrapper {
 				padding: 1.6rem 1.2rem;
@@ -416,36 +422,80 @@
 		h2 {
 			margin-bottom: 32px;
 		}
-		
+
 		.arrow {
 			position: absolute;
 			bottom: -86px;
 			left: 300px;
 		}
-		
+
 		.row {
 			position: absolute;
 			bottom: -53px;
 			left: 300px;
-			animation: row 2s ease-out 1;
+			animation: row 1.5s ease-out 1;
 			transform: translateX(-230px);
 		}
 
 		@keyframes row {
 			0% {
-			opacity: 0;
+				opacity: 0;
 				transform: translateX(0);
 			}
+
 			50% {
 				transform: translateX(0);
 			}
+
 			100% {
 				transform: translateX(-230px);
 				opacity: 1;
 			}
 		}
-		
-		
+
+		.row2 {
+			animation: row2 2.2s ease-out 1;
+			transform: translateX(-230px) translateY(-5px) rotate(5deg);
+			opacity: 1;
+		}
+
+		@keyframes row2 {
+			0% {
+				opacity: 0;
+				transform: translateX(0);
+			}
+
+			70% {
+				transform: translateX(0);
+			}
+
+			100% {
+				transform: translateX(-230px) translateY(-5px) rotate(5deg);
+				opacity: 1;
+			}
+		}
+
+		.row3 {
+			animation: row3 2.8s ease-out 1;
+			transform: translateX(-230px) translateY(5px) rotate(-5deg);
+			opacity: 1;
+		}
+
+		@keyframes row3 {
+			0% {
+				opacity: 0;
+				transform: translateX(0);
+			}
+
+			80% {
+				transform: translateX(0);
+			}
+
+			100% {
+				transform: translateX(-230px) translateY(5px) rotate(-5deg);
+				opacity: 1;
+			}
+		}
 	</style>
 </head>
 
@@ -462,10 +512,12 @@
 			<a class="page-link" href="python/base/5.html">5</a>
 			<a class="page-link" href="python/base/6.html">6</a>
 		</ul>
-	<img class="arrow" src="5.png" alt="" width="70">
-	<img class="row" src="6.png" alt="" width="60px">
+		<img class="arrow" src="5.png" alt="" width="70">
+		<img class="row" src="6.png" alt="" width="60px">
+		<img class="row row2" src="6.png" alt="" width="60px">
+		<img class="row row3" src="6.png" alt="" width="60px">
 	</div>
-	
+
 	<div class="pagination-wrapper">
 		<span>lvl 2</span>
 		<h2>4исла 🔢</h2>
