@@ -403,11 +403,7 @@
 
 			<!-- Сообщение о результате -->
 			<div id="messageBox" class="message-box neutral">
-				<span class="icon">⌨️</span> введите число и нажмите «Проверить»
-			</div>
-
-			<div class="hint">
-				<kbd>Enter</kbd> для быстрой проверки<strong style="color: #facc15;"></strong>
+				<span class="icon">⌨️</span>
 			</div>
 		</div>
 	</div>
@@ -480,7 +476,7 @@
 
 			// синхронизация начального состояния
 			if (input.value.trim() === '') {
-				setMessage('введите число и нажмите «Проверить»', 'neutral', '⌨️');
+				setMessage('', 'neutral', '⌨️');
 			}
 		})();
 	</script>
