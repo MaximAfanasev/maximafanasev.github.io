@@ -414,16 +414,12 @@
 				<label for="answerInput">
 					<span>⏺</span> Ответ:
 				</label>
-				<input type="number" id="answerInput" placeholder="введите число" value="" step="1" autofocus>
+				<input type="number" id="answerInput" placeholder="?..." value="" step="1" autofocus>
 				<button class="btn-check" id="checkBtn">Проверить</button>
 			</div>
 
 			<div id="messageBox" class="message-box neutral">
-				<span class="icon">⌨️</span> введите число и нажмите «Проверить»
-			</div>
-
-			<div class="hint">
-				<kbd>Enter</kbd> для быстрой проверки
+				<span class="icon">⌨️</span>
 			</div>
 		</div>
 	</div>
@@ -495,7 +491,7 @@
 			input.focus();
 
 			if (input.value.trim() === '') {
-				setMessage('введите число и нажмите «Проверить»', 'neutral', '⌨️');
+				setMessage('', 'neutral', '⌨️');
 			}
 		})();
 	</script>
