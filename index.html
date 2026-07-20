@@ -261,6 +261,49 @@
 			letter-spacing: 0;
 		}
 
+		/* СТИЛЬ МИШЕНИ ДЛЯ ПРОЙДЕННОГО ЗАДАНИЯ */
+		.page-link.completed {
+			border-color: #15fa32 !important;
+			color: #ffffff !important;
+			box-shadow: 0 0 0 3px #15fa32, 0 12px 24px -8px rgba(30, 58, 138, 0.5) !important;
+			transform: scale(1.05);
+			font-weight: 700;
+		}
+
+		.page-link.completed::after {
+			content: "✓";
+			position: absolute;
+			top: -8px;
+			right: -8px;
+			background: #15fa32;
+			color: #0f172a;
+			font-size: 0.8rem;
+			font-weight: 700;
+			width: 22px;
+			height: 22px;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			box-shadow: 0 2px 8px rgba(250, 204, 21, 0.6);
+		}
+
+		.page-link.completed::before {
+			content: "";
+			position: absolute;
+			top: 24px;
+			right: -48px;
+			z-index: 100;
+			background: url("6.png") no-repeat 0 0;
+			background-size: cover;
+			color: #0f172a;
+			font-size: 0.8rem;
+			width: 70px;
+			height: 7px;
+			transform: rotate(15deg);
+			transform-origin: left;
+		}
+
 		/* Адаптив: на маленьких экранах уменьшаем размер */
 		@media (min-width: 700px) {
 			.pagination-wrapper {
@@ -495,6 +538,42 @@
 				opacity: 1;
 			}
 		}
+
+		/* Стили для кнопки очистки */
+		.clear-btn {
+			margin-top: 1.5rem;
+			padding: 0.7rem 2rem;
+			background: #44b0ef;
+			color: white;
+			border: none;
+			border-radius: 60px;
+			font-size: 1rem;
+			font-weight: 600;
+			cursor: pointer;
+			transition: all 0.2s ease;
+			box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+			font-family: 'Inter', 'Segoe UI', sans-serif;
+		}
+
+		.clear-btn:hover {
+			background: #dc2626;
+			transform: scale(1.03);
+			box-shadow: 0 8px 20px rgba(239, 68, 68, 0.4);
+		}
+
+		.clear-btn:active {
+			transform: scale(0.95);
+		}
+
+		.clear-btn:disabled {
+			background: #6b7280;
+			cursor: not-allowed;
+			box-shadow: none;
+		}
+
+		.clear-btn:disabled:hover {
+			transform: none;
+		}
 	</style>
 </head>
 
@@ -503,7 +582,7 @@
 	<div class="pagination-wrapper">
 		<h2>Основы 🤓</h2>
 		<ul class="pagination">
-			<a class="page-link" href="python/base/1.html">1</a>
+			<a class="page-link" id="base1Link" href="python/base/1.html">1</a>
 			<a class="page-link" href="python/base/2.html">2</a>
 			<a class="page-link" href="python/base/3.html">3</a>
 			<a class="page-link" href="python/base/4.html">4</a>
@@ -547,57 +626,92 @@
 		</ul>
 	</div>
 
+	<!-- Кнопка очистки прогресса -->
+	<button class="clear-btn" id="clearProgressBtn">🔁 RESTART 🔁</button>
+
 	<script>
 		(function() {
+			const STORAGE_KEY = 'python_base_1_completed';
+			const base1Link = document.getElementById('base1Link');
+			const clearBtn = document.getElementById('clearProgressBtn');
+
+			// Функция обновления индикатора (мишень)
+			function updateIndicator() {
+				if (!base1Link) return;
+
+				const isCompleted = localStorage.getItem(STORAGE_KEY) === 'true';
+
+				if (isCompleted) {
+					base1Link.classList.add('completed');
+				} else {
+					base1Link.classList.remove('completed');
+				}
+			}
+
+			// Функция очистки прогресса
+			function clearProgress() {
+				if (confirm('Вы уверены, что хотите очистить весь прогресс?')) {
+					localStorage.removeItem(STORAGE_KEY);
+					updateIndicator();
+					// Показываем уведомление
+					const infoNote = document.querySelector('.info-note');
+					if (infoNote) {
+						infoNote.textContent = '🗑️ Прогресс очищен!';
+						infoNote.style.transition = 'opacity 0.3s';
+						setTimeout(() => {
+							infoNote.textContent = '🎯 Мишень — задание пройдено';
+						}, 2000);
+					}
+					console.log('🗑️ Прогресс очищен');
+				}
+			}
+
+			// Обновляем при загрузке
+			updateIndicator();
+
+			// Обработчик для кнопки очистки
+			clearBtn.addEventListener('click', clearProgress);
+
+			// Слушаем изменения в localStorage (если страница открыта в другой вкладке)
+			window.addEventListener('storage', function(e) {
+				if (e.key === STORAGE_KEY) {
+					updateIndicator();
+				}
+			});
+
+			// Остальной код из вашего файла (без изменений)
 			const pageLinks = document.querySelectorAll('.page-item:not(:first-child) .page-link');
 			const statusSpan = document.querySelector('.pagination-wrapper .pagination + div strong');
 			const pageItems = document.querySelectorAll('.page-item');
 
-			// Функция обновления активного класса и текста статуса
 			function setActivePage(clickedLink) {
-				// Находим родительский <li> у кликнутой ссылки
 				const parentLi = clickedLink.closest('.page-item');
 				if (!parentLi) return;
 
-				// Убираем класс active у всех элементов .page-item (кроме первого "стр.")
 				pageItems.forEach(item => {
-					// Пропускаем первый элемент (если это "стр.")
 					if (item.querySelector('.page-link')?.innerText.trim() === 'стр.') return;
 					item.classList.remove('active');
 				});
 
-				// Добавляем класс active текущему элементу
 				parentLi.classList.add('active');
 
-				// Обновляем текст статуса (номер страницы)
 				const pageNumber = clickedLink.innerText.trim();
 				if (statusSpan && pageNumber) {
 					statusSpan.innerText = pageNumber;
 				}
-
-				// Обновляем текст в "стр." (можно сделать и красивее)
-				// но оставим как есть
 			}
 
-			// Добавляем обработчик клика на все ссылки пагинации (кроме "стр.")
 			pageLinks.forEach(link => {
 				link.addEventListener('click', function(e) {
-					e.preventDefault(); // отключаем переход, только демо
-
-					// Если ссылка уже активна — ничего не делаем (можно выйти)
+					e.preventDefault();
 					if (this.closest('.page-item')?.classList.contains('active')) {
 						return;
 					}
-
 					setActivePage(this);
-
-					// Дополнительно: лёгкая тактильная обратная связь (вибрация, если поддерживается)
 					if (navigator.vibrate) navigator.vibrate(12);
 				});
 			});
 
-			// Инициализация: убедимся, что первая страница активна (уже есть класс active в разметке)
-			// Но если вдруг активный класс потерялся — восстановим по статусу
 			const activeFromMarkup = document.querySelector('.page-item.active');
 			if (!activeFromMarkup) {
 				const firstPage = document.querySelector('.page-item:not(:first-child)');
@@ -609,22 +723,20 @@
 					}
 				}
 			} else {
-				// синхронизируем статус
 				const activeLink = activeFromMarkup.querySelector('.page-link');
 				if (activeLink && statusSpan) {
 					statusSpan.innerText = activeLink.innerText.trim();
 				}
 			}
 
-			// Также обновляем статус, если активная страница уже есть, но текст статуса не синхронизирован
 			const currentActive = document.querySelector('.page-item.active .page-link');
 			if (currentActive && statusSpan) {
 				statusSpan.innerText = currentActive.innerText.trim();
 			}
 
-			// Бонус: при наведении на неактивные ссылки — лёгкий эффект (уже через CSS)
 			console.log('✨ Пагинация готова!');
 		})();
 	</script>
 
-</body></html>
+</body>
+</html>

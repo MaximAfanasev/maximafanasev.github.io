@@ -294,13 +294,12 @@
 
 			// Эталонное значение
 			const TARGET = 7;
+			const STORAGE_KEY = 'python_base_1_completed';
 
 			// Функция обновления сообщения
 			function setMessage(text, type = 'neutral') {
 				messageBox.textContent = text;
-				// Убираем все классы состояний
 				messageBox.classList.remove('success', 'error', 'neutral');
-				// Добавляем нужный
 				messageBox.classList.add(type);
 			}
 
@@ -324,7 +323,9 @@
 				// Сравнение с эталоном
 				if (numeric === TARGET) {
 					setMessage(`✅ Верно! print(a) → ${TARGET}`, 'success');
-					// Небольшая анимация-подсветка для удовольствия
+					// Сохраняем в localStorage
+					localStorage.setItem(STORAGE_KEY, 'true');
+					
 					input.style.transition = 'box-shadow 0.2s';
 					input.style.boxShadow = '0 0 0 3px #34d399';
 					setTimeout(() => {
@@ -351,16 +352,17 @@
 				}
 			});
 
-			// При загрузке устанавливаем нейтральное сообщение (уже есть в HTML, но продублируем)
-			// Дополнительно: если пользователь начинает печатать, убираем "ошибку/успех" (опционально)
+			// При загрузке проверяем, не пройдено ли уже
+			if (localStorage.getItem(STORAGE_KEY) === 'true') {
+				setMessage('✅ Задание уже пройдено! 🎯', 'success');
+			}
+
+			// Если пользователь начинает печатать, убираем "ошибку/успех"
 			input.addEventListener('input', function() {
-				// Если сообщение было success/error, сбрасываем на нейтральное (не сразу, но при вводе)
 				if (messageBox.classList.contains('success') || messageBox.classList.contains('error')) {
-					// но только если поле не пустое, иначе покажем "введите число"
 					if (this.value.trim() === '') {
 						setMessage('✎ введите число', 'neutral');
 					} else {
-						// Мягкий нейтральный статус, но без сброса значения
 						setMessage('✎ редактирование...', 'neutral');
 					}
 				}
@@ -368,9 +370,6 @@
 
 			// Небольшой фокус: при загрузке автофокус уже есть, но подсветим
 			input.focus();
-
-			// Доп. обработка для очистки от случайных пробелов
-			// (поле type="number" само фильтрует, но на всякий случай)
 		})();
 	</script>
 
