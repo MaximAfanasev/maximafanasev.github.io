@@ -101,7 +101,7 @@
 			background-size: cover;
 			color: #fff;
 		}
-		
+
 		.pagination-wrapper:nth-child(2) {
 			position: relative;
 			transform: rotateY(-50deg);
@@ -583,7 +583,7 @@
 		<h2>Основы 🤓</h2>
 		<ul class="pagination">
 			<a class="page-link" id="base1Link" href="python/base/1.html">1</a>
-			<a class="page-link" href="python/base/2.html">2</a>
+			<a class="page-link" id="base2Link" href="python/base/2.html">2</a>
 			<a class="page-link" href="python/base/3.html">3</a>
 			<a class="page-link" href="python/base/4.html">4</a>
 			<a class="page-link" href="python/base/5.html">5</a>
@@ -631,55 +631,78 @@
 
 	<script>
 		(function() {
-			const STORAGE_KEY = 'python_base_1_completed';
+			// Список всех ключей для заданий
+			const STORAGE_KEYS = [
+				'python_base_1_completed',
+				'python_base_2_completed'
+			];
+
+			// Получаем все ссылки, которые нужно проверять
 			const base1Link = document.getElementById('base1Link');
+			const base2Link = document.getElementById('base2Link');
 			const clearBtn = document.getElementById('clearProgressBtn');
 
-			// Функция обновления индикатора (мишень)
-			function updateIndicator() {
-				if (!base1Link) return;
+			// Функция обновления индикаторов (мишень)
+			function updateIndicators() {
+				// Проверяем каждый ключ и обновляем соответствующий элемент
+				STORAGE_KEYS.forEach((key, index) => {
+					let element;
+					if (index === 0) {
+						element = base1Link;
+					} else if (index === 1) {
+						element = base2Link;
+					}
+					// Можно добавить больше элементов при необходимости
 
-				const isCompleted = localStorage.getItem(STORAGE_KEY) === 'true';
-
-				if (isCompleted) {
-					base1Link.classList.add('completed');
-				} else {
-					base1Link.classList.remove('completed');
-				}
+					if (element) {
+						const isCompleted = localStorage.getItem(key) === 'true';
+						if (isCompleted) {
+							element.classList.add('completed');
+						} else {
+							element.classList.remove('completed');
+						}
+					}
+				});
 			}
 
-			// Функция очистки прогресса
-			function clearProgress() {
+			// Функция очистки прогресса (очищает все ключи)
+			function clearAllProgress() {
 				if (confirm('Вы уверены, что хотите очистить весь прогресс?')) {
-					localStorage.removeItem(STORAGE_KEY);
-					updateIndicator();
-					// Показываем уведомление
+					// Удаляем все ключи
+					STORAGE_KEYS.forEach(key => {
+						localStorage.removeItem(key);
+					});
+
+					updateIndicators();
+
 					const infoNote = document.querySelector('.info-note');
 					if (infoNote) {
-						infoNote.textContent = '🗑️ Прогресс очищен!';
+						infoNote.textContent = '🗑️ Весь прогресс очищен!';
 						infoNote.style.transition = 'opacity 0.3s';
 						setTimeout(() => {
-							infoNote.textContent = '🎯 Мишень — задание пройдено';
+							infoNote.textContent = '🎯 Мишени — задания пройдены';
 						}, 2000);
 					}
-					console.log('🗑️ Прогресс очищен');
+					console.log('🗑️ Весь прогресс очищен');
 				}
 			}
 
 			// Обновляем при загрузке
-			updateIndicator();
+			updateIndicators();
 
 			// Обработчик для кнопки очистки
-			clearBtn.addEventListener('click', clearProgress);
+			if (clearBtn) {
+				clearBtn.addEventListener('click', clearAllProgress);
+			}
 
-			// Слушаем изменения в localStorage (если страница открыта в другой вкладке)
+			// Слушаем изменения в localStorage
 			window.addEventListener('storage', function(e) {
-				if (e.key === STORAGE_KEY) {
-					updateIndicator();
+				if (STORAGE_KEYS.includes(e.key)) {
+					updateIndicators();
 				}
 			});
 
-			// Остальной код из вашего файла (без изменений)
+			// Остальной код для пагинации (без изменений)
 			const pageLinks = document.querySelectorAll('.page-item:not(:first-child) .page-link');
 			const statusSpan = document.querySelector('.pagination-wrapper .pagination + div strong');
 			const pageItems = document.querySelectorAll('.page-item');
@@ -738,5 +761,4 @@
 		})();
 	</script>
 
-</body>
-</html>
+</body></html>

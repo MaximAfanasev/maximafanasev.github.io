@@ -415,6 +415,7 @@
 			const messageBox = document.getElementById('messageBox');
 
 			const TARGET = 7; // правильный ответ
+			const STORAGE_KEY = 'python_base_2_completed'; // ключ для localStorage
 
 			function setMessage(text, type = 'neutral', icon = '') {
 				messageBox.innerHTML = icon ? `<span class="icon">${icon}</span> ${text}` : text;
@@ -438,11 +439,18 @@
 
 				if (num === TARGET) {
 					setMessage(`Верно! print(b) выведет ${TARGET}`, 'success', '✅');
+					// Сохраняем в localStorage
+					localStorage.setItem(STORAGE_KEY, 'true');
+					
 					input.style.transition = 'box-shadow 0.2s';
 					input.style.boxShadow = '0 0 0 3px #34d399';
 					setTimeout(() => {
 						input.style.boxShadow = 'none';
 					}, 700);
+
+					setTimeout(() => {
+						window.location.href = '../../index.html';
+					}, 1500);
 				} else {
 					setMessage(`Неверно. Вы ввели ${num}, а должно быть ${TARGET}`, 'error', '❌');
 					input.style.transition = 'box-shadow 0.15s';
@@ -461,6 +469,11 @@
 					validate();
 				}
 			});
+
+			// При загрузке проверяем, не пройдено ли уже
+			if (localStorage.getItem(STORAGE_KEY) === 'true') {
+				setMessage('✅ Задание уже пройдено! 🎯', 'success');
+			}
 
 			input.addEventListener('input', function() {
 				if (messageBox.classList.contains('success') || messageBox.classList.contains('error')) {

@@ -325,12 +325,16 @@
 					setMessage(`✅ Верно! print(a) → ${TARGET}`, 'success');
 					// Сохраняем в localStorage
 					localStorage.setItem(STORAGE_KEY, 'true');
-					
+
 					input.style.transition = 'box-shadow 0.2s';
 					input.style.boxShadow = '0 0 0 3px #34d399';
 					setTimeout(() => {
 						input.style.boxShadow = 'none';
 					}, 600);
+
+					setTimeout(() => {
+						window.location.href = '../../index.html';
+					}, 1500);
 				} else {
 					setMessage(`❌ Неверно. Вы ввели ${numeric}, а должно быть ${TARGET}`, 'error');
 					input.style.transition = 'box-shadow 0.15s';
@@ -367,6 +371,8 @@
 					}
 				}
 			});
+
+
 
 			// Небольшой фокус: при загрузке автофокус уже есть, но подсветим
 			input.focus();
