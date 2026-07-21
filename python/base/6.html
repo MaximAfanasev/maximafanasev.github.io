@@ -134,6 +134,7 @@
 			letter-spacing: 0.5px;
 			text-transform: uppercase;
 			font-weight: 500;
+			margin: 0 auto;
 			margin-bottom: 0.2rem;
 		}
 
@@ -441,9 +442,9 @@
 		<div class="letters-display">
 			<div class="header">
 				<span class="icon">⌨️</span>
-				<h2>Введите первые буквы типов данных</h2>
+				<h2>Первые буквы типов данных</h2>
 				<div class="sub">
-					<strong>12 букв</strong>
+					<strong>bbb c d ff g i l t ss</strong>
 				</div>
 			</div>
 			<div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.8rem;">
@@ -479,6 +480,7 @@
 			// Правильный ответ: массив букв (в нижнем регистре)
 			const TARGET = ['b', 'b', 'b', 'c', 'd', 'f', 'f', 'g', 'i', 'l', 't', 's', 's'];
 			const TARGET_STR = TARGET.join(' ');
+			const STORAGE_KEY = 'python_letters_completed'; // ключ для localStorage
 
 			function normalizeInput(str) {
 				// Удаляем лишние пробелы, приводим к нижнему регистру
@@ -523,6 +525,9 @@
 						'success',
 						'🎉'
 					);
+					// Сохраняем в localStorage
+					localStorage.setItem(STORAGE_KEY, 'true');
+					
 					input.style.transition = 'box-shadow 0.2s';
 					input.style.boxShadow = '0 0 0 3px #34d399';
 					setTimeout(() => {
@@ -570,6 +575,11 @@
 					validate();
 				}
 			});
+
+			// При загрузке проверяем, не пройдено ли уже
+			if (localStorage.getItem(STORAGE_KEY) === 'true') {
+				setMessage('✅ Задание уже пройдено! 🎯', 'success');
+			}
 
 			input.addEventListener('input', function() {
 				if (messageBox.classList.contains('success') || messageBox.classList.contains('error')) {

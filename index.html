@@ -196,7 +196,7 @@
 			border-radius: 60px;
 			font-size: 1.3rem;
 			font-weight: 550;
-			color: #1e293b;
+			color: #fff;
 			text-decoration: none;
 			border: 1px solid rgba(255, 255, 255, 0.7);
 			box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02), 0 1px 3px rgba(0, 0, 0, 0.03);
@@ -381,7 +381,7 @@
 			border-color: transparent;
 			box-shadow: none;
 			font-weight: 400;
-			color: #475569;
+			color: #fff;
 			backdrop-filter: blur(2px);
 			font-size: 0.9rem;
 			min-width: 3rem;
@@ -429,7 +429,7 @@
 
 		/* ссылки в состоянии "посещено" не меняют цвет */
 		.page-link:visited {
-			color: #1e293b;
+			color: #fff;
 		}
 
 		.page-item.active .page-link:visited {
@@ -613,7 +613,7 @@
 			top: -2px;
 			transform: rotate(180deg);
 		}
-		
+
 		.stich {
 			left: 150px;
 		}
@@ -631,9 +631,9 @@
 			<a class="page-link" id="base1Link" href="python/base/1.html">1</a>
 			<a class="page-link" id="base2Link" href="python/base/2.html">2</a>
 			<a class="page-link" id="base3Link" href="python/base/3.html">3</a>
-			<a class="page-link" id="base4Link"  href="python/base/4.html">4</a>
-			<a class="page-link" href="python/base/5.html">5</a>
-			<a class="page-link" href="python/base/6.html">6</a>
+			<a class="page-link" id="base4Link" href="python/base/4.html">4</a>
+			<a class="page-link" id="base5Link" href="python/base/5.html">5</a>
+			<a class="page-link" id="lettersLink" href="python/base/6.html">6</a>
 		</ul>
 		<img class="arrow" src="5.png" alt="" width="70">
 		<img class="row" src="6.png" alt="" width="60px">
@@ -695,7 +695,9 @@
 				'python_base_1_completed',
 				'python_base_2_completed',
 				'python_base_3_completed',
-				'python_base_4_completed'
+				'python_base_4_completed',
+				'python_base_5_completed',
+				'python_letters_completed'
 			];
 
 			// Получаем все ссылки, которые нужно проверять
@@ -703,6 +705,7 @@
 			const base2Link = document.getElementById('base2Link');
 			const base3Link = document.getElementById('base3Link');
 			const base4Link = document.getElementById('base4Link');
+			const base5Link = document.getElementById('base5Link');
 			const clearBtn = document.getElementById('clearProgressBtn');
 
 			// Функция обновления индикаторов (мишень)
@@ -718,6 +721,10 @@
 						element = base3Link;
 					} else if (index === 3) {
 						element = base4Link;
+					} else if (index === 4) {
+						element = base5Link;
+					} else if (index === 5) {
+						element = lettersLink;
 					}
 					// Можно добавить больше элементов при необходимости
 
