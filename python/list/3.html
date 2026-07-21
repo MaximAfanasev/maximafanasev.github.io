@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Основы</title>
+	<title>Списки</title>
 	<link rel="icon" type="image/png" href="../../favicon.png">
 	<style>
 		* {
@@ -28,11 +28,23 @@
 			-webkit-backdrop-filter: blur(20px) saturate(180%);
 			border-radius: 3rem;
 			padding: 2.8rem 2.5rem;
-			max-width: 660px;
+			max-width: 760px;
 			width: 100%;
 			border: 1px solid rgba(255, 255, 255, 0.06);
 			box-shadow: 0 50px 100px -30px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.05);
 			transition: box-shadow 0.3s ease;
+			animation: fadeUp 0.5s ease forwards;
+		}
+
+		@keyframes fadeUp {
+			0% {
+				opacity: 0;
+				transform: translateY(20px) scale(0.97);
+			}
+			100% {
+				opacity: 1;
+				transform: translateY(0) scale(1);
+			}
 		}
 
 		.card:hover {
@@ -48,8 +60,8 @@
 			box-shadow: inset 0 2px 12px rgba(0, 0, 0, 0.7), 0 8px 24px rgba(0, 0, 0, 0.4);
 			margin-bottom: 2.2rem;
 			font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
-			font-size: 1.2rem;
-			line-height: 2.6rem;
+			font-size: 1.1rem;
+			line-height: 2.4rem;
 			color: #e2e8f0;
 		}
 
@@ -75,21 +87,16 @@
 			color: #facc15;
 		}
 
-		.code-line .op-compound {
-			color: #facc15;
-			font-weight: 600;
-		}
-
-		.code-line .num {
-			color: #60a5fa;
-		}
-
 		.code-line .func {
 			color: #34d399;
 		}
 
 		.code-line .paren {
 			color: #94a3b8;
+		}
+
+		.code-line .string {
+			color: #6ee7b7;
 		}
 
 		.code-line .comment {
@@ -99,23 +106,8 @@
 			font-style: italic;
 		}
 
-		.code-line .highlight-box {
-			background: rgba(52, 211, 153, 0.06);
-			border-radius: 6px;
-			padding: 0 0.3rem;
-		}
-
-		.code-line .badge {
-			display: inline-block;
-			background: rgba(52, 211, 153, 0.12);
-			color: #34d399;
-			font-size: 0.6rem;
-			padding: 0.1rem 0.6rem;
-			border-radius: 20px;
-			font-weight: 600;
-			letter-spacing: 0.3px;
-			text-transform: uppercase;
-			margin-left: 0.2rem;
+		.code-line .method {
+			color: #c084fc;
 		}
 
 		.divider {
@@ -185,7 +177,7 @@
 			background: transparent;
 			border: none;
 			padding: 0.75rem 0.2rem;
-			font-size: 1.4rem;
+			font-size: 1.2rem;
 			font-weight: 500;
 			color: #f1f5f9;
 			outline: none;
@@ -197,18 +189,8 @@
 		.input-row input::placeholder {
 			color: #475569;
 			font-weight: 300;
-			font-size: 1rem;
+			font-size: 0.9rem;
 			opacity: 0.6;
-		}
-
-		.input-row input[type="number"]::-webkit-inner-spin-button,
-		.input-row input[type="number"]::-webkit-outer-spin-button {
-			-webkit-appearance: none;
-			margin: 0;
-		}
-
-		.input-row input[type="number"] {
-			-moz-appearance: textfield;
 		}
 
 		.btn-check {
@@ -253,6 +235,7 @@
 			transition: all 0.3s ease;
 			text-align: center;
 			gap: 0.6rem;
+			flex-wrap: wrap;
 		}
 
 		.message-box.neutral {
@@ -279,56 +262,29 @@
 			line-height: 1;
 		}
 
-		.hint {
-			color: #64748b;
-			font-size: 0.8rem;
-			text-align: center;
-			margin-top: 0.3rem;
-			letter-spacing: 0.2px;
-			opacity: 0.8;
-		}
-
-		.hint kbd {
-			background: #1e293b;
-			padding: 0.1rem 0.8rem;
-			border-radius: 30px;
-			font-family: 'JetBrains Mono', monospace;
-			color: #cbd5e1;
-			font-size: 0.75rem;
-			border: 1px solid #334155;
-		}
-
-		.hint strong {
-			color: #34d399;
-		}
-
 		@media (max-width: 520px) {
 			.card {
 				padding: 1.8rem 1.2rem;
 				border-radius: 2rem;
 			}
-
 			.code-block {
-				font-size: 0.95rem;
+				font-size: 0.9rem;
 				padding: 1.2rem 1.2rem;
-				line-height: 2.2rem;
+				line-height: 2rem;
 			}
-
 			.input-row {
 				padding: 0.3rem 0.3rem 0.3rem 1.2rem;
 				border-radius: 60px;
 			}
-
 			.input-row input {
-				font-size: 1.2rem;
+				font-size: 1rem;
 				padding: 0.6rem 0.1rem;
+				min-width: 60px;
 			}
-
 			.btn-check {
 				padding: 0.6rem 1.2rem;
 				font-size: 0.9rem;
 			}
-
 			.message-box {
 				font-size: 0.9rem;
 				padding: 0.5rem 1rem;
@@ -343,39 +299,19 @@
 				padding: 0.5rem 0.8rem;
 				border-radius: 2rem;
 			}
-
 			.input-row input {
 				width: 100%;
 				text-align: center;
-				font-size: 1.3rem;
+				font-size: 1.1rem;
 			}
-
 			.btn-check {
 				width: 100%;
 				justify-content: center;
 			}
-
 			.code-block {
-				font-size: 0.85rem;
+				font-size: 0.8rem;
 				padding: 1rem;
-				line-height: 2rem;
-			}
-		}
-
-		/* анимация появления */
-		.card {
-			animation: fadeUp 0.5s ease forwards;
-		}
-
-		@keyframes fadeUp {
-			0% {
-				opacity: 0;
-				transform: translateY(20px) scale(0.97);
-			}
-
-			100% {
-				opacity: 1;
-				transform: translateY(0) scale(1);
+				line-height: 1.8rem;
 			}
 		}
 	</style>
@@ -387,24 +323,25 @@
 
 		<!-- Блок с кодом -->
 		<div class="code-block">
-			<!-- a = 95 -->
 			<div class="code-line">
 				<span class="prompt">❯</span>
-				<span class="var">a</span>
+				<span class="var">d</span>
 				<span class="op">=</span>
-				<span class="num">95</span>
+				<span class="string">'1/2/4'</span>
 			</div>
-			<!-- a -= 3 -->
 			<div class="code-line">
 				<span class="prompt">❯</span>
-				<span class="var">a</span>
-				<span class="op-compound">-=</span>
-				<span class="num">3</span>
+				<span class="var">e</span>
+				<span class="op">=</span>
+				<span class="var">d</span>
+				<span class="method">.split</span><span class="paren">(</span><span class="string">'/'</span><span class="paren">)</span>
 			</div>
-			<!-- print(a) -->
 			<div class="code-line" style="border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem; margin-top: 0.2rem;">
 				<span class="prompt">❯</span>
-				<span class="func">print</span><span class="paren">(</span><span class="var">a</span><span class="paren">)</span>
+				<span class="func">print</span><span class="paren">(</span><span class="var">e</span><span class="paren">)</span>
+			</div>
+			<div class="code-line" style="margin-top: 0.2rem;">
+				<span class="comment"># Что выведет print(e)?</span>
 			</div>
 		</div>
 
@@ -414,12 +351,12 @@
 				<label for="answerInput">
 					<span>⏺</span> Ответ:
 				</label>
-				<input type="number" id="answerInput" placeholder="?..." value="" step="1" autofocus>
+				<input type="text" id="answerInput" placeholder="введите список..." value="" autofocus spellcheck="false" autocomplete="off">
 				<button class="btn-check" id="checkBtn">Проверить</button>
 			</div>
 
 			<div id="messageBox" class="message-box neutral">
-				<span class="icon">⌨️</span>
+				<span class="icon">⌨️</span> введите результат в виде списка
 			</div>
 		</div>
 	</div>
@@ -430,8 +367,13 @@
 			const checkBtn = document.getElementById('checkBtn');
 			const messageBox = document.getElementById('messageBox');
 
-			const TARGET = 92; // 95 - 3 = 92
-			const STORAGE_KEY = 'python_base_5_completed'; // ключ для localStorage
+			// Единственный правильный ответ
+			const CORRECT_ANSWER = "['1', '2', '4']";
+
+			function normalizeInput(str) {
+				// Удаляем все пробелы
+				return str.replace(/\s/g, '');
+			}
 
 			function setMessage(text, type = 'neutral', icon = '') {
 				messageBox.innerHTML = icon ? `<span class="icon">${icon}</span> ${text}` : text;
@@ -443,21 +385,19 @@
 				const raw = input.value.trim();
 
 				if (raw === '') {
-					setMessage('поле пустое, введите число', 'neutral', '✏️');
+					setMessage('поле пустое, введите ответ', 'neutral', '✏️');
 					return;
 				}
 
-				const num = Number(raw);
-				if (!Number.isFinite(num) || !Number.isInteger(num)) {
-					setMessage('введите целое число (например, 92)', 'error', '⚠️');
-					return;
-				}
+				const normalizedInput = normalizeInput(raw);
+				const normalizedCorrect = normalizeInput(CORRECT_ANSWER);
 
-				if (num === TARGET) {
-					setMessage(`Верно! print(a) выведет ${TARGET}`, 'success', '✅');
-					// Сохраняем в localStorage
-					localStorage.setItem(STORAGE_KEY, 'true');
-					
+				if (normalizedInput === normalizedCorrect) {
+					setMessage(
+						`✅ Верно! print(e) → ['1', '2', '4']`,
+						'success',
+						'🎉'
+					);
 					input.style.transition = 'box-shadow 0.2s';
 					input.style.boxShadow = '0 0 0 3px #34d399';
 					setTimeout(() => {
@@ -468,7 +408,11 @@
 						window.location.href = '../../index.html';
 					}, 1500);
 				} else {
-					setMessage(`Неверно. Вы ввели ${num}, а должно быть ${TARGET}`, 'error', '❌');
+					setMessage(
+						`❌ Неверно. Правильный ответ: ['1', '2', '4']`,
+						'error',
+						'😅'
+					);
 					input.style.transition = 'box-shadow 0.15s';
 					input.style.boxShadow = '0 0 0 3px #f87171';
 					setTimeout(() => {
@@ -486,15 +430,10 @@
 				}
 			});
 
-			// При загрузке проверяем, не пройдено ли уже
-			if (localStorage.getItem(STORAGE_KEY) === 'true') {
-				setMessage('✅ Задание уже пройдено! 🎯', 'success');
-			}
-
 			input.addEventListener('input', function() {
 				if (messageBox.classList.contains('success') || messageBox.classList.contains('error')) {
 					if (this.value.trim() === '') {
-						setMessage('введите число', 'neutral', '✏️');
+						setMessage('введите ответ', 'neutral', '✏️');
 					} else {
 						setMessage('редактирование...', 'neutral', '⌨️');
 					}
@@ -504,7 +443,7 @@
 			input.focus();
 
 			if (input.value.trim() === '') {
-				setMessage('', 'neutral', '⌨️');
+				setMessage('введите результат в виде списка', 'neutral', '⌨️');
 			}
 		})();
 	</script>

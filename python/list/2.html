@@ -3,7 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Основы</title>
+	<title>Списки</title>
+	<link rel="icon" type="image/png" href="../../favicon.png">
 	<link rel="icon" type="image/png" href="../../favicon.png">
 	<style>
 		* {
@@ -44,7 +45,7 @@
 			background: #080d1a;
 			border-radius: 2rem;
 			padding: 1.8rem 2rem;
-			border-left: 5px solid #34d399;
+			border-left: 5px solid #60a5fa;
 			box-shadow: inset 0 2px 12px rgba(0, 0, 0, 0.7), 0 8px 24px rgba(0, 0, 0, 0.4);
 			margin-bottom: 2.2rem;
 			font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
@@ -75,21 +76,16 @@
 			color: #facc15;
 		}
 
-		.code-line .op-compound {
-			color: #facc15;
-			font-weight: 600;
-		}
-
-		.code-line .num {
-			color: #60a5fa;
-		}
-
 		.code-line .func {
 			color: #34d399;
 		}
 
 		.code-line .paren {
 			color: #94a3b8;
+		}
+
+		.code-line .string {
+			color: #6ee7b7;
 		}
 
 		.code-line .comment {
@@ -99,23 +95,13 @@
 			font-style: italic;
 		}
 
-		.code-line .highlight-box {
-			background: rgba(52, 211, 153, 0.06);
-			border-radius: 6px;
-			padding: 0 0.3rem;
+		.code-line .output {
+			color: #60a5fa;
+			font-weight: 500;
 		}
 
-		.code-line .badge {
-			display: inline-block;
-			background: rgba(52, 211, 153, 0.12);
-			color: #34d399;
-			font-size: 0.6rem;
-			padding: 0.1rem 0.6rem;
-			border-radius: 20px;
-			font-weight: 600;
-			letter-spacing: 0.3px;
-			text-transform: uppercase;
-			margin-left: 0.2rem;
+		.code-line .bracket {
+			color: #f472b6;
 		}
 
 		.divider {
@@ -126,11 +112,11 @@
 
 		.question-tag {
 			display: inline-block;
-			background: rgba(52, 211, 153, 0.08);
+			background: rgba(96, 165, 250, 0.08);
 			padding: 0.2rem 1.2rem;
 			border-radius: 60px;
 			font-size: 0.75rem;
-			color: #34d399;
+			color: #60a5fa;
 			letter-spacing: 0.5px;
 			text-transform: uppercase;
 			font-weight: 600;
@@ -158,9 +144,9 @@
 		}
 
 		.input-row:focus-within {
-			border-color: #34d399;
+			border-color: #60a5fa;
 			background: #1a253a;
-			box-shadow: 0 0 0 4px rgba(52, 211, 153, 0.08), 0 8px 24px rgba(0, 0, 0, 0.5);
+			box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.08), 0 8px 24px rgba(0, 0, 0, 0.5);
 		}
 
 		.input-row label {
@@ -175,7 +161,7 @@
 		}
 
 		.input-row label .accent {
-			color: #34d399;
+			color: #60a5fa;
 			font-weight: 600;
 		}
 
@@ -185,7 +171,7 @@
 			background: transparent;
 			border: none;
 			padding: 0.75rem 0.2rem;
-			font-size: 1.4rem;
+			font-size: 1.2rem;
 			font-weight: 500;
 			color: #f1f5f9;
 			outline: none;
@@ -197,22 +183,12 @@
 		.input-row input::placeholder {
 			color: #475569;
 			font-weight: 300;
-			font-size: 1rem;
+			font-size: 0.9rem;
 			opacity: 0.6;
 		}
 
-		.input-row input[type="number"]::-webkit-inner-spin-button,
-		.input-row input[type="number"]::-webkit-outer-spin-button {
-			-webkit-appearance: none;
-			margin: 0;
-		}
-
-		.input-row input[type="number"] {
-			-moz-appearance: textfield;
-		}
-
 		.btn-check {
-			background: #34d399;
+			background: #60a5fa;
 			border: none;
 			border-radius: 60px;
 			padding: 0.7rem 2rem;
@@ -221,21 +197,21 @@
 			color: #0f172a;
 			cursor: pointer;
 			transition: all 0.15s ease;
-			box-shadow: 0 4px 16px rgba(52, 211, 153, 0.2);
+			box-shadow: 0 4px 16px rgba(96, 165, 250, 0.2);
 			white-space: nowrap;
 			letter-spacing: 0.3px;
 			font-family: 'Inter', sans-serif;
 		}
 
 		.btn-check:hover {
-			background: #6ee7b7;
+			background: #93bbfc;
 			transform: scale(1.03);
-			box-shadow: 0 8px 28px rgba(52, 211, 153, 0.3);
+			box-shadow: 0 8px 28px rgba(96, 165, 250, 0.3);
 		}
 
 		.btn-check:active {
 			transform: scale(0.95);
-			background: #10b981;
+			background: #3b82f6;
 		}
 
 		.message-box {
@@ -253,6 +229,7 @@
 			transition: all 0.3s ease;
 			text-align: center;
 			gap: 0.6rem;
+			flex-wrap: wrap;
 		}
 
 		.message-box.neutral {
@@ -279,6 +256,15 @@
 			line-height: 1;
 		}
 
+		.message-box .answer-preview {
+			background: rgba(255, 255, 255, 0.04);
+			padding: 0.1rem 0.8rem;
+			border-radius: 20px;
+			font-family: 'JetBrains Mono', monospace;
+			font-size: 0.9rem;
+			color: #e2e8f0;
+		}
+
 		.hint {
 			color: #64748b;
 			font-size: 0.8rem;
@@ -299,7 +285,7 @@
 		}
 
 		.hint strong {
-			color: #34d399;
+			color: #60a5fa;
 		}
 
 		@media (max-width: 520px) {
@@ -320,8 +306,9 @@
 			}
 
 			.input-row input {
-				font-size: 1.2rem;
+				font-size: 1rem;
 				padding: 0.6rem 0.1rem;
+				min-width: 60px;
 			}
 
 			.btn-check {
@@ -347,7 +334,7 @@
 			.input-row input {
 				width: 100%;
 				text-align: center;
-				font-size: 1.3rem;
+				font-size: 1.1rem;
 			}
 
 			.btn-check {
@@ -387,24 +374,21 @@
 
 		<!-- Блок с кодом -->
 		<div class="code-block">
-			<!-- a = 95 -->
+			<!-- c = ('a', 'b', 'c') -->
 			<div class="code-line">
 				<span class="prompt">❯</span>
-				<span class="var">a</span>
+				<span class="var">c</span>
 				<span class="op">=</span>
-				<span class="num">95</span>
+				<span class="paren">(</span><span class="string">'a'</span><span class="op">,</span> <span class="string">'b'</span><span class="op">,</span> <span class="string">'c'</span><span class="paren">)</span>
 			</div>
-			<!-- a -= 3 -->
-			<div class="code-line">
-				<span class="prompt">❯</span>
-				<span class="var">a</span>
-				<span class="op-compound">-=</span>
-				<span class="num">3</span>
-			</div>
-			<!-- print(a) -->
+			<!-- print(list(c)) -->
 			<div class="code-line" style="border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem; margin-top: 0.2rem;">
 				<span class="prompt">❯</span>
-				<span class="func">print</span><span class="paren">(</span><span class="var">a</span><span class="paren">)</span>
+				<span class="func">print</span><span class="paren">(</span><span class="func">list</span><span class="paren">(</span><span class="var">c</span><span class="paren">))</span>
+			</div>
+			<!-- # ['a', 'b', 'c'] -->
+			<div class="code-line" style="margin-top: 0.2rem;">
+				<span class="comment"># Что выведет print(list(c))?</span>
 			</div>
 		</div>
 
@@ -414,12 +398,12 @@
 				<label for="answerInput">
 					<span>⏺</span> Ответ:
 				</label>
-				<input type="number" id="answerInput" placeholder="?..." value="" step="1" autofocus>
+				<input type="text" id="answerInput" placeholder="введите список..." value="" autofocus spellcheck="false" autocomplete="off">
 				<button class="btn-check" id="checkBtn">Проверить</button>
 			</div>
 
 			<div id="messageBox" class="message-box neutral">
-				<span class="icon">⌨️</span>
+				<span class="icon">⌨️</span> введите результат в виде списка
 			</div>
 		</div>
 	</div>
@@ -430,8 +414,28 @@
 			const checkBtn = document.getElementById('checkBtn');
 			const messageBox = document.getElementById('messageBox');
 
-			const TARGET = 92; // 95 - 3 = 92
-			const STORAGE_KEY = 'python_base_5_completed'; // ключ для localStorage
+			// Правильный ответ: список ['a', 'b', 'c']
+			const TARGET = ['a', 'b', 'c'];
+			const STORAGE_KEY = 'python_list_2_completed';
+
+			function normalizeInput(str) {
+				// Удаляем лишние пробелы, убираем кавычки, приводим к массиву
+				let cleaned = str.trim();
+				
+				// Убираем квадратные скобки если есть
+				cleaned = cleaned.replace(/^\[|\]$/g, '');
+				
+				// Разбиваем по запятым
+				let parts = cleaned.split(',').map(s => s.trim());
+				
+				// Убираем кавычки (одинарные и двойные)
+				parts = parts.map(s => s.replace(/^['"]|['"]$/g, ''));
+				
+				// Убираем пустые элементы
+				parts = parts.filter(s => s !== '');
+				
+				return parts;
+			}
 
 			function setMessage(text, type = 'neutral', icon = '') {
 				messageBox.innerHTML = icon ? `<span class="icon">${icon}</span> ${text}` : text;
@@ -440,21 +444,30 @@
 			}
 
 			function validate() {
-				const raw = input.value.trim();
+				const raw = input.value;
 
-				if (raw === '') {
-					setMessage('поле пустое, введите число', 'neutral', '✏️');
+				if (raw.trim() === '') {
+					setMessage('поле пустое, введите список', 'neutral', '✏️');
 					return;
 				}
 
-				const num = Number(raw);
-				if (!Number.isFinite(num) || !Number.isInteger(num)) {
-					setMessage('введите целое число (например, 92)', 'error', '⚠️');
+				const parts = normalizeInput(raw);
+
+				// Проверка на пустые элементы
+				if (parts.length === 0) {
+					setMessage('введите элементы списка через запятую', 'neutral', '⚠️');
 					return;
 				}
 
-				if (num === TARGET) {
-					setMessage(`Верно! print(a) выведет ${TARGET}`, 'success', '✅');
+				// Сравниваем с правильным ответом
+				const isCorrect = parts.length === TARGET.length && parts.every((p, i) => p === TARGET[i]);
+
+				if (isCorrect) {
+					setMessage(
+						`✅ Верно! list(c) → ['a', 'b', 'c']`,
+						'success',
+						'🎉'
+					);
 					// Сохраняем в localStorage
 					localStorage.setItem(STORAGE_KEY, 'true');
 					
@@ -468,7 +481,28 @@
 						window.location.href = '../../index.html';
 					}, 1500);
 				} else {
-					setMessage(`Неверно. Вы ввели ${num}, а должно быть ${TARGET}`, 'error', '❌');
+					let errorMsg = '';
+					if (parts.length !== TARGET.length) {
+						errorMsg = `должно быть ${TARGET.length} элемента, вы ввели ${parts.length}`;
+					} else {
+						let diffIndex = -1;
+						for (let i = 0; i < TARGET.length; i++) {
+							if (parts[i] !== TARGET[i]) {
+								diffIndex = i;
+								break;
+							}
+						}
+						if (diffIndex !== -1) {
+							errorMsg = `ошибка на позиции ${diffIndex + 1}: ожидается «${TARGET[diffIndex]}», вы ввели «${parts[diffIndex] || '?'}»`;
+						} else {
+							errorMsg = 'неверный список';
+						}
+					}
+					setMessage(
+						`❌ Неверно. ${errorMsg}`,
+						'error',
+						'😅'
+					);
 					input.style.transition = 'box-shadow 0.15s';
 					input.style.boxShadow = '0 0 0 3px #f87171';
 					setTimeout(() => {
@@ -477,6 +511,7 @@
 				}
 			}
 
+			// Обработчики
 			checkBtn.addEventListener('click', validate);
 
 			input.addEventListener('keydown', (e) => {
@@ -494,7 +529,7 @@
 			input.addEventListener('input', function() {
 				if (messageBox.classList.contains('success') || messageBox.classList.contains('error')) {
 					if (this.value.trim() === '') {
-						setMessage('введите число', 'neutral', '✏️');
+						setMessage('введите список', 'neutral', '✏️');
 					} else {
 						setMessage('редактирование...', 'neutral', '⌨️');
 					}
@@ -504,7 +539,7 @@
 			input.focus();
 
 			if (input.value.trim() === '') {
-				setMessage('', 'neutral', '⌨️');
+				setMessage('введите результат в виде списка', 'neutral', '⌨️');
 			}
 		})();
 	</script>

@@ -3,7 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Введите буквы: b b c d f g i l t s</title>
+	<title>Основы</title>
+	<link rel="icon" type="image/png" href="../../favicon.png">
 	<style>
 		* {
 			margin: 0;
@@ -533,6 +534,10 @@
 					setTimeout(() => {
 						input.style.boxShadow = 'none';
 					}, 700);
+
+					setTimeout(() => {
+						window.location.href = '../../index.html';
+					}, 1500);
 				} else {
 					// Формируем понятное сообщение об ошибке
 					let errorMsg = '';

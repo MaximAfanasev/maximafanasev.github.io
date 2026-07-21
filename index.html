@@ -45,7 +45,7 @@
 			position: absolute;
 			content: "";
 			width: 0px;
-			border: 1px dashed aqua;
+			border: 1px dashed #ff5f1d;
 			height: 80px;
 			background: transparent;
 			bottom: -85px;
@@ -56,7 +56,7 @@
 			position: absolute;
 			content: "";
 			width: 0px;
-			border: 1px dashed aqua;
+			border: 1px dashed #ff5f1d;
 			height: 80px;
 			background: transparent;
 			bottom: -85px;
@@ -67,7 +67,7 @@
 			position: absolute;
 			content: "";
 			width: 0px;
-			border: 1px dashed darkblue;
+			border: 1px dashed #36415b;
 			height: 80px;
 			background: transparent;
 			bottom: -85px;
@@ -78,7 +78,7 @@
 			position: absolute;
 			content: "";
 			width: 0px;
-			border: 1px dashed darkblue;
+			border: 1px dashed #36415b;
 			height: 80px;
 			background: transparent;
 			bottom: -85px;
@@ -89,7 +89,7 @@
 			position: absolute;
 			content: "";
 			width: 0px;
-			border: 1px dashed #5b543a;
+			border: 1px dashed #ec33c3;
 			height: 80px;
 			background: transparent;
 			bottom: -85px;
@@ -100,7 +100,7 @@
 			position: absolute;
 			content: "";
 			width: 0px;
-			border: 1px dashed #5b543a;
+			border: 1px dashed #ec33c3;
 			height: 80px;
 			background: transparent;
 			bottom: -85px;
@@ -147,11 +147,16 @@
 			margin-bottom: 1.8rem;
 			letter-spacing: -0.02em;
 		}
+		
+		h2 {
+			color: #fff;ч
+			background: transparent;
+		}
 
 		.caption h2 {
 			font-weight: 500;
 			font-size: 1.1rem;
-			color: #1f2a44;
+			color: #fff;
 			background: rgba(255, 255, 255, 0.4);
 			display: inline-block;
 			padding: 0.4rem 1.8rem;
@@ -436,7 +441,6 @@
 			color: #ffffff;
 		}
 
-		/* ----- Небольшой подвал (информация) ----- */
 		.info-note {
 			margin-top: 2rem;
 			font-size: 0.9rem;
@@ -626,7 +630,7 @@
 		<img class="arrow spider rino" src="10.png" alt="" width="70">
 	</div>
 	<div class="pagination-wrapper">
-		<h2>Основы 🤓</h2>
+		<h2>🤓 Основы 🤓</h2>
 		<ul class="pagination">
 			<a class="page-link" id="base1Link" href="python/base/1.html">1</a>
 			<a class="page-link" id="base2Link" href="python/base/2.html">2</a>
@@ -642,7 +646,7 @@
 	</div>
 
 	<div class="pagination-wrapper">
-		<h2>Числа 🔢</h2>
+		<h2>🔢 Числа 🔢</h2>
 		<ul class="pagination">
 			<a class="page-link" href="python/numbers/1.html">1</a>
 			<a class="page-link" href="python/numbers/2.html">2</a>
@@ -658,7 +662,7 @@
 	<div class="pagination-wrapper">
 		<div class="ticker-container">
 		</div>
-		<h2>"Строки 🧠"</h2>
+		<h2>"🧠 Строки 🧠"</h2>
 		<ul class="pagination">
 			<a class="page-links" href="python/strings/1.html">
 				<div class="flip-container">
@@ -678,10 +682,13 @@
 	<div class="pagination-wrapper">
 		<div class="ticker-container">
 		</div>
-		<h2>['Спи', 'ски', '📋']</h2>
+		<h2>['📋', 'Спи', 'ски', '📋']</h2>
 		<ul class="pagination">
 			<a class="page-link" href="python/list/1.html">1
 			</a>
+			<a class="page-link" href="python/list/2.html">2</a>
+			<a class="page-link" href="python/list/3.html">3</a>
+			<a class="page-link" href="python/list/4.html">4</a>
 		</ul>
 	</div>
 
@@ -697,7 +704,7 @@
 				'python_base_3_completed',
 				'python_base_4_completed',
 				'python_base_5_completed',
-				'python_letters_completed'
+				'python_letters_completed',
 			];
 
 			// Получаем все ссылки, которые нужно проверять
@@ -725,9 +732,10 @@
 						element = base5Link;
 					} else if (index === 5) {
 						element = lettersLink;
+					} else if (index === 6) {
+						element = list1Link;
 					}
-					// Можно добавить больше элементов при необходимости
-
+					
 					if (element) {
 						const isCompleted = localStorage.getItem(key) === 'true';
 						if (isCompleted) {
