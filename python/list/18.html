@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Списки</title>
+	<link rel="icon" type="image/png" href="../../favicon.png">
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			min-height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background: radial-gradient(ellipse at 50% 30%, #0f172a, #020617);
+			font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+			padding: 1.5rem;
+		}
+
+		.card {
+			background: rgba(255, 255, 255, 0.04);
+			backdrop-filter: blur(20px) saturate(180%);
+			-webkit-backdrop-filter: blur(20px) saturate(180%);
+			border-radius: 3rem;
+			padding: 2.8rem 2.5rem;
+			max-width: 760px;
+			width: 100%;
+			border: 1px solid rgba(255, 255, 255, 0.06);
+			box-shadow: 0 50px 100px -30px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+			animation: fadeUp 0.5s ease forwards;
+		}
+
+		@keyframes fadeUp {
+			0% {
+				opacity: 0;
+				transform: translateY(20px) scale(0.97);
+			}
+
+			100% {
+				opacity: 1;
+				transform: translateY(0) scale(1);
+			}
+		}
+
+		.header {
+			text-align: center;
+			margin-bottom: 2.5rem;
+		}
+
+		.header .icon {
+			font-size: 2.5rem;
+			display: block;
+			margin-bottom: 0.3rem;
+		}
+
+		.header h1 {
+			color: #f1f5f9;
+			font-weight: 600;
+			font-size: 1.6rem;
+			letter-spacing: -0.5px;
+		}
+
+		.header p {
+			color: #94a3b8;
+			font-size: 0.95rem;
+			margin-top: 0.3rem;
+		}
+
+		.task {
+			background: rgba(15, 23, 42, 0.5);
+			border-radius: 1.5rem;
+			padding: 1.8rem;
+			margin-bottom: 1.8rem;
+			border: 1px solid rgba(255, 255, 255, 0.04);
+			transition: border-color 0.3s ease;
+		}
+
+		.task:last-child {
+			margin-bottom: 0;
+		}
+
+		.task-header {
+			display: flex;
+			align-items: center;
+			gap: 0.8rem;
+			margin-bottom: 1rem;
+			flex-wrap: wrap;
+		}
+
+		.task-number {
+			background: rgba(96, 165, 250, 0.15);
+			color: #60a5fa;
+			font-weight: 700;
+			font-size: 0.8rem;
+			padding: 0.2rem 0.8rem;
+			border-radius: 60px;
+			letter-spacing: 0.5px;
+		}
+
+		.task-title {
+			color: #94a3b8;
+			font-size: 0.85rem;
+			font-weight: 500;
+		}
+
+		.code-block {
+			background: #0b111e;
+			border-radius: 1rem;
+			padding: 1.2rem 1.5rem;
+			font-family: 'JetBrains Mono', 'Fira Code', monospace;
+			font-size: 0.95rem;
+			line-height: 1.8rem;
+			color: #e2e8f0;
+			margin-bottom: 1.2rem;
+			border-left: 3px solid #60a5fa;
+			overflow-x: auto;
+		}
+
+		.code-line {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			flex-wrap: wrap;
+		}
+
+		.code-line .prompt {
+			color: #64748b;
+			user-select: none;
+		}
+
+		.code-line .var {
+			color: #f472b6;
+		}
+
+		.code-line .op {
+			color: #facc15;
+		}
+
+		.code-line .func {
+			color: #34d399;
+		}
+
+		.code-line .paren {
+			color: #94a3b8;
+		}
+
+		.code-line .string {
+			color: #6ee7b7;
+		}
+
+		.code-line .comment {
+			color: #475569;
+			font-style: italic;
+			font-size: 0.85rem;
+		}
+
+		.code-line .bracket {
+			color: #60a5fa;
+		}
+
+		.code-line .number {
+			color: #60a5fa;
+		}
+
+		.code-line .method {
+			color: #c084fc;
+		}
+
+		.input-row {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			gap: 0.8rem;
+			background: rgba(15, 23, 42, 0.6);
+			padding: 0.3rem 0.3rem 0.3rem 1.5rem;
+			border-radius: 100px;
+			border: 1px solid #2d3a4f;
+			transition: border 0.25s, background 0.25s, box-shadow 0.25s;
+		}
+
+		.input-row:focus-within {
+			border-color: #60a5fa;
+			background: #1a253a;
+			box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.08);
+		}
+
+		.input-row label {
+			color: #94a3b8;
+			font-size: 0.9rem;
+			font-weight: 500;
+			white-space: nowrap;
+		}
+
+		.input-row input {
+			flex: 1;
+			min-width: 60px;
+			background: transparent;
+			border: none;
+			padding: 0.6rem 0.2rem;
+			font-size: 1.1rem;
+			font-weight: 500;
+			color: #f1f5f9;
+			outline: none;
+			font-family: 'JetBrains Mono', monospace;
+			text-align: center;
+		}
+
+		.input-row input::placeholder {
+			color: #475569;
+			font-weight: 300;
+			font-size: 0.85rem;
+			opacity: 0.6;
+		}
+
+		.btn-check {
+			background: #60a5fa;
+			border: none;
+			border-radius: 60px;
+			padding: 0.55rem 1.8rem;
+			font-weight: 600;
+			font-size: 0.9rem;
+			color: #0f172a;
+			cursor: pointer;
+			transition: all 0.15s ease;
+			box-shadow: 0 4px 14px rgba(96, 165, 250, 0.2);
+			white-space: nowrap;
+			font-family: 'Inter', sans-serif;
+		}
+
+		.btn-check:hover {
+			background: #93bbfc;
+			transform: scale(1.02);
+			box-shadow: 0 8px 24px rgba(96, 165, 250, 0.3);
+		}
+
+		.btn-check:active {
+			transform: scale(0.95);
+			background: #3b82f6;
+		}
+
+		.btn-check:disabled {
+			opacity: 0.5;
+			cursor: not-allowed;
+			transform: none !important;
+		}
+
+		.task-status {
+			display: flex;
+			align-items: center;
+			gap: 0.6rem;
+			margin-top: 0.8rem;
+			font-size: 0.9rem;
+			font-weight: 500;
+			min-height: 2rem;
+			padding: 0.3rem 0.8rem;
+			border-radius: 60px;
+			transition: all 0.3s ease;
+		}
+
+		.task-status .icon {
+			font-size: 1.2rem;
+		}
+
+		.task-status.pending {
+			color: #94a3b8;
+			background: rgba(148, 163, 184, 0.05);
+		}
+
+		.task-status.correct {
+			color: #6ee7b7;
+			background: rgba(52, 211, 153, 0.08);
+			border: 1px solid rgba(52, 211, 153, 0.2);
+		}
+
+		.task-status.wrong {
+			color: #fca5a5;
+			background: rgba(251, 113, 133, 0.08);
+			border: 1px solid rgba(251, 113, 133, 0.2);
+			animation: shake 0.4s ease;
+		}
+
+		@keyframes shake {
+
+			0%,
+			100% {
+				transform: translateX(0);
+			}
+
+			25% {
+				transform: translateX(-10px);
+			}
+
+			75% {
+				transform: translateX(10px);
+			}
+		}
+
+		.footer {
+			margin-top: 2rem;
+			text-align: center;
+			padding-top: 1.5rem;
+			border-top: 1px solid rgba(255, 255, 255, 0.04);
+		}
+
+		.footer .btn-reset {
+			background: rgba(239, 68, 68, 0.15);
+			color: #fca5a5;
+			border: 1px solid rgba(239, 68, 68, 0.2);
+			padding: 0.5rem 1.8rem;
+			border-radius: 60px;
+			font-size: 0.85rem;
+			cursor: pointer;
+			transition: all 0.2s ease;
+			font-family: 'Inter', sans-serif;
+			font-weight: 500;
+			margin-bottom: 0.8rem;
+		}
+
+		.footer .btn-reset:hover {
+			background: rgba(239, 68, 68, 0.25);
+			border-color: rgba(239, 68, 68, 0.4);
+			transform: scale(1.02);
+		}
+
+		.footer .progress-text {
+			color: #64748b;
+			font-size: 0.85rem;
+		}
+
+		.footer .progress-text strong {
+			color: #f1f5f9;
+		}
+
+		@media (max-width: 520px) {
+			.card {
+				padding: 1.8rem 1.2rem;
+				border-radius: 2rem;
+			}
+
+			.code-block {
+				font-size: 0.8rem;
+				padding: 1rem;
+				line-height: 1.6rem;
+			}
+
+			.input-row {
+				padding: 0.3rem 0.3rem 0.3rem 1rem;
+				border-radius: 60px;
+			}
+
+			.input-row input {
+				font-size: 0.9rem;
+				padding: 0.5rem 0.1rem;
+				min-width: 40px;
+			}
+
+			.btn-check {
+				padding: 0.5rem 1.2rem;
+				font-size: 0.8rem;
+			}
+
+			.task {
+				padding: 1.2rem;
+			}
+
+			.header h1 {
+				font-size: 1.3rem;
+			}
+		}
+
+		.hidden {
+			display: none !important;
+		}
+
+		.completed-badge {
+			display: inline-block;
+			background: rgba(52, 211, 153, 0.15);
+			color: #6ee7b7;
+			padding: 0.2rem 1rem;
+			border-radius: 60px;
+			font-size: 0.7rem;
+			font-weight: 600;
+			letter-spacing: 0.5px;
+			text-transform: uppercase;
+			border: 1px solid rgba(52, 211, 153, 0.2);
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="card">
+		<div class="header">
+			<span class="icon">🔢</span>
+			<h1>Метод count()</h1>
+			<p>Введите количество вхождений</p>
+		</div>
+
+		<!-- Задание 1 -->
+		<div class="task" id="task1">
+			<div class="task-header">
+				<span class="task-number">Задание 1</span>
+				<span class="task-title">a.count('a')</span>
+				<span id="badge1" class="completed-badge hidden">✅ пройдено</span>
+			</div>
+			<div class="code-block">
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span> <span class="op">=</span> <span class="bracket">[</span><span class="string">'a'</span><span class="op">,</span> <span class="string">'b'</span><span class="op">,</span> <span class="string">'a'</span><span class="op">,</span> <span class="string">'a'</span><span class="bracket">]</span>
+				</div>
+				<div class="code-line" style="margin-top: 0.3rem; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem;">
+					<span class="prompt">❯</span>
+					<span class="func">print</span><span class="paren">(</span><span class="var">a</span><span class="method">.count</span><span class="paren">(</span><span class="string">'a'</span><span class="paren">))</span>
+					<span class="comment"># Что выведет?</span>
+				</div>
+			</div>
+			<div class="input-row">
+				<label for="answer1">Ответ:</label>
+				<input type="text" id="answer1" placeholder="введите число" autocomplete="off">
+				<button class="btn-check" id="check1">Проверить</button>
+			</div>
+			<div id="status1" class="task-status pending">
+				<span class="icon">⏳</span> Ожидание ответа
+			</div>
+		</div>
+
+		<!-- Задание 2 -->
+		<div class="task" id="task2">
+			<div class="task-header">
+				<span class="task-number">Задание 2</span>
+				<span class="task-title">a.count('c')</span>
+				<span id="badge2" class="completed-badge hidden">✅ пройдено</span>
+			</div>
+			<div class="code-block">
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span> <span class="op">=</span> <span class="bracket">[</span><span class="string">'a'</span><span class="op">,</span> <span class="string">'b'</span><span class="op">,</span> <span class="string">'a'</span><span class="op">,</span> <span class="string">'a'</span><span class="bracket">]</span>
+				</div>
+				<div class="code-line" style="margin-top: 0.3rem; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem;">
+					<span class="prompt">❯</span>
+					<span class="func">print</span><span class="paren">(</span><span class="var">a</span><span class="method">.count</span><span class="paren">(</span><span class="string">'c'</span><span class="paren">))</span>
+					<span class="comment"># Что выведет?</span>
+				</div>
+			</div>
+			<div class="input-row">
+				<label for="answer2">Ответ:</label>
+				<input type="text" id="answer2" placeholder="введите число" autocomplete="off">
+				<button class="btn-check" id="check2">Проверить</button>
+			</div>
+			<div id="status2" class="task-status pending">
+				<span class="icon">⏳</span> Ожидание ответа
+			</div>
+		</div>
+
+		<div class="footer">
+			<button class="btn-reset" id="resetBtn">🔄 Сбросить всё</button>
+			<div class="progress-text">
+				Прогресс: <strong id="progressText">0 / 2</strong>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		(function() {
+			// Правильные ответы
+			const CORRECT_ANSWERS = {
+				task1: '3',
+				task2: '0'
+			};
+
+			// Ключ для localStorage
+			const STORAGE_KEY = 'python_count_completed';
+
+			// Состояния заданий
+			const taskStates = {
+				task1: {
+					completed: false
+				},
+				task2: {
+					completed: false
+				}
+			};
+
+			// DOM элементы
+			const input1 = document.getElementById('answer1');
+			const input2 = document.getElementById('answer2');
+			const check1 = document.getElementById('check1');
+			const check2 = document.getElementById('check2');
+			const status1 = document.getElementById('status1');
+			const status2 = document.getElementById('status2');
+			const badge1 = document.getElementById('badge1');
+			const badge2 = document.getElementById('badge2');
+			const progressText = document.getElementById('progressText');
+			const resetBtn = document.getElementById('resetBtn');
+
+			function normalizeInput(str) {
+				return str.replace(/\s/g, '');
+			}
+
+			function saveProgress() {
+				const completed = Object.values(taskStates).filter(s => s.completed).length;
+				const total = Object.keys(taskStates).length;
+				if (completed === total) {
+					localStorage.setItem(STORAGE_KEY, 'true');
+				}
+			}
+
+			function loadProgress() {
+				const isCompleted = localStorage.getItem(STORAGE_KEY) === 'true';
+				if (isCompleted) {
+					Object.keys(taskStates).forEach(taskId => {
+						taskStates[taskId].completed = true;
+						const inputEl = document.getElementById('answer' + taskId.slice(-1));
+						const checkEl = document.getElementById('check' + taskId.slice(-1));
+						const statusEl = document.getElementById('status' + taskId.slice(-1));
+						const badgeEl = document.getElementById('badge' + taskId.slice(-1));
+
+						badgeEl.classList.remove('hidden');
+						inputEl.disabled = true;
+						checkEl.disabled = true;
+						inputEl.style.opacity = '0.6';
+						statusEl.className = 'task-status correct';
+						statusEl.innerHTML = '<span class="icon">✅</span> Верно!';
+					});
+					updateProgress();
+
+					const headerIcon = document.querySelector('.header .icon');
+					headerIcon.textContent = '🏆';
+					document.querySelector('.header p').textContent = 'Все задания пройдены!';
+				}
+			}
+
+			function setStatus(statusEl, isCorrect) {
+				if (isCorrect) {
+					statusEl.className = 'task-status correct';
+					statusEl.innerHTML = '<span class="icon">✅</span> Верно!';
+				} else {
+					statusEl.className = 'task-status wrong';
+					statusEl.innerHTML = '<span class="icon">❌</span> Неверно. Попробуй ещё раз.';
+					setTimeout(() => {
+						statusEl.className = 'task-status pending';
+						statusEl.innerHTML = '<span class="icon">⏳</span> Ожидание ответа';
+					}, 1500);
+				}
+			}
+
+			function checkAnswer(taskId) {
+				const inputEl = document.getElementById('answer' + taskId.slice(-1));
+				const statusEl = document.getElementById('status' + taskId.slice(-1));
+				const badgeEl = document.getElementById('badge' + taskId.slice(-1));
+				const checkEl = document.getElementById('check' + taskId.slice(-1));
+				const answer = inputEl.value.trim();
+
+				if (taskStates[taskId].completed) return;
+
+				if (answer === '') {
+					statusEl.className = 'task-status pending';
+					statusEl.innerHTML = '<span class="icon">✏️</span> Введите ответ';
+					setTimeout(() => {
+						statusEl.innerHTML = '<span class="icon">⏳</span> Ожидание ответа';
+					}, 1200);
+					return;
+				}
+
+				const normalizedInput = normalizeInput(answer);
+				const normalizedCorrect = normalizeInput(CORRECT_ANSWERS[taskId]);
+
+				const isCorrect = normalizedInput === normalizedCorrect;
+
+				if (isCorrect) {
+					taskStates[taskId].completed = true;
+					badgeEl.classList.remove('hidden');
+					inputEl.disabled = true;
+					checkEl.disabled = true;
+					inputEl.style.opacity = '0.6';
+				}
+
+				setStatus(statusEl, isCorrect);
+				updateProgress();
+				saveProgress();
+			}
+
+			function updateProgress() {
+				const completed = Object.values(taskStates).filter(s => s.completed).length;
+				const total = Object.keys(taskStates).length;
+				progressText.textContent = `${completed} / ${total}`;
+
+				if (completed === total) {
+					const headerIcon = document.querySelector('.header .icon');
+					headerIcon.textContent = '🏆';
+					document.querySelector('.header p').textContent = 'Все задания пройдены!';
+				}
+			}
+
+			function resetAll() {
+				if (confirm('⚠️ Сбросить весь прогресс? Это действие нельзя отменить.')) {
+					Object.keys(taskStates).forEach(taskId => {
+						taskStates[taskId].completed = false;
+						const inputEl = document.getElementById('answer' + taskId.slice(-1));
+						const checkEl = document.getElementById('check' + taskId.slice(-1));
+						const statusEl = document.getElementById('status' + taskId.slice(-1));
+						const badgeEl = document.getElementById('badge' + taskId.slice(-1));
+
+						inputEl.value = '';
+						inputEl.disabled = false;
+						inputEl.style.opacity = '1';
+						checkEl.disabled = false;
+						badgeEl.classList.add('hidden');
+						statusEl.className = 'task-status pending';
+						statusEl.innerHTML = '<span class="icon">⏳</span> Ожидание ответа';
+					});
+
+					localStorage.removeItem(STORAGE_KEY);
+
+					const headerIcon = document.querySelector('.header .icon');
+					headerIcon.textContent = '🔢';
+					document.querySelector('.header p').textContent = 'Введите количество вхождений';
+					updateProgress();
+				}
+			}
+
+			// Обработчики
+			check1.addEventListener('click', () => checkAnswer('task1'));
+			check2.addEventListener('click', () => checkAnswer('task2'));
+
+			input1.addEventListener('keydown', (e) => {
+				if (e.key === 'Enter') {
+					e.preventDefault();
+					checkAnswer('task1');
+				}
+			});
+
+			input2.addEventListener('keydown', (e) => {
+				if (e.key === 'Enter') {
+					e.preventDefault();
+					checkAnswer('task2');
+				}
+			});
+
+			resetBtn.addEventListener('click', resetAll);
+
+			// Загружаем сохранённый прогресс
+			loadProgress();
+
+			// Автофокус на первое поле
+			if (!input1.disabled) {
+				input1.focus();
+			}
+		})();
+	</script>
+
+</body></html>

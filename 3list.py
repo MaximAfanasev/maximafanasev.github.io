@@ -181,7 +181,68 @@ a = ['a', 'b', 'c']
 a.pop()
 print(a) # ['a', 'b']
 a.pop(0)
+print(a) # ['b']
+
+
+
+###################
+
+
+
+a = ['a', 'b', 'c']
+print(a.index('a')) # 0
+
+print('a' in a) # True
+
+
+###################
+
+a = ['a', 'b', 'a', 'a']
+print(a.count('a')) # 3
+print(a.count('c')) # 0
+
+
+
+###################
+
+
+a = ['a', 'b', 'c']
+print(', '.join(a)) # a, b, c
+
+
+
+
+#################
+
+a = ['b', 'a', 'c']
+print(sorted(a)) # ['a', 'b', 'c'] копия списка
+print(a) # ['b', 'a', 'c'] оригинал не изменился
+a.sort()
+print(a) # ['a', 'b', 'c'] перемешали оригинал
+
+a.sort(reverse=True)
 print(a)
+
+
+
+
+#################
+
+
+a = ['a', 'b', 'c']
+print(len(a)) # 3
+
+
+#################
+
+a = [1, 2, 3]
+print(a)
+b = a
+print(b)
+
+a[0] = 'srpr mf'
+print(a)
+
 
 
 
