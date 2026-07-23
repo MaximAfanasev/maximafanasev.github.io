@@ -21,14 +21,15 @@
 			background: radial-gradient(circle at 30% 10%, #eee, #000);
 			font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
 			padding: 2rem 1.5rem;
-			margin-top: 200px;
+			max-width: 768px;
+			margin: 0 auto;
+			padding-top: 250px;
+			position: relative;
 		}
 
 		.pagination-wrapper {
 			position: relative;
 			margin-bottom: 80px;
-			background: rgba(255, 255, 255, 0.6);
-			backdrop-filter: blur(16px) saturate(180%);
 			border-radius: 4rem;
 			padding: 2rem 2.8rem;
 			box-shadow:
@@ -147,10 +148,10 @@
 			margin-bottom: 1.8rem;
 			letter-spacing: -0.02em;
 		}
-		
+
 		h2 {
-			color: #fff;ч
-			background: transparent;
+			color: #fff;
+			ч background: transparent;
 		}
 
 		.caption h2 {
@@ -297,27 +298,9 @@
 		.page-link.completed {
 			border-color: #15fa32 !important;
 			color: #ffffff !important;
-			box-shadow: 0 0 0 3px #15fa32, 0 12px 24px -8px rgba(30, 58, 138, 0.5) !important;
+			box-shadow: 0 0 0 0.5px #15fa32, 0 12px 24px -8px rgba(30, 58, 138, 0.2) !important;
 			transform: scale(1.05);
 			font-weight: 700;
-		}
-
-		.page-link.completed::after {
-			content: "✓";
-			position: absolute;
-			top: -8px;
-			right: -8px;
-			background: #15fa32;
-			color: #0f172a;
-			font-size: 0.8rem;
-			font-weight: 700;
-			width: 22px;
-			height: 22px;
-			border-radius: 50%;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			box-shadow: 0 2px 8px rgba(250, 204, 21, 0.6);
 		}
 
 		.page-link.completed::before {
@@ -336,7 +319,6 @@
 			transform-origin: left;
 		}
 
-		/* Адаптив: на маленьких экранах уменьшаем размер */
 		@media (min-width: 700px) {
 			.pagination-wrapper {
 				min-height: 300px;
@@ -499,7 +481,7 @@
 		.arrow {
 			position: absolute;
 			bottom: -86px;
-			left: 300px;
+			left: 180px;
 		}
 
 		.row {
@@ -619,7 +601,11 @@
 		}
 
 		.stich {
-			left: 150px;
+			left: 100px;
+		}
+
+		.kaka {
+			left: 260px;
 		}
 	</style>
 </head>
@@ -646,7 +632,7 @@
 	</div>
 
 	<div class="pagination-wrapper">
-		<h2>🔢 4исла 6️⃣ 7️⃣ </h2>
+		<h2>4исла 6️⃣ 7️⃣ </h2>
 		<ul class="pagination">
 			<a class="page-link" href="python/numbers/1.html">1</a>
 			<a class="page-link" href="python/numbers/2.html">2</a>
@@ -662,7 +648,7 @@
 	<div class="pagination-wrapper">
 		<div class="ticker-container">
 		</div>
-		<h2>"🧠 Строки 🧠"</h2>
+		<h2>"Строки 🧠"</h2>
 		<ul class="pagination">
 			<a class="page-links" href="python/strings/1.html">
 				<div class="flip-container">
@@ -675,14 +661,14 @@
 				</div>
 			</a>
 		</ul>
-		<img class="arrow" src="11.png" alt="" width="70">
+		<img class="arrow kaka" src="11.png" alt="" width="70">
 		<img class="arrow stich" src="14.png" alt="" width="100">
 	</div>
 
 	<div class="pagination-wrapper">
 		<div class="ticker-container">
 		</div>
-		<h2>['📋', 'Спи', 'ски', '📋']</h2>
+		<h2>['Спи', 'ски', '📋']</h2>
 		<ul class="pagination">
 			<a class="page-link" href="python/list/1.html">1
 			</a>
@@ -706,11 +692,23 @@
 			<a class="page-link" href="python/list/19.html">19</a>
 			<a class="page-link" href="python/list/20.html">20</a>
 			<a class="page-link" href="python/list/21.html">21</a>
+			<a class="page-link" href="python/list/22.html">22</a>
+			<a class="page-link" href="python/list/23.html">23</a>
+		</ul>
+	</div>
+
+	<div class="pagination-wrapper">
+		<div class="ticker-container">
+		</div>
+		<h2>('Кор', 'тежи', '🚔')</h2>
+		<ul class="pagination">
+			<a class="page-link" href="python/korteg/1.html">🚔
+			</a>
 		</ul>
 	</div>
 
 	<!-- Кнопка очистки прогресса -->
-	<button class="clear-btn" id="clearProgressBtn">Обнулить прогресс</button>
+	<button class="clear-btn" id="clearProgressBtn">Начать с начала</button>
 
 	<script>
 		(function() {
@@ -752,7 +750,7 @@
 					} else if (index === 6) {
 						element = list1Link;
 					}
-					
+
 					if (element) {
 						const isCompleted = localStorage.getItem(key) === 'true';
 						if (isCompleted) {

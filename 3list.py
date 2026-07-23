@@ -236,13 +236,33 @@ print(len(a)) # 3
 #################
 
 a = [1, 2, 3]
-print(a)
 b = a
-print(b)
+print(b) # [1, 2, 3]
 
 a[0] = 'srpr mf'
-print(a)
+print(a) # ['srpr mf' 2, 3]
+print(b) # ['srpr mf' 2, 3]
 
+b[0] = 4
+print(b) # [4, 2, 3]
+print(a) # [4, 2, 3]
+
+################# Правильное копирование
+
+
+a = [1, 2, 3]
+b = a.copy()
+print(b) # [1, 2, 3]
+
+c = list(a) # [1, 2, 3]
+
+d = a[:] # [1, 2, 3]
+
+a[0] = 'a'
+print(a) # ['a', 2, 3]
+print(b) # [1, 2, 3]
+print(c) # [1, 2, 3]
+print(d) # [1, 2, 3]
 
 
 
