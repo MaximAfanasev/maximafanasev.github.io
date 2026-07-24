@@ -154,7 +154,7 @@
 		}
 
 		.pagination-wrapper:nth-child(6) {
-			background:  url("23.png") no-repeat right 40px top 70px;
+			background: url("23.png") no-repeat right 40px top 70px;
 			background-size: 250px;
 			color: #fff;
 		}
@@ -635,7 +635,7 @@
 		.kaka {
 			left: 260px;
 		}
-		
+
 		.answers {
 			color: gray;
 			text-decoration: none;
@@ -643,12 +643,37 @@
 			font-weight: bold;
 			margin-top: 30px;
 		}
+
+		.checkmate {
+			position: absolute;
+			top: -8px;
+			display: block;
+			text-decoration: none;
+			transform: rotate(180deg) translate(-20px);
+			font-size: 30px;
+			animation: check 4s ease-in-out infinite;
+		}
+
+		@keyframes check {
+			0% {
+				transform: translate(-20px) rotate(180deg);
+			}
+
+			50% {
+				transform: translate(40px) rotate(180deg);
+			}
+
+			100% {
+				transform: translate(-20px) rotate(180deg);
+			}
+		}
 	</style>
 </head>
 
 <body>
 	<div class="wrap">
 		<img class="arrow spider" src="8.png" alt="" width="90">
+		<a class="checkmate" href="">♟️</a>
 		<img class="arrow spider rino" src="10.png" alt="" width="70">
 	</div>
 	<div class="pagination-wrapper">
