@@ -1,0 +1,1865 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>34</title>
+	<link rel="icon" type="image/png" href="../../favicon.png">
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			min-height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background: radial-gradient(ellipse at 50% 30%, #0f172a, #020617);
+			font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+			padding: 1.5rem;
+		}
+
+		.card {
+			background: rgba(255, 255, 255, 0.04);
+			backdrop-filter: blur(20px) saturate(180%);
+			-webkit-backdrop-filter: blur(20px) saturate(180%);
+			border-radius: 3rem;
+			padding: 2.8rem 2.5rem;
+			max-width: 860px;
+			width: 100%;
+			border: 1px solid rgba(255, 255, 255, 0.06);
+			box-shadow: 0 50px 100px -30px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+			animation: fadeUp 0.5s ease forwards;
+		}
+
+		@keyframes fadeUp {
+			0% {
+				opacity: 0;
+				transform: translateY(20px) scale(0.97);
+			}
+
+			100% {
+				opacity: 1;
+				transform: translateY(0) scale(1);
+			}
+		}
+
+		.header {
+			text-align: center;
+			margin-bottom: 2.5rem;
+		}
+
+		.header .icon {
+			font-size: 2.5rem;
+			display: block;
+			margin-bottom: 0.3rem;
+		}
+
+		.header h1 {
+			color: #f1f5f9;
+			font-weight: 600;
+			font-size: 1.6rem;
+			letter-spacing: -0.5px;
+		}
+
+		.header p {
+			color: #94a3b8;
+			font-size: 0.95rem;
+			margin-top: 0.3rem;
+		}
+
+		.task {
+			background: rgba(15, 23, 42, 0.5);
+			border-radius: 1.5rem;
+			padding: 1.8rem;
+			margin-bottom: 1.8rem;
+			border: 1px solid rgba(255, 255, 255, 0.04);
+			transition: border-color 0.3s ease;
+		}
+
+		.task:last-child {
+			margin-bottom: 0;
+		}
+
+		.task-header {
+			display: flex;
+			align-items: center;
+			gap: 0.8rem;
+			margin-bottom: 1rem;
+			flex-wrap: wrap;
+		}
+
+		.task-number {
+			background: rgba(34, 197, 94, 0.15);
+			color: #22c55e;
+			font-weight: 700;
+			font-size: 0.8rem;
+			padding: 0.2rem 0.8rem;
+			border-radius: 60px;
+			letter-spacing: 0.5px;
+		}
+
+		.task-title {
+			color: #94a3b8;
+			font-size: 0.85rem;
+			font-weight: 500;
+		}
+
+		.code-block {
+			background: #0b111e;
+			border-radius: 1rem;
+			padding: 1.2rem 1.5rem;
+			font-family: 'JetBrains Mono', 'Fira Code', monospace;
+			font-size: 0.85rem;
+			line-height: 1.8rem;
+			color: #e2e8f0;
+			margin-bottom: 1.2rem;
+			border-left: 3px solid #22c55e;
+			overflow-x: auto;
+		}
+
+		.code-line {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			flex-wrap: wrap;
+		}
+
+		.code-line .prompt {
+			color: #64748b;
+			user-select: none;
+		}
+
+		.code-line .var {
+			color: #f472b6;
+		}
+
+		.code-line .op {
+			color: #facc15;
+		}
+
+		.code-line .func {
+			color: #34d399;
+		}
+
+		.code-line .paren {
+			color: #94a3b8;
+		}
+
+		.code-line .string {
+			color: #6ee7b7;
+		}
+
+		.code-line .comment {
+			color: #475569;
+			font-style: italic;
+			font-size: 0.75rem;
+		}
+
+		.code-line .bracket {
+			color: #60a5fa;
+		}
+
+		.code-line .number {
+			color: #60a5fa;
+		}
+
+		.code-line .method {
+			color: #c084fc;
+		}
+
+		.code-line .keyword {
+			color: #f87171;
+			font-weight: 600;
+		}
+
+		.input-row {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			gap: 0.8rem;
+			background: rgba(15, 23, 42, 0.6);
+			padding: 0.3rem 0.3rem 0.3rem 1.5rem;
+			border-radius: 100px;
+			border: 1px solid #2d3a4f;
+			transition: border 0.25s, background 0.25s, box-shadow 0.25s;
+		}
+
+		.input-row:focus-within {
+			border-color: #22c55e;
+			background: #1a253a;
+			box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.08);
+		}
+
+		.input-row label {
+			color: #94a3b8;
+			font-size: 0.9rem;
+			font-weight: 500;
+			white-space: nowrap;
+		}
+
+		.input-row input {
+			flex: 1;
+			min-width: 60px;
+			background: transparent;
+			border: none;
+			padding: 0.6rem 0.2rem;
+			font-size: 0.95rem;
+			font-weight: 500;
+			color: #f1f5f9;
+			outline: none;
+			font-family: 'JetBrains Mono', monospace;
+			text-align: center;
+		}
+
+		.input-row input::placeholder {
+			color: #475569;
+			font-weight: 300;
+			font-size: 0.8rem;
+			opacity: 0.6;
+		}
+
+		.btn-check {
+			background: #22c55e;
+			border: none;
+			border-radius: 60px;
+			padding: 0.55rem 1.8rem;
+			font-weight: 600;
+			font-size: 0.9rem;
+			color: #0f172a;
+			cursor: pointer;
+			transition: all 0.15s ease;
+			box-shadow: 0 4px 14px rgba(34, 197, 94, 0.2);
+			white-space: nowrap;
+			font-family: 'Inter', sans-serif;
+		}
+
+		.btn-check:hover {
+			background: #4ade80;
+			transform: scale(1.02);
+			box-shadow: 0 8px 24px rgba(34, 197, 94, 0.3);
+		}
+
+		.btn-check:active {
+			transform: scale(0.95);
+			background: #16a34a;
+		}
+
+		.btn-check:disabled {
+			opacity: 0.5;
+			cursor: not-allowed;
+			transform: none !important;
+		}
+
+		.task-status {
+			display: flex;
+			align-items: center;
+			gap: 0.6rem;
+			margin-top: 0.8rem;
+			font-size: 0.9rem;
+			font-weight: 500;
+			min-height: 2rem;
+			padding: 0.3rem 0.8rem;
+			border-radius: 60px;
+			transition: all 0.3s ease;
+		}
+
+		.task-status .icon {
+			font-size: 1.2rem;
+		}
+
+		.task-status.pending {
+			color: #94a3b8;
+			background: rgba(148, 163, 184, 0.05);
+		}
+
+		.task-status.correct {
+			color: #6ee7b7;
+			background: rgba(52, 211, 153, 0.08);
+			border: 1px solid rgba(52, 211, 153, 0.2);
+		}
+
+		.task-status.wrong {
+			color: #fca5a5;
+			background: rgba(251, 113, 133, 0.08);
+			border: 1px solid rgba(251, 113, 133, 0.2);
+			animation: shake 0.4s ease;
+		}
+
+		@keyframes shake {
+
+			0%,
+			100% {
+				transform: translateX(0);
+			}
+
+			25% {
+				transform: translateX(-10px);
+			}
+
+			75% {
+				transform: translateX(10px);
+			}
+		}
+
+		.footer {
+			margin-top: 2rem;
+			text-align: center;
+			padding-top: 1.5rem;
+			border-top: 1px solid rgba(255, 255, 255, 0.04);
+		}
+
+		.footer .progress-text {
+			color: #64748b;
+			font-size: 0.85rem;
+		}
+
+		.footer .progress-text strong {
+			color: #f1f5f9;
+		}
+
+		@media (max-width: 520px) {
+			.card {
+				padding: 1.8rem 1.2rem;
+				border-radius: 2rem;
+			}
+
+			.code-block {
+				font-size: 0.7rem;
+				padding: 1rem;
+				line-height: 1.6rem;
+			}
+
+			.input-row {
+				padding: 0.3rem 0.3rem 0.3rem 1rem;
+				border-radius: 60px;
+			}
+
+			.input-row input {
+				font-size: 0.8rem;
+				padding: 0.5rem 0.1rem;
+				min-width: 40px;
+			}
+
+			.btn-check {
+				padding: 0.5rem 1.2rem;
+				font-size: 0.8rem;
+			}
+
+			.task {
+				padding: 1.2rem;
+			}
+
+			.header h1 {
+				font-size: 1.3rem;
+			}
+		}
+
+		.hidden {
+			display: none !important;
+		}
+
+		.completed-badge {
+			display: inline-block;
+			background: rgba(52, 211, 153, 0.15);
+			color: #6ee7b7;
+			padding: 0.2rem 1rem;
+			border-radius: 60px;
+			font-size: 0.7rem;
+			font-weight: 600;
+			letter-spacing: 0.5px;
+			text-transform: uppercase;
+			border: 1px solid rgba(52, 211, 153, 0.2);
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="card">
+		<div class="header">
+			<span class="icon">📋</span>
+			<h1>Списки (list)</h1>
+			<p>Введите результат</p>
+		</div>
+
+		<!-- Задание 1 -->
+		<div class="task" id="task1">
+			<div class="task-header">
+				<span class="task-number">Задание 1</span>
+				<span class="task-title">a = []</span>
+				<span id="badge1" class="completed-badge hidden">✅ пройдено</span>
+			</div>
+			<div class="code-block">
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span> <span class="op">=</span> <span class="bracket">[</span><span class="bracket">]</span>
+				</div>
+				<div class="code-line" style="margin-top: 0.3rem; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem;">
+					<span class="prompt">❯</span>
+					<span class="func">print</span><span class="paren">(</span><span class="var">a</span><span class="paren">)</span>
+					<span class="comment"># Что выведет?</span>
+				</div>
+			</div>
+			<div class="input-row">
+				<label for="answer1">Ответ:</label>
+				<input type="text" id="answer1" placeholder="введите список" autocomplete="off">
+				<button class="btn-check" id="check1">Проверить</button>
+			</div>
+			<div id="status1" class="task-status pending">
+				<span class="icon">⏳</span> Ожидание ответа
+			</div>
+		</div>
+
+		<!-- Задание 2 -->
+		<div class="task" id="task2">
+			<div class="task-header">
+				<span class="task-number">Задание 2</span>
+				<span class="task-title">list()</span>
+				<span id="badge2" class="completed-badge hidden">✅ пройдено</span>
+			</div>
+			<div class="code-block">
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">b</span> <span class="op">=</span> <span class="func">list</span><span class="paren">(</span><span class="paren">)</span>
+				</div>
+				<div class="code-line" style="margin-top: 0.3rem; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem;">
+					<span class="prompt">❯</span>
+					<span class="func">print</span><span class="paren">(</span><span class="var">b</span><span class="paren">)</span>
+					<span class="comment"># Что выведет?</span>
+				</div>
+			</div>
+			<div class="input-row">
+				<label for="answer2">Ответ:</label>
+				<input type="text" id="answer2" placeholder="введите список" autocomplete="off">
+				<button class="btn-check" id="check2">Проверить</button>
+			</div>
+			<div id="status2" class="task-status pending">
+				<span class="icon">⏳</span> Ожидание ответа
+			</div>
+		</div>
+
+		<!-- Задание 3 -->
+		<div class="task" id="task3">
+			<div class="task-header">
+				<span class="task-number">Задание 3</span>
+				<span class="task-title">list(('a','b','c'))</span>
+				<span id="badge3" class="completed-badge hidden">✅ пройдено</span>
+			</div>
+			<div class="code-block">
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">c</span> <span class="op">=</span> <span class="paren">(</span><span class="string">'a'</span><span class="op">,</span> <span class="string">'b'</span><span class="op">,</span> <span class="string">'c'</span><span class="paren">)</span>
+				</div>
+				<div class="code-line" style="margin-top: 0.3rem; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem;">
+					<span class="prompt">❯</span>
+					<span class="func">print</span><span class="paren">(</span><span class="func">list</span><span class="paren">(</span><span class="var">c</span><span class="paren">))</span>
+					<span class="comment"># Что выведет?</span>
+				</div>
+			</div>
+			<div class="input-row">
+				<label for="answer3">Ответ:</label>
+				<input type="text" id="answer3" placeholder="введите список" autocomplete="off">
+				<button class="btn-check" id="check3">Проверить</button>
+			</div>
+			<div id="status3" class="task-status pending">
+				<span class="icon">⏳</span> Ожидание ответа
+			</div>
+		</div>
+
+		<!-- Задание 4 -->
+		<div class="task" id="task4">
+			<div class="task-header">
+				<span class="task-number">Задание 4</span>
+				<span class="task-title">d.split('/')</span>
+				<span id="badge4" class="completed-badge hidden">✅ пройдено</span>
+			</div>
+			<div class="code-block">
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">d</span> <span class="op">=</span> <span class="string">'1/2/4'</span>
+				</div>
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">e</span> <span class="op">=</span> <span class="var">d</span><span class="method">.split</span><span class="paren">(</span><span class="string">'/'</span><span class="paren">)</span>
+				</div>
+				<div class="code-line" style="margin-top: 0.3rem; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem;">
+					<span class="prompt">❯</span>
+					<span class="func">print</span><span class="paren">(</span><span class="var">e</span><span class="paren">)</span>
+					<span class="comment"># Что выведет?</span>
+				</div>
+			</div>
+			<div class="input-row">
+				<label for="answer4">Ответ:</label>
+				<input type="text" id="answer4" placeholder="введите список" autocomplete="off">
+				<button class="btn-check" id="check4">Проверить</button>
+			</div>
+			<div id="status4" class="task-status pending">
+				<span class="icon">⏳</span> Ожидание ответа
+			</div>
+		</div>
+
+		<!-- Задание 5 -->
+		<div class="task" id="task5">
+			<div class="task-header">
+				<span class="task-number">Задание 5</span>
+				<span class="task-title">g.split('/')</span>
+				<span id="badge5" class="completed-badge hidden">✅ пройдено</span>
+			</div>
+			<div class="code-block">
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">g</span> <span class="op">=</span> <span class="string">'a/b//c/d///e'</span>
+				</div>
+				<div class="code-line" style="margin-top: 0.3rem; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem;">
+					<span class="prompt">❯</span>
+					<span class="func">print</span><span class="paren">(</span><span class="var">g</span><span class="method">.split</span><span class="paren">(</span><span class="string">'/'</span><span class="paren">))</span>
+					<span class="comment"># Что выведет?</span>
+				</div>
+			</div>
+			<div class="input-row">
+				<label for="answer5">Ответ:</label>
+				<input type="text" id="answer5" placeholder="введите список" autocomplete="off">
+				<button class="btn-check" id="check5">Проверить</button>
+			</div>
+			<div id="status5" class="task-status pending">
+				<span class="icon">⏳</span> Ожидание ответа
+			</div>
+		</div>
+
+		<!-- Задание 6 -->
+		<div class="task" id="task6">
+			<div class="task-header">
+				<span class="task-number">Задание 6</span>
+				<span class="task-title">g.split('//')</span>
+				<span id="badge6" class="completed-badge hidden">✅ пройдено</span>
+			</div>
+			<div class="code-block">
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">g</span> <span class="op">=</span> <span class="string">'a/b//c/d///e'</span>
+				</div>
+				<div class="code-line" style="margin-top: 0.3rem; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem;">
+					<span class="prompt">❯</span>
+					<span class="func">print</span><span class="paren">(</span><span class="var">g</span><span class="method">.split</span><span class="paren">(</span><span class="string">'//'</span><span class="paren">))</span>
+					<span class="comment"># Что выведет?</span>
+				</div>
+			</div>
+			<div class="input-row">
+				<label for="answer6">Ответ:</label>
+				<input type="text" id="answer6" placeholder="введите список" autocomplete="off">
+				<button class="btn-check" id="check6">Проверить</button>
+			</div>
+			<div id="status6" class="task-status pending">
+				<span class="icon">⏳</span> Ожидание ответа
+			</div>
+		</div>
+
+		<!-- Задание 7 -->
+		<div class="task" id="task7">
+			<div class="task-header">
+				<span class="task-number">Задание 7</span>
+				<span class="task-title">a[0:2]</span>
+				<span id="badge7" class="completed-badge hidden">✅ пройдено</span>
+			</div>
+			<div class="code-block">
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span> <span class="op">=</span> <span class="bracket">[</span><span class="string">'a'</span><span class="op">,</span> <span class="string">'b'</span><span class="op">,</span> <span class="string">'c'</span><span class="bracket">]</span>
+				</div>
+				<div class="code-line" style="margin-top: 0.3rem; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem;">
+					<span class="prompt">❯</span>
+					<span class="func">print</span><span class="paren">(</span><span class="var">a</span><span class="bracket">[</span><span class="number">0</span><span class="op">:</span><span class="number">2</span><span class="bracket">]</span><span class="paren">)</span>
+					<span class="comment"># Что выведет?</span>
+				</div>
+			</div>
+			<div class="input-row">
+				<label for="answer7">Ответ:</label>
+				<input type="text" id="answer7" placeholder="введите список" autocomplete="off">
+				<button class="btn-check" id="check7">Проверить</button>
+			</div>
+			<div id="status7" class="task-status pending">
+				<span class="icon">⏳</span> Ожидание ответа
+			</div>
+		</div>
+
+		<!-- Задание 8 -->
+		<div class="task" id="task8">
+			<div class="task-header">
+				<span class="task-number">Задание 8</span>
+				<span class="task-title">a[0:0]</span>
+				<span id="badge8" class="completed-badge hidden">✅ пройдено</span>
+			</div>
+			<div class="code-block">
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span> <span class="op">=</span> <span class="bracket">[</span><span class="string">'a'</span><span class="op">,</span> <span class="string">'b'</span><span class="op">,</span> <span class="string">'c'</span><span class="bracket">]</span>
+				</div>
+				<div class="code-line" style="margin-top: 0.3rem; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem;">
+					<span class="prompt">❯</span>
+					<span class="func">print</span><span class="paren">(</span><span class="var">a</span><span class="bracket">[</span><span class="number">0</span><span class="op">:</span><span class="number">0</span><span class="bracket">]</span><span class="paren">)</span>
+					<span class="comment"># Что выведет?</span>
+				</div>
+			</div>
+			<div class="input-row">
+				<label for="answer8">Ответ:</label>
+				<input type="text" id="answer8" placeholder="введите список" autocomplete="off">
+				<button class="btn-check" id="check8">Проверить</button>
+			</div>
+			<div id="status8" class="task-status pending">
+				<span class="icon">⏳</span> Ожидание ответа
+			</div>
+		</div>
+
+		<!-- Задание 9 -->
+		<div class="task" id="task9">
+			<div class="task-header">
+				<span class="task-number">Задание 9</span>
+				<span class="task-title">a[0:1]</span>
+				<span id="badge9" class="completed-badge hidden">✅ пройдено</span>
+			</div>
+			<div class="code-block">
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span> <span class="op">=</span> <span class="bracket">[</span><span class="string">'a'</span><span class="op">,</span> <span class="string">'b'</span><span class="op">,</span> <span class="string">'c'</span><span class="bracket">]</span>
+				</div>
+				<div class="code-line" style="margin-top: 0.3rem; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem;">
+					<span class="prompt">❯</span>
+					<span class="func">print</span><span class="paren">(</span><span class="var">a</span><span class="bracket">[</span><span class="number">0</span><span class="op">:</span><span class="number">1</span><span class="bracket">]</span><span class="paren">)</span>
+					<span class="comment"># Что выведет?</span>
+				</div>
+			</div>
+			<div class="input-row">
+				<label for="answer9">Ответ:</label>
+				<input type="text" id="answer9" placeholder="введите список" autocomplete="off">
+				<button class="btn-check" id="check9">Проверить</button>
+			</div>
+			<div id="status9" class="task-status pending">
+				<span class="icon">⏳</span> Ожидание ответа
+			</div>
+		</div>
+
+		<!-- Задание 10 -->
+		<div class="task" id="task10">
+			<div class="task-header">
+				<span class="task-number">Задание 10</span>
+				<span class="task-title">a[0:3]</span>
+				<span id="badge10" class="completed-badge hidden">✅ пройдено</span>
+			</div>
+			<div class="code-block">
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span> <span class="op">=</span> <span class="bracket">[</span><span class="string">'a'</span><span class="op">,</span> <span class="string">'b'</span><span class="op">,</span> <span class="string">'c'</span><span class="bracket">]</span>
+				</div>
+				<div class="code-line" style="margin-top: 0.3rem; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem;">
+					<span class="prompt">❯</span>
+					<span class="func">print</span><span class="paren">(</span><span class="var">a</span><span class="bracket">[</span><span class="number">0</span><span class="op">:</span><span class="number">3</span><span class="bracket">]</span><span class="paren">)</span>
+					<span class="comment"># Что выведет?</span>
+				</div>
+			</div>
+			<div class="input-row">
+				<label for="answer10">Ответ:</label>
+				<input type="text" id="answer10" placeholder="введите список" autocomplete="off">
+				<button class="btn-check" id="check10">Проверить</button>
+			</div>
+			<div id="status10" class="task-status pending">
+				<span class="icon">⏳</span> Ожидание ответа
+			</div>
+		</div>
+
+		<!-- Задание 11 -->
+		<div class="task" id="task11">
+			<div class="task-header">
+				<span class="task-number">Задание 11</span>
+				<span class="task-title">a[0:4]</span>
+				<span id="badge11" class="completed-badge hidden">✅ пройдено</span>
+			</div>
+			<div class="code-block">
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span> <span class="op">=</span> <span class="bracket">[</span><span class="string">'a'</span><span class="op">,</span> <span class="string">'b'</span><span class="op">,</span> <span class="string">'c'</span><span class="bracket">]</span>
+				</div>
+				<div class="code-line" style="margin-top: 0.3rem; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem;">
+					<span class="prompt">❯</span>
+					<span class="func">print</span><span class="paren">(</span><span class="var">a</span><span class="bracket">[</span><span class="number">0</span><span class="op">:</span><span class="number">4</span><span class="bracket">]</span><span class="paren">)</span>
+					<span class="comment"># Что выведет?</span>
+				</div>
+			</div>
+			<div class="input-row">
+				<label for="answer11">Ответ:</label>
+				<input type="text" id="answer11" placeholder="введите список" autocomplete="off">
+				<button class="btn-check" id="check11">Проверить</button>
+			</div>
+			<div id="status11" class="task-status pending">
+				<span class="icon">⏳</span> Ожидание ответа
+			</div>
+		</div>
+
+		<!-- Задание 12 -->
+		<div class="task" id="task12">
+			<div class="task-header">
+				<span class="task-number">Задание 12</span>
+				<span class="task-title">a[0:99]</span>
+				<span id="badge12" class="completed-badge hidden">✅ пройдено</span>
+			</div>
+			<div class="code-block">
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span> <span class="op">=</span> <span class="bracket">[</span><span class="string">'a'</span><span class="op">,</span> <span class="string">'b'</span><span class="op">,</span> <span class="string">'c'</span><span class="bracket">]</span>
+				</div>
+				<div class="code-line" style="margin-top: 0.3rem; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem;">
+					<span class="prompt">❯</span>
+					<span class="func">print</span><span class="paren">(</span><span class="var">a</span><span class="bracket">[</span><span class="number">0</span><span class="op">:</span><span class="number">99</span><span class="bracket">]</span><span class="paren">)</span>
+					<span class="comment"># Что выведет?</span>
+				</div>
+			</div>
+			<div class="input-row">
+				<label for="answer12">Ответ:</label>
+				<input type="text" id="answer12" placeholder="введите список" autocomplete="off">
+				<button class="btn-check" id="check12">Проверить</button>
+			</div>
+			<div id="status12" class="task-status pending">
+				<span class="icon">⏳</span> Ожидание ответа
+			</div>
+		</div>
+
+		<!-- Задание 13 -->
+		<div class="task" id="task13">
+			<div class="task-header">
+				<span class="task-number">Задание 13</span>
+				<span class="task-title">a[::1]</span>
+				<span id="badge13" class="completed-badge hidden">✅ пройдено</span>
+			</div>
+			<div class="code-block">
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span> <span class="op">=</span> <span class="bracket">[</span><span class="string">'a'</span><span class="op">,</span> <span class="string">'b'</span><span class="op">,</span> <span class="string">'c'</span><span class="bracket">]</span>
+				</div>
+				<div class="code-line" style="margin-top: 0.3rem; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem;">
+					<span class="prompt">❯</span>
+					<span class="func">print</span><span class="paren">(</span><span class="var">a</span><span class="bracket">[</span><span class="op">::</span><span class="number">1</span><span class="bracket">]</span><span class="paren">)</span>
+					<span class="comment"># Что выведет?</span>
+				</div>
+			</div>
+			<div class="input-row">
+				<label for="answer13">Ответ:</label>
+				<input type="text" id="answer13" placeholder="введите список" autocomplete="off">
+				<button class="btn-check" id="check13">Проверить</button>
+			</div>
+			<div id="status13" class="task-status pending">
+				<span class="icon">⏳</span> Ожидание ответа
+			</div>
+		</div>
+
+		<!-- Задание 14 -->
+		<div class="task" id="task14">
+			<div class="task-header">
+				<span class="task-number">Задание 14</span>
+				<span class="task-title">a[::2]</span>
+				<span id="badge14" class="completed-badge hidden">✅ пройдено</span>
+			</div>
+			<div class="code-block">
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span> <span class="op">=</span> <span class="bracket">[</span><span class="string">'a'</span><span class="op">,</span> <span class="string">'b'</span><span class="op">,</span> <span class="string">'c'</span><span class="bracket">]</span>
+				</div>
+				<div class="code-line" style="margin-top: 0.3rem; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem;">
+					<span class="prompt">❯</span>
+					<span class="func">print</span><span class="paren">(</span><span class="var">a</span><span class="bracket">[</span><span class="op">::</span><span class="number">2</span><span class="bracket">]</span><span class="paren">)</span>
+					<span class="comment"># Что выведет?</span>
+				</div>
+			</div>
+			<div class="input-row">
+				<label for="answer14">Ответ:</label>
+				<input type="text" id="answer14" placeholder="введите список" autocomplete="off">
+				<button class="btn-check" id="check14">Проверить</button>
+			</div>
+			<div id="status14" class="task-status pending">
+				<span class="icon">⏳</span> Ожидание ответа
+			</div>
+		</div>
+
+		<!-- Задание 15 -->
+		<div class="task" id="task15">
+			<div class="task-header">
+				<span class="task-number">Задание 15</span>
+				<span class="task-title">a[::3]</span>
+				<span id="badge15" class="completed-badge hidden">✅ пройдено</span>
+			</div>
+			<div class="code-block">
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span> <span class="op">=</span> <span class="bracket">[</span><span class="string">'a'</span><span class="op">,</span> <span class="string">'b'</span><span class="op">,</span> <span class="string">'c'</span><span class="bracket">]</span>
+				</div>
+				<div class="code-line" style="margin-top: 0.3rem; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem;">
+					<span class="prompt">❯</span>
+					<span class="func">print</span><span class="paren">(</span><span class="var">a</span><span class="bracket">[</span><span class="op">::</span><span class="number">3</span><span class="bracket">]</span><span class="paren">)</span>
+					<span class="comment"># Что выведет?</span>
+				</div>
+			</div>
+			<div class="input-row">
+				<label for="answer15">Ответ:</label>
+				<input type="text" id="answer15" placeholder="введите список" autocomplete="off">
+				<button class="btn-check" id="check15">Проверить</button>
+			</div>
+			<div id="status15" class="task-status pending">
+				<span class="icon">⏳</span> Ожидание ответа
+			</div>
+		</div>
+
+		<!-- Задание 16 -->
+		<div class="task" id="task16">
+			<div class="task-header">
+				<span class="task-number">Задание 16</span>
+				<span class="task-title">a[::99]</span>
+				<span id="badge16" class="completed-badge hidden">✅ пройдено</span>
+			</div>
+			<div class="code-block">
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span> <span class="op">=</span> <span class="bracket">[</span><span class="string">'a'</span><span class="op">,</span> <span class="string">'b'</span><span class="op">,</span> <span class="string">'c'</span><span class="bracket">]</span>
+				</div>
+				<div class="code-line" style="margin-top: 0.3rem; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem;">
+					<span class="prompt">❯</span>
+					<span class="func">print</span><span class="paren">(</span><span class="var">a</span><span class="bracket">[</span><span class="op">::</span><span class="number">99</span><span class="bracket">]</span><span class="paren">)</span>
+					<span class="comment"># Что выведет?</span>
+				</div>
+			</div>
+			<div class="input-row">
+				<label for="answer16">Ответ:</label>
+				<input type="text" id="answer16" placeholder="введите список" autocomplete="off">
+				<button class="btn-check" id="check16">Проверить</button>
+			</div>
+			<div id="status16" class="task-status pending">
+				<span class="icon">⏳</span> Ожидание ответа
+			</div>
+		</div>
+
+		<!-- Задание 17 -->
+		<div class="task" id="task17">
+			<div class="task-header">
+				<span class="task-number">Задание 17</span>
+				<span class="task-title">a[::-1]</span>
+				<span id="badge17" class="completed-badge hidden">✅ пройдено</span>
+			</div>
+			<div class="code-block">
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span> <span class="op">=</span> <span class="bracket">[</span><span class="string">'a'</span><span class="op">,</span> <span class="string">'b'</span><span class="op">,</span> <span class="string">'c'</span><span class="bracket">]</span>
+				</div>
+				<div class="code-line" style="margin-top: 0.3rem; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem;">
+					<span class="prompt">❯</span>
+					<span class="func">print</span><span class="paren">(</span><span class="var">a</span><span class="bracket">[</span><span class="op">::-</span><span class="number">1</span><span class="bracket">]</span><span class="paren">)</span>
+					<span class="comment"># Что выведет?</span>
+				</div>
+			</div>
+			<div class="input-row">
+				<label for="answer17">Ответ:</label>
+				<input type="text" id="answer17" placeholder="введите список" autocomplete="off">
+				<button class="btn-check" id="check17">Проверить</button>
+			</div>
+			<div id="status17" class="task-status pending">
+				<span class="icon">⏳</span> Ожидание ответа
+			</div>
+		</div>
+
+		<!-- Задание 18 -->
+		<div class="task" id="task18">
+			<div class="task-header">
+				<span class="task-number">Задание 18</span>
+				<span class="task-title">a[::-2]</span>
+				<span id="badge18" class="completed-badge hidden">✅ пройдено</span>
+			</div>
+			<div class="code-block">
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span> <span class="op">=</span> <span class="bracket">[</span><span class="string">'a'</span><span class="op">,</span> <span class="string">'b'</span><span class="op">,</span> <span class="string">'c'</span><span class="bracket">]</span>
+				</div>
+				<div class="code-line" style="margin-top: 0.3rem; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem;">
+					<span class="prompt">❯</span>
+					<span class="func">print</span><span class="paren">(</span><span class="var">a</span><span class="bracket">[</span><span class="op">::-</span><span class="number">2</span><span class="bracket">]</span><span class="paren">)</span>
+					<span class="comment"># Что выведет?</span>
+				</div>
+			</div>
+			<div class="input-row">
+				<label for="answer18">Ответ:</label>
+				<input type="text" id="answer18" placeholder="введите список" autocomplete="off">
+				<button class="btn-check" id="check18">Проверить</button>
+			</div>
+			<div id="status18" class="task-status pending">
+				<span class="icon">⏳</span> Ожидание ответа
+			</div>
+		</div>
+
+		<!-- Задание 19 -->
+		<div class="task" id="task19">
+			<div class="task-header">
+				<span class="task-number">Задание 19</span>
+				<span class="task-title">a[::-3]</span>
+				<span id="badge19" class="completed-badge hidden">✅ пройдено</span>
+			</div>
+			<div class="code-block">
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span> <span class="op">=</span> <span class="bracket">[</span><span class="string">'a'</span><span class="op">,</span> <span class="string">'b'</span><span class="op">,</span> <span class="string">'c'</span><span class="bracket">]</span>
+				</div>
+				<div class="code-line" style="margin-top: 0.3rem; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem;">
+					<span class="prompt">❯</span>
+					<span class="func">print</span><span class="paren">(</span><span class="var">a</span><span class="bracket">[</span><span class="op">::-</span><span class="number">3</span><span class="bracket">]</span><span class="paren">)</span>
+					<span class="comment"># Что выведет?</span>
+				</div>
+			</div>
+			<div class="input-row">
+				<label for="answer19">Ответ:</label>
+				<input type="text" id="answer19" placeholder="введите список" autocomplete="off">
+				<button class="btn-check" id="check19">Проверить</button>
+			</div>
+			<div id="status19" class="task-status pending">
+				<span class="icon">⏳</span> Ожидание ответа
+			</div>
+		</div>
+
+		<!-- Задание 20 -->
+		<div class="task" id="task20">
+			<div class="task-header">
+				<span class="task-number">Задание 20</span>
+				<span class="task-title">a[::-99]</span>
+				<span id="badge20" class="completed-badge hidden">✅ пройдено</span>
+			</div>
+			<div class="code-block">
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span> <span class="op">=</span> <span class="bracket">[</span><span class="string">'a'</span><span class="op">,</span> <span class="string">'b'</span><span class="op">,</span> <span class="string">'c'</span><span class="bracket">]</span>
+				</div>
+				<div class="code-line" style="margin-top: 0.3rem; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem;">
+					<span class="prompt">❯</span>
+					<span class="func">print</span><span class="paren">(</span><span class="var">a</span><span class="bracket">[</span><span class="op">::-</span><span class="number">99</span><span class="bracket">]</span><span class="paren">)</span>
+					<span class="comment"># Что выведет?</span>
+				</div>
+			</div>
+			<div class="input-row">
+				<label for="answer20">Ответ:</label>
+				<input type="text" id="answer20" placeholder="введите список" autocomplete="off">
+				<button class="btn-check" id="check20">Проверить</button>
+			</div>
+			<div id="status20" class="task-status pending">
+				<span class="icon">⏳</span> Ожидание ответа
+			</div>
+		</div>
+
+		<!-- Задание 21 -->
+		<div class="task" id="task21">
+			<div class="task-header">
+				<span class="task-number">Задание 21</span>
+				<span class="task-title">a.append('d')</span>
+				<span id="badge21" class="completed-badge hidden">✅ пройдено</span>
+			</div>
+			<div class="code-block">
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span> <span class="op">=</span> <span class="bracket">[</span><span class="string">'a'</span><span class="op">,</span> <span class="string">'b'</span><span class="op">,</span> <span class="string">'c'</span><span class="bracket">]</span>
+				</div>
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span><span class="method">.append</span><span class="paren">(</span><span class="string">'d'</span><span class="paren">)</span>
+				</div>
+				<div class="code-line" style="margin-top: 0.3rem; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem;">
+					<span class="prompt">❯</span>
+					<span class="func">print</span><span class="paren">(</span><span class="var">a</span><span class="paren">)</span>
+					<span class="comment"># Что выведет?</span>
+				</div>
+			</div>
+			<div class="input-row">
+				<label for="answer21">Ответ:</label>
+				<input type="text" id="answer21" placeholder="введите список" autocomplete="off">
+				<button class="btn-check" id="check21">Проверить</button>
+			</div>
+			<div id="status21" class="task-status pending">
+				<span class="icon">⏳</span> Ожидание ответа
+			</div>
+		</div>
+
+		<!-- Задание 22 -->
+		<div class="task" id="task22">
+			<div class="task-header">
+				<span class="task-number">Задание 22</span>
+				<span class="task-title">a.extend(c)</span>
+				<span id="badge22" class="completed-badge hidden">✅ пройдено</span>
+			</div>
+			<div class="code-block">
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span> <span class="op">=</span> <span class="bracket">[</span><span class="string">'a'</span><span class="op">,</span> <span class="string">'b'</span><span class="bracket">]</span>
+				</div>
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">c</span> <span class="op">=</span> <span class="bracket">[</span><span class="string">'d'</span><span class="op">,</span> <span class="string">'e'</span><span class="bracket">]</span>
+				</div>
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span><span class="method">.extend</span><span class="paren">(</span><span class="var">c</span><span class="paren">)</span>
+				</div>
+				<div class="code-line" style="margin-top: 0.3rem; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem;">
+					<span class="prompt">❯</span>
+					<span class="func">print</span><span class="paren">(</span><span class="var">a</span><span class="paren">)</span>
+					<span class="comment"># Что выведет?</span>
+				</div>
+			</div>
+			<div class="input-row">
+				<label for="answer22">Ответ:</label>
+				<input type="text" id="answer22" placeholder="введите список" autocomplete="off">
+				<button class="btn-check" id="check22">Проверить</button>
+			</div>
+			<div id="status22" class="task-status pending">
+				<span class="icon">⏳</span> Ожидание ответа
+			</div>
+		</div>
+
+		<!-- Задание 23 -->
+		<div class="task" id="task23">
+			<div class="task-header">
+				<span class="task-number">Задание 23</span>
+				<span class="task-title">a += c</span>
+				<span id="badge23" class="completed-badge hidden">✅ пройдено</span>
+			</div>
+			<div class="code-block">
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span> <span class="op">=</span> <span class="bracket">[</span><span class="string">'a'</span><span class="op">,</span> <span class="string">'b'</span><span class="bracket">]</span>
+				</div>
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">c</span> <span class="op">=</span> <span class="bracket">[</span><span class="string">'d'</span><span class="op">,</span> <span class="string">'e'</span><span class="bracket">]</span>
+				</div>
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span> <span class="op">+=</span> <span class="var">c</span>
+				</div>
+				<div class="code-line" style="margin-top: 0.3rem; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem;">
+					<span class="prompt">❯</span>
+					<span class="func">print</span><span class="paren">(</span><span class="var">a</span><span class="paren">)</span>
+					<span class="comment"># Что выведет?</span>
+				</div>
+			</div>
+			<div class="input-row">
+				<label for="answer23">Ответ:</label>
+				<input type="text" id="answer23" placeholder="введите список" autocomplete="off">
+				<button class="btn-check" id="check23">Проверить</button>
+			</div>
+			<div id="status23" class="task-status pending">
+				<span class="icon">⏳</span> Ожидание ответа
+			</div>
+		</div>
+
+		<!-- Задание 24 -->
+		<div class="task" id="task24">
+			<div class="task-header">
+				<span class="task-number">Задание 24</span>
+				<span class="task-title">a.append(c) (вложенный)</span>
+				<span id="badge24" class="completed-badge hidden">✅ пройдено</span>
+			</div>
+			<div class="code-block">
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span> <span class="op">=</span> <span class="bracket">[</span><span class="string">'a'</span><span class="op">,</span> <span class="string">'b'</span><span class="bracket">]</span>
+				</div>
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">c</span> <span class="op">=</span> <span class="bracket">[</span><span class="string">'d'</span><span class="op">,</span> <span class="string">'e'</span><span class="bracket">]</span>
+				</div>
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span><span class="method">.append</span><span class="paren">(</span><span class="var">c</span><span class="paren">)</span>
+				</div>
+				<div class="code-line" style="margin-top: 0.3rem; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem;">
+					<span class="prompt">❯</span>
+					<span class="func">print</span><span class="paren">(</span><span class="var">a</span><span class="paren">)</span>
+					<span class="comment"># Что выведет?</span>
+				</div>
+			</div>
+			<div class="input-row">
+				<label for="answer24">Ответ:</label>
+				<input type="text" id="answer24" placeholder="введите список" autocomplete="off">
+				<button class="btn-check" id="check24">Проверить</button>
+			</div>
+			<div id="status24" class="task-status pending">
+				<span class="icon">⏳</span> Ожидание ответа
+			</div>
+		</div>
+
+		<!-- Задание 25 -->
+		<div class="task" id="task25">
+			<div class="task-header">
+				<span class="task-number">Задание 25</span>
+				<span class="task-title">a.insert(2, 'd')</span>
+				<span id="badge25" class="completed-badge hidden">✅ пройдено</span>
+			</div>
+			<div class="code-block">
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span> <span class="op">=</span> <span class="bracket">[</span><span class="string">'a'</span><span class="op">,</span> <span class="string">'b'</span><span class="op">,</span> <span class="string">'c'</span><span class="bracket">]</span>
+				</div>
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span><span class="method">.insert</span><span class="paren">(</span><span class="number">2</span><span class="op">,</span> <span class="string">'d'</span><span class="paren">)</span>
+				</div>
+				<div class="code-line" style="margin-top: 0.3rem; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem;">
+					<span class="prompt">❯</span>
+					<span class="func">print</span><span class="paren">(</span><span class="var">a</span><span class="paren">)</span>
+					<span class="comment"># Что выведет?</span>
+				</div>
+			</div>
+			<div class="input-row">
+				<label for="answer25">Ответ:</label>
+				<input type="text" id="answer25" placeholder="введите список" autocomplete="off">
+				<button class="btn-check" id="check25">Проверить</button>
+			</div>
+			<div id="status25" class="task-status pending">
+				<span class="icon">⏳</span> Ожидание ответа
+			</div>
+		</div>
+
+		<!-- Задание 26 -->
+		<div class="task" id="task26">
+			<div class="task-header">
+				<span class="task-number">Задание 26</span>
+				<span class="task-title">del a[0]</span>
+				<span id="badge26" class="completed-badge hidden">✅ пройдено</span>
+			</div>
+			<div class="code-block">
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span> <span class="op">=</span> <span class="bracket">[</span><span class="string">'a'</span><span class="op">,</span> <span class="string">'b'</span><span class="op">,</span> <span class="string">'c'</span><span class="bracket">]</span>
+				</div>
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="keyword">del</span> <span class="var">a</span><span class="bracket">[</span><span class="number">0</span><span class="bracket">]</span>
+				</div>
+				<div class="code-line" style="margin-top: 0.3rem; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem;">
+					<span class="prompt">❯</span>
+					<span class="func">print</span><span class="paren">(</span><span class="var">a</span><span class="paren">)</span>
+					<span class="comment"># Что выведет?</span>
+				</div>
+			</div>
+			<div class="input-row">
+				<label for="answer26">Ответ:</label>
+				<input type="text" id="answer26" placeholder="введите список" autocomplete="off">
+				<button class="btn-check" id="check26">Проверить</button>
+			</div>
+			<div id="status26" class="task-status pending">
+				<span class="icon">⏳</span> Ожидание ответа
+			</div>
+		</div>
+
+		<!-- Задание 27 -->
+		<div class="task" id="task27">
+			<div class="task-header">
+				<span class="task-number">Задание 27</span>
+				<span class="task-title">del a[-1]</span>
+				<span id="badge27" class="completed-badge hidden">✅ пройдено</span>
+			</div>
+			<div class="code-block">
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span> <span class="op">=</span> <span class="bracket">[</span><span class="string">'a'</span><span class="op">,</span> <span class="string">'b'</span><span class="op">,</span> <span class="string">'c'</span><span class="bracket">]</span>
+				</div>
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="keyword">del</span> <span class="var">a</span><span class="bracket">[</span><span class="op">-</span><span class="number">1</span><span class="bracket">]</span>
+				</div>
+				<div class="code-line" style="margin-top: 0.3rem; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem;">
+					<span class="prompt">❯</span>
+					<span class="func">print</span><span class="paren">(</span><span class="var">a</span><span class="paren">)</span>
+					<span class="comment"># Что выведет?</span>
+				</div>
+			</div>
+			<div class="input-row">
+				<label for="answer27">Ответ:</label>
+				<input type="text" id="answer27" placeholder="введите список" autocomplete="off">
+				<button class="btn-check" id="check27">Проверить</button>
+			</div>
+			<div id="status27" class="task-status pending">
+				<span class="icon">⏳</span> Ожидание ответа
+			</div>
+		</div>
+
+		<!-- Задание 28 -->
+		<div class="task" id="task28">
+			<div class="task-header">
+				<span class="task-number">Задание 28</span>
+				<span class="task-title">a.remove('b')</span>
+				<span id="badge28" class="completed-badge hidden">✅ пройдено</span>
+			</div>
+			<div class="code-block">
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span> <span class="op">=</span> <span class="bracket">[</span><span class="string">'a'</span><span class="op">,</span> <span class="string">'b'</span><span class="op">,</span> <span class="string">'c'</span><span class="bracket">]</span>
+				</div>
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span><span class="method">.remove</span><span class="paren">(</span><span class="string">'b'</span><span class="paren">)</span>
+				</div>
+				<div class="code-line" style="margin-top: 0.3rem; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem;">
+					<span class="prompt">❯</span>
+					<span class="func">print</span><span class="paren">(</span><span class="var">a</span><span class="paren">)</span>
+					<span class="comment"># Что выведет?</span>
+				</div>
+			</div>
+			<div class="input-row">
+				<label for="answer28">Ответ:</label>
+				<input type="text" id="answer28" placeholder="введите список" autocomplete="off">
+				<button class="btn-check" id="check28">Проверить</button>
+			</div>
+			<div id="status28" class="task-status pending">
+				<span class="icon">⏳</span> Ожидание ответа
+			</div>
+		</div>
+
+		<!-- Задание 29 -->
+		<div class="task" id="task29">
+			<div class="task-header">
+				<span class="task-number">Задание 29</span>
+				<span class="task-title">a.pop()</span>
+				<span id="badge29" class="completed-badge hidden">✅ пройдено</span>
+			</div>
+			<div class="code-block">
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span> <span class="op">=</span> <span class="bracket">[</span><span class="string">'a'</span><span class="op">,</span> <span class="string">'b'</span><span class="op">,</span> <span class="string">'c'</span><span class="bracket">]</span>
+				</div>
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span><span class="method">.pop</span><span class="paren">(</span><span class="paren">)</span>
+				</div>
+				<div class="code-line" style="margin-top: 0.3rem; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem;">
+					<span class="prompt">❯</span>
+					<span class="func">print</span><span class="paren">(</span><span class="var">a</span><span class="paren">)</span>
+					<span class="comment"># Что выведет?</span>
+				</div>
+			</div>
+			<div class="input-row">
+				<label for="answer29">Ответ:</label>
+				<input type="text" id="answer29" placeholder="введите список" autocomplete="off">
+				<button class="btn-check" id="check29">Проверить</button>
+			</div>
+			<div id="status29" class="task-status pending">
+				<span class="icon">⏳</span> Ожидание ответа
+			</div>
+		</div>
+
+		<!-- Задание 30 -->
+		<div class="task" id="task30">
+			<div class="task-header">
+				<span class="task-number">Задание 30</span>
+				<span class="task-title">a.pop(0)</span>
+				<span id="badge30" class="completed-badge hidden">✅ пройдено</span>
+			</div>
+			<div class="code-block">
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span> <span class="op">=</span> <span class="bracket">[</span><span class="string">'a'</span><span class="op">,</span> <span class="string">'b'</span><span class="op">,</span> <span class="string">'c'</span><span class="bracket">]</span>
+				</div>
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span><span class="method">.pop</span><span class="paren">(</span><span class="number">0</span><span class="paren">)</span>
+				</div>
+				<div class="code-line" style="margin-top: 0.3rem; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem;">
+					<span class="prompt">❯</span>
+					<span class="func">print</span><span class="paren">(</span><span class="var">a</span><span class="paren">)</span>
+					<span class="comment"># Что выведет?</span>
+				</div>
+			</div>
+			<div class="input-row">
+				<label for="answer30">Ответ:</label>
+				<input type="text" id="answer30" placeholder="введите список" autocomplete="off">
+				<button class="btn-check" id="check30">Проверить</button>
+			</div>
+			<div id="status30" class="task-status pending">
+				<span class="icon">⏳</span> Ожидание ответа
+			</div>
+		</div>
+
+		<!-- Задание 31 -->
+		<div class="task" id="task31">
+			<div class="task-header">
+				<span class="task-number">Задание 31</span>
+				<span class="task-title">a.index('a')</span>
+				<span id="badge31" class="completed-badge hidden">✅ пройдено</span>
+			</div>
+			<div class="code-block">
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span> <span class="op">=</span> <span class="bracket">[</span><span class="string">'a'</span><span class="op">,</span> <span class="string">'b'</span><span class="op">,</span> <span class="string">'c'</span><span class="bracket">]</span>
+				</div>
+				<div class="code-line" style="margin-top: 0.3rem; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem;">
+					<span class="prompt">❯</span>
+					<span class="func">print</span><span class="paren">(</span><span class="var">a</span><span class="method">.index</span><span class="paren">(</span><span class="string">'a'</span><span class="paren">))</span>
+					<span class="comment"># Что выведет?</span>
+				</div>
+			</div>
+			<div class="input-row">
+				<label for="answer31">Ответ:</label>
+				<input type="text" id="answer31" placeholder="введите число" autocomplete="off">
+				<button class="btn-check" id="check31">Проверить</button>
+			</div>
+			<div id="status31" class="task-status pending">
+				<span class="icon">⏳</span> Ожидание ответа
+			</div>
+		</div>
+
+		<!-- Задание 32 -->
+		<div class="task" id="task32">
+			<div class="task-header">
+				<span class="task-number">Задание 32</span>
+				<span class="task-title">'a' in a</span>
+				<span id="badge32" class="completed-badge hidden">✅ пройдено</span>
+			</div>
+			<div class="code-block">
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span> <span class="op">=</span> <span class="bracket">[</span><span class="string">'a'</span><span class="op">,</span> <span class="string">'b'</span><span class="op">,</span> <span class="string">'c'</span><span class="bracket">]</span>
+				</div>
+				<div class="code-line" style="margin-top: 0.3rem; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem;">
+					<span class="prompt">❯</span>
+					<span class="func">print</span><span class="paren">(</span><span class="string">'a'</span> <span class="keyword">in</span> <span class="var">a</span><span class="paren">)</span>
+					<span class="comment"># Что выведет?</span>
+				</div>
+			</div>
+			<div class="input-row">
+				<label for="answer32">Ответ:</label>
+				<input type="text" id="answer32" placeholder="введите True или False" autocomplete="off">
+				<button class="btn-check" id="check32">Проверить</button>
+			</div>
+			<div id="status32" class="task-status pending">
+				<span class="icon">⏳</span> Ожидание ответа
+			</div>
+		</div>
+
+		<!-- Задание 33 -->
+		<div class="task" id="task33">
+			<div class="task-header">
+				<span class="task-number">Задание 33</span>
+				<span class="task-title">a.count('a')</span>
+				<span id="badge33" class="completed-badge hidden">✅ пройдено</span>
+			</div>
+			<div class="code-block">
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span> <span class="op">=</span> <span class="bracket">[</span><span class="string">'a'</span><span class="op">,</span> <span class="string">'b'</span><span class="op">,</span> <span class="string">'a'</span><span class="op">,</span> <span class="string">'a'</span><span class="bracket">]</span>
+				</div>
+				<div class="code-line" style="margin-top: 0.3rem; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem;">
+					<span class="prompt">❯</span>
+					<span class="func">print</span><span class="paren">(</span><span class="var">a</span><span class="method">.count</span><span class="paren">(</span><span class="string">'a'</span><span class="paren">))</span>
+					<span class="comment"># Что выведет?</span>
+				</div>
+			</div>
+			<div class="input-row">
+				<label for="answer33">Ответ:</label>
+				<input type="text" id="answer33" placeholder="введите число" autocomplete="off">
+				<button class="btn-check" id="check33">Проверить</button>
+			</div>
+			<div id="status33" class="task-status pending">
+				<span class="icon">⏳</span> Ожидание ответа
+			</div>
+		</div>
+
+		<!-- Задание 34 -->
+		<div class="task" id="task34">
+			<div class="task-header">
+				<span class="task-number">Задание 34</span>
+				<span class="task-title">a.count('c')</span>
+				<span id="badge34" class="completed-badge hidden">✅ пройдено</span>
+			</div>
+			<div class="code-block">
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span> <span class="op">=</span> <span class="bracket">[</span><span class="string">'a'</span><span class="op">,</span> <span class="string">'b'</span><span class="op">,</span> <span class="string">'a'</span><span class="op">,</span> <span class="string">'a'</span><span class="bracket">]</span>
+				</div>
+				<div class="code-line" style="margin-top: 0.3rem; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem;">
+					<span class="prompt">❯</span>
+					<span class="func">print</span><span class="paren">(</span><span class="var">a</span><span class="method">.count</span><span class="paren">(</span><span class="string">'c'</span><span class="paren">))</span>
+					<span class="comment"># Что выведет?</span>
+				</div>
+			</div>
+			<div class="input-row">
+				<label for="answer34">Ответ:</label>
+				<input type="text" id="answer34" placeholder="введите число" autocomplete="off">
+				<button class="btn-check" id="check34">Проверить</button>
+			</div>
+			<div id="status34" class="task-status pending">
+				<span class="icon">⏳</span> Ожидание ответа
+			</div>
+		</div>
+
+		<!-- Задание 35 -->
+		<div class="task" id="task35">
+			<div class="task-header">
+				<span class="task-number">Задание 35</span>
+				<span class="task-title">', '.join(a)</span>
+				<span id="badge35" class="completed-badge hidden">✅ пройдено</span>
+			</div>
+			<div class="code-block">
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span> <span class="op">=</span> <span class="bracket">[</span><span class="string">'a'</span><span class="op">,</span> <span class="string">'b'</span><span class="op">,</span> <span class="string">'c'</span><span class="bracket">]</span>
+				</div>
+				<div class="code-line" style="margin-top: 0.3rem; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem;">
+					<span class="prompt">❯</span>
+					<span class="func">print</span><span class="paren">(</span><span class="string">', '</span><span class="method">.join</span><span class="paren">(</span><span class="var">a</span><span class="paren">))</span>
+					<span class="comment"># Что выведет?</span>
+				</div>
+			</div>
+			<div class="input-row">
+				<label for="answer35">Ответ:</label>
+				<input type="text" id="answer35" placeholder="введите строку" autocomplete="off">
+				<button class="btn-check" id="check35">Проверить</button>
+			</div>
+			<div id="status35" class="task-status pending">
+				<span class="icon">⏳</span> Ожидание ответа
+			</div>
+		</div>
+
+		<!-- Задание 36 -->
+		<div class="task" id="task36">
+			<div class="task-header">
+				<span class="task-number">Задание 36</span>
+				<span class="task-title">sorted(a)</span>
+				<span id="badge36" class="completed-badge hidden">✅ пройдено</span>
+			</div>
+			<div class="code-block">
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span> <span class="op">=</span> <span class="bracket">[</span><span class="string">'b'</span><span class="op">,</span> <span class="string">'a'</span><span class="op">,</span> <span class="string">'c'</span><span class="bracket">]</span>
+				</div>
+				<div class="code-line" style="margin-top: 0.3rem; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem;">
+					<span class="prompt">❯</span>
+					<span class="func">print</span><span class="paren">(</span><span class="func">sorted</span><span class="paren">(</span><span class="var">a</span><span class="paren">))</span>
+					<span class="comment"># Что выведет?</span>
+				</div>
+			</div>
+			<div class="input-row">
+				<label for="answer36">Ответ:</label>
+				<input type="text" id="answer36" placeholder="введите список" autocomplete="off">
+				<button class="btn-check" id="check36">Проверить</button>
+			</div>
+			<div id="status36" class="task-status pending">
+				<span class="icon">⏳</span> Ожидание ответа
+			</div>
+		</div>
+
+		<!-- Задание 37 -->
+		<div class="task" id="task37">
+			<div class="task-header">
+				<span class="task-number">Задание 37</span>
+				<span class="task-title">a (после sorted)</span>
+				<span id="badge37" class="completed-badge hidden">✅ пройдено</span>
+			</div>
+			<div class="code-block">
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span> <span class="op">=</span> <span class="bracket">[</span><span class="string">'b'</span><span class="op">,</span> <span class="string">'a'</span><span class="op">,</span> <span class="string">'c'</span><span class="bracket">]</span>
+				</div>
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="func">sorted</span><span class="paren">(</span><span class="var">a</span><span class="paren">)</span>
+				</div>
+				<div class="code-line" style="margin-top: 0.3rem; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem;">
+					<span class="prompt">❯</span>
+					<span class="func">print</span><span class="paren">(</span><span class="var">a</span><span class="paren">)</span>
+					<span class="comment"># Что выведет? (оригинал не изменился)</span>
+				</div>
+			</div>
+			<div class="input-row">
+				<label for="answer37">Ответ:</label>
+				<input type="text" id="answer37" placeholder="введите список" autocomplete="off">
+				<button class="btn-check" id="check37">Проверить</button>
+			</div>
+			<div id="status37" class="task-status pending">
+				<span class="icon">⏳</span> Ожидание ответа
+			</div>
+		</div>
+
+		<!-- Задание 38 -->
+		<div class="task" id="task38">
+			<div class="task-header">
+				<span class="task-number">Задание 38</span>
+				<span class="task-title">a.sort()</span>
+				<span id="badge38" class="completed-badge hidden">✅ пройдено</span>
+			</div>
+			<div class="code-block">
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span> <span class="op">=</span> <span class="bracket">[</span><span class="string">'b'</span><span class="op">,</span> <span class="string">'a'</span><span class="op">,</span> <span class="string">'c'</span><span class="bracket">]</span>
+				</div>
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span><span class="method">.sort</span><span class="paren">(</span><span class="paren">)</span>
+				</div>
+				<div class="code-line" style="margin-top: 0.3rem; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem;">
+					<span class="prompt">❯</span>
+					<span class="func">print</span><span class="paren">(</span><span class="var">a</span><span class="paren">)</span>
+					<span class="comment"># Что выведет? (оригинал изменился)</span>
+				</div>
+			</div>
+			<div class="input-row">
+				<label for="answer38">Ответ:</label>
+				<input type="text" id="answer38" placeholder="введите список" autocomplete="off">
+				<button class="btn-check" id="check38">Проверить</button>
+			</div>
+			<div id="status38" class="task-status pending">
+				<span class="icon">⏳</span> Ожидание ответа
+			</div>
+		</div>
+
+		<!-- Задание 39 -->
+		<div class="task" id="task39">
+			<div class="task-header">
+				<span class="task-number">Задание 39</span>
+				<span class="task-title">a.sort(reverse=True)</span>
+				<span id="badge39" class="completed-badge hidden">✅ пройдено</span>
+			</div>
+			<div class="code-block">
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span> <span class="op">=</span> <span class="bracket">[</span><span class="string">'b'</span><span class="op">,</span> <span class="string">'a'</span><span class="op">,</span> <span class="string">'c'</span><span class="bracket">]</span>
+				</div>
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span><span class="method">.sort</span><span class="paren">(</span><span class="keyword">reverse</span><span class="op">=</span><span class="keyword">True</span><span class="paren">)</span>
+				</div>
+				<div class="code-line" style="margin-top: 0.3rem; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem;">
+					<span class="prompt">❯</span>
+					<span class="func">print</span><span class="paren">(</span><span class="var">a</span><span class="paren">)</span>
+					<span class="comment"># Что выведет?</span>
+				</div>
+			</div>
+			<div class="input-row">
+				<label for="answer39">Ответ:</label>
+				<input type="text" id="answer39" placeholder="введите список" autocomplete="off">
+				<button class="btn-check" id="check39">Проверить</button>
+			</div>
+			<div id="status39" class="task-status pending">
+				<span class="icon">⏳</span> Ожидание ответа
+			</div>
+		</div>
+
+		<!-- Задание 40 -->
+		<div class="task" id="task40">
+			<div class="task-header">
+				<span class="task-number">Задание 40</span>
+				<span class="task-title">len(a)</span>
+				<span id="badge40" class="completed-badge hidden">✅ пройдено</span>
+			</div>
+			<div class="code-block">
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span> <span class="op">=</span> <span class="bracket">[</span><span class="string">'a'</span><span class="op">,</span> <span class="string">'b'</span><span class="op">,</span> <span class="string">'c'</span><span class="bracket">]</span>
+				</div>
+				<div class="code-line" style="margin-top: 0.3rem; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem;">
+					<span class="prompt">❯</span>
+					<span class="func">print</span><span class="paren">(</span><span class="func">len</span><span class="paren">(</span><span class="var">a</span><span class="paren">))</span>
+					<span class="comment"># Что выведет?</span>
+				</div>
+			</div>
+			<div class="input-row">
+				<label for="answer40">Ответ:</label>
+				<input type="text" id="answer40" placeholder="введите число" autocomplete="off">
+				<button class="btn-check" id="check40">Проверить</button>
+			</div>
+			<div id="status40" class="task-status pending">
+				<span class="icon">⏳</span> Ожидание ответа
+			</div>
+		</div>
+
+		<!-- Задание 41 -->
+		<div class="task" id="task41">
+			<div class="task-header">
+				<span class="task-number">Задание 41</span>
+				<span class="task-title">b = a (копия ссылки)</span>
+				<span id="badge41" class="completed-badge hidden">✅ пройдено</span>
+			</div>
+			<div class="code-block">
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span> <span class="op">=</span> <span class="bracket">[</span><span class="number">1</span><span class="op">,</span> <span class="number">2</span><span class="op">,</span> <span class="number">3</span><span class="bracket">]</span>
+				</div>
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">b</span> <span class="op">=</span> <span class="var">a</span>
+				</div>
+				<div class="code-line" style="margin-top: 0.3rem; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem;">
+					<span class="prompt">❯</span>
+					<span class="func">print</span><span class="paren">(</span><span class="var">b</span><span class="paren">)</span>
+					<span class="comment"># Что выведет?</span>
+				</div>
+			</div>
+			<div class="input-row">
+				<label for="answer41">Ответ:</label>
+				<input type="text" id="answer41" placeholder="введите список" autocomplete="off">
+				<button class="btn-check" id="check41">Проверить</button>
+			</div>
+			<div id="status41" class="task-status pending">
+				<span class="icon">⏳</span> Ожидание ответа
+			</div>
+		</div>
+
+		<!-- Задание 42 -->
+		<div class="task" id="task42">
+			<div class="task-header">
+				<span class="task-number">Задание 42</span>
+				<span class="task-title">b = a.copy()</span>
+				<span id="badge42" class="completed-badge hidden">✅ пройдено</span>
+			</div>
+			<div class="code-block">
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span> <span class="op">=</span> <span class="bracket">[</span><span class="number">1</span><span class="op">,</span> <span class="number">2</span><span class="op">,</span> <span class="number">3</span><span class="bracket">]</span>
+				</div>
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">b</span> <span class="op">=</span> <span class="var">a</span><span class="method">.copy</span><span class="paren">(</span><span class="paren">)</span>
+				</div>
+				<div class="code-line" style="margin-top: 0.3rem; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem;">
+					<span class="prompt">❯</span>
+					<span class="func">print</span><span class="paren">(</span><span class="var">b</span><span class="paren">)</span>
+					<span class="comment"># Что выведет?</span>
+				</div>
+			</div>
+			<div class="input-row">
+				<label for="answer42">Ответ:</label>
+				<input type="text" id="answer42" placeholder="введите список" autocomplete="off">
+				<button class="btn-check" id="check42">Проверить</button>
+			</div>
+			<div id="status42" class="task-status pending">
+				<span class="icon">⏳</span> Ожидание ответа
+			</div>
+		</div>
+
+		<!-- Задание 43 -->
+		<div class="task" id="task43">
+			<div class="task-header">
+				<span class="task-number">Задание 43</span>
+				<span class="task-title">c = list(a)</span>
+				<span id="badge43" class="completed-badge hidden">✅ пройдено</span>
+			</div>
+			<div class="code-block">
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span> <span class="op">=</span> <span class="bracket">[</span><span class="number">1</span><span class="op">,</span> <span class="number">2</span><span class="op">,</span> <span class="number">3</span><span class="bracket">]</span>
+				</div>
+				<div class="code-line" style="margin-top: 0.3rem; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem;">
+					<span class="prompt">❯</span>
+					<span class="func">print</span><span class="paren">(</span><span class="func">list</span><span class="paren">(</span><span class="var">a</span><span class="paren">))</span>
+					<span class="comment"># Что выведет?</span>
+				</div>
+			</div>
+			<div class="input-row">
+				<label for="answer43">Ответ:</label>
+				<input type="text" id="answer43" placeholder="введите список" autocomplete="off">
+				<button class="btn-check" id="check43">Проверить</button>
+			</div>
+			<div id="status43" class="task-status pending">
+				<span class="icon">⏳</span> Ожидание ответа
+			</div>
+		</div>
+
+		<!-- Задание 44 -->
+		<div class="task" id="task44">
+			<div class="task-header">
+				<span class="task-number">Задание 44</span>
+				<span class="task-title">d = a[:]</span>
+				<span id="badge44" class="completed-badge hidden">✅ пройдено</span>
+			</div>
+			<div class="code-block">
+				<div class="code-line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span> <span class="op">=</span> <span class="bracket">[</span><span class="number">1</span><span class="op">,</span> <span class="number">2</span><span class="op">,</span> <span class="number">3</span><span class="bracket">]</span>
+				</div>
+				<div class="code-line" style="margin-top: 0.3rem; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem;">
+					<span class="prompt">❯</span>
+					<span class="func">print</span><span class="paren">(</span><span class="var">a</span><span class="bracket">[</span><span class="op">:</span><span class="bracket">]</span><span class="paren">)</span>
+					<span class="comment"># Что выведет?</span>
+				</div>
+			</div>
+			<div class="input-row">
+				<label for="answer44">Ответ:</label>
+				<input type="text" id="answer44" placeholder="введите список" autocomplete="off">
+				<button class="btn-check" id="check44">Проверить</button>
+			</div>
+			<div id="status44" class="task-status pending">
+				<span class="icon">⏳</span> Ожидание ответа
+			</div>
+		</div>
+
+		<div class="footer">
+			<div class="progress-text">
+				Прогресс: <strong id="progressText">0 / 44</strong>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		(function() {
+			// Правильные ответы
+			const CORRECT_ANSWERS = {
+				task1: "[]",
+				task2: "[]",
+				task3: "['a', 'b', 'c']",
+				task4: "['1', '2', '4']",
+				task5: "['a', 'b', '', 'c', 'd', '', '', 'e']",
+				task6: "['a/b', 'c/d', '/e']",
+				task7: "['a', 'b']",
+				task8: "[]",
+				task9: "['a']",
+				task10: "['a', 'b', 'c']",
+				task11: "['a', 'b', 'c']",
+				task12: "['a', 'b', 'c']",
+				task13: "['a', 'b', 'c']",
+				task14: "['a', 'c']",
+				task15: "['a']",
+				task16: "['a']",
+				task17: "['c', 'b', 'a']",
+				task18: "['c', 'a']",
+				task19: "['c']",
+				task20: "['c']",
+				task21: "['a', 'b', 'c', 'd']",
+				task22: "['a', 'b', 'd', 'e']",
+				task23: "['a', 'b', 'd', 'e']",
+				task24: "['a', 'b', ['d', 'e']]",
+				task25: "['a', 'b', 'd', 'c']",
+				task26: "['b', 'c']",
+				task27: "['a', 'b']",
+				task28: "['a', 'c']",
+				task29: "['a', 'b']",
+				task30: "['b']",
+				task31: "0",
+				task32: "True",
+				task33: "3",
+				task34: "0",
+				task35: "a, b, c",
+				task36: "['a', 'b', 'c']",
+				task37: "['b', 'a', 'c']",
+				task38: "['a', 'b', 'c']",
+				task39: "['c', 'b', 'a']",
+				task40: "3",
+				task41: "[1, 2, 3]",
+				task42: "[1, 2, 3]",
+				task43: "[1, 2, 3]",
+				task44: "[1, 2, 3]"
+			};
+
+			// Состояния заданий
+			const taskStates = {};
+			for (let i = 1; i <= 44; i++) {
+				taskStates['task' + i] = {
+					completed: false
+				};
+			}
+
+			// DOM элементы
+			const inputs = {};
+			const checks = {};
+			const statuses = {};
+			const badges = {};
+
+			for (let i = 1; i <= 44; i++) {
+				inputs['task' + i] = document.getElementById('answer' + i);
+				checks['task' + i] = document.getElementById('check' + i);
+				statuses['task' + i] = document.getElementById('status' + i);
+				badges['task' + i] = document.getElementById('badge' + i);
+			}
+
+			const progressText = document.getElementById('progressText');
+
+			function normalizeInput(str) {
+				return str.replace(/\s/g, '');
+			}
+
+			function setStatus(statusEl, isCorrect) {
+				if (isCorrect) {
+					statusEl.className = 'task-status correct';
+					statusEl.innerHTML = '<span class="icon">✅</span> Верно!';
+				} else {
+					statusEl.className = 'task-status wrong';
+					statusEl.innerHTML = '<span class="icon">❌</span> Неверно. Попробуй ещё раз.';
+					setTimeout(() => {
+						statusEl.className = 'task-status pending';
+						statusEl.innerHTML = '<span class="icon">⏳</span> Ожидание ответа';
+					}, 1500);
+				}
+			}
+
+			function checkAnswer(taskId) {
+				const inputEl = inputs[taskId];
+				const statusEl = statuses[taskId];
+				const badgeEl = badges[taskId];
+				const checkEl = checks[taskId];
+				const answer = inputEl.value.trim();
+
+				if (taskStates[taskId].completed) return;
+
+				if (answer === '') {
+					statusEl.className = 'task-status pending';
+					statusEl.innerHTML = '<span class="icon">✏️</span> Введите ответ';
+					setTimeout(() => {
+						statusEl.innerHTML = '<span class="icon">⏳</span> Ожидание ответа';
+					}, 1200);
+					return;
+				}
+
+				const normalizedInput = normalizeInput(answer);
+				const normalizedCorrect = normalizeInput(CORRECT_ANSWERS[taskId]);
+
+				const isCorrect = normalizedInput === normalizedCorrect;
+
+				if (isCorrect) {
+					taskStates[taskId].completed = true;
+					badgeEl.classList.remove('hidden');
+					inputEl.disabled = true;
+					checkEl.disabled = true;
+					inputEl.style.opacity = '0.6';
+				}
+
+				setStatus(statusEl, isCorrect);
+				updateProgress();
+			}
+
+			function updateProgress() {
+				const completed = Object.values(taskStates).filter(s => s.completed).length;
+				const total = Object.keys(taskStates).length;
+				progressText.textContent = `${completed} / ${total}`;
+
+				if (completed === total) {
+					const headerIcon = document.querySelector('.header .icon');
+					headerIcon.textContent = '🏆';
+					document.querySelector('.header p').textContent = 'Все задания пройдены!';
+				}
+			}
+
+			// Назначаем обработчики
+			for (let i = 1; i <= 44; i++) {
+				const taskId = 'task' + i;
+				const checkEl = checks[taskId];
+				const inputEl = inputs[taskId];
+
+				checkEl.addEventListener('click', () => checkAnswer(taskId));
+
+				inputEl.addEventListener('keydown', (e) => {
+					if (e.key === 'Enter') {
+						e.preventDefault();
+						checkAnswer(taskId);
+					}
+				});
+			}
+
+			// Автофокус на первое поле
+			if (!inputs.task1.disabled) {
+				inputs.task1.focus();
+			}
+		})();
+	</script>
+
+</body></html>
