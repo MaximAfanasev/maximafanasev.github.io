@@ -780,7 +780,7 @@
 	<div class="pagination-wrapper">
 		<h2>4исла  </h2>
 		<ul class="pagination">
-			<a class="page-link" href="python/numbers/1.html">6️⃣ 7️⃣</a>
+			<a class="page-link" href="python/numbers/index.html">6️⃣ 7️⃣</a>
 		</ul>
 		<a class="answers" href="https://github.com/MaximAfanasev/maximafanasev.github.io/blob/main/python/numbers/numbers.py" target="_blank">Ответы 💡</a>
 		<img class="arrow" src="9.png" alt="" width="70">
@@ -791,7 +791,7 @@
 		</div>
 		<h2>"Строки 🧠"</h2>
 		<ul class="pagination">
-			<a class="page-links" href="python/strings/1.html">
+			<a class="page-links" href="python/strings/index.html">
 				<div class="flip-container">
 					<div class="front">
 						<img src="4.png" alt="" width="40px">
@@ -823,7 +823,7 @@
 		</div>
 		<h2>('Кор', 'тежи', '🚔')</h2>
 		<ul class="pagination">
-			<a class="page-link" href="python/korteg/1.html">🐡
+			<a class="page-link" href="python/korteg/index.html">🐡
 			</a>
 		</ul>
 		<a class="answers" href="https://github.com/MaximAfanasev/maximafanasev.github.io/blob/main/python/korteg/korteg.py" target="_blank">Ответы 💡</a>
@@ -834,7 +834,7 @@
 		</div>
 		<h2>{'Сло': 'ва', 'р': 'и'}</h2>
 		<ul class="pagination">
-			<a class="page-link" href="python/objects/1.html">📓
+			<a class="page-link" href="python/objects/index.html">📓
 			</a>
 		</ul>
 		<a class="answers" href="https://github.com/MaximAfanasev/maximafanasev.github.io/blob/main/python/objects/objects.py" target="_blank">Ответы 💡</a>
@@ -862,9 +862,6 @@
 		<a class="answers" href="https://github.com/MaximAfanasev/maximafanasev.github.io/blob/main/python/structure/structure.py" target="_blank">Ответы 💡</a>
 	</div>
 
-	<!-- Кнопка очистки прогресса -->
-	<button class="clear-btn" id="clearProgressBtn">Начать с начала</button>
-
 	<script>
 		(function() {
 			// Список всех ключей для заданий
@@ -883,7 +880,7 @@
 			const base3Link = document.getElementById('base3Link');
 			const base4Link = document.getElementById('base4Link');
 			const base5Link = document.getElementById('base5Link');
-			const clearBtn = document.getElementById('clearProgressBtn');
+			
 
 			// Функция обновления индикаторов (мишень)
 			function updateIndicators() {
@@ -942,10 +939,6 @@
 			// Обновляем при загрузке
 			updateIndicators();
 
-			// Обработчик для кнопки очистки
-			if (clearBtn) {
-				clearBtn.addEventListener('click', clearAllProgress);
-			}
 
 			// Слушаем изменения в localStorage
 			window.addEventListener('storage', function(e) {
