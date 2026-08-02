@@ -1,668 +1,328 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ru">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link type="image/x-icon" rel="icon" href="korean.png">
-	<title>안녕 🇰🇷</title>
-	<link rel="stylesheet" href="../../css/t.css">
-	<style>
-		* {
-			margin: 0;
-			padding: 0;
-			box-sizing: border-box;
-			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-		}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Корейский стиль</title>
+  <!-- Google Font: Noto Sans KR для корейского акцента + игра со шрифтами -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-		body {
-			background: #121212;
-			min-height: 100vh;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			padding: 20px;
-		}
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #fef9f1;  /* тёплый рисовый оттенок */
+      font-family: 'Noto Sans KR', 'Segoe UI', sans-serif;
+      padding: 20px;
+      /* лёгкий корейский орнамент (имитация традиционного узора) */
+      background-image: 
+        radial-gradient(circle at 10% 30%, rgba(235, 215, 195, 0.2) 0%, transparent 25%),
+        radial-gradient(circle at 90% 70%, rgba(215, 195, 175, 0.2) 0%, transparent 30%);
+    }
 
-		.buttons-container button {
-			width: 60px;
-			height: 60px;
-			font-size: 30px;
-			border-radius: 10px;
-			margin-right: 10px;
-		}
+    .card {
+      max-width: 700px;
+      width: 100%;
+      background: rgba(255, 248, 240, 0.7);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      border-radius: 48px 48px 48px 48px;
+      padding: 3rem 2.5rem;
+      box-shadow: 
+        0 20px 40px -12px rgba(140, 100, 70, 0.25),
+        inset 0 1px 2px rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(235, 215, 195, 0.4);
+      transition: 0.3s ease;
+      text-align: center;
+      position: relative;
+    }
 
-		.container {
-			background-color: #1e1e1e;
-			border-radius: 15px;
-			padding: 30px;
-			width: 100%;
-			max-width: 600px;
-			text-align: center;
-			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-		}
+    /* декоративный элемент — как печать или уголок */
+    .card::before {
+      content: "❀";
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 28px;
+      color: #d9b8a4;
+      opacity: 0.4;
+      transform: rotate(15deg);
+    }
 
-		.word-info {
-			color: #4a9eff;
-			margin-bottom: 10px;
-			font-size: 5rem;
-		}
+    .card::after {
+      content: "❀";
+      position: absolute;
+      bottom: 20px;
+      left: 30px;
+      font-size: 28px;
+      color: #d9b8a4;
+      opacity: 0.4;
+      transform: rotate(-10deg);
+    }
 
-		.translation {
-			color: #888;
-			margin-bottom: 20px;
-			font-size: 1rem;
-		}
+    /* главный заголовок — приветствие на корейском */
+    .greeting {
+      font-size: 3.2rem;
+      font-weight: 700;
+      color: #4a3729;
+      letter-spacing: 6px;
+      margin-bottom: 0.4rem;
+      word-break: keep-all;
+      line-height: 1.2;
+    }
 
-		.symbols-display {
-			font-size: 3.5rem;
-			letter-spacing: 10px;
-			margin: 30px 0;
-			color: #ffffff;
-			font-weight: bold;
-		}
+    .greeting-sub {
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: #8b7767;
+      letter-spacing: 4px;
+      margin-bottom: 2rem;
+      border-top: 1px solid #e5d6c8;
+      border-bottom: 1px solid #e5d6c8;
+      display: inline-block;
+      padding: 0.4rem 1.2rem;
+      backdrop-filter: blur(2px);
+      background: rgba(255, 242, 232, 0.3);
+      border-radius: 60px;
+    }
 
-		span {
-			color: gold;
-			display: block;
-			margin-bottom: 20px;
-			font-size: 17px;
-		}
+    .divider {
+      width: 80px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #d0b8a6, #b3927c, #d0b8a6, transparent);
+      margin: 1rem auto 2rem auto;
+    }
 
-		.input-container {
-			display: flex;
-			justify-content: center;
-			flex-wrap: wrap;
-			gap: 15px;
-			margin: 40px 0;
-		}
+    /* описание с корейским шармом */
+    .description {
+      font-size: 1rem;
+      font-weight: 300;
+      color: #5a4a3c;
+      margin-bottom: 2.8rem;
+      line-height: 1.8;
+      padding: 0 0.5rem;
+      background: rgba(255, 240, 230, 0.3);
+      border-radius: 60px;
+      padding: 0.5rem 1rem;
+      display: inline-block;
+      backdrop-filter: blur(2px);
+      border: 1px solid rgba(220, 195, 175, 0.2);
+    }
 
-		.char-input {
-			width: 70px;
-			height: 80px;
-			font-size: 2.5rem;
-			text-align: center;
-			border: 3px solid #333;
-			border-radius: 10px;
-			background-color: #2a2a2a;
-			transition: all 0.3s ease;
-			color: #ffffff;
-		}
+    /* сетка для двух ссылок — изящно и воздушно */
+    .link-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin: 2.2rem 0 1.2rem;
+    }
 
-		.char-input:focus {
-			outline: none;
-			border-color: #4a9eff;
-			background-color: #333;
-		}
+    .link-item {
+      flex: 1 1 180px;
+      min-width: 160px;
+      background: rgba(255, 245, 235, 0.6);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      border-radius: 100px 30px 30px 100px;  /* асимметричный, но мягкий */
+      padding: 0.8rem 1.6rem 0.8rem 2rem;
+      border: 1px solid rgba(210, 185, 165, 0.3);
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      box-shadow: 0 4px 8px rgba(160, 120, 90, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
 
-		.char-input.correct {
-			border-color: #4caf50;
-			background-color: #2a3a2a;
-		}
+    .link-item:hover {
+      transform: translateY(-6px) scale(1.02);
+      background: rgba(255, 240, 225, 0.9);
+      border-color: #c9ad97;
+      box-shadow: 0 16px 28px -8px rgba(140, 100, 70, 0.3);
+    }
 
-		@media (max-width: 768px) {
-			.symbols-display {
-				font-size: 2.5rem;
-				letter-spacing: 5px;
-			}
+    .link-item a {
+      text-decoration: none;
+      font-weight: 400;
+      font-size: 1.5rem;
+      letter-spacing: 2px;
+      color: #4f3a2b;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+      justify-content: center;
+      transition: 0.2s;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
 
-			.char-input {
-				width: 60px;
-				height: 70px;
-				font-size: 2rem;
-			}
+    .link-item a span {
+      font-size: 1.2rem;
+      opacity: 0.7;
+      font-weight: 300;
+      margin-left: 4px;
+    }
 
-			.input-container {
-				gap: 10px;
-			}
-		}
+    /* иконки-разделители в ссылках (корейские стилизованные) */
+    .link-item .icon {
+      font-size: 1.8rem;
+      line-height: 1;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
+    }
 
-		input::placeholder {
-			opacity: 0.2;
-			color: transparent;
-		}
+    /* особый акцент для первой ссылки (anyeng) */
+    .link-anyeng {
+      background: linear-gradient(145deg, #f7ede4, #f2e3d8);
+    }
+    .link-anyeng a {
+      color: #4d3829;
+    }
+    .link-anyeng:hover {
+      background: #f5e3d4;
+    }
 
-		.placeholder-hidden::placeholder {
-			color: #111 !important;
-		}
+    /* второй — kamsamnida */
+    .link-kamsa {
+      background: linear-gradient(145deg, #f1e5db, #ecdbcf);
+    }
+    .link-kamsa a {
+      color: #3f2f22;
+    }
+    .link-kamsa:hover {
+      background: #ebd6c7;
+    }
 
-		@media (max-width: 480px) {
-			.symbols-display {
-				font-size: 2rem;
-				letter-spacing: 3px;
-			}
+    /* маленький текст под ссылками — корейская вежливость */
+    .footnote {
+      margin-top: 2.4rem;
+      font-size: 0.9rem;
+      color: #aa9686;
+      letter-spacing: 2px;
+      font-weight: 300;
+      border-top: 1px solid #e5d6c8;
+      padding-top: 1.8rem;
+      display: flex;
+      justify-content: center;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
 
-			.char-input {
-				width: 50px;
-				height: 60px;
-				font-size: 1.8rem;
-			}
-		}
+    .footnote span {
+      background: rgba(235, 215, 195, 0.2);
+      padding: 0.2rem 1rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      backdrop-filter: blur(2px);
+    }
 
-		* {
-			margin: 0;
-			padding: 0;
-			box-sizing: border-box;
-		}
+    /* адаптивность */
+    @media (max-width: 500px) {
+      .card {
+        padding: 2rem 1.2rem;
+        border-radius: 32px;
+      }
+      .greeting {
+        font-size: 2.4rem;
+        letter-spacing: 4px;
+      }
+      .greeting-sub {
+        font-size: 0.95rem;
+      }
+      .link-item {
+        flex: 1 1 140px;
+        padding: 0.6rem 1rem;
+        border-radius: 40px 16px 16px 40px;
+      }
+      .link-item a {
+        font-size: 1.2rem;
+      }
+      .link-item .icon {
+        font-size: 1.4rem;
+      }
+      .card::before, .card::after {
+        font-size: 20px;
+      }
+    }
 
-		:root {
-			--bg-gradient-start: #121212;
-			--bg-gradient-end: #1a1a2e;
-			--container-bg: #2d3748;
-			--text-color: #e2e8f0;
-			--korean-word-color: #63b3ed;
-			--input-border: #4a5568;
-			--input-focus: #63b3ed;
-			--input-correct: #48bb78;
-			--input-incorrect: #fc8181;
-			--counter-bg: #4a5568;
-			--counter-text: #cbd5e0;
-			--hint-color: #a0aec0;
-			--button-bg: #4299e1;
-			--button-hover: #3182ce;
-			--shadow-color: rgba(0, 0, 0, 0.5);
-			--theme-toggle-bg: #4a5568;
-			--theme-toggle-icon: #cbd5e0;
-		}
+    /* маленькая анимация при загрузке */
+    .card {
+      animation: softFade 0.9s ease-out;
+    }
+    @keyframes softFade {
+      0% { opacity: 0; transform: scale(0.96) translateY(16px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
+    }
 
-		body {
-			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-			background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
-			min-height: 100vh;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			padding: 20px;
-			transition: background 0.3s ease;
-		}
-
-		.container {
-			border-radius: 20px;
-			padding: 40px;
-			box-shadow: 0 20px 60px var(--shadow-color);
-			width: 100%;
-			text-align: center;
-			position: relative;
-			transition: all 0.3s ease;
-		}
-
-		h1 {
-			color: var(--text-color);
-			margin-bottom: 30px;
-			font-size: 2.5em;
-			transition: color 0.3s ease;
-		}
-
-		.inputs-container {
-			display: flex;
-			justify-content: center;
-			gap: 10px;
-			flex-wrap: wrap;
-			margin-bottom: 20px;
-		}
-
-		.input-box {
-			width: 70px;
-			height: 70px;
-			font-size: 40px;
-			text-align: center;
-			border: 3px solid var(--input-border);
-			border-radius: 10px;
-			outline: none;
-			transition: all 0.3s;
-			font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
-			background-color: var(--container-bg);
-			color: var(--text-color);
-		}
-
-		.input-box:focus {
-			border-color: var(--input-focus);
-			box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
-		}
-
-		.input-box.correct {
-			border-color: var(--input-correct);
-			background-color: rgba(76, 175, 80, 0.1);
-		}
-
-		.input-box.incorrect {
-			border-color: var(--input-incorrect);
-			background-color: rgba(244, 67, 54, 0.1);
-		}
-
-		.hint {
-			color: var(--hint-color);
-			margin-top: 15px;
-			font-size: 16px;
-			transition: color 0.3s ease;
-		}
-
-		a {
-			color: #fff;
-			text-decoration: none;
-		}
-
-		.r {
-			padding: 10px;
-			border-radius: 10px;
-			background: transparent;
-			color: #fff;
-		}
-
-		button {
-			background: transparent;
-			margin-top: 20px;
-			color: gold;
-			padding: 5px 10px;
-			border-radius: 50%;
-			font-size: 30px;
-		}
-
-		.word-counter {
-			color: greenyellow;
-			margin: 0 auto;
-			text-align: center;
-		}
-
-		.korean-word {
-			color: cornflowerblue;
-			font-size: 60px;
-			margin-bottom: 20px;
-		}
-	</style>
-
-	<style>
-		.compact-timer {
-			position: fixed;
-			top: 20px;
-			left: calc(50% - 75px);
-			background: rgba(0, 0, 0, 0.7);
-			border-radius: 10px;
-			padding: 12px 15px;
-			z-index: 1000;
-			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-			backdrop-filter: blur(5px);
-			border: 1px solid rgba(255, 255, 255, 0.1);
-			min-width: 150px;
-		}
-
-		.timer-header {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			font-size: 2rem;
-		}
-
-		.timer-number {
-			font-size: 1.4rem;
-			font-weight: bold;
-			color: white;
-			text-align: center;
-			margin-bottom: 8px;
-			font-family: monospace;
-		}
-
-		.sticks-container {
-			display: flex;
-			justify-content: center;
-			gap: 3px;
-			margin-bottom: 5px;
-			height: 30px;
-			align-items: flex-end;
-		}
-
-		.stick {
-			width: 8px;
-			background-color: #FFD700;
-			border-radius: 1px;
-			transition: all 0.4s ease;
-			opacity: 1;
-			box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
-		}
-
-		.stick.inactive {
-			opacity: 0.2;
-			transform: scaleY(0.7);
-		}
-
-		.progress-container {
-			width: 100%;
-			height: 3px;
-			background-color: rgba(255, 255, 255, 0.2);
-			border-radius: 2px;
-			overflow: hidden;
-		}
-
-		.progress-bar {
-			height: 100%;
-			background-color: #FFD700;
-			width: 100%;
-			transition: width 1s linear;
-			border-radius: 2px;
-		}
-
-		.timer-message {
-			font-size: 0.7rem;
-			color: rgba(255, 255, 255, 0.7);
-			text-align: center;
-			margin-top: 5px;
-		}
-	</style>
+    /* псевдо-корейский орнамент (точки) */
+    .dot-ornament {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin: 1rem 0 0.2rem;
+    }
+    .dot-ornament i {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background: #d9c2b0;
+      border-radius: 50%;
+      opacity: 0.4;
+    }
+    .dot-ornament i:nth-child(2) { width: 8px; height: 8px; opacity: 0.5; }
+    .dot-ornament i:nth-child(4) { width: 8px; height: 8px; opacity: 0.5; }
+  </style>
 </head>
-
 <body>
-	<div class="compact-timer" id="compactTimer">
-		<div class="sticks-container" id="sticksContainer"></div>
-		<div class="word-counter" id="wordCounter">0</div>
-	</div>
-	<div class="container">
-		<div class="korean-word">안녕</div>
-		<div class="inputs-container">
-			<input type="text" class="input-box" maxlength="1" placeholder="ㅇ">
-			<input type="text" class="input-box" maxlength="1" placeholder="ㅏ">
-			<input type="text" class="input-box" maxlength="1" placeholder="ㄴ">
-			<input type="text" class="input-box" maxlength="1" placeholder="ㄴ">
-			<input type="text" class="input-box" maxlength="1" placeholder="ㅕ">
-			<input type="text" class="input-box" maxlength="1" placeholder="ㅇ">
-		</div>
-			<span>ㅇ ㅏ ㄴ ㄴ ㅕ ㅇ</span>
-	</div>
+  <div class="card">
+    <!-- корейское приветствие -->
+    <div class="greeting">✨ 안녕 ✨</div>
+    <div class="greeting-sub">—  어서 오세요 —</div>
+    <div class="divider"></div>
 
-	<script>
-		const targetCharacters = ['ㅇ', 'ㅏ', 'ㄴ', 'ㄴ', 'ㅕ', 'ㅇ'];
-	</script>
-	<script>
-		document.addEventListener('DOMContentLoaded', function() {
-			// Получаем элементы
-			const inputBoxes = document.querySelectorAll('.input-box');
-			const html = document.documentElement;
-			const wordCounter = document.getElementById('wordCounter');
-			let correctWordsCount = 0;
+    <div class="description">
+      <span>🍵 따뜻한 차 한 잔의 여유</span>
+    </div>
 
-			// Функция для очистки и сброса инпутов
-			function resetInputs() {
-				inputBoxes.forEach(input => {
-					input.value = '';
-					input.classList.remove('correct', 'incorrect');
-					input.disabled = false;
-				});
+    <!-- две основные ссылки -->
+    <div class="link-grid">
+      <!-- ссылка на anyeng.html -->
+      <div class="link-item link-anyeng">
+        <a href="anyeng.html">
+          <span class="icon">🌸</span> 
+          <span>Привет</span>
+        </a>
+      </div>
 
-				// Фокус на первый инпут
-				inputBoxes[0].focus();
-			}
+      <!-- ссылка на kamsamnida.html -->
+      <div class="link-item link-kamsa">
+        <a href="kamsamnida.html">
+          <span class="icon">🌿</span> 
+          <span>Спасибо</span>
+        </a>
+      </div>
+    </div>
 
-			// Функция для проверки ввода (без учета регистра)
-			function checkInput() {
-				let allCorrect = true;
+    <!-- декоративные точки (имитация узора) -->
+    <div class="dot-ornament">
+      <i></i><i></i><i></i><i></i><i></i>
+    </div>
 
-				inputBoxes.forEach((input, index) => {
-					const value = input.value.trim();
-
-					// Очищаем предыдущие классы
-					input.classList.remove('correct', 'incorrect');
-
-					if (value === '') {
-						allCorrect = false;
-					} else if (value.toLowerCase() === targetCharacters[index].toLowerCase()) {
-						// Сравниваем в нижнем регистре для регистронезависимой проверки
-						input.classList.add('correct');
-					} else {
-						input.classList.add('incorrect');
-						allCorrect = false;
-					}
-				});
-
-				// Если все правильно
-				if (allCorrect) {
-					// Увеличиваем счетчик
-					correctWordsCount++;
-					wordCounter.textContent = correctWordsCount;
-
-					// Ждем 1 секунду, затем очищаем инпуты
-					setTimeout(() => {
-						resetInputs();
-						if (resultMessage) {
-							resultMessage.textContent = '';
-							resultMessage.className = 'result-message';
-						}
-					}, 100);
-				} else {
-					if (resultMessage) {
-						resultMessage.textContent = '';
-						resultMessage.className = 'result-message';
-					}
-				}
-			}
-
-			// Обработчики событий для инпутов
-			inputBoxes.forEach((input, index) => {
-				// При вводе символа - автоматически преобразуем в нижний регистр
-				input.addEventListener('input', function(e) {
-					// Преобразуем введенное значение в нижний регистр
-					if (e.target.value !== e.target.value.toLowerCase()) {
-						e.target.value = e.target.value.toLowerCase();
-					}
-
-					// Автоматически переходим к следующему инпуту
-					if (e.target.value !== '') {
-						if (index < inputBoxes.length - 1) {
-							inputBoxes[index + 1].focus();
-						}
-					}
-
-					checkInput();
-				});
-
-				// При вставке текста (paste) - также преобразуем в нижний регистр
-				input.addEventListener('paste', function(e) {
-					e.preventDefault();
-					const pastedText = (e.clipboardData || window.clipboardData).getData('text');
-					const lowerText = pastedText.toLowerCase();
-
-					// Вставляем только первый символ, если это однобуквенное поле
-					if (input.maxLength === 1) {
-						input.value = lowerText.charAt(0);
-					} else {
-						input.value = lowerText;
-					}
-
-					checkInput();
-				});
-
-				// При нажатии клавиш (для удобства навигации)
-				input.addEventListener('keydown', function(e) {
-					// Преобразуем вводимые буквы в нижний регистр
-					if (e.key.length === 1 && e.key.match(/[a-zA-Z]/) && e.key !== e.key.toLowerCase()) {
-						e.preventDefault();
-						input.value = e.key.toLowerCase();
-						checkInput();
-
-						// Автоматически переходим к следующему инпуту
-						if (index < inputBoxes.length - 1) {
-							setTimeout(() => inputBoxes[index + 1].focus(), 10);
-						}
-						return;
-					}
-
-					if (e.key === 'Backspace' && e.target.value === '' && index > 0) {
-						inputBoxes[index - 1].focus();
-					}
-
-					if (e.key === 'ArrowLeft' && index > 0) {
-						inputBoxes[index - 1].focus();
-					}
-
-					if (e.key === 'ArrowRight' && index < inputBoxes.length - 1) {
-						inputBoxes[index + 1].focus();
-					}
-				});
-			});
-
-			// Автофокус на первый инпут при загрузке
-			inputBoxes[0].focus();
-		});
-
-		document.getElementById('hidePlaceholderBtn').addEventListener('click', function() {
-			const inputBoxes = document.querySelectorAll('.input-box');
-
-			// Переключаем класс у всех input
-			inputBoxes.forEach(input => {
-				input.classList.toggle('placeholder-hidden');
-			});
-
-			// Проверяем, есть ли класс у первого input
-			const isHidden = inputBoxes[0] && inputBoxes[0].classList.contains('placeholder-hidden');
-
-			// Устанавливаем текст в зависимости от состояния
-			this.textContent = isHidden ? '🤫' : '👀';
-		});
-	</script>
-	<script>
-		document.addEventListener('DOMContentLoaded', function() {
-			// Создаем палочки для визуализации
-			const sticksContainer = document.getElementById('sticksContainer');
-			for (let i = 0; i < 10; i++) {
-				const stick = document.createElement('div');
-				stick.className = 'stick';
-				stick.style.height = `${15 + (i % 3)}px`; // Разная высота для визуального интереса
-				sticksContainer.appendChild(stick);
-			}
-
-			// Начальное значение таймера
-			let timeLeft = 10;
-			const allSticks = document.querySelectorAll('.stick');
-
-			// Переменные для управления таймером
-			let timerInterval = null;
-			let inactivityTimeout = null;
-			let isTimerRunning = false;
-			const INACTIVITY_TIME = 2000; // 2 секунды бездействия
-
-			// Функция запуска/перезапуска таймера
-			function startTimer() {
-				if (timerInterval) {
-					clearInterval(timerInterval);
-				}
-
-				isTimerRunning = true;
-
-				timerInterval = setInterval(updateCompactTimer, 1000);
-			}
-
-			// Функция остановки таймера
-			function pauseTimer() {
-				if (timerInterval) {
-					clearInterval(timerInterval);
-					timerInterval = null;
-				}
-
-				isTimerRunning = false;
-			}
-
-			// Функция сброса таймера бездействия
-			function resetInactivityTimer() {
-				// Если таймер был приостановлен и пользователь проявил активность
-				if (!isTimerRunning) {
-					// Останавливаем текущий таймер бездействия
-					if (inactivityTimeout) {
-						clearTimeout(inactivityTimeout);
-					}
-
-					// Запускаем новый таймер бездействия
-					inactivityTimeout = setTimeout(() => {
-						startTimer(); // Через 2 секунды бездействия запускаем таймер
-					}, INACTIVITY_TIME);
-				} else {
-					// Если таймер уже работает, просто перезапускаем таймер бездействия
-					if (inactivityTimeout) {
-						clearTimeout(inactivityTimeout);
-					}
-
-					inactivityTimeout = setTimeout(() => {
-						// Не останавливаем таймер, если он уже работает
-					}, INACTIVITY_TIME);
-				}
-			}
-
-			// Функция обновления таймера
-			function updateCompactTimer() {
-				// Обновляем отображение времени
-
-				// Обновляем палочки
-				const activeSticks = 10 - timeLeft;
-				allSticks.forEach((stick, index) => {
-					if (index < activeSticks) {
-						stick.classList.add('inactive');
-					} else {
-						stick.classList.remove('inactive');
-					}
-				});
-
-				// Уменьшаем время
-				timeLeft--;
-
-				// Когда время истекло
-				if (timeLeft < 0) {
-					clearInterval(timerInterval);
-
-					// Делаем все палочки неактивными
-					allSticks.forEach(stick => {
-						stick.classList.add('inactive');
-					});
-
-					// Перенаправление через 0.5 секунды после завершения таймера
-					setTimeout(() => {
-						window.location.href = "korean/index.html"; // Раскомментируйте и измените на нужный URL
-
-						// Для демонстрации - просто скрываем таймер
-						document.getElementById('compactTimer').style.opacity = '0';
-						setTimeout(() => {
-							document.getElementById('compactTimer').style.display = 'none';
-						}, 500);
-					}, 500);
-				}
-			}
-
-			// Инициализируем отображение
-			updateCompactTimer();
-
-			// Запускаем таймер изначально
-			startTimer();
-
-			// Слушатели событий для отслеживания активности пользователя
-			const userActivityEvents = [
-				'mousedown', 'mousemove', 'keydown', 'scroll',
-				'touchstart', 'touchmove', 'click'
-			];
-
-			userActivityEvents.forEach(eventName => {
-				document.addEventListener(eventName, () => {
-					// При любой активности пользователя останавливаем таймер
-					pauseTimer();
-
-					// Сбрасываем таймер бездействия
-					resetInactivityTimer();
-				}, {
-					passive: true
-				});
-			});
-
-			// Добавляем возможность закрыть таймер (опционально)
-			const timerHeader = document.querySelector('.timer-header');
-			let closeTimer = document.createElement('span');
-			closeTimer.style.cursor = 'pointer';
-			closeTimer.style.fontSize = '0.8rem';
-			closeTimer.addEventListener('click', function() {
-				clearInterval(timerInterval);
-				if (inactivityTimeout) {
-					clearTimeout(inactivityTimeout);
-				}
-				document.getElementById('compactTimer').style.opacity = '0';
-				setTimeout(() => {
-					document.getElementById('compactTimer').style.display = 'none';
-				}, 300);
-			});
-
-			document.querySelector('.timer-header').appendChild(closeTimer);
-		});
-	</script>
-</body></html>
+    <!-- маленький корейский акцент -->
+    <div class="footnote">
+      <span>♡  정성  ♡</span>
+      <span>✧  감사  ✧</span>
+      <span>❀  평온  ❀</span>
+    </div>
+  </div>
+</body>
+</html>
