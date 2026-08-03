@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Основы</title>
+	<link rel="icon" type="image/png" href="../../favicon.png">
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			min-height: 100vh;
+			background: radial-gradient(ellipse at 20% 30%, #0f172a, #020617);
+			font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+			padding: 2rem 1.5rem;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.header {
+			text-align: center;
+			margin-bottom: 3rem;
+			max-width: 800px;
+		}
+
+		.header .icon {
+			font-size: 4rem;
+			display: block;
+			margin-bottom: 0.5rem;
+			animation: float 3s ease-in-out infinite;
+		}
+
+		@keyframes float {
+
+			0%,
+			100% {
+				transform: translateY(0);
+			}
+
+			50% {
+				transform: translateY(-10px);
+			}
+		}
+
+		.header h1 {
+			color: #f1f5f9;
+			font-size: 2.8rem;
+			font-weight: 700;
+			letter-spacing: -0.5px;
+			background: linear-gradient(135deg, #f1f5f9, #60a5fa);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-clip: text;
+		}
+
+		.header p {
+			color: #94a3b8;
+			font-size: 1.1rem;
+			margin-top: 0.5rem;
+			font-weight: 300;
+		}
+
+		.grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+			gap: 1.8rem;
+			max-width: 1300px;
+			width: 100%;
+		}
+
+		.card {
+			background: rgba(255, 255, 255, 0.04);
+			backdrop-filter: blur(20px) saturate(180%);
+			-webkit-backdrop-filter: blur(20px) saturate(180%);
+			border-radius: 2rem;
+			padding: 1.8rem 1.8rem 1.5rem;
+			border: 1px solid rgba(255, 255, 255, 0.06);
+			box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+			transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+			position: relative;
+			overflow: hidden;
+			animation: cardAppear 0.6s ease forwards;
+			opacity: 0;
+		}
+
+		.card:nth-child(1) {
+			animation-delay: 0.05s;
+		}
+
+		.card:nth-child(2) {
+			animation-delay: 0.1s;
+		}
+
+		.card:nth-child(3) {
+			animation-delay: 0.15s;
+		}
+
+		.card:nth-child(4) {
+			animation-delay: 0.2s;
+		}
+
+		.card:nth-child(5) {
+			animation-delay: 0.25s;
+		}
+
+		.card:nth-child(6) {
+			animation-delay: 0.3s;
+		}
+
+		.card:nth-child(7) {
+			animation-delay: 0.35s;
+		}
+
+		.card:nth-child(8) {
+			animation-delay: 0.4s;
+		}
+
+		.card:nth-child(9) {
+			animation-delay: 0.45s;
+		}
+
+		@keyframes cardAppear {
+			0% {
+				opacity: 0;
+				transform: translateY(24px) scale(0.96);
+			}
+
+			100% {
+				opacity: 1;
+				transform: translateY(0) scale(1);
+			}
+		}
+
+		.card::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			height: 3px;
+			background: linear-gradient(90deg, #f472b6, #60a5fa, #34d399);
+			opacity: 0.6;
+			transition: opacity 0.3s;
+		}
+
+		.card:hover {
+			transform: translateY(-6px) scale(1.005);
+			border-color: rgba(255, 255, 255, 0.12);
+			box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+		}
+
+		.card:hover::before {
+			opacity: 1;
+		}
+
+		.card-header {
+			display: flex;
+			align-items: center;
+			gap: 0.8rem;
+			margin-bottom: 1rem;
+		}
+
+		.card-number {
+			font-size: 0.7rem;
+			font-weight: 600;
+			color: #f472b6;
+			background: rgba(244, 114, 182, 0.12);
+			padding: 0.2rem 0.8rem;
+			border-radius: 60px;
+			letter-spacing: 0.5px;
+			border: 1px solid rgba(244, 114, 182, 0.1);
+			flex-shrink: 0;
+		}
+
+		.code-block {
+			background: #080d1a;
+			border-radius: 1.2rem;
+			padding: 1.2rem 1.5rem;
+			font-family: 'JetBrains Mono', 'Fira Code', monospace;
+			font-size: 0.85rem;
+			line-height: 1.9rem;
+			color: #e2e8f0;
+			border-left: 3px solid #f472b6;
+			overflow-x: auto;
+			margin-bottom: 1rem;
+			position: relative;
+		}
+
+		.code-block .line {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			flex-wrap: wrap;
+		}
+
+		.code-block .prompt {
+			color: #64748b;
+			user-select: none;
+			font-weight: 300;
+			min-width: 1.5rem;
+		}
+
+		.code-block .var {
+			color: #f472b6;
+		}
+
+		.code-block .op {
+			color: #facc15;
+		}
+
+		.code-block .func {
+			color: #34d399;
+		}
+
+		.code-block .number {
+			color: #60a5fa;
+		}
+
+		.code-block .comment {
+			color: #475569;
+			font-style: italic;
+			font-size: 0.8rem;
+		}
+
+		.code-block .string {
+			color: #6ee7b7;
+		}
+
+		.code-block .bracket {
+			color: #60a5fa;
+		}
+
+		.code-block .type {
+			color: #fbbf24;
+		}
+
+		.code-block .error {
+			color: #f87171;
+			font-weight: 600;
+		}
+
+		.code-block .keyword {
+			color: #f87171;
+			font-weight: 600;
+		}
+
+		.code-block .paren {
+			color: #94a3b8;
+		}
+
+		.output-block {
+			background: rgba(52, 211, 153, 0.05);
+			border: 1px solid rgba(52, 211, 153, 0.12);
+			border-radius: 0.8rem;
+			padding: 0.6rem 1rem;
+			font-family: 'JetBrains Mono', monospace;
+			font-size: 0.85rem;
+			color: #6ee7b7;
+			margin-top: 0.5rem;
+			display: flex;
+			align-items: center;
+			gap: 0.8rem;
+			flex-wrap: wrap;
+		}
+
+		.output-block .label {
+			color: #64748b;
+			font-size: 0.7rem;
+			text-transform: uppercase;
+			letter-spacing: 0.5px;
+			font-family: 'Inter', sans-serif;
+			font-weight: 600;
+			background: rgba(100, 116, 139, 0.15);
+			padding: 0.1rem 0.6rem;
+			border-radius: 20px;
+		}
+
+		.output-block .value {
+			color: #6ee7b7;
+			word-break: break-all;
+		}
+
+		.output-block .value-gray {
+			color: #94a3b8;
+		}
+
+		.types-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+			gap: 0.4rem;
+			margin-top: 0.5rem;
+		}
+
+		.types-grid .type-item {
+			background: rgba(255, 255, 255, 0.03);
+			border: 1px solid rgba(255, 255, 255, 0.05);
+			border-radius: 0.6rem;
+			padding: 0.3rem 0.6rem;
+			font-family: 'JetBrains Mono', monospace;
+			font-size: 0.7rem;
+			color: #94a3b8;
+			text-align: center;
+			transition: all 0.2s;
+		}
+
+		.types-grid .type-item:hover {
+			background: rgba(96, 165, 250, 0.05);
+			border-color: rgba(96, 165, 250, 0.15);
+			color: #e2e8f0;
+		}
+
+		.types-grid .type-item .highlight {
+			color: #f472b6;
+		}
+
+		@media (max-width: 520px) {
+			.grid {
+				grid-template-columns: 1fr;
+				gap: 1.2rem;
+			}
+
+			.card {
+				padding: 1.4rem 1.2rem;
+				border-radius: 1.5rem;
+			}
+
+			.code-block {
+				font-size: 0.75rem;
+				padding: 1rem;
+				line-height: 1.7rem;
+			}
+
+			.header h1 {
+				font-size: 2rem;
+			}
+
+			.header .icon {
+				font-size: 3rem;
+			}
+
+			.output-block {
+				font-size: 0.75rem;
+			}
+
+			.types-grid {
+				grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+			}
+		}
+
+		@media (max-width: 400px) {
+			.code-block {
+				font-size: 0.7rem;
+				padding: 0.8rem;
+				line-height: 1.5rem;
+			}
+
+			.card {
+				padding: 1rem 0.8rem;
+			}
+		}
+
+		::-webkit-scrollbar {
+			width: 4px;
+			height: 4px;
+		}
+
+		::-webkit-scrollbar-track {
+			background: rgba(255, 255, 255, 0.02);
+			border-radius: 10px;
+		}
+
+		::-webkit-scrollbar-thumb {
+			background: rgba(96, 165, 250, 0.3);
+			border-radius: 10px;
+		}
+
+		::-webkit-scrollbar-thumb:hover {
+			background: rgba(96, 165, 250, 0.5);
+		}
+
+		.footer-text {
+			margin-top: 3rem;
+			color: #475569;
+			font-size: 0.85rem;
+			text-align: center;
+			border-top: 1px solid rgba(255, 255, 255, 0.04);
+			padding-top: 2rem;
+			max-width: 600px;
+		}
+
+		.footer-text span {
+			color: #60a5fa;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="header">
+		<span class="icon">📦</span>
+	</div>
+
+	<div class="grid">
+
+		<!-- Карточка 1 -->
+		<div class="card">
+			<div class="card-header">
+				<span class="card-number">#1</span>
+			</div>
+			<div class="code-block">
+				<div class="line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span> <span class="op">=</span> <span class="number">7</span>
+				</div>
+				<div class="line" style="border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem; margin-top: 0.2rem;">
+					<span class="prompt">❯</span>
+					<span class="func">print</span><span class="paren">(</span><span class="var">a</span><span class="paren">)</span>
+				</div>
+			</div>
+			<div class="output-block">
+				<span class="value">7</span>
+			</div>
+		</div>
+
+		<!-- Карточка 2 -->
+		<div class="card">
+			<div class="card-header">
+				<span class="card-number">#2</span>
+			</div>
+			<div class="code-block">
+				<div class="line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span> <span class="op">=</span> <span class="number">7</span>
+				</div>
+				<div class="line">
+					<span class="prompt">❯</span>
+					<span class="var">b</span> <span class="op">=</span> <span class="var">a</span>
+				</div>
+				<div class="line" style="border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem; margin-top: 0.2rem;">
+					<span class="prompt">❯</span>
+					<span class="func">print</span><span class="paren">(</span><span class="var">b</span><span class="paren">)</span>
+				</div>
+			</div>
+			<div class="output-block">
+				<span class="value">7</span>
+			</div>
+		</div>
+
+		<!-- Карточка 3 -->
+		<div class="card">
+			<div class="card-header">
+				<span class="card-number">#3</span>
+			</div>
+			<div class="code-block">
+				<div class="line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span> <span class="op">=</span> <span class="number">1</span> &nbsp;&nbsp; <span class="var">z</span> <span class="op">=</span> <span class="number">1</span>
+				</div>
+				<div class="line">
+					<span class="prompt">❯</span>
+					<span class="var">A</span> <span class="op">=</span> <span class="number">1</span> &nbsp;&nbsp; <span class="var">Z</span> <span class="op">=</span> <span class="number">1</span>
+				</div>
+				<div class="line">
+					<span class="prompt">❯</span>
+					<span class="var">a0</span> <span class="op">=</span> <span class="number">1</span> &nbsp;&nbsp; <span class="var">a_</span> <span class="op">=</span> <span class="number">1</span>
+				</div>
+				<div class="line" style="border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem; margin-top: 0.2rem;">
+					<span class="prompt">❯</span>
+					<span class="func">print</span><span class="paren">(</span><span class="var">a</span><span class="op">,</span> <span class="var">z</span><span class="op">,</span> <span class="var">A</span><span class="op">,</span> <span class="var">Z</span><span class="op">,</span> <span class="var">a0</span><span class="op">,</span> <span class="var">a_</span><span class="paren">)</span>
+				</div>
+			</div>
+			<div class="output-block">
+				<span class="value">1 1 1 1 1 1</span>
+			</div>
+		</div>
+
+		<!-- Карточка 4 -->
+		<div class="card">
+			<div class="card-header">
+				<span class="card-number">#4</span>
+			</div>
+			<div class="code-block">
+				<div class="line" style="color: #f87171;">
+					<span class="prompt">❯</span>
+					<span class="error"># 0a = 1</span>
+				</div>
+				<div class="line" style="color: #94a3b8; font-size: 0.8rem;">
+					<span class="comment"># нельзя начинать с цифры</span>
+				</div>
+				<div class="line" style="border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem; margin-top: 0.2rem; color: #f87171;">
+					<span class="error">SyntaxError: invalid decimal literal</span>
+				</div>
+			</div>
+			<div class="output-block" style="border-color: rgba(248, 113, 113, 0.2); background: rgba(248, 113, 113, 0.05);">
+				<span class="value" style="color: #fca5a5;">нельзя начинать с цифры</span>
+			</div>
+		</div>
+
+		<!-- Карточка 5 -->
+		<div class="card">
+			<div class="card-header">
+				<span class="card-number">#5</span>
+			</div>
+			<div class="code-block">
+				<div class="line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span> <span class="op">=</span> <span class="number">95</span>
+				</div>
+				<div class="line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span> <span class="op">=</span> <span class="var">a</span> <span class="op">-</span> <span class="number">3</span>
+				</div>
+				<div class="line" style="border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem; margin-top: 0.2rem;">
+					<span class="prompt">❯</span>
+					<span class="func">print</span><span class="paren">(</span><span class="var">a</span><span class="paren">)</span>
+				</div>
+			</div>
+			<div class="output-block">
+				<span class="value">92</span>
+			</div>
+		</div>
+
+		<!-- Карточка 6 -->
+		<div class="card">
+			<div class="card-header">
+				<span class="card-number">#6</span>
+			</div>
+			<div class="code-block">
+				<div class="line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span> <span class="op">=</span> <span class="number">95</span>
+				</div>
+				<div class="line">
+					<span class="prompt">❯</span>
+					<span class="var">temp</span> <span class="op">=</span> <span class="var">a</span> <span class="op">-</span> <span class="number">3</span>
+				</div>
+				<div class="line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span> <span class="op">=</span> <span class="var">temp</span>
+				</div>
+				<div class="line" style="border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem; margin-top: 0.2rem;">
+					<span class="prompt">❯</span>
+					<span class="func">print</span><span class="paren">(</span><span class="var">a</span><span class="paren">)</span>
+				</div>
+			</div>
+			<div class="output-block">
+				<span class="value">92</span>
+			</div>
+		</div>
+
+		<!-- Карточка 7 -->
+		<div class="card">
+			<div class="card-header">
+				<span class="card-number">#7</span>
+			</div>
+			<div class="code-block">
+				<div class="line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span> <span class="op">=</span> <span class="number">95</span>
+				</div>
+				<div class="line">
+					<span class="prompt">❯</span>
+					<span class="var">a</span> <span class="op">-=</span> <span class="number">3</span>
+				</div>
+				<div class="line" style="border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.3rem; margin-top: 0.2rem;">
+					<span class="prompt">❯</span>
+					<span class="func">print</span><span class="paren">(</span><span class="var">a</span><span class="paren">)</span>
+				</div>
+			</div>
+			<div class="output-block">
+				<span class="value">92</span>
+			</div>
+		</div>
+
+		<!-- Карточка 8 -->
+		<div class="card">
+			<div class="card-header">
+				<span class="card-number">#8</span>
+			</div>
+			<div class="code-block">
+				<div class="line" style="color: #94a3b8;">
+					<span class="comment"># bbb c d ff g i l t ss</span>
+				</div>
+				<div class="line" style="color: #94a3b8; font-size: 0.8rem; padding-top: 0.2rem;">
+					<span class="comment"># первые буквы типов данных</span>
+				</div>
+			</div>
+			<div class="types-grid">
+				<div class="type-item"><span class="highlight">b</span>ool</div>
+				<div class="type-item"><span class="highlight">b</span>ytearray</div>
+				<div class="type-item"><span class="highlight">b</span>ytes</div>
+				<div class="type-item"><span class="highlight">c</span>omplex</div>
+				<div class="type-item"><span class="highlight">d</span>ict</div>
+				<div class="type-item"><span class="highlight">f</span>loat</div>
+				<div class="type-item"><span class="highlight">f</span>rozenset</div>
+				<div class="type-item"><span class="highlight">g</span>enerator</div>
+				<div class="type-item"><span class="highlight">i</span>nt</div>
+				<div class="type-item"><span class="highlight">l</span>ist</div>
+				<div class="type-item"><span class="highlight">t</span>uple</div>
+				<div class="type-item"><span class="highlight">s</span>et</div>
+				<div class="type-item"><span class="highlight">s</span>tr</div>
+			</div>
+		</div>
+
+		<!-- Карточка 9 -->
+		<div class="card">
+			<div class="card-header">
+				<span class="card-number">#9</span>
+			</div>
+			<div class="code-block" style="border-left-color: #34d399;">
+				<div class="line" style="color: #94a3b8; font-size: 0.8rem;">
+					<span class="comment"># Основные встроенные типы</span>
+				</div>
+				<div class="line">
+					<span class="type">bool</span> <span class="comment" style="color: #64748b;"># True / False</span>
+				</div>
+				<div class="line">
+					<span class="type">bytearray</span> <span class="comment" style="color: #64748b;"># изменяемый массив байт</span>
+				</div>
+				<div class="line">
+					<span class="type">bytes</span> <span class="comment" style="color: #64748b;"># неизменяемый массив байт</span>
+				</div>
+				<div class="line">
+					<span class="type">complex</span> <span class="comment" style="color: #64748b;"># комплексные числа</span>
+				</div>
+				<div class="line">
+					<span class="type">dict</span> <span class="comment" style="color: #64748b;"># словарь</span>
+				</div>
+				<div class="line">
+					<span class="type">float</span> <span class="comment" style="color: #64748b;"># числа с плавающей точкой</span>
+				</div>
+				<div class="line">
+					<span class="type">frozenset</span> <span class="comment" style="color: #64748b;"># неизменяемое множество</span>
+				</div>
+				<div class="line">
+					<span class="type">generator</span> <span class="comment" style="color: #64748b;"># генератор</span>
+				</div>
+				<div class="line">
+					<span class="type">int</span> <span class="comment" style="color: #64748b;"># целые числа</span>
+				</div>
+				<div class="line">
+					<span class="type">list</span> <span class="comment" style="color: #64748b;"># список</span>
+				</div>
+				<div class="line">
+					<span class="type">tuple</span> <span class="comment" style="color: #64748b;"># кортеж</span>
+				</div>
+				<div class="line">
+					<span class="type">set</span> <span class="comment" style="color: #64748b;"># множество</span>
+				</div>
+				<div class="line">
+					<span class="type">str</span> <span class="comment" style="color: #64748b;"># строка</span>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</body></html>
