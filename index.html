@@ -757,6 +757,23 @@
 			text-decoration: none;
 			left: 30%;
 		}
+		.keller {
+			position: absolute;
+			top: 150px;
+			z-index: 200;
+			left: 10%;
+			animation: keller 1.5s ease-out 1;
+			transform: scale(1) translateX(100px);
+		}
+		
+		@keyframes keller {
+			0% {
+			transform: scale(0.01);
+			}
+			100% {
+				transform:  translateX(100px) scale(1);
+			}
+		}
 	</style>
 </head>
 
@@ -766,6 +783,7 @@
 		<a class="checkmate" href="checkmate/index.html">♟️</a>
 		<a class="korean" href="korean/index.html">🇰🇷</a>
 		<img class="arrow spider rino" src="10.png" alt="" width="70">
+		<img src="27.png" alt="" width="200" class="keller">
 	</div>
 	<div class="pagination-wrapper">
 		<h2>Основы</h2>
