@@ -197,48 +197,54 @@
 		}
 
 		.pagination-wrapper:nth-child(2) {
-			background: url("1.png") no-repeat right top 20px;
+			background: url("img/1.png") no-repeat right top 20px;
 			background-size: contain;
 		}
 
 		.pagination-wrapper:nth-child(3) {
-			background: url("2.png") no-repeat right 80px bottom -20px, url("22.png") no-repeat right 0% top 0px;
+			background: url("img/2.png") no-repeat right 80px bottom -20px, url("img/22.png") no-repeat right 0% top 0px;
 			background-size: 150px, 150px;
 			color: #fff;
 		}
 
 		.pagination-wrapper:nth-child(4) {
-			background: url("3.webp") no-repeat right top 30%;
-			background-size: cover;
+			background: url("img/16.png") no-repeat right 40px bottom 0px;
+			background-size: 100px;
 			color: #fff;
 		}
 
 		.pagination-wrapper:nth-child(5) {
-			background: url("15.png") no-repeat right 240px bottom 0px, url("16.png") no-repeat right 40px top 10px;
+			background: url("img/15.png") no-repeat right 240px bottom 0px;
 			background-size: 100px, 100px;
 			color: #fff;
 		}
 
 		.pagination-wrapper:nth-child(6) {
-			background: url("23.png") no-repeat right 50px bottom -10px;
+			background: url("img/23.png") no-repeat right 50px bottom -10px;
 			background-size: 220px;
 			color: #fff;
 		}
 
 		.pagination-wrapper:nth-child(7) {
-			background: url("24.png") no-repeat right 40px bottom -5px;
+			background: url("img/24.png") no-repeat right 40px bottom -5px;
 			background-size: 250px;
 			color: #fff;
 		}
 
 		.pagination-wrapper:nth-child(8) {
-			background: url("25.png") no-repeat right 40px bottom -20px;
+			background: url("img/25.png") no-repeat right 40px bottom -20px;
 			background-size: 200px;
 			color: #fff;
 		}
 
 		.pagination-wrapper:nth-child(9) {
-			background: url("26.png") no-repeat right 40px bottom -20px;
+			background: url("img/26.png") no-repeat right 40px bottom -20px;
+			background-size: 150px;
+			color: #fff;
+		}
+
+		.pagination-wrapper:nth-child(10) {
+			background: url("img/28") no-repeat right 40px bottom -20px;
 			background-size: 150px;
 			color: #fff;
 		}
@@ -749,7 +755,7 @@
 				transform: translate(-20px) rotate(540deg);
 			}
 		}
-		
+
 		.korean {
 			position: absolute;
 			top: 30px;
@@ -757,6 +763,7 @@
 			text-decoration: none;
 			left: 30%;
 		}
+
 		.keller {
 			position: absolute;
 			top: 150px;
@@ -765,13 +772,14 @@
 			animation: keller 1.5s ease-out 1;
 			transform: scale(1) translateX(100px);
 		}
-		
+
 		@keyframes keller {
 			0% {
-			transform: scale(0.01);
+				transform: scale(0.01);
 			}
+
 			100% {
-				transform:  translateX(100px) scale(1);
+				transform: translateX(100px) scale(1);
 			}
 		}
 	</style>
@@ -779,30 +787,28 @@
 
 <body>
 	<div class="wrap">
-		<img class="arrow spider" src="8.png" alt="" width="90">
+		<img class="arrow spider" src="img/8.png" alt="" width="90">
 		<a class="checkmate" href="checkmate/index.html">♟️</a>
 		<a class="korean" href="korean/index.html">🇰🇷</a>
-		<img class="arrow spider rino" src="10.png" alt="" width="70">
-		<img src="27.png" alt="" width="200" class="keller">
+		<img class="arrow spider rino" src="img/10.png" alt="" width="70">
+		<img src="img/27.png" alt="" width="200" class="keller">
 	</div>
 	<div class="pagination-wrapper">
 		<h2>Основы</h2>
 		<ul class="pagination">
 			<a class="page-link" id="base1Link" href="python/base/index.html">👨🏻‍💻</a>
 		</ul>
-		<a class="answers" href="https://github.com/MaximAfanasev/maximafanasev.github.io/blob/main/python/base/base.py" target="_blank">Ответы 💡</a>
-		<img class="arrow" src="5.png" alt="" width="70">
-		<img class="row" src="6.png" alt="" width="60px">
-		<img class="row row2" src="6.png" alt="" width="60px">
-		<img class="row row3" src="6.png" alt="" width="60px">
+		<img class="arrow" src="img/5.png" alt="" width="70">
+		<img class="row" src="img/6.png" alt="" width="60px">
+		<img class="row row2" src="img/6.png" alt="" width="60px">
+		<img class="row row3" src="img/6.png" alt="" width="60px">
 	</div>
 
 	<div class="pagination-wrapper">
-		<h2>4исла  </h2>
+		<h2>4исла </h2>
 		<ul class="pagination">
 			<a class="page-link" href="python/numbers/index.html">6️⃣ 7️⃣</a>
 		</ul>
-		<a class="answers" href="https://github.com/MaximAfanasev/maximafanasev.github.io/blob/main/python/numbers/numbers.py" target="_blank">Ответы 💡</a>
 	</div>
 
 	<div class="pagination-wrapper">
@@ -810,18 +816,9 @@
 		</div>
 		<h2>"Строки"</h2>
 		<ul class="pagination">
-			<a class="page-links" href="python/strings/index.html">
-				<div class="flip-container">
-					<div class="front">
-						<img src="4.png" alt="" width="40px">
-					</div>
-					<div class="back">
-						<img src="42.png" alt="" width="40px">
-					</div>
-				</div>
+			<a class="page-links" href="python/strings/index.html">🧠
 			</a>
 		</ul>
-		<a class="answers" href="https://github.com/MaximAfanasev/maximafanasev.github.io/blob/main/python/strings/strings.py" target="_blank">Ответы 💡</a>
 	</div>
 
 	<div class="pagination-wrapper">
@@ -832,7 +829,6 @@
 			<a class="page-link" href="python/list/index.html">🥢
 			</a>
 		</ul>
-		<a class="answers" href="https://github.com/MaximAfanasev/maximafanasev.github.io/blob/main/python/list/list.py" target="_blank">Ответы 💡</a>
 	</div>
 
 	<div class="pagination-wrapper">
@@ -843,7 +839,6 @@
 			<a class="page-link" href="python/korteg/index.html">🐡
 			</a>
 		</ul>
-		<a class="answers" href="https://github.com/MaximAfanasev/maximafanasev.github.io/blob/main/python/korteg/korteg.py" target="_blank">Ответы 💡</a>
 	</div>
 
 	<div class="pagination-wrapper">
@@ -854,7 +849,6 @@
 			<a class="page-link" href="python/objects/index.html">📓
 			</a>
 		</ul>
-		<a class="answers" href="https://github.com/MaximAfanasev/maximafanasev.github.io/blob/main/python/objects/objects.py" target="_blank">Ответы 💡</a>
 	</div>
 
 	<div class="pagination-wrapper">
@@ -865,7 +859,6 @@
 			<a class="page-link" href="python/set/index.html">🍗
 			</a>
 		</ul>
-		<a class="answers" href="https://github.com/MaximAfanasev/maximafanasev.github.io/blob/main/python/objects/objects.py" target="_blank">Ответы 💡</a>
 	</div>
 
 	<div class="pagination-wrapper">
@@ -876,7 +869,16 @@
 			<a class="page-link" href="python/structure/index.html">🪼
 			</a>
 		</ul>
-		<a class="answers" href="https://github.com/MaximAfanasev/maximafanasev.github.io/blob/main/python/structure/structure.py" target="_blank">Ответы 💡</a>
+	</div>
+
+	<div class="pagination-wrapper">
+		<div class="ticker-container">
+		</div>
+		<h2>Functions</h2>
+		<ul class="pagination">
+			<a class="page-link" href="python/function/theory.html">🐍
+			</a>
+		</ul>
 	</div>
 
 	<script>
@@ -897,7 +899,7 @@
 			const base3Link = document.getElementById('base3Link');
 			const base4Link = document.getElementById('base4Link');
 			const base5Link = document.getElementById('base5Link');
-			
+
 
 			// Функция обновления индикаторов (мишень)
 			function updateIndicators() {
