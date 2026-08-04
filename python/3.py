@@ -284,3 +284,89 @@ print(c)
 # [1, 2, 3]
 print(d) 
 # [1, 2, 3]
+
+
+
+
+a = ['a', 'b', 'c']
+b = ['a', 'c', 'b']
+c = ['c', 'b', 'a']
+d = a,b,c
+print(d) 
+# (['a', 'b', 'c'], ['a', 'c', 'b'], ['c', 'b', 'a'])
+
+
+
+
+a = ['a', 'b', 'c']
+b = ['a', 'c', 'b']
+c = ['c', 'b', 'a']
+d = [a,b,c]
+print(d) 
+# [['a', 'b', 'c'], ['a', 'c', 'b'], ['c', 'b', 'a']]
+
+
+
+
+a = ['a', 'b', 'c']
+b = ['a', 'c', 'b']
+c = ['c', 'b', 'a']
+d = {'a': a, 'b': b, 'c': c}
+print(d) 
+# {'a': ['a', 'b', 'c'], 'b': ['a', 'c', 'b'], 'c': ['c', 'b', 'a']}
+
+
+
+a = ['a', 'b', 'c']
+for x in a:
+    print(x) 
+    # a b c
+
+
+
+a = ['a', 'b', 'c']
+b = ['c', 'd', 'e']
+c = ['d', 'e', 'f']
+for x,y,z in zip(a,b,c):
+    print(x,y,z) 
+    # a c d
+    # b d e
+    # c e f
+
+
+
+
+a = [x for x in range(0,6)]
+print(a) 
+# [0, 1, 2, 3, 4, 5]
+
+
+
+
+a = [x for x in range(1,6) if x % 2==1]
+print(a) 
+# [1, 3, 5]
+
+
+
+
+a = range(1,4)
+b = range(1,3)
+c = [(x, y) for x in a for y in b]
+print(c) 
+# [(1, 1), (1, 2), (2, 1), (2, 2), (3, 1), (3, 2)]
+
+
+
+
+a = {x for x in range(1,6) if x % 3 == 1}
+print(a) 
+# {1, 4}
+
+
+
+
+
+a = (x for x in range(1, 6))
+print(list(a)) 
+# [1, 2, 3, 4, 5]

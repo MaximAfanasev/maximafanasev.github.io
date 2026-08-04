@@ -154,3 +154,17 @@ print('abc'.rjust(10))
 
 print('abc'.title()) 
 # Abc
+
+
+
+a = 'abc' + \
+    'dbe'
+print(a) 
+#  abcdbe
+
+
+
+a = 'abc'
+for x in a:
+    print(x) 
+    # a b c
