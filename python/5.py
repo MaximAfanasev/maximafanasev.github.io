@@ -1,313 +1,168 @@
-a = {}
-print(a) 
-# {}
+def make_a_sound():
+    print('quack')
+make_a_sound() 
+# quack
 
 
 
 
-a = {
-    'a': 1,
-    'b': 2
-    }
-print(a) 
-# {'a': 1, 'b': 2}
+def a():
+    return True
+
+if a():
+    print('quack') 
+    # quack
 
 
 
 
-a = {
-    1: 'a',
-    2: 'b'
-    }
-print(a) 
-# {1: 'a', 2: 'b'}
+def a(b):
+    return b + '' + b
+print(a('lala')) 
+# lalalalala
 
 
 
 
-a = [['a', 'b'], ['c', 'd']]
-print(dict(a)) 
-# {'a': 'b', 'c': 'd'}
+def a(b):
+    if b == 'red':
+        print('red')
+    elif b == 'green':
+        print('green')
+    else: print('ololo')
+a('red') 
+# red
+a('aaa') 
+# ololo
 
 
 
 
-a = [('a', 'b'), ('c', 'd')]
-print(dict(a)) 
-# {'a': 'b', 'c': 'd'}
-
-
-
-
-a = ['ab', 'cd']
-print(dict(a)) 
-# {'a': 'b', 'c': 'd'}
-
-
-
-
-a = ('ab', 'cd')
-print(dict(a)) 
-# {'a': 'b', 'c': 'd'}
-
-
-
-
-a = {'a': 1, 'b': 2}
-a['a'] = 3
-print(a) 
-# {'a': 3, 'b': 2}
-a['a'] = 4
-print(a) 
-# {'a': 4, 'b': 2}
-
-
-
-
-a = {'a': 1, 'b': 2}
-b = {'c': 3, 'd': 4}
-a.update(b)
-print(a) 
-# {'a': 1, 'b': 2, 'c': 3, 'd': 4}
-
-
-
-
-a = {'a': 1, 'b': 2}
-b = {'a': 4, 'b': 2}
-a.update(b)
-print(a) 
-# {'a': 4, 'b': 2}
-
-
-
-
-a = {'a': 1, 'b':2}
-del a['a']
-print(a) 
-# {'b': 2}
-
-
-
-
-a = {'a': 1, 'b': 2}
-a.clear()
-print(a) 
-# {}
-
-
-
-
-a = {'a': 1, 'b': 2}
-print('a' in a) 
-# True
-
-
-
-
-a = {'a': 1, 'b': 2}
-print(a['a']) 
-# 1
-
-# print(a['c']) # KeyError
-
-
-
-
-a = {'a': 1, 'b': 2}
-print(a.get('a')) 
-# 1
-print(a.get('c', 'nothing')) 
-# nothing
-print(a.get('c')) 
+def a():
+    pass
+print(a()) 
 # None
 
 
 
 
-a = {'a': 1, 'b': 2}
-print(a.keys()) 
-# dict_keys(['a', 'b'])
+def a():
+    if None: print('None')
+    else: print('Not None')
+a() 
+# Not None
 
 
 
 
-a = {'a': 1, 'b': 2}
-print(a.values()) 
-# dict_values([1, 2])
+def a(x,y,z):
+    return {'X': x, 'Y': y, 'Z': z}
+print(a('la', 'va', 'nda'))
+# {'X': 'la', 'Y': 'va', 'Z': 'nda'}
 
 
 
 
-a = {'a': 1, 'b': 2}
-print(a.items()) # dict_items([('a', 1), ('b', 2)])
+def a(x,y,z):
+    return {'X': x, 'Y': y, 'Z': z}
+print(a(x='x', y='y', z='z'))
+# {'X': 'x', 'Y': 'y', 'Z': 'z'}
+print(a(x='A', y='B', z='C'))
+# {'X': 'A', 'Y': 'B', 'Z': 'C'}
 
 
 
 
-a = {'a': 1, 'b': 2}
-a['c'] = 3
-print(a) 
-# {'a': 1, 'b': 2, 'c': 3}
+def a(x,y,z='z'):
+    return {'X': x, 'Y': y, 'Z': z}
+print(a(x='x', y='y'))
+# {'X': 'x', 'Y': 'y', 'Z': 'z'}
+print(a(x='x', y='y', z='d'))
+# {'X': 'x', 'Y': 'y', 'Z': 'd'}
 
 
 
 
-a = {'a': 1, 'b': 2}
-b = a.copy()
-print(b) 
-# {'a': 1, 'b': 2}
-b['c'] = 3
-print(b) 
-# {'a': 1, 'b': 2, 'c': 3}
-print(a) 
-# {'a': 1, 'b': 2}
+def x(a, b=[]):
+    b.append(a)
+    print(b)
+x('a') 
+# ['a']
+x('b') 
+# ['a', 'b']
 
-a = set()
-print(a) 
-# set()
 
 
 
+def x(a):
+    b = []
+    b.append(a)
+    print(b)
+    return b
+x('a') 
+# ['a']
+x('b') 
+# ['b']
 
-a = {0, 2, 4, 6, 8}
-print(a) 
-# {0, 2, 4, 6, 8}
 
 
 
+def x(a, b=None):
+    if b == None:
+        b = []
+    b.append(a)
+    print(b)
+    return b
+x('a') 
+# ['a']
 
-a = ('aaaaaa')
-print(set(a)) 
-# {'a'}
-b = ('aabbcc')
-print(set(b)) 
-# {'b', 'a', 'c'}
 
 
 
+def x(*args):
+    print(args)
+x(a) 
+# (<function a at 0x10caca560>,)
+x('a', 1, 2) 
+# ('a', 1, 2)
 
-a = ['a', 'b', 'c']
-print(set(a)) 
-# {'a', 'b', 'c'}
 
 
 
+def x(**kwargs):
+    print(kwargs)
+x(a='a', b='b') 
+# {'a': 'a', 'b': 'b'}
 
-a = ('a', 'b', 'c')
-print(set(a)) 
-# {'b', 'a', 'c'}
 
 
 
+def x(a):
+    '''Documentation'''
+    print(a)
+x('b') 
+# b
 
-a = {'a': 1, 'b': 2, 'c': 3}
-print(set(a)) 
-# {'a', 'c', 'b'}
 
 
 
-
-a = {'a': 'aa', 'b': 'bb', 'c': 'cc'}
-for name, contents in a.items():
-    if 'a' in contents:
-        print(name) 
-        # a
-        print(contents) 
-        # aa
-
-
-
-a = {'a': 'aa', 'b': 'ab', 'c': 'bb'}
-for name, contents in a.items():
-    if 'a' in contents and not ('b' in contents or 'd'
-        in contents):
-        print(name) 
-        # a
-
-
-
-
-a = {'a': {'aa', 'ab'}, 'b': {'ab', 'bb'}}
-for name, contents in a.items():
-    if contents & { 'aa' }:
-        print(name) 
-        # a
-
-
-
-
-a = { 1, 2 }
-b = { 2, 3 }
-print(a & b) 
-# {2}
-
-
-
-
-a = { 1, 2 }
-b = { 2, 3 }
-print(a.intersection(b)) 
-# {2}
-
-
-
-a = { 1, 2 }
-b = { 2, 3 }
-print(a|b) 
-# {1,2,3}
-
-
-
-a = { 1, 2 }
-b = { 2, 3 }
-print(a-b) 
-# {1}
-
-
-
-a = { 1, 2 }
-b = { 2, 3 }
-print(a^b) 
-# {1,3}
-print(a.symmetric_difference(b)) 
-# {1,3}
-
-
-
-a = { 1, 2 }
-b = { 2, 3 }
-print(a<=b) 
-# False
-print(a<=a) 
-# True
-print(a.issubset(a))
-
-
-
-
-a = {'a': 1, 'b': 2, 'c': 3}
-for x in a:
-    print(x) 
-    # a b c
-
-
-a = {'a': 1, 'b': 2, 'c': 3}
-for x in a.values():
-    print(x) 
-    # 1 2 3
-
-
-
-
-a = {'a': 1, 'b': 2, 'c': 3}
-for x in a.items():
-    print(x) 
-    # ('a', 1) ('b', 2) ('c', 3)
-
-
-
-b = 'letters'
-a = {x: b.count(x) for x in b}
-print(a) 
-# {'l': 1, 'e': 2, 't': 2, 'r': 1, 's': 1}
+def x(a, b):
+    for x in a:
+        print(b(x))
+def y(a):
+    return a.capitalize() + '!'
+x(['a', 'b', 'c'],y)
+# A!
+# B!
+# C!
+
+
+
+
+def x(a, b):
+    for x in a:
+        print(b(x))
+x(['a', 'b','c'], lambda x: x.capitalize() + '!')
+# A!
+# B!
+# C!

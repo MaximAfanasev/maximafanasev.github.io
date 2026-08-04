@@ -1,170 +1,372 @@
-print('a') 
-# a
-print("b") 
-# b
-print('''c''') 
-# c
-
-
-
-print(str(98.6)) 
-# 98.6
-print(str(1.0e4)) 
-# 10000.0
-print(str(True)) 
-# True
-
-
-
-print('\tabc') 
-# 	abc
-print('a\tbc') 
-# a	bc
-print('ab\tc') 
-# ab	c
-
-
-
-print('a' 'b') 
-# ab
-print('Na'*4 + ' Batman') 
-# NaNaNaNa Batman
-a = 'abcde'
-print(a[0]) 
-# a
-print(a[2]) 
-# c
-print(a[-1]) 
-# e
-
-# print(a[5])
-# IndexError: string index out of range
-
-
-
+a = []
 print(a)
-c = a.replace('a', 'X')
-print(c)
-# Xbcde
+# []
 
 
 
-print(a.replace('a', 'X')) 
-# Xbcde
-print('abc'.replace('a', 'X')) 
-# Xbc
+
+b = list()
+print(b)
+# []
 
 
 
-print(len(a)) 
-# 5
 
-
-
-print(a.split()) 
-# ['abcde']
-print('a,b,c'.split()) 
-# ['a,b,c']
-print('a,b,c'.split(',')) 
+c = ('a', 'b', 'c')
+print(list(c))
 # ['a', 'b', 'c']
 
-d = '1/2/4'
-e = d.split('/')
-print(e)
-# ['1', '2', '4']
-
-g = 'a/b//c/d///e'
-print(g.split('/'))
-# ['a', 'b', '', 'c', 'd', '', '', 'e']
-
-print(g.split('//'))
-# ['a/b', 'c/d', '/e']
 
 
 
-print(','.join(['a','b','c'])) 
-# a,b,c
+a = ['a', 'b', 'c']
+print(a[0]) 
+# a
+print(a[1]) 
+# b
+print(a[2]) 
+# c
 
 
 
-print('abc'.startswith('a')) 
-# True
-
-print('abc'.endswith('c')) 
-# True
 
 
+print(a[-1]) 
+# c
+print(a[-2]) 
+# b
+print(a[-3]) 
+# a
 
-print('abc'.find('a')) 
+#print(a[-4]) #IndexError: list index out of range
+
+
+
+
+a = ['a', 'b']
+b = ['c', 'd']
+c = ['e', 'f']
+j = [a,b,c]
+print(j) 
+# [['a', 'b'], ['c', 'd'], ['e', 'f']]
+print(j[0]) 
+# ['a', 'b']
+print(j[0][1]) 
+# b
+
+
+
+
+a = ['a', 'b', 'c']
+a[0] = 'd'
+print(a) 
+# ['d', 'b', 'c']
+
+
+
+
+a = ['a', 'b', 'c']
+print(a[0:2]) 
+# ['a', 'b'] 0 1 2(не включена)
+print(a[0:0]) 
+# []
+print(a[0:1]) 
+# ['a']
+print(a[0:3]) 
+# ['a', 'b', 'c']
+print(a[0:4]) 
+# ['a', 'b', 'c']
+print(a[0:99]) 
+# ['a', 'b', 'c']
+
+#print(a[::0]) 
+# # slice step cannot be zero
+
+
+
+
+a = ['a', 'b', 'c']
+print(a[::1]) 
+# ['a', 'b', 'c']
+print(a[::2]) 
+# ['a', 'c']
+print(a[::3]) 
+# ['a']
+print(a[::99]) 
+# ['a']
+
+
+
+
+a = ['a', 'b', 'c']
+print(a[::-1]) 
+# ['c', 'b', 'a']
+print(a[::-2]) 
+# ['c', 'a']
+print(a[::-3]) 
+# ['c']
+print(a[::-99]) 
+# ['c']
+
+
+
+
+a = ['a', 'b', 'c']
+a.append('d')
+print(a) 
+# ['a', 'b', 'c', 'd']
+
+
+
+
+a = ['a', 'b']
+c = ['d', 'e']
+a.extend(c)
+print(a) 
+# ['a', 'b', 'd', 'e']
+
+
+
+
+a = ['a', 'b']
+c = ['d', 'e']
+a += c
+print(a) 
+# ['a', 'b', 'd', 'e']
+
+
+
+
+a = ['a', 'b']
+c = ['d', 'e']
+a.append(c)
+print(a) 
+# ['a', 'b', ['d', 'e']]
+
+
+
+
+a = ['a', 'b', 'c']
+a.insert(2, 'd')
+print(a) 
+# ['a', 'b', 'd', 'c']
+
+
+
+
+a = ['a', 'b', 'c']
+del a[0]
+print(a) 
+# ['b', 'c']
+
+
+
+
+a = ['a', 'b', 'c']
+del a[-1]
+print(a) 
+#['a', 'b']
+
+
+
+
+a = ['a', 'b', 'c']
+a.remove('b')
+print(a) 
+# ['a', 'c']
+
+
+
+
+a = ['a', 'b', 'c']
+a.pop()
+print(a) 
+# ['a', 'b']
+a.pop(0)
+print(a) 
+# ['b']
+
+
+
+
+a = ['a', 'b', 'c']
+print(a.index('a')) 
 # 0
-print('abc'.find('b')) 
-# 1
+print('a' in a) 
+# True
 
 
 
-print('aaa'.count('a')) 
+
+a = ['a', 'b', 'a', 'a']
+print(a.count('a')) 
+# 3
+print(a.count('c')) 
+# 0
+
+
+
+
+a = ['a', 'b', 'c']
+print(', '.join(a)) 
+# a, b, c
+
+
+
+
+a = ['b', 'a', 'c']
+print(sorted(a)) 
+# ['a', 'b', 'c'] копия списка
+print(a) 
+# ['b', 'a', 'c'] оригинал не изменился
+a.sort()
+print(a) 
+# ['a', 'b', 'c'] перемешали оригинал
+a.sort(reverse=True)
+print(a)
+
+
+
+
+a = ['a', 'b', 'c']
+print(len(a)) 
 # 3
 
 
 
-print('123'.isalnum()) 
-# True
 
-
-
-print('abc...'.strip('.')) 
-# abc
-
-
-
-print('abc'.capitalize()) 
-# Abc
-
-
-
-print('abc'.upper()) 
-# ABC
-
-
-
-print('ABC'.lower()) 
-# abc
-
-
-
-print('aBc'.swapcase()) 
-#AbC
-
-
-
-print('abc'.center(10)) 
-#    abc ???
-
-
-
-print('abc'.ljust(10)) 
-#abc
-
-
-
-print('abc'.rjust(10)) 
-#       abc
-
-
-
-print('abc'.title()) 
-# Abc
-
-
-
-a = 'abc' + \
-    'dbe'
+a = [1, 2, 3]
+b = a
+print(b) 
+# [1, 2, 3]
+a[0] = 'srpr mf'
 print(a) 
-#  abcdbe
+# ['srpr mf' 2, 3]
+print(b) 
+# ['srpr mf' 2, 3]
+b[0] = 4
+print(b) 
+# [4, 2, 3]
+print(a) 
+# [4, 2, 3]
 
 
 
-a = 'abc'
+
+a = [1, 2, 3]
+b = a.copy()
+print(b) 
+# [1, 2, 3]
+
+
+
+
+a = [1, 2, 3]
+c = list(a) 
+# [1, 2, 3]
+
+
+
+
+a = [1, 2, 3]
+d = a[:] 
+# [1, 2, 3]
+
+
+
+
+a[0] = 'a'
+print(a) 
+# ['a', 2, 3]
+print(b) 
+# [1, 2, 3]
+print(c) 
+# [1, 2, 3]
+print(d) 
+# [1, 2, 3]
+
+
+
+
+a = ['a', 'b', 'c']
+b = ['a', 'c', 'b']
+c = ['c', 'b', 'a']
+d = a,b,c
+print(d) 
+# (['a', 'b', 'c'], ['a', 'c', 'b'], ['c', 'b', 'a'])
+
+
+
+
+a = ['a', 'b', 'c']
+b = ['a', 'c', 'b']
+c = ['c', 'b', 'a']
+d = [a,b,c]
+print(d) 
+# [['a', 'b', 'c'], ['a', 'c', 'b'], ['c', 'b', 'a']]
+
+
+
+
+a = ['a', 'b', 'c']
+b = ['a', 'c', 'b']
+c = ['c', 'b', 'a']
+d = {'a': a, 'b': b, 'c': c}
+print(d) 
+# {'a': ['a', 'b', 'c'], 'b': ['a', 'c', 'b'], 'c': ['c', 'b', 'a']}
+
+
+
+a = ['a', 'b', 'c']
 for x in a:
     print(x) 
     # a b c
+
+
+
+a = ['a', 'b', 'c']
+b = ['c', 'd', 'e']
+c = ['d', 'e', 'f']
+for x,y,z in zip(a,b,c):
+    print(x,y,z) 
+    # a c d
+    # b d e
+    # c e f
+
+
+
+
+a = [x for x in range(0,6)]
+print(a) 
+# [0, 1, 2, 3, 4, 5]
+
+
+
+
+a = [x for x in range(1,6) if x % 2==1]
+print(a) 
+# [1, 3, 5]
+
+
+
+
+a = range(1,4)
+b = range(1,3)
+c = [(x, y) for x in a for y in b]
+print(c) 
+# [(1, 1), (1, 2), (2, 1), (2, 2), (3, 1), (3, 2)]
+
+
+
+
+a = {x for x in range(1,6) if x % 3 == 1}
+print(a) 
+# {1, 4}
+
+
+
+
+
+a = (x for x in range(1, 6))
+print(list(a)) 
+# [1, 2, 3, 4, 5]

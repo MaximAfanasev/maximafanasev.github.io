@@ -1,73 +1,170 @@
-# + - * / // %
+print('a') 
+# a
+print("b") 
+# b
+print('''c''') 
+# c
 
 
-print(5) 
+
+print(str(98.6)) 
+# 98.6
+print(str(1.0e4)) 
+# 10000.0
+print(str(True)) 
+# True
+
+
+
+print('\tabc') 
+# 	abc
+print('a\tbc') 
+# a	bc
+print('ab\tc') 
+# ab	c
+
+
+
+print('a' 'b') 
+# ab
+print('Na'*4 + ' Batman') 
+# NaNaNaNa Batman
+a = 'abcde'
+print(a[0]) 
+# a
+print(a[2]) 
+# c
+print(a[-1]) 
+# e
+
+# print(a[5])
+# IndexError: string index out of range
+
+
+
+print(a)
+c = a.replace('a', 'X')
+print(c)
+# Xbcde
+
+
+
+print(a.replace('a', 'X')) 
+# Xbcde
+print('abc'.replace('a', 'X')) 
+# Xbc
+
+
+
+print(len(a)) 
 # 5
-print(0) 
+
+
+
+print(a.split()) 
+# ['abcde']
+print('a,b,c'.split()) 
+# ['a,b,c']
+print('a,b,c'.split(',')) 
+# ['a', 'b', 'c']
+
+d = '1/2/4'
+e = d.split('/')
+print(e)
+# ['1', '2', '4']
+
+g = 'a/b//c/d///e'
+print(g.split('/'))
+# ['a', 'b', '', 'c', 'd', '', '', 'e']
+
+print(g.split('//'))
+# ['a/b', 'c/d', '/e']
+
+
+
+print(','.join(['a','b','c'])) 
+# a,b,c
+
+
+
+print('abc'.startswith('a')) 
+# True
+
+print('abc'.endswith('c')) 
+# True
+
+
+
+print('abc'.find('a')) 
 # 0
-
-
-# print(05)
-# leading zeros in decimal integer
-# literals are not permitted
-# use an Oo prefix for octal integers
-
-
-print(+123) 
-# 123
-print(-123) 
-# -123
-print(5+9) 
-# 14
-print(4-10) 
-# -6
-print(6*7) 
-# 42
-print(9/5) 
-# 1.8
-print(9//5) 
+print('abc'.find('b')) 
 # 1
 
 
-# print(5/0)
-# ZeroDivisionError: division by zero
 
-
-print(0b10) 
-# 2
-print(0o10) 
-# 8
-print(0x10) 
-# 16
-
-
-print(int(True)) 
-# 1
-print(int(False)) 
-# 0
-print(int(98.6)) 
-# 98
-print(int(1.0e4)) 
-# 10000
-print(int('99')) 
-# 99
-print(int('-23')) 
-# -23
-print(int('+12')) 
-# 12
-print(int(True + 2)) 
+print('aaa'.count('a')) 
 # 3
-print(int(False + 5.0)) 
-# 5
 
 
-print(float(True)) 
-# 1.0
-print(float(False)) 
-# 0.0
-print(float(98)) 
-# 98.0
-print(float('1.5')) 
-# 1.5
-print(float('99')) 
-# 99.0
+
+print('123'.isalnum()) 
+# True
+
+
+
+print('abc...'.strip('.')) 
+# abc
+
+
+
+print('abc'.capitalize()) 
+# Abc
+
+
+
+print('abc'.upper()) 
+# ABC
+
+
+
+print('ABC'.lower()) 
+# abc
+
+
+
+print('aBc'.swapcase()) 
+#AbC
+
+
+
+print('abc'.center(10)) 
+#    abc ???
+
+
+
+print('abc'.ljust(10)) 
+#abc
+
+
+
+print('abc'.rjust(10)) 
+#       abc
+
+
+
+print('abc'.title()) 
+# Abc
+
+
+
+a = 'abc' + \
+    'dbe'
+print(a) 
+#  abcdbe
+
+
+
+a = 'abc'
+for x in a:
+    print(x) 
+    # a b c
