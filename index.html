@@ -31,7 +31,7 @@
 			position: relative;
 			margin-bottom: 80px;
 			border-radius: 4rem;
-			padding: 2rem 2.8rem;
+			padding: 2rem 4.8rem;
 			box-shadow:
 				0 30px 60px -20px rgba(0, 20, 40, 0.4),
 				0 8px 24px rgba(0, 0, 0, 0.04),
@@ -40,160 +40,6 @@
 			transition: box-shadow 0.3s ease, transform 0.2s ease;
 			max-width: 800px;
 			width: 100%;
-		}
-
-		.pagination-wrapper:nth-child(2)::after {
-			position: absolute;
-			content: "";
-			width: 0px;
-			border: 1px dashed #ff5f1d;
-			height: 75px;
-			background: transparent;
-			bottom: -80px;
-			right: 70px;
-		}
-
-		.pagination-wrapper:nth-child(2)::before {
-			position: absolute;
-			content: "";
-			width: 0px;
-			border: 1px dashed #ff5f1d;
-			height: 75px;
-			background: transparent;
-			bottom: -80px;
-			left: 70px;
-		}
-
-		.pagination-wrapper:nth-child(3)::after {
-			position: absolute;
-			content: "";
-			width: 0px;
-			border: 1px dashed #36415b;
-			height: 75px;
-			background: transparent;
-			bottom: -80px;
-			right: 70px;
-		}
-
-		.pagination-wrapper:nth-child(3)::before {
-			position: absolute;
-			content: "";
-			width: 0px;
-			border: 1px dashed #36415b;
-			height: 75px;
-			background: transparent;
-			bottom: -80px;
-			left: 70px;
-		}
-
-		.pagination-wrapper:nth-child(4)::after {
-			position: absolute;
-			content: "";
-			width: 0px;
-			border: 1px dashed #ec33c3;
-			height: 75px;
-			background: transparent;
-			bottom: -80px;
-			right: 70px;
-		}
-
-		.pagination-wrapper:nth-child(4)::before {
-			position: absolute;
-			content: "";
-			width: 0px;
-			border: 1px dashed #ec33c3;
-			height: 75px;
-			background: transparent;
-			bottom: -80px;
-			left: 70px;
-		}
-
-		.pagination-wrapper:nth-child(5)::after {
-			position: absolute;
-			content: "";
-			width: 0px;
-			border: 1px dashed #338bec;
-			height: 75px;
-			background: transparent;
-			bottom: -80px;
-			right: 70px;
-		}
-
-		.pagination-wrapper:nth-child(5)::before {
-			position: absolute;
-			content: "";
-			width: 0px;
-			border: 1px dashed #338bec;
-			height: 75px;
-			background: transparent;
-			bottom: -80px;
-			left: 70px;
-		}
-
-		.pagination-wrapper:nth-child(6)::after {
-			position: absolute;
-			content: "";
-			width: 0px;
-			border: 1px dashed #fff;
-			height: 75px;
-			background: transparent;
-			bottom: -80px;
-			right: 70px;
-		}
-
-		.pagination-wrapper:nth-child(6)::before {
-			position: absolute;
-			content: "";
-			width: 0px;
-			border: 1px dashed #fff;
-			height: 75px;
-			background: transparent;
-			bottom: -80px;
-			left: 70px;
-		}
-
-		.pagination-wrapper:nth-child(7)::after {
-			position: absolute;
-			content: "";
-			width: 0px;
-			border: 1px dashed aqua;
-			height: 75px;
-			background: transparent;
-			bottom: -80px;
-			right: 70px;
-		}
-
-		.pagination-wrapper:nth-child(7)::before {
-			position: absolute;
-			content: "";
-			width: 0px;
-			border: 1px dashed aqua;
-			height: 75px;
-			background: transparent;
-			bottom: -80px;
-			left: 70px;
-		}
-
-		.pagination-wrapper:nth-child(8)::after {
-			position: absolute;
-			content: "";
-			width: 0px;
-			border: 1px dashed pink;
-			height: 75px;
-			background: transparent;
-			bottom: -80px;
-			right: 70px;
-		}
-
-		.pagination-wrapper:nth-child(8)::before {
-			position: absolute;
-			content: "";
-			width: 0px;
-			border: 1px dashed pink;
-			height: 75px;
-			background: transparent;
-			bottom: -80px;
-			left: 70px;
 		}
 
 		.pagination-wrapper:nth-child(2) {
@@ -337,7 +183,7 @@
 			text-decoration: none;
 			perspective: 80px;
 		}
-		
+
 		/* Эффект при наведении */
 		.page-link:hover {
 			border-color: #b9c8e6;
@@ -371,14 +217,13 @@
 
 		@media (min-width: 700px) {
 			.pagination-wrapper {
-				min-height: 300px;
 				max-width: 600px;
 			}
 		}
 
 		@media (max-width: 500px) {
 			.pagination-wrapper {
-				padding: 1.6rem 1.2rem;
+				padding: 3rem 2rem;
 				border-radius: 3rem;
 			}
 
@@ -689,16 +534,18 @@
 			}
 		}
 
-		.korean, .books {
+		.korean,
+		.books {
 			position: absolute;
 			top: 30px;
 			font-size: 30px;
 			text-decoration: none;
 			left: 30%;
 		}
-		
+
 		.books {
-			left: 38%;;
+			left: 38%;
+			;
 		}
 
 		.keller {
@@ -719,6 +566,29 @@
 				transform: translateX(100px) scale(1);
 			}
 		}
+
+		.disabled {
+			position: relative;
+		}
+
+		.pagination-wrapper.disabled::before {
+			position: absolute;
+			content: "";
+			width: 100%;
+			height: 100%;
+			background: gray;
+			top: 0;
+			left: 0;
+			z-index: 100;
+			opacity: 0.5;
+			border-radius: 4rem;
+		}
+
+		@media (max-width: 500px) {
+			.pagination-wrapper.disabled::before {
+				border-radius: 3rem;
+			}
+		}
 	</style>
 </head>
 
@@ -731,10 +601,10 @@
 		<img class="arrow spider rino" src="img/10.png" alt="" width="70">
 		<img src="img/27.png" alt="" width="200" class="keller">
 	</div>
-	<div class="pagination-wrapper">
-		<h2>🏚️</h2>
+	<div class="pagination-wrapper disabled">
+		<h2></h2>
 		<ul class="pagination">
-			<a class="page-link" id="base1Link" href="python/base/t.html">🧠</a>
+			<a class="page-link" id="base1Link" href="python/base/t.html">🏚️</a>
 		</ul>
 		<img class="arrow" src="img/5.png" alt="" width="70">
 		<img class="row" src="img/6.png" alt="" width="60px">
@@ -742,71 +612,71 @@
 		<img class="row row3" src="img/6.png" alt="" width="60px">
 	</div>
 
-	<div class="pagination-wrapper">
-		<h2>6️⃣7️⃣</h2>
+	<div class="pagination-wrapper disabled">
+		<h2></h2>
 		<ul class="pagination">
-			<a class="page-link" href="python/numbers/t.html">🧠</a>
+			<a class="page-link" href="python/numbers/t.html">6️⃣ 7️⃣</a>
 		</ul>
 	</div>
 
-	<div class="pagination-wrapper">
+	<div class="pagination-wrapper disabled">
 		<div class="ticker-container">
 		</div>
-		<h2>📝</h2>
+		<h2></h2>
 		<ul class="pagination">
-			<a class="page-link" href="python/strings/t.html">🥢</a>
+			<a class="page-link" href="python/strings/t.html">📝</a>
 		</ul>
 	</div>
 
-	<div class="pagination-wrapper">
+	<div class="pagination-wrapper disabled">
 		<div class="ticker-container">
 		</div>
-		<h2>['📋']</h2>
+		<h2></h2>
 		<ul class="pagination">
-			<a class="page-link" href="python/list/t.html">🧠</a>
+			<a class="page-link" href="python/list/t.html">['📋']</a>
 		</ul>
 	</div>
 
-	<div class="pagination-wrapper">
+	<div class="pagination-wrapper disabled">
 		<div class="ticker-container">
 		</div>
-		<h2>('📋')</h2>
+		<h2></h2>
 		<ul class="pagination">
-			<a class="page-link" href="python/korteg/t.html">🧠</a>
+			<a class="page-link" href="python/korteg/t.html">('📋')</a>
 		</ul>
 	</div>
 
-	<div class="pagination-wrapper">
+	<div class="pagination-wrapper disabled">
 		<div class="ticker-container">
 		</div>
-		<h2>{'Слова': 'ри'}</h2>
+		<h2></h2>
 		<ul class="pagination">
-			<a class="page-link" href="python/dict/t.html">🧠</a>
+			<a class="page-link" href="python/dict/t.html">{'🧠': '🧠'}</a>
 		</ul>
 	</div>
 
-	<div class="pagination-wrapper">
+	<div class="pagination-wrapper disabled">
 		<div class="ticker-container">
 		</div>
-		<h2>{'Множе', 'ства'}</h2>
+		<h2></h2>
 		<ul class="pagination">
-			<a class="page-link" href="python/set/t.html">🧠</a>
+			<a class="page-link" href="python/set/t.html">{'🧠', '🧠'}</a>
 		</ul>
 	</div>
 
-	<div class="pagination-wrapper">
+	<div class="pagination-wrapper disabled">
 		<div class="ticker-container">
 		</div>
-		<h2>Структура</h2>
+		<h2></h2>
 		<ul class="pagination">
-			<a class="page-link" href="python/structure/t.html">🧠</a>
+			<a class="page-link" href="python/structure/t.html">⛓️</a>
 		</ul>
 	</div>
 
-	<div class="pagination-wrapper">
+	<div class="pagination-wrapper disabled">
 		<div class="ticker-container">
 		</div>
-		<h2>Functions</h2>
+		<h2></h2>
 		<ul class="pagination">
 			<a class="page-link" href="python/function/t.html">🐍</a>
 		</ul>
