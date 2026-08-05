@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Словари</title>
+	<link rel="icon" type="image/png" href="../../favicon.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0d1117;
+            color: #e6edf3;
+            font-family: 'Segoe UI', 'SF Mono', 'Fira Code', monospace;
+            display: flex;
+            justify-content: center;
+            padding: 2rem 1.5rem;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1100px;
+            width: 100%;
+            background: #161b22;
+            border-radius: 32px;
+            padding: 2.2rem 2.5rem 2.8rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 0 1px #30363d;
+        }
+
+        .page-title {
+            font-size: 2rem;
+            font-weight: 500;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.2rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #f0f6fc;
+            border-bottom: 2px solid #21262d;
+            padding-bottom: 0.8rem;
+            flex-wrap: wrap;
+        }
+        .page-title span {
+            background: #238636;
+            font-size: 1rem;
+            padding: 0.1rem 1.2rem;
+            border-radius: 40px;
+            color: #0d1117;
+            font-weight: 600;
+        }
+
+        .sub {
+            color: #8b949e;
+            font-size: 0.95rem;
+            margin-top: -0.2rem;
+            margin-bottom: 2rem;
+            border-left: 3px solid #238636;
+            padding-left: 1rem;
+        }
+
+        .code-card {
+            background: #0d1117;
+            border-radius: 16px;
+            padding: 1rem 1.6rem;
+            margin-bottom: 1.2rem;
+            border: 1px solid #30363d;
+            box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.5);
+            transition: border 0.15s;
+        }
+        .code-card:hover {
+            border-color: #58a6ff;
+        }
+
+        .code-card pre {
+            font-family: 'Fira Code', 'JetBrains Mono', 'Cascadia Code', monospace;
+            font-size: 0.92rem;
+            white-space: pre-wrap;
+            word-break: break-word;
+            color: #e6edf3;
+            margin: 0;
+        }
+
+        /* Синтаксис */
+        .kw { color: #ff7b72; }
+        .fn { color: #d2a8ff; }
+        .str { color: #a5d6ff; }
+        .num { color: #79c0ff; }
+        .cmt { color: #8b949e; }
+        .var { color: #ffa657; }
+        .op { color: #ff7b72; }
+        .builtin { color: #58a6ff; }
+        .invalid { color: #f85149; background: #2d1b1b; padding: 0.1rem 0.4rem; border-radius: 6px; }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 2rem 0 1.2rem;
+            color: #8b949e;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .divider hr {
+            flex: 1;
+            border: none;
+            height: 1px;
+            background: #30363d;
+        }
+
+        .footer-note {
+            text-align: right;
+            font-size: 0.8rem;
+            color: #484f58;
+            margin-top: 1.8rem;
+            border-top: 1px solid #21262d;
+            padding-top: 1.2rem;
+        }
+
+        @media (max-width: 600px) {
+            .container { padding: 1.5rem 1rem; }
+            .code-card { padding: 0.8rem 1rem; }
+            .code-card pre { font-size: 0.8rem; }
+            .page-title { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- ===== СОЗДАНИЕ СЛОВАРЯ ===== -->
+        <div class="code-card">
+            <pre><span class="var">a</span> <span class="op">=</span> {}
+<span class="fn">print</span>(<span class="var">a</span>) 
+<span class="cmt"># {}</span></pre>
+        </div>
+
+        <div class="code-card">
+            <pre><span class="var">a</span> <span class="op">=</span> {
+    <span class="str">'a'</span>: <span class="num">1</span>,
+    <span class="str">'b'</span>: <span class="num">2</span>
+    }
+<span class="fn">print</span>(<span class="var">a</span>) 
+<span class="cmt"># {'a': 1, 'b': 2}</span></pre>
+        </div>
+
+        <div class="code-card">
+            <pre><span class="var">a</span> <span class="op">=</span> {
+    <span class="num">1</span>: <span class="str">'a'</span>,
+    <span class="num">2</span>: <span class="str">'b'</span>
+    }
+<span class="fn">print</span>(<span class="var">a</span>) 
+<span class="cmt"># {1: 'a', 2: 'b'}</span></pre>
+        </div>
+
+        <!-- ===== ИЗ СПИСКОВ / КОРТЕЖЕЙ ===== -->
+        <div class="code-card">
+            <pre><span class="var">a</span> <span class="op">=</span> [[<span class="str">'a'</span>, <span class="str">'b'</span>], [<span class="str">'c'</span>, <span class="str">'d'</span>]]
+<span class="fn">print</span>(<span class="fn">dict</span>(<span class="var">a</span>)) 
+<span class="cmt"># {'a': 'b', 'c': 'd'}</span></pre>
+        </div>
+
+        <div class="code-card">
+            <pre><span class="var">a</span> <span class="op">=</span> [(<span class="str">'a'</span>, <span class="str">'b'</span>), (<span class="str">'c'</span>, <span class="str">'d'</span>)]
+<span class="fn">print</span>(<span class="fn">dict</span>(<span class="var">a</span>)) 
+<span class="cmt"># {'a': 'b', 'c': 'd'}</span></pre>
+        </div>
+
+        <div class="code-card">
+            <pre><span class="var">a</span> <span class="op">=</span> [<span class="str">'ab'</span>, <span class="str">'cd'</span>]
+<span class="fn">print</span>(<span class="fn">dict</span>(<span class="var">a</span>)) 
+<span class="cmt"># {'a': 'b', 'c': 'd'}</span></pre>
+        </div>
+
+        <div class="code-card">
+            <pre><span class="var">a</span> <span class="op">=</span> (<span class="str">'ab'</span>, <span class="str">'cd'</span>)
+<span class="fn">print</span>(<span class="fn">dict</span>(<span class="var">a</span>)) 
+<span class="cmt"># {'a': 'b', 'c': 'd'}</span></pre>
+        </div>
+
+        <!-- ===== ИЗМЕНЕНИЕ ===== -->
+        <div class="code-card">
+            <pre><span class="var">a</span> <span class="op">=</span> {<span class="str">'a'</span>: <span class="num">1</span>, <span class="str">'b'</span>: <span class="num">2</span>}
+<span class="var">a</span>[<span class="str">'a'</span>] <span class="op">=</span> <span class="num">3</span>
+<span class="fn">print</span>(<span class="var">a</span>) 
+<span class="cmt"># {'a': 3, 'b': 2}</span>
+<span class="var">a</span>[<span class="str">'a'</span>] <span class="op">=</span> <span class="num">4</span>
+<span class="fn">print</span>(<span class="var">a</span>) 
+<span class="cmt"># {'a': 4, 'b': 2}</span></pre>
+        </div>
+
+        <!-- ===== UPDATE ===== -->
+        <div class="code-card">
+            <pre><span class="var">a</span> <span class="op">=</span> {<span class="str">'a'</span>: <span class="num">1</span>, <span class="str">'b'</span>: <span class="num">2</span>}
+<span class="var">b</span> <span class="op">=</span> {<span class="str">'c'</span>: <span class="num">3</span>, <span class="str">'d'</span>: <span class="num">4</span>}
+<span class="var">a</span>.<span class="fn">update</span>(<span class="var">b</span>)
+<span class="fn">print</span>(<span class="var">a</span>) 
+<span class="cmt"># {'a': 1, 'b': 2, 'c': 3, 'd': 4}</span></pre>
+        </div>
+
+        <div class="code-card">
+            <pre><span class="var">a</span> <span class="op">=</span> {<span class="str">'a'</span>: <span class="num">1</span>, <span class="str">'b'</span>: <span class="num">2</span>}
+<span class="var">b</span> <span class="op">=</span> {<span class="str">'a'</span>: <span class="num">4</span>, <span class="str">'b'</span>: <span class="num">2</span>}
+<span class="var">a</span>.<span class="fn">update</span>(<span class="var">b</span>)
+<span class="fn">print</span>(<span class="var">a</span>) 
+<span class="cmt"># {'a': 4, 'b': 2}</span></pre>
+        </div>
+
+        <!-- ===== DEL / CLEAR ===== -->
+        <div class="code-card">
+            <pre><span class="var">a</span> <span class="op">=</span> {<span class="str">'a'</span>: <span class="num">1</span>, <span class="str">'b'</span>: <span class="num">2</span>}
+<span class="kw">del</span> <span class="var">a</span>[<span class="str">'a'</span>]
+<span class="fn">print</span>(<span class="var">a</span>) 
+<span class="cmt"># {'b': 2}</span></pre>
+        </div>
+
+        <div class="code-card">
+            <pre><span class="var">a</span> <span class="op">=</span> {<span class="str">'a'</span>: <span class="num">1</span>, <span class="str">'b'</span>: <span class="num">2</span>}
+<span class="var">a</span>.<span class="fn">clear</span>()
+<span class="fn">print</span>(<span class="var">a</span>) 
+<span class="cmt"># {}</span></pre>
+        </div>
+
+        <!-- ===== IN / GET ===== -->
+        <div class="code-card">
+            <pre><span class="var">a</span> <span class="op">=</span> {<span class="str">'a'</span>: <span class="num">1</span>, <span class="str">'b'</span>: <span class="num">2</span>}
+<span class="fn">print</span>(<span class="str">'a'</span> <span class="kw">in</span> <span class="var">a</span>) 
+<span class="cmt"># True</span></pre>
+        </div>
+
+        <div class="code-card">
+            <pre><span class="var">a</span> <span class="op">=</span> {<span class="str">'a'</span>: <span class="num">1</span>, <span class="str">'b'</span>: <span class="num">2</span>}
+<span class="fn">print</span>(<span class="var">a</span>[<span class="str">'a'</span>]) 
+<span class="cmt"># 1</span>
+
+<span class="cmt"># print(a['c']) # KeyError</span></pre>
+        </div>
+
+        <div class="code-card">
+            <pre><span class="fn">print</span>(<span class="var">a</span>.<span class="fn">get</span>(<span class="str">'a'</span>)) 
+<span class="cmt"># 1</span>
+<span class="fn">print</span>(<span class="var">a</span>.<span class="fn">get</span>(<span class="str">'c'</span>, <span class="str">'nothing'</span>)) 
+<span class="cmt"># nothing</span>
+<span class="fn">print</span>(<span class="var">a</span>.<span class="fn">get</span>(<span class="str">'c'</span>)) 
+<span class="cmt"># None</span></pre>
+        </div>
+
+        <!-- ===== KEYS / VALUES / ITEMS ===== -->
+        <div class="code-card">
+            <pre><span class="fn">print</span>(<span class="var">a</span>.<span class="fn">keys</span>()) 
+<span class="cmt"># dict_keys(['a', 'b'])</span></pre>
+        </div>
+
+        <div class="code-card">
+            <pre><span class="fn">print</span>(<span class="var">a</span>.<span class="fn">values</span>()) 
+<span class="cmt"># dict_values([1, 2])</span></pre>
+        </div>
+
+        <div class="code-card">
+            <pre><span class="fn">print</span>(<span class="var">a</span>.<span class="fn">items</span>()) 
+<span class="cmt"># dict_items([('a', 1), ('b', 2)])</span></pre>
+        </div>
+
+        <!-- ===== ДОБАВЛЕНИЕ ===== -->
+        <div class="code-card">
+            <pre><span class="var">a</span> <span class="op">=</span> {<span class="str">'a'</span>: <span class="num">1</span>, <span class="str">'b'</span>: <span class="num">2</span>}
+<span class="var">a</span>[<span class="str">'c'</span>] <span class="op">=</span> <span class="num">3</span>
+<span class="fn">print</span>(<span class="var">a</span>) 
+<span class="cmt"># {'a': 1, 'b': 2, 'c': 3}</span></pre>
+        </div>
+
+        <!-- ===== COPY ===== -->
+        <div class="code-card">
+            <pre><span class="var">a</span> <span class="op">=</span> {<span class="str">'a'</span>: <span class="num">1</span>, <span class="str">'b'</span>: <span class="num">2</span>}
+<span class="var">b</span> <span class="op">=</span> <span class="var">a</span>.<span class="fn">copy</span>()
+<span class="fn">print</span>(<span class="var">b</span>) 
+<span class="cmt"># {'a': 1, 'b': 2}</span>
+<span class="var">b</span>[<span class="str">'c'</span>] <span class="op">=</span> <span class="num">3</span>
+<span class="fn">print</span>(<span class="var">b</span>) 
+<span class="cmt"># {'a': 1, 'b': 2, 'c': 3}</span>
+<span class="fn">print</span>(<span class="var">a</span>) 
+<span class="cmt"># {'a': 1, 'b': 2}</span></pre>
+        </div>
+
+        <!-- ===== МНОЖЕСТВА ===== -->
+        <div class="divider"><hr> множества (set) <hr></div>
+
+        <div class="code-card">
+            <pre><span class="var">a</span> <span class="op">=</span> <span class="fn">set</span>()
+<span class="fn">print</span>(<span class="var">a</span>) 
+<span class="cmt"># set()</span></pre>
+        </div>
+
+        <div class="code-card">
+            <pre><span class="var">a</span> <span class="op">=</span> {<span class="num">0</span>, <span class="num">2</span>, <span class="num">4</span>, <span class="num">6</span>, <span class="num">8</span>}
+<span class="fn">print</span>(<span class="var">a</span>) 
+<span class="cmt"># {0, 2, 4, 6, 8}</span></pre>
+        </div>
+
+        <div class="code-card">
+            <pre><span class="var">a</span> <span class="op">=</span> (<span class="str">'aaaaaa'</span>)
+<span class="fn">print</span>(<span class="fn">set</span>(<span class="var">a</span>)) 
+<span class="cmt"># {'a'}</span>
+<span class="var">b</span> <span class="op">=</span> (<span class="str">'aabbcc'</span>)
+<span class="fn">print</span>(<span class="fn">set</span>(<span class="var">b</span>)) 
+<span class="cmt"># {'b', 'a', 'c'}</span></pre>
+        </div>
+
+        <div class="code-card">
+            <pre><span class="var">a</span> <span class="op">=</span> [<span class="str">'a'</span>, <span class="str">'b'</span>, <span class="str">'c'</span>]
+<span class="fn">print</span>(<span class="fn">set</span>(<span class="var">a</span>)) 
+<span class="cmt"># {'a', 'b', 'c'}</span></pre>
+        </div>
+
+        <div class="code-card">
+            <pre><span class="var">a</span> <span class="op">=</span> (<span class="str">'a'</span>, <span class="str">'b'</span>, <span class="str">'c'</span>)
+<span class="fn">print</span>(<span class="fn">set</span>(<span class="var">a</span>)) 
+<span class="cmt"># {'b', 'a', 'c'}</span></pre>
+        </div>
+
+        <div class="code-card">
+            <pre><span class="var">a</span> <span class="op">=</span> {<span class="str">'a'</span>: <span class="num">1</span>, <span class="str">'b'</span>: <span class="num">2</span>, <span class="str">'c'</span>: <span class="num">3</span>}
+<span class="fn">print</span>(<span class="fn">set</span>(<span class="var">a</span>)) 
+<span class="cmt"># {'a', 'c', 'b'}</span></pre>
+        </div>
+
+        <!-- ===== ОПЕРАЦИИ С МНОЖЕСТВАМИ ===== -->
+        <div class="code-card">
+            <pre><span class="var">a</span> <span class="op">=</span> { <span class="num">1</span>, <span class="num">2</span> }
+<span class="var">b</span> <span class="op">=</span> { <span class="num">2</span>, <span class="num">3</span> }
+<span class="fn">print</span>(<span class="var">a</span> <span class="op">&</span> <span class="var">b</span>) 
+<span class="cmt"># {2}</span></pre>
+        </div>
+
+        <div class="code-card">
+            <pre><span class="fn">print</span>(<span class="var">a</span>.<span class="fn">intersection</span>(<span class="var">b</span>)) 
+<span class="cmt"># {2}</span></pre>
+        </div>
+
+        <div class="code-card">
+            <pre><span class="fn">print</span>(<span class="var">a</span><span class="op">|</span><span class="var">b</span>) 
+<span class="cmt"># {1,2,3}</span></pre>
+        </div>
+
+        <div class="code-card">
+            <pre><span class="fn">print</span>(<span class="var">a</span><span class="op">-</span><span class="var">b</span>) 
+<span class="cmt"># {1}</span></pre>
+        </div>
+
+        <div class="code-card">
+            <pre><span class="fn">print</span>(<span class="var">a</span><span class="op">^</span><span class="var">b</span>) 
+<span class="cmt"># {1,3}</span>
+<span class="fn">print</span>(<span class="var">a</span>.<span class="fn">symmetric_difference</span>(<span class="var">b</span>)) 
+<span class="cmt"># {1,3}</span></pre>
+        </div>
+
+        <div class="code-card">
+            <pre><span class="fn">print</span>(<span class="var">a</span><span class="op"><=</span><span class="var">b</span>) 
+<span class="cmt"># False</span>
+<span class="fn">print</span>(<span class="var">a</span><span class="op"><=</span><span class="var">a</span>) 
+<span class="cmt"># True</span>
+<span class="fn">print</span>(<span class="var">a</span>.<span class="fn">issubset</span>(<span class="var">a</span>))</pre>
+        </div>
+
+        <!-- ===== ИТЕРАЦИЯ ===== -->
+        <div class="divider"><hr> итерация по dict <hr></div>
+
+        <div class="code-card">
+            <pre><span class="var">a</span> <span class="op">=</span> {<span class="str">'a'</span>: <span class="num">1</span>, <span class="str">'b'</span>: <span class="num">2</span>, <span class="str">'c'</span>: <span class="num">3</span>}
+<span class="kw">for</span> <span class="var">x</span> <span class="kw">in</span> <span class="var">a</span>:
+    <span class="fn">print</span>(<span class="var">x</span>) 
+    <span class="cmt"># a b c</span></pre>
+        </div>
+
+        <div class="code-card">
+            <pre><span class="kw">for</span> <span class="var">x</span> <span class="kw">in</span> <span class="var">a</span>.<span class="fn">values</span>():
+    <span class="fn">print</span>(<span class="var">x</span>) 
+    <span class="cmt"># 1 2 3</span></pre>
+        </div>
+
+        <div class="code-card">
+            <pre><span class="kw">for</span> <span class="var">x</span> <span class="kw">in</span> <span class="var">a</span>.<span class="fn">items</span>():
+    <span class="fn">print</span>(<span class="var">x</span>) 
+    <span class="cmt"># ('a', 1) ('b', 2) ('c', 3)</span></pre>
+        </div>
+
+        <!-- ===== УСЛОВИЯ В ЦИКЛЕ ===== -->
+        <div class="code-card">
+            <pre><span class="var">a</span> <span class="op">=</span> {<span class="str">'a'</span>: <span class="str">'aa'</span>, <span class="str">'b'</span>: <span class="str">'bb'</span>, <span class="str">'c'</span>: <span class="str">'cc'</span>}
+<span class="kw">for</span> <span class="var">name</span>, <span class="var">contents</span> <span class="kw">in</span> <span class="var">a</span>.<span class="fn">items</span>():
+    <span class="kw">if</span> <span class="str">'a'</span> <span class="kw">in</span> <span class="var">contents</span>:
+        <span class="fn">print</span>(<span class="var">name</span>) 
+        <span class="cmt"># a</span>
+        <span class="fn">print</span>(<span class="var">contents</span>) 
+        <span class="cmt"># aa</span></pre>
+        </div>
+
+        <div class="code-card">
+            <pre><span class="var">a</span> <span class="op">=</span> {<span class="str">'a'</span>: <span class="str">'aa'</span>, <span class="str">'b'</span>: <span class="str">'ab'</span>, <span class="str">'c'</span>: <span class="str">'bb'</span>}
+<span class="kw">for</span> <span class="var">name</span>, <span class="var">contents</span> <span class="kw">in</span> <span class="var">a</span>.<span class="fn">items</span>():
+    <span class="kw">if</span> <span class="str">'a'</span> <span class="kw">in</span> <span class="var">contents</span> <span class="kw">and</span> <span class="kw">not</span> (<span class="str">'b'</span> <span class="kw">in</span> <span class="var">contents</span> <span class="kw">or</span> <span class="str">'d'</span>
+        <span class="kw">in</span> <span class="var">contents</span>):
+        <span class="fn">print</span>(<span class="var">name</span>) 
+        <span class="cmt"># a</span></pre>
+        </div>
+
+        <div class="code-card">
+            <pre><span class="var">a</span> <span class="op">=</span> {<span class="str">'a'</span>: {<span class="str">'aa'</span>, <span class="str">'ab'</span>}, <span class="str">'b'</span>: {<span class="str">'ab'</span>, <span class="str">'bb'</span>}}
+<span class="kw">for</span> <span class="var">name</span>, <span class="var">contents</span> <span class="kw">in</span> <span class="var">a</span>.<span class="fn">items</span>():
+    <span class="kw">if</span> <span class="var">contents</span> <span class="op">&</span> { <span class="str">'aa'</span> }:
+        <span class="fn">print</span>(<span class="var">name</span>) 
+        <span class="cmt"># a</span></pre>
+        </div>
+
+        <!-- ===== ГЕНЕРАТОР СЛОВАРЯ ===== -->
+        <div class="code-card">
+            <pre><span class="var">b</span> <span class="op">=</span> <span class="str">'letters'</span>
+<span class="var">a</span> <span class="op">=</span> {<span class="var">x</span>: <span class="var">b</span>.<span class="fn">count</span>(<span class="var">x</span>) <span class="kw">for</span> <span class="var">x</span> <span class="kw">in</span> <span class="var">b</span>}
+<span class="fn">print</span>(<span class="var">a</span>) 
+<span class="cmt"># {'l': 1, 'e': 2, 't': 2, 'r': 1, 's': 1}</span></pre>
+        </div>
+
+    </div>
+</body>
+</html>

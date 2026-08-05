@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python</title>
+	<link rel="icon" type="image/png" href="../../favicon.png">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #0d1117;
+      color: #e6edf3;
+      font-family: 'Segoe UI', 'SF Mono', 'Fira Code', monospace;
+      display: flex;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1100px;
+      width: 100%;
+      background: #161b22;
+      border-radius: 32px;
+      padding: 2.2rem 2.5rem 2.8rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 0 1px #30363d;
+    }
+
+    .page-title {
+      font-size: 2rem;
+      font-weight: 500;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.2rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #f0f6fc;
+      border-bottom: 2px solid #21262d;
+      padding-bottom: 0.8rem;
+      flex-wrap: wrap;
+    }
+    .page-title span {
+      background: #238636;
+      font-size: 1rem;
+      padding: 0.1rem 1.2rem;
+      border-radius: 40px;
+      color: #0d1117;
+      font-weight: 600;
+    }
+
+    .sub {
+      color: #8b949e;
+      font-size: 0.95rem;
+      margin-top: -0.2rem;
+      margin-bottom: 2rem;
+      border-left: 3px solid #238636;
+      padding-left: 1rem;
+    }
+
+    .code-card {
+      background: #0d1117;
+      border-radius: 16px;
+      padding: 1rem 1.6rem;
+      margin-bottom: 1.2rem;
+      border: 1px solid #30363d;
+      box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.5);
+      transition: border 0.15s;
+    }
+    .code-card:hover {
+      border-color: #58a6ff;
+    }
+
+    .code-card pre {
+      font-family: 'Fira Code', 'JetBrains Mono', 'Cascadia Code', monospace;
+      font-size: 0.92rem;
+      white-space: pre-wrap;
+      word-break: break-word;
+      color: #e6edf3;
+      margin: 0;
+    }
+
+    /* Синтаксис */
+    .kw { color: #ff7b72; }
+    .fn { color: #d2a8ff; }
+    .str { color: #a5d6ff; }
+    .num { color: #79c0ff; }
+    .cmt { color: #8b949e; }
+    .var { color: #ffa657; }
+    .op { color: #ff7b72; }
+    .builtin { color: #58a6ff; }
+    .invalid { color: #f85149; background: #2d1b1b; padding: 0.1rem 0.4rem; border-radius: 6px; }
+
+    /* сетка типов */
+    .types-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 1.2rem;
+      background: #0d1117;
+      padding: 1.2rem 1.8rem;
+      border-radius: 16px;
+      border: 1px solid #30363d;
+      margin: 1.8rem 0 0.4rem;
+    }
+    .types-grid span {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.9rem;
+      background: #21262d;
+      padding: 0.2rem 0.9rem;
+      border-radius: 30px;
+      color: #f0f6fc;
+      border: 1px solid #30363d;
+      transition: 0.1s;
+    }
+    .types-grid span:hover {
+      background: #30363d;
+      border-color: #58a6ff;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 2rem 0 1.2rem;
+      color: #8b949e;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .divider hr {
+      flex: 1;
+      border: none;
+      height: 1px;
+      background: #30363d;
+    }
+
+    .footer-note {
+      text-align: right;
+      font-size: 0.8rem;
+      color: #484f58;
+      margin-top: 1.8rem;
+      border-top: 1px solid #21262d;
+      padding-top: 1.2rem;
+    }
+
+    .inline-tag {
+      background: #21262d;
+      padding: 0.1rem 0.8rem;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      color: #8b949e;
+      border: 1px solid #30363d;
+      display: inline-block;
+      margin-right: 0.3rem;
+    }
+
+    @media (max-width: 600px) {
+      .container { padding: 1.5rem 1rem; }
+      .code-card { padding: 0.8rem 1rem; }
+      .code-card pre { font-size: 0.8rem; }
+      .types-grid { padding: 0.8rem 1rem; gap: 0.4rem 0.8rem; }
+      .page-title { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- ===== БЛОК 1: присваивание ===== -->
+    <div class="code-card">
+      <pre><span class="var">a</span> <span class="op">=</span> <span class="num">7</span>
+<span class="fn">print</span>(<span class="var">a</span>) 
+<span class="cmt"># 7</span></pre>
+    </div>
+
+    <div class="code-card">
+      <pre><span class="var">b</span> <span class="op">=</span> <span class="var">a</span>
+<span class="fn">print</span>(<span class="var">b</span>) 
+<span class="cmt"># 7</span></pre>
+    </div>
+
+    <div class="code-card">
+      <pre><span class="cmt"># a z A Z a0 a_</span>
+<span class="cmt"># 0a = 1  <span class="invalid">Invalid decimal literal</span></span></pre>
+    </div>
+
+    <!-- ===== арифметика ===== -->
+    <div class="code-card">
+      <pre><span class="var">a</span> <span class="op">=</span> <span class="num">95</span>
+<span class="var">a</span> <span class="op">=</span> <span class="var">a</span> <span class="op">-</span> <span class="num">3</span>
+<span class="fn">print</span>(<span class="var">a</span>) 
+<span class="cmt"># 92</span></pre>
+    </div>
+
+    <div class="code-card">
+      <pre><span class="var">a</span> <span class="op">=</span> <span class="num">95</span>
+<span class="var">temp</span> <span class="op">=</span> <span class="var">a</span> <span class="op">-</span> <span class="num">3</span>
+<span class="var">a</span> <span class="op">=</span> <span class="var">temp</span>
+<span class="fn">print</span>(<span class="var">a</span>) 
+<span class="cmt"># 92</span></pre>
+    </div>
+
+    <div class="code-card">
+      <pre><span class="var">a</span> <span class="op">=</span> <span class="num">95</span>
+<span class="var">a</span> <span class="op">-=</span> <span class="num">3</span>
+<span class="fn">print</span>(<span class="var">a</span>) 
+<span class="cmt"># 92</span></pre>
+    </div>
+
+    <!-- ===== типы (список) ===== -->
+    <div class="divider"><hr> встроенные типы <hr></div>
+    <div class="types-grid">
+      <span>bool</span><span>bytearray</span><span>bytes</span><span>complex</span>
+      <span>dict</span><span>float</span><span>frozenset</span><span>generator</span>
+      <span>int</span><span>list</span><span>tuple</span><span>set</span><span>str</span>
+    </div>
+
+    <!-- ===== секунды в сутках ===== -->
+    <div class="code-card">
+      <pre><span class="cmt"># comment</span>
+<span class="var">seconds_per_day</span> <span class="op">=</span> <span class="num">86400</span> 
+<span class="cmt"># 60 sec/min * 60 min/hr * 24 hr/day</span></pre>
+    </div>
+
+    <!-- ===== строки ===== -->
+    <div class="code-card">
+      <pre><span class="fn">print</span>(<span class="str">'aaa#aaa'</span>) 
+<span class="cmt"># aaa#aaa</span></pre>
+    </div>
+
+    <!-- ===== if / else ===== -->
+    <div class="code-card">
+      <pre><span class="var">a</span> <span class="op">=</span> <span class="builtin">True</span>
+<span class="kw">if</span> <span class="var">a</span>:
+    <span class="fn">print</span>(<span class="builtin">True</span>) 
+    <span class="cmt"># True</span>
+<span class="kw">else</span>:
+    <span class="fn">print</span>(<span class="builtin">False</span>)</pre>
+    </div>
+
+    <div class="code-card">
+      <pre><span class="var">a</span> <span class="op">=</span> <span class="builtin">True</span>
+<span class="var">b</span> <span class="op">=</span> <span class="builtin">True</span>
+<span class="kw">if</span> <span class="var">a</span>:
+    <span class="kw">if</span> <span class="var">b</span>:
+        <span class="fn">print</span>(<span class="builtin">True</span>) 
+        <span class="cmt"># True</span>
+<span class="kw">elif</span> <span class="var">b</span>: <span class="fn">print</span>(<span class="builtin">False</span>)</pre>
+    </div>
+
+    <!-- ===== сравнения ===== -->
+    <div class="code-card">
+      <pre><span class="cmt"># < <= > >= != ==</span></pre>
+    </div>
+
+    <!-- ===== логические ===== -->
+    <div class="code-card">
+      <pre><span class="fn">print</span>(<span class="num">5</span> <span class="op"><</span> <span class="num">7</span> <span class="kw">or</span> <span class="num">7</span> <span class="op"><</span> <span class="num">10</span>) 
+<span class="cmt"># True</span>
+<span class="fn">print</span>(<span class="num">7</span> <span class="op"><</span> <span class="num">7</span> <span class="kw">and</span> <span class="num">7</span> <span class="op">></span> <span class="num">10</span>) 
+<span class="cmt"># False</span>
+<span class="fn">print</span>(<span class="num">5</span> <span class="op"><</span> <span class="num">7</span> <span class="kw">and</span> <span class="kw">not</span> <span class="num">5</span> <span class="op">></span> <span class="num">10</span>) 
+<span class="cmt"># True</span></pre>
+    </div>
+
+    <!-- ===== while ===== -->
+    <div class="code-card">
+      <pre><span class="var">count</span> <span class="op">=</span> <span class="num">1</span>
+<span class="kw">while</span> <span class="var">count</span> <span class="op"><=</span> <span class="num">5</span>:
+    <span class="fn">print</span>(<span class="var">count</span>)
+    <span class="var">count</span> <span class="op">+=</span> <span class="num">1</span> 
+    <span class="cmt"># 1 2 3 4 5</span></pre>
+    </div>
+
+    <div class="code-card">
+      <pre><span class="var">count</span> <span class="op">=</span> <span class="num">1</span>
+<span class="kw">while</span> <span class="var">count</span> <span class="op"><=</span> <span class="num">5</span>:
+    <span class="fn">print</span>(<span class="var">count</span>) 
+    <span class="cmt"># 1 2 3 lala 4 5 ended</span>
+    <span class="var">count</span> <span class="op">+=</span> <span class="num">1</span>
+    <span class="kw">if</span> <span class="var">count</span> <span class="op">==</span> <span class="num">4</span>:
+        <span class="fn">print</span>(<span class="str">'lala'</span>)
+<span class="kw">else</span>: <span class="fn">print</span>(<span class="str">'ended'</span>)</pre>
+    </div>
+
+    <!-- ===== for ===== -->
+    <div class="code-card">
+      <pre><span class="kw">for</span> <span class="var">x</span> <span class="kw">in</span> <span class="fn">range</span>(<span class="num">0</span>, <span class="num">3</span>):
+    <span class="fn">print</span>(<span class="var">x</span>) 
+    <span class="cmt"># 0 1 2</span></pre>
+    </div>
+
+    <div class="code-card">
+      <pre><span class="kw">for</span> <span class="var">x</span> <span class="kw">in</span> <span class="fn">range</span>(<span class="num">2</span>, <span class="op">-</span><span class="num">1</span>, <span class="op">-</span><span class="num">1</span>):
+    <span class="fn">print</span>(<span class="var">x</span>) 
+    <span class="cmt"># 2 1 0</span></pre>
+    </div>
+
+    <!-- ===== генератор ===== -->
+    <div class="code-card">
+      <pre><span class="var">a</span> <span class="op">=</span> (<span class="var">x</span> <span class="kw">for</span> <span class="var">x</span> <span class="kw">in</span> <span class="fn">range</span>(<span class="num">1</span>, <span class="num">6</span>))
+<span class="fn">print</span>(<span class="fn">type</span>(<span class="var">a</span>)) 
+<span class="cmt"># <class 'generator'></span></pre>
+    </div>
+
+    <!-- ===== арифметические операторы ===== -->
+    <div class="code-card">
+      <pre><span class="cmt"># + - * / // %</span></pre>
+    </div>
+
+    <!-- ===== print чисел ===== -->
+    <div class="code-card">
+      <pre><span class="fn">print</span>(<span class="num">5</span>) 
+<span class="cmt"># 5</span>
+<span class="fn">print</span>(<span class="num">0</span>) 
+<span class="cmt"># 0</span></pre>
+    </div>
+
+    <div class="code-card">
+      <pre><span class="cmt"># print(05)</span>
+<span class="cmt"># leading zeros in decimal integer</span>
+<span class="cmt"># literals are not permitted</span>
+<span class="cmt"># use an 0o prefix for octal integers</span></pre>
+    </div>
+
+    <div class="code-card">
+      <pre><span class="fn">print</span>(<span class="op">+</span><span class="num">123</span>) 
+<span class="cmt"># 123</span>
+<span class="fn">print</span>(<span class="op">-</span><span class="num">123</span>) 
+<span class="cmt"># -123</span>
+<span class="fn">print</span>(<span class="num">5</span><span class="op">+</span><span class="num">9</span>) 
+<span class="cmt"># 14</span>
+<span class="fn">print</span>(<span class="num">4</span><span class="op">-</span><span class="num">10</span>) 
+<span class="cmt"># -6</span>
+<span class="fn">print</span>(<span class="num">6</span><span class="op">*</span><span class="num">7</span>) 
+<span class="cmt"># 42</span>
+<span class="fn">print</span>(<span class="num">9</span><span class="op">/</span><span class="num">5</span>) 
+<span class="cmt"># 1.8</span>
+<span class="fn">print</span>(<span class="num">9</span><span class="op">//</span><span class="num">5</span>) 
+<span class="cmt"># 1</span></pre>
+    </div>
+
+    <div class="code-card">
+      <pre><span class="cmt"># print(5/0)</span>
+<span class="cmt"># ZeroDivisionError: division by zero</span></pre>
+    </div>
+
+    <!-- ===== системы счисления ===== -->
+    <div class="code-card">
+      <pre><span class="fn">print</span>(<span class="num">0b10</span>) 
+<span class="cmt"># 2</span>
+<span class="fn">print</span>(<span class="num">0o10</span>) 
+<span class="cmt"># 8</span>
+<span class="fn">print</span>(<span class="num">0x10</span>) 
+<span class="cmt"># 16</span></pre>
+    </div>
+
+    <!-- ===== int() ===== -->
+    <div class="code-card">
+      <pre><span class="fn">print</span>(<span class="fn">int</span>(<span class="builtin">True</span>)) 
+<span class="cmt"># 1</span>
+<span class="fn">print</span>(<span class="fn">int</span>(<span class="builtin">False</span>)) 
+<span class="cmt"># 0</span>
+<span class="fn">print</span>(<span class="fn">int</span>(<span class="num">98.6</span>)) 
+<span class="cmt"># 98</span>
+<span class="fn">print</span>(<span class="fn">int</span>(<span class="num">1.0e4</span>)) 
+<span class="cmt"># 10000</span>
+<span class="fn">print</span>(<span class="fn">int</span>(<span class="str">'99'</span>)) 
+<span class="cmt"># 99</span>
+<span class="fn">print</span>(<span class="fn">int</span>(<span class="str">'-23'</span>)) 
+<span class="cmt"># -23</span>
+<span class="fn">print</span>(<span class="fn">int</span>(<span class="str">'+12'</span>)) 
+<span class="cmt"># 12</span>
+<span class="fn">print</span>(<span class="fn">int</span>(<span class="builtin">True</span> <span class="op">+</span> <span class="num">2</span>)) 
+<span class="cmt"># 3</span>
+<span class="fn">print</span>(<span class="fn">int</span>(<span class="builtin">False</span> <span class="op">+</span> <span class="num">5.0</span>)) 
+<span class="cmt"># 5</span></pre>
+    </div>
+
+    <!-- ===== float() ===== -->
+    <div class="code-card">
+      <pre><span class="fn">print</span>(<span class="fn">float</span>(<span class="builtin">True</span>)) 
+<span class="cmt"># 1.0</span>
+<span class="fn">print</span>(<span class="fn">float</span>(<span class="builtin">False</span>)) 
+<span class="cmt"># 0.0</span>
+<span class="fn">print</span>(<span class="fn">float</span>(<span class="num">98</span>)) 
+<span class="cmt"># 98.0</span>
+<span class="fn">print</span>(<span class="fn">float</span>(<span class="str">'1.5'</span>)) 
+<span class="cmt"># 1.5</span>
+<span class="fn">print</span>(<span class="fn">float</span>(<span class="str">'99'</span>)) 
+<span class="cmt"># 99.0</span></pre>
+    </div>
+
+  </div>
+</body>
+</html>

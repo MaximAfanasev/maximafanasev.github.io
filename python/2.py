@@ -370,3 +370,71 @@ print(a)
 a = (x for x in range(1, 6))
 print(list(a)) 
 # [1, 2, 3, 4, 5]
+
+
+
+
+
+
+
+a = ()
+print(a) 
+# ()
+
+
+
+
+a = ('a')
+print(a) 
+# a
+
+
+
+
+a = 'a',
+print(a) 
+# ('a',)
+
+
+
+
+a = ('a',)
+print(a) 
+# ('a',)
+
+
+
+
+a = ('a','b')
+print(a) 
+# ('a', 'b')
+
+
+
+
+a = ('a', 'b', 'c')
+d, e, f = a
+print(d) 
+# a
+print(e) 
+# b
+print(f) 
+# c
+
+
+
+
+a = 'a'
+c = 'c'
+a, c = c, a
+print(a) 
+# c
+print(c) 
+# a
+
+
+
+
+a = ['a', 'b', 'c']
+print(tuple(a)) 
+# ('a', 'b', c')
