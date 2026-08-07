@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -43,37 +44,9 @@
 		}
 
 		.pagination-wrapper:nth-child(2) {
-			background: url("img/1.png") no-repeat right top 20px;
-			background-size: contain;
-		}
-
-		.pagination-wrapper:nth-child(3) {
-			background: url("img/2.png") no-repeat right 80px bottom -20px, url("img/22.png") no-repeat right 0% top 0px;
-			background-size: 150px, 150px;
-			color: #fff;
-		}
-
-		.pagination-wrapper:nth-child(4) {
-			background: url("img/15.png") no-repeat right 40px bottom 0px;
-			background-size: 100px, 100px;
-			color: #fff;
-		}
-
-		.pagination-wrapper:nth-child(5) {
-			background: url("img/26.png") no-repeat right 40px bottom -20px;
-			background-size: 100px;
-			color: #fff;
-		}
-
-		.pagination-wrapper:nth-child(6) {
 			background: url("img/28") no-repeat right 40px bottom -20px;
 			background-size: 120px;
 			color: #fff;
-		}
-
-		.pagination-wrapper:nth-child(3) {
-			position: relative;
-			transform: rotateY(-50deg);
 		}
 
 		.pagination-wrapper:hover {
@@ -191,9 +164,9 @@
 			letter-spacing: 0;
 		}
 
-			.pagination-wrapper {
-				max-width: 450px;
-			}
+		.pagination-wrapper {
+			max-width: 450px;
+		}
 
 		@media (max-width: 500px) {
 			.pagination-wrapper {
@@ -540,11 +513,7 @@
 				transform: translateX(100px) scale(1);
 			}
 		}
-
-		.disabled {
-			position: relative;
-		}
-
+		
 		.pagination-wrapper.disabled::before {
 			position: absolute;
 			content: "";
@@ -558,11 +527,6 @@
 			border-radius: 4rem;
 		}
 
-		@media (max-width: 500px) {
-			.pagination-wrapper.disabled::before {
-				border-radius: 3rem;
-			}
-		}
 	</style>
 </head>
 
@@ -575,45 +539,12 @@
 		<img class="arrow spider rino" src="img/10.png" alt="" width="70">
 		<img src="img/27.png" alt="" width="200" class="keller">
 	</div>
-	<div class="pagination-wrapper">
-		<ul class="pagination">
-			<a class="page-link" id="base1Link" href="python/0.html">🏚️ 6️⃣ 7️⃣</a>
-		</ul>
-		<img class="arrow" src="img/5.png" alt="" width="70">
-		<img class="row" src="img/6.png" alt="" width="60px">
-		<img class="row row2" src="img/6.png" alt="" width="60px">
-		<img class="row row3" src="img/6.png" alt="" width="60px">
-	</div>
-
-	<div class="pagination-wrapper ">
-		<div class="ticker-container">
-		</div>
-		<ul class="pagination">
-			<a class="page-link" href="python/1.html">📝</a>
-		</ul>
-	</div>
-
-	<div class="pagination-wrapper ">
-		<div class="ticker-container">
-		</div>
-		<ul class="pagination">
-			<a class="page-link" href="python/2.html">['📋']</a>
-		</ul>
-	</div>
 
 	<div class="pagination-wrapper">
 		<div class="ticker-container">
 		</div>
 		<ul class="pagination">
-			<a class="page-link" href="python/3.html">{'🪼': '🧠'}</a>
-		</ul>
-	</div>
-
-	<div class="pagination-wrapper ">
-		<div class="ticker-container">
-		</div>
-		<ul class="pagination">
-			<a class="page-link" href="python/4.html">🐍</a>
+			<a class="page-link" href="python/0.html">🐍</a>
 		</ul>
 	</div>
 
@@ -759,6 +690,9 @@
 
 			console.log('✨ Пагинация готова!');
 		})();
+
 	</script>
 
-</body></html>
+</body>
+
+</html>
