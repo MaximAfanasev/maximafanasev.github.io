@@ -5,6 +5,126 @@
 	<title>Document</title>
 </head>
 <body>
-	
+	SQL
+
+SQL SERVER
+
+SELECT TOP 10 *
+FROM
+	products;
+
+MySQL
+
+SELECT *
+FROM
+	products
+LIMIT 10
+
+/* comment
+*/
+
+SELECT
+	FirstName,
+	LastName
+FROM
+	customers
+
+SELECT
+	FirstName AS 'First Name'
+	LastName AS [Last Name],
+	Email AS EMAIL
+
+ORDER BY
+	FirstName DESC (z -> a)
+	LastName ASC (a -> z)
+
+LIMIT 10
+
+Данные в информацию
+
+SELECT
+	Total AS [Original Amount]
+Total + 10 AS [plus]
+Total -10 AS sub
+Total / 10 AS divis
+Total * 10 AS Milty
+Total % 10 AS Modul
+
+Select
+	lala,
+	Total
+From
+	lala
+Where
+	Total = 1.98
+ORDER BY
+	lala ASC
+
+WHERE
+	Total IN (1.98, 3.96)
+
+WHERE
+	BillingCity = 'Tucson'
+
+WHERE
+	BillingCity IN ('a', 'b', 'c')
+
+WHERE
+	BillingCity LIKE 'T%' 
+	BillingCity LIKE'%T%' 
+	BillingCity LIKE '%T'
+	BillingCity LIKE 'T%T'
+	BillingCity NOT LIKE '%T'
+	DATE = '2009-01-03'
+	DATE(Date) = '2009-01-03'
+	Date(Date) > '2010-01-02' AND Total < 3
+	City Like 'p%' OR city LIKE 'd%'
+	Total > 1.98 AND (City Like 'p%' OR City LIKE 'd%')
+
+SELECT
+	Total,
+	CASE
+	WHEN TOTAL < 2.00 THEN 'Purchase'
+	WHEN TOTAL BETWEEN 2.00 AND 6.99 THEN 'Low'
+	ELSE 'Top'
+	END AS PurcaseType
+
+НЕСКОЛЬКО ТАБЛИЦ
+
+SELECT *
+FROM
+	invoices
+INNER JOIN
+	customers
+ON
+	invoices.CustomerId = customers.CustomerId
+
+SELECT *
+FROM
+	invoices AS i
+INNER JOIN
+	customers AS c
+ON i.CustomerId = c.CustomerId
+
+SELECT
+	i.InvoiceId,
+	c.CustomerId
+FROM
+	invoices AS i
+INNER JOIN
+	customers AS c
+ON i.CustomerId = c.CustomerId
+
+SELECT * 
+FROM invoices AS i
+LEFT OUTER JOIN customers AS c
+ON i.CutomerId = c.CustomerId
+
+SELECT * 
+FROM invoices AS i
+RIGHT OUTER JOIN customers AS c
+ON i.CutomerId = c.CustomerId
+
+
 </body>
 </html>
