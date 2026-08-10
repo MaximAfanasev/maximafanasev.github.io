@@ -1,12 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-</head>
-<body>
-	SQL
-
 SQL SERVER
 
 SELECT TOP 10 *
@@ -25,71 +16,44 @@ LIMIT 10
 
 SELECT
 	FirstName,
-	LastName
-FROM
-	customers
-
-SELECT
-	FirstName AS 'First Name'
+	LastName,
+  FirstName AS 'First Name'
 	LastName AS [Last Name],
 	Email AS EMAIL
-
+	Total AS [Original Amount]
+	Total + 10 AS [plus]
+	Total -10 AS sub
+	Total / 10 AS divis
+	Total * 10 AS Milty
+	Total % 10 AS Modul
+FROM
+	customers
 ORDER BY
 	FirstName DESC (z -> a)
 	LastName ASC (a -> z)
-
-LIMIT 10
-
-Данные в информацию
-
-SELECT
-	Total AS [Original Amount]
-Total + 10 AS [plus]
-Total -10 AS sub
-Total / 10 AS divis
-Total * 10 AS Milty
-Total % 10 AS Modul
-
-Select
-	lala,
-	Total
-From
-	lala
-Where
+WHERE
 	Total = 1.98
-ORDER BY
-	lala ASC
-
-WHERE
 	Total IN (1.98, 3.96)
-
-WHERE
 	BillingCity = 'Tucson'
-
-WHERE
 	BillingCity IN ('a', 'b', 'c')
-
-WHERE
 	BillingCity LIKE 'T%' 
-	BillingCity LIKE'%T%' 
+	BillingCity LIKE '%T%' 
 	BillingCity LIKE '%T'
 	BillingCity LIKE 'T%T'
 	BillingCity NOT LIKE '%T'
-	DATE = '2009-01-03'
+	Date = '2009-01-03'
 	DATE(Date) = '2009-01-03'
 	Date(Date) > '2010-01-02' AND Total < 3
-	City Like 'p%' OR city LIKE 'd%'
+	City Like 'p%' OR City LIKE 'd%'
 	Total > 1.98 AND (City Like 'p%' OR City LIKE 'd%')
-
-SELECT
-	Total,
-	CASE
+LIMIT 10
+CASE
 	WHEN TOTAL < 2.00 THEN 'Purchase'
 	WHEN TOTAL BETWEEN 2.00 AND 6.99 THEN 'Low'
 	ELSE 'Top'
 	END AS PurcaseType
 
-НЕСКОЛЬКО ТАБЛИЦ
+
 
 SELECT *
 FROM
@@ -125,6 +89,52 @@ FROM invoices AS i
 RIGHT OUTER JOIN customers AS c
 ON i.CutomerId = c.CustomerId
 
+WHERE
+	al.Artistid IS NULL
 
-</body>
-</html>
+Функции
+
+SELECT
+	COUNT(LastName) AS [NameCount]
+
+AVG
+COUNT
+MAX
+MIN
+SUM
+
+INSTR
+LENGTH
+LOVER
+LTRIM
+REPLACE
+RTRIM
+SUBSTR
+TRIM
+UPPER
+
+DATE
+DATETIME
+JULIANDAY
+STRFTIME
+TIME
+'NOW'
+
+SELECT 
+	FirstName || LastName
+	FirstName || ' ' || LastName
+SELECT
+	City
+FROM
+	Invoces
+Where
+	AVG(Total) > 5
+GROUP BY
+	City
+HAVING
+	AVG(Total) > 5
+ORDER BY
+	City
+
+ПРЕДСТАВЛЕНИЕ
+DML
