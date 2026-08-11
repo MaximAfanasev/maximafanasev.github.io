@@ -8,12 +8,7 @@ LIMIT 10
 /* comment
 */
 
-
-
-
-
-
-
+##########################################
 
 ABCDF
 GHIJK
@@ -21,18 +16,15 @@ LMNOP
 QRSTW
 XYZ
 
-C
-F
-L
-O
-S
-W
+##########################################
 
-CFL OSW
+CFHL OSW
 
+##########################################
 
 CASE
 FROM
+HAVING
 LIMIT
 ORDER BY
 SELECT
@@ -46,6 +38,7 @@ SELECT
 	AS
 		''
 		[]
+	? || ?
 
 ORDER BY
 	DESC
@@ -78,12 +71,63 @@ WHERE
 	
 LIMIT 10
 
-
+CASE 
+	WHEN
 	
+	THEN
 	
+	ELSE
+	
+	END
+	
+##########################################
+	
+INNER JOIN
+	?
+	
+	? AS ?
+	
+	ON
+	
+##########################################
 
+A C MM S
 
+AVG
 
+COUNT
+
+MAX
+MIN
+
+SUM
+
+##########################################
+
+I LLL RR S T U
+
+INSTR
+LENGTH
+LOVER
+LTRIM
+REPLACE
+RTRIM
+SUBSTR
+TRIM
+UPPER
+
+##########################################
+
+DD J S T 'NOW'
+
+DATE
+DATETIME
+JULIANDAY
+STRFTIME
+TIME
+'NOW'
+
+##########################################
 
 SELECT
 	Name
@@ -97,6 +141,8 @@ SELECT
 	Total / 10 AS divis
 	Total * 10 AS Milty
 	Total % 10 AS Modul
+	FirstName || LastName
+	FirstName || ' ' || LastName
 	
 FROM
 	customers
