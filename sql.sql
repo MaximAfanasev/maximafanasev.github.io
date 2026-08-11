@@ -153,6 +153,9 @@ FROM
 ORDER BY
 	Name DESC (z -> a)
 	Name ASC (a -> z)
+	
+HAVING
+	AVG(Total) > 5
 
 WHERE
 	Total = 1.98
@@ -185,7 +188,6 @@ CASE
 	END AS PurcaseType
 
 ##########################################
-
 
 SELECT *
 FROM
@@ -226,9 +228,6 @@ WHERE
 
 ##########################################
 
-
-Функции
-
 SELECT
 	COUNT(LastName) AS [NameCount]
 
@@ -255,24 +254,7 @@ STRFTIME
 TIME
 'NOW'
 
-SELECT 
-	FirstName || LastName
-	FirstName || ' ' || LastName
-SELECT
-	City
-FROM
-	Invoces
-Where
-	AVG(Total) > 5
-GROUP BY
-	City
-HAVING
-	AVG(Total) > 5
-ORDER BY
-	City
-
 ##########################################
-
 
 ПРЕДСТАВЛЕНИЕ
 DML
