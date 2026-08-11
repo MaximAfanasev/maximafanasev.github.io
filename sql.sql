@@ -1,9 +1,3 @@
-SQL SERVER
-
-SELECT TOP 10 *
-FROM
-	products;
-
 MySQL
 
 SELECT *
@@ -14,46 +8,126 @@ LIMIT 10
 /* comment
 */
 
+
+
+
+
+
+
+
+ABCDF
+GHIJK
+LMNOP
+QRSTW
+XYZ
+
+C
+F
+L
+O
+S
+W
+
+CFL OSW
+
+
+CASE
+FROM
+LIMIT
+ORDER BY
 SELECT
-	FirstName,
-	LastName,
-  FirstName AS 'First Name'
-	LastName AS [Last Name],
+WHERE
+
+INNER JOIN
+LEFT INNER JOIN
+RIGHT INNER JOIN
+
+SELECT
+	AS
+		''
+		[]
+
+ORDER BY
+	DESC
+	ASC
+
+WHERE
+	= ?
+	= '?'
+	
+	IN (?, ?)
+	IN ('?', '?')
+	
+	LIKE 
+		'T%'
+		'%T'
+		'%T%'
+		'T%T'
+	
+	NOT LIKE 
+		'T%'
+		'%T'
+		'%T%'
+		'T%T'
+	
+	Date = '?-?-?'
+	
+	DATE(Date) > '?-?-?'
+	DATE(Date) > '?-?-?' AND
+	DATE(Date) > '?-?-?' OR
+	
+LIMIT 10
+
+
+	
+	
+
+
+
+
+SELECT
+	Name
+	LastName
+  Name AS 'First Name'
+	Name AS [Last Name]
 	Email AS EMAIL
 	Total AS [Original Amount]
-	Total + 10 AS [plus]
-	Total -10 AS sub
+	Total + 10 AS plus
+	Total - 10 AS sub
 	Total / 10 AS divis
 	Total * 10 AS Milty
 	Total % 10 AS Modul
+	
 FROM
 	customers
+	
 ORDER BY
-	FirstName DESC (z -> a)
-	LastName ASC (a -> z)
+	Name DESC (z -> a)
+	Name ASC (a -> z)
+	
 WHERE
 	Total = 1.98
 	Total IN (1.98, 3.96)
-	BillingCity = 'Tucson'
-	BillingCity IN ('a', 'b', 'c')
-	BillingCity LIKE 'T%' 
-	BillingCity LIKE '%T%' 
-	BillingCity LIKE '%T'
-	BillingCity LIKE 'T%T'
-	BillingCity NOT LIKE '%T'
+	City = 'Tucson'
+	City IN ('a', 'b', 'c')
+	City LIKE 'T%' 
+	City LIKE '%T'
+	City LIKE '%T%'
+	City LIKE 'T%T'
+	City NOT LIKE '%T'
 	Date = '2009-01-03'
 	DATE(Date) = '2009-01-03'
-	Date(Date) > '2010-01-02' AND Total < 3
-	City Like 'p%' OR City LIKE 'd%'
-	Total > 1.98 AND (City Like 'p%' OR City LIKE 'd%')
+	DATE(Date) > '2010-01-02' AND Total < 3
+	City LIKE 'p%' OR City LIKE 'd%'
+	Total > 1.98 AND (City LIKE 'p%' OR City LIKE 'd%')
+	
 LIMIT 10
+
 CASE
 	WHEN TOTAL < 2.00 THEN 'Purchase'
 	WHEN TOTAL BETWEEN 2.00 AND 6.99 THEN 'Low'
 	ELSE 'Top'
 	END AS PurcaseType
-
-
 
 SELECT *
 FROM
