@@ -22,6 +22,13 @@ CFHL OSW
 
 ##########################################
 
+STR
+NUM
+DATE
+NULL
+
+##########################################
+
 CASE
 FROM
 HAVING
@@ -169,11 +176,17 @@ WHERE
 	
 LIMIT 10
 
+##########################################
+
+
 CASE
 	WHEN TOTAL < 2.00 THEN 'Purchase'
 	WHEN TOTAL BETWEEN 2.00 AND 6.99 THEN 'Low'
 	ELSE 'Top'
 	END AS PurcaseType
+
+##########################################
+
 
 SELECT *
 FROM
@@ -211,6 +224,9 @@ ON i.CutomerId = c.CustomerId
 
 WHERE
 	al.Artistid IS NULL
+
+##########################################
+
 
 Функции
 
@@ -255,6 +271,9 @@ HAVING
 	AVG(Total) > 5
 ORDER BY
 	City
+
+##########################################
+
 
 ПРЕДСТАВЛЕНИЕ
 DML
