@@ -43,8 +43,8 @@ RIGHT INNER JOIN
 
 SELECT
 	AS
-		''
-		[]
+	AS ''
+	AS []
 	? || ?
 
 ORDER BY
@@ -52,18 +52,13 @@ ORDER BY
 	ASC
 
 WHERE
-	= ?
-	= '?'
+	_ = ?
+	_ = '?'
 	
 	IN (?, ?)
 	IN ('?', '?')
 	
-	LIKE 
-		'T%'
-		'%T'
-		'%T%'
-		'T%T'
-	
+	LIKE	
 	NOT LIKE 
 		'T%'
 		'%T'
@@ -81,6 +76,8 @@ LIMIT 10
 CASE 
 	WHEN
 	
+	BETWEEN
+	
 	THEN
 	
 	ELSE
@@ -91,7 +88,6 @@ CASE
 	
 INNER JOIN
 	?
-	
 	? AS ?
 	
 	ON
@@ -141,8 +137,8 @@ SELECT
 	LastName
   Name AS 'First Name'
 	Name AS [Last Name]
-	Email AS EMAIL
-	Total AS [Original Amount]
+	Name AS Name
+	Name AS [Naming Name]
 	Total + 10 AS plus
 	Total - 10 AS sub
 	Total / 10 AS divis
@@ -157,10 +153,11 @@ FROM
 ORDER BY
 	Name DESC (z -> a)
 	Name ASC (a -> z)
-	
+
 WHERE
 	Total = 1.98
 	Total IN (1.98, 3.96)
+	
 	City = 'Tucson'
 	City IN ('a', 'b', 'c')
 	City LIKE 'T%' 
@@ -168,9 +165,11 @@ WHERE
 	City LIKE '%T%'
 	City LIKE 'T%T'
 	City NOT LIKE '%T'
+	
 	Date = '2009-01-03'
 	DATE(Date) = '2009-01-03'
 	DATE(Date) > '2010-01-02' AND Total < 3
+	
 	City LIKE 'p%' OR City LIKE 'd%'
 	Total > 1.98 AND (City LIKE 'p%' OR City LIKE 'd%')
 	
