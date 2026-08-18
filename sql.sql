@@ -33,7 +33,6 @@ WHERE
 	Total IN (1.98, 3.96)
 	City IN ('a', 'b', 'c')
 	
-	
 	City LIKE 'T%' 
 	City LIKE '%T'
 	City LIKE '%T%'
@@ -51,7 +50,6 @@ WHERE
 LIMIT 10
 
 ##########################################
-
 
 CASE
 	WHEN TOTAL < 2.00 THEN 'Purchase'
