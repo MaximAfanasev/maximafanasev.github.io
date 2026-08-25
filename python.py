@@ -27,8 +27,6 @@ a -= 3
 print(a) 
 # 92
 
-
-
 #bbb c d ff g i l t ss
 #bool
 #bytearray
