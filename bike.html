@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<title>Bike</title>
@@ -9,14 +10,34 @@
 		body {
 			padding: 0;
 			margin: 0 auto;
+			background: #BCC5D1;
 		}
+
 		.wrapper {
-			background-image: linear-gradient(to top, #16D0B1, #E16F4A);
+			background: #662EFF;
 			padding-top: 40px;
-			padding-bottom: 40px;
 		}
+
+		.wrapper-t {
+			position: relative;
+			border-bottom-right-radius: 60px;
+		}
+		
 		.wrapper-r {
-			background-image: linear-gradient(to top, #E16F4A, #16D0B1);
+			position: relative;
+			background: #BCC5D1;
+			border-top-left-radius: 60px;
+			
+		}
+		
+		.wrapper-t::before {
+			position: absolute;
+			content: "";
+			width: 60px;
+			height: 60px;
+			left: 0;
+			bottom: -60px;
+			background: #662EFF;
 		}
 
 		img {
@@ -30,7 +51,7 @@
 
 <body>
 
-	<div class="wrapper">
+	<div class="wrapper wrapper-t">
 		<img src="img/222.png" alt="">
 	</div>
 
@@ -38,4 +59,6 @@
 		<img src="img/111.png" alt="">
 	</div>
 
-</body></html>
+</body>
+
+</html>

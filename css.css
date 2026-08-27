@@ -599,3 +599,43 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+
+
+--gray100: #fafafd;
+--gray200: #eaedf3;
+--gray300: #d8dce6;
+--gray400: #bcc5d1;
+--gray500: #95a2b3;
+--gray600: #7f8b99;
+--gray700: #656d78;
+--gray800: #33373c;
+--gray900: #1f1c28;
+--white: #fff;
+--light-bg: #f8faff;
+--light-blue: #f5f7fc;
+--purple100: #ecddff;
+--purple300: #c299ff;
+--purple400: #8b55ff;
+--purple500: #662eff;
+--purple600: #5729d0;
+--purple700: #4824a2;
+--purple800: #351877;
+--purple900: #25104f;
+--purple940: #1f1038;
+--purple950: #221040;
+--purple955: #1b0d33;
+--purple970: #15082b;
+--cyan4: #00cfde;
+--green4: #06c270;
+--red2: #ff8080;
+--red4: #ff3b3b;
+--gradient-1: linear-gradient(147.14deg, var(--purple400) 6.95%, var(--purple500) 93.05%);
+--gradient-2: linear-gradient(147.14deg, #f80 6.95%, #e63535 93.05%);
+--gradient-3: linear-gradient(147.14deg, #3e7bfa 6.95%, #60c 93.05%);
+--gradient-4: linear-gradient(147.14deg, #00cfde 6.95%, #05a660 93.05%);
+--gradient-5: linear-gradient(145.51deg, #ac5dd9 7.21%, #004fc4 94.47%);
+--gradient-6: linear-gradient(147.14deg, #ff3b3b 6.95%, #60c 93.05%);
+--gradient-7: linear-gradient(147.14deg, #73dfe7 6.95%, #0063f7 93.05%);
+--shadowMedium: 0 6px 16px rgba(51, 55, 60, 0.08);
+--shadow-s-base: 0 1px 3px rgba(51, 55, 60, 0.08);
