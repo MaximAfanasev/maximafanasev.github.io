@@ -11,6 +11,7 @@
 			padding: 0;
 			margin: 0 auto;
 			background: #BCC5D1;
+			padding-bottom: 50px;
 		}
 
 		.wrapper {
@@ -22,14 +23,13 @@
 			position: relative;
 			border-bottom-right-radius: 60px;
 		}
-		
+
 		.wrapper-r {
 			position: relative;
 			background: #BCC5D1;
 			border-top-left-radius: 60px;
-			
 		}
-		
+
 		.wrapper-t::before {
 			position: absolute;
 			content: "";
@@ -44,7 +44,13 @@
 			display: block;
 			width: calc(100% - 40px);
 			margin: 0 auto;
-			max-width: 500px;
+		}
+
+
+		@media screen and (min-width: 768px) {
+			img {
+				max-width: 800px;
+			}
 		}
 	</style>
 </head>
@@ -59,6 +65,4 @@
 		<img src="img/111.png" alt="">
 	</div>
 
-</body>
-
-</html>
+</body></html>
