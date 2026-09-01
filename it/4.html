@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Полный справочник: Сети, API, Архитектура</title>
+<style>
+  body { font-family: 'Segoe UI', Arial, sans-serif; max-width: 1200px; margin: 25px auto; padding: 25px; background: #f8fafc; color: #0f172a; line-height: 1.5; }
+  h1 { color: #0b5e8a; border-bottom: 5px solid #0b5e8a; padding-bottom: 12px; font-size: 30px; }
+  h2 { color: #1e3a5f; margin-top: 35px; background: #e2edf7; padding: 8px 18px; border-radius: 0 30px 30px 0; border-left: 10px solid #1a6f9e; }
+  h3 { color: #2c3e50; margin: 22px 0 12px 0; }
+  .row { display: flex; flex-wrap: wrap; gap: 15px; margin: 15px 0; }
+  .card { flex: 1 1 200px; background: #ffffff; border: 1px solid #dce7f2; padding: 14px 18px; border-radius: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.03); }
+  .card-blue { background: #eff6ff; border-left: 5px solid #2563eb; }
+  .card-green { background: #f0fdf4; border-left: 5px solid #16a34a; }
+  .card-red { background: #fef2f2; border-left: 5px solid #dc2626; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 15px 0; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin: 15px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 14px; }
+  th { background: #1e3a5f; color: white; padding: 10px; text-align: left; }
+  td { border: 1px solid #cbd5e1; padding: 10px; vertical-align: top; }
+  ul, ol { padding-left: 22px; margin: 8px 0; }
+  .badge { display: inline-block; background: #1a6f9e; color: white; font-size: 12px; padding: 2px 14px; border-radius: 30px; font-weight: 600; margin-right: 5px; }
+  .badge-red { background: #b91c1c; }
+  .badge-green { background: #166534; }
+  .badge-purple { background: #5b21b6; }
+  .badge-orange { background: #c2410c; }
+  .highlight-box { background: #fefce8; border: 1px solid #fde047; padding: 12px 20px; border-radius: 12px; }
+  .mono { font-family: 'Courier New', monospace; background: #f1f5f9; padding: 2px 8px; border-radius: 6px; font-size: 13px; }
+  @media print { .grid-2, .grid-3 { display: block; } .card { margin-bottom: 10px; } }
+</style>
+</head>
+<body>
+
+<!-- ========== БЛОК 1: МОДЕЛИ СЕТЕВОГО ВЗАИМОДЕЙСТВИЯ ========== -->
+<h2>1. Модели сетевого взаимодействия</h2>
+<div class="grid-2">
+  <div class="card card-blue"><span class="badge">📚</span> <strong>OSI (Open Systems Connection)</strong><br>Теоретическая эталонная модель из 7 уровней.</div>
+  <div class="card card-blue"><span class="badge">🌐</span> <strong>TCP/IP (Transmission Control Protocol / Internet Protocol)</strong><br>Практический стек протоколов (4 уровня).</div>
+</div>
+
+<h3>Сравнение уровней OSI и TCP/IP</h3>
+<table>
+  <tr><th>Уровень OSI</th><th>TCP/IP</th><th>Что делает / Примеры</th></tr>
+  <tr><td><strong>Прикладной</strong> (7)</td><td rowspan="3"><strong>Прикладной</strong></td><td>Общение приложений: <span class="mono">HTTP</span>, <span class="mono">SMTP</span> (почта), <span class="mono">FTP</span> (файлы)</td></tr>
+  <tr><td><strong>Сессионный</strong> (6) / <strong>Представительский</strong> (5)</td><td>Управление сессией, шифрование, кодирование данных</td></tr>
+  <tr><td><strong>Транспортный</strong> (4)</td><td><strong>Транспортный</strong></td><td>Доставка данных: <span class="mono">TCP</span> (надёжный) и <span class="mono">UDP</span> (быстрый)</td></tr>
+  <tr><td><strong>Сетевой</strong> (3)</td><td><strong>Межсетевой</strong></td><td>Маршрутизация между сетями (IP-адресация)</td></tr>
+  <tr><td><strong>Канальный</strong> (2) / <strong>Физический</strong> (1)</td><td><strong>Канальный</strong> (сетевой доступ)</td><td>Передача по физической среде: Ethernet, Wi-Fi, оптоволокно</td></tr>
+</table>
+
+<div class="row">
+  <div class="card"><span class="badge">💻</span> <strong>Клиент</strong> — устройство, которое запрашивает информацию.</div>
+  <div class="card"><span class="badge">🖥️</span> <strong>Сервер</strong> — устройство, которое отдаёт информацию.</div>
+  <div class="card"><span class="badge">📡</span> <strong>LAN</strong> — Локальная сеть (офис, дом).</div>
+  <div class="card"><span class="badge">🌍</span> <strong>WAN</strong> — Глобальная сеть (Интернет).</div>
+</div>
+
+<div class="highlight-box">
+  <strong>🔐 Безопасность / Шифрование:</strong> данные шифруются на сессионном уровне (SSL/TLS), чтобы никто не мог прочитать трафик.
+</div>
+
+<!-- ========== БЛОК 2: БАЗЫ ДАННЫХ И СУБД ========== -->
+<h2>2. Базы данных</h2>
+<div class="card"><strong>СУБД (Система Управления Базами Данных)</strong> — программное обеспечение для хранения, изменения и обработки данных (PostgreSQL, MySQL, Oracle, MongoDB).</div>
+
+<!-- ========== БЛОК 3: АУТЕНТИФИКАЦИЯ ========== -->
+<h2>3. Аутентификация и токены</h2>
+<div class="grid-2">
+  <div class="card"><span class="badge badge-purple">🔑</span> <strong>Токен аутентификации</strong> — цифровой ключ, подтверждающий личность.</div>
+  <div class="card"><span class="badge badge-purple">📜</span> <strong>JWT (JSON Web Token)</strong> — компактный токен в формате JSON, содержит данные пользователя и подпись.</div>
+  <div class="card"><span class="badge badge-orange">⏳</span> <strong>Короткоживущий токен</strong> — живёт 5–30 минут (Access Token), повышает безопасность.</div>
+  <div class="card"><span class="badge badge-orange">🔗</span> <strong>OAuth</strong> — протокол, позволяющий войти через соцсеть (Google, VK) без передачи пароля.</div>
+</div>
+
+<!-- ========== БЛОК 4: МОНОЛИТ VS МИКРОСЕРВИСЫ ========== -->
+<h2>4. Архитектура приложений</h2>
+<div class="grid-2">
+  <div class="card card-red"><span class="badge">🏛️</span> <strong>Монолит</strong><br>Вся логика внутри одной кодовой базы (единый .jar/.exe).<br><span style="font-size:13px;">✅ Просто развернуть, ❌ трудно масштабировать.</span></div>
+  <div class="card card-green"><span class="badge">🧩</span> <strong>Микросервисы</strong><br>Приложение разбито на множество независимых сервисов.<br><span style="font-size:13px;">✅ Масштабируются по отдельности, ❌ сложное сетевое взаимодействие.</span></div>
+</div>
+<div class="card"><span class="badge badge-green">🗄️</span> <strong>Database Per Service</strong> — у каждого микросервиса своя база данных (изоляция данных).</div>
+
+<!-- ========== БЛОК 5: API ========== -->
+<h2>5. API (Application Programming Interface)</h2>
+<div class="highlight-box">
+  <strong>API</strong> — это правила и способы обмена данными между системами. <br>
+  <span style="font-size:14px;">🔍 Аналогия: <strong>официант</strong> в ресторане — вы ему заказ (запрос), он приносит блюдо (ответ).</span>
+</div>
+<div class="row">
+  <div class="card"><span class="badge">🔗</span> <strong>Endpoint</strong> — это конкретный URL-адресат, по которому стучатся к API (например, <span class="mono">/api/users</span>).</div>
+</div>
+
+<h3>Типы API (по доступности)</h3>
+<div class="grid-3">
+  <div class="card"><span class="badge badge-green">🌍</span> <strong>Открытые (Public)</strong> — доступны всем, нужен API-ключ для связи между серверами (не путать с токеном пользователя).</div>
+  <div class="card"><span class="badge badge-purple">🤝</span> <strong>Партнёрские</strong> — доступны только проверенным компаниям-партнёрам.</div>
+  <div class="card"><span class="badge badge-red">🏢</span> <strong>Внутренние</strong> — только внутри компании, не торчат наружу.</div>
+  <div class="card" style="flex: 1 1 100%;"><span class="badge">🧩</span> <strong>Составные (Composite)</strong> — один API, который агрегирует данные из нескольких других API.</div>
+</div>
+
+<!-- ========== БЛОК 6: REST API (ПОДРОБНО) ========== -->
+<h2>6. REST API (Representational State Transfer)</h2>
+<div class="card card-blue"><strong>Передача самоописываемого состояния</strong> — архитектурный стиль для веб-сервисов.</div>
+
+<h3>6 принципов REST (must have):</h3>
+<ul>
+  <li><strong>Клиент-серверная архитектура</strong> — разделение ответственности (UI отдельно, данные отдельно).</li>
+  <li><strong>Отсутствие состояния (Stateless)</strong> — каждый запрос содержит всю информацию для выполнения (сессии не хранятся на сервере).</li>
+  <li><strong>Кэшируемость</strong> — ответы должны маркироваться как кэшируемые или нет.</li>
+  <li><strong>Единообразие интерфейса</strong> — стандартные методы: <span class="mono">GET</span>, <span class="mono">POST</span>, <span class="mono">PUT</span>, <span class="mono">DELETE</span>.</li>
+  <li><strong>Слои (Layered System)</strong> — клиент не знает, работает ли он напрямую с сервером или через прокси.</li>
+  <li><strong>Код по требованию (Code on Demand)</strong> — опционально: сервер может передавать клиенту исполняемый код (например, JavaScript).</li>
+</ul>
+
+<!-- ========== БЛОК 7: ФОРМАТЫ ПЕРЕДАЧИ ========== -->
+<h2>7. Форматы передачи данных</h2>
+<div class="grid-2">
+  <div class="card"><span class="badge">📄</span> <strong>XML (EXtensible Markup Language)</strong><br>Строгий, многословный формат. Используется в SOAP и старых корпоративных системах.<br>
+    <span class="mono">&lt;user&gt;&lt;name&gt;John&lt;/name&gt;&lt;/user&gt;</span>
+  </div>
+  <div class="card"><span class="badge badge-green">📦</span> <strong>JSON (JavaScript Object Notation)</strong><br>Лёгкий, человекочитаемый формат. Используется в 95% современных REST API.<br>
+    <span class="mono">{"user": {"name": "John"}}</span>
+  </div>
+</div>
+
+<!-- ========== БЛОК 8: SOAP API ========== -->
+<h2>8. SOAP API (Simple Object Access Protocol)</h2>
+<div class="card card-red">
+  <strong>⚠️ SOAP</strong> — это строгий протокол, использующий XML и сложные стандарты (WS-Security). Часто используется в банках и госструктурах.<br>
+  <span style="font-size:14px;">✍️ Отличие от REST: REST — это стиль (архитектура), а SOAP — это именно <strong>протокол</strong> с жёсткими правилами.</span>
+</div>
+
+<hr style="margin: 45px 0; border: 1px dashed #94a3b8;">
+
+
+</body>
+</html>

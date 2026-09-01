@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Энциклопедия разработчика: SQL, NoSQL, Брокеры, Кэш</title>
+<style>
+  body { font-family: 'Segoe UI', Arial, sans-serif; max-width: 1200px; margin: 25px auto; padding: 25px; background: #f8fafc; color: #0f172a; line-height: 1.5; }
+  h1 { color: #0b5e8a; border-bottom: 5px solid #0b5e8a; padding-bottom: 12px; font-size: 30px; }
+  h2 { color: #1e3a5f; margin-top: 35px; background: #e2edf7; padding: 8px 18px; border-radius: 0 30px 30px 0; border-left: 10px solid #1a6f9e; }
+  h3 { color: #2c3e50; margin: 22px 0 12px 0; }
+  .row { display: flex; flex-wrap: wrap; gap: 15px; margin: 15px 0; }
+  .card { flex: 1 1 200px; background: #ffffff; border: 1px solid #dce7f2; padding: 14px 18px; border-radius: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.03); }
+  .card-blue { background: #eff6ff; border-left: 5px solid #2563eb; }
+  .card-green { background: #f0fdf4; border-left: 5px solid #16a34a; }
+  .card-red { background: #fef2f2; border-left: 5px solid #dc2626; }
+  .card-yellow { background: #fffbeb; border-left: 5px solid #f59e0b; }
+  .card-purple { background: #f5f3ff; border-left: 5px solid #7c3aed; }
+  .card-orange { background: #fff7ed; border-left: 5px solid #ea580c; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 15px 0; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin: 15px 0; }
+  .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 12px; margin: 15px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 14px; }
+  th { background: #1e3a5f; color: white; padding: 10px; text-align: left; }
+  td { border: 1px solid #cbd5e1; padding: 10px; vertical-align: top; }
+  ul, ol { padding-left: 22px; margin: 8px 0; }
+  .badge { display: inline-block; background: #1a6f9e; color: white; font-size: 12px; padding: 2px 14px; border-radius: 30px; font-weight: 600; margin-right: 5px; }
+  .badge-red { background: #b91c1c; }
+  .badge-green { background: #166534; }
+  .badge-purple { background: #5b21b6; }
+  .badge-orange { background: #c2410c; }
+  .badge-yellow { background: #a16207; }
+  .badge-gray { background: #475569; }
+  .highlight-box { background: #fefce8; border: 1px solid #fde047; padding: 12px 20px; border-radius: 12px; }
+  .mono { font-family: 'Courier New', monospace; background: #f1f5f9; padding: 2px 8px; border-radius: 6px; font-size: 13px; }
+  .log-level { display: flex; align-items: center; gap: 10px; margin: 5px 0; }
+  .log-level .bar { height: 20px; border-radius: 4px; }
+  @media print { .grid-2, .grid-3, .grid-4 { display: block; } .card { margin-bottom: 10px; } }
+</style>
+</head>
+<body>
+
+<h2>1. NoSQL — нереляционные базы данных</h2>
+<div class="grid-2">
+  <div class="card card-red"><span class="badge badge-red">⚡</span> <strong>Redis</strong> — хранилище ключ-значение в оперативной памяти (in-memory). Используется для кэширования, сессий, очередей.</div>
+  <div class="card card-blue"><span class="badge">📄</span> <strong>JSON-документные</strong> — хранят данные в виде JSON-документов (MongoDB, CouchDB).</div>
+  <div class="card card-purple"><span class="badge badge-purple">🕸️</span> <strong>Графовые</strong> — данные в виде <strong>узлов (nodes)</strong>, <strong>рёбер (edges)</strong> и <strong>свойств (properties)</strong>. Идеально для соцсетей, рекомендаций (Neo4j, ArangoDB).</div>
+  <div class="card card-yellow"><span class="badge badge-yellow">📊</span> <strong>Столбцовые (Columnar)</strong> — данные хранятся по столбцам, а не по строкам. Отлично для аналитики (HBase, Cassandra, ClickHouse).</div>
+</div>
+<div class="card"><span class="badge badge-gray">🧩</span> <strong>HBase</strong> — столбцовая БД на основе Hadoop, используется для больших данных (Big Data).</div>
+
+<!-- ========== БЛОК 2: МАСШТАБИРОВАНИЕ ========== -->
+<h2>2. Масштабирование баз данных</h2>
+<div class="grid-2">
+  <div class="card card-blue"><span class="badge">✂️</span> <strong>Партицирование (Partitioning)</strong> — разбиение <strong>одной таблицы</strong> на части (горизонтальное/вертикальное) внутри одной БД.</div>
+  <div class="card card-purple"><span class="badge badge-purple">🌍</span> <strong>Шардирование (Sharding)</strong> — распределение данных <strong>по разным серверам</strong> (каждый шард — отдельная БД).</div>
+  <div class="card card-green"><span class="badge badge-green">📋</span> <strong>Репликация (Replication)</strong> — создание копий БД на разных серверах.</div>
+  <div class="card card-yellow"><span class="badge badge-yellow">⏳</span> <strong>Асинхронная репликация</strong> — сначала запись в оригинал, потом в реплики (быстрее, но есть риск потери данных).</div>
+  <div class="card card-red" style="grid-column: span 2;"><span class="badge badge-red">🔒</span> <strong>Синхронная репликация</strong> — запись сразу во все реплики (медленнее, но данные надёжнее).</div>
+</div>
+
+<!-- ========== БЛОК 3: SQL ========== -->
+<h2>3. SQL (Structured Query Language)</h2>
+<div class="card card-blue">
+  <span class="badge">📜</span> <strong>Декларативный язык</strong> — мы описываем <strong>ЧТО</strong> хотим получить, а не <strong>КАК</strong> это сделать.
+</div>
+
+<h3>Популярные СУБД (SQL)</h3>
+<div class="grid-4">
+  <div class="card"><span class="badge">🐬</span> MySQL</div>
+  <div class="card"><span class="badge">🐘</span> PostgreSQL</div>
+  <div class="card"><span class="badge">📦</span> SQLite</div>
+  <div class="card"><span class="badge">🏢</span> Microsoft SQL Server</div>
+</div>
+
+<h3>Императивные языки (в отличие от SQL)</h3>
+<div class="row">
+  <div class="card"><span class="badge badge-purple">🐍</span> Python</div>
+  <div class="card"><span class="badge badge-yellow">🟨</span> JavaScript</div>
+</div>
+
+<!-- ========== БЛОК 4: ACID ========== -->
+<h2>4. ACID — свойства транзакций</h2>
+<div class="grid-2">
+  <div class="card card-green"><span class="badge badge-green">🔬</span> <strong>Atomicity (Атомарность)</strong> — транзакция выполняется целиком или не выполняется вообще (всё или ничего).</div>
+  <div class="card card-blue"><span class="badge">⚖️</span> <strong>Consistency (Согласованность)</strong> — транзакция переводит БД из одного корректного состояния в другое.</div>
+  <div class="card card-yellow"><span class="badge badge-yellow">🔒</span> <strong>Isolation (Изоляция)</strong> — параллельные транзакции не влияют друг на друга (как будто выполняются по очереди).</div>
+  <div class="card card-red"><span class="badge badge-red">💾</span> <strong>Durability (Долговечность)</strong> — после фиксации (COMMIT) данные сохраняются даже при сбое.</div>
+</div>
+
+<!-- ========== БЛОК 5: ТИПЫ SQL-ЗАПРОСОВ ========== -->
+<h2>5. Типы SQL-запросов (4 группы)</h2>
+
+<h3>DDL — Data Definition Language (определение данных)</h3>
+<div class="card card-blue">
+  <span class="badge">🏗️</span> <strong>DDL</strong> — создание и изменение структуры БД.
+  <ul>
+    <li><span class="mono">CREATE TABLE</span> — создание таблицы</li>
+    <li><span class="mono">CREATE USER</span> — создание пользователя</li>
+    <li><span class="mono">ALTER</span> — модификация структуры (добавить/удалить столбец)</li>
+    <li><span class="mono">DROP</span> — удаление таблицы/БД</li>
+  </ul>
+</div>
+
+<h3>DML — Data Manipulation Language (изменение данных)</h3>
+<div class="card card-green">
+  <span class="badge badge-green">✏️</span> <strong>DML</strong> — работа с данными внутри таблиц.
+  <ul>
+    <li><span class="mono">SELECT</span> — выборка данных</li>
+    <li><span class="mono">INSERT</span> — вставка новых записей</li>
+    <li><span class="mono">UPDATE</span> — обновление существующих</li>
+    <li><span class="mono">DELETE</span> — удаление записей</li>
+    <li><span class="mono">MERGE</span> — слияние (обновить или вставить)</li>
+  </ul>
+</div>
+
+<h3>DCL — Data Control Language (управление доступом)</h3>
+<div class="card card-purple">
+  <span class="badge badge-purple">🔐</span> <strong>DCL</strong> — права доступа.
+  <ul>
+    <li><span class="mono">GRANT</span> — разрешение на операции</li>
+    <li><span class="mono">REVOKE</span> — отзыв разрешений</li>
+    <li><span class="mono">DENY</span> — явный запрет</li>
+  </ul>
+</div>
+
+<h3>TCL — Transaction Control Language (управление транзакциями)</h3>
+<div class="card card-yellow">
+  <span class="badge badge-yellow">🔄</span> <strong>TCL</strong> — управление транзакциями.
+  <ul>
+    <li><span class="mono">BEGIN</span> / <span class="mono">COMMIT</span> — объявление и фиксация транзакции</li>
+    <li><span class="mono">ROLLBACK</span> — откат изменений</li>
+  </ul>
+</div>
+
+<!-- ========== БЛОК 6: БРОКЕРЫ СООБЩЕНИЙ ========== -->
+<h2>6. Брокеры сообщений (Message Brokers)</h2>
+<div class="card card-blue">
+  <strong>Брокер</strong> — посредник между отправителем и получателем сообщений (Kafka, RabbitMQ, ActiveMQ).
+</div>
+
+<div class="grid-3">
+  <div class="card card-green"><span class="badge badge-green">📤</span> <strong>Producer (Отправитель)</strong> — создаёт и отправляет сообщения в топик.</div>
+  <div class="card card-red"><span class="badge badge-red">📥</span> <strong>Consumer (Потребитель)</strong> — читает сообщения из топика.</div>
+  <div class="card card-purple"><span class="badge badge-purple">📂</span> <strong>Topic (Топик)</strong> — тема с разделами (категория сообщений).</div>
+  <div class="card card-yellow" style="grid-column: span 3;"><span class="badge badge-yellow">🧩</span> <strong>Partitions (Разделы)</strong> — распределение данных внутри топика для параллельной обработки.<br>
+  <span class="badge badge-gray">📍</span> <strong>Offset</strong> — уникальный номер сообщения внутри раздела.</div>
+</div>
+
+<!-- ========== БЛОК 7: ЛОГИРОВАНИЕ ========== -->
+<h2>7. Логирование (Logging)</h2>
+<div class="card">
+  <strong>Логирование</strong> — запись событий: сбоев, ошибок, подозрительных действий (вид взлома), информационных сообщений.
+</div>
+
+<h3>Уровни логирования (от критичного к детальному)</h3>
+<div class="card" style="background: #f1f5f9;">
+  <div class="log-level"><span style="width:80px; font-weight:bold;">FATAL</span> <div class="bar" style="width:100%; background:#b91c1c;"></div> Тотальный сбой, приложение падает</div>
+  <div class="log-level"><span style="width:80px; font-weight:bold;">ERROR</span> <div class="bar" style="width:80%; background:#dc2626;"></div> Некорректная работа, но приложение живёт</div>
+  <div class="log-level"><span style="width:80px; font-weight:bold;">WARN</span> <div class="bar" style="width:60%; background:#f59e0b;"></div> Предупреждение (потенциальная проблема)</div>
+  <div class="log-level"><span style="width:80px; font-weight:bold;">INFO</span> <div class="bar" style="width:40%; background:#3b82f6;"></div> Информация о работе приложения (старт, остановка, бизнес-события)</div>
+  <div class="log-level"><span style="width:80px; font-weight:bold;">DEBUG</span> <div class="bar" style="width:25%; background:#8b5cf6;"></div> Детальная информация для разработчиков (старт/пауза методов)</div>
+  <div class="log-level"><span style="width:80px; font-weight:bold;">TRACE</span> <div class="bar" style="width:10%; background:#64748b;"></div> Мельчайшая запись процесса (почти каждая строчка кода)</div>
+</div>
+
+<!-- ========== БЛОК 8: КЭШИРОВАНИЕ ========== -->
+<h2>8. Кэш и хранение состояния</h2>
+<div class="grid-2">
+  <div class="card card-blue"><span class="badge">📄</span> <strong>Кэш</strong> — копии страниц/данных для быстрого доступа (хранятся в оперативной памяти).<br>
+    <span class="mono">Примеры: Redis, Memcached, CDN</span>
+  </div>
+  <div class="card card-yellow"><span class="badge badge-yellow">🍪</span> <strong>Куки (Cookies)</strong> — служебные файлы, хранящиеся локально в браузере пользователя.</div>
+  <div class="card card-green"><span class="badge badge-green">🔐</span> <strong>Сессия (Session)</strong> — данные о пользователе, хранящиеся <strong>на сервере</strong> (обычно в Redis или БД).<br>
+    <span style="font-size:13px;">Куки хранят только ID сессии, а сами данные — на сервере.</span>
+  </div>
+</div>
+
+
+</body>
+</html>

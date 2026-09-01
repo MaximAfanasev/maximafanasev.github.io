@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Справочник инженера: Git, DevOps, ООП, Web</title>
+	<style>
+		body {
+			font-family: 'Segoe UI', Arial, sans-serif;
+			max-width: 1200px;
+			margin: 25px auto;
+			padding: 25px;
+			background: #f8fafc;
+			color: #0f172a;
+			line-height: 1.5;
+		}
+
+		h1 {
+			color: #0b5e8a;
+			border-bottom: 5px solid #0b5e8a;
+			padding-bottom: 12px;
+			font-size: 30px;
+			letter-spacing: 1px;
+		}
+
+		h2 {
+			color: #1e3a5f;
+			margin-top: 35px;
+			background: #e2edf7;
+			padding: 8px 18px;
+			border-radius: 0 30px 30px 0;
+			border-left: 10px solid #1a6f9e;
+		}
+
+		h3 {
+			color: #2c3e50;
+			margin: 20px 0 10px 0;
+			font-weight: 700;
+		}
+
+		.row {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 15px;
+			margin: 15px 0;
+		}
+
+		.card {
+			flex: 1 1 200px;
+			background: #ffffff;
+			border: 1px solid #dce7f2;
+			padding: 14px 18px;
+			border-radius: 12px;
+			box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+		}
+
+		.card-dark {
+			background: #1e293b;
+			color: #e2e8f0;
+			border: none;
+		}
+
+		.card-dark code {
+			color: #facc15;
+		}
+
+		.grid-2 {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 20px;
+			margin: 15px 0;
+		}
+
+		.grid-3 {
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr;
+			gap: 15px;
+			margin: 15px 0;
+		}
+
+		ul,
+		ol {
+			padding-left: 22px;
+			margin: 8px 0;
+		}
+
+		li {
+			margin: 4px 0;
+		}
+
+		.badge {
+			display: inline-block;
+			background: #1a6f9e;
+			color: white;
+			font-size: 12px;
+			padding: 2px 14px;
+			border-radius: 30px;
+			font-weight: 600;
+			margin-right: 6px;
+		}
+
+		.badge-green {
+			background: #166534;
+		}
+
+		.badge-purple {
+			background: #5b21b6;
+		}
+
+		.badge-orange {
+			background: #c2410c;
+		}
+
+		.highlight-box {
+			background: #fefce8;
+			border: 1px solid #fde047;
+			padding: 12px 20px;
+			border-radius: 12px;
+		}
+
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			margin: 15px 0;
+			font-size: 14px;
+		}
+
+		th {
+			background: #1a4b6d;
+			color: white;
+			padding: 10px;
+			text-align: left;
+		}
+
+		td,
+		th {
+			border: 1px solid #cbd5e1;
+			padding: 10px;
+			vertical-align: top;
+		}
+
+		.mono {
+			font-family: 'Courier New', monospace;
+			background: #f1f5f9;
+			padding: 2px 8px;
+			border-radius: 6px;
+		}
+
+		@media print {
+
+			.grid-2,
+			.grid-3 {
+				display: block;
+			}
+
+			.card {
+				margin-bottom: 10px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+
+	<!-- ========== БЛОК 1: СИСТЕМА КОНТРОЛЯ ВЕРСИЙ ========== -->
+	<h2>1. Система контроля версий (Git)</h2>
+	<div class="grid-3">
+		<div class="card"><span class="badge">📂</span> <strong>Репозиторий</strong><br>Папка с проектом (локальная .git или удалённая на GitHub/GitLab).</div>
+		<div class="card"><span class="badge">📍</span> <strong>Коммит</strong><br>Точка (слепок) изменений с хешем и сообщением.</div>
+		<div class="card"><span class="badge">🌿</span> <strong>Ветка (Branch)</strong><br>Последовательность коммитов (изолированная линия разработки).</div>
+	</div>
+
+	<h3>Базовые команды Git (ключевые)</h3>
+	<table>
+		<tr>
+			<th>Команда</th>
+			<th>Что делает</th>
+		</tr>
+		<tr>
+			<td><span class="mono">git commit -m "fix"</span></td>
+			<td>Создает коммит (точку сохранения)</td>
+		</tr>
+		<tr>
+			<td><span class="mono">git log --oneline</span></td>
+			<td>Показывает историю коммитов (сокращённо)</td>
+		</tr>
+		<tr>
+			<td><span class="mono">git push origin main</span></td>
+			<td>Отправляет коммиты в удалённый репозиторий</td>
+		</tr>
+		<tr>
+			<td><span class="mono">git merge feature</span></td>
+			<td>Сливает ветку feature в текущую</td>
+		</tr>
+		<tr>
+			<td><span class="mono">git pull</span></td>
+			<td>Скачивает изменения с удалённого репо и сливает (fetch + merge)</td>
+		</tr>
+		<tr>
+			<td><span class="mono">git checkout -b new</span></td>
+			<td>Создаёт и переключает на новую ветку (<strong>с</strong> - switch/create)</td>
+		</tr>
+		<tr>
+			<td><span class="mono">git branch -vv</span></td>
+			<td>Показывает все ветки и их привязку к удалённым (<strong>вв</strong> — очень подробно)</td>
+		</tr>
+	</table>
+
+	<!-- ========== БЛОК 2: DEVOPS ========== -->
+	<h2>2. DevOps (Development & Operations)</h2>
+	<div class="row">
+		<div class="card"><span class="badge badge-purple">🐳</span> <strong>Docker</strong><br>Контейнеризация — упаковка приложения со всеми зависимостями.</div>
+		<div class="card"><span class="badge badge-purple">☸️</span> <strong>Kubernetes (k8s)</strong><br>Оркестрация контейнеров (автоматическое развертывание, масштабирование).</div>
+		<div class="card"><span class="badge badge-purple">⚙️</span> <strong>Jenkins</strong><br>CI/CD сервер — автоматизирует сборку, тесты и деплой.</div>
+	</div>
+
+	<!-- ========== БЛОК 3: CI/CD ========== -->
+	<h2>3. CI/CD (Непрерывная интеграция и доставка)</h2>
+	<div class="grid-2">
+		<div class="card"><span class="badge badge-green">🔄</span> <strong>CI (Continuous Integration)</strong><br>Непрерывная интеграция — каждый коммит автоматически собирается и тестируется.</div>
+		<div class="card"><span class="badge badge-green">🚀</span> <strong>CD (Continuous Delivery / Deployment)</strong><br>Непрерывная поставка / развертывание — автоматическая выкатка на окружения (вплоть до Prod).</div>
+	</div>
+
+	<!-- ========== БЛОК 4: ОКРУЖЕНИЯ (ENV) ========== -->
+	<h2>4. Окружения (Environments)</h2>
+	<div class="highlight-box">
+		<strong>Среда (Environment)</strong> — это инфраструктура: физические серверы, виртуалки, сетевые устройства, облака.
+	</div>
+	<div class="grid-3">
+		<div class="card"><span class="badge">🛠️</span> <strong>Dev</strong> — Создание (разработчики пишут код)</div>
+		<div class="card"><span class="badge">👀</span> <strong>Demo</strong> — Можно потрогать (показать заказчику)</div>
+		<div class="card"><span class="badge">🧪</span> <strong>Test</strong> — Тестирование (авто- и ручное)</div>
+		<div class="card"><span class="badge">🏁</span> <strong>Stage</strong> — Предпрод (максимально похож на бой)</div>
+		<div class="card"><span class="badge badge-orange">🌍</span> <strong>Prod</strong> — Production (видят все пользователи)</div>
+	</div>
+
+	<!-- ========== БЛОК 5: ООП ========== -->
+	<h2>5. Объектно-Ориентированное Программирование (ООП)</h2>
+	<div class="grid-2">
+		<div class="card"><span class="badge">📐</span> <strong>Классы</strong> — Шаблоны для создания объектов (чертёж)</div>
+		<div class="card"><span class="badge">📦</span> <strong>Объекты</strong> — Структуры с данными (атрибутами) и методами (поведением)</div>
+		<div class="card"><span class="badge">🏷️</span> <strong>Атрибуты</strong> — Характеристики (поля) объекта (цвет, размер, имя)</div>
+		<div class="card"><span class="badge">⚡</span> <strong>Методы</strong> — Поведение объекта (функции, которые он может выполнять)</div>
+	</div>
+
+	<h3>Принципы ООП (4 столпа)</h3>
+	<div class="grid-2">
+		<div><span class="badge">🔒</span> <strong>Инкапсуляция</strong> — информация хранится внутри объекта (скрываем детали).</div>
+		<div><span class="badge">🎭</span> <strong>Абстракция</strong> — выделяем общие атрибуты и методы, убирая лишнее.</div>
+		<div><span class="badge">🧬</span> <strong>Наследование</strong> — создание новых классов на основе существующих (родитель → потомок).</div>
+		<div><span class="badge">🔄</span> <strong>Полиморфизм</strong> — один и тот же метод работает по-разному для разных классов.</div>
+	</div>
+
+	<!-- ========== БЛОК 6: UX/UI ========== -->
+	<h2>6. UX/UI Дизайн</h2>
+	<div class="grid-2">
+		<div class="card"><span class="badge">😊</span> <strong>UX (User Experience)</strong> — Опыт пользователя от взаимодействия с системой (удобство, эмоции).</div>
+		<div class="card"><span class="badge">🎨</span> <strong>UI (User Interface)</strong> — Как выглядит продукт (кнопки, цвета, шрифты).</div>
+	</div>
+
+	<h3>Юзабилити (Usability) — оцениваем по:</h3>
+	<ul>
+		<li><strong>Удобство</strong> — легко ли пользователю достигать целей.</li>
+		<li><strong>Интуитивность</strong> — понятно ли с первого взгляда.</li>
+		<li><strong>Нет ошибок</strong> — система предотвращает или прощает ошибки.</li>
+		<li><strong>Удовлетворение</strong> — приятно ли пользоваться.</li>
+	</ul>
+
+	<h3>Инструменты и подходы (Figma и не только)</h3>
+	<div class="grid-3">
+		<div class="card"><span class="badge">📱</span> <strong>Адаптивность</strong> — подстраивается под экран (мобилка/планшет/ПК).</div>
+		<div class="card"><span class="badge">⚡</span> <strong>Отзывчивость</strong> — моментальная реакция на действия пользователя.</div>
+		<div class="card"><span class="badge">🎮</span> <strong>Геймификация</strong> — игровые механики (бонусы, уровни).</div>
+		<div class="card"><span class="badge">🏢</span> <strong>Внутренняя</strong> — для сотрудников компании (ERP, CRM).</div>
+		<div class="card"><span class="badge">🌐</span> <strong>Внешняя</strong> — для клиентов и пользователей (сайты, приложения).</div>
+	</div>
+
+	<!-- ========== БЛОК 7: ВЕБ-АРХИТЕКТУРА ========== -->
+	<h2>7. Web: Домены, DNS, IP, URL</h2>
+	<div class="grid-2">
+		<div class="card"><span class="badge">🌐</span> <strong>Домен</strong> — Человекочитаемое имя сайта (example.com).</div>
+		<div class="card"><span class="badge">📖</span> <strong>DNS (Domain Name System)</strong> — Переводит домен в IP-адрес (как телефонная книга).</div>
+		<div class="card"><span class="badge">🔢</span> <strong>IP-адрес</strong> — Уникальный сетевой адрес устройства (192.168.1.1).</div>
+		<div class="card"><span class="badge">🔗</span> <strong>URL (Uniform Resource Locator)</strong> — Полный адрес ресурса: <span class="mono">https://domain.com/path?param=1</span>.</div>
+	</div>
+
+	<hr style="margin: 45px 0; border: 1px dashed #94a3b8;">
+
+</body></html>

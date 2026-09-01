@@ -13,7 +13,7 @@ print(b)
 
 a = 95
 a = a - 3
-print(a) 
+print(a)
 # 92
 
 a = 95

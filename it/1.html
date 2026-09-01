@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>SDLC Шпаргалка</title>
+	<style>
+		body {
+			font-family: 'Segoe UI', Arial, sans-serif;
+			max-width: 1000px;
+			margin: 40px auto;
+			padding: 20px;
+			background: #fff;
+			color: #222;
+			line-height: 1.5;
+		}
+
+		h1 {
+			color: #0b5e8a;
+			border-bottom: 4px solid #0b5e8a;
+			padding-bottom: 8px;
+		}
+
+		h2 {
+			color: #1a6f9e;
+			margin-top: 30px;
+			border-left: 6px solid #1a6f9e;
+			padding-left: 15px;
+			background: #f0f6fb;
+		}
+
+		h3 {
+			color: #333;
+			margin-top: 20px;
+			font-weight: 600;
+		}
+
+		.grid-2 {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 20px;
+			margin: 15px 0;
+		}
+
+		.block {
+			background: #f8fafc;
+			border: 1px solid #dde7f0;
+			padding: 15px;
+			border-radius: 8px;
+		}
+
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			margin: 15px 0;
+			font-size: 14px;
+		}
+
+		th {
+			background: #1a6f9e;
+			color: white;
+			padding: 10px;
+			text-align: left;
+		}
+
+		td,
+		th {
+			border: 1px solid #cbd5e1;
+			padding: 10px;
+			vertical-align: top;
+		}
+
+		ul,
+		ol {
+			padding-left: 20px;
+		}
+
+		.badge {
+			display: inline-block;
+			background: #0b5e8a;
+			color: white;
+			font-size: 13px;
+			padding: 2px 12px;
+			border-radius: 20px;
+			margin-right: 6px;
+		}
+
+		.highlight {
+			background: #fef9e7;
+			border-left: 4px solid #f1c40f;
+			padding: 10px 15px;
+			margin: 10px 0;
+		}
+
+		@media print {
+			.grid-2 {
+				display: block;
+			}
+
+			.block {
+				margin-bottom: 15px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+
+	<!-- ===== БЛОК 1: ЖИЗНЕННЫЙ ЦИКЛ ===== -->
+	<h2>1. Жизненный цикл разработки ПО (SDLC)</h2>
+	<div class="grid-2">
+		<div class="block"><strong>🔍 Планирование / Анализ</strong><br>Сбор требований, оценка рисков, составление ТЗ.</div>
+		<div class="block"><strong>🎨 Проектирование и дизайн</strong><br>Архитектура, UX/UI, выбор технологий.</div>
+		<div class="block"><strong>⚙️ Разработка и тестирование</strong><br>Написание кода, Unit-тесты, интеграция.</div>
+		<div class="block"><strong>🚀 Деплой</strong><br>Выкатка на production, настройка окружения.</div>
+		<div class="block" style="grid-column: span 2;"><strong>🛠️ Поддержка и обслуживание</strong><br>Баг-фиксы, доработки, мониторинг производительности.</div>
+	</div>
+
+	<!-- ===== БЛОК 2: USE CASE / STORY / TEST ===== -->
+	<h2>2. Артефакты требований</h2>
+	<div class="grid-2">
+		<div class="block"><strong>📌 USE CASE (Сценарий использования)</strong>
+			<ul>
+				<li><strong>Кто использует:</strong> Роль пользователя</li>
+				<li><strong>Что хочет:</strong> Действие</li>
+				<li><strong>Цель:</strong> Результат</li>
+				<li><strong>Шаги:</strong> 1. ... 2. ...</li>
+				<li><strong>Описание:</strong> Детали сценария</li>
+			</ul>
+		</div>
+		<div class="block"><strong>📖 USER STORY (Пользовательская история)</strong><br>
+			<span class="badge">Шаблон</span> <em>«Как <strong>[роль]</strong>, я хочу <strong>[действие]</strong>, чтобы <strong>[ценность]</strong>»</em>
+		</div>
+		<div class="block" style="grid-column: span 2;"><strong>🧪 TEST CASE (План тестирования)</strong>
+			<ul>
+				<li><strong>Предусловие:</strong> состояние системы</li>
+				<li><strong>Шаги:</strong> действия тестировщика</li>
+				<li><strong>Ожидаемый результат:</strong> эталонное поведение</li>
+				<li><strong>Постусловие:</strong> состояние после теста</li>
+			</ul>
+		</div>
+	</div>
+
+	<!-- ===== БЛОК 3: ТЗ ===== -->
+	<h2>3. Структура Технического Задания (ТЗ)</h2>
+	<div class="block">
+		<ul>
+			<li><strong>Информация о продукте:</strong> Назначение, аудитория</li>
+			<li><strong>Глоссарий:</strong> Расшифровка терминов</li>
+			<li><strong>Бизнес-требования:</strong> Цели компании, KPI</li>
+			<li><strong>Функциональные требования:</strong> Что система должна ДЕЛАТЬ</li>
+			<li><strong>Технические требования:</strong>
+				<ul>
+					<li>Нагрузка: <em>RPS, кол-во пользователей</em></li>
+					<li>Производительность сервера: <em>CPU/RAM</em></li>
+					<li>Скорость работы: <em>время ответа API &lt; 200ms</em></li>
+				</ul>
+			</li>
+			<li><strong>Бюджет / Программисты:</strong> Стоимость и ресурсы (человеко-часы)</li>
+		</ul>
+	</div>
+
+	<!-- ===== БЛОК 4: INVEST & USM ===== -->
+	<h2>4. INVEST (Качество пользовательских историй)</h2>
+	<div class="grid-2">
+		<div><span class="badge">I</span> <strong>Independent</strong> — Независимая (не зависит от других)</div>
+		<div><span class="badge">N</span> <strong>Negotiable</strong> — Обсуждаемая (можно уточнить)</div>
+		<div><span class="badge">V</span> <strong>Valuable</strong> — Ценная (дает пользу бизнесу)</div>
+		<div><span class="badge">E</span> <strong>Estimable</strong> — Оцениваемая (понятные трудозатраты)</div>
+		<div><span class="badge">S</span> <strong>Small</strong> — Маленькая (входит в спринт)</div>
+		<div><span class="badge">T</span> <strong>Testable</strong> — Тестируемая (есть критерии приемки)</div>
+	</div>
+
+	<div class="highlight">
+		<strong>🗺️ USM (User Story Mapping):</strong> Карта пользовательских историй — визуализация бэклога по оси «Шаги пользователя» (горизонталь) и «Приоритет/версии» (вертикаль).<br>
+		<strong>🚀 MVP (Minimum Viable Product):</strong> Минимальная версия продукта с достаточной ценностью для первых пользователей.
+	</div>
+
+	<!-- ===== БЛОК 5: ТИПЫ ЯЗЫКОВ ===== -->
+	<h2>5. Типы компиляции</h2>
+	<ul>
+		<li><strong>Компилируемый:</strong> Превращается в машинный код целиком до запуска (C++, Go).</li>
+		<li><strong>Интерпретируемый:</strong> Исполняется построчно без компиляции в машинный код (Python, JS).</li>
+	</ul>
+
+	<!-- ===== БЛОК 6: ПАРАДИГМЫ ===== -->
+	<h2>6. Парадигмы программирования</h2>
+	<div class="grid-2">
+		<div class="block"><strong>⚡ Императивная</strong><br>Описание <em>«КАК»</em> делать (пошаговые инструкции).</div>
+		<div class="block"><strong>📊 Декларативная</strong><br>Описание <em>«ЧТО»</em> получить (SQL, HTML).</div>
+		<div class="block" style="grid-column: span 2;"><strong>🕰️ Легаси</strong><br>Устаревший код/система, требующая поддержки, часто без документации.</div>
+	</div>
+
+	<!-- ===== БЛОК 7: РОЛИ ===== -->
+	<h2>7. Команда разработки (Роли)</h2>
+	<div style="display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0;">
+		<span style="background:#e3ecf5; padding:5px 14px; border-radius:20px;">👤 Аккаунт-менеджер (между клиентом и командой)</span>
+		<span style="background:#d4e2f0; padding:5px 14px; border-radius:20px;">📈 Продакт-менеджер (выход продукта)</span>
+		<span style="background:#c5d8eb; padding:5px 14px; border-radius:20px;">📋 Проджект-менеджер (дедлайны, требования, документы)</span>
+		<span style="background:#b6cee6; padding:5px 14px; border-radius:20px;">📊 Бизнес-аналитик (концепция)</span>
+		<span style="background:#a7c4e1; padding:5px 14px; border-radius:20px;">⚙️ Системный аналитик (техническая постановка)</span>
+		<span style="background:#98b9dc; padding:5px 14px; border-radius:20px;">🏗️ Архитектор</span>
+		<span style="background:#89afd7; padding:5px 14px; border-radius:20px;">✍️ Технический писатель (документация)</span>
+		<span style="background:#7aa4d2; padding:5px 14px; border-radius:20px;">🎨 Верстальщик</span>
+		<span style="background:#6b9acd; padding:5px 14px; border-radius:20px;">💻 Разработчик (Backend/Frontend)</span>
+		<span style="background:#5c8fc8; padding:5px 14px; border-radius:20px;">🔄 ДевОпс (инфраструктура)</span>
+		<span style="background:#4d85c3; padding:5px 14px; border-radius:20px;">🧪 Тестировщик</span>
+		<span style="background:#3e7abe; padding:5px 14px; border-radius:20px; color:white;">🧑‍💼 Тимлид (организация команды)</span>
+	</div>
+
+	<!-- ===== БЛОК 8: МЕТОДОЛОГИЯ ===== -->
+	<h2>8. Методология, Модели и Философия</h2>
+	<div class="grid-2">
+		<div class="block"><strong>📐 Методология</strong><br>Принципы и правила работы (Scrum, Kanban).</div>
+		<div class="block"><strong>🧩 Модель разработки</strong><br>Абстрактное упрощение процесса (Waterfall, V-Model, Spiral).</div>
+		<div class="block"><strong>🏗️ Фреймворк</strong><br>Готовое решение/каркас для разработки (Django, React, Spring).</div>
+		<div class="block"><strong>🌱 Философия</strong><br>Базовые ценности и подходы (Agile, Lean, DevOps).</div>
+	</div>
+
+</body></html>

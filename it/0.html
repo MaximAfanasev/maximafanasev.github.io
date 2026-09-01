@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <title>Информационные технологии (IT) — справочник</title>
+    <style>
+        /* Сброс и база */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+            background: #f2f4f8;
+            padding: 30px 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .print-container {
+            max-width: 1200px;
+            width: 100%;
+            background: #ffffff;
+            padding: 30px 35px 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        }
+
+        /* Заголовки */
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #0b1e33;
+            border-bottom: 4px solid #2a7de1;
+            padding-bottom: 12px;
+            margin-bottom: 18px;
+        }
+        .subhead {
+            font-size: 15px;
+            color: #2c3e50;
+            margin-top: -10px;
+            margin-bottom: 28px;
+            font-weight: 400;
+        }
+        h2 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #0b1e33;
+            margin: 30px 0 12px 0;
+            padding-left: 8px;
+            border-left: 6px solid #2a7de1;
+            padding-top: 4px;
+            padding-bottom: 4px;
+            background: #f0f5fe;
+            border-radius: 0 6px 6px 0;
+            padding-left: 16px;
+        }
+
+        /* Таблицы */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            margin-bottom: 6px;
+            background: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+        }
+        th {
+            background: #e6edf6;
+            color: #0b1e33;
+            font-weight: 600;
+            text-align: left;
+            padding: 10px 14px;
+            border-bottom: 2px solid #b6cae0;
+            font-size: 13px;
+            letter-spacing: 0.3px;
+        }
+        td {
+            padding: 9px 14px;
+            border-bottom: 1px solid #dde5ef;
+            vertical-align: top;
+            background-color: #ffffff;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        .col-cat {
+            font-weight: 600;
+            color: #0b2a4a;
+            width: 22%;
+        }
+        .col-term {
+            width: 32%;
+        }
+        .col-desc {
+            width: 46%;
+            color: #1e2f40;
+        }
+
+        /* Компактный стиль для печати */
+        @media print {
+            body {
+                background: white;
+                padding: 0.3in;
+                margin: 0;
+            }
+            .print-container {
+                box-shadow: none;
+                padding: 10px 0;
+                border-radius: 0;
+            }
+            table {
+                box-shadow: none;
+                border: 1px solid #aaa;
+            }
+            th {
+                background: #dbe2ec !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            h2 {
+                background: #edf2fa !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .page-break {
+                page-break-before: always;
+            }
+        }
+
+        /* Мелкие правки */
+        .note {
+            font-size: 13px;
+            color: #3f566e;
+            margin-top: 24px;
+            border-top: 1px solid #d0dcec;
+            padding-top: 18px;
+            text-align: center;
+        }
+        .badge {
+            display: inline-block;
+            background: #eef3fa;
+            padding: 1px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #1f4662;
+            margin-right: 4px;
+        }
+        .small-hint {
+            font-size: 12px;
+            color: #4d688b;
+        }
+    </style>
+</head>
+<body>
+<div class="print-container">
+
+    <!-- ============================================ -->
+    <h2>1. Базовые категории</h2>
+    <table>
+        <thead>
+            <tr><th>Раздел</th><th>Термины / Примеры</th></tr>
+        </thead>
+        <tbody>
+            <tr><td class="col-cat">Устройства</td><td>Десктоп &bull; Ноутбук &bull; Планшет &bull; Смартфон</td></tr>
+            <tr><td class="col-cat">Операционные системы</td><td>Windows &bull; macOS &bull; Linux &bull; Микрокомпьютерные ОС</td></tr>
+            <tr><td class="col-cat">Модели распространения</td><td>Открытое &bull; Закрытое &bull; Свободное &bull; Коммерческое &bull; Бесплатное</td></tr>
+            <tr><td class="col-cat">Типы приложений</td><td>Десктопные &bull; Мобильные &bull; Нативные &bull; Кросс-платформенные &bull; Веб &bull; Гибридные</td></tr>
+            <tr><td class="col-cat">Программное обеспечение</td><td>ПО &bull; Веб-сайты &bull; Приложения &bull; Мобильные приложения</td></tr>
+        </tbody>
+    </table>
+
+    <!-- ============================================ -->
+    <h2>2. Технологии и направления</h2>
+    <table>
+        <thead><tr><th>Направление</th><th>Подкатегории / Области</th></tr></thead>
+        <tbody>
+            <tr><td class="col-cat">Искусственный интеллект (ИИ)</td><td>Компьютерное зрение &bull; Машинное обучение &bull; Анализ данных</td></tr>
+            <tr><td class="col-cat">Интернет вещей (IoT)</td><td>Умные часы &bull; Умный дом &bull; Умное производство 4.0</td></tr>
+            <tr><td class="col-cat">Робототехника</td><td>Промышленные роботы &bull; Сервисные роботы &bull; Автономные системы</td></tr>
+            <tr><td class="col-cat">Кибербезопасность</td><td>Хакеры &bull; Атаки &bull; Вирусы &bull; Защита информации</td></tr>
+            <tr><td class="col-cat">Облачные технологии</td><td>Телеком &bull; Телефония &bull; Интернет &bull; IaaS / PaaS / SaaS</td></tr>
+        </tbody>
+    </table>
+
+    <!-- ============================================ -->
+    <h2>3. Отраслевые решения (Industry IT)</h2>
+    <table>
+        <thead><tr><th>Отрасль</th><th>Применение / Примеры</th></tr></thead>
+        <tbody>
+            <tr><td class="col-cat">Госсектор</td><td>Учёт и планирование бюджетов &bull; Документооборот &bull; Госуслуги</td></tr>
+            <tr><td class="col-cat">Финтех</td><td>Финансы &bull; Платежи &bull; Денежные переводы &bull; Банковские сервисы</td></tr>
+            <tr><td class="col-cat">Блокчейн</td><td>Реестр сделок &bull; Транзакции &bull; Смарт-контракты</td></tr>
+            <tr><td class="col-cat">EdTech</td><td>Онлайн-образование &bull; Геймификация обучения &bull; LMS</td></tr>
+            <tr><td class="col-cat">MedTech</td><td>HealthTech &bull; BioTech &bull; Медицинские информационные системы</td></tr>
+            <tr><td class="col-cat">GameDev</td><td>Компьютеры &bull; Консоли &bull; ПК &bull; Телефоны &bull; VR / AR</td></tr>
+        </tbody>
+    </table>
+
+    <!-- ============================================ -->
+    <h2>4. Аналитика, нейротехнологии и ИИ</h2>
+    <table>
+        <thead><tr><th>Термин</th><th>Назначение / Применение</th></tr></thead>
+        <tbody>
+            <tr><td class="col-cat">Data Science</td><td>Обнаружение закономерностей в больших данных</td></tr>
+            <tr><td class="col-cat">Machine Learning</td><td>Построение прогнозов на основе исторических данных</td></tr>
+            <tr><td class="col-cat">Artificial Intelligence</td><td>Выполнение действий ИИ-системами (агенты, рекомендации)</td></tr>
+            <tr><td class="col-cat">AI (прикладное)</td><td>Глубокое обучение &bull; Чат-боты &bull; Маркетинг &bull; Переводчики</td></tr>
+            <tr><td class="col-cat">Нейронные сети</td><td>Распознавание голоса &bull; Распознавание изображений &bull; Генерация контента</td></tr>
+            <tr><td class="col-cat">Когнитивные технологии</td><td>Имитация логики и принятие решений</td></tr>
+            <tr><td class="col-cat">NLP (Natural Language Processing)</td><td>Обработка и генерация естественной речи, тональность</td></tr>
+            <tr><td class="col-cat">Computer Vision (CV)</td><td>Интерпретация фото, растровой графики, видео</td></tr>
+            <tr><td class="col-cat">Векторные технологии</td><td>Таблицы &bull; PDF &bull; Видео &bull; Автопилот &bull; Дорожные камеры</td></tr>
+            <tr><td class="col-cat">RPA (Robotic Process Automation)</td><td>Бухгалтерия &bull; Обработка счетов &bull; Торговля &bull; Запасы &bull; Техподдержка</td></tr>
+        </tbody>
+    </table>
+
+    <!-- ============================================ -->
+    <h2>5. Веб-разработка</h2>
+    <table>
+        <thead><tr><th>Тип / Подход</th><th>Описание</th></tr></thead>
+        <tbody>
+            <tr><td class="col-cat">Multipage</td><td>Многостраничные сайты (классическая архитектура)</td></tr>
+            <tr><td class="col-cat">Singlepage</td><td>Одностраничные приложения (SPA) с динамической загрузкой</td></tr>
+            <tr><td class="col-cat">PWA (Progressive Web Apps)</td><td>Веб-приложения с функционалом нативных (офлайн, push-уведомления)</td></tr>
+            <tr><td class="col-cat">No-code / Low-code</td><td>Разработка без кода или с минимальным кодом (визуальное программирование)</td></tr>
+            <tr><td class="col-cat">Mini-apps</td><td>Мини-приложения внутри платформ (Telegram, WeChat и др.)</td></tr>
+        </tbody>
+    </table>
+
+    <!-- ============================================ -->
+    <h2>6. Качества, свойства и классификация ПО</h2>
+    <table>
+        <thead><tr><th>Категория</th><th>Характеристики / Примеры</th></tr></thead>
+        <tbody>
+            <tr><td class="col-cat">Ключевые качества</td><td>Надёжность &bull; Эффективность &bull; Адаптируемость</td></tr>
+            <tr><td class="col-cat">Пользовательские качества</td><td>Безотказность &bull; Удобство &bull; Функциональность</td></tr>
+            <tr><td class="col-cat">Системные свойства</td><td>Универсальность &bull; Защищённость &bull; Совместимость</td></tr>
+            <tr><td class="col-cat">Сопровождение</td><td>Техническая поддержка, обновления, развитие</td></tr>
+            <tr><td class="col-cat">Прикладное ПО</td><td>MS Office, браузеры, графические редакторы, ERP</td></tr>
+            <tr><td class="col-cat">Инструментальное ПО</td><td>IDE, компиляторы, отладчики, фреймворки</td></tr>
+            <tr><td class="col-cat">Middleware</td><td>Драйверы, интеграционные шины, брокеры сообщений</td></tr>
+            <tr><td class="col-cat">Hardware (аппаратное обеспечение)</td><td>Процессоры, память, диски, периферия — «железо»</td></tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>

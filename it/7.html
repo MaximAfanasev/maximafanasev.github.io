@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>АБСОЛЮТНАЯ ЭНЦИКЛОПЕДИЯ: Тестирование, QA, Баг-репорты</title>
+<style>
+  body { font-family: 'Segoe UI', Arial, sans-serif; max-width: 1200px; margin: 25px auto; padding: 25px; background: #f8fafc; color: #0f172a; line-height: 1.5; }
+  h1 { color: #0b5e8a; border-bottom: 5px solid #0b5e8a; padding-bottom: 12px; font-size: 30px; }
+  h2 { color: #1e3a5f; margin-top: 35px; background: #e2edf7; padding: 8px 18px; border-radius: 0 30px 30px 0; border-left: 10px solid #1a6f9e; }
+  h3 { color: #2c3e50; margin: 22px 0 12px 0; }
+  .row { display: flex; flex-wrap: wrap; gap: 15px; margin: 15px 0; }
+  .card { flex: 1 1 200px; background: #ffffff; border: 1px solid #dce7f2; padding: 14px 18px; border-radius: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.03); }
+  .card-blue { background: #eff6ff; border-left: 5px solid #2563eb; }
+  .card-green { background: #f0fdf4; border-left: 5px solid #16a34a; }
+  .card-red { background: #fef2f2; border-left: 5px solid #dc2626; }
+  .card-yellow { background: #fffbeb; border-left: 5px solid #f59e0b; }
+  .card-purple { background: #f5f3ff; border-left: 5px solid #7c3aed; }
+  .card-orange { background: #fff7ed; border-left: 5px solid #ea580c; }
+  .card-pink { background: #fdf2f8; border-left: 5px solid #db2777; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 15px 0; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin: 15px 0; }
+  .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 12px; margin: 15px 0; }
+  .grid-5 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr; gap: 10px; margin: 15px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 14px; }
+  th { background: #1e3a5f; color: white; padding: 10px; text-align: left; }
+  td { border: 1px solid #cbd5e1; padding: 10px; vertical-align: top; }
+  ul, ol { padding-left: 22px; margin: 8px 0; }
+  .badge { display: inline-block; background: #1a6f9e; color: white; font-size: 12px; padding: 2px 14px; border-radius: 30px; font-weight: 600; margin-right: 5px; }
+  .badge-red { background: #b91c1c; }
+  .badge-green { background: #166534; }
+  .badge-purple { background: #5b21b6; }
+  .badge-orange { background: #c2410c; }
+  .badge-yellow { background: #a16207; }
+  .badge-pink { background: #be185d; }
+  .badge-gray { background: #475569; }
+  .highlight-box { background: #fefce8; border: 1px solid #fde047; padding: 12px 20px; border-radius: 12px; }
+  .mono { font-family: 'Courier New', monospace; background: #f1f5f9; padding: 2px 8px; border-radius: 6px; font-size: 13px; }
+  .bug-template { background: #0f172a; color: #e2e8f0; padding: 18px; border-radius: 12px; font-family: 'Courier New', monospace; font-size: 12px; overflow-x: auto; }
+  .bug-template .field { color: #60a5fa; }
+  .bug-template .value { color: #4ade80; }
+  .bug-template .comment { color: #94a3b8; font-style: italic; }
+  .principle-list li { margin: 8px 0; }
+  @media print { .grid-2, .grid-3, .grid-4, .grid-5 { display: block; } .card { margin-bottom: 10px; } }
+</style>
+</head>
+<body>
+
+<h2>1. Принципы тестирования (7 принципов)</h2>
+<div class="grid-2">
+  <div class="card card-red"><span class="badge badge-red">🐛</span> <strong>1. Наличие дефектов</strong> — тестирование показывает наличие дефектов, а не их отсутствие.</div>
+  <div class="card card-blue"><span class="badge">⏰</span> <strong>2. Раннее тестирование</strong> — начинать как можно раньше (Shift Left).</div>
+  <div class="card card-yellow"><span class="badge badge-yellow">📊</span> <strong>3. Скопление дефектов</strong> — 80% ошибок сосредоточено в 20% модулей (принцип Парето).</div>
+  <div class="card card-purple"><span class="badge badge-purple">🧪</span> <strong>4. Парадокс пестицида</strong> — если повторять одни и те же тесты, они перестают находить новые баги. Нужно <strong>встряхивать тестовую базу</strong>.</div>
+  <div class="card card-orange"><span class="badge badge-orange">🎯</span> <strong>5. Контекст тестирования</strong> — тестирование зависит от контекста (веб-приложение тестируем иначе, чем банковскую систему).</div>
+  <div class="card card-pink"><span class="badge badge-pink">❌</span> <strong>6. Заблуждение об отсутствии ошибок</strong> — если система стабильна, но неудобна пользователям — это плохо. Отсутствие багов ≠ успех.</div>
+</div>
+
+<!-- ========== БЛОК 2: УРОВНИ ТЕСТИРОВАНИЯ ========== -->
+<h2>2. Уровни тестирования (по объёму)</h2>
+<div class="grid-4">
+  <div class="card card-green"><span class="badge badge-green">🧩</span> <strong>Модульные (Unit)</strong> — тестирование отдельных функций/методов.</div>
+  <div class="card card-blue"><span class="badge">🔗</span> <strong>Интеграционные</strong> — проверка взаимодействия между модулями.</div>
+  <div class="card card-yellow"><span class="badge badge-yellow">🏛️</span> <strong>Системные</strong> — тестирование всей системы целиком.</div>
+  <div class="card card-purple"><span class="badge badge-purple">✅</span> <strong>Приемочные (Acceptance)</strong> — проверка соответствия требованиям заказчика.</div>
+</div>
+
+<!-- ========== БЛОК 3: QA vs QC ========== -->
+<h2>3. QA и QC — в чём разница?</h2>
+<div class="grid-2">
+  <div class="card card-blue"><span class="badge">🛡️</span> <strong>QA (Quality Assurance)</strong> — обеспечение качества. Процессы, стандарты, предотвращение ошибок (проактивный подход).</div>
+  <div class="card card-red"><span class="badge badge-red">🔍</span> <strong>QC (Quality Control)</strong> — контроль качества. Поиск ошибок в готовом продукте (реактивный подход).</div>
+</div>
+
+<!-- ========== БЛОК 4: БАГ ========== -->
+<h2>4. Что такое БАГ?</h2>
+<div class="highlight-box">
+  <strong>БАГ (Bug)</strong> — это <strong>любой недостаток / ошибка / действие</strong>, которое приводит к:
+  <ul>
+    <li><strong>Ошибке</strong> (неправильный результат)</li>
+    <li><strong>Сбою</strong> (временная проблема)</li>
+    <li><strong>Отказу</strong> (постоянный сбой)</li>
+    <li><strong>Недостатку памяти</strong> и другим проблемам</li>
+  </ul>
+  <strong>Фактический Результат</strong> отклоняется от <strong>Ожидаемого Результата</strong>.
+</div>
+
+<!-- ========== БЛОК 5: ВЕРИФИКАЦИЯ vs ВАЛИДАЦИЯ ========== -->
+<h2>5. Верификация и Валидация (главное отличие)</h2>
+<div class="grid-2">
+  <div class="card card-blue"><span class="badge">📋</span> <strong>Верификация (Verification)</strong> — проверка соответствия <strong>формальным требованиям</strong> (документации, спецификации).</div>
+  <div class="card card-green"><span class="badge badge-green">👤</span> <strong>Валидация (Validation)</strong> — проверка соответствия <strong>требованиям пользователя</strong> (реальным нуждам).</div>
+</div>
+
+<div class="card card-yellow" style="border: 2px solid #f59e0b;">
+  <strong>🎯 Классический пример (ОСЁЛ vs КОНЬ):</strong><br>
+  <span style="font-size:18px;">🐴 Релиз — ОСЁЛ (непарнокопытное с 4 ногами), а нужен был КОНЬ.</span><br>
+  <span class="badge badge-green">✅</span> <strong>Верификация пройдена</strong> — осёл соответствует документации (4 ноги, копыта).<br>
+  <span class="badge badge-red">❌</span> <strong>Валидация НЕ пройдена</strong> — пользователь хотел коня, а получил осла.
+</div>
+
+<!-- ========== БЛОК 6: STLC ========== -->
+<h2>6. STLC (Software Testing Life Cycle)</h2>
+<div class="card card-blue">
+  <strong>Жизненный цикл тестирования:</strong>
+  <ol>
+    <li>Общее планирование</li>
+    <li>Уточнение критериев</li>
+    <li>Уточнение стратегии</li>
+    <li>Чеклисты</li>
+    <li>Тест-кейсы</li>
+    <li>Анализ результатов</li>
+  </ol>
+</div>
+
+<!-- ========== БЛОК 7: ДОКУМЕНТАЦИЯ ========== -->
+<h2>7. Тестовая документация</h2>
+<div class="grid-3">
+  <div class="card"><span class="badge">📋</span> <strong>Тест-план</strong> — общий план тестирования</div>
+  <div class="card"><span class="badge">📊</span> <strong>Test Strategy</strong> — стратегия тестирования</div>
+  <div class="card"><span class="badge">✅</span> <strong>Check list</strong> — список проверок (без шагов)</div>
+  <div class="card"><span class="badge">📝</span> <strong>Test case</strong> — детальный тест-кейс с шагами</div>
+  <div class="card"><span class="badge">📂</span> <strong>Test suite</strong> — набор тест-кейсов</div>
+  <div class="card"><span class="badge badge-red">🐛</span> <strong>Баг-репорт</strong> — отчёт об ошибке</div>
+  <div class="card"><span class="badge badge-purple">📈</span> <strong>Test Report</strong> — отчёт о результатах</div>
+  <div class="card"><span class="badge badge-orange">🔗</span> <strong>Traceability Matrix</strong> — матрица трассировки (связь требований ↔ тестов ↔ багов)</div>
+</div>
+
+<!-- ========== БЛОК 8: СТРУКТУРА БАГ-РЕПОРТА ========== -->
+<h2>8. Структура Баг-репорта (полный шаблон)</h2>
+<div class="bug-template">
+  <div><span class="field">ID:</span> <span class="value">BUG-12345</span> <span class="comment">// Уникальный идентификатор</span></div>
+  <div><span class="field">Заголовок:</span> <span class="value">Кнопка "Купить" не работает на странице товара</span></div>
+  <div><span class="field">Что произошло:</span> <span class="value">При клике на кнопку ничего не происходит</span></div>
+  <div><span class="field">Где ошибка:</span> <span class="value">Страница /product/123</span></div>
+  <div><span class="field">Когда найден:</span> <span class="value">2026-09-01 14:30 MSK</span></div>
+  <div><span class="field">Описание ошибки:</span> <span class="value">JS-ошибка в консоли: "Uncaught TypeError"</span></div>
+  <div><span class="field">Автор:</span> <span class="value">Иванова А.</span></div>
+  <div><span class="field">Назначен на:</span> <span class="value">Петров С.</span></div>
+  <div><span class="field">Серьёзность (Severity):</span> <span class="value">Blocker / Critical / Major / Minor / Trivial</span></div>
+  <div><span class="field">Приоритет (Priority):</span> <span class="value">High / Medium / Low</span></div>
+  <div><span class="field">Окружение:</span> <span class="value">Chrome 120, Windows 11</span></div>
+  <div><span class="field">Атрибут дефекта:</span> <span class="value">Функциональный / UI / Производительность</span></div>
+  <div><span class="field">Где воспроизводится:</span> <span class="value">Все окружения / Только Stage</span></div>
+  <div><span class="field">Версия браузера:</span> <span class="value">Chrome 120.0.6099.109</span></div>
+  <div><span class="field">Build:</span> <span class="value">v2.3.1-20260901</span></div>
+  <div><span class="field">Предусловия:</span> <span class="value">Пользователь авторизован, товар в наличии</span></div>
+  <div><span class="field">Шаги воспроизведения:</span>
+    <span class="value">1. Открыть страницу товара<br>2. Нажать "Купить"</span>
+  </div>
+  <div><span class="field">Ожидаемый результат:</span> <span class="value">Открывается корзина с добавленным товаром</span></div>
+  <div><span class="field">Фактический результат:</span> <span class="value">Ничего не происходит, ошибка в консоли</span></div>
+  <div><span class="field">Вложения:</span> <span class="value">Скриншот, видео, логи</span></div>
+  <div><span class="field">Статус:</span> <span class="value">Open → In Progress → Fixed → Closed / Reopened</span></div>
+</div>
+
+<!-- ========== БЛОК 9: ВИДЫ ТЕСТИРОВАНИЯ ========== -->
+<h2>9. Виды тестирования (все классификации)</h2>
+
+<h3>По цели (функциональное vs нефункциональное)</h3>
+<div class="grid-2">
+  <div class="card card-green"><span class="badge badge-green">⚡</span> <strong>Функциональное</strong> — проверка того, <strong>ЧТО</strong> делает система.<br>
+    <span class="mono">Альфа / Бета / Модульное / Интеграционное / Системное / Приемочное</span>
+  </div>
+  <div class="card card-blue"><span class="badge">⚙️</span> <strong>Нефункциональное</strong> — проверка того, <strong>КАК</strong> система работает.<br>
+    <span class="mono">Нагрузочное / Производительность / Стабильность / Отказоустойчивость / Стресс / Масштабируемость / Безопасность / Совместимость</span>
+  </div>
+</div>
+
+<h3>По важности (глубине)</h3>
+<div class="grid-3">
+  <div class="card card-red"><span class="badge badge-red">🔥</span> <strong>Дымовое (Smoke)</strong> — проверка критической функциональности (сборка вообще работает?).</div>
+  <div class="card card-yellow"><span class="badge badge-yellow">🛤️</span> <strong>Критического пути (Sanity)</strong> — проверка основных бизнес-сценариев.</div>
+  <div class="card card-green"><span class="badge badge-green">🧪</span> <strong>Расширенное (Regression)</strong> — полная проверка, чтобы новые изменения не сломали старый функционал.</div>
+</div>
+
+<h3>По характеру</h3>
+<div class="grid-2">
+  <div class="card card-green"><span class="badge badge-green">😊</span> <strong>Позитивное</strong> — проверка на корректных данных (всё должно работать).</div>
+  <div class="card card-red"><span class="badge badge-red">😈</span> <strong>Негативное</strong> — проверка на некорректных данных (система должна корректно обрабатывать ошибки).</div>
+</div>
+
+<h3>По доступу к коду</h3>
+<div class="grid-2">
+  <div class="card card-blue"><span class="badge">🔓</span> <strong>Белый ящик (White Box)</strong> — тестировщик видит код, знает внутреннюю структуру.</div>
+  <div class="card card-red"><span class="badge badge-red">⬛</span> <strong>Чёрный ящик (Black Box)</strong> — тестировщик не видит код, проверяет только входы и выходы.</div>
+</div>
+
+<!-- ========== БЛОК 10: СПЕЦИАЛЬНЫЕ ВИДЫ ========== -->
+<h2>10. Специальные виды тестирования</h2>
+<div class="grid-3">
+  <div class="card card-purple"><span class="badge badge-purple">😊</span> <strong>Юзабилити (Usability)</strong> — насколько удобно пользователям.</div>
+  <div class="card card-orange"><span class="badge badge-orange">♿</span> <strong>Accessibility</strong> — тестирование доступности (для людей с ограниченными возможностями).</div>
+  <div class="card card-yellow"><span class="badge badge-yellow">⏳</span> <strong>Availability</strong> — доступность системы (истекший SSL, низкая скорость интернета).</div>
+  <div class="card card-blue"><span class="badge">🌍</span> <strong>Интернационализация</strong> — проверка, что продукт можно адаптировать под разные страны.</div>
+  <div class="card card-green"><span class="badge badge-green">🗺️</span> <strong>Локализация</strong> — проверка конкретной адаптации (перевод, валюта, дата).</div>
+</div>
+
+</body>
+</html>

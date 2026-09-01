@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Полный справочник: HTTP, Коды, Базы данных, API</title>
+<style>
+  body { font-family: 'Segoe UI', Arial, sans-serif; max-width: 1200px; margin: 25px auto; padding: 25px; background: #f8fafc; color: #0f172a; line-height: 1.5; }
+  h1 { color: #0b5e8a; border-bottom: 5px solid #0b5e8a; padding-bottom: 12px; font-size: 30px; }
+  h2 { color: #1e3a5f; margin-top: 35px; background: #e2edf7; padding: 8px 18px; border-radius: 0 30px 30px 0; border-left: 10px solid #1a6f9e; }
+  h3 { color: #2c3e50; margin: 22px 0 12px 0; }
+  .row { display: flex; flex-wrap: wrap; gap: 15px; margin: 15px 0; }
+  .card { flex: 1 1 200px; background: #ffffff; border: 1px solid #dce7f2; padding: 14px 18px; border-radius: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.03); }
+  .card-blue { background: #eff6ff; border-left: 5px solid #2563eb; }
+  .card-green { background: #f0fdf4; border-left: 5px solid #16a34a; }
+  .card-red { background: #fef2f2; border-left: 5px solid #dc2626; }
+  .card-yellow { background: #fffbeb; border-left: 5px solid #f59e0b; }
+  .card-purple { background: #f5f3ff; border-left: 5px solid #7c3aed; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 15px 0; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin: 15px 0; }
+  .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 12px; margin: 15px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 14px; }
+  th { background: #1e3a5f; color: white; padding: 10px; text-align: left; }
+  td { border: 1px solid #cbd5e1; padding: 10px; vertical-align: top; }
+  ul, ol { padding-left: 22px; margin: 8px 0; }
+  .badge { display: inline-block; background: #1a6f9e; color: white; font-size: 12px; padding: 2px 14px; border-radius: 30px; font-weight: 600; margin-right: 5px; }
+  .badge-red { background: #b91c1c; }
+  .badge-green { background: #166534; }
+  .badge-purple { background: #5b21b6; }
+  .badge-orange { background: #c2410c; }
+  .badge-yellow { background: #a16207; }
+  .badge-gray { background: #475569; }
+  .highlight-box { background: #fefce8; border: 1px solid #fde047; padding: 12px 20px; border-radius: 12px; }
+  .mono { font-family: 'Courier New', monospace; background: #f1f5f9; padding: 2px 8px; border-radius: 6px; font-size: 13px; }
+  .http-example { background: #0f172a; color: #e2e8f0; padding: 15px; border-radius: 10px; font-family: 'Courier New', monospace; font-size: 13px; overflow-x: auto; }
+  .http-example .green { color: #4ade80; }
+  .http-example .yellow { color: #facc15; }
+  .http-example .blue { color: #60a5fa; }
+  .status-1xx { background: #e0f2fe; border-left: 4px solid #0284c7; }
+  .status-2xx { background: #dcfce7; border-left: 4px solid #16a34a; }
+  .status-3xx { background: #fef9c3; border-left: 4px solid #ca8a04; }
+  .status-4xx { background: #fee2e2; border-left: 4px solid #dc2626; }
+  .status-5xx { background: #fecaca; border-left: 4px solid #991b1b; }
+  @media print { .grid-2, .grid-3, .grid-4 { display: block; } .card { margin-bottom: 10px; } }
+</style>
+</head>
+<body>
+
+<!-- ========== БЛОК 1: GRAPHQL ========== -->
+<h2>1. GraphQL</h2>
+<div class="card card-purple">
+  <span class="badge badge-purple">📊</span> <strong>GraphQL</strong> — язык запросов к API, разработанный Facebook.<br>
+  <strong>Отличие от REST:</strong> клиент сам решает, какие поля ему нужны (не перекачивает лишние данные).<br>
+  <span class="mono">Пример: запрос { user(id: 1) { name, email } }</span> — вернёт только имя и почту.
+</div>
+
+<!-- ========== БЛОК 2: HTTP, URI, URL ========== -->
+<h2>2. Протокол HTTP и адресация</h2>
+<div class="grid-2">
+  <div class="card"><span class="badge">🌐</span> <strong>HTTP (HyperText Transfer Protocol)</strong> — протокол передачи гипертекста (основа веба).</div>
+  <div class="card"><span class="badge">🔗</span> <strong>URI (Uniform Resource Identifier)</strong> — идентификатор ресурса (общее понятие).</div>
+  <div class="card"><span class="badge">📍</span> <strong>URL (Uniform Resource Locator)</strong> — конкретный адрес ресурса (частный случай URI).</div>
+</div>
+<div class="highlight-box">
+  <strong>Структура URL:</strong> <span class="mono">http://</span> (протокол) + <span class="mono">vk.ru</span> (доменное имя) = <strong>протокол + домен</strong> — это и есть URI/URL.
+</div>
+
+<!-- ========== БЛОК 3: СТРУКТУРА HTTP-ЗАПРОСА ========== -->
+<h2>3. Структура HTTP-запроса</h2>
+<div class="http-example">
+  <div><span class="green">GET /api/users HTTP/1.1</span>  <span class="yellow">← Start Line (Метод + URI + Версия)</span></div>
+  <div><span class="blue">Host: vk.ru</span>  <span class="yellow">← Заголовки (Headers)</span></div>
+  <div><span class="blue">Authorization: Bearer token123</span>  <span class="yellow">← Заголовки</span></div>
+  <div><span class="blue">Content-Type: application/json</span>  <span class="yellow">← Заголовки</span></div>
+  <div>&nbsp;  <span class="yellow">← Пустая строка (Empty Line) — разделитель</span></div>
+  <div><span class="green">{ "name": "John" }</span>  <span class="yellow">← Тело (Body) — опционально</span></div>
+</div>
+<div class="row">
+  <div class="card"><span class="badge">🚀</span> <strong>Start Line / Request Line</strong> — метод, URI, версия HTTP.</div>
+  <div class="card"><span class="badge">📋</span> <strong>Headers</strong> — метаданные (тип контента, авторизация, куки).</div>
+  <div class="card"><span class="badge">⬜</span> <strong>Empty Line</strong> — разделяет заголовки и тело.</div>
+  <div class="card"><span class="badge">📦</span> <strong>Body</strong> — данные запроса (POST/PUT/PATCH).</div>
+</div>
+
+<!-- ========== БЛОК 4: CRUD ========== -->
+<h2>4. CRUD (Create, Read, Update, Delete)</h2>
+<table>
+  <tr><th>Действие</th><th>HTTP Метод</th><th>SQL</th></tr>
+  <tr><td><strong>Create</strong> (Создать)</td><td><span class="mono">POST</span></td><td>INSERT</td></tr>
+  <tr><td><strong>Read</strong> (Прочитать)</td><td><span class="mono">GET</span></td><td>SELECT</td></tr>
+  <tr><td><strong>Update</strong> (Обновить)</td><td><span class="mono">PUT</span> (полная замена) / <span class="mono">PATCH</span> (частичная)</td><td>UPDATE</td></tr>
+  <tr><td><strong>Delete</strong> (Удалить)</td><td><span class="mono">DELETE</span></td><td>DELETE</td></tr>
+</table>
+
+<!-- ========== БЛОК 5: ВСЕ МЕТОДЫ ПОДРОБНО ========== -->
+<h2>5. HTTP Методы (полный список)</h2>
+<div class="grid-2">
+  <div class="card card-green"><span class="badge badge-green">🔍</span> <strong>GET</strong> — запрос данных (без тела).</div>
+  <div class="card"><span class="badge">📄</span> <strong>HEAD</strong> — только заголовки (без тела).</div>
+  <div class="card"><span class="badge">🔧</span> <strong>OPTIONS</strong> — спрашивает, какие методы поддерживает сервер.</div>
+  <div class="card card-blue"><span class="badge">➕</span> <strong>POST</strong> — создаёт ресурс (не идемпотентный).</div>
+  <div class="card card-yellow"><span class="badge badge-yellow">🔄</span> <strong>PUT</strong> — полная замена ресурса (идемпотентный).</div>
+  <div class="card card-yellow"><span class="badge badge-yellow">✏️</span> <strong>PATCH</strong> — частичное изменение (не всегда идемпотентный).</div>
+  <div class="card card-red"><span class="badge badge-red">🗑️</span> <strong>DELETE</strong> — удаляет ресурс (идемпотентный).</div>
+</div>
+
+<!-- ========== БЛОК 6: ИДЕМПОТЕНТНОСТЬ И БЕЗОПАСНОСТЬ ========== -->
+<h2>6. Идемпотентность и безопасность методов</h2>
+<div class="grid-2">
+  <div class="card card-blue"><span class="badge">🔄</span> <strong>Идемпотентный</strong> — метод, который можно вызвать несколько раз с одинаковым результатом.<br>
+    <span class="mono">Пример: PUT /users/1</span> — первый раз создаст, второй раз просто перезапишет (состояние то же).
+  </div>
+  <div class="card card-green"><span class="badge">🛡️</span> <strong>Безопасный</strong> — метод не изменяет ресурс на сервере (только читает).<br>
+    <span class="mono">GET, HEAD, OPTIONS</span> — безопасные.
+  </div>
+</div>
+
+<h3>Таблица идемпотентности методов</h3>
+<table>
+  <tr><th>Метод</th><th>Идемпотентный?</th><th>Безопасный?</th><th>Есть тело?</th></tr>
+  <tr><td><span class="mono">GET</span></td><td>✅ Да</td><td>✅ Да</td><td>❌ Нет</td></tr>
+  <tr><td><span class="mono">HEAD</span></td><td>✅ Да</td><td>✅ Да</td><td>❌ Нет</td></tr>
+  <tr><td><span class="mono">OPTIONS</span></td><td>✅ Да</td><td>✅ Да</td><td>❌ Нет</td></tr>
+  <tr><td><span class="mono">POST</span></td><td>❌ Нет</td><td>❌ Нет</td><td>✅ Да</td></tr>
+  <tr><td><span class="mono">PUT</span></td><td>✅ Да</td><td>❌ Нет</td><td>✅ Да</td></tr>
+  <tr><td><span class="mono">PATCH</span></td><td>⚠️ Частично (зависит от реализации)</td><td>❌ Нет</td><td>✅ Да</td></tr>
+  <tr><td><span class="mono">DELETE</span></td><td>✅ Да</td><td>❌ Нет</td><td>⚠️ Может быть</td></tr>
+</table>
+
+<!-- ========== БЛОК 7: КОДЫ ОТВЕТА (ПОЛНАЯ ТАБЛИЦА) ========== -->
+<h2>7. HTTP Коды ответа (полный список по вашим записям)</h2>
+
+<h3>1xx — Информационные</h3>
+<div class="card status-1xx">
+  <span class="badge badge-gray">102</span> <strong>Processing</strong> — сервер принял запрос, но ещё не завершил обработку (используется для WebDAV).
+</div>
+
+<h3>2xx — Успех</h3>
+<div class="card status-2xx">
+  <span class="badge badge-green">200</span> <strong>OK</strong> — запрос успешно выполнен.<br>
+  <span class="badge badge-green">201</span> <strong>Created</strong> — ресурс создан (обычно POST).
+</div>
+
+<h3>3xx — Перенаправление</h3>
+<div class="card status-3xx">
+  <span class="badge badge-yellow">301</span> <strong>Moved Permanently</strong> — ресурс навсегда перемещён на новый URL.<br>
+  <span class="badge badge-yellow">302</span> <strong>Found</strong> — временное перенаправление.
+</div>
+
+<h3>4xx — Ошибка клиента</h3>
+<div class="card status-4xx">
+  <span class="badge badge-red">400</span> <strong>Bad Request</strong> — сервер не понимает запрос (невалидные данные).<br>
+  <span class="badge badge-red">401</span> <strong>Unauthorized</strong> — требуется аутентификация.<br>
+  <span class="badge badge-red">403</span> <strong>Forbidden</strong> — доступ запрещён (аутентификация есть, но прав нет).<br>
+  <span class="badge badge-red">404</span> <strong>Not Found</strong> — ресурс не найден.<br>
+  <span class="badge badge-red">405</span> <strong>Method Not Allowed</strong> — метод не поддерживается для этого ресурса.
+</div>
+
+<h3>5xx — Ошибка сервера</h3>
+<div class="card status-5xx">
+  <span class="badge badge-red">500</span> <strong>Internal Server Error</strong> — общая ошибка сервера.<br>
+  <span class="badge badge-red">501</span> <strong>Not Implemented</strong> — сервер не поддерживает нужную функциональность.<br>
+  <span class="badge badge-red">503</span> <strong>Service Unavailable</strong> — сервер временно перегружен или на обслуживании.<br>
+  <span class="badge badge-red">505</span> <strong>HTTP Version Not Supported</strong> — сервер не поддерживает версию HTTP.
+</div>
+
+<!-- ========== БЛОК 8: БАЗЫ ДАННЫХ ========== -->
+<h2>8. Базы данных (БД)</h2>
+<div class="card card-blue">
+  <strong>База данных</strong> — организованное хранилище, позволяющее <strong>хранить, изменять, извлекать и удалять</strong> данные.
+</div>
+
+<div class="grid-2">
+  <div class="card card-blue"><span class="badge">📊</span> <strong>Реляционные (SQL)</strong><br>Табличная структура, строгие схемы, связи между таблицами.<br>
+    <span class="mono">Примеры: PostgreSQL, MySQL, Oracle, MS SQL</span>
+  </div>
+  <div class="card card-yellow"><span class="badge badge-yellow">📦</span> <strong>Нереляционные (NoSQL)</strong><br>Гибкие структуры (документы, ключ-значение, графы).<br>
+    <span class="mono">Примеры: MongoDB, Redis, Cassandra, Neo4j</span>
+  </div>
+</div>
+
+<h3>Ключи в реляционных БД</h3>
+<div class="grid-2">
+  <div class="card card-green"><span class="badge badge-green">🔑</span> <strong>Первичный ключ (Primary Key)</strong> — уникальный идентификатор записи в таблице.<br>
+    <span class="mono">Пример: user_id = 1</span>
+  </div>
+  <div class="card card-purple"><span class="badge badge-purple">🔗</span> <strong>Внешний ключ (Foreign Key)</strong> — столбец, который ссылается на первичный ключ другой таблицы (для связи).<br>
+    <span class="mono">Пример: order.user_id → users.user_id</span>
+  </div>
+</div>
+
+<!-- ========== БЛОК 9: НОРМАЛИЗАЦИЯ ========== -->
+<h2>9. Нормализация БД</h2>
+<div class="card card-yellow">
+  <span class="badge badge-yellow">🧩</span> <strong>Нормализация</strong> — это декомпозиция (разбиение) БД на логические части для устранения дублирования и аномалий.<br>
+  <strong>Цель:</strong> правильное проектирование структуры данных.<br>
+  <span style="font-size:14px;">📌 1НФ (каждое поле атомарно) → 2НФ (зависит от всего ключа) → 3НФ (нет транзитивных зависимостей).</span>
+</div>
+
+<div class="card">
+  <span class="badge badge-gray">⚖️</span> <strong>Балансировщик (Load Balancer)</strong> — распределяет нагрузку между несколькими серверами БД или приложений для повышения производительности и отказоустойчивости.
+</div>
+
+</body>
+</html>
