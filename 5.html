@@ -2,9 +2,9 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-	<link type="image/x-icon" rel="icon" href="2.png">
+    <link type="image/x-icon" rel="icon" href="2.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ЦКДЛ</title>
+    <title>ЦКДЛ Тренажёр: ОАК и клинический анализ крови</title>
     <style>
         * {
             margin: 0;
@@ -18,9 +18,10 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            padding: 1.5rem;
         }
         .container {
-            max-width: 950px;
+            max-width: 960px;
             width: 100%;
             background: rgba(255, 255, 255, 0.92);
             backdrop-filter: blur(8px);
@@ -32,6 +33,23 @@
             transition: all 0.2s;
         }
         /* Корпоративные цвета: #EE811F (оранжевый), #509126 (зеленый), #E96218 (красно-оранжевый) */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-bottom: 0.2rem;
+        }
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        .logo-icon {
+            font-size: 2.2rem;
+            line-height: 1;
+        }
         h1 {
             font-size: 2rem;
             font-weight: 650;
@@ -40,13 +58,22 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            margin-bottom: 0.1rem;
         }
         h1 .accent {
             color: #EE811F;
         }
         h1 .accent2 {
             color: #509126;
+        }
+        .brand-badge {
+            background: #EE811F;
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 0.3rem 1.2rem;
+            border-radius: 40px;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 10px rgba(238, 129, 31, 0.25);
         }
         .subhead {
             font-size: 1rem;
@@ -63,49 +90,9 @@
             flex-wrap: wrap;
             align-items: center;
         }
-        .text-block {
-            background: #ffffffdd;
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            padding: 1.5rem 1.8rem;
-            border-radius: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: inset 0 1px 4px rgba(0,0,0,0.02), 0 4px 12px rgba(0, 0, 0, 0.04);
-            border: 1px solid #ffffff;
-            font-size: 0.95rem;
-            line-height: 1.6;
-            color: #2d2a25;
-            max-height: 200px;
-            overflow-y: auto;
-        }
-        .text-block p {
-            margin: 0.3rem 0;
-        }
-        .text-block strong {
-            color: #b85c0f;
-        }
-        .text-block ul, .text-block ol {
-            padding-left: 1.5rem;
-            margin: 0.3rem 0;
-        }
-        .text-block li {
-            margin: 0.1rem 0;
-        }
-        .highlight-box {
-            background: #fcf1e8;
-            border-radius: 1rem;
-            padding: 0.5rem 1.2rem;
-            margin: 0.4rem 0;
-            border-left: 4px solid #EE811F;
-            color: #3d2a1a;
-            font-size: 0.92rem;
-        }
-        .highlight-box strong {
-            color: #E96218;
-        }
         .stats {
             display: flex;
-            gap: 1.5rem;
+            gap: 1rem;
             flex-wrap: wrap;
             align-items: center;
         }
@@ -124,6 +111,116 @@
         .stats .score-badge2 {
             background: #509126;
             color: white;
+        }
+
+        /* ТЕОРИЯ — полноценный блок с прокруткой */
+        .theory-block {
+            background: #ffffffdd;
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            padding: 1.8rem 2rem;
+            border-radius: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: inset 0 1px 4px rgba(0,0,0,0.02), 0 4px 12px rgba(0, 0, 0, 0.04);
+            border: 1px solid #ffffff;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #2d2a25;
+            max-height: 420px;
+            overflow-y: auto;
+        }
+        .theory-block::-webkit-scrollbar {
+            width: 6px;
+        }
+        .theory-block::-webkit-scrollbar-track {
+            background: #f0e8e0;
+            border-radius: 10px;
+        }
+        .theory-block::-webkit-scrollbar-thumb {
+            background: #EE811F;
+            border-radius: 10px;
+        }
+        .theory-block p {
+            margin: 0.5rem 0;
+        }
+        .theory-block strong {
+            color: #b85c0f;
+        }
+        .theory-block ul, .theory-block ol {
+            padding-left: 1.5rem;
+            margin: 0.5rem 0;
+        }
+        .theory-block li {
+            margin: 0.2rem 0;
+        }
+        .theory-block .highlight-box {
+            background: #fcf1e8;
+            border-radius: 1rem;
+            padding: 0.7rem 1.2rem;
+            margin: 0.6rem 0;
+            border-left: 4px solid #EE811F;
+            color: #3d2a1a;
+            font-size: 0.92rem;
+        }
+        .theory-block .highlight-box strong {
+            color: #E96218;
+        }
+        .theory-block .section-title {
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: #EE811F;
+            margin-top: 0.8rem;
+            margin-bottom: 0.3rem;
+            border-bottom: 2px solid #f0e8e0;
+            padding-bottom: 0.2rem;
+        }
+        .theory-block .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 0.5rem 0;
+        }
+        .theory-block .card-info {
+            background: #faf8f6;
+            border-radius: 1rem;
+            padding: 0.8rem 1.2rem;
+            border: 1px solid #e8ddd2;
+        }
+        .theory-block .card-info strong {
+            color: #EE811F;
+        }
+        .theory-block .card-info ul {
+            margin: 0.2rem 0;
+            padding-left: 1.2rem;
+        }
+        .theory-block .table-wrap {
+            overflow-x: auto;
+            margin: 0.5rem 0;
+        }
+        .theory-block table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            background: #faf8f6;
+            border-radius: 0.8rem;
+            overflow: hidden;
+        }
+        .theory-block table th {
+            background: #EE811F;
+            color: #fff;
+            padding: 0.5rem 0.8rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        .theory-block table td {
+            padding: 0.4rem 0.8rem;
+            border-bottom: 1px solid #e8ddd2;
+        }
+        .theory-block table tr:last-child td {
+            border-bottom: none;
+        }
+        .theory-block table tr:nth-child(even) {
+            background: #f5f0ea;
         }
 
         /* Карточки */
@@ -289,15 +386,6 @@
             background: #e8ddd2;
             border-color: #c0b0a0;
         }
-        .btn-outline {
-            background: transparent;
-            border: 1px solid #E96218;
-            color: #E96218;
-        }
-        .btn-outline:hover {
-            background: #fde8e0;
-            border-color: #d65a14;
-        }
         .score {
             background: #f0e8e0;
             padding: 0.5rem 1.5rem;
@@ -331,33 +419,138 @@
         }
         @media (max-width: 600px) {
             .container { padding: 1.2rem; }
-            .text-block { padding: 0.8rem; max-height: 150px; }
+            .theory-block { padding: 1rem; max-height: 280px; }
+            .theory-block .grid-2 { grid-template-columns: 1fr; }
             .card { padding: 1rem; }
             .actions { flex-direction: column; align-items: stretch; }
             .btn-group { justify-content: center; }
             .score { text-align: center; }
             .stats { justify-content: center; }
+            .header { flex-direction: column; align-items: flex-start; }
         }
-		img {
-			margin: 0 auto;
-			width: 70px;
-			display: block;
-		}
+        img {
+            margin: 0 auto;
+            width: 70px;
+            display: block;
+        }
     </style>
 </head>
 <body>
 <div class="container">
 
-		<img src="2.png" alt="" width="70"> 
-    <h1>
-        <span class="accent">⚕️</span> ОАК
-    </h1>
+    <img src="2.png" alt="ЦКДЛ" width="70">
+
+    <div class="header">
+        <div class="header-left">
+            <span class="logo-icon">🩸</span>
+            <h1>
+                <span class="accent">ЦКДЛ</span>
+                <span style="font-weight:400; color:#5a4a3a; font-size:1.5rem;">Тренажёр</span>
+            </h1>
+        </div>
+        <div class="brand-badge">ОАК &amp; клинический анализ</div>
+    </div>
+
     <div class="subhead">
+        <span>Проверка знаний по общему и клиническому анализу крови</span>
         <div class="stats">
-            <span id="totalCards">20</span>
+            <span id="totalCards">20 вопросов</span>
             <span class="score-badge2" id="progressDisplay">✅ 0/20</span>
         </div>
     </div>
+
+    <!-- ==================== ТЕОРИЯ ==================== -->
+    <div class="theory-block" id="theoryBlock">
+        <div class="section-title">📋 Что показывает общий анализ крови (ОАК)</div>
+        <ul>
+            <li>наличие воспалений в целом</li>
+            <li>тип инфекции (бактериальная или вирусная)</li>
+            <li>тип анемии</li>
+            <li>наличие паразитоза</li>
+            <li>обезвоженность, повышенную вязкость крови</li>
+            <li>состояние иммунитета</li>
+            <li>аллергическую активность</li>
+        </ul>
+
+        <div class="section-title">🔬 Различают два вида анализа</div>
+        <div class="grid-2">
+            <div class="card-info">
+                <strong>Общий анализ крови (1.01.003)</strong>
+                <ul>
+                    <li>Гемоглобин (HB / HGB)</li>
+                    <li>Гематокрит (HTC)</li>
+                    <li>Лейкоциты (WBC)</li>
+                    <li>Тромбоциты (PLT)</li>
+                    <li>Эритроциты (RBC)</li>
+                    <li>Эритроцитарные индексы: MCV, MCH, MCHC, RDW</li>
+                </ul>
+                <p style="margin-top:0.3rem; font-size:0.9rem; color:#6a5a4a;">Выполняет <strong>Инвитро</strong></p>
+            </div>
+            <div class="card-info">
+                <strong>Клинический анализ крови (1.01.001)</strong>
+                <ul>
+                    <li>ОАК (6 параметров) +</li>
+                    <li><strong>Лейкоцитарная формула</strong></li>
+                    <li>СОЭ (метод Вестергрена)</li>
+                </ul>
+                <p style="margin-top:0.3rem; font-size:0.9rem; color:#6a5a4a;">Выполняет <strong>ЦКДЛ</strong></p>
+            </div>
+        </div>
+
+        <!-- ===== РАЗДЕЛ ПРО ЛЕЙКОЦИТАРНУЮ ФОРМУЛУ ===== -->
+        <div class="section-title" style="margin-top:1rem;">🧬 Лейкоцитарная формула — подробно</div>
+        <p><strong>Лейкоцитарная формула</strong> — это процентное соотношение различных видов лейкоцитов в крови. Входит <strong>только в клинический анализ крови (1.01.001)</strong>, который выполняется в ЦКДЛ. В ОАК (1.01.003) лейкоцитарная формула <strong>отсутствует</strong>.</p>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Вид лейкоцитов</th>
+                        <th>Что показывают изменения</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Нейтрофилы</strong> (сегментоядерные и палочкоядерные)</td>
+                        <td>↑ при бактериальных инфекциях, воспалениях. Палочкоядерные ↑ — «сдвиг влево» (тяжёлая инфекция). ↓ при вирусных инфекциях.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Лимфоциты</strong></td>
+                        <td>↑ при вирусных инфекциях, некоторых хронических заболеваниях. ↓ при иммунодефицитах.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Моноциты</strong></td>
+                        <td>↑ при длительных инфекциях, мононуклеозе, некоторых паразитозах.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Эозинофилы</strong></td>
+                        <td>↑ при <strong>паразитозах</strong> и <strong>аллергических реакциях</strong>. Это ключевой маркер!</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Базофилы</strong></td>
+                        <td>↑ при аллергиях, некоторых заболеваниях крови, после облучения.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="highlight-box">
+            <strong>🔑 Ключевые выводы для ответов на вопросы:</strong><br>
+            • <strong>Эозинофилы</strong> ↑ → паразитоз или аллергия.<br>
+            • <strong>Нейтрофилы</strong> ↑ → бактериальная инфекция.<br>
+            • <strong>Лимфоциты</strong> ↑ → вирусная инфекция.<br>
+            • <strong>Лейкоцитарная формула входит ТОЛЬКО в клинический анализ (ЦКДЛ)</strong>, в ОАК (Инвитро) её нет.
+        </div>
+
+        <div class="section-title">⚠️ Важное предупреждение</div>
+        <div class="highlight-box">
+            <strong>⚠️ Важно!</strong> Поскольку ОАК и клинический анализ крови выполняют разные лаборатории, обязательно предупреждайте пациентов, что <strong>референсные значения и единицы измерения будут отличаться</strong>.
+        </div>
+        <p style="font-style: italic; color: #6a5a4a; margin-top:0.3rem;">
+            <strong>Референсы</strong> – это среднее арифметическое значение анализов группы людей (здоровых, не очень здоровых и больных).
+        </p>
+    </div>
+
     <!-- Контейнер для карточек -->
     <div id="cardContainer" class="card-container"></div>
 
@@ -371,13 +564,13 @@
         <div class="score" id="scoreDisplay">Баллы: <span id="scoreValue">0</span> / <span id="totalQspan">20</span></div>
     </div>
     <div class="footer-note">
-        <i>⚡ Карточки перемешиваются случайно. Нажмите «Проверить» для оценки.</i>
+        <i>⚡ Карточки перемешиваются случайно. Изучите теорию сверху, затем отвечайте на вопросы.</i>
     </div>
 </div>
 
 <script>
     (function() {
-        // ---------- БОЛЬШОЙ ПУЛ ВОПРОСОВ (20) ----------
+        // ---------- 20 ВОПРОСОВ ПО ТЕКСТУ ----------
         const questionPool = [
             {
                 question: "Что из перечисленного НЕ показывает общий анализ крови (ОАК)?",
@@ -486,14 +679,13 @@
         let selectedAnswers = [];
         let totalQ = 0;
 
-        // DOM элементы
         const container = document.getElementById('cardContainer');
         const scoreSpan = document.getElementById('scoreValue');
         const totalQspan = document.getElementById('totalQspan');
         const progressDisplay = document.getElementById('progressDisplay');
         const totalCardsSpan = document.getElementById('totalCards');
 
-        // ---------- ПЕРЕМЕШИВАНИЕ (Fisher-Yates) ----------
+        // Перемешивание
         function shuffleArray(arr) {
             for (let i = arr.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
@@ -502,7 +694,6 @@
             return arr;
         }
 
-        // ---------- ИНИЦИАЛИЗАЦИЯ / ПЕРЕМЕШИВАНИЕ ----------
         function shuffleQuestions() {
             const shuffled = shuffleArray([...questionPool]);
             currentQuestions = shuffled;
@@ -515,7 +706,6 @@
             scoreSpan.textContent = '0';
         }
 
-        // ---------- РЕНДЕР КАРТОЧЕК ----------
         function renderCards() {
             container.innerHTML = '';
             currentQuestions.forEach((q, idx) => {
@@ -527,7 +717,7 @@
                 titleDiv.className = 'q-title';
                 const numSpan = document.createElement('span');
                 numSpan.className = 'q-num';
-                numSpan.textContent = `Вопрос ${idx+1}`;
+                numSpan.textContent = `${idx+1}`;
                 titleDiv.appendChild(numSpan);
                 titleDiv.append(` ${q.question}`);
                 card.appendChild(titleDiv);
@@ -556,7 +746,7 @@
                     optWrapper.appendChild(label);
                     optionsDiv.appendChild(optWrapper);
 
-                    radio.addEventListener('change', function(e) {
+                    radio.addEventListener('change', function() {
                         if (this.checked) {
                             selectedAnswers[idx] = parseInt(this.value, 10);
                             const fb = card.querySelector('.feedback');
@@ -571,18 +761,15 @@
             });
         }
 
-        // ---------- ОБНОВЛЕНИЕ ПРОГРЕССА ----------
         function updateProgress() {
             const answered = selectedAnswers.filter(a => a !== null && a !== undefined).length;
             progressDisplay.textContent = `✅ ${answered}/${totalQ}`;
         }
 
-        // ---------- ОЧИСТКА ФИДБЕКОВ ----------
         function clearAllFeedback() {
             document.querySelectorAll('.feedback').forEach(el => el.remove());
         }
 
-        // ---------- ПРОВЕРКА ОТВЕТОВ ----------
         function checkAnswers() {
             clearAllFeedback();
             let correctCount = 0;
@@ -620,7 +807,6 @@
             updateProgress();
         }
 
-        // ---------- СБРОС ОТВЕТОВ (без перемешивания) ----------
         function clearAnswers() {
             selectedAnswers = new Array(totalQ).fill(null);
             document.querySelectorAll('input[type="radio"]').forEach(radio => {
@@ -655,7 +841,6 @@
                 }
             }
         });
-
     })();
 </script>
 </body>
