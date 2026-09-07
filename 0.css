@@ -2,11 +2,49 @@
 	--primary-color: #3498db;
 	--spacing: 16px;
 }
+
+--gray100: #fafafd;
+--gray200: #eaedf3;
+--gray300: #d8dce6;
+--gray400: #bcc5d1;
+--gray500: #95a2b3;
+--gray600: #7f8b99;
+--gray700: #656d78;
+--gray800: #33373c;
+--gray900: #1f1c28;
+--white: #fff;
+--light-bg: #f8faff;
+--light-blue: #f5f7fc;
+--purple100: #ecddff;
+--purple300: #c299ff;
+--purple400: #8b55ff;
+--purple500: #662eff;
+--purple600: #5729d0;
+--purple700: #4824a2;
+--purple800: #351877;
+--purple900: #25104f;
+--purple940: #1f1038;
+--purple950: #221040;
+--purple955: #1b0d33;
+--purple970: #15082b;
+--cyan4: #00cfde;
+--green4: #06c270;
+--red2: #ff8080;
+--red4: #ff3b3b;
+--gradient-1: linear-gradient(147.14deg, var(--purple400) 6.95%, var(--purple500) 93.05%);
+--gradient-2: linear-gradient(147.14deg, #f80 6.95%, #e63535 93.05%);
+--gradient-3: linear-gradient(147.14deg, #3e7bfa 6.95%, #60c 93.05%);
+--gradient-4: linear-gradient(147.14deg, #00cfde 6.95%, #05a660 93.05%);
+--gradient-5: linear-gradient(145.51deg, #ac5dd9 7.21%, #004fc4 94.47%);
+--gradient-6: linear-gradient(147.14deg, #ff3b3b 6.95%, #60c 93.05%);
+--gradient-7: linear-gradient(147.14deg, #73dfe7 6.95%, #0063f7 93.05%);
+--shadowMedium: 0 6px 16px rgba(51, 55, 60, 0.08);
+--shadow-s-base: 0 1px 3px rgba(51, 55, 60, 0.08);
+
 .element {
 	color: var(--primary-color);
 	margin: var(--spacing);
 }
-👀
 
 * {} /* всем */
 .class {} /* с классом */
@@ -17,7 +55,6 @@ div > p {} /* p потомки div */
 div + p {} /* p сразу после div */
 div ~ p {} /* все p после div */
 a[title] {} /* все a, у которых есть атрибут title */
-👀
 
 :first-child {} /* первый дочерний элемент внутри родителя */  
 :last-child {} /* последний дочерний элемент внутри родителя */  
@@ -25,7 +62,6 @@ a[title] {} /* все a, у которых есть атрибут title */
 :last-of-type {} /* последний элемент определённого типа среди братьев */  
 :only-child {} /* элемент, который является единственным ребёнком своего родителя */  
 :only-of-type {} /* элемент, который является единственным своего типа среди братьев */
-👀
 
 :nth-child(2) {} /* второй дочерний элемент родителя */  
 :nth-child(odd) {} /* 1 3 5 */  
@@ -37,13 +73,11 @@ a[title] {} /* все a, у которых есть атрибут title */
 :not(.ignore) {} /* все элементы, у которых нет класса 'ignore' */  
 div:not(#banner) {} /* все div, кроме тех, у которых есть id 'banner' */  
 li:not(:first-child) {} /* все li, кроме первого ребенка в списке */
-👀
 
 a[href="https://"] {} /* href точно равен */
 a[href^="https"] {} /* Начинается с div[class^="icon-"] {}*/
 a[href$=".pdf"] {} /* Заканчивается на div[class$="-btn"] {}*/
 a[href*="example"] {} /* Содержит div[class*="error"] {}*/
-👀
 
 :checked {} /* которые отмечены */  
 :disabled {} /* которые отключены и недоступны для взаимодействия */  
@@ -58,7 +92,6 @@ a[href*="example"] {} /* Содержит div[class*="error"] {}*/
 :read-only {} /*  которые доступны только для чтения */  
 :read-write {} /*  которые доступны для редактирования */
 ::placeholder {} /* стилизует текст плейсхолдера в полях формы */
-👀
 
 :link {} /* еще не были посещены */
 :visited {} /* уже посетил */
@@ -68,7 +101,6 @@ a[href*="example"] {} /* Содержит div[class*="error"] {}*/
 :focus-visible {} /* элемент в фокусе и это видно пользователю */
 :focus-within {} /* внутри которых есть элемент с фокусом */
 :target {} /* является текущей целью URL после перехода по якорю */
-👀
 
 ::before {
 	content: "";
@@ -76,13 +108,11 @@ a[href*="example"] {} /* Содержит div[class*="error"] {}*/
 ::after {
 	content: "";
 } /* добавляет содержимое после элемента, используется для стилизации псевдоэлемента ::after */ 
-👀
 
 ::first-letter {} /* выбирает первую букву внутри элемента для стилизации */  
 ::first-line {} /* выбирает первую строку внутри элемента для стилизации */  
 ::selection {} /* стилизует выделенный текст пользователем */  
 ::marker {} /* выбирает маркеры списков (например, точки или номера) */
-👀
 
 position: static; /* Значение по умолчанию. Элемент располагается в нормальном потоке документа. */
 position: relative; /* Позволяет смещать элемент относительно его исходного положения, сохраняя место в потоке. */
@@ -98,7 +128,6 @@ z-index: 10; /* Определяет порядок наложения элем�
 
 width: 100px; /* Устанавливает фиксированную ширину элемента в 100 пикселей. */
 height: 100px; /* Устанавливает фиксированную высоту в 100 пикселей. */
-👀
 
 min-width: 50px; /* Минимальная ширина элемента — не меньше 50 пикселей. */
 max-width: 200px; /* Максимальная ширина — не больше 200 пикселей. */
@@ -116,11 +145,9 @@ padding-top: 10px; /* Внутренний отступ сверху. */
 padding-right: 10px; /* Внутренний отступ справа. */
 padding-bottom: 10px; /* Внутренний отступ снизу. */
 padding-left: 10px; /* Внутренний отступ слева. */
-👀
 
 box-sizing: border-box;
 box-sizing: content-box;
-👀
 
 overflow: visible; /* Контент, выходящий за границы элемента, отображается полностью (по умолчанию). */
 overflow: hidden; /* Контент, выходящий за границы элемента, скрыт и не виден. */
@@ -147,7 +174,6 @@ color: rgb(100%, 100%, 100%); /* белый в процентах (эквива�
 color: rgb(255, 255, 255); /* белый в числовом формате */
 color: hsl(0, 100%, 50%); /* насыщенный красный по HSL модели */
 color: hsla(0, 100%, 50%, .5); /* полупрозрачный красный (50% прозрачности) */
-👀
 
 text-align: left; /* по левому краю */
 text-align: center; /* по центру */
@@ -163,7 +189,6 @@ text-transform: none; /* без изменений регистра */
 text-transform: uppercase; /* все буквы в верхний регистр */
 text-transform: lowercase; /* все буквы в нижний регистр */
 text-transform: capitalize; /* первая буква каждого слова в верхний регистр */
-👀
 
 text-indent: 20px; /* сдвиг первой строки на 20 пикселей */
 
@@ -181,7 +206,6 @@ word-break: keep-all; /* не переносит слова, только в с�
 
 word-wrap: normal; /* стандартное поведение, не переносит слова за границы контейнера */
 word-wrap: break-word; /* позволяет переносить длинные слова на следующую строку при переполнении */
-👀
 
 hyphens: none; /* отключает автоматические дефисы при переносе слов */
 hyphens: manual; /* разрешает автоматические дефисы только там, где они явно указаны */
@@ -195,7 +219,6 @@ direction: ltr; /* слева направо (по умолчанию для а�
 direction: rtl; /* справа налево (для арабского, иврита и др.) */
 
 unicode-bidi: normal; /* стандартное поведение без особого изменения порядка символов */
-👀
 
 background-color: #fff; /* белый цвет фона */
 
@@ -219,7 +242,6 @@ background-attachment: fixed; /* фон остается неподвижным 
 background-clip: border-box; /* фон занимает всю область за границами блока */
 background-origin: padding-box; /* фон начинается от области внутреннего отступа */
 background-blend-mode: normal; /* стандартное смешивание без эффектов */
-👀
 
 border: 1px solid #000; /* сплошная черная граница толщиной 1px */
 
@@ -241,14 +263,12 @@ border-top-left-radius: 5px; /* Скругление верхнего левог
 border-top-right-radius: 5px; /* Скругление верхнего правого угла */
 border-bottom-right-radius: 5px; /* Скругление правого нижнего угла */
 border-bottom-left-radius: 5px; /* Скругление левого нижнего угла */
-👀
 
 outline: 1px solid #f00; /* Обводка вокруг элемента */
 
 outline-offset: 2px; /* Смещение обводки относительно границы элемента */
 
 box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Тень вокруг элемента */
-👀
 
 display: flex; /* Установка контейнера как флекс-контейнера */
 
@@ -291,13 +311,11 @@ flex-shrink: 1; /* Элемент может сжиматься при нехв�
 
 flex-basis: auto; /* Исходный размер элемента перед распределением свободного пространства */
 
-
 gap: 10px; /* Расстояние между строками и колонками в контейнере */
 
 row-gap: 10px; /* Расстояние между строками (для grid или flex-контейнера) */
 
 column-gap: 10px; /* Расстояние между колонками (для grid или flex-контейнера) */
-
 
 display: grid; /* Установка элемента как grid-контейнера */
 
@@ -351,7 +369,6 @@ align-content: space-around; /* Равномерное распределени�
 align-content: space-between;/* Распределение с равными промежутками между линиями */
 align-content: space-evenly; /* Равные промежутки между линиями */
 
-
 transform: translate(10px, 20px);   /* Смещение элемента на 10px вправо и 20px вниз */
 transform: rotate(45deg);     /* Поворот на 45 градусов */
 transform: scale(1.2);        /* Масштабирование элемента в 1.2 раза */
@@ -383,7 +400,6 @@ transition-timing-function: ease-in-out;  /* Ускорение и замедл�
 transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); /* Пользовательская кривая Безье для более точного контроля */
 
 transition-delay: 0.1s;  /* Задержка перед началом перехода — 0.1 секунды */
-
 
 animation: slide 2s ease infinite;
 
@@ -451,8 +467,6 @@ filter: sepia(100%);           /* Полностью сепия-эффект (с
 			
 opacity: 0.5;           /* Полупрозрачный элемент (50%) */
 	
-	
-	
 @media screen and (min-width: 768px) {
   /* Здесь пишите стили, применяемые при ширине экрана >= 768px */
 }
@@ -464,9 +478,6 @@ opacity: 0.5;           /* Полупрозрачный элемент (50%) */
 @media (orientation: portrait) {
   /* Здесь стили, применяемые при вертикальной ориентации экрана */
 }
-
-
-
 
 @font-face {
 font-family: 'League Gothic';
@@ -483,7 +494,6 @@ font-family: 'League Gothic';
 font-weight: normal;
 font-style: normal;
 }
-
 
 /*NORMALIZE*/
 html,
@@ -599,43 +609,3 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-
-
-
---gray100: #fafafd;
---gray200: #eaedf3;
---gray300: #d8dce6;
---gray400: #bcc5d1;
---gray500: #95a2b3;
---gray600: #7f8b99;
---gray700: #656d78;
---gray800: #33373c;
---gray900: #1f1c28;
---white: #fff;
---light-bg: #f8faff;
---light-blue: #f5f7fc;
---purple100: #ecddff;
---purple300: #c299ff;
---purple400: #8b55ff;
---purple500: #662eff;
---purple600: #5729d0;
---purple700: #4824a2;
---purple800: #351877;
---purple900: #25104f;
---purple940: #1f1038;
---purple950: #221040;
---purple955: #1b0d33;
---purple970: #15082b;
---cyan4: #00cfde;
---green4: #06c270;
---red2: #ff8080;
---red4: #ff3b3b;
---gradient-1: linear-gradient(147.14deg, var(--purple400) 6.95%, var(--purple500) 93.05%);
---gradient-2: linear-gradient(147.14deg, #f80 6.95%, #e63535 93.05%);
---gradient-3: linear-gradient(147.14deg, #3e7bfa 6.95%, #60c 93.05%);
---gradient-4: linear-gradient(147.14deg, #00cfde 6.95%, #05a660 93.05%);
---gradient-5: linear-gradient(145.51deg, #ac5dd9 7.21%, #004fc4 94.47%);
---gradient-6: linear-gradient(147.14deg, #ff3b3b 6.95%, #60c 93.05%);
---gradient-7: linear-gradient(147.14deg, #73dfe7 6.95%, #0063f7 93.05%);
---shadowMedium: 0 6px 16px rgba(51, 55, 60, 0.08);
---shadow-s-base: 0 1px 3px rgba(51, 55, 60, 0.08);

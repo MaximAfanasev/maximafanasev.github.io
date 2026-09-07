@@ -418,29 +418,21 @@
 	<h5>h5</h5>
 	<h6>h6</h6>
 
-	<p>p<br>p</p>
+	<p>p<br>br p</p>
 
 	<hr class="divider">hr
 	<pre>pre
  pre</pre>
 
 	<blockquote cite="https://example.com">
-		Это важная цитата с указанием источника
+		важная цитата
 	</blockquote>
 
-	<p> <q>q</q> <cite>cite</cite></p>
-
-	<code>code</code>
-
-	<p><var>var</var> = 5</p>
-
-	<p><kbd>kbd</kbd></p>
-
-	<p><samp>samp</samp></p>
+	<q>q</q>
 
 	<p><abbr title="HyperText Markup Language">abbr</abbr></p>
 
-	<p><dfn>dfn</dfn></p>
+	<dfn>dfn</dfn>
 
 	<p><time datetime="2023-12-31">datetime</time></p>
 
@@ -449,32 +441,21 @@
 		<div>summary</div>
 	</details>
 
-	<p><b>– жирный</b></p>
 	<p><strong>– важный текст</strong></p>
-	<p><i>– курсив</i></p>
 	<p><em>– акцентированный текст</em></p>
 	<p><u>– подчёркнутый</u></p>
 	<p><s>– зачёркнутый</s>, <strike>– зачёркнутый</strike></p>
 	<p><del>– удалённый</del></p>
-	<p><ins>– вставленный</ins></p>
 	<p><mark>– выделенный</mark></p>
 	<p><small>– мелкий</small></p>
-	<p><sub>– нижний индекс</sub></p>
-	<p><sup>– верхний индекс</sup></p>
+	H<sub>нижний индекс</sub><br>
+	O<sup>верхний индекс</sup><br>
 
-	<code>code</code>
-	<kbd>Ctrl+C</kbd>
-	<samp>samp</samp>
-	<var>x</var>
-	<pre>pre
-       pre</pre>
-	<time datetime="2023-10-05">5 октября</time>
-	<wbr>
 	<ruby>漢 <rp>(</rp>
 		<rt>kan</rt>
 		<rp>)</rp>
-	</ruby>
-	<bdi>إيان</bdi>
+	</ruby><br>
+	<bdi>إيان</bdi><br>
 	<bdo dir="rtl">текст справа налево</bdo>
 
 
@@ -492,40 +473,31 @@
 		<li>Третий пункт</li>
 	</ol>
 
-	<p>&#60;dl> – список определений</p>
-	<dl>
-		<dt>HTML</dt>
-		<dd>Язык разметки веб-страниц</dd>
-		<dt>CSS</dt>
-		<dd>Язык стилей для оформления</dd>
-	</dl>
-
-	<p>&#60;a> – гиперссылка</p>
-	<a href="https://example.com">Пример ссылки</a>
-	<a href="https://example.com">Обычная ссылка</a>
-	<a href="https://example.com" title="Подсказка">Ссылка с подсказкой</a>
+	<a href="https://example.com">Пример ссылки</a><br>
+	<a href="https://example.com">Обычная ссылка</a><br>
+	<a href="https://example.com" title="Подсказка">Ссылка с подсказкой</a><br>
 	<a href="#section-id">Якорная ссылка</a>
 	<div id="section-id">Якорь</div>
 
-	<a href="https://example.com" target="_blank">_blank (новое окно)</a>
-	<a href="https://example.com" target="_self">_self (текущая вкладка)</a>
-	<a href="https://example.com" target="_parent">_parent (родительский фрейм)</a>
-	<a href="https://example.com" target="_top">_top (полное окно)</a>
+	<a href="https://example.com" target="_blank">_blank (новое окно)</a><br>
+	<a href="https://example.com" target="_self">_self (текущая вкладка)</a><br>
+	<a href="https://example.com" target="_parent">_parent (родительский фрейм)</a><br>
+	<a href="https://example.com" target="_top">_top (полное окно)</a><br>
 
-	<a href="https://example.com" rel="nofollow">nofollow (не передавать вес)</a>
-	<a href="https://example.com" rel="noopener">noopener (безопасность при target="_blank")</a>
-	<a href="https://example.com" rel="noreferrer">noreferrer (скрыть источник)</a>
-	<a href="https://example.com" referrerpolicy="no-referrer">Контроль Referer</a>
+	<a href="https://example.com" rel="nofollow">nofollow (не передавать вес)</a><br>
+	<a href="https://example.com" rel="noopener">noopener (безопасность при target="_blank")</a><br>
+	<a href="https://example.com" rel="noreferrer">noreferrer (скрыть источник)</a><br>
+	<a href="https://example.com" referrerpolicy="no-referrer">Контроль Referer</a><br>
 
-	<a href="mailto:email@example.com">Почтовая ссылка</a>
-	<a href="tel:+1234567890">Телефонная ссылка</a>
-	<a href="" download>Скачать файл (имя по умолчанию)</a>
-	<a href="" download="">Скачать с указанием имени</a>
+	<a href="mailto:email@example.com">Почтовая ссылка</a><br>
+	<a href="tel:+1234567890">Телефонная ссылка</a><br>
+	<a href="" download>Скачать файл (имя по умолчанию)</a><br>
+	<a href="" download="">Скачать с указанием имени</a><br>
 
-	<a href="https://example.com" hreflang="de">Для немецкого языка</a>
-	<a href="https://example.com" type="application/pdf">PDF-документ</a>
-	<a href="https://example.com" media="print">Версия для печати</a>
-	<a href="https://example.com" ping="https://tracker.com">С отслеживанием</a>
+	<a href="https://example.com" hreflang="de">Для немецкого языка</a><br>
+	<a href="https://example.com" type="application/pdf">PDF-документ</a><br>
+	<a href="https://example.com" media="print">Версия для печати</a><br>
+	<a href="https://example.com" ping="https://tracker.com">С отслеживанием</a><br>
 
 	<a href="" target="_blank" rel="noopener noreferrer" download="" type="application/pdf" hreflang="en" title="Download PDF" aria-label="Download document (PDF, 2MB)" ping="/track">
 		Скачать документ

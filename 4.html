@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<link type="image/x-icon" rel="icon" href="2.png">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ОАК</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			font-family: system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+		}
+
+		body {
+			background: linear-gradient(145deg, #f4f9fe 0%, #e3eef8 100%);
+			min-height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding: 1.5rem;
+		}
+
+		.container {
+			max-width: 900px;
+			width: 100%;
+			background: rgba(255, 255, 255, 0.85);
+			backdrop-filter: blur(8px);
+			-webkit-backdrop-filter: blur(8px);
+			border-radius: 2.5rem;
+			padding: 2.5rem 2.8rem;
+			box-shadow: 0 25px 45px -12px rgba(0, 30, 40, 0.20), 0 2px 10px rgba(0, 0, 0, 0.03);
+			border: 1px solid rgba(255, 255, 255, 0.6);
+		}
+
+		h1 {
+			font-size: 2rem;
+			font-weight: 650;
+			color: #0a2c3f;
+			letter-spacing: -0.02em;
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			margin-bottom: 0.1rem;
+		}
+
+		.subhead {
+			font-size: 1rem;
+			color: #1f5672;
+			border-left: 4px solid #3b8eb5;
+			padding-left: 1rem;
+			margin-bottom: 2rem;
+			font-weight: 450;
+			background: rgba(59, 142, 181, 0.06);
+			border-radius: 0 1rem 1rem 0;
+			line-height: 1.5;
+		}
+
+		.text-block {
+			background: #ffffffdd;
+			backdrop-filter: blur(4px);
+			-webkit-backdrop-filter: blur(4px);
+			padding: 1.8rem 2rem;
+			border-radius: 2rem;
+			margin-bottom: 2.5rem;
+			box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.02), 0 4px 12px rgba(0, 20, 30, 0.05);
+			border: 1px solid #ffffff;
+			font-size: 1rem;
+			line-height: 1.6;
+			color: #123a4e;
+		}
+
+		.text-block p {
+			margin: 0.5rem 0;
+		}
+
+		.text-block strong {
+			color: #00577c;
+			font-weight: 600;
+		}
+
+		.text-block ul,
+		.text-block ol {
+			padding-left: 1.5rem;
+			margin: 0.5rem 0;
+		}
+
+		.text-block li {
+			margin: 0.3rem 0;
+		}
+
+		.highlight-box {
+			background: #ebf5fb;
+			border-radius: 1.2rem;
+			padding: 0.8rem 1.5rem;
+			margin: 0.8rem 0;
+			border-left: 4px solid #2b7c9e;
+			color: #003951;
+		}
+
+		.question {
+			background: white;
+			border-radius: 1.8rem;
+			padding: 1.5rem 1.8rem;
+			margin-bottom: 1.2rem;
+			box-shadow: 0 6px 18px rgba(0, 30, 40, 0.05);
+			border: 1px solid rgba(255, 255, 255, 0.7);
+			transition: 0.2s;
+		}
+
+		.question:hover {
+			border-color: #b6d8e9;
+		}
+
+		.q-title {
+			font-weight: 600;
+			font-size: 1.1rem;
+			color: #0a3347;
+			margin-bottom: 0.9rem;
+			display: flex;
+			align-items: baseline;
+			gap: 0.5rem;
+		}
+
+		.q-num {
+			background: #d7eaf5;
+			color: #00577c;
+			border-radius: 40px;
+			padding: 0.1rem 0.8rem;
+			font-size: 0.85rem;
+			font-weight: 600;
+			flex-shrink: 0;
+		}
+
+		.options {
+			display: flex;
+			flex-direction: column;
+			gap: 0.5rem;
+			padding-left: 0.2rem;
+		}
+
+		.option {
+			display: flex;
+			align-items: center;
+			gap: 0.7rem;
+			padding: 0.5rem 1rem 0.5rem 0.8rem;
+			border-radius: 40px;
+			background: #f5faff;
+			transition: 0.15s;
+			border: 1px solid transparent;
+			cursor: pointer;
+		}
+
+		.option:hover {
+			background: #e5f2fa;
+			border-color: #b2d4e7;
+		}
+
+		.option input[type="radio"] {
+			accent-color: #1b7b9e;
+			width: 1.1rem;
+			height: 1.1rem;
+			margin-left: 0.2rem;
+			flex-shrink: 0;
+			cursor: pointer;
+		}
+
+		.option label {
+			font-size: 0.98rem;
+			color: #153f53;
+			cursor: pointer;
+			padding: 0.1rem 0;
+			flex: 1;
+		}
+
+		.feedback {
+			margin-top: 0.8rem;
+			padding: 0.5rem 1rem;
+			border-radius: 30px;
+			font-size: 0.95rem;
+			font-weight: 500;
+			display: inline-block;
+			background: #ecf7fe;
+			color: #00577c;
+			border-left: 4px solid #3f9bcb;
+		}
+
+		.feedback.correct {
+			background: #dbf1e3;
+			color: #0b5533;
+			border-left-color: #2b8f5a;
+		}
+
+		.feedback.incorrect {
+			background: #fdeaea;
+			color: #9f3a3a;
+			border-left-color: #cf5a5a;
+		}
+
+		.actions {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			justify-content: space-between;
+			gap: 1rem;
+			margin-top: 2rem;
+		}
+
+		.btn-group {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.7rem;
+		}
+
+		.btn {
+			background: white;
+			border: none;
+			padding: 0.7rem 1.8rem;
+			border-radius: 60px;
+			font-weight: 550;
+			font-size: 0.95rem;
+			color: #1f4e65;
+			box-shadow: 0 4px 10px rgba(0, 30, 40, 0.04);
+			border: 1px solid #d3e4ef;
+			transition: 0.2s;
+			cursor: pointer;
+			display: inline-flex;
+			align-items: center;
+			gap: 0.4rem;
+			background: #f9fcff;
+		}
+
+		.btn-primary {
+			background: #1b7b9e;
+			border: 1px solid #1b7b9e;
+			color: white;
+			box-shadow: 0 6px 14px rgba(27, 123, 158, 0.25);
+		}
+
+		.btn-primary:hover {
+			background: #136683;
+			border-color: #136683;
+			transform: scale(0.97);
+			box-shadow: 0 8px 18px rgba(27, 123, 158, 0.3);
+		}
+
+		.btn-secondary {
+			background: #eef4f9;
+			border-color: #c7dae7;
+		}
+
+		.btn-secondary:hover {
+			background: #e2eef8;
+			border-color: #aac2d4;
+		}
+
+		.score {
+			background: #d7eaf5;
+			padding: 0.5rem 1.5rem;
+			border-radius: 60px;
+			font-weight: 600;
+			color: #003a52;
+			font-size: 1rem;
+			box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.02);
+		}
+
+		.score span {
+			font-size: 1.3rem;
+			font-weight: 700;
+			color: #00577c;
+			margin: 0 0.2rem;
+		}
+
+		.reset-btn {
+			background: transparent;
+			border: 1px solid #b8cfde;
+			color: #1f4e65;
+			padding: 0.5rem 1.4rem;
+		}
+
+		.reset-btn:hover {
+			background: #e1eef9;
+		}
+
+		@media (max-width: 600px) {
+			.container {
+				padding: 1.5rem;
+			}
+
+			.text-block {
+				padding: 1rem;
+			}
+
+			.question {
+				padding: 1rem;
+			}
+
+			.actions {
+				flex-direction: column;
+				align-items: stretch;
+			}
+
+			.btn-group {
+				justify-content: center;
+			}
+
+			.score {
+				text-align: center;
+			}
+		}
+
+		.footer-note {
+			margin-top: 1.2rem;
+			font-size: 0.85rem;
+			color: #527d94;
+			text-align: center;
+			border-top: 1px solid #d6e4ef;
+			padding-top: 1.2rem;
+			opacity: 0.8;
+		}
+
+		.footer-note i {
+			font-style: normal;
+			background: #d7eaf5;
+			padding: 0.1rem 0.6rem;
+			border-radius: 30px;
+		}
+		img {
+			margin: 0 auto;
+			width: 70px;
+			display: block;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<img src="2.png" alt="" width="70"> 
+		<h1>🩸 ОАК Общий анализ крови</h1>
+
+		<!-- Текст по которому составлены вопросы -->
+		<div class="text-block">
+			<p><strong>📋  ОАК показывает:</strong></p>
+			<ul>
+				<li>наличие воспалений в целом</li>
+				<li>тип инфекции (бактериальная или вирусная)</li>
+				<li>тип анемии</li>
+				<li>наличие паразитоза</li>
+				<li>обезвоженность, повышенную вязкость крови</li>
+				<li>состояние иммунитета</li>
+				<li>аллергическую активность</li>
+			</ul>
+			<p><strong>Различают:</strong> общий анализ крови (6 параметров) и клинический анализ крови (ОАК + лейкоцитарная формула + СОЭ).</p>
+			<div style="background: #e5f1f9; border-radius: 1.5rem; padding: 0.8rem 1.5rem; margin: 0.8rem 0;">
+				<p><strong>Общий анализ крови (1.01.003)</strong> включает:</p>
+				<ul>
+					<li>Гемоглобин (HB / HGB)</li>
+					<li>Гематокрит (HTC)</li>
+					<li>Лейкоциты (WBC)</li>
+					<li>Тромбоциты (PLT)</li>
+					<li>Эритроциты (RBC)</li>
+					<li>Эритроцитарные индексы: MCV, MCH, MCHC, RDW</li>
+				</ul>
+				<p style="margin-top: 0.3rem;"><em>Выполняет подрядчик <strong>Инвитро</strong>.</em></p>
+			</div>
+			<div style="background: #e5f1f9; border-radius: 1.5rem; padding: 0.8rem 1.5rem; margin: 0.8rem 0;">
+				<p><strong>Клинический анализ крови (1.01.001)</strong> = ОАК (6 параметров) + </p>
+				<ul>
+					<li>Лейкоцитарная формула (базофилы, лимфоциты, моноциты, нейтрофилы сегментоядерные и палочкоядерные, эозинофилы)</li>
+					<li>СОЭ (скорость оседания эритроцитов, метод Вестергрена)</li>
+				</ul>
+				<p style="margin-top: 0.3rem;"><em>Выполняет лаборатория <strong>ЦКДЛ</strong>.</em></p>
+			</div>
+			<div class="highlight-box">
+				<strong>⚠️ Важно!</strong> Поскольку ОАК и клинический анализ крови выполняют разные лаборатории, обязательно предупреждайте пациентов, что <strong>референсные значения и единицы измерения будут отличаться</strong>.
+			</div>
+			<p style="margin-top: 0.5rem; font-style: italic; color: #1f5a73;">Референсы – это среднее арифметическое значение анализов группы людей (здоровых, не очень здоровых и больных).</p>
+		</div>
+
+		<!-- Контейнер для вопросов -->
+		<div id="questionsContainer"></div>
+
+		<!-- Панель управления -->
+		<div class="actions">
+			<div class="btn-group">
+				<button class="btn btn-primary" id="checkBtn">✅ Проверить ответы</button>
+				<button class="btn btn-secondary" id="resetBtn">🔄 Сбросить</button>
+			</div>
+			<div class="score" id="scoreDisplay">Баллы: <span id="scoreValue">0</span> / <span id="totalQuestions">10</span></div>
+		</div>
+		<div class="footer-note">
+			<i>⚡ <a href="5.html">20 вопросов</a></i>
+		</div>
+	</div>
+
+	<script>
+		(function() {
+			// ---------- ВОПРОСЫ ПО ТЕКСТУ ----------
+			const questions = [{
+					question: "Что из перечисленного НЕ показывает общий анализ крови (ОАК)?",
+					options: [
+						"Тип анемии",
+						"Наличие паразитоза",
+						"Генетические мутации",
+						"Аллергическую активность"
+					],
+					correct: 2
+				},
+				{
+					question: "Сколько параметров входит в базовый общий анализ крови (ОАК)?",
+					options: [
+						"4",
+						"6",
+						"8",
+						"10"
+					],
+					correct: 1
+				},
+				{
+					question: "Какой показатель входит в ОАК, но не входит в клинический анализ крови?",
+					options: [
+						"СОЭ",
+						"Лейкоцитарная формула",
+						"Эритроцитарные индексы (MCV, MCH и др.)",
+						"Базофилы"
+					],
+					correct: 2
+				},
+				{
+					question: "Какая лаборатория выполняет общий анализ крови (1.01.003)?",
+					options: [
+						"ЦКДЛ",
+						"Инвитро",
+						"Хеликс",
+						"Синэво"
+					],
+					correct: 1
+				},
+				{
+					question: "Клинический анализ крови (1.01.001) выполняется в:",
+					options: [
+						"Инвитро",
+						"ЦКДЛ",
+						"Гемотест",
+						"Лаборатория Калашникова"
+					],
+					correct: 1
+				},
+				{
+					question: "Что из перечисленного входит в клинический анализ крови, но отсутствует в ОАК?",
+					options: [
+						"Гемоглобин и гематокрит",
+						"Лейкоцитарная формула и СОЭ",
+						"Тромбоциты и эритроциты",
+						"Эритроцитарные индексы"
+					],
+					correct: 1
+				},
+				{
+					question: "Каким методом выполняется СОЭ в клиническом анализе крови?",
+					options: [
+						"По Панченкову",
+						"По Вестергрену",
+						"По Винтробу",
+						"По Сухову"
+					],
+					correct: 1
+				},
+				{
+					question: "Что важно сообщить пациенту, если ОАК и клинический анализ крови выполняются в разных лабораториях?",
+					options: [
+						"Что результаты будут абсолютно одинаковыми",
+						"Что референсные значения и единицы измерения будут отличаться",
+						"Что анализ нужно пересдать в одной лаборатории",
+						"Что клинический анализ точнее"
+					],
+					correct: 1
+				},
+				{
+					question: "Что такое референсные значения (референсы) в лабораторной диагностике?",
+					options: [
+						"Индивидуальная норма для каждого пациента",
+						"Средние значения, полученные на группе людей (здоровых, не очень здоровых и больных)",
+						"Максимально допустимые показатели",
+						"Значения, установленные ВОЗ"
+					],
+					correct: 1
+				},
+				{
+					question: "Какой из показателей входит в лейкоцитарную формулу клинического анализа крови?",
+					options: [
+						"Гематокрит",
+						"Нейтрофилы (сегментоядерные и палочкоядерные)",
+						"MCV",
+						"RDW"
+					],
+					correct: 1
+				}
+			];
+
+			const totalQ = questions.length;
+			let selectedAnswers = new Array(totalQ).fill(null);
+
+			const container = document.getElementById('questionsContainer');
+			const scoreSpan = document.getElementById('scoreValue');
+			const totalSpan = document.getElementById('totalQuestions');
+			totalSpan.textContent = totalQ;
+
+			// ---------- РЕНДЕР ВОПРОСОВ ----------
+			function renderQuestions() {
+				container.innerHTML = '';
+				questions.forEach((q, idx) => {
+					const qDiv = document.createElement('div');
+					qDiv.className = 'question';
+					qDiv.dataset.qIndex = idx;
+
+					const titleDiv = document.createElement('div');
+					titleDiv.className = 'q-title';
+					const numSpan = document.createElement('span');
+					numSpan.className = 'q-num';
+					numSpan.textContent = `Вопрос ${idx+1}`;
+					titleDiv.appendChild(numSpan);
+					titleDiv.append(` ${q.question}`);
+					qDiv.appendChild(titleDiv);
+
+					const optionsDiv = document.createElement('div');
+					optionsDiv.className = 'options';
+
+					q.options.forEach((optText, optIdx) => {
+						const optWrapper = document.createElement('div');
+						optWrapper.className = 'option';
+
+						const radio = document.createElement('input');
+						radio.type = 'radio';
+						radio.name = `q${idx}`;
+						radio.value = optIdx;
+						radio.id = `q${idx}_opt${optIdx}`;
+						if (selectedAnswers[idx] === optIdx) {
+							radio.checked = true;
+						}
+
+						const label = document.createElement('label');
+						label.htmlFor = radio.id;
+						label.textContent = optText;
+
+						optWrapper.appendChild(radio);
+						optWrapper.appendChild(label);
+						optionsDiv.appendChild(optWrapper);
+
+						radio.addEventListener('change', function(e) {
+							if (this.checked) {
+								selectedAnswers[idx] = parseInt(this.value, 10);
+								const fb = qDiv.querySelector('.feedback');
+								if (fb) fb.remove();
+							}
+						});
+					});
+
+					qDiv.appendChild(optionsDiv);
+					container.appendChild(qDiv);
+				});
+			}
+
+			// ---------- ОЧИСТКА ФИДБЕКОВ ----------
+			function clearAllFeedback() {
+				document.querySelectorAll('.feedback').forEach(el => el.remove());
+			}
+
+			// ---------- ПРОВЕРКА ----------
+			function checkAnswers() {
+				clearAllFeedback();
+				let correctCount = 0;
+				const questionDivs = document.querySelectorAll('.question');
+
+				questionDivs.forEach((qDiv, idx) => {
+					const selected = selectedAnswers[idx];
+					const correctIdx = questions[idx].correct;
+					const feedbackDiv = document.createElement('div');
+					feedbackDiv.className = 'feedback';
+
+					if (selected === null || selected === undefined) {
+						feedbackDiv.textContent = '⚠️ Ответ не выбран';
+						feedbackDiv.style.borderLeftColor = '#b0b8c0';
+						feedbackDiv.style.background = '#f0f4fa';
+						feedbackDiv.style.color = '#3d5a6b';
+						qDiv.appendChild(feedbackDiv);
+						return;
+					}
+
+					const isCorrect = (selected === correctIdx);
+					if (isCorrect) {
+						correctCount++;
+						feedbackDiv.textContent = '✅ Верно!';
+						feedbackDiv.className = 'feedback correct';
+					} else {
+						const correctText = questions[idx].options[correctIdx];
+						feedbackDiv.textContent = `❌ Неверно. Правильный ответ: «${correctText}»`;
+						feedbackDiv.className = 'feedback incorrect';
+					}
+					qDiv.appendChild(feedbackDiv);
+				});
+
+				scoreSpan.textContent = correctCount;
+			}
+
+			// ---------- СБРОС ----------
+			function resetAll() {
+				selectedAnswers = new Array(totalQ).fill(null);
+				document.querySelectorAll('input[type="radio"]').forEach(radio => {
+					radio.checked = false;
+				});
+				clearAllFeedback();
+				scoreSpan.textContent = '0';
+			}
+
+			// ---------- ИНИЦИАЛИЗАЦИЯ ----------
+			renderQuestions();
+
+			document.getElementById('checkBtn').addEventListener('click', checkAnswers);
+			document.getElementById('resetBtn').addEventListener('click', resetAll);
+
+			scoreSpan.textContent = '0';
+
+			// Делегирование клика по .option
+			container.addEventListener('click', function(e) {
+				const optionDiv = e.target.closest('.option');
+				if (!optionDiv) return;
+				if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'LABEL') {
+					const radio = optionDiv.querySelector('input[type="radio"]');
+					if (radio) {
+						radio.checked = true;
+						const evt = new Event('change', {
+							bubbles: true
+						});
+						radio.dispatchEvent(evt);
+					}
+				}
+			});
+
+			// При клике на label срабатывает стандартно
+		})();
+	</script>
+</body></html>

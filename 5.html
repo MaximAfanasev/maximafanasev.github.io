@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ЦКДЛ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+        }
+        body {
+            background: linear-gradient(145deg, #f7f3ef 0%, #ebe4dc 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem;
+        }
+        .container {
+            max-width: 950px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 2.5rem;
+            padding: 2.5rem 2.8rem;
+            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.15), 0 2px 10px rgba(0,0,0,0.03);
+            border: 1px solid rgba(255,255,255,0.5);
+            transition: all 0.2s;
+        }
+        /* Корпоративные цвета: #EE811F (оранжевый), #509126 (зеленый), #E96218 (красно-оранжевый) */
+        h1 {
+            font-size: 2rem;
+            font-weight: 650;
+            color: #3d2a1a;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.1rem;
+        }
+        h1 .accent {
+            color: #EE811F;
+        }
+        h1 .accent2 {
+            color: #509126;
+        }
+        .subhead {
+            font-size: 1rem;
+            color: #4d3a2a;
+            border-left: 4px solid #EE811F;
+            padding-left: 1rem;
+            margin-bottom: 1.8rem;
+            font-weight: 450;
+            background: rgba(238, 129, 31, 0.07);
+            border-radius: 0 1rem 1rem 0;
+            line-height: 1.5;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .text-block {
+            background: #ffffffdd;
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            padding: 1.5rem 1.8rem;
+            border-radius: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: inset 0 1px 4px rgba(0,0,0,0.02), 0 4px 12px rgba(0, 0, 0, 0.04);
+            border: 1px solid #ffffff;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #2d2a25;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .text-block p {
+            margin: 0.3rem 0;
+        }
+        .text-block strong {
+            color: #b85c0f;
+        }
+        .text-block ul, .text-block ol {
+            padding-left: 1.5rem;
+            margin: 0.3rem 0;
+        }
+        .text-block li {
+            margin: 0.1rem 0;
+        }
+        .highlight-box {
+            background: #fcf1e8;
+            border-radius: 1rem;
+            padding: 0.5rem 1.2rem;
+            margin: 0.4rem 0;
+            border-left: 4px solid #EE811F;
+            color: #3d2a1a;
+            font-size: 0.92rem;
+        }
+        .highlight-box strong {
+            color: #E96218;
+        }
+        .stats {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .stats span {
+            background: #f0e8e0;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #3d2a1a;
+        }
+        .stats .score-badge {
+            background: #EE811F;
+            color: white;
+        }
+        .stats .score-badge2 {
+            background: #509126;
+            color: white;
+        }
+
+        /* Карточки */
+        .card-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+        .card {
+            background: white;
+            border-radius: 1.8rem;
+            padding: 1.5rem 1.8rem;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(238, 129, 31, 0.15);
+            transition: 0.2s;
+            animation: fadeIn 0.3s ease;
+        }
+        .card:hover {
+            border-color: #EE811F;
+            box-shadow: 0 6px 18px rgba(238, 129, 31, 0.08);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .q-title {
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: #2d2a25;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+        }
+        .q-num {
+            background: #f0e8e0;
+            color: #b85c0f;
+            border-radius: 40px;
+            padding: 0.05rem 0.8rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            padding-left: 0.2rem;
+        }
+        .option {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            padding: 0.4rem 1rem 0.4rem 0.8rem;
+            border-radius: 40px;
+            background: #faf8f6;
+            transition: 0.15s;
+            border: 1px solid transparent;
+            cursor: pointer;
+        }
+        .option:hover {
+            background: #f5ede6;
+            border-color: #EE811F;
+        }
+        .option input[type="radio"] {
+            accent-color: #EE811F;
+            width: 1.1rem;
+            height: 1.1rem;
+            margin-left: 0.2rem;
+            flex-shrink: 0;
+            cursor: pointer;
+        }
+        .option label {
+            font-size: 0.96rem;
+            color: #2d2a25;
+            cursor: pointer;
+            padding: 0.1rem 0;
+            flex: 1;
+        }
+        .feedback {
+            margin-top: 0.6rem;
+            padding: 0.4rem 1rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: inline-block;
+            background: #f5ede6;
+            color: #b85c0f;
+            border-left: 4px solid #EE811F;
+        }
+        .feedback.correct {
+            background: #e8f5e0;
+            color: #3d7a1a;
+            border-left-color: #509126;
+        }
+        .feedback.incorrect {
+            background: #fde8e0;
+            color: #b84a1a;
+            border-left-color: #E96218;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-top: 2rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid #e8ddd2;
+        }
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+        }
+        .btn {
+            background: white;
+            border: none;
+            padding: 0.7rem 1.8rem;
+            border-radius: 60px;
+            font-weight: 550;
+            font-size: 0.95rem;
+            color: #3d2a1a;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+            border: 1px solid #d8ccc0;
+            transition: 0.2s;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: #fcfaf8;
+        }
+        .btn-primary {
+            background: #EE811F;
+            border: 1px solid #EE811F;
+            color: white;
+            box-shadow: 0 6px 14px rgba(238, 129, 31, 0.3);
+        }
+        .btn-primary:hover {
+            background: #d67218;
+            border-color: #d67218;
+            transform: scale(0.97);
+        }
+        .btn-success {
+            background: #509126;
+            border: 1px solid #509126;
+            color: white;
+            box-shadow: 0 6px 14px rgba(80, 145, 38, 0.3);
+        }
+        .btn-success:hover {
+            background: #437d1f;
+            border-color: #437d1f;
+            transform: scale(0.97);
+        }
+        .btn-secondary {
+            background: #f0e8e0;
+            border-color: #d8ccc0;
+            color: #3d2a1a;
+        }
+        .btn-secondary:hover {
+            background: #e8ddd2;
+            border-color: #c0b0a0;
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1px solid #E96218;
+            color: #E96218;
+        }
+        .btn-outline:hover {
+            background: #fde8e0;
+            border-color: #d65a14;
+        }
+        .score {
+            background: #f0e8e0;
+            padding: 0.5rem 1.5rem;
+            border-radius: 60px;
+            font-weight: 600;
+            color: #3d2a1a;
+            font-size: 1rem;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.02);
+        }
+        .score span {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #EE811F;
+            margin: 0 0.2rem;
+        }
+        .footer-note {
+            margin-top: 1.2rem;
+            font-size: 0.85rem;
+            color: #8a7a6a;
+            text-align: center;
+            border-top: 1px solid #e8ddd2;
+            padding-top: 1rem;
+            opacity: 0.8;
+        }
+        .footer-note i {
+            font-style: normal;
+            background: #f0e8e0;
+            padding: 0.1rem 0.6rem;
+            border-radius: 30px;
+            color: #b85c0f;
+        }
+        @media (max-width: 600px) {
+            .container { padding: 1.2rem; }
+            .text-block { padding: 0.8rem; max-height: 150px; }
+            .card { padding: 1rem; }
+            .actions { flex-direction: column; align-items: stretch; }
+            .btn-group { justify-content: center; }
+            .score { text-align: center; }
+            .stats { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>
+        <span class="accent">⚕️</span> ОАК
+    </h1>
+    <div class="subhead">
+        <div class="stats">
+            <span id="totalCards">20</span>
+            <span class="score-badge2" id="progressDisplay">✅ 0/20</span>
+        </div>
+    </div>
+    <!-- Контейнер для карточек -->
+    <div id="cardContainer" class="card-container"></div>
+
+    <!-- Панель управления -->
+    <div class="actions">
+        <div class="btn-group">
+            <button class="btn btn-primary" id="checkBtn">✅ Проверить</button>
+            <button class="btn btn-success" id="resetBtn">🔄 Перемешать</button>
+            <button class="btn btn-secondary" id="clearBtn">🗑️ Сбросить</button>
+        </div>
+        <div class="score" id="scoreDisplay">Баллы: <span id="scoreValue">0</span> / <span id="totalQspan">20</span></div>
+    </div>
+    <div class="footer-note">
+        <i>⚡ Карточки перемешиваются случайно. Нажмите «Проверить» для оценки.</i>
+    </div>
+</div>
+
+<script>
+    (function() {
+        // ---------- БОЛЬШОЙ ПУЛ ВОПРОСОВ (20) ----------
+        const questionPool = [
+            {
+                question: "Что из перечисленного НЕ показывает общий анализ крови (ОАК)?",
+                options: ["Тип анемии", "Наличие паразитоза", "Генетические мутации", "Аллергическую активность"],
+                correct: 2
+            },
+            {
+                question: "Сколько параметров входит в базовый общий анализ крови (ОАК)?",
+                options: ["4", "6", "8", "10"],
+                correct: 1
+            },
+            {
+                question: "Какой показатель входит в ОАК, но не входит в клинический анализ крови?",
+                options: ["СОЭ", "Лейкоцитарная формула", "Эритроцитарные индексы (MCV, MCH и др.)", "Базофилы"],
+                correct: 2
+            },
+            {
+                question: "Какая лаборатория выполняет общий анализ крови (1.01.003)?",
+                options: ["ЦКДЛ", "Инвитро", "Хеликс", "Синэво"],
+                correct: 1
+            },
+            {
+                question: "Клинический анализ крови (1.01.001) выполняется в:",
+                options: ["Инвитро", "ЦКДЛ", "Гемотест", "Лаборатория Калашникова"],
+                correct: 1
+            },
+            {
+                question: "Что входит в клинический анализ крови, но отсутствует в ОАК?",
+                options: ["Гемоглобин и гематокрит", "Лейкоцитарная формула и СОЭ", "Тромбоциты и эритроциты", "Эритроцитарные индексы"],
+                correct: 1
+            },
+            {
+                question: "Каким методом выполняется СОЭ в клиническом анализе крови?",
+                options: ["По Панченкову", "По Вестергрену", "По Винтробу", "По Сухову"],
+                correct: 1
+            },
+            {
+                question: "Что важно сообщить пациенту, если ОАК и клинический анализ выполняются в разных лабораториях?",
+                options: ["Результаты будут одинаковыми", "Референсы и единицы будут отличаться", "Нужно пересдать в одной лаборатории", "Клинический анализ точнее"],
+                correct: 1
+            },
+            {
+                question: "Что такое референсные значения (референсы)?",
+                options: ["Индивидуальная норма", "Средние по группе людей (здоровых, не очень и больных)", "Максимальные показатели", "Значения ВОЗ"],
+                correct: 1
+            },
+            {
+                question: "Какой показатель входит в лейкоцитарную формулу?",
+                options: ["Гематокрит", "Нейтрофилы (сегментоядерные и палочкоядерные)", "MCV", "RDW"],
+                correct: 1
+            },
+            {
+                question: "ОАК показывает наличие воспалений. Какой дополнительный параметр помогает уточнить тип инфекции?",
+                options: ["Гемоглобин", "Лейкоцитарная формула", "Гематокрит", "Тромбоциты"],
+                correct: 1
+            },
+            {
+                question: "Какой из эритроцитарных индексов отражает средний объём эритроцита?",
+                options: ["MCH", "MCV", "MCHC", "RDW"],
+                correct: 1
+            },
+            {
+                question: "Какой показатель ОАК характеризует вязкость крови и обезвоженность?",
+                options: ["Гемоглобин", "Гематокрит", "Лейкоциты", "Тромбоциты"],
+                correct: 1
+            },
+            {
+                question: "Какие клетки входят в лейкоцитарную формулу?",
+                options: ["Эритроциты, тромбоциты", "Базофилы, эозинофилы, нейтрофилы, лимфоциты, моноциты", "Только нейтрофилы и лимфоциты", "Все перечисленные"],
+                correct: 1
+            },
+            {
+                question: "Что из перечисленного относится к клиническому анализу крови (1.01.001)?",
+                options: ["Только гемоглобин и гематокрит", "ОАК + лейкоформула + СОЭ", "Только лейкоцитарная формула", "Только СОЭ"],
+                correct: 1
+            },
+            {
+                question: "Кто выполняет клинический анализ крови (1.01.001) согласно тексту?",
+                options: ["Инвитро", "ЦКДЛ", "Синэво", "Гемотест"],
+                correct: 1
+            },
+            {
+                question: "Что показывает повышенный уровень эозинофилов?",
+                options: ["Бактериальную инфекцию", "Паразитоз или аллергию", "Вирусную инфекцию", "Анемию"],
+                correct: 1
+            },
+            {
+                question: "Какой параметр входит в ОАК (1.01.003), но не входит в клинический (1.01.001)?",
+                options: ["СОЭ", "Эритроцитарные индексы", "Нейтрофилы", "Базофилы"],
+                correct: 1
+            },
+            {
+                question: "Почему референсные значения для ОАК и клинического анализа могут отличаться?",
+                options: ["Разные методы подсчёта", "Разные лаборатории и оборудование", "Разные единицы измерения", "Все перечисленное верно"],
+                correct: 3
+            },
+            {
+                question: "Какой из показателей НЕ является эритроцитарным индексом?",
+                options: ["MCV", "MCH", "MCHC", "WBC"],
+                correct: 3
+            }
+        ];
+
+        // Переменные состояния
+        let currentQuestions = [];
+        let selectedAnswers = [];
+        let totalQ = 0;
+
+        // DOM элементы
+        const container = document.getElementById('cardContainer');
+        const scoreSpan = document.getElementById('scoreValue');
+        const totalQspan = document.getElementById('totalQspan');
+        const progressDisplay = document.getElementById('progressDisplay');
+        const totalCardsSpan = document.getElementById('totalCards');
+
+        // ---------- ПЕРЕМЕШИВАНИЕ (Fisher-Yates) ----------
+        function shuffleArray(arr) {
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+
+        // ---------- ИНИЦИАЛИЗАЦИЯ / ПЕРЕМЕШИВАНИЕ ----------
+        function shuffleQuestions() {
+            const shuffled = shuffleArray([...questionPool]);
+            currentQuestions = shuffled;
+            totalQ = currentQuestions.length;
+            selectedAnswers = new Array(totalQ).fill(null);
+            totalQspan.textContent = totalQ;
+            totalCardsSpan.textContent = `${totalQ} вопросов`;
+            renderCards();
+            updateProgress();
+            scoreSpan.textContent = '0';
+        }
+
+        // ---------- РЕНДЕР КАРТОЧЕК ----------
+        function renderCards() {
+            container.innerHTML = '';
+            currentQuestions.forEach((q, idx) => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.dataset.qIndex = idx;
+
+                const titleDiv = document.createElement('div');
+                titleDiv.className = 'q-title';
+                const numSpan = document.createElement('span');
+                numSpan.className = 'q-num';
+                numSpan.textContent = `Вопрос ${idx+1}`;
+                titleDiv.appendChild(numSpan);
+                titleDiv.append(` ${q.question}`);
+                card.appendChild(titleDiv);
+
+                const optionsDiv = document.createElement('div');
+                optionsDiv.className = 'options';
+
+                q.options.forEach((optText, optIdx) => {
+                    const optWrapper = document.createElement('div');
+                    optWrapper.className = 'option';
+
+                    const radio = document.createElement('input');
+                    radio.type = 'radio';
+                    radio.name = `q${idx}`;
+                    radio.value = optIdx;
+                    radio.id = `q${idx}_opt${optIdx}`;
+                    if (selectedAnswers[idx] === optIdx) {
+                        radio.checked = true;
+                    }
+
+                    const label = document.createElement('label');
+                    label.htmlFor = radio.id;
+                    label.textContent = optText;
+
+                    optWrapper.appendChild(radio);
+                    optWrapper.appendChild(label);
+                    optionsDiv.appendChild(optWrapper);
+
+                    radio.addEventListener('change', function(e) {
+                        if (this.checked) {
+                            selectedAnswers[idx] = parseInt(this.value, 10);
+                            const fb = card.querySelector('.feedback');
+                            if (fb) fb.remove();
+                            updateProgress();
+                        }
+                    });
+                });
+
+                card.appendChild(optionsDiv);
+                container.appendChild(card);
+            });
+        }
+
+        // ---------- ОБНОВЛЕНИЕ ПРОГРЕССА ----------
+        function updateProgress() {
+            const answered = selectedAnswers.filter(a => a !== null && a !== undefined).length;
+            progressDisplay.textContent = `✅ ${answered}/${totalQ}`;
+        }
+
+        // ---------- ОЧИСТКА ФИДБЕКОВ ----------
+        function clearAllFeedback() {
+            document.querySelectorAll('.feedback').forEach(el => el.remove());
+        }
+
+        // ---------- ПРОВЕРКА ОТВЕТОВ ----------
+        function checkAnswers() {
+            clearAllFeedback();
+            let correctCount = 0;
+            const cards = document.querySelectorAll('.card');
+
+            cards.forEach((card, idx) => {
+                const selected = selectedAnswers[idx];
+                const correctIdx = currentQuestions[idx].correct;
+                const feedbackDiv = document.createElement('div');
+                feedbackDiv.className = 'feedback';
+
+                if (selected === null || selected === undefined) {
+                    feedbackDiv.textContent = '⚠️ Ответ не выбран';
+                    feedbackDiv.style.borderLeftColor = '#b0a090';
+                    feedbackDiv.style.background = '#f5f0ea';
+                    feedbackDiv.style.color = '#6a5a4a';
+                    card.appendChild(feedbackDiv);
+                    return;
+                }
+
+                const isCorrect = (selected === correctIdx);
+                if (isCorrect) {
+                    correctCount++;
+                    feedbackDiv.textContent = '✅ Верно!';
+                    feedbackDiv.className = 'feedback correct';
+                } else {
+                    const correctText = currentQuestions[idx].options[correctIdx];
+                    feedbackDiv.textContent = `❌ Неверно. Правильный ответ: «${correctText}»`;
+                    feedbackDiv.className = 'feedback incorrect';
+                }
+                card.appendChild(feedbackDiv);
+            });
+
+            scoreSpan.textContent = correctCount;
+            updateProgress();
+        }
+
+        // ---------- СБРОС ОТВЕТОВ (без перемешивания) ----------
+        function clearAnswers() {
+            selectedAnswers = new Array(totalQ).fill(null);
+            document.querySelectorAll('input[type="radio"]').forEach(radio => {
+                radio.checked = false;
+            });
+            clearAllFeedback();
+            scoreSpan.textContent = '0';
+            updateProgress();
+        }
+
+        // ---------- ИНИЦИАЛИЗАЦИЯ ----------
+        shuffleQuestions();
+
+        document.getElementById('checkBtn').addEventListener('click', checkAnswers);
+        document.getElementById('resetBtn').addEventListener('click', function() {
+            shuffleQuestions();
+            clearAllFeedback();
+            scoreSpan.textContent = '0';
+            updateProgress();
+        });
+        document.getElementById('clearBtn').addEventListener('click', clearAnswers);
+
+        container.addEventListener('click', function(e) {
+            const optionDiv = e.target.closest('.option');
+            if (!optionDiv) return;
+            if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'LABEL') {
+                const radio = optionDiv.querySelector('input[type="radio"]');
+                if (radio) {
+                    radio.checked = true;
+                    const evt = new Event('change', { bubbles: true });
+                    radio.dispatchEvent(evt);
+                }
+            }
+        });
+
+    })();
+</script>
+</body>
+</html>
