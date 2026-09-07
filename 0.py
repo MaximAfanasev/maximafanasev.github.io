@@ -66,10 +66,6 @@ elif b: print(False)
 
 # < <= > >= != ==
 
-
-
-
-
 print(5 < 7 or 7 < 10) 
 # True
 print(7 < 7 and 7 > 10) 
@@ -77,17 +73,11 @@ print(7 < 7 and 7 > 10)
 print(5 < 7 and not 5 > 10) 
 # True
 
-
-
-
 count = 1
 while count <= 5:
     print(count)
     count += 1 
     # 1 2 3 4 5
-
-
-
 
 count = 1
 while count <= 5:
