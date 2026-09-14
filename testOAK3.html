@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Тренажёр: собери определение</title>
+<style>
+  :root{
+    --primary:#e84393;
+    --primary-dark:#b03070;
+    --primary-light:#ffe3f0;
+    --soft:#fff5fa;
+    --correct:#27ae60;
+    --correct-bg:#e8f8ef;
+    --wrong:#e74c3c;
+    --wrong-bg:#fdecea;
+    --text:#2c3e50;
+    --muted:#8a7a85;
+    --card:#ffffff;
+    --shadow:0 12px 32px rgba(232,67,147,.15);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+
+  body{
+    font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;
+    background:
+      radial-gradient(circle at 10% 0%, #ffe3f0 0%, transparent 40%),
+      radial-gradient(circle at 90% 100%, #ffd6e8 0%, transparent 45%),
+      linear-gradient(180deg,#fff5fa 0%, #fdeef6 100%);
+    color:var(--text);
+    min-height:100vh;
+    line-height:1.65;
+    padding:0 0 60px;
+  }
+
+  /* ===== HEADER ===== */
+  header{
+    position:relative;
+    background:linear-gradient(135deg,var(--primary) 0%,var(--primary-dark) 100%);
+    color:#fff;
+    padding:44px 20px 66px;
+    text-align:center;
+    overflow:hidden;
+    border-bottom-left-radius:32px;
+    border-bottom-right-radius:32px;
+  }
+  header::before{
+    content:"";position:absolute;inset:0;
+    background-image:url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1600&q=80');
+    background-size:cover;background-position:center;
+    opacity:.14;mix-blend-mode:overlay;
+  }
+  header .inner{position:relative;z-index:2;max-width:760px;margin:0 auto;}
+  header .badge-top{
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(255,255,255,.18);
+    border:1px solid rgba(255,255,255,.35);
+    padding:6px 16px;border-radius:30px;
+    font-size:.8rem;letter-spacing:.5px;margin-bottom:16px;
+    backdrop-filter:blur(6px);
+  }
+  header h1{
+    font-size:clamp(1.5rem,3.4vw,2.2rem);
+    font-weight:800;margin-bottom:10px;
+  }
+  header p{font-size:clamp(.95rem,1.5vw,1.05rem);opacity:.95;}
+
+  /* ===== CONTAINER ===== */
+  .container{
+    max-width:860px;margin:-44px auto 0;padding:0 18px;
+    position:relative;z-index:3;
+  }
+
+  /* ===== PROGRESS ===== */
+  .progress-wrap{
+    background:var(--card);border-radius:20px;padding:22px 26px;
+    box-shadow:var(--shadow);margin-bottom:24px;
+  }
+  .progress-info{
+    display:flex;justify-content:space-between;align-items:center;
+    margin-bottom:12px;font-size:.9rem;color:var(--muted);font-weight:600;
+  }
+  .progress-info .step{color:var(--primary-dark);font-weight:700;}
+  .progress-bar{
+    height:12px;background:var(--primary-light);border-radius:20px;
+    overflow:hidden;position:relative;
+  }
+  .progress-fill{
+    height:100%;width:0%;
+    background:linear-gradient(90deg,#ff6fb5,#e84393,#b03070);
+    border-radius:20px;
+    transition:width .5s cubic-bezier(.4,0,.2,1);
+    box-shadow:0 0 12px rgba(232,67,147,.5);
+  }
+  .progress-fill::after{
+    content:"";position:absolute;top:0;left:0;right:0;bottom:0;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);
+    animation:shine 2s infinite;
+  }
+  @keyframes shine{0%{transform:translateX(-100%);}100%{transform:translateX(100%);}}
+
+  /* ===== CARD ===== */
+  .card{
+    background:var(--card);border-radius:20px;
+    box-shadow:var(--shadow);padding:32px 34px;margin-bottom:22px;
+    animation:slideIn .45s ease;
+  }
+  @keyframes slideIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+
+  .question-num{
+    display:inline-block;background:var(--primary-light);
+    color:var(--primary-dark);font-size:.75rem;font-weight:800;
+    letter-spacing:.8px;padding:5px 14px;border-radius:20px;margin-bottom:16px;
+  }
+
+  .task-title{
+    font-size:1.15rem;font-weight:700;color:var(--text);margin-bottom:8px;
+  }
+  .task-hint{
+    font-size:.9rem;color:var(--muted);margin-bottom:22px;
+  }
+
+  /* ===== DROP ZONE ===== */
+  .dropzone{
+    min-height:120px;
+    border:2.5px dashed var(--primary-light);
+    border-radius:16px;
+    background:var(--soft);
+    padding:18px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    align-content:flex-start;
+    margin-bottom:20px;
+    transition:all .22s ease;
+    position:relative;
+  }
+  .dropzone.dragover{
+    border-color:var(--primary);
+    background:var(--primary-light);
+    transform:scale(1.01);
+  }
+  .dropzone.correct{
+    border-color:var(--correct);
+    border-style:solid;
+    background:var(--correct-bg);
+  }
+  .dropzone.wrong{
+    border-color:var(--wrong);
+    border-style:solid;
+    background:var(--wrong-bg);
+    animation:shake .4s;
+  }
+  @keyframes shake{
+    0%,100%{transform:translateX(0);}
+    25%{transform:translateX(-7px);}
+    75%{transform:translateX(7px);}
+  }
+  .dropzone .placeholder{
+    color:#c9b6c1;
+    font-size:.95rem;
+    font-style:italic;
+    pointer-events:none;
+    width:100%;
+    text-align:center;
+    padding:26px 0;
+  }
+
+  /* ===== PIECES ===== */
+  .piece{
+    display:inline-flex;
+    align-items:center;
+    background:#fff;
+    border:2px solid var(--primary-light);
+    border-radius:12px;
+    padding:10px 16px;
+    font-size:.95rem;
+    font-weight:600;
+    color:var(--primary-dark);
+    cursor:grab;
+    transition:all .18s ease;
+    user-select:none;
+    box-shadow:0 2px 6px rgba(232,67,147,.08);
+    line-height:1.35;
+  }
+  .piece:hover{
+    border-color:var(--primary);
+    transform:translateY(-2px);
+    box-shadow:0 6px 16px rgba(232,67,147,.18);
+  }
+  .piece.dragging{opacity:.4;cursor:grabbing;}
+  .piece:active{cursor:grabbing;}
+
+  .dropzone .piece{
+    background:linear-gradient(135deg,#fff,#ffeef6);
+    border-color:var(--primary);
+    cursor:pointer;
+  }
+  .dropzone .piece::after{
+    content:"✕";
+    margin-left:10px;
+    color:var(--primary);
+    font-size:.85rem;
+    opacity:.6;
+  }
+  .dropzone .piece:hover::after{opacity:1;}
+  .dropzone.correct .piece{
+    background:#fff;
+    border-color:var(--correct);
+    color:#1e7d47;
+    cursor:default;
+  }
+  .dropzone.correct .piece::after{display:none;}
+  .dropzone.wrong .piece{
+    border-color:var(--wrong);
+    color:#b83226;
+    cursor:default;
+  }
+
+  /* ===== BANK ===== */
+  .bank{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    padding:14px;
+    border-radius:14px;
+    background:#fff;
+    border:1.5px solid var(--primary-light);
+    min-height:60px;
+  }
+  .bank-label{
+    font-size:.82rem;color:var(--muted);font-weight:700;
+    letter-spacing:.5px;text-transform:uppercase;margin-bottom:8px;
+  }
+
+  /* ===== FEEDBACK ===== */
+  .feedback{
+    margin-top:16px;padding:14px 18px;border-radius:12px;
+    font-size:.93rem;display:none;animation:fadeIn .3s ease;
+  }
+  .feedback.show{display:block;}
+  .feedback.ok{
+    background:var(--correct-bg);border-left:4px solid var(--correct);
+    color:#1e7d47;
+  }
+  .feedback.no{
+    background:var(--wrong-bg);border-left:4px solid var(--wrong);
+    color:#b83226;
+  }
+  .feedback .right-answer{
+    display:block;
+    font-weight:700;color:#1e7d47;background:#fff;
+    padding:10px 14px;border-radius:10px;margin-top:8px;
+    font-size:.92rem;
+  }
+  @keyframes fadeIn{from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:translateY(0);}}
+
+  /* ===== BUTTONS ===== */
+  .btn-wrap{display:flex;justify-content:flex-end;gap:12px;margin-top:20px;flex-wrap:wrap;}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+    color:#fff;border:none;padding:15px 32px;border-radius:14px;
+    font-size:1rem;font-weight:700;cursor:pointer;
+    transition:all .25s ease;
+    box-shadow:0 8px 22px rgba(232,67,147,.35);
+  }
+  .btn:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(232,67,147,.45);}
+  .btn:active{transform:translateY(0);}
+  .btn:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none;}
+  .btn-ghost{
+    background:transparent;color:var(--primary-dark);
+    border:2px solid var(--primary-light);box-shadow:none;
+  }
+  .btn-ghost:hover{background:var(--primary-light);box-shadow:none;}
+
+  /* ===== FINISH ===== */
+  .finish{text-align:center;padding:44px 30px;}
+  .finish .emoji{font-size:3.4rem;margin-bottom:10px;display:block;}
+  .finish h2{color:var(--primary-dark);font-size:1.7rem;margin-bottom:14px;}
+
+  .score-ring{
+    width:170px;height:170px;margin:22px auto;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;position:relative;
+    background:conic-gradient(var(--primary) 0deg, var(--primary-light) 0deg);
+    transition:background 1s ease;
+  }
+  .score-ring::before{
+    content:"";position:absolute;inset:14px;background:#fff;
+    border-radius:50%;box-shadow:inset 0 4px 14px rgba(232,67,147,.12);
+  }
+  .score-ring .value{
+    position:relative;font-size:2.4rem;font-weight:800;color:var(--primary-dark);
+  }
+  .score-ring .value small{
+    display:block;font-size:.78rem;font-weight:600;color:var(--muted);letter-spacing:.5px;
+  }
+  .finish .message{
+    font-size:1.05rem;color:var(--text);margin:16px auto 26px;max-width:460px;
+  }
+  .confetti{font-size:1.6rem;letter-spacing:8px;margin-bottom:6px;}
+
+  /* ===== REVIEW ===== */
+  .review{
+    text-align:left;background:var(--soft);border-radius:16px;
+    padding:20px 22px;margin:8px 0 26px;
+  }
+  .review h3{
+    font-size:1rem;color:var(--primary-dark);margin-bottom:12px;
+    display:flex;align-items:center;gap:8px;
+  }
+  .review ul{list-style:none;}
+  .review li{
+    display:flex;gap:10px;align-items:flex-start;
+    padding:10px 0;font-size:.92rem;
+    border-bottom:1px dashed rgba(232,67,147,.18);
+  }
+  .review li:last-child{border-bottom:none;}
+  .review li .ico{flex-shrink:0;font-size:1rem;line-height:1.4;}
+  .review li .term{font-weight:700;color:var(--primary-dark);display:block;margin-bottom:4px;}
+  .review li .def{color:var(--muted);font-size:.86rem;}
+
+  .hidden{display:none !important;}
+
+  /* ===== MOBILE ===== */
+  @media(max-width:600px){
+    .card{padding:24px 20px;}
+    .piece{font-size:.88rem;padding:9px 13px;}
+    .btn{width:100%;}
+    .btn-wrap{flex-direction:column-reverse;}
+    .progress-wrap{padding:18px 20px;}
+    header{padding:34px 16px 58px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="inner">
+    <div class="badge-top">🧩 Собери предложение</div>
+    <h1>Общий анализ крови</h1>
+    <p>Расставь фрагменты определения в правильном порядке</p>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="progress-wrap" id="progressWrap">
+    <div class="progress-info">
+      <span>Задание <span class="step" id="currentStep">1</span> из <span id="totalSteps">15</span></span>
+      <span id="percentLabel">0%</span>
+    </div>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+  </div>
+
+  <div id="quizArea"></div>
+
+  <div id="finishArea" class="card finish hidden">
+    <span class="emoji">🎉</span>
+    <div class="confetti">🌸 💖 🌸</div>
+    <h2>Тренажёр завершён!</h2>
+    <div class="score-ring" id="scoreRing">
+      <div class="value"><span id="scoreValue">0</span><small>из 15</small></div>
+    </div>
+    <p class="message" id="finishMessage"></p>
+
+    <div class="review">
+      <h3>📋 Разбор заданий</h3>
+      <ul id="reviewList"></ul>
+    </div>
+
+    <button class="btn" onclick="restartQuiz()">🔄 Пройти заново</button>
+  </div>
+
+</div>
+
+<script>
+/* ============================================================
+   ЗАДАНИЯ
+   Каждое задание — фрагменты в ПРАВИЛЬНОМ порядке.
+   При запуске они перемешиваются.
+   ============================================================ */
+const tasks = [
+  {
+    term: "Базофилы",
+    pieces: [
+      "Базофилы — в норме практически не определяются",
+      "в крови здорового человека, т.к. составляют всего 0–0,5%",
+      "от общего количества клеток.",
+      "Базофилы говорят об аллергической настроенности организма."
+    ]
+  },
+  {
+    term: "Гемоглобин",
+    pieces: [
+      "Гемоглобин — это белок, богатый железом,",
+      "который придаёт крови красный цвет",
+      "и содержится в эритроцитах."
+    ]
+  },
+  {
+    term: "Гематокрит",
+    pieces: [
+      "Гематокрит — это соотношение объёма эритроцитов",
+      "к плазме крови.",
+      "Вычисляется в % соотношении к общему объёму крови."
+    ]
+  },
+  {
+    term: "Лейкоциты",
+    pieces: [
+      "Лейкоциты — это белые клетки крови, отвечающие за иммунитет.",
+      "Их количество рассказывает о том, насколько организм в состоянии бороться",
+      "с вирусами, инородными телами, патогенными микроорганизмами или токсинами.",
+      "По лейкоцитам можно понять, какая инфекция у человека: вирусная или бактериальная."
+    ]
+  },
+  {
+    term: "Лимфоциты",
+    pieces: [
+      "Лимфоциты — это «главный» строительный материал иммунной системы.",
+      "Лимфоциты запоминают вирусы и другие патогены",
+      "и участвуют в образовании антигена по отношению к этим клеткам."
+    ]
+  },
+  {
+    term: "Моноциты",
+    pieces: [
+      "Моноциты — «отвечают» за поглощение отмерших клеток и бактерий,",
+      "борются с инфекциями, паразитами и опухолями.",
+      "Моноциты — это «дворники» нашего организма.",
+      "Это крупные клетки, которые захватывают и поглощают чужеродные клетки без вреда для себя."
+    ]
+  },
+  {
+    term: "Нейтрофилы",
+    pieces: [
+      "Нейтрофилы — обнаруживают, захватывают",
+      "и переваривают чужеродные тела",
+      "(вирусы, бактерии, паразиты)."
+    ]
+  },
+  {
+    term: "СОЭ",
+    pieces: [
+      "СОЭ — это неспецифический лабораторный показатель крови,",
+      "который измеряет скорость, с которой эритроциты оседают",
+      "на дно пробирки в течение часа."
+    ]
+  },
+  {
+    term: "Тромбоциты",
+    pieces: [
+      "Тромбоциты — основной их функцией является",
+      "остановка кровотечения",
+      "путём образования тромба."
+    ]
+  },
+  {
+    term: "Эозинофилы",
+    pieces: [
+      "Эозинофилы — защищают организм от аллергенов.",
+      "И в то же время повышенное значение эозинофилов",
+      "может свидетельствовать о наличии паразитов в организме человека."
+    ]
+  },
+  {
+    term: "Эритроциты",
+    pieces: [
+      "Эритроциты — это красные кровяные клетки, содержащие гемоглобин,",
+      "который доставляет ко всем тканям и органам кислород",
+      "и забирает углекислый газ.",
+      "Эритроциты — это транспортные клетки."
+    ]
+  },
+  {
+    term: "Средний объем эритроцита",
+    pieces: [
+      "Средний объем эритроцита —",
+      "данный показатель важен",
+      "для диагностики различных форм анемии."
+    ]
+  },
+  {
+    term: "Среднее содержание гемоглобина в эритроците",
+    pieces: [
+      "Среднее содержание гемоглобина в эритроците —",
+      "указывает на пропорциональное отношение гемоглобин/количество эритроцитов.",
+      "Снижение MCH означает, что внутри клетки гемоглобина нет",
+      "или его очень мало."
+    ]
+  },
+  {
+    term: "Средняя концентрация гемоглобина в эритроцитах",
+    pieces: [
+      "Средняя концентрация гемоглобина в эритроцитах —",
+      "этот показатель говорит о том,",
+      "насколько эритроциты насыщены гемоглобином."
+    ]
+  },
+  {
+    term: "Распределение эритроцитов по величине",
+    pieces: [
+      "Распределение эритроцитов по величине —",
+      "измеряется в % и показывает,",
+      "насколько объем эритроцитов отклоняется от среднего."
+    ]
+  }
+];
+
+/* ============================================================
+   ЛОГИКА
+   ============================================================ */
+let current = 0;
+let score = 0;
+let answered = false;
+let results = [];
+
+const quizArea     = document.getElementById('quizArea');
+const finishArea   = document.getElementById('finishArea');
+const progressFill = document.getElementById('progressFill');
+const currentStep  = document.getElementById('currentStep');
+const totalSteps   = document.getElementById('totalSteps');
+const percentLabel = document.getElementById('percentLabel');
+const progressWrap = document.getElementById('progressWrap');
+
+totalSteps.textContent = tasks.length;
+
+function shuffle(arr){
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function updateProgress(){
+  const pct = Math.round((current / tasks.length) * 100);
+  progressFill.style.width = pct + '%';
+  percentLabel.textContent = pct + '%';
+  currentStep.textContent = Math.min(current + 1, tasks.length);
+}
+
+function renderTask(){
+  answered = false;
+  const task = tasks[current];
+  const shuffled = shuffle(task.pieces);
+
+  quizArea.innerHTML = `
+    <div class="card">
+      <span class="question-num">ЗАДАНИЕ ${current + 1} · ${task.term}</span>
+      <div class="task-title">Собери определение: «${task.term}»</div>
+      <div class="task-hint">Перетащи фрагменты в верхнюю область в правильном порядке (или кликни по фрагменту).</div>
+
+      <div class="dropzone" id="dropzone" data-empty="true">
+        <div class="placeholder">⬇ Перетащи сюда фрагменты в правильном порядке ⬇</div>
+      </div>
+
+      <div class="bank-label">🧩 Доступные фрагменты</div>
+      <div class="bank" id="bank"></div>
+
+      <div class="feedback" id="feedback"></div>
+
+      <div class="btn-wrap">
+        <button class="btn btn-ghost" id="resetBtn" onclick="resetTask()">↺ Сбросить</button>
+        <button class="btn" id="checkBtn" onclick="checkAnswer()">Проверить ✓</button>
+        <button class="btn hidden" id="nextBtn" onclick="nextTask()">
+          ${current === tasks.length - 1 ? 'Завершить 🏁' : 'Далее →'}
+        </button>
+      </div>
+    </div>
+  `;
+
+  const bank = document.getElementById('bank');
+  shuffled.forEach(text => bank.appendChild(createPiece(text)));
+
+  setupDropzone();
+  updateProgress();
+}
+
+function createPiece(text){
+  const el = document.createElement('div');
+  el.className = 'piece';
+  el.draggable = true;
+  el.dataset.text = text;
+  el.textContent = text;
+
+  el.addEventListener('dragstart', e => {
+    if (answered) { e.preventDefault(); return; }
+    e.dataTransfer.setData('text/plain', text);
+    e.dataTransfer.effectAllowed = 'move';
+    el.classList.add('dragging');
+  });
+  el.addEventListener('dragend', () => el.classList.remove('dragging'));
+
+  // клик — перемещение между зонами
+  el.addEventListener('click', () => {
+    if (answered) return;
+    const zone = el.parentElement;
+    if (zone.id === 'bank'){
+      addToDropzone(el);
+    } else {
+      addToBank(el);
+    }
+  });
+
+  return el;
+}
+
+function addToDropzone(el){
+  const dz = document.getElementById('dropzone');
+  const placeholder = dz.querySelector('.placeholder');
+  if (placeholder) placeholder.remove();
+  dz.appendChild(el);
+  dz.dataset.empty = 'false';
+}
+
+function addToBank(el){
+  const bank = document.getElementById('bank');
+  bank.appendChild(el);
+  const dz = document.getElementById('dropzone');
+  if (!dz.querySelector('.piece')){
+    dz.dataset.empty = 'true';
+    dz.innerHTML = '<div class="placeholder">⬇ Перетащи сюда фрагменты в правильном порядке ⬇</div>';
+  }
+}
+
+function setupDropzone(){
+  const dz = document.getElementById('dropzone');
+  const bank = document.getElementById('bank');
+
+  [dz, bank].forEach(zone => {
+    zone.addEventListener('dragover', e => {
+      if (answered) return;
+      e.preventDefault();
+      e.dataTransfer.dropEffect = 'move';
+      if (zone === dz) zone.classList.add('dragover');
+    });
+    zone.addEventListener('dragleave', () => zone.classList.remove('dragover'));
+    zone.addEventListener('drop', e => {
+      if (answered) return;
+      e.preventDefault();
+      zone.classList.remove('dragover');
+      const text = e.dataTransfer.getData('text/plain');
+      const piece = [...document.querySelectorAll('.piece')].find(p => p.dataset.text === text && p.classList.contains('dragging'))
+                 || [...document.querySelectorAll('.piece')].find(p => p.dataset.text === text);
+      if (!piece) return;
+
+      if (zone === dz){
+        addToDropzone(piece);
+      } else {
+        addToBank(piece);
+      }
+      // сортировка внутри dropzone — по позиции курсора не делаем, оставляем порядок добавления
+    });
+  });
+
+  // сортировка внутри dropzone перетаскиванием
+  dz.addEventListener('dragover', e => {
+    e.preventDefault();
+    const dragging = document.querySelector('.piece.dragging');
+    if (!dragging || dragging.parentElement !== dz) return;
+    const after = getDragAfterElement(dz, e.clientX);
+    if (after == null) dz.appendChild(dragging);
+    else dz.insertBefore(dragging, after);
+  });
+}
+
+function getDragAfterElement(container, x){
+  const els = [...container.querySelectorAll('.piece:not(.dragging)')];
+  return els.reduce((closest, child) => {
+    const box = child.getBoundingClientRect();
+    const offset = x - box.left - box.width / 2;
+    if (offset < 0 && offset > closest.offset){
+      return { offset, element: child };
+    }
+    return closest;
+  }, { offset: Number.NEGATIVE_INFINITY }).element;
+}
+
+function resetTask(){
+  if (answered) return;
+  const task = tasks[current];
+  const bank = document.getElementById('bank');
+  const dz = document.getElementById('dropzone');
+  bank.innerHTML = '';
+  dz.innerHTML = '<div class="placeholder">⬇ Перетащи сюда фрагменты в правильном порядке ⬇</div>';
+  dz.dataset.empty = 'true';
+  shuffle(task.pieces).forEach(t => bank.appendChild(createPiece(t)));
+}
+
+function checkAnswer(){
+  if (answered) return;
+  const task = tasks[current];
+  const dz = document.getElementById('dropzone');
+  const pieces = [...dz.querySelectorAll('.piece')];
+
+  if (pieces.length === 0){
+    dz.classList.add('wrong');
+    setTimeout(()=> dz.classList.remove('wrong'), 600);
+    return;
+  }
+
+  answered = true;
+
+  const userOrder = pieces.map(p => p.dataset.text);
+  const correctOrder = task.pieces;
+  const isCorrect = userOrder.length === correctOrder.length &&
+                    userOrder.every((t, i) => t === correctOrder[i]);
+
+  const feedback = document.getElementById('feedback');
+
+  if (isCorrect){
+    score++;
+    dz.classList.add('correct');
+    feedback.className = 'feedback ok show';
+    feedback.innerHTML = `💚 <strong>Верно!</strong> Определение собрано правильно.`;
+  } else {
+    dz.classList.add('wrong');
+    feedback.className = 'feedback no show';
+    feedback.innerHTML = `💔 <strong>Не совсем верно.</strong> Правильный порядок:
+      <span class="right-answer">${correctOrder.join(' ')}</span>`;
+  }
+
+  // блокируем дальнейшие действия
+  dz.querySelectorAll('.piece').forEach(p => { p.draggable = false; });
+
+  results.push({ term: task.term, correct: isCorrect });
+
+  document.getElementById('checkBtn').classList.add('hidden');
+  document.getElementById('resetBtn').classList.add('hidden');
+  document.getElementById('nextBtn').classList.remove('hidden');
+  document.getElementById('nextBtn').focus();
+}
+
+function nextTask(){
+  current++;
+  if (current < tasks.length){
+    renderTask();
+    window.scrollTo({top:0, behavior:'smooth'});
+  } else {
+    showFinish();
+  }
+}
+
+function showFinish(){
+  quizArea.innerHTML = '';
+  progressWrap.classList.add('hidden');
+  finishArea.classList.remove('hidden');
+
+  const total = tasks.length;
+  const percent = Math.round((score / total) * 100);
+
+  const scoreValue = document.getElementById('scoreValue');
+  let shown = 0;
+  const step = Math.max(1, Math.round(score / 20));
+  const interval = setInterval(() => {
+    shown += step;
+    if (shown >= score){ shown = score; clearInterval(interval); }
+    scoreValue.textContent = shown;
+  }, 40);
+
+  const deg = (percent / 100) * 360;
+  const ring = document.getElementById('scoreRing');
+  setTimeout(() => {
+    ring.style.background =
+      `conic-gradient(var(--primary) ${deg}deg, var(--primary-light) ${deg}deg)`;
+  }, 150);
+
+  let msg = '', emoji = '🎉';
+  if (percent === 100){ msg = 'Идеально! Ты настоящий эксперт по ОАК! 💖'; emoji = '🏆'; }
+  else if (percent >= 80){ msg = 'Отличный результат! Ещё чуть-чуть до идеала.'; emoji = '🌟'; }
+  else if (percent >= 60){ msg = 'Хорошо! Повтори отдельные определения.'; emoji = '📖'; }
+  else if (percent >= 40){ msg = 'Неплохо, но стоит вернуться к теории.'; emoji = '💪'; }
+  else { msg = 'Не расстраивайся — прочитай теорию и попробуй снова!'; emoji = '🌸'; }
+
+  document.querySelector('.finish .emoji').textContent = emoji;
+  document.getElementById('finishMessage').textContent = msg;
+
+  const list = document.getElementById('reviewList');
+  list.innerHTML = results.map(r => `
+    <li>
+      <span class="ico">${r.correct ? '✅' : '❌'}</span>
+      <span>
+        <span class="term">${r.term}</span>
+      </span>
+    </li>
+  `).join('');
+
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function restartQuiz(){
+  current = 0;
+  score = 0;
+  answered = false;
+  results = [];
+  finishArea.classList.add('hidden');
+  progressWrap.classList.remove('hidden');
+  renderTask();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+/* старт */
+renderTask();
+</script>
+</body>
+</html>

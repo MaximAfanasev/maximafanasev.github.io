@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Тест: Общий анализ крови (ОАК)</title>
+<style>
+  :root{
+    --primary:#e84393;
+    --primary-dark:#b03070;
+    --primary-light:#ffe3f0;
+    --soft:#fff5fa;
+    --correct:#27ae60;
+    --correct-bg:#e8f8ef;
+    --wrong:#e74c3c;
+    --wrong-bg:#fdecea;
+    --text:#2c3e50;
+    --muted:#8a7a85;
+    --card:#ffffff;
+    --shadow:0 12px 32px rgba(232,67,147,.15);
+    --shadow-sm:0 6px 18px rgba(232,67,147,.10);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+
+  body{
+    font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;
+    background:
+      radial-gradient(circle at 10% 0%, #ffe3f0 0%, transparent 40%),
+      radial-gradient(circle at 90% 100%, #ffd6e8 0%, transparent 45%),
+      linear-gradient(180deg,#fff5fa 0%, #fdeef6 100%);
+    color:var(--text);
+    min-height:100vh;
+    line-height:1.6;
+    padding:0 0 60px;
+  }
+
+  /* ===== HEADER ===== */
+  header{
+    position:relative;
+    background:linear-gradient(135deg,var(--primary) 0%,var(--primary-dark) 100%);
+    color:#fff;
+    padding:46px 20px 70px;
+    text-align:center;
+    overflow:hidden;
+    border-bottom-left-radius:32px;
+    border-bottom-right-radius:32px;
+  }
+
+  header::before{
+    content:"";
+    position:absolute;inset:0;
+    background-image:url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1600&q=80');
+    background-size:cover;
+    background-position:center;
+    opacity:.14;
+    mix-blend-mode:overlay;
+  }
+
+  header .inner{position:relative;z-index:2;max-width:760px;margin:0 auto;}
+
+  header .badge-top{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:rgba(255,255,255,.18);
+    border:1px solid rgba(255,255,255,.35);
+    padding:6px 16px;
+    border-radius:30px;
+    font-size:.8rem;
+    letter-spacing:.5px;
+    margin-bottom:16px;
+    backdrop-filter:blur(6px);
+  }
+
+  header h1{
+    font-size:clamp(1.5rem,3.4vw,2.2rem);
+    font-weight:800;
+    margin-bottom:10px;
+  }
+
+  header p{
+    font-size:clamp(.95rem,1.5vw,1.05rem);
+    opacity:.95;
+  }
+
+  /* ===== CONTAINER ===== */
+  .container{
+    max-width:820px;
+    margin:-46px auto 0;
+    padding:0 18px;
+    position:relative;
+    z-index:3;
+  }
+
+  /* ===== PROGRESS ===== */
+  .progress-wrap{
+    background:var(--card);
+    border-radius:20px;
+    padding:22px 26px;
+    box-shadow:var(--shadow);
+    margin-bottom:24px;
+  }
+
+  .progress-info{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:12px;
+    font-size:.9rem;
+    color:var(--muted);
+    font-weight:600;
+  }
+
+  .progress-info .step{color:var(--primary-dark);font-weight:700;}
+
+  .progress-bar{
+    height:12px;
+    background:var(--primary-light);
+    border-radius:20px;
+    overflow:hidden;
+    position:relative;
+  }
+
+  .progress-fill{
+    height:100%;
+    width:0%;
+    background:linear-gradient(90deg,#ff6fb5,#e84393,#b03070);
+    border-radius:20px;
+    transition:width .5s cubic-bezier(.4,0,.2,1);
+    box-shadow:0 0 12px rgba(232,67,147,.5);
+  }
+
+  .progress-fill::after{
+    content:"";
+    position:absolute;top:0;left:0;right:0;bottom:0;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);
+    animation:shine 2s infinite;
+  }
+
+  @keyframes shine{
+    0%{transform:translateX(-100%);}
+    100%{transform:translateX(100%);}
+  }
+
+  /* ===== CARD ===== */
+  .card{
+    background:var(--card);
+    border-radius:20px;
+    box-shadow:var(--shadow);
+    padding:32px 34px;
+    margin-bottom:22px;
+    animation:slideIn .45s ease;
+  }
+
+  @keyframes slideIn{
+    from{opacity:0;transform:translateY(18px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+
+  .question-num{
+    display:inline-block;
+    background:var(--primary-light);
+    color:var(--primary-dark);
+    font-size:.75rem;
+    font-weight:800;
+    letter-spacing:.8px;
+    padding:5px 14px;
+    border-radius:20px;
+    margin-bottom:14px;
+  }
+
+  .question{
+    font-size:1.2rem;
+    font-weight:700;
+    color:var(--text);
+    margin-bottom:22px;
+    line-height:1.4;
+  }
+
+  /* ===== OPTIONS ===== */
+  .options{display:flex;flex-direction:column;gap:11px;}
+
+  .option{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    background:var(--soft);
+    border:2px solid transparent;
+    border-radius:14px;
+    padding:14px 18px;
+    cursor:pointer;
+    transition:all .22s ease;
+    font-size:.98rem;
+    user-select:none;
+  }
+
+  .option:hover:not(.disabled){
+    background:var(--primary-light);
+    transform:translateX(4px);
+  }
+
+  .option .marker{
+    width:26px;height:26px;
+    border-radius:50%;
+    border:2px solid var(--primary-light);
+    background:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-size:.8rem;
+    font-weight:800;
+    color:transparent;
+    flex-shrink:0;
+    transition:all .22s ease;
+  }
+
+  .option .text{flex:1;}
+
+  /* --- correct --- */
+  .option.correct{
+    background:var(--correct-bg);
+    border-color:var(--correct);
+    color:#1e7d47;
+    font-weight:600;
+  }
+  .option.correct .marker{
+    background:var(--correct);
+    border-color:var(--correct);
+    color:#fff;
+  }
+
+  /* --- wrong --- */
+  .option.wrong{
+    background:var(--wrong-bg);
+    border-color:var(--wrong);
+    color:#b83226;
+    font-weight:600;
+    animation:shake .4s;
+  }
+  .option.wrong .marker{
+    background:var(--wrong);
+    border-color:var(--wrong);
+    color:#fff;
+  }
+
+  @keyframes shake{
+    0%,100%{transform:translateX(0);}
+    25%{transform:translateX(-6px);}
+    75%{transform:translateX(6px);}
+  }
+
+  .option.disabled{cursor:default;}
+
+  /* ===== FEEDBACK ===== */
+  .feedback{
+    margin-top:16px;
+    padding:14px 18px;
+    border-radius:12px;
+    font-size:.92rem;
+    display:none;
+    animation:fadeIn .3s ease;
+  }
+
+  .feedback.show{display:block;}
+
+  .feedback.ok{
+    background:var(--correct-bg);
+    border-left:4px solid var(--correct);
+    color:#1e7d47;
+  }
+
+  .feedback.no{
+    background:var(--wrong-bg);
+    border-left:4px solid var(--wrong);
+    color:#b83226;
+  }
+
+  @keyframes fadeIn{from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:translateY(0);}}
+
+  /* ===== BUTTON ===== */
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+    color:#fff;
+    border:none;
+    padding:15px 34px;
+    border-radius:14px;
+    font-size:1rem;
+    font-weight:700;
+    cursor:pointer;
+    transition:all .25s ease;
+    box-shadow:0 8px 22px rgba(232,67,147,.35);
+    margin-top:8px;
+  }
+
+  .btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 12px 28px rgba(232,67,147,.45);
+  }
+
+  .btn:active{transform:translateY(0);}
+
+  .btn-ghost{
+    background:transparent;
+    color:var(--primary-dark);
+    border:2px solid var(--primary-light);
+    box-shadow:none;
+  }
+  .btn-ghost:hover{background:var(--primary-light);box-shadow:none;}
+
+  .btn-wrap{display:flex;justify-content:flex-end;gap:12px;margin-top:20px;flex-wrap:wrap;}
+
+  /* ===== FINISH ===== */
+  .finish{
+    text-align:center;
+    padding:44px 30px;
+  }
+
+  .finish .emoji{font-size:3.4rem;margin-bottom:10px;display:block;}
+
+  .finish h2{
+    color:var(--primary-dark);
+    font-size:1.7rem;
+    margin-bottom:14px;
+  }
+
+  .score-ring{
+    width:170px;height:170px;
+    margin:22px auto;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    position:relative;
+    background:conic-gradient(var(--primary) 0deg, var(--primary-light) 0deg);
+    transition:background 1s ease;
+  }
+
+  .score-ring::before{
+    content:"";
+    position:absolute;inset:14px;
+    background:#fff;
+    border-radius:50%;
+    box-shadow:inset 0 4px 14px rgba(232,67,147,.12);
+  }
+
+  .score-ring .value{
+    position:relative;
+    font-size:2.6rem;
+    font-weight:800;
+    color:var(--primary-dark);
+  }
+
+  .score-ring .value small{
+    display:block;
+    font-size:.8rem;
+    font-weight:600;
+    color:var(--muted);
+    letter-spacing:.5px;
+  }
+
+  .finish .message{
+    font-size:1.05rem;
+    color:var(--text);
+    margin:16px auto 26px;
+    max-width:460px;
+  }
+
+  .confetti{
+    font-size:1.6rem;
+    letter-spacing:8px;
+    margin-bottom:6px;
+  }
+
+  /* ===== HIDE / SHOW ===== */
+  .hidden{display:none !important;}
+
+  /* ===== MOBILE ===== */
+  @media(max-width:600px){
+    .card{padding:24px 20px;}
+    .question{font-size:1.05rem;}
+    .option{padding:12px 14px;font-size:.93rem;}
+    .btn{width:100%;}
+    .btn-wrap{flex-direction:column-reverse;}
+    .progress-wrap{padding:18px 20px;}
+    header{padding:34px 16px 58px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="inner">
+    <div class="badge-top">💗 Для будущих медиков</div>
+    <h1>Тест: Общий анализ крови</h1>
+    <p>Проверь свои знания — ответ подсвечивается сразу!</p>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- PROGRESS -->
+  <div class="progress-wrap" id="progressWrap">
+    <div class="progress-info">
+      <span>Вопрос <span class="step" id="currentStep">1</span> из <span id="totalSteps">8</span></span>
+      <span id="percentLabel">0%</span>
+    </div>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+  </div>
+
+  <!-- QUIZ -->
+  <div id="quizArea"></div>
+
+  <!-- FINISH -->
+  <div id="finishArea" class="card finish hidden">
+    <span class="emoji">🎉</span>
+    <div class="confetti">🌸 💖 🌸</div>
+    <h2>Тест завершён!</h2>
+    <div class="score-ring" id="scoreRing">
+      <div class="value"><span id="scoreValue">0</span><small>баллов</small></div>
+    </div>
+    <p class="message" id="finishMessage"></p>
+    <button class="btn" onclick="restartQuiz()">🔄 Пройти заново</button>
+  </div>
+
+</div>
+
+<script>
+/* ============================================================
+   ВОПРОСЫ  (правильный ответ — индекс correct)
+   ============================================================ */
+const questions = [
+  {
+    q: "Какой из перечисленных показателей НЕ входит в базовый общий анализ крови (6 параметров)?",
+    options: [
+      "Гемоглобин (HGB)",
+      "СОЭ по Вестергрену",
+      "Тромбоциты (PLT)",
+      "Гематокрит (HTC)"
+    ],
+    correct: 1,
+    hint: "СОЭ входит только в клинический анализ крови (1.01.001), а не в базовый ОАК (1.01.003)."
+  },
+  {
+    q: "Сколько параметров включает в себя общий анализ крови (код 1.01.003)?",
+    options: ["4 параметра", "6 параметров", "8 параметров", "10 параметров"],
+    correct: 1,
+    hint: "Базовый ОАК — это 6 показателей + эритроцитарные индексы."
+  },
+  {
+    q: "Какой анализ выполняет лаборатория ЦКДЛ?",
+    options: [
+      "Общий анализ крови (1.01.003)",
+      "Биохимический анализ крови",
+      "Клинический анализ крови (1.01.001)",
+      "Коагулограмму"
+    ],
+    correct: 2,
+    hint: "Клинический анализ крови (1.01.001) выполняет ЦКДЛ, а ОАК — подрядчик Инвитро."
+  },
+  {
+    q: "Что такое референсные значения?",
+    options: [
+      "Максимально допустимая доза лекарства",
+      "Лабораторная норма — среднее значение анализов группы людей",
+      "Показатель только для мужчин",
+      "Результат одного конкретного пациента"
+    ],
+    correct: 1,
+    hint: "Референс — среднее арифметическое значение анализов группы людей (здоровых, не очень здоровых и больных)."
+  },
+  {
+    q: "От чего зависят референсные значения?",
+    options: [
+      "Только от лаборатории",
+      "Только от пола человека",
+      "От лаборатории, пола и возраста человека",
+      "Только от возраста"
+    ],
+    correct: 2,
+    hint: "Референсы зависят от лаборатории, пола и возраста пациента."
+  },
+  {
+    q: "Что из перечисленного ОАК НЕ показывает?",
+    options: [
+      "Наличие воспалений в целом",
+      "Тип инфекции (бактериальная или вирусная)",
+      "Точный диагноз заболевания",
+      "Наличие паразитоза"
+    ],
+    correct: 2,
+    hint: "По референсам диагнозы не ставятся — показатели сопоставляют с симптомами и другими анализами."
+  },
+  {
+    q: "Каким методом выполняется СОЭ в клиническом анализе крови?",
+    options: [
+      "По Панченкову",
+      "По Вестергрену",
+      "По Виноградову",
+      "Микроскопическим методом"
+    ],
+    correct: 1,
+    hint: "СОЭ выполняется методом «СОЭ по Вестергрену»."
+  },
+  {
+    q: "Почему важно предупреждать пациентов о разных лабораториях при сдаче ОАК и клинического анализа?",
+    options: [
+      "Потому что цены разные",
+      "Потому что референсные значения и единицы измерения будут отличаться",
+      "Потому что сроки готовности разные",
+      "Потому что анализы нельзя сдавать в один день"
+    ],
+    correct: 1,
+    hint: "Референсы и единицы измерения зависят от лаборатории и оборудования — это критично при отслеживании динамики."
+  }
+];
+
+/* ============================================================
+   ЛОГИКА
+   ============================================================ */
+let current = 0;
+let score = 0;
+let answered = false;
+
+const quizArea     = document.getElementById('quizArea');
+const finishArea   = document.getElementById('finishArea');
+const progressFill = document.getElementById('progressFill');
+const currentStep  = document.getElementById('currentStep');
+const totalSteps   = document.getElementById('totalSteps');
+const percentLabel = document.getElementById('percentLabel');
+const progressWrap = document.getElementById('progressWrap');
+
+totalSteps.textContent = questions.length;
+
+function updateProgress(){
+  const pct = Math.round((current / questions.length) * 100);
+  progressFill.style.width = pct + '%';
+  percentLabel.textContent = pct + '%';
+  currentStep.textContent = Math.min(current + 1, questions.length);
+}
+
+function renderQuestion(){
+  answered = false;
+  const q = questions[current];
+
+  quizArea.innerHTML = `
+    <div class="card">
+      <span class="question-num">ВОПРОС ${current + 1}</span>
+      <div class="question">${q.q}</div>
+      <div class="options" id="options">
+        ${q.options.map((opt, i) => `
+          <div class="option" data-index="${i}">
+            <div class="marker">✓</div>
+            <div class="text">${opt}</div>
+          </div>
+        `).join('')}
+      </div>
+      <div class="feedback" id="feedback"></div>
+      <div class="btn-wrap hidden" id="nextWrap">
+        <button class="btn" id="nextBtn">
+          ${current === questions.length - 1 ? 'Завершить тест 🏁' : 'Следующий вопрос →'}
+        </button>
+      </div>
+    </div>
+  `;
+
+  document.querySelectorAll('.option').forEach(opt => {
+    opt.addEventListener('click', () => selectOption(opt));
+  });
+
+  updateProgress();
+}
+
+function selectOption(el){
+  if (answered) return;
+  answered = true;
+
+  const chosen = parseInt(el.dataset.index);
+  const q = questions[current];
+  const allOptions = document.querySelectorAll('.option');
+  const feedback = document.getElementById('feedback');
+
+  allOptions.forEach(o => o.classList.add('disabled'));
+
+  if (chosen === q.correct){
+    el.classList.add('correct');
+    score++;
+    feedback.className = 'feedback ok show';
+    feedback.innerHTML = `💚 <strong>Верно!</strong> ${q.hint}`;
+  } else {
+    el.classList.add('wrong');
+    allOptions[q.correct].classList.add('correct');
+    feedback.className = 'feedback no show';
+    feedback.innerHTML = `💔 <strong>Ошибка.</strong> ${q.hint}`;
+  }
+
+  document.getElementById('nextWrap').classList.remove('hidden');
+  document.getElementById('nextBtn').addEventListener('click', nextQuestion);
+}
+
+function nextQuestion(){
+  current++;
+  if (current < questions.length){
+    renderQuestion();
+    window.scrollTo({top:0, behavior:'smooth'});
+  } else {
+    showFinish();
+  }
+}
+
+function showFinish(){
+  quizArea.innerHTML = '';
+  progressWrap.classList.add('hidden');
+  finishArea.classList.remove('hidden');
+
+  const total = questions.length;
+  const percent = Math.round((score / total) * 100);
+
+  // анимация счётчика
+  const scoreValue = document.getElementById('scoreValue');
+  let shown = 0;
+  const step = Math.max(1, Math.round(score / 20));
+  const interval = setInterval(() => {
+    shown += step;
+    if (shown >= score){ shown = score; clearInterval(interval); }
+    scoreValue.textContent = shown;
+  }, 40);
+
+  // кольцо прогресса
+  const deg = (percent / 100) * 360;
+  const ring = document.getElementById('scoreRing');
+  setTimeout(() => {
+    ring.style.background =
+      `conic-gradient(var(--primary) ${deg}deg, var(--primary-light) ${deg}deg)`;
+  }, 150);
+
+  // сообщение
+  let msg = '';
+  let emoji = '🎉';
+  if (percent === 100){ msg = 'Идеально! Ты настоящий эксперт по ОАК! 💖'; emoji = '🏆'; }
+  else if (percent >= 80){ msg = 'Отличный результат! Ещё чуть-чуть до идеала.'; emoji = '🌟'; }
+  else if (percent >= 60){ msg = 'Хорошо! Повтори референсы и лейкоцитарную формулу.'; emoji = '📖'; }
+  else if (percent >= 40){ msg = 'Неплохо, но стоит перечитать теорию по ОАК.'; emoji = '💪'; }
+  else { msg = 'Не расстраивайся — вернись к теории и попробуй снова!'; emoji = '🌸'; }
+
+  document.querySelector('.finish .emoji').textContent = emoji;
+  document.getElementById('finishMessage').textContent = msg;
+
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function restartQuiz(){
+  current = 0;
+  score = 0;
+  answered = false;
+  finishArea.classList.add('hidden');
+  progressWrap.classList.remove('hidden');
+  renderQuestion();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+/* старт */
+renderQuestion();
+</script>
+</body>
+</html>

@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Тренажёр: термины ОАК</title>
+<style>
+  :root{
+    --primary:#e84393;
+    --primary-dark:#b03070;
+    --primary-light:#ffe3f0;
+    --soft:#fff5fa;
+    --correct:#27ae60;
+    --correct-bg:#e8f8ef;
+    --wrong:#e74c3c;
+    --wrong-bg:#fdecea;
+    --text:#2c3e50;
+    --muted:#8a7a85;
+    --card:#ffffff;
+    --shadow:0 12px 32px rgba(232,67,147,.15);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+
+  body{
+    font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;
+    background:
+      radial-gradient(circle at 10% 0%, #ffe3f0 0%, transparent 40%),
+      radial-gradient(circle at 90% 100%, #ffd6e8 0%, transparent 45%),
+      linear-gradient(180deg,#fff5fa 0%, #fdeef6 100%);
+    color:var(--text);
+    min-height:100vh;
+    line-height:1.65;
+    padding:0 0 60px;
+  }
+
+  /* ===== HEADER ===== */
+  header{
+    position:relative;
+    background:linear-gradient(135deg,var(--primary) 0%,var(--primary-dark) 100%);
+    color:#fff;
+    padding:44px 20px 66px;
+    text-align:center;
+    overflow:hidden;
+    border-bottom-left-radius:32px;
+    border-bottom-right-radius:32px;
+  }
+  header::before{
+    content:"";position:absolute;inset:0;
+    background-image:url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1600&q=80');
+    background-size:cover;background-position:center;
+    opacity:.14;mix-blend-mode:overlay;
+  }
+  header .inner{position:relative;z-index:2;max-width:760px;margin:0 auto;}
+  header .badge-top{
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(255,255,255,.18);
+    border:1px solid rgba(255,255,255,.35);
+    padding:6px 16px;border-radius:30px;
+    font-size:.8rem;letter-spacing:.5px;margin-bottom:16px;
+    backdrop-filter:blur(6px);
+  }
+  header h1{
+    font-size:clamp(1.5rem,3.4vw,2.2rem);
+    font-weight:800;margin-bottom:10px;
+  }
+  header p{font-size:clamp(.95rem,1.5vw,1.05rem);opacity:.95;}
+
+  /* ===== CONTAINER ===== */
+  .container{
+    max-width:820px;margin:-44px auto 0;padding:0 18px;
+    position:relative;z-index:3;
+  }
+
+  /* ===== PROGRESS ===== */
+  .progress-wrap{
+    background:var(--card);border-radius:20px;padding:22px 26px;
+    box-shadow:var(--shadow);margin-bottom:24px;
+  }
+  .progress-info{
+    display:flex;justify-content:space-between;align-items:center;
+    margin-bottom:12px;font-size:.9rem;color:var(--muted);font-weight:600;
+  }
+  .progress-info .step{color:var(--primary-dark);font-weight:700;}
+  .progress-bar{
+    height:12px;background:var(--primary-light);border-radius:20px;
+    overflow:hidden;position:relative;
+  }
+  .progress-fill{
+    height:100%;width:0%;
+    background:linear-gradient(90deg,#ff6fb5,#e84393,#b03070);
+    border-radius:20px;
+    transition:width .5s cubic-bezier(.4,0,.2,1);
+    box-shadow:0 0 12px rgba(232,67,147,.5);
+  }
+  .progress-fill::after{
+    content:"";position:absolute;top:0;left:0;right:0;bottom:0;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);
+    animation:shine 2s infinite;
+  }
+  @keyframes shine{0%{transform:translateX(-100%);}100%{transform:translateX(100%);}}
+
+  /* ===== CARD ===== */
+  .card{
+    background:var(--card);border-radius:20px;
+    box-shadow:var(--shadow);padding:32px 34px;margin-bottom:22px;
+    animation:slideIn .45s ease;
+  }
+  @keyframes slideIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+
+  .question-num{
+    display:inline-block;background:var(--primary-light);
+    color:var(--primary-dark);font-size:.75rem;font-weight:800;
+    letter-spacing:.8px;padding:5px 14px;border-radius:20px;margin-bottom:16px;
+  }
+
+  .definition{
+    font-size:1.12rem;line-height:1.6;color:var(--text);
+    background:var(--soft);border-left:4px solid var(--primary);
+    padding:20px 22px;border-radius:12px;margin-bottom:22px;
+  }
+  .definition em{color:var(--primary-dark);font-style:normal;font-weight:700;}
+
+  /* ===== INPUT ===== */
+  .input-wrap{position:relative;}
+  .answer-input{
+    width:100%;
+    padding:16px 54px 16px 20px;
+    font-size:1.05rem;
+    font-family:inherit;
+    border:2px solid var(--primary-light);
+    border-radius:14px;
+    background:#fff;
+    color:var(--text);
+    outline:none;
+    transition:all .22s ease;
+  }
+  .answer-input::placeholder{color:#c9b6c1;}
+  .answer-input:focus{
+    border-color:var(--primary);
+    box-shadow:0 0 0 4px rgba(232,67,147,.14);
+  }
+  .answer-input.correct{
+    border-color:var(--correct);
+    background:var(--correct-bg);
+    color:#1e7d47;font-weight:600;
+  }
+  .answer-input.wrong{
+    border-color:var(--wrong);
+    background:var(--wrong-bg);
+    color:#b83226;font-weight:600;
+    animation:shake .4s;
+  }
+  .answer-input:disabled{opacity:.95;cursor:default;}
+  @keyframes shake{
+    0%,100%{transform:translateX(0);}
+    25%{transform:translateX(-7px);}
+    75%{transform:translateX(7px);}
+  }
+
+  .input-icon{
+    position:absolute;right:18px;top:50%;transform:translateY(-50%);
+    font-size:1.2rem;opacity:0;transition:opacity .22s;
+  }
+  .input-icon.show{opacity:1;}
+
+  /* ===== FEEDBACK ===== */
+  .feedback{
+    margin-top:16px;padding:14px 18px;border-radius:12px;
+    font-size:.93rem;display:none;animation:fadeIn .3s ease;
+  }
+  .feedback.show{display:block;}
+  .feedback.ok{
+    background:var(--correct-bg);border-left:4px solid var(--correct);
+    color:#1e7d47;
+  }
+  .feedback.no{
+    background:var(--wrong-bg);border-left:4px solid var(--wrong);
+    color:#b83226;
+  }
+  .feedback .right-answer{
+    display:inline-block;font-weight:800;color:var(--correct);
+    background:#fff;padding:2px 10px;border-radius:8px;margin-left:4px;
+  }
+  @keyframes fadeIn{from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:translateY(0);}}
+
+  /* ===== BUTTONS ===== */
+  .btn-wrap{display:flex;justify-content:flex-end;gap:12px;margin-top:20px;flex-wrap:wrap;}
+
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+    color:#fff;border:none;padding:15px 32px;border-radius:14px;
+    font-size:1rem;font-weight:700;cursor:pointer;
+    transition:all .25s ease;
+    box-shadow:0 8px 22px rgba(232,67,147,.35);
+  }
+  .btn:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(232,67,147,.45);}
+  .btn:active{transform:translateY(0);}
+  .btn:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none;}
+
+  .btn-ghost{
+    background:transparent;color:var(--primary-dark);
+    border:2px solid var(--primary-light);box-shadow:none;
+  }
+  .btn-ghost:hover{background:var(--primary-light);box-shadow:none;}
+
+  /* ===== FINISH ===== */
+  .finish{text-align:center;padding:44px 30px;}
+  .finish .emoji{font-size:3.4rem;margin-bottom:10px;display:block;}
+  .finish h2{color:var(--primary-dark);font-size:1.7rem;margin-bottom:14px;}
+
+  .score-ring{
+    width:170px;height:170px;margin:22px auto;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;position:relative;
+    background:conic-gradient(var(--primary) 0deg, var(--primary-light) 0deg);
+    transition:background 1s ease;
+  }
+  .score-ring::before{
+    content:"";position:absolute;inset:14px;background:#fff;
+    border-radius:50%;box-shadow:inset 0 4px 14px rgba(232,67,147,.12);
+  }
+  .score-ring .value{
+    position:relative;font-size:2.4rem;font-weight:800;color:var(--primary-dark);
+  }
+  .score-ring .value small{
+    display:block;font-size:.78rem;font-weight:600;color:var(--muted);letter-spacing:.5px;
+  }
+
+  .finish .message{
+    font-size:1.05rem;color:var(--text);margin:16px auto 26px;max-width:460px;
+  }
+  .confetti{font-size:1.6rem;letter-spacing:8px;margin-bottom:6px;}
+
+  /* ===== REVIEW LIST ===== */
+  .review{
+    text-align:left;background:var(--soft);border-radius:16px;
+    padding:20px 22px;margin:8px 0 26px;
+  }
+  .review h3{
+    font-size:1rem;color:var(--primary-dark);margin-bottom:12px;
+    display:flex;align-items:center;gap:8px;
+  }
+  .review ul{list-style:none;}
+  .review li{
+    display:flex;gap:10px;align-items:flex-start;
+    padding:8px 0;font-size:.92rem;
+    border-bottom:1px dashed rgba(232,67,147,.18);
+  }
+  .review li:last-child{border-bottom:none;}
+  .review li .ico{flex-shrink:0;font-size:1rem;line-height:1.4;}
+  .review li .term{font-weight:700;color:var(--primary-dark);}
+  .review li .def{color:var(--muted);font-size:.86rem;}
+
+  /* ===== HIDE ===== */
+  .hidden{display:none !important;}
+
+  /* ===== MOBILE ===== */
+  @media(max-width:600px){
+    .card{padding:24px 20px;}
+    .definition{font-size:1rem;padding:16px 18px;}
+    .answer-input{font-size:1rem;padding:14px 48px 14px 16px;}
+    .btn{width:100%;}
+    .btn-wrap{flex-direction:column-reverse;}
+    .progress-wrap{padding:18px 20px;}
+    header{padding:34px 16px 58px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="inner">
+    <div class="badge-top">🩺 Тренажёр терминов</div>
+    <h1>Общий анализ крови</h1>
+    <p>Прочитай определение и введи название термина</p>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- PROGRESS -->
+  <div class="progress-wrap" id="progressWrap">
+    <div class="progress-info">
+      <span>Термин <span class="step" id="currentStep">1</span> из <span id="totalSteps">15</span></span>
+      <span id="percentLabel">0%</span>
+    </div>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+  </div>
+
+  <!-- QUIZ -->
+  <div id="quizArea"></div>
+
+  <!-- FINISH -->
+  <div id="finishArea" class="card finish hidden">
+    <span class="emoji">🎉</span>
+    <div class="confetti">🌸 💖 🌸</div>
+    <h2>Тренажёр завершён!</h2>
+    <div class="score-ring" id="scoreRing">
+      <div class="value"><span id="scoreValue">0</span><small>из 15</small></div>
+    </div>
+    <p class="message" id="finishMessage"></p>
+
+    <div class="review" id="reviewBlock">
+      <h3>📋 Разбор ответов</h3>
+      <ul id="reviewList"></ul>
+    </div>
+
+    <button class="btn" onclick="restartQuiz()">🔄 Пройти заново</button>
+  </div>
+
+</div>
+
+<script>
+/* ============================================================
+   ВОПРОСЫ
+   answer    — правильное название (эталон)
+   accept    — массив допустимых вариантов (в нижнем регистре)
+   ============================================================ */
+const questions = [
+  {
+    def: "В норме практически не определяются в крови здорового человека, т.к. составляют всего 0–0,5% от общего количества клеток. Говорят об аллергической настроенности организма.",
+    answer: "Базофилы",
+    accept: ["базофилы","базофил"]
+  },
+  {
+    def: "Это белок, богатый железом, который придаёт крови красный цвет и содержится в эритроцитах.",
+    answer: "Гемоглобин",
+    accept: ["гемоглобин","hb","hgb"]
+  },
+  {
+    def: "Это соотношение объёма эритроцитов к плазме крови. Вычисляется в % соотношении к общему объёму крови.",
+    answer: "Гематокрит",
+    accept: ["гематокрит","htc","hct"]
+  },
+  {
+    def: "Это белые клетки крови, отвечающие за иммунитет. Их количество рассказывает о том, насколько организм в состоянии бороться с вирусами, инородными телами, патогенными микроорганизмами или токсинами.",
+    answer: "Лейкоциты",
+    accept: ["лейкоциты","лейкоцит","wbc"]
+  },
+  {
+    def: "Это «главный» строительный материал иммунной системы. Они запоминают вирусы и другие патогены и участвуют в образовании антигена по отношению к этим клеткам.",
+    answer: "Лимфоциты",
+    accept: ["лимфоциты","лимфоцит","lym"]
+  },
+  {
+    def: "«Отвечают» за поглощение отмерших клеток и бактерий, борются с инфекциями, паразитами и опухолями. Это «дворники» нашего организма — крупные клетки, которые захватывают и поглощают чужеродные клетки без вреда для себя.",
+    answer: "Моноциты",
+    accept: ["моноциты","моноцит","mon"]
+  },
+  {
+    def: "Обнаруживают, захватывают и переваривают чужеродные тела (вирусы, бактерии, паразиты).",
+    answer: "Нейтрофилы",
+    accept: ["нейтрофилы","нейтрофил","neu"]
+  },
+  {
+    def: "Это неспецифический лабораторный показатель крови, который измеряет скорость, с которой эритроциты оседают на дно пробирки в течение часа.",
+    answer: "СОЭ",
+    accept: ["соэ","cоэ","скорость оседания эритроцитов","esr"]
+  },
+  {
+    def: "Основной их функцией является остановка кровотечения путём образования тромба.",
+    answer: "Тромбоциты",
+    accept: ["тромбоциты","тромбоцит","plt"]
+  },
+  {
+    def: "Защищают организм от аллергенов. И в то же время повышенное значение может свидетельствовать о наличии паразитов в организме человека.",
+    answer: "Эозинофилы",
+    accept: ["эозинофилы","эозинофил","eos"]
+  },
+  {
+    def: "Это красные кровяные клетки, содержащие гемоглобин, который доставляет ко всем тканям и органам кислород и забирает углекислый газ. Это транспортные клетки, участвующие в поддержании кислотно-щелочного равновесия.",
+    answer: "Эритроциты",
+    accept: ["эритроциты","эритроцит","rbc"]
+  },
+  {
+    def: "Данный показатель важен для диагностики различных форм анемии. (Средний объём эритроцита)",
+    answer: "Средний объем эритроцита",
+    accept: ["средний объем эритроцита","средний объём эритроцита","mcv","средний объем эритроцитов","средний объём эритроцитов"]
+  },
+  {
+    def: "Указывает на пропорциональное отношение гемоглобин/количество эритроцитов. Снижение означает, что внутри клетки гемоглобина нет или его очень мало. (Среднее содержание гемоглобина в эритроците)",
+    answer: "Среднее содержание гемоглобина в эритроците",
+    accept: ["среднее содержание гемоглобина в эритроците","среднее содержание гемоглобина в эритроцитах","mch"]
+  },
+  {
+    def: "Этот показатель говорит о том, насколько эритроциты насыщены гемоглобином. (Средняя концентрация гемоглобина в эритроцитах)",
+    answer: "Средняя концентрация гемоглобина в эритроцитах",
+    accept: ["средняя концентрация гемоглобина в эритроцитах","средняя концентрация гемоглобина в эритроците","mchc"]
+  },
+  {
+    def: "Измеряется в % и показывает, насколько объём эритроцитов отклоняется от среднего. (Распределение эритроцитов по величине)",
+    answer: "Распределение эритроцитов по величине",
+    accept: ["распределение эритроцитов по величине","rdw","ширина распределения эритроцитов"]
+  }
+];
+
+/* ============================================================
+   ЛОГИКА
+   ============================================================ */
+let current = 0;
+let score = 0;
+let answered = false;
+let results = []; // {answer, userAnswer, correct}
+
+const quizArea      = document.getElementById('quizArea');
+const finishArea    = document.getElementById('finishArea');
+const progressFill  = document.getElementById('progressFill');
+const currentStep   = document.getElementById('currentStep');
+const totalSteps    = document.getElementById('totalSteps');
+const percentLabel  = document.getElementById('percentLabel');
+const progressWrap  = document.getElementById('progressWrap');
+
+totalSteps.textContent = questions.length;
+
+/* нормализация строки: регистр, пробелы, ё→е, дефисы */
+function normalize(str){
+  return str
+    .toLowerCase()
+    .replace(/ё/g,'е')
+    .replace(/[_\-–—]/g,' ')
+    .replace(/[^\wа-я\s]/gi,'')
+    .replace(/\s+/g,' ')
+    .trim();
+}
+
+function isCorrect(input, q){
+  const norm = normalize(input);
+  if (!norm) return false;
+  return q.accept.some(v => normalize(v) === norm);
+}
+
+function updateProgress(){
+  const pct = Math.round((current / questions.length) * 100);
+  progressFill.style.width = pct + '%';
+  percentLabel.textContent = pct + '%';
+  currentStep.textContent = Math.min(current + 1, questions.length);
+}
+
+function renderQuestion(){
+  answered = false;
+  const q = questions[current];
+
+  quizArea.innerHTML = `
+    <div class="card">
+      <span class="question-num">ТЕРМИН ${current + 1}</span>
+      <div class="definition">${q.def}</div>
+
+      <div class="input-wrap">
+        <input
+          type="text"
+          class="answer-input"
+          id="answerInput"
+          placeholder="Введите название термина…"
+          autocomplete="off"
+          spellcheck="false"
+        >
+        <span class="input-icon" id="inputIcon"></span>
+      </div>
+
+      <div class="feedback" id="feedback"></div>
+
+      <div class="btn-wrap">
+        <button class="btn btn-ghost hidden" id="skipBtn" onclick="showAnswer()">Показать ответ</button>
+        <button class="btn" id="checkBtn" onclick="checkAnswer()">Проверить ✓</button>
+        <button class="btn hidden" id="nextBtn" onclick="nextQuestion()">
+          ${current === questions.length - 1 ? 'Завершить 🏁' : 'Далее →'}
+        </button>
+      </div>
+    </div>
+  `;
+
+  const input = document.getElementById('answerInput');
+  input.focus();
+  input.addEventListener('keydown', e => {
+    if (e.key === 'Enter'){
+      e.preventDefault();
+      if (answered) nextQuestion();
+      else checkAnswer();
+    }
+  });
+  updateProgress();
+}
+
+function checkAnswer(){
+  if (answered) return;
+  const input = document.getElementById('answerInput');
+  const value = input.value.trim();
+
+  if (!value){
+    input.focus();
+    input.style.borderColor = 'var(--wrong)';
+    setTimeout(()=> input.style.borderColor = '', 600);
+    return;
+  }
+
+  answered = true;
+  const q = questions[current];
+  const correct = isCorrect(value, q);
+
+  const feedback = document.getElementById('feedback');
+  const icon     = document.getElementById('inputIcon');
+
+  if (correct){
+    score++;
+    input.classList.add('correct');
+    input.disabled = true;
+    icon.textContent = '✅';
+    icon.classList.add('show');
+    feedback.className = 'feedback ok show';
+    feedback.innerHTML = `💚 <strong>Верно!</strong> Это ${q.answer}.`;
+  } else {
+    input.classList.add('wrong');
+    input.disabled = true;
+    icon.textContent = '❌';
+    icon.classList.add('show');
+    feedback.className = 'feedback no show';
+    feedback.innerHTML = `💔 <strong>Неверно.</strong> Правильный ответ: <span class="right-answer">${q.answer}</span>`;
+  }
+
+  results.push({ answer: q.answer, userAnswer: value, correct });
+
+  document.getElementById('checkBtn').classList.add('hidden');
+  document.getElementById('skipBtn').classList.add('hidden');
+  document.getElementById('nextBtn').classList.remove('hidden');
+  document.getElementById('nextBtn').focus();
+}
+
+function showAnswer(){
+  if (answered) return;
+  answered = true;
+  const q = questions[current];
+  const input = document.getElementById('answerInput');
+  const feedback = document.getElementById('feedback');
+  const icon = document.getElementById('inputIcon');
+
+  input.disabled = true;
+  input.value = q.answer;
+  input.classList.add('wrong');
+  icon.textContent = '💡';
+  icon.classList.add('show');
+
+  feedback.className = 'feedback no show';
+  feedback.innerHTML = `💡 Правильный ответ: <span class="right-answer">${q.answer}</span>`;
+
+  results.push({ answer: q.answer, userAnswer: '—', correct: false });
+
+  document.getElementById('checkBtn').classList.add('hidden');
+  document.getElementById('skipBtn').classList.add('hidden');
+  document.getElementById('nextBtn').classList.remove('hidden');
+}
+
+function nextQuestion(){
+  current++;
+  if (current < questions.length){
+    renderQuestion();
+    window.scrollTo({top:0, behavior:'smooth'});
+  } else {
+    showFinish();
+  }
+}
+
+function showFinish(){
+  quizArea.innerHTML = '';
+  progressWrap.classList.add('hidden');
+  finishArea.classList.remove('hidden');
+
+  const total = questions.length;
+  const percent = Math.round((score / total) * 100);
+
+  // счётчик
+  const scoreValue = document.getElementById('scoreValue');
+  let shown = 0;
+  const step = Math.max(1, Math.round(score / 20));
+  const interval = setInterval(() => {
+    shown += step;
+    if (shown >= score){ shown = score; clearInterval(interval); }
+    scoreValue.textContent = shown;
+  }, 40);
+
+  // кольцо
+  const deg = (percent / 100) * 360;
+  const ring = document.getElementById('scoreRing');
+  setTimeout(() => {
+    ring.style.background =
+      `conic-gradient(var(--primary) ${deg}deg, var(--primary-light) ${deg}deg)`;
+  }, 150);
+
+  // сообщение
+  let msg = '', emoji = '🎉';
+  if (percent === 100){ msg = 'Идеально! Ты настоящий эксперт по ОАК! 💖'; emoji = '🏆'; }
+  else if (percent >= 80){ msg = 'Отличный результат! Ещё чуть-чуть до идеала.'; emoji = '🌟'; }
+  else if (percent >= 60){ msg = 'Хорошо! Повтори отдельные термины.'; emoji = '📖'; }
+  else if (percent >= 40){ msg = 'Неплохо, но стоит вернуться к теории.'; emoji = '💪'; }
+  else { msg = 'Не расстраивайся — прочитай теорию и попробуй снова!'; emoji = '🌸'; }
+
+  document.querySelector('.finish .emoji').textContent = emoji;
+  document.getElementById('finishMessage').textContent = msg;
+
+  // разбор ответов
+  const list = document.getElementById('reviewList');
+  list.innerHTML = results.map((r, i) => `
+    <li>
+      <span class="ico">${r.correct ? '✅' : '❌'}</span>
+      <span>
+        <span class="term">${r.answer}</span><br>
+        <span class="def">Ваш ответ: ${r.userAnswer === '—' ? 'пропущено' : r.userAnswer}</span>
+      </span>
+    </li>
+  `).join('');
+
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function restartQuiz(){
+  current = 0;
+  score = 0;
+  answered = false;
+  results = [];
+  finishArea.classList.add('hidden');
+  progressWrap.classList.remove('hidden');
+  renderQuestion();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+/* старт */
+renderQuestion();
+</script>
+</body>
+</html>
