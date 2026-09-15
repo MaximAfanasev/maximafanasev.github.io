@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Базы данных · SQL · ACID · Логи · Кэш</title>
+<style>
+  :root{
+    --blue:#4a7fe8;
+    --blue-dark:#2c56b8;
+    --blue-soft:#eaf1fe;
+    --purple:#9a6ff0;
+    --purple-soft:#f2ecfe;
+    --green:#48b87e;
+    --green-soft:#e8f7ee;
+    --pink:#e86a9c;
+    --pink-soft:#fdeaf2;
+    --orange:#f0954c;
+    --orange-soft:#fef3e8;
+    --yellow:#f4c542;
+    --yellow-soft:#fff8e0;
+    --teal:#3ab8c8;
+    --teal-soft:#e6f7f9;
+    --red:#e05666;
+    --red-soft:#fdeef0;
+    --text:#243447;
+    --text-soft:#57697e;
+    --muted:#8ea1b5;
+    --line:#e6edf6;
+    --shadow-sm:0 4px 18px rgba(74,127,232,.08);
+    --shadow:0 14px 40px rgba(74,127,232,.12);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+
+  body{
+    font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;
+    color:var(--text);
+    line-height:1.6;
+    background:
+      radial-gradient(circle at 8% 5%, rgba(154,111,240,.10) 0%, transparent 40%),
+      radial-gradient(circle at 92% 12%, rgba(74,127,232,.10) 0%, transparent 42%),
+      radial-gradient(circle at 50% 100%, rgba(72,184,126,.08) 0%, transparent 45%),
+      linear-gradient(180deg,#fbfdff 0%, #f4f8fe 100%);
+    min-height:100vh;
+    overflow-x:hidden;
+    padding:60px 0 80px;
+    font-size:16px;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .aurora{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+  .orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:.32;animation:drift 30s ease-in-out infinite;}
+  .orb-1{width:520px;height:520px;background:radial-gradient(circle,#9a6ff0,transparent 70%);top:-160px;left:-140px;}
+  .orb-2{width:600px;height:600px;background:radial-gradient(circle,#4a7fe8,transparent 70%);top:30%;right:-200px;animation-delay:-10s;opacity:.26;}
+  .orb-3{width:480px;height:480px;background:radial-gradient(circle,#48b87e,transparent 70%);bottom:-160px;left:15%;animation-delay:-20s;opacity:.22;}
+  @keyframes drift{
+    0%,100%{transform:translate(0,0) scale(1);}
+    33%{transform:translate(70px,-50px) scale(1.08);}
+    66%{transform:translate(-50px,60px) scale(.95);}
+  }
+
+  .floater{
+    position:fixed;opacity:.14;pointer-events:none;z-index:0;
+    animation:floatUp linear infinite;will-change:transform;
+  }
+  .floater svg{display:block;width:100%;height:100%;}
+  @keyframes floatUp{
+    0%  {transform:translate3d(0, 20px, 0) rotate(0deg);}
+    50% {transform:translate3d(30px, -80px, 0) rotate(14deg);}
+    100%{transform:translate3d(0, -180px, 0) rotate(0deg);}
+  }
+
+  .wrap{
+    position:relative;z-index:2;max-width:1100px;margin:0 auto;padding:0 24px;
+  }
+
+  .title{
+    text-align:center;
+    margin-bottom:50px;
+  }
+  .title h1{
+    font-size:clamp(1.5rem,3.4vw,2.2rem);
+    font-weight:800;
+    letter-spacing:-.6px;
+    background:linear-gradient(135deg,var(--blue) 0%,var(--purple) 50%,var(--pink) 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    line-height:1.2;
+  }
+
+  .section{margin-bottom:44px;}
+
+  .grid{display:grid;gap:14px;}
+  .grid-2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr));}
+  .grid-3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr));}
+  .grid-4{grid-template-columns:repeat(auto-fit,minmax(200px,1fr));}
+
+  .card{
+    background:#fff;
+    border-radius:18px;
+    padding:22px 18px;
+    border:1px solid var(--line);
+    box-shadow:var(--shadow-sm);
+    transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    gap:10px;
+    position:relative;
+    overflow:hidden;
+  }
+  .card::before{
+    content:"";
+    position:absolute;
+    top:0;left:0;right:0;
+    height:4px;
+    background:linear-gradient(90deg,var(--blue),var(--purple));
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:transform .35s ease;
+  }
+  .card:hover::before{transform:scaleX(1);}
+  .card:hover{
+    transform:translateY(-5px);
+    box-shadow:var(--shadow);
+    border-color:rgba(74,127,232,.2);
+  }
+
+  .card .em{font-size:2rem;line-height:1;display:block;}
+  .card .label{
+    font-size:.98rem;font-weight:700;color:var(--text);
+    letter-spacing:-.2px;line-height:1.35;
+  }
+
+  /* Карточка-термин */
+  .card.term{
+    align-items:flex-start;text-align:left;
+    padding:22px 22px;gap:12px;
+  }
+  .card.term .card-head{
+    display:flex;align-items:center;gap:12px;
+  }
+  .card.term .card-head .em{font-size:1.6rem;}
+  .card.term .card-head .label{
+    font-size:1.02rem;font-weight:800;
+    color:var(--blue-dark);letter-spacing:-.2px;
+    line-height:1.3;
+  }
+  .card.term .card-head .label small{
+    display:block;font-size:.72rem;font-weight:700;
+    color:var(--muted);letter-spacing:.6px;
+    text-transform:uppercase;margin-top:2px;
+  }
+  .card.term .desc{
+    font-size:.9rem;font-weight:500;
+    color:var(--text-soft);line-height:1.55;
+  }
+  .card.term .desc b{color:var(--purple);font-weight:800;}
+  .card.term .desc code{
+    background:#f4f8fe;
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:1px 6px;
+    font-size:.85em;
+    color:var(--blue-dark);
+    font-family:'Consolas','Courier New',monospace;
+  }
+
+  /* Карточка с чек-листом */
+  .card.check{
+    align-items:flex-start;text-align:left;
+    padding:24px 22px;gap:14px;
+  }
+  .card.check .card-head{
+    display:flex;align-items:center;gap:12px;
+  }
+  .card.check .card-head .em{font-size:1.7rem;}
+  .card.check .card-head .label{
+    font-size:1.05rem;font-weight:800;color:var(--blue-dark);
+  }
+  .card.check .desc{
+    font-size:.88rem;color:var(--text-soft);
+    line-height:1.5;
+  }
+  .card.check ul{
+    list-style:none;display:flex;flex-direction:column;gap:8px;
+    width:100%;
+  }
+  .card.check ul li{
+    display:flex;gap:10px;align-items:flex-start;
+    font-size:.88rem;color:var(--text-soft);
+    line-height:1.5;padding:8px 12px;
+    background:#f9fbfe;border:1px solid var(--line);
+    border-radius:10px;
+  }
+  .card.check ul li .pt{flex-shrink:0;font-weight:800;color:var(--purple);}
+  .card.check ul li b{color:var(--text);font-weight:700;}
+  .card.check ul li code{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:5px;
+    padding:1px 6px;
+    font-size:.85em;
+    color:var(--blue-dark);
+    font-family:'Consolas','Courier New',monospace;
+  }
+
+  /* Карточка-строка (ключ — значение) */
+  .card.row{
+    align-items:flex-start;text-align:left;
+    padding:20px 22px;gap:8px;
+  }
+  .card.row .card-head{
+    display:flex;align-items:center;gap:12px;
+    margin-bottom:2px;
+  }
+  .card.row .card-head .em{font-size:1.5rem;}
+  .card.row .card-head .label{
+    font-size:1rem;font-weight:800;
+    color:var(--blue-dark);letter-spacing:-.2px;
+  }
+  .card.row .line{
+    width:100%;
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    padding:9px 12px;
+    background:#f9fbfe;
+    border:1px solid var(--line);
+    border-radius:10px;
+    font-size:.88rem;
+    color:var(--text-soft);
+    line-height:1.5;
+  }
+  .card.row .line .k{
+    flex-shrink:0;
+    min-width:120px;
+    font-weight:700;
+    color:var(--blue-dark);
+    font-size:.86rem;
+  }
+  .card.row .line .v{
+    flex:1;
+    font-weight:500;
+    color:var(--text-soft);
+  }
+  .card.row .line .v b{color:var(--text);font-weight:800;}
+
+  /* Карточка ACID */
+  .card.acid{
+    align-items:flex-start;text-align:left;
+    padding:22px 22px;gap:10px;
+  }
+  .card.acid .card-head{
+    display:flex;align-items:center;gap:12px;
+  }
+  .card.acid .card-head .em{font-size:1.6rem;}
+  .card.acid .card-head .label{
+    font-size:1.02rem;font-weight:800;
+    color:var(--blue-dark);letter-spacing:-.2px;
+    line-height:1.3;
+  }
+  .card.acid .card-head .label small{
+    display:block;font-size:.72rem;font-weight:700;
+    color:var(--muted);letter-spacing:.6px;
+    text-transform:uppercase;margin-top:2px;
+  }
+  .card.acid .desc{
+    font-size:.9rem;font-weight:500;
+    color:var(--text-soft);line-height:1.55;
+  }
+  .card.acid .desc b{color:var(--purple);font-weight:800;}
+
+  /* Карточка-уровень лога */
+  .card.log{
+    align-items:flex-start;text-align:left;
+    padding:20px 22px;gap:8px;
+  }
+  .card.log .card-head{
+    display:flex;align-items:center;gap:12px;
+  }
+  .card.log .card-head .lvl{
+    font-family:'Consolas','Courier New',monospace;
+    font-weight:800;
+    font-size:1rem;
+    letter-spacing:1px;
+  }
+  .card.log .card-head .label{
+    font-size:.9rem;font-weight:500;
+    color:var(--text-soft);line-height:1.4;
+  }
+  .card.log.fatal .lvl{color:var(--red);}
+  .card.log.error .lvl{color:#b83226;}
+  .card.log.warn .lvl{color:#b06f00;}
+  .card.log.info .lvl{color:var(--blue-dark);}
+  .card.log.debug .lvl{color:var(--purple);}
+  .card.log.trace .lvl{color:var(--muted);}
+
+  /* Цветовые варианты */
+  .card.purple::before{background:linear-gradient(90deg,var(--purple),var(--pink));}
+  .card.green::before{background:linear-gradient(90deg,var(--green),var(--teal));}
+  .card.pink::before{background:linear-gradient(90deg,var(--pink),var(--orange));}
+  .card.orange::before{background:linear-gradient(90deg,var(--orange),var(--yellow));}
+  .card.yellow::before{background:linear-gradient(90deg,var(--yellow),var(--orange));}
+  .card.teal::before{background:linear-gradient(90deg,var(--teal),var(--blue));}
+  .card.red::before{background:linear-gradient(90deg,var(--red),var(--pink));}
+
+  .footer{
+    text-align:center;color:var(--muted);
+    font-size:.8rem;padding:40px 24px 0;
+    position:relative;z-index:2;
+  }
+
+  /* ============================================================
+     АДАПТИВ
+     ============================================================ */
+  @media(max-width:520px){
+    body{padding:36px 0 60px;}
+    .wrap{padding:0 16px;}
+
+    .card{padding:18px 14px;}
+    .card .em{font-size:1.7rem;}
+    .card .label{font-size:.9rem;}
+    .card.term{padding:18px 16px;}
+    .card.term .card-head .em{font-size:1.4rem;}
+    .card.term .card-head .label{font-size:.95rem;}
+    .card.term .desc{font-size:.84rem;}
+    .card.check{padding:20px 16px;}
+    .card.check .card-head .em{font-size:1.5rem;}
+    .card.check .card-head .label{font-size:.98rem;}
+    .card.check ul li{font-size:.82rem;padding:7px 10px;}
+    .card.row{padding:18px 16px;}
+    .card.row .card-head .em{font-size:1.4rem;}
+    .card.row .card-head .label{font-size:.95rem;}
+    .card.row .line{flex-direction:column;gap:2px;font-size:.83rem;padding:8px 10px;}
+    .card.row .line .k{min-width:auto;font-size:.78rem;}
+    .card.acid{padding:18px 16px;}
+    .card.acid .card-head .em{font-size:1.4rem;}
+    .card.acid .card-head .label{font-size:.95rem;}
+    .card.acid .desc{font-size:.84rem;}
+    .card.log{padding:18px 16px;}
+    .card.log .card-head .lvl{font-size:.9rem;}
+
+    .floater{opacity:.10;}
+    .section{margin-bottom:32px;}
+  }
+
+  @media(prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none !important;transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<div class="aurora">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+</div>
+<div id="floaters"></div>
+
+<main class="wrap">
+
+  <div class="title">
+    <h1>💾 Базы данных · SQL · ACID · Логи · Кэш 🗄️</h1>
+  </div>
+
+  <!-- БАЗЫ ДАННЫХ -->
+  <section class="section">
+    <div class="card term" style="margin-bottom:14px;">
+      <div class="card-head">
+        <span class="em">🗄️</span>
+        <span class="label">База данных</span>
+      </div>
+      <div class="desc">Организованное хранилище, позволяющее <b>хранить, изменять, извлекать и удалять</b> данные</div>
+    </div>
+
+    <div class="grid grid-2">
+
+      <div class="card term">
+        <div class="card-head">
+          <span class="em">📊</span>
+          <span class="label">Реляционные (SQL)</span>
+        </div>
+        <div class="desc">Табличная структура, строгие схемы, связи между таблицами<br>
+        <b>Примеры:</b> PostgreSQL, MySQL, Oracle, MS SQL</div>
+      </div>
+
+      <div class="card term purple">
+        <div class="card-head">
+          <span class="em">📦</span>
+          <span class="label">Нереляционные (NoSQL)</span>
+        </div>
+        <div class="desc">Гибкие структуры (документы, ключ-значение, графы)<br>
+        <b>Примеры:</b> MongoDB, Redis, Cassandra, Neo4j</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- КЛЮЧИ -->
+  <section class="section">
+    <div class="grid grid-2">
+
+      <div class="card term">
+        <div class="card-head">
+          <span class="em">🔑</span>
+          <span class="label">Первичный ключ (Primary Key)</span>
+        </div>
+        <div class="desc">Уникальный идентификатор записи в таблице<br>
+        <b>Пример:</b> <code>user_id = 1</code></div>
+      </div>
+
+      <div class="card term orange">
+        <div class="card-head">
+          <span class="em">🔗</span>
+          <span class="label">Внешний ключ (Foreign Key)</span>
+        </div>
+        <div class="desc">Столбец, который ссылается на первичный ключ другой таблицы (для связи)<br>
+        <b>Пример:</b> <code>order.user_id → users.user_id</code></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- НОРМАЛИЗАЦИЯ И БАЛАНСИРОВЩИК -->
+  <section class="section">
+    <div class="grid grid-2">
+
+      <div class="card term green">
+        <div class="card-head">
+          <span class="em">🧩</span>
+          <span class="label">Нормализация</span>
+        </div>
+        <div class="desc">Декомпозиция (разбиение) БД на логические части для устранения дублирования и аномалий<br>
+        <b>Цель:</b> правильное проектирование структуры данных<br>
+        <b>1НФ</b> (каждое поле атомарно) → <b>2НФ</b> (зависит от всего ключа) → <b>3НФ</b> (нет транзитивных зависимостей)</div>
+      </div>
+
+      <div class="card term teal">
+        <div class="card-head">
+          <span class="em">⚖️</span>
+          <span class="label">Балансировщик (Load Balancer)</span>
+        </div>
+        <div class="desc">Распределяет нагрузку между несколькими серверами БД или приложений для повышения <b>производительности и отказоустойчивости</b></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- NOSQL -->
+  <section class="section">
+    <div class="grid grid-2">
+
+      <div class="card term red">
+        <div class="card-head">
+          <span class="em">⚡</span>
+          <span class="label">Redis</span>
+        </div>
+        <div class="desc">Хранилище <b>ключ-значение</b> в оперативной памяти (in-memory). Используется для кэширования, сессий, очередей</div>
+      </div>
+
+      <div class="card term purple">
+        <div class="card-head">
+          <span class="em">📄</span>
+          <span class="label">JSON-документные</span>
+        </div>
+        <div class="desc">Хранят данные в виде JSON-документов — <b>MongoDB, CouchDB</b></div>
+      </div>
+
+      <div class="card term green">
+        <div class="card-head">
+          <span class="em">🕸️</span>
+          <span class="label">Графовые</span>
+        </div>
+        <div class="desc">Данные в виде <b>узлов (nodes), рёбер (edges) и свойств (properties)</b>. Идеально для соцсетей, рекомендаций — Neo4j, ArangoDB</div>
+      </div>
+
+      <div class="card term orange">
+        <div class="card-head">
+          <span class="em">📊</span>
+          <span class="label">Столбцовые (Columnar)</span>
+        </div>
+        <div class="desc">Данные хранятся по столбцам, а не по строкам. Отлично для аналитики — <b>HBase, Cassandra, ClickHouse</b></div>
+      </div>
+
+      <div class="card term teal">
+        <div class="card-head">
+          <span class="em">🧩</span>
+          <span class="label">HBase</span>
+        </div>
+        <div class="desc">Столбцовая БД на основе Hadoop — используется для <b>больших данных (Big Data)</b></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- МАСШТАБИРОВАНИЕ -->
+  <section class="section">
+    <div class="grid grid-2">
+
+      <div class="card term">
+        <div class="card-head">
+          <span class="em">✂️</span>
+          <span class="label">Партицирование (Partitioning)</span>
+        </div>
+        <div class="desc">Разбиение <b>одной таблицы</b> на части (горизонтальное / вертикальное) внутри одной БД</div>
+      </div>
+
+      <div class="card term purple">
+        <div class="card-head">
+          <span class="em">🌍</span>
+          <span class="label">Шардирование (Sharding)</span>
+        </div>
+        <div class="desc">Распределение данных <b>по разным серверам</b> — каждый шард отдельная БД</div>
+      </div>
+
+      <div class="card term green">
+        <div class="card-head">
+          <span class="em">📋</span>
+          <span class="label">Репликация (Replication)</span>
+        </div>
+        <div class="desc">Создание копий БД на разных серверах</div>
+      </div>
+
+      <div class="card term yellow">
+        <div class="card-head">
+          <span class="em">⏳</span>
+          <span class="label">Асинхронная репликация</span>
+        </div>
+        <div class="desc">Сначала запись в оригинал, потом в реплики — <b>быстрее, но есть риск потери данных</b></div>
+      </div>
+
+      <div class="card term orange">
+        <div class="card-head">
+          <span class="em">🔒</span>
+          <span class="label">Синхронная репликация</span>
+        </div>
+        <div class="desc">Запись сразу во все реплики — <b>медленнее, но данные надёжнее</b></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SQL -->
+  <section class="section">
+    <div class="card term" style="margin-bottom:14px;">
+      <div class="card-head">
+        <span class="em">📜</span>
+        <span class="label">SQL<small>Structured Query Language</small></span>
+      </div>
+      <div class="desc"><b>Декларативный язык</b> — мы описываем <b>ЧТО</b> хотим получить, а не <b>КАК</b> это сделать</div>
+    </div>
+
+    <div class="grid grid-4">
+      <div class="card"><span class="em">🐬</span><span class="label">MySQL</span></div>
+      <div class="card purple"><span class="em">🐘</span><span class="label">PostgreSQL</span></div>
+      <div class="card green"><span class="em">📦</span><span class="label">SQLite</span></div>
+      <div class="card orange"><span class="em">🏢</span><span class="label">Microsoft SQL Server</span></div>
+    </div>
+
+    <div class="grid grid-2" style="margin-top:14px;">
+      <div class="card term">
+        <div class="card-head">
+          <span class="em">🐍</span>
+          <span class="label">Python</span>
+        </div>
+        <div class="desc"><b>Императивный</b> язык — описывает <b>КАК</b> делать</div>
+      </div>
+      <div class="card term yellow">
+        <div class="card-head">
+          <span class="em">🟨</span>
+          <span class="label">JavaScript</span>
+        </div>
+        <div class="desc"><b>Императивный</b> язык — описывает <b>КАК</b> делать</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACID -->
+  <section class="section">
+    <div class="grid grid-2">
+
+      <div class="card acid">
+        <div class="card-head">
+          <span class="em">🔬</span>
+          <span class="label">Atomicity<small>Атомарность</small></span>
+        </div>
+        <div class="desc">Транзакция выполняется <b>целиком или не выполняется вообще</b> (всё или ничего)</div>
+      </div>
+
+      <div class="card acid green">
+        <div class="card-head">
+          <span class="em">⚖️</span>
+          <span class="label">Consistency<small>Согласованность</small></span>
+        </div>
+        <div class="desc">Транзакция переводит БД из одного <b>корректного состояния</b> в другое</div>
+      </div>
+
+      <div class="card acid purple">
+        <div class="card-head">
+          <span class="em">🔒</span>
+          <span class="label">Isolation<small>Изоляция</small></span>
+        </div>
+        <div class="desc">Параллельные транзакции <b>не влияют друг на друга</b> (как будто выполняются по очереди)</div>
+      </div>
+
+      <div class="card acid orange">
+        <div class="card-head">
+          <span class="em">💾</span>
+          <span class="label">Durability<small>Долговечность</small></span>
+        </div>
+        <div class="desc">После фиксации (<b>COMMIT</b>) данные сохраняются даже при сбое</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ТИПЫ SQL-ЗАПРОСОВ -->
+  <section class="section">
+    <div class="grid grid-2">
+
+      <div class="card check">
+        <div class="card-head">
+          <span class="em">🏗️</span>
+          <span class="label">DDL — Data Definition Language</span>
+        </div>
+        <div class="desc">Создание и изменение структуры БД</div>
+        <ul>
+          <li><span class="pt">*</span><span><code>CREATE TABLE</code> — создание таблицы</span></li>
+          <li><span class="pt">*</span><span><code>CREATE USER</code> — создание пользователя</span></li>
+          <li><span class="pt">*</span><span><code>ALTER</code> — модификация структуры (добавить/удалить столбец)</span></li>
+          <li><span class="pt">*</span><span><code>DROP</code> — удаление таблицы / БД</span></li>
+        </ul>
+      </div>
+
+      <div class="card check green">
+        <div class="card-head">
+          <span class="em">✏️</span>
+          <span class="label">DML — Data Manipulation Language</span>
+        </div>
+        <div class="desc">Работа с данными внутри таблиц</div>
+        <ul>
+          <li><span class="pt">*</span><span><code>SELECT</code> — выборка данных</span></li>
+          <li><span class="pt">*</span><span><code>INSERT</code> — вставка новых записей</span></li>
+          <li><span class="pt">*</span><span><code>UPDATE</code> — обновление существующих</span></li>
+          <li><span class="pt">*</span><span><code>DELETE</code> — удаление записей</span></li>
+          <li><span class="pt">*</span><span><code>MERGE</code> — слияние (обновить или вставить)</span></li>
+        </ul>
+      </div>
+
+      <div class="card check purple">
+        <div class="card-head">
+          <span class="em">🔐</span>
+          <span class="label">DCL — Data Control Language</span>
+        </div>
+        <div class="desc">Права доступа</div>
+        <ul>
+          <li><span class="pt">*</span><span><code>GRANT</code> — разрешение на операции</span></li>
+          <li><span class="pt">*</span><span><code>REVOKE</code> — отзыв разрешений</span></li>
+          <li><span class="pt">*</span><span><code>DENY</code> — явный запрет</span></li>
+        </ul>
+      </div>
+
+      <div class="card check orange">
+        <div class="card-head">
+          <span class="em">🔄</span>
+          <span class="label">TCL — Transaction Control Language</span>
+        </div>
+        <div class="desc">Управление транзакциями</div>
+        <ul>
+          <li><span class="pt">*</span><span><code>BEGIN</code> / <code>COMMIT</code> — объявление и фиксация транзакции</span></li>
+          <li><span class="pt">*</span><span><code>ROLLBACK</code> — откат изменений</span></li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- БРОКЕРЫ СООБЩЕНИЙ -->
+  <section class="section">
+    <div class="card term" style="margin-bottom:14px;">
+      <div class="card-head">
+        <span class="em">📨</span>
+        <span class="label">Брокеры сообщений<small>Message Brokers</small></span>
+      </div>
+      <div class="desc">Посредник между отправителем и получателем сообщений — <b>Kafka, RabbitMQ, ActiveMQ</b></div>
+    </div>
+
+    <div class="grid grid-2">
+
+      <div class="card row">
+        <div class="card-head">
+          <span class="em">📤</span>
+          <span class="label">Producer</span>
+        </div>
+        <div class="line">
+          <span class="v">Отправитель — создаёт и отправляет сообщения в топик</span>
+        </div>
+      </div>
+
+      <div class="card row purple">
+        <div class="card-head">
+          <span class="em">📥</span>
+          <span class="label">Consumer</span>
+        </div>
+        <div class="line">
+          <span class="v">Потребитель — читает сообщения из топика</span>
+        </div>
+      </div>
+
+      <div class="card row green">
+        <div class="card-head">
+          <span class="em">📂</span>
+          <span class="label">Topic</span>
+        </div>
+        <div class="line">
+          <span class="v">Топик — тема с разделами (категория сообщений)</span>
+        </div>
+      </div>
+
+      <div class="card row orange">
+        <div class="card-head">
+          <span class="em">🧩</span>
+          <span class="label">Partitions</span>
+        </div>
+        <div class="line">
+          <span class="v">Разделы — распределение данных внутри топика для параллельной обработки</span>
+        </div>
+      </div>
+
+      <div class="card row teal">
+        <div class="card-head">
+          <span class="em">📍</span>
+          <span class="label">Offset</span>
+        </div>
+        <div class="line">
+          <span class="v">Уникальный номер сообщения внутри раздела</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ЛОГИРОВАНИЕ -->
+  <section class="section">
+    <div class="card term" style="margin-bottom:14px;">
+      <div class="card-head">
+        <span class="em">📝</span>
+        <span class="label">Логирование<small>Logging</small></span>
+      </div>
+      <div class="desc">Запись событий: сбоев, ошибок, подозрительных действий (вид взлома), информационных сообщений</div>
+    </div>
+
+    <div class="grid grid-2">
+
+      <div class="card log fatal">
+        <div class="card-head">
+          <span class="lvl">FATAL</span>
+          <span class="label">Тотальный сбой, приложение падает</span>
+        </div>
+      </div>
+
+      <div class="card log error">
+        <div class="card-head">
+          <span class="lvl">ERROR</span>
+          <span class="label">Некорректная работа, но приложение живёт</span>
+        </div>
+      </div>
+
+      <div class="card log warn">
+        <div class="card-head">
+          <span class="lvl">WARN</span>
+          <span class="label">Предупреждение (потенциальная проблема)</span>
+        </div>
+      </div>
+
+      <div class="card log info">
+        <div class="card-head">
+          <span class="lvl">INFO</span>
+          <span class="label">Информация о работе приложения (старт, остановка, бизнес-события)</span>
+        </div>
+      </div>
+
+      <div class="card log debug">
+        <div class="card-head">
+          <span class="lvl">DEBUG</span>
+          <span class="label">Детальная информация для разработчиков (старт/пауза методов)</span>
+        </div>
+      </div>
+
+      <div class="card log trace">
+        <div class="card-head">
+          <span class="lvl">TRACE</span>
+          <span class="label">Мельчайшая запись процесса (почти каждая строчка кода)</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- КЭШ И СОСТОЯНИЕ -->
+  <section class="section">
+    <div class="grid grid-2">
+
+      <div class="card term">
+        <div class="card-head">
+          <span class="em">📄</span>
+          <span class="label">Кэш</span>
+        </div>
+        <div class="desc">Копии страниц/данных для быстрого доступа, хранятся в <b>оперативной памяти</b><br>
+        <b>Примеры:</b> Redis, Memcached, CDN</div>
+      </div>
+
+      <div class="card term orange">
+        <div class="card-head">
+          <span class="em">🍪</span>
+          <span class="label">Куки (Cookies)</span>
+        </div>
+        <div class="desc">Служебные файлы, хранящиеся <b>локально в браузере</b> пользователя</div>
+      </div>
+
+      <div class="card term green">
+        <div class="card-head">
+          <span class="em">🔐</span>
+          <span class="label">Сессия (Session)</span>
+        </div>
+        <div class="desc">Данные о пользователе, хранящиеся <b>на сервере</b> (обычно в Redis или БД)</div>
+      </div>
+
+      <div class="card term purple">
+        <div class="card-head">
+          <span class="em">💡</span>
+          <span class="label">Важно</span>
+        </div>
+        <div class="desc">Куки хранят только <b>ID сессии</b>, а сами данные — на сервере</div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+<script>
+(function(){
+  const container = document.getElementById('floaters');
+
+  const shapes = [
+    `<svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg">
+       <rect x="10" y="6" width="40" height="26" rx="3" fill="#eaf1fe" stroke="#4a7fe8" stroke-width="1.6"/>
+       <rect x="4" y="32" width="52" height="5" rx="2.5" fill="#4a7fe8"/>
+     </svg>`,
+    `<svg viewBox="0 0 30 55" xmlns="http://www.w3.org/2000/svg">
+       <rect x="4" y="4" width="22" height="47" rx="6" fill="#eaf1fe" stroke="#4a7fe8" stroke-width="1.6"/>
+       <circle cx="15" cy="46" r="2" fill="#4a7fe8"/>
+     </svg>`,
+    `<svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+       <circle cx="25" cy="25" r="18" fill="none" stroke="#48b87e" stroke-width="3"/>
+       <circle cx="25" cy="25" r="7" fill="#48b87e" opacity=".55"/>
+     </svg>`,
+    `<svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg">
+       <path d="M18 32 h26 a10 10 0 0 0 0 -20 a14 14 0 0 0 -26 -4 a10 10 0 0 0 0 24 z"
+             fill="#eaf1fe" stroke="#4a7fe8" stroke-width="1.6"/>
+     </svg>`,
+    `<svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg">
+       <polyline points="12,12 4,20 12,28" fill="none" stroke="#9a6ff0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+       <polyline points="48,12 56,20 48,28" fill="none" stroke="#9a6ff0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+       <line x1="34" y1="10" x2="26" y2="30" stroke="#9a6ff0" stroke-width="3" stroke-linecap="round"/>
+     </svg>`
+  ];
+
+  const count = window.innerWidth < 700 ? 10 : 16;
+
+  for (let i = 0; i < count; i++){
+    const el = document.createElement('div');
+    el.className = 'floater';
+    const size = 30 + Math.random() * 50;
+    el.style.width = size + 'px';
+    el.style.height = size * 0.8 + 'px';
+    el.style.left = Math.random() * 95 + 'vw';
+    el.style.top = (105 + Math.random() * 40) + 'vh';
+    el.style.opacity = (0.08 + Math.random() * 0.14).toFixed(2);
+    el.style.animationDuration = (22 + Math.random() * 22) + 's';
+    el.style.animationDelay = '-' + (Math.random() * 25) + 's';
+    el.innerHTML = shapes[Math.floor(Math.random() * shapes.length)];
+    container.appendChild(el);
+  }
+})();
+</script>
+
+</body>
+</html>

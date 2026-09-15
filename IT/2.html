@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Компиляция, парадигмы, роли и методологии</title>
+<style>
+  :root{
+    --blue:#4a7fe8;
+    --blue-dark:#2c56b8;
+    --blue-soft:#eaf1fe;
+    --purple:#9a6ff0;
+    --purple-soft:#f2ecfe;
+    --green:#48b87e;
+    --green-soft:#e8f7ee;
+    --pink:#e86a9c;
+    --pink-soft:#fdeaf2;
+    --orange:#f0954c;
+    --orange-soft:#fef3e8;
+    --yellow:#f4c542;
+    --yellow-soft:#fff8e0;
+    --teal:#3ab8c8;
+    --teal-soft:#e6f7f9;
+    --text:#243447;
+    --text-soft:#57697e;
+    --muted:#8ea1b5;
+    --line:#e6edf6;
+    --shadow-sm:0 4px 18px rgba(74,127,232,.08);
+    --shadow:0 14px 40px rgba(74,127,232,.12);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+
+  body{
+    font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;
+    color:var(--text);
+    line-height:1.6;
+    background:
+      radial-gradient(circle at 8% 5%, rgba(154,111,240,.10) 0%, transparent 40%),
+      radial-gradient(circle at 92% 12%, rgba(74,127,232,.10) 0%, transparent 42%),
+      radial-gradient(circle at 50% 100%, rgba(72,184,126,.08) 0%, transparent 45%),
+      linear-gradient(180deg,#fbfdff 0%, #f4f8fe 100%);
+    min-height:100vh;
+    overflow-x:hidden;
+    padding:60px 0 80px;
+    font-size:16px;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .aurora{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+  .orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:.32;animation:drift 30s ease-in-out infinite;}
+  .orb-1{width:520px;height:520px;background:radial-gradient(circle,#9a6ff0,transparent 70%);top:-160px;left:-140px;}
+  .orb-2{width:600px;height:600px;background:radial-gradient(circle,#4a7fe8,transparent 70%);top:30%;right:-200px;animation-delay:-10s;opacity:.26;}
+  .orb-3{width:480px;height:480px;background:radial-gradient(circle,#48b87e,transparent 70%);bottom:-160px;left:15%;animation-delay:-20s;opacity:.22;}
+  @keyframes drift{
+    0%,100%{transform:translate(0,0) scale(1);}
+    33%{transform:translate(70px,-50px) scale(1.08);}
+    66%{transform:translate(-50px,60px) scale(.95);}
+  }
+
+  .floater{
+    position:fixed;opacity:.14;pointer-events:none;z-index:0;
+    animation:floatUp linear infinite;will-change:transform;
+  }
+  .floater svg{display:block;width:100%;height:100%;}
+  @keyframes floatUp{
+    0%  {transform:translate3d(0, 20px, 0) rotate(0deg);}
+    50% {transform:translate3d(30px, -80px, 0) rotate(14deg);}
+    100%{transform:translate3d(0, -180px, 0) rotate(0deg);}
+  }
+
+  .wrap{
+    position:relative;z-index:2;max-width:1100px;margin:0 auto;padding:0 24px;
+  }
+
+  .title{
+    text-align:center;
+    margin-bottom:50px;
+  }
+  .title h1{
+    font-size:clamp(1.5rem,3.4vw,2.3rem);
+    font-weight:800;
+    letter-spacing:-.6px;
+    background:linear-gradient(135deg,var(--blue) 0%,var(--purple) 50%,var(--pink) 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    line-height:1.2;
+  }
+
+  .section{margin-bottom:44px;}
+
+  .grid{display:grid;gap:14px;}
+  .grid-2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr));}
+  .grid-3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr));}
+  .grid-4{grid-template-columns:repeat(auto-fit,minmax(180px,1fr));}
+  .grid-5{grid-template-columns:repeat(auto-fit,minmax(160px,1fr));}
+
+  .card{
+    background:#fff;
+    border-radius:18px;
+    padding:22px 18px;
+    border:1px solid var(--line);
+    box-shadow:var(--shadow-sm);
+    transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    gap:10px;
+    position:relative;
+    overflow:hidden;
+  }
+  .card::before{
+    content:"";
+    position:absolute;
+    top:0;left:0;right:0;
+    height:4px;
+    background:linear-gradient(90deg,var(--blue),var(--purple));
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:transform .35s ease;
+  }
+  .card:hover::before{transform:scaleX(1);}
+  .card:hover{
+    transform:translateY(-5px);
+    box-shadow:var(--shadow);
+    border-color:rgba(74,127,232,.2);
+  }
+
+  .card .em{
+    font-size:2rem;
+    line-height:1;
+    display:block;
+  }
+  .card .label{
+    font-size:.98rem;
+    font-weight:700;
+    color:var(--text);
+    letter-spacing:-.2px;
+    line-height:1.35;
+  }
+
+  .card.big{
+    align-items:flex-start;
+    text-align:left;
+    padding:24px 22px;
+    gap:14px;
+  }
+  .card.big .card-head{
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  .card.big .card-head .em{
+    font-size:1.8rem;
+  }
+  .card.big .card-head .label{
+    font-size:1.08rem;
+    font-weight:800;
+  }
+  .card.big .subs{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+  }
+  .card.big .subs span{
+    font-size:.82rem;
+    font-weight:600;
+    color:var(--text-soft);
+    background:#f4f8fe;
+    padding:5px 12px;
+    border-radius:10px;
+    border:1px solid var(--line);
+    line-height:1.35;
+  }
+
+  .card.term{
+    align-items:flex-start;
+    text-align:left;
+    padding:22px 22px;
+    gap:12px;
+  }
+  .card.term .card-head{
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  .card.term .card-head .em{
+    font-size:1.6rem;
+  }
+  .card.term .card-head .label{
+    font-size:1.02rem;
+    font-weight:800;
+    color:var(--blue-dark);
+    letter-spacing:-.2px;
+    line-height:1.3;
+  }
+  .card.term .desc{
+    font-size:.9rem;
+    font-weight:500;
+    color:var(--text-soft);
+    line-height:1.55;
+  }
+  .card.term .desc b{color:var(--purple);font-weight:800;}
+
+  /* Роль-карточка (компактная с описанием в скобках) */
+  .card.role{
+    align-items:center;
+    text-align:center;
+    padding:20px 16px;
+    gap:8px;
+  }
+  .card.role .em{
+    font-size:1.9rem;
+  }
+  .card.role .label{
+    font-size:.95rem;
+    font-weight:800;
+    color:var(--text);
+    line-height:1.3;
+  }
+  .card.role .desc{
+    font-size:.8rem;
+    font-weight:600;
+    color:var(--text-soft);
+    line-height:1.4;
+  }
+
+  .card.purple::before{background:linear-gradient(90deg,var(--purple),var(--pink));}
+  .card.green::before{background:linear-gradient(90deg,var(--green),var(--teal));}
+  .card.pink::before{background:linear-gradient(90deg,var(--pink),var(--orange));}
+  .card.orange::before{background:linear-gradient(90deg,var(--orange),var(--yellow));}
+  .card.yellow::before{background:linear-gradient(90deg,var(--yellow),var(--orange));}
+  .card.teal::before{background:linear-gradient(90deg,var(--teal),var(--blue));}
+
+  .footer{
+    text-align:center;
+    color:var(--muted);
+    font-size:.8rem;
+    padding:40px 24px 0;
+    position:relative;z-index:2;
+  }
+
+  @media(max-width:520px){
+    body{padding:36px 0 60px;}
+    .wrap{padding:0 16px;}
+    .card{padding:18px 14px;}
+    .card .em{font-size:1.7rem;}
+    .card .label{font-size:.9rem;}
+    .card.big{padding:20px 16px;}
+    .card.big .card-head .em{font-size:1.5rem;}
+    .card.big .card-head .label{font-size:.98rem;}
+    .card.big .subs span{font-size:.76rem;padding:4px 10px;}
+    .card.term{padding:18px 16px;}
+    .card.term .card-head .em{font-size:1.4rem;}
+    .card.term .card-head .label{font-size:.95rem;}
+    .card.term .desc{font-size:.84rem;}
+    .card.role{padding:16px 12px;}
+    .card.role .em{font-size:1.6rem;}
+    .card.role .label{font-size:.88rem;}
+    .card.role .desc{font-size:.74rem;}
+    .floater{opacity:.10;}
+    .section{margin-bottom:32px;}
+  }
+
+  @media(prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none !important;transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<div class="aurora">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+</div>
+<div id="floaters"></div>
+
+<main class="wrap">
+
+  <div class="title">
+    <h1>⚙️ Компиляция · Парадигмы · Команда · Методологии 🧩</h1>
+  </div>
+
+  <!-- ТИПЫ КОМПИЛЯЦИИ -->
+  <section class="section">
+    <div class="grid grid-2">
+
+      <div class="card term">
+        <div class="card-head">
+          <span class="em">⚡</span>
+          <span class="label">Компилируемый<small>Машинный код целиком</small></span>
+        </div>
+        <div class="desc">Превращается в машинный код целиком до запуска — <b>C++, Go</b></div>
+      </div>
+
+      <div class="card term teal">
+        <div class="card-head">
+          <span class="em">📜</span>
+          <span class="label">Интерпретируемый<small>Построчно</small></span>
+        </div>
+        <div class="desc">Исполняется построчно без компиляции в машинный код — <b>Python, JS</b></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ПАРАДИГМЫ -->
+  <section class="section">
+    <div class="grid grid-3">
+
+      <div class="card term orange">
+        <div class="card-head">
+          <span class="em">⚡</span>
+          <span class="label">Императивная</span>
+        </div>
+        <div class="desc">Описание <b>«КАК»</b> делать — пошаговые инструкции</div>
+      </div>
+
+      <div class="card term green">
+        <div class="card-head">
+          <span class="em">📊</span>
+          <span class="label">Декларативная</span>
+        </div>
+        <div class="desc">Описание <b>«ЧТО»</b> получить — <b>SQL, HTML</b></div>
+      </div>
+
+      <div class="card term pink">
+        <div class="card-head">
+          <span class="em">🕰️</span>
+          <span class="label">Легаси</span>
+        </div>
+        <div class="desc">Устаревший код, который ещё используется</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- РОЛИ В КОМАНДЕ -->
+  <section class="section">
+    <div class="grid grid-3">
+
+      <div class="card role">
+        <span class="em">👤</span>
+        <span class="label">Аккаунт-менеджер</span>
+        <span class="desc">между клиентом и командой</span>
+      </div>
+
+      <div class="card role purple">
+        <span class="em">📈</span>
+        <span class="label">Продакт-менеджер</span>
+        <span class="desc">выход продукта</span>
+      </div>
+
+      <div class="card role teal">
+        <span class="em">📋</span>
+        <span class="label">Проджект-менеджер</span>
+        <span class="desc">дедлайны, требования, документы</span>
+      </div>
+
+      <div class="card role green">
+        <span class="em">📊</span>
+        <span class="label">Бизнес-аналитик</span>
+        <span class="desc">концепция</span>
+      </div>
+
+      <div class="card role orange">
+        <span class="em">⚙️</span>
+        <span class="label">Системный аналитик</span>
+        <span class="desc">техническая постановка</span>
+      </div>
+
+      <div class="card role pink">
+        <span class="em">🏗️</span>
+        <span class="label">Архитектор</span>
+        <span class="desc">структура системы</span>
+      </div>
+
+      <div class="card role">
+        <span class="em">✍️</span>
+        <span class="label">Технический писатель</span>
+        <span class="desc">документация</span>
+      </div>
+
+      <div class="card role purple">
+        <span class="em">🎨</span>
+        <span class="label">Верстальщик</span>
+        <span class="desc">вёрстка интерфейса</span>
+      </div>
+
+      <div class="card role teal">
+        <span class="em">💻</span>
+        <span class="label">Разработчик</span>
+        <span class="desc">Backend / Frontend</span>
+      </div>
+
+      <div class="card role green">
+        <span class="em">🔄</span>
+        <span class="label">ДевОпс</span>
+        <span class="desc">инфраструктура</span>
+      </div>
+
+      <div class="card role orange">
+        <span class="em">🧪</span>
+        <span class="label">Тестировщик</span>
+        <span class="desc">проверка качества</span>
+      </div>
+
+      <div class="card role pink">
+        <span class="em">💼</span>
+        <span class="label">Тимлид</span>
+        <span class="desc">организация команды</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- МЕТОДОЛОГИЯ / МОДЕЛЬ / ФРЕЙМВОРК / ФИЛОСОФИЯ -->
+  <section class="section">
+    <div class="grid grid-2">
+
+      <div class="card big">
+        <div class="card-head">
+          <span class="em">📐</span>
+          <span class="label">Методология</span>
+        </div>
+        <div class="subs">
+          <span>Принципы и правила работы</span>
+          <span>Scrum</span>
+          <span>Kanban</span>
+        </div>
+      </div>
+
+      <div class="card big purple">
+        <div class="card-head">
+          <span class="em">🧩</span>
+          <span class="label">Модель разработки</span>
+        </div>
+        <div class="subs">
+          <span>Абстрактное упрощение процесса</span>
+          <span>Waterfall</span>
+          <span>V-Model</span>
+          <span>Spiral</span>
+        </div>
+      </div>
+
+      <div class="card big green">
+        <div class="card-head">
+          <span class="em">🏗️</span>
+          <span class="label">Фреймворк</span>
+        </div>
+        <div class="subs">
+          <span>Готовое решение / каркас для разработки</span>
+          <span>Django</span>
+          <span>React</span>
+          <span>Spring</span>
+        </div>
+      </div>
+
+      <div class="card big orange">
+        <div class="card-head">
+          <span class="em">🌱</span>
+          <span class="label">Философия</span>
+        </div>
+        <div class="subs">
+          <span>Базовые ценности и подходы</span>
+          <span>Agile</span>
+          <span>Lean</span>
+          <span>DevOps</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+<script>
+(function(){
+  const container = document.getElementById('floaters');
+
+  const shapes = [
+    `<svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg">
+       <rect x="10" y="6" width="40" height="26" rx="3" fill="#eaf1fe" stroke="#4a7fe8" stroke-width="1.6"/>
+       <rect x="4" y="32" width="52" height="5" rx="2.5" fill="#4a7fe8"/>
+     </svg>`,
+    `<svg viewBox="0 0 30 55" xmlns="http://www.w3.org/2000/svg">
+       <rect x="4" y="4" width="22" height="47" rx="6" fill="#eaf1fe" stroke="#4a7fe8" stroke-width="1.6"/>
+       <circle cx="15" cy="46" r="2" fill="#4a7fe8"/>
+     </svg>`,
+    `<svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+       <circle cx="25" cy="25" r="18" fill="none" stroke="#48b87e" stroke-width="3"/>
+       <circle cx="25" cy="25" r="7" fill="#48b87e" opacity=".55"/>
+     </svg>`,
+    `<svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg">
+       <path d="M18 32 h26 a10 10 0 0 0 0 -20 a14 14 0 0 0 -26 -4 a10 10 0 0 0 0 24 z"
+             fill="#eaf1fe" stroke="#4a7fe8" stroke-width="1.6"/>
+     </svg>`,
+    `<svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg">
+       <polyline points="12,12 4,20 12,28" fill="none" stroke="#9a6ff0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+       <polyline points="48,12 56,20 48,28" fill="none" stroke="#9a6ff0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+       <line x1="34" y1="10" x2="26" y2="30" stroke="#9a6ff0" stroke-width="3" stroke-linecap="round"/>
+     </svg>`
+  ];
+
+  const count = window.innerWidth < 700 ? 10 : 16;
+
+  for (let i = 0; i < count; i++){
+    const el = document.createElement('div');
+    el.className = 'floater';
+    const size = 30 + Math.random() * 50;
+    el.style.width = size + 'px';
+    el.style.height = size * 0.8 + 'px';
+    el.style.left = Math.random() * 95 + 'vw';
+    el.style.top = (105 + Math.random() * 40) + 'vh';
+    el.style.opacity = (0.08 + Math.random() * 0.14).toFixed(2);
+    el.style.animationDuration = (22 + Math.random() * 22) + 's';
+    el.style.animationDelay = '-' + (Math.random() * 25) + 's';
+    el.innerHTML = shapes[Math.floor(Math.random() * shapes.length)];
+    container.appendChild(el);
+  }
+})();
+</script>
+
+</body>
+</html>

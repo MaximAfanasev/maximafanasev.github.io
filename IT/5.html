@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Сети · API · Архитектура · Базы данных</title>
+	<style>
+		:root {
+			--blue: #4a7fe8;
+			--blue-dark: #2c56b8;
+			--blue-soft: #eaf1fe;
+			--purple: #9a6ff0;
+			--purple-soft: #f2ecfe;
+			--green: #48b87e;
+			--green-soft: #e8f7ee;
+			--pink: #e86a9c;
+			--pink-soft: #fdeaf2;
+			--orange: #f0954c;
+			--orange-soft: #fef3e8;
+			--yellow: #f4c542;
+			--yellow-soft: #fff8e0;
+			--teal: #3ab8c8;
+			--teal-soft: #e6f7f9;
+			--text: #243447;
+			--text-soft: #57697e;
+			--muted: #8ea1b5;
+			--line: #e6edf6;
+			--shadow-sm: 0 4px 18px rgba(74, 127, 232, .08);
+			--shadow: 0 14px 40px rgba(74, 127, 232, .12);
+		}
+
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+			color: var(--text);
+			line-height: 1.6;
+			background:
+				radial-gradient(circle at 8% 5%, rgba(154, 111, 240, .10) 0%, transparent 40%),
+				radial-gradient(circle at 92% 12%, rgba(74, 127, 232, .10) 0%, transparent 42%),
+				radial-gradient(circle at 50% 100%, rgba(72, 184, 126, .08) 0%, transparent 45%),
+				linear-gradient(180deg, #fbfdff 0%, #f4f8fe 100%);
+			min-height: 100vh;
+			overflow-x: hidden;
+			padding: 60px 0 80px;
+			font-size: 16px;
+			-webkit-font-smoothing: antialiased;
+		}
+
+		.aurora {
+			position: fixed;
+			inset: 0;
+			pointer-events: none;
+			z-index: 0;
+			overflow: hidden;
+		}
+
+		.orb {
+			position: absolute;
+			border-radius: 50%;
+			filter: blur(90px);
+			opacity: .32;
+			animation: drift 30s ease-in-out infinite;
+		}
+
+		.orb-1 {
+			width: 520px;
+			height: 520px;
+			background: radial-gradient(circle, #9a6ff0, transparent 70%);
+			top: -160px;
+			left: -140px;
+		}
+
+		.orb-2 {
+			width: 600px;
+			height: 600px;
+			background: radial-gradient(circle, #4a7fe8, transparent 70%);
+			top: 30%;
+			right: -200px;
+			animation-delay: -10s;
+			opacity: .26;
+		}
+
+		.orb-3 {
+			width: 480px;
+			height: 480px;
+			background: radial-gradient(circle, #48b87e, transparent 70%);
+			bottom: -160px;
+			left: 15%;
+			animation-delay: -20s;
+			opacity: .22;
+		}
+
+		@keyframes drift {
+
+			0%,
+			100% {
+				transform: translate(0, 0) scale(1);
+			}
+
+			33% {
+				transform: translate(70px, -50px) scale(1.08);
+			}
+
+			66% {
+				transform: translate(-50px, 60px) scale(.95);
+			}
+		}
+
+		.floater {
+			position: fixed;
+			opacity: .14;
+			pointer-events: none;
+			z-index: 0;
+			animation: floatUp linear infinite;
+			will-change: transform;
+		}
+
+		.floater svg {
+			display: block;
+			width: 100%;
+			height: 100%;
+		}
+
+		@keyframes floatUp {
+			0% {
+				transform: translate3d(0, 20px, 0) rotate(0deg);
+			}
+
+			50% {
+				transform: translate3d(30px, -80px, 0) rotate(14deg);
+			}
+
+			100% {
+				transform: translate3d(0, -180px, 0) rotate(0deg);
+			}
+		}
+
+		.wrap {
+			position: relative;
+			z-index: 2;
+			max-width: 1100px;
+			margin: 0 auto;
+			padding: 0 24px;
+		}
+
+		.title {
+			text-align: center;
+			margin-bottom: 50px;
+		}
+
+		.title h1 {
+			font-size: clamp(1.5rem, 3.4vw, 2.2rem);
+			font-weight: 800;
+			letter-spacing: -.6px;
+			background: linear-gradient(135deg, var(--blue) 0%, var(--purple) 50%, var(--pink) 100%);
+			-webkit-background-clip: text;
+			background-clip: text;
+			color: transparent;
+			line-height: 1.2;
+		}
+
+		.section {
+			margin-bottom: 44px;
+		}
+
+		.grid {
+			display: grid;
+			gap: 14px;
+		}
+
+		.grid-2 {
+			grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		}
+
+		.grid-3 {
+			grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+		}
+
+		.grid-4 {
+			grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		}
+
+		.card {
+			background: #fff;
+			border-radius: 18px;
+			padding: 22px 18px;
+			border: 1px solid var(--line);
+			box-shadow: var(--shadow-sm);
+			transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+			gap: 10px;
+			position: relative;
+			overflow: hidden;
+		}
+
+		.card::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			height: 4px;
+			background: linear-gradient(90deg, var(--blue), var(--purple));
+			transform: scaleX(0);
+			transform-origin: left;
+			transition: transform .35s ease;
+		}
+
+		.card:hover::before {
+			transform: scaleX(1);
+		}
+
+		.card:hover {
+			transform: translateY(-5px);
+			box-shadow: var(--shadow);
+			border-color: rgba(74, 127, 232, .2);
+		}
+
+		.card .em {
+			font-size: 2rem;
+			line-height: 1;
+			display: block;
+		}
+
+		.card .label {
+			font-size: .98rem;
+			font-weight: 700;
+			color: var(--text);
+			letter-spacing: -.2px;
+			line-height: 1.35;
+		}
+
+		/* Карточка-термин с описанием */
+		.card.term {
+			align-items: flex-start;
+			text-align: left;
+			padding: 22px 22px;
+			gap: 12px;
+		}
+
+		.card.term .card-head {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+		}
+
+		.card.term .card-head .em {
+			font-size: 1.6rem;
+		}
+
+		.card.term .card-head .label {
+			font-size: 1.02rem;
+			font-weight: 800;
+			color: var(--blue-dark);
+			letter-spacing: -.2px;
+			line-height: 1.3;
+		}
+
+		.card.term .card-head .label small {
+			display: block;
+			font-size: .72rem;
+			font-weight: 700;
+			color: var(--muted);
+			letter-spacing: .6px;
+			text-transform: uppercase;
+			margin-top: 2px;
+		}
+
+		.card.term .desc {
+			font-size: .9rem;
+			font-weight: 500;
+			color: var(--text-soft);
+			line-height: 1.55;
+		}
+
+		.card.term .desc b {
+			color: var(--purple);
+			font-weight: 800;
+		}
+
+		.card.term .desc code {
+			background: #f4f8fe;
+			border: 1px solid var(--line);
+			border-radius: 6px;
+			padding: 1px 6px;
+			font-size: .85em;
+			color: var(--blue-dark);
+			font-family: 'Consolas', 'Courier New', monospace;
+		}
+
+		/* Карточка со списком-чеклистом */
+		.card.check {
+			align-items: flex-start;
+			text-align: left;
+			padding: 24px 22px;
+			gap: 14px;
+		}
+
+		.card.check .card-head {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+		}
+
+		.card.check .card-head .em {
+			font-size: 1.7rem;
+		}
+
+		.card.check .card-head .label {
+			font-size: 1.05rem;
+			font-weight: 800;
+			color: var(--blue-dark);
+		}
+
+		.card.check ul {
+			list-style: none;
+			display: flex;
+			flex-direction: column;
+			gap: 8px;
+			width: 100%;
+		}
+
+		.card.check ul li {
+			display: flex;
+			gap: 10px;
+			align-items: flex-start;
+			font-size: .88rem;
+			color: var(--text-soft);
+			line-height: 1.5;
+			padding: 8px 12px;
+			background: #f9fbfe;
+			border: 1px solid var(--line);
+			border-radius: 10px;
+		}
+
+		.card.check ul li .pt {
+			flex-shrink: 0;
+			font-weight: 800;
+			color: var(--purple);
+		}
+
+		.card.check ul li b {
+			color: var(--text);
+			font-weight: 700;
+		}
+
+		/* Большая карточка с подпунктами */
+		.card.big {
+			align-items: flex-start;
+			text-align: left;
+			padding: 24px 22px;
+			gap: 14px;
+		}
+
+		.card.big .card-head {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+		}
+
+		.card.big .card-head .em {
+			font-size: 1.8rem;
+		}
+
+		.card.big .card-head .label {
+			font-size: 1.08rem;
+			font-weight: 800;
+			line-height: 1.3;
+		}
+
+		.card.big .subs {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 6px;
+		}
+
+		.card.big .subs span {
+			font-size: .82rem;
+			font-weight: 600;
+			color: var(--text-soft);
+			background: #f4f8fe;
+			padding: 5px 12px;
+			border-radius: 10px;
+			border: 1px solid var(--line);
+			line-height: 1.35;
+		}
+
+		/* Карточка с кодом/примером */
+		.card.code {
+			align-items: flex-start;
+			text-align: left;
+			padding: 22px 22px;
+			gap: 12px;
+		}
+
+		.card.code .card-head {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+		}
+
+		.card.code .card-head .em {
+			font-size: 1.6rem;
+		}
+
+		.card.code .card-head .label {
+			font-size: 1.02rem;
+			font-weight: 800;
+			color: var(--blue-dark);
+			letter-spacing: -.2px;
+			line-height: 1.3;
+		}
+
+		.card.code .card-head .label small {
+			display: block;
+			font-size: .72rem;
+			font-weight: 700;
+			color: var(--muted);
+			letter-spacing: .6px;
+			text-transform: uppercase;
+			margin-top: 2px;
+		}
+
+		.card.code .desc {
+			font-size: .88rem;
+			color: var(--text-soft);
+			line-height: 1.55;
+		}
+
+		.card.code pre {
+			width: 100%;
+			background: #f4f8fe;
+			border: 1px solid var(--line);
+			border-radius: 10px;
+			padding: 10px 14px;
+			font-family: 'Consolas', 'Courier New', monospace;
+			font-size: .82rem;
+			color: var(--blue-dark);
+			line-height: 1.5;
+			overflow-x: auto;
+			white-space: pre;
+			margin-top: 6px;
+		}
+
+		/* Таблица сравнения */
+		.table-wrap {
+			overflow-x: auto;
+			border-radius: 18px;
+			border: 1px solid var(--line);
+			background: #fff;
+			box-shadow: var(--shadow-sm);
+		}
+
+		.table-wrap table {
+			width: 100%;
+			border-collapse: collapse;
+			font-size: .88rem;
+			min-width: 600px;
+		}
+
+		.table-wrap thead th {
+			background: linear-gradient(90deg, var(--blue), var(--purple));
+			color: #fff;
+			font-weight: 800;
+			text-align: left;
+			padding: 14px 16px;
+			font-size: .85rem;
+			letter-spacing: .3px;
+		}
+
+		.table-wrap thead th:first-child {
+			border-top-left-radius: 17px;
+		}
+
+		.table-wrap thead th:last-child {
+			border-top-right-radius: 17px;
+		}
+
+		.table-wrap tbody td {
+			padding: 12px 16px;
+			border-bottom: 1px solid var(--line);
+			color: var(--text-soft);
+			vertical-align: top;
+		}
+
+		.table-wrap tbody tr:last-child td {
+			border-bottom: none;
+		}
+
+		.table-wrap tbody tr:nth-child(even) {
+			background: #f9fbfe;
+		}
+
+		.table-wrap tbody td b {
+			color: var(--text);
+			font-weight: 700;
+		}
+
+		.table-wrap tbody td .num {
+			display: inline-block;
+			background: var(--blue-soft);
+			color: var(--blue-dark);
+			font-size: .72rem;
+			font-weight: 800;
+			border-radius: 6px;
+			padding: 1px 7px;
+			margin-right: 6px;
+		}
+
+		.card.purple::before {
+			background: linear-gradient(90deg, var(--purple), var(--pink));
+		}
+
+		.card.green::before {
+			background: linear-gradient(90deg, var(--green), var(--teal));
+		}
+
+		.card.pink::before {
+			background: linear-gradient(90deg, var(--pink), var(--orange));
+		}
+
+		.card.orange::before {
+			background: linear-gradient(90deg, var(--orange), var(--yellow));
+		}
+
+		.card.yellow::before {
+			background: linear-gradient(90deg, var(--yellow), var(--orange));
+		}
+
+		.card.teal::before {
+			background: linear-gradient(90deg, var(--teal), var(--blue));
+		}
+
+		.footer {
+			text-align: center;
+			color: var(--muted);
+			font-size: .8rem;
+			padding: 40px 24px 0;
+			position: relative;
+			z-index: 2;
+		}
+
+		@media(max-width:520px) {
+			body {
+				padding: 36px 0 60px;
+			}
+
+			.wrap {
+				padding: 0 16px;
+			}
+
+			.card {
+				padding: 18px 14px;
+			}
+
+			.card .em {
+				font-size: 1.7rem;
+			}
+
+			.card .label {
+				font-size: .9rem;
+			}
+
+			.card.term {
+				padding: 18px 16px;
+			}
+
+			.card.term .card-head .em {
+				font-size: 1.4rem;
+			}
+
+			.card.term .card-head .label {
+				font-size: .95rem;
+			}
+
+			.card.term .desc {
+				font-size: .84rem;
+			}
+
+			.card.check {
+				padding: 20px 16px;
+			}
+
+			.card.check .card-head .em {
+				font-size: 1.5rem;
+			}
+
+			.card.check .card-head .label {
+				font-size: .98rem;
+			}
+
+			.card.check ul li {
+				font-size: .82rem;
+				padding: 7px 10px;
+			}
+
+			.card.big {
+				padding: 20px 16px;
+			}
+
+			.card.big .card-head .em {
+				font-size: 1.5rem;
+			}
+
+			.card.big .card-head .label {
+				font-size: .98rem;
+			}
+
+			.card.big .subs span {
+				font-size: .76rem;
+				padding: 4px 10px;
+			}
+
+			.card.code {
+				padding: 18px 16px;
+			}
+
+			.card.code .card-head .em {
+				font-size: 1.4rem;
+			}
+
+			.card.code .card-head .label {
+				font-size: .95rem;
+			}
+
+			.card.code pre {
+				font-size: .76rem;
+				padding: 8px 10px;
+			}
+
+			.floater {
+				opacity: .10;
+			}
+
+			.section {
+				margin-bottom: 32px;
+			}
+		}
+
+		@media(prefers-reduced-motion:reduce) {
+
+			*,
+			*::before,
+			*::after {
+				animation: none !important;
+				transition: none !important;
+			}
+		}
+
+	</style>
+</head>
+
+<body>
+
+	<div class="aurora">
+		<div class="orb orb-1"></div>
+		<div class="orb orb-2"></div>
+		<div class="orb orb-3"></div>
+	</div>
+	<div id="floaters"></div>
+
+	<main class="wrap">
+
+		<div class="title">
+			<h1>🌐 Сети · API · Архитектура · Базы данных 💾</h1>
+		</div>
+
+		<!-- МОДЕЛИ СЕТЕВОГО ВЗАИМОДЕЙСТВИЯ -->
+		<section class="section">
+			<div class="grid grid-2">
+				<div class="card term">
+					<div class="card-head">
+						<span class="em">📚</span>
+						<span class="label">OSI<small>Open Systems Connection</small></span>
+					</div>
+					<div class="desc">Теоретическая <b>7-уровневая модель</b> сетевого взаимодействия</div>
+				</div>
+
+				<div class="card term purple">
+					<div class="card-head">
+						<span class="em">🌐</span>
+						<span class="label">TCP/IP<small>Transmission Control Protocol / Internet Protocol</small></span>
+					</div>
+					<div class="desc">Практический стек протоколов — <b>4 уровня</b></div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ТАБЛИЦА СРАВНЕНИЯ OSI / TCP/IP -->
+		<section class="section">
+			<div class="table-wrap">
+				<table>
+					<thead>
+						<tr>
+							<th>Уровень OSI</th>
+							<th>TCP/IP</th>
+							<th>Что делает / Примеры</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><span class="num">7</span><b>Прикладной</b></td>
+							<td><b>Прикладной</b></td>
+							<td>Общение приложений: <b>HTTP</b>, <b>SMTP</b> (почта), <b>FTP</b> (файлы)</td>
+						</tr>
+						<tr>
+							<td><span class="num">6</span><b>Сессионный</b> / <span class="num">5</span><b>Представительский</b></td>
+							<td>—</td>
+							<td>Управление сессией, шифрование, кодирование данных</td>
+						</tr>
+						<tr>
+							<td><span class="num">4</span><b>Транспортный</b></td>
+							<td><b>Транспортный</b></td>
+							<td>Доставка данных: <b>TCP</b> (надёжный) и <b>UDP</b> (быстрый)</td>
+						</tr>
+						<tr>
+							<td><span class="num">3</span><b>Сетевой</b></td>
+							<td><b>Межсетевой</b></td>
+							<td>Маршрутизация между сетями (<b>IP-адресация</b>)</td>
+						</tr>
+						<tr>
+							<td><span class="num">2</span><b>Канальный</b> / <span class="num">1</span><b>Физический</b></td>
+							<td><b>Канальный</b> (сетевой доступ)</td>
+							<td>Передача по физической среде: <b>Ethernet</b>, <b>Wi-Fi</b>, оптоволокно</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
+
+		<!-- КЛИЕНТ / СЕРВЕР / LAN / WAN -->
+		<section class="section">
+			<div class="grid grid-4">
+
+				<div class="card term">
+					<div class="card-head">
+						<span class="em">💻</span>
+						<span class="label">Клиент</span>
+					</div>
+					<div class="desc">Устройство, которое <b>запрашивает</b> информацию</div>
+				</div>
+
+				<div class="card term purple">
+					<div class="card-head">
+						<span class="em">🖥️</span>
+						<span class="label">Сервер</span>
+					</div>
+					<div class="desc">Устройство, которое <b>отдаёт</b> информацию</div>
+				</div>
+
+				<div class="card term green">
+					<div class="card-head">
+						<span class="em">📡</span>
+						<span class="label">LAN</span>
+					</div>
+					<div class="desc">Локальная сеть — <b>офис, дом</b></div>
+				</div>
+
+				<div class="card term teal">
+					<div class="card-head">
+						<span class="em">🌍</span>
+						<span class="label">WAN</span>
+					</div>
+					<div class="desc">Глобальная сеть — <b>Интернет</b></div>
+				</div>
+
+			</div>
+
+			<div class="card big pink" style="margin-top:14px;">
+				<div class="card-head">
+					<span class="em">🔐</span>
+					<span class="label">Безопасность / Шифрование</span>
+				</div>
+				<div class="subs">
+					<span>Данные шифруются на сессионном уровне (SSL/TLS), чтобы никто не мог прочитать трафик</span>
+				</div>
+			</div>
+		</section>
+
+		<!-- БАЗЫ ДАННЫХ -->
+		<section class="section">
+			<div class="card term">
+				<div class="card-head">
+					<span class="em">💾</span>
+					<span class="label">СУБД<small>Система Управления Базами Данных</small></span>
+				</div>
+				<div class="desc">Программное обеспечение для <b>хранения, изменения и обработки данных</b> — PostgreSQL, MySQL, Oracle, MongoDB</div>
+			</div>
+		</section>
+
+		<!-- АУТЕНТИФИКАЦИЯ И ТОКЕНЫ -->
+		<section class="section">
+			<div class="grid grid-4">
+
+				<div class="card term">
+					<div class="card-head">
+						<span class="em">🔑</span>
+						<span class="label">Токен аутентификации</span>
+					</div>
+					<div class="desc">Цифровой ключ, подтверждающий <b>личность</b></div>
+				</div>
+
+				<div class="card term purple">
+					<div class="card-head">
+						<span class="em">📜</span>
+						<span class="label">JWT<small>JSON Web Token</small></span>
+					</div>
+					<div class="desc">Компактный токен в формате JSON — содержит <b>данные пользователя и подпись</b></div>
+				</div>
+
+				<div class="card term orange">
+					<div class="card-head">
+						<span class="em">⏳</span>
+						<span class="label">Короткоживущий токен</span>
+					</div>
+					<div class="desc">Живёт <b>5–30 минут</b> (Access Token) — повышает безопасность</div>
+				</div>
+
+				<div class="card term green">
+					<div class="card-head">
+						<span class="em">🔗</span>
+						<span class="label">OAuth</span>
+					</div>
+					<div class="desc">Протокол, позволяющий войти через соцсеть (<b>Google, VK</b>) без передачи пароля</div>
+				</div>
+
+			</div>
+		</section>
+
+		<!-- АРХИТЕКТУРА ПРИЛОЖЕНИЙ -->
+		<section class="section">
+			<div class="grid grid-2">
+
+				<div class="card term">
+					<div class="card-head">
+						<span class="em">🏛️</span>
+						<span class="label">Монолит</span>
+					</div>
+					<div class="desc">Вся логика внутри <b>одной кодовой базы</b> (единый .jar / .exe)<br>✅ Просто развернуть, ❌ трудно масштабировать</div>
+				</div>
+
+				<div class="card term purple">
+					<div class="card-head">
+						<span class="em">🧩</span>
+						<span class="label">Микросервисы</span>
+					</div>
+					<div class="desc">Приложение разбито на <b>множество независимых сервисов</b><br>✅ Масштабируются по отдельности, ❌ сложное сетевое взаимодействие</div>
+				</div>
+
+				<div class="card term teal">
+					<div class="card-head">
+						<span class="em">🗄️</span>
+						<span class="label">Database Per Service</span>
+					</div>
+					<div class="desc">У каждого микросервиса <b>своя база данных</b> — изоляция данных</div>
+				</div>
+
+			</div>
+		</section>
+
+		<!-- API -->
+		<section class="section">
+			<div class="card term" style="margin-bottom:14px;">
+				<div class="card-head">
+					<span class="em">🔌</span>
+					<span class="label">API<small>Application Programming Interface</small></span>
+				</div>
+				<div class="desc">Правила и способы обмена данными между системами<br>
+					🔍 <b>Аналогия:</b> официант в ресторане — вы ему заказ (запрос), он приносит блюдо (ответ)<br>
+					🔗 <b>Endpoint</b> — конкретный URL-адресат, по которому стучатся к API (например, <code>/api/users</code>)</div>
+			</div>
+
+			<div class="grid grid-4">
+				<div class="card term">
+					<div class="card-head">
+						<span class="em">🌍</span>
+						<span class="label">Открытые (Public)</span>
+					</div>
+					<div class="desc">Доступны всем, нужен <b>API-ключ</b> для связи между серверами (не путать с токеном пользователя)</div>
+				</div>
+
+				<div class="card term purple">
+					<div class="card-head">
+						<span class="em">🤝</span>
+						<span class="label">Партнёрские</span>
+					</div>
+					<div class="desc">Доступны только <b>проверенным компаниям-партнёрам</b></div>
+				</div>
+
+				<div class="card term orange">
+					<div class="card-head">
+						<span class="em">🏢</span>
+						<span class="label">Внутренние</span>
+					</div>
+					<div class="desc">Только <b>внутри компании</b>, не торчат наружу</div>
+				</div>
+
+				<div class="card term teal">
+					<div class="card-head">
+						<span class="em">🧩</span>
+						<span class="label">Составные (Composite)</span>
+					</div>
+					<div class="desc">Один API, который <b>агрегирует данные</b> из нескольких других API</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- REST API -->
+		<section class="section">
+			<div class="card big green">
+				<div class="card-head">
+					<span class="em">🛰️</span>
+					<span class="label">REST API (Representational State Transfer)</span>
+				</div>
+				<div class="subs">
+					<span>Передача самоописываемого состояния — архитектурный стиль для веб-сервисов</span>
+				</div>
+			</div>
+
+			<div class="grid grid-3" style="margin-top:14px;">
+
+				<div class="card check">
+					<div class="card-head">
+						<span class="em">🖥️</span>
+						<span class="label">Клиент-серверная архитектура</span>
+					</div>
+					<ul>
+						<li><span class="pt">*</span><span>Разделение ответственности — <b>UI отдельно, данные отдельно</b></span></li>
+					</ul>
+				</div>
+
+				<div class="card check purple">
+					<div class="card-head">
+						<span class="em">🚫</span>
+						<span class="label">Отсутствие состояния (Stateless)</span>
+					</div>
+					<ul>
+						<li><span class="pt">*</span><span>Каждый запрос содержит <b>всю информацию</b> для выполнения — сессии не хранятся на сервере</span></li>
+					</ul>
+				</div>
+
+				<div class="card check orange">
+					<div class="card-head">
+						<span class="em">💾</span>
+						<span class="label">Кэшируемость</span>
+					</div>
+					<ul>
+						<li><span class="pt">*</span><span>Ответы должны маркироваться как <b>кэшируемые или нет</b></span></li>
+					</ul>
+				</div>
+
+				<div class="card check teal">
+					<div class="card-head">
+						<span class="em">🧩</span>
+						<span class="label">Единообразие интерфейса</span>
+					</div>
+					<ul>
+						<li><span class="pt">*</span><span>Стандартные методы: <b>GET, POST, PUT, DELETE</b></span></li>
+					</ul>
+				</div>
+
+				<div class="card check pink">
+					<div class="card-head">
+						<span class="em">🥞</span>
+						<span class="label">Слои (Layered System)</span>
+					</div>
+					<ul>
+						<li><span class="pt">*</span><span>Клиент не знает, работает ли он напрямую с сервером или <b>через прокси</b></span></li>
+					</ul>
+				</div>
+
+				<div class="card check green">
+					<div class="card-head">
+						<span class="em">📜</span>
+						<span class="label">Код по требованию (Code on Demand)</span>
+					</div>
+					<ul>
+						<li><span class="pt">*</span><span>Опционально: сервер может передавать клиенту <b>исполняемый код</b> (например, JavaScript)</span></li>
+					</ul>
+				</div>
+
+			</div>
+		</section>
+
+		<!-- ФОРМАТЫ ПЕРЕДАЧИ ДАННЫХ -->
+		<section class="section">
+			<div class="grid grid-2">
+
+				<div class="card code">
+					<div class="card-head">
+						<span class="em">📄</span>
+						<span class="label">XML<small>EXtensible Markup Language</small></span>
+					</div>
+					<div class="desc">Строгий, многословный формат. Используется в <b>SOAP</b> и старых корпоративных системах</div>
+					<pre>&lt;user&gt;&lt;name&gt;John&lt;/name&gt;&lt;/user&gt;</pre>
+				</div>
+
+				<div class="card code purple">
+					<div class="card-head">
+						<span class="em">📦</span>
+						<span class="label">JSON<small>JavaScript Object Notation</small></span>
+					</div>
+					<div class="desc">Лёгкий, человекочитаемый формат. Используется в <b>95% современных REST API</b></div>
+					<pre>{"user": {"name": "John"}}</pre>
+				</div>
+
+			</div>
+		</section>
+
+		<!-- SOAP API -->
+		<section class="section">
+			<div class="card term orange">
+				<div class="card-head">
+					<span class="em">⚠️</span>
+					<span class="label">SOAP API<small>Simple Object Access Protocol</small></span>
+				</div>
+				<div class="desc">SOAP — это <b>строгий протокол</b>, использующий XML и сложные стандарты (WS-Security). Часто используется в <b>банках и госструктурах</b><br>
+					✍️ <b>Отличие от REST:</b> REST — это стиль (архитектура), а SOAP — это именно <b>протокол</b> с жёсткими правилами</div>
+			</div>
+		</section>
+
+		<!-- GRAPHQL -->
+		<section class="section">
+			<div class="card code pink">
+				<div class="card-head">
+					<span class="em">📊</span>
+					<span class="label">GraphQL</span>
+				</div>
+				<div class="desc">Язык запросов к API, разработанный <b>Facebook</b><br>
+					<b>Отличие от REST:</b> клиент сам решает, какие поля ему нужны — не перекачивает лишние данные
+				</div>
+				<pre>{ user(id: 1) { name, email } }</pre>
+				<div class="desc" style="margin-top:6px;">— вернёт только имя и почту</div>
+			</div>
+		</section>
+
+		<!-- HTTP и АДРЕСАЦИЯ -->
+		<section class="section">
+			<div class="grid grid-3">
+
+				<div class="card term">
+					<div class="card-head">
+						<span class="em">🌐</span>
+						<span class="label">HTTP<small>HyperText Transfer Protocol</small></span>
+					</div>
+					<div class="desc">Протокол передачи гипертекста — <b>основа веба</b></div>
+				</div>
+
+				<div class="card term purple">
+					<div class="card-head">
+						<span class="em">🔗</span>
+						<span class="label">URI<small>Uniform Resource Identifier</small></span>
+					</div>
+					<div class="desc">Идентификатор ресурса — <b>общее понятие</b></div>
+				</div>
+
+				<div class="card term green">
+					<div class="card-head">
+						<span class="em">📍</span>
+						<span class="label">URL<small>Uniform Resource Locator</small></span>
+					</div>
+					<div class="desc">Конкретный адрес ресурса — <b>частный случай URI</b></div>
+				</div>
+
+			</div>
+
+			<div class="card big teal" style="margin-top:14px;">
+				<div class="card-head">
+					<span class="em">🧱</span>
+					<span class="label">Структура URL</span>
+				</div>
+				<div class="subs">
+					<span><b>http://</b> (протокол)</span>
+					<span>+</span>
+					<span><b>vk.ru</b> (доменное имя)</span>
+					<span>=</span>
+					<span>протокол + домен — это и есть <b>URI / URL</b></span>
+				</div>
+			</div>
+		</section>
+
+	</main>
+
+	<script>
+		(function() {
+			const container = document.getElementById('floaters');
+
+			const shapes = [
+				`<svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg">
+       <rect x="10" y="6" width="40" height="26" rx="3" fill="#eaf1fe" stroke="#4a7fe8" stroke-width="1.6"/>
+       <rect x="4" y="32" width="52" height="5" rx="2.5" fill="#4a7fe8"/>
+     </svg>`,
+				`<svg viewBox="0 0 30 55" xmlns="http://www.w3.org/2000/svg">
+       <rect x="4" y="4" width="22" height="47" rx="6" fill="#eaf1fe" stroke="#4a7fe8" stroke-width="1.6"/>
+       <circle cx="15" cy="46" r="2" fill="#4a7fe8"/>
+     </svg>`,
+				`<svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+       <circle cx="25" cy="25" r="18" fill="none" stroke="#48b87e" stroke-width="3"/>
+       <circle cx="25" cy="25" r="7" fill="#48b87e" opacity=".55"/>
+     </svg>`,
+				`<svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg">
+       <path d="M18 32 h26 a10 10 0 0 0 0 -20 a14 14 0 0 0 -26 -4 a10 10 0 0 0 0 24 z"
+             fill="#eaf1fe" stroke="#4a7fe8" stroke-width="1.6"/>
+     </svg>`,
+				`<svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg">
+       <polyline points="12,12 4,20 12,28" fill="none" stroke="#9a6ff0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+       <polyline points="48,12 56,20 48,28" fill="none" stroke="#9a6ff0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+       <line x1="34" y1="10" x2="26" y2="30" stroke="#9a6ff0" stroke-width="3" stroke-linecap="round"/>
+     </svg>`
+			];
+
+			const count = window.innerWidth < 700 ? 10 : 16;
+
+			for (let i = 0; i < count; i++) {
+				const el = document.createElement('div');
+				el.className = 'floater';
+				const size = 30 + Math.random() * 50;
+				el.style.width = size + 'px';
+				el.style.height = size * 0.8 + 'px';
+				el.style.left = Math.random() * 95 + 'vw';
+				el.style.top = (105 + Math.random() * 40) + 'vh';
+				el.style.opacity = (0.08 + Math.random() * 0.14).toFixed(2);
+				el.style.animationDuration = (22 + Math.random() * 22) + 's';
+				el.style.animationDelay = '-' + (Math.random() * 25) + 's';
+				el.innerHTML = shapes[Math.floor(Math.random() * shapes.length)];
+				container.appendChild(el);
+			}
+		})();
+
+	</script>
+
+</body>
+
+</html>

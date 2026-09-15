@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Git · DevOps · CI/CD · ООП</title>
+<style>
+  :root{
+    --blue:#4a7fe8;
+    --blue-dark:#2c56b8;
+    --blue-soft:#eaf1fe;
+    --purple:#9a6ff0;
+    --purple-soft:#f2ecfe;
+    --green:#48b87e;
+    --green-soft:#e8f7ee;
+    --pink:#e86a9c;
+    --pink-soft:#fdeaf2;
+    --orange:#f0954c;
+    --orange-soft:#fef3e8;
+    --yellow:#f4c542;
+    --yellow-soft:#fff8e0;
+    --teal:#3ab8c8;
+    --teal-soft:#e6f7f9;
+    --text:#243447;
+    --text-soft:#57697e;
+    --muted:#8ea1b5;
+    --line:#e6edf6;
+    --shadow-sm:0 4px 18px rgba(74,127,232,.08);
+    --shadow:0 14px 40px rgba(74,127,232,.12);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+
+  body{
+    font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;
+    color:var(--text);
+    line-height:1.6;
+    background:
+      radial-gradient(circle at 8% 5%, rgba(154,111,240,.10) 0%, transparent 40%),
+      radial-gradient(circle at 92% 12%, rgba(74,127,232,.10) 0%, transparent 42%),
+      radial-gradient(circle at 50% 100%, rgba(72,184,126,.08) 0%, transparent 45%),
+      linear-gradient(180deg,#fbfdff 0%, #f4f8fe 100%);
+    min-height:100vh;
+    overflow-x:hidden;
+    padding:60px 0 80px;
+    font-size:16px;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .aurora{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+  .orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:.32;animation:drift 30s ease-in-out infinite;}
+  .orb-1{width:520px;height:520px;background:radial-gradient(circle,#9a6ff0,transparent 70%);top:-160px;left:-140px;}
+  .orb-2{width:600px;height:600px;background:radial-gradient(circle,#4a7fe8,transparent 70%);top:30%;right:-200px;animation-delay:-10s;opacity:.26;}
+  .orb-3{width:480px;height:480px;background:radial-gradient(circle,#48b87e,transparent 70%);bottom:-160px;left:15%;animation-delay:-20s;opacity:.22;}
+  @keyframes drift{
+    0%,100%{transform:translate(0,0) scale(1);}
+    33%{transform:translate(70px,-50px) scale(1.08);}
+    66%{transform:translate(-50px,60px) scale(.95);}
+  }
+
+  .floater{
+    position:fixed;opacity:.14;pointer-events:none;z-index:0;
+    animation:floatUp linear infinite;will-change:transform;
+  }
+  .floater svg{display:block;width:100%;height:100%;}
+  @keyframes floatUp{
+    0%  {transform:translate3d(0, 20px, 0) rotate(0deg);}
+    50% {transform:translate3d(30px, -80px, 0) rotate(14deg);}
+    100%{transform:translate3d(0, -180px, 0) rotate(0deg);}
+  }
+
+  .wrap{
+    position:relative;z-index:2;max-width:1100px;margin:0 auto;padding:0 24px;
+  }
+
+  .title{
+    text-align:center;
+    margin-bottom:50px;
+  }
+  .title h1{
+    font-size:clamp(1.5rem,3.4vw,2.2rem);
+    font-weight:800;
+    letter-spacing:-.6px;
+    background:linear-gradient(135deg,var(--blue) 0%,var(--purple) 50%,var(--pink) 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    line-height:1.2;
+  }
+
+  .section{margin-bottom:44px;}
+
+  .grid{display:grid;gap:14px;}
+  .grid-2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr));}
+  .grid-3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr));}
+  .grid-4{grid-template-columns:repeat(auto-fit,minmax(200px,1fr));}
+  .grid-5{grid-template-columns:repeat(auto-fit,minmax(170px,1fr));}
+
+  .card{
+    background:#fff;
+    border-radius:18px;
+    padding:22px 18px;
+    border:1px solid var(--line);
+    box-shadow:var(--shadow-sm);
+    transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    gap:10px;
+    position:relative;
+    overflow:hidden;
+  }
+  .card::before{
+    content:"";
+    position:absolute;
+    top:0;left:0;right:0;
+    height:4px;
+    background:linear-gradient(90deg,var(--blue),var(--purple));
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:transform .35s ease;
+  }
+  .card:hover::before{transform:scaleX(1);}
+  .card:hover{
+    transform:translateY(-5px);
+    box-shadow:var(--shadow);
+    border-color:rgba(74,127,232,.2);
+  }
+
+  .card .em{font-size:2rem;line-height:1;display:block;}
+  .card .label{
+    font-size:.98rem;font-weight:700;color:var(--text);
+    letter-spacing:-.2px;line-height:1.35;
+  }
+
+  /* Карточка-термин с описанием */
+  .card.term{
+    align-items:flex-start;text-align:left;
+    padding:22px 22px;gap:12px;
+  }
+  .card.term .card-head{
+    display:flex;align-items:center;gap:12px;
+  }
+  .card.term .card-head .em{font-size:1.6rem;}
+  .card.term .card-head .label{
+    font-size:1.02rem;font-weight:800;
+    color:var(--blue-dark);letter-spacing:-.2px;
+    line-height:1.3;
+  }
+  .card.term .card-head .label small{
+    display:block;font-size:.72rem;font-weight:700;
+    color:var(--muted);letter-spacing:.6px;
+    text-transform:uppercase;margin-top:2px;
+  }
+  .card.term .desc{
+    font-size:.9rem;font-weight:500;
+    color:var(--text-soft);line-height:1.55;
+  }
+  .card.term .desc b{color:var(--purple);font-weight:800;}
+
+  /* Большая карточка с подпунктами */
+  .card.big{
+    align-items:flex-start;text-align:left;
+    padding:24px 22px;gap:14px;
+  }
+  .card.big .card-head{
+    display:flex;align-items:center;gap:12px;
+  }
+  .card.big .card-head .em{font-size:1.8rem;}
+  .card.big .card-head .label{
+    font-size:1.08rem;font-weight:800;
+    line-height:1.3;
+  }
+  .card.big .subs{
+    display:flex;flex-wrap:wrap;gap:6px;
+  }
+  .card.big .subs span{
+    font-size:.82rem;font-weight:600;
+    color:var(--text-soft);
+    background:#f4f8fe;padding:5px 12px;
+    border-radius:10px;border:1px solid var(--line);
+    line-height:1.35;
+  }
+
+  /* Карточка со списком-чеклистом */
+  .card.check{
+    align-items:flex-start;text-align:left;
+    padding:24px 22px;gap:14px;
+  }
+  .card.check .card-head{
+    display:flex;align-items:center;gap:12px;
+  }
+  .card.check .card-head .em{font-size:1.7rem;}
+  .card.check .card-head .label{
+    font-size:1.05rem;font-weight:800;color:var(--blue-dark);
+  }
+  .card.check ul{
+    list-style:none;display:flex;flex-direction:column;gap:8px;
+    width:100%;
+  }
+  .card.check ul li{
+    display:flex;gap:10px;align-items:flex-start;
+    font-size:.88rem;color:var(--text-soft);
+    line-height:1.5;padding:8px 12px;
+    background:#f9fbfe;border:1px solid var(--line);
+    border-radius:10px;
+  }
+  .card.check ul li .pt{
+    flex-shrink:0;font-weight:800;color:var(--purple);
+  }
+  .card.check ul li b{color:var(--text);font-weight:700;}
+
+  .card.purple::before{background:linear-gradient(90deg,var(--purple),var(--pink));}
+  .card.green::before{background:linear-gradient(90deg,var(--green),var(--teal));}
+  .card.pink::before{background:linear-gradient(90deg,var(--pink),var(--orange));}
+  .card.orange::before{background:linear-gradient(90deg,var(--orange),var(--yellow));}
+  .card.yellow::before{background:linear-gradient(90deg,var(--yellow),var(--orange));}
+  .card.teal::before{background:linear-gradient(90deg,var(--teal),var(--blue));}
+
+  .footer{
+    text-align:center;color:var(--muted);
+    font-size:.8rem;padding:40px 24px 0;
+    position:relative;z-index:2;
+  }
+
+  @media(max-width:520px){
+    body{padding:36px 0 60px;}
+    .wrap{padding:0 16px;}
+    .card{padding:18px 14px;}
+    .card .em{font-size:1.7rem;}
+    .card .label{font-size:.9rem;}
+    .card.term{padding:18px 16px;}
+    .card.term .card-head .em{font-size:1.4rem;}
+    .card.term .card-head .label{font-size:.95rem;}
+    .card.term .desc{font-size:.84rem;}
+    .card.big{padding:20px 16px;}
+    .card.big .card-head .em{font-size:1.5rem;}
+    .card.big .card-head .label{font-size:.98rem;}
+    .card.big .subs span{font-size:.76rem;padding:4px 10px;}
+    .card.check{padding:20px 16px;}
+    .card.check .card-head .em{font-size:1.5rem;}
+    .card.check .card-head .label{font-size:.98rem;}
+    .card.check ul li{font-size:.82rem;padding:7px 10px;}
+    .floater{opacity:.10;}
+    .section{margin-bottom:32px;}
+  }
+
+  @media(prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none !important;transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<div class="aurora">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+</div>
+<div id="floaters"></div>
+
+<main class="wrap">
+
+  <div class="title">
+    <h1>🔧 Git · DevOps · CI/CD · ООП 🧱</h1>
+  </div>
+
+  <!-- GIT -->
+  <section class="section">
+    <div class="grid grid-3">
+
+      <div class="card term">
+        <div class="card-head">
+          <span class="em">📂</span>
+          <span class="label">Репозиторий<small>Git</small></span>
+        </div>
+        <div class="desc">Папка с проектом — локальная <b>.git</b> или удалённая на GitHub / GitLab</div>
+      </div>
+
+      <div class="card term purple">
+        <div class="card-head">
+          <span class="em">📍</span>
+          <span class="label">Коммит<small>Git</small></span>
+        </div>
+        <div class="desc">Точка (слепок) изменений с <b>хешем</b> и сообщением</div>
+      </div>
+
+      <div class="card term teal">
+        <div class="card-head">
+          <span class="em">🌿</span>
+          <span class="label">Ветка (Branch)<small>Git</small></span>
+        </div>
+        <div class="desc">Последовательность коммитов — <b>изолированная линия разработки</b></div>
+      </div>
+
+    </div>
+    <div class="grid grid-2" style="margin-top:14px;">
+      <div class="card big green">
+        <div class="card-head">
+          <span class="em">💻</span>
+          <span class="label">Базовые команды Git (ключевые)</span>
+        </div>
+        <div class="subs">
+          <span>git init</span>
+          <span>git clone</span>
+          <span>git add</span>
+          <span>git commit</span>
+          <span>git push</span>
+          <span>git pull</span>
+          <span>git branch</span>
+          <span>git merge</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEVOPS -->
+  <section class="section">
+    <div class="grid grid-3">
+
+      <div class="card term">
+        <div class="card-head">
+          <span class="em">🐳</span>
+          <span class="label">Docker<small>DevOps</small></span>
+        </div>
+        <div class="desc">Контейнеризация — упаковка приложения со всеми <b>зависимостями</b></div>
+      </div>
+
+      <div class="card term purple">
+        <div class="card-head">
+          <span class="em">☸️</span>
+          <span class="label">Kubernetes (k8s)<small>DevOps</small></span>
+        </div>
+        <div class="desc">Оркестрация контейнеров — автоматическое <b>развёртывание и масштабирование</b></div>
+      </div>
+
+      <div class="card term teal">
+        <div class="card-head">
+          <span class="em">⚙️</span>
+          <span class="label">Jenkins<small>DevOps</small></span>
+        </div>
+        <div class="desc">CI/CD сервер — автоматизирует <b>сборку, тесты и деплой</b></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CI/CD -->
+  <section class="section">
+    <div class="grid grid-2">
+
+      <div class="card term green">
+        <div class="card-head">
+          <span class="em">🔄</span>
+          <span class="label">CI<small>Continuous Integration</small></span>
+        </div>
+        <div class="desc">Непрерывная интеграция — каждый коммит автоматически <b>собирается и тестируется</b></div>
+      </div>
+
+      <div class="card term pink">
+        <div class="card-head">
+          <span class="em">🚀</span>
+          <span class="label">CD<small>Continuous Delivery / Deployment</small></span>
+        </div>
+        <div class="desc">Непрерывная поставка / развёртывание — автоматическая выкатка на окружения <b>вплоть до Prod</b></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ОКРУЖЕНИЯ -->
+  <section class="section">
+    <div class="card big" style="margin-bottom:14px;">
+      <div class="card-head">
+        <span class="em">🌐</span>
+        <span class="label">Окружения (Environments)</span>
+      </div>
+      <div class="subs">
+        <span>Среда (Environment) — это инфраструктура: физические серверы, виртуалки, сетевые устройства, облака</span>
+      </div>
+    </div>
+
+    <div class="grid grid-5">
+
+      <div class="card">
+        <span class="em">🛠️</span>
+        <span class="label">Dev</span>
+        <span class="desc" style="font-size:.8rem;color:var(--text-soft);font-weight:600;">Создание — разработчики пишут код</span>
+      </div>
+
+      <div class="card purple">
+        <span class="em">👀</span>
+        <span class="label">Demo</span>
+        <span class="desc" style="font-size:.8rem;color:var(--text-soft);font-weight:600;">Можно потрогать — показать заказчику</span>
+      </div>
+
+      <div class="card green">
+        <span class="em">🧪</span>
+        <span class="label">Test</span>
+        <span class="desc" style="font-size:.8rem;color:var(--text-soft);font-weight:600;">Тестирование — авто- и ручное</span>
+      </div>
+
+      <div class="card orange">
+        <span class="em">🏁</span>
+        <span class="label">Stage</span>
+        <span class="desc" style="font-size:.8rem;color:var(--text-soft);font-weight:600;">Предпрод — максимально похож на бой</span>
+      </div>
+
+      <div class="card pink">
+        <span class="em">🌍</span>
+        <span class="label">Prod</span>
+        <span class="desc" style="font-size:.8rem;color:var(--text-soft);font-weight:600;">Production — видят все пользователи</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ООП: ОСНОВЫ -->
+  <section class="section">
+    <div class="grid grid-4">
+
+      <div class="card term">
+        <div class="card-head">
+          <span class="em">📐</span>
+          <span class="label">Классы<small>ООП</small></span>
+        </div>
+        <div class="desc">Шаблоны для создания объектов — <b>чертёж</b></div>
+      </div>
+
+      <div class="card term purple">
+        <div class="card-head">
+          <span class="em">📦</span>
+          <span class="label">Объекты<small>ООП</small></span>
+        </div>
+        <div class="desc">Структуры с <b>данными (атрибутами)</b> и <b>методами (поведением)</b></div>
+      </div>
+
+      <div class="card term teal">
+        <div class="card-head">
+          <span class="em">🏷️</span>
+          <span class="label">Атрибуты<small>ООП</small></span>
+        </div>
+        <div class="desc">Характеристики (поля) объекта — <b>цвет, размер, имя</b></div>
+      </div>
+
+      <div class="card term green">
+        <div class="card-head">
+          <span class="em">⚡</span>
+          <span class="label">Методы<small>ООП</small></span>
+        </div>
+        <div class="desc">Поведение объекта — <b>функции, которые он может выполнять</b></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ООП: 4 СТОЛПА -->
+  <section class="section">
+    <div class="grid grid-2">
+
+      <div class="card term">
+        <div class="card-head">
+          <span class="em">🔒</span>
+          <span class="label">Инкапсуляция</span>
+        </div>
+        <div class="desc">Информация хранится внутри объекта — <b>скрываем детали</b></div>
+      </div>
+
+      <div class="card term purple">
+        <div class="card-head">
+          <span class="em">🎭</span>
+          <span class="label">Абстракция</span>
+        </div>
+        <div class="desc">Выделяем общие атрибуты и методы, <b>убирая лишнее</b></div>
+      </div>
+
+      <div class="card term green">
+        <div class="card-head">
+          <span class="em">🧬</span>
+          <span class="label">Наследование</span>
+        </div>
+        <div class="desc">Создание новых классов на основе существующих — <b>родитель → потомок</b></div>
+      </div>
+
+      <div class="card term pink">
+        <div class="card-head">
+          <span class="em">🔄</span>
+          <span class="label">Полиморфизм</span>
+        </div>
+        <div class="desc">Один и тот же метод работает <b>по-разному</b> для разных классов</div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">© Git · DevOps · CI/CD · ООП</footer>
+
+<script>
+(function(){
+  const container = document.getElementById('floaters');
+
+  const shapes = [
+    `<svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg">
+       <rect x="10" y="6" width="40" height="26" rx="3" fill="#eaf1fe" stroke="#4a7fe8" stroke-width="1.6"/>
+       <rect x="4" y="32" width="52" height="5" rx="2.5" fill="#4a7fe8"/>
+     </svg>`,
+    `<svg viewBox="0 0 30 55" xmlns="http://www.w3.org/2000/svg">
+       <rect x="4" y="4" width="22" height="47" rx="6" fill="#eaf1fe" stroke="#4a7fe8" stroke-width="1.6"/>
+       <circle cx="15" cy="46" r="2" fill="#4a7fe8"/>
+     </svg>`,
+    `<svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+       <circle cx="25" cy="25" r="18" fill="none" stroke="#48b87e" stroke-width="3"/>
+       <circle cx="25" cy="25" r="7" fill="#48b87e" opacity=".55"/>
+     </svg>`,
+    `<svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg">
+       <path d="M18 32 h26 a10 10 0 0 0 0 -20 a14 14 0 0 0 -26 -4 a10 10 0 0 0 0 24 z"
+             fill="#eaf1fe" stroke="#4a7fe8" stroke-width="1.6"/>
+     </svg>`,
+    `<svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg">
+       <polyline points="12,12 4,20 12,28" fill="none" stroke="#9a6ff0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+       <polyline points="48,12 56,20 48,28" fill="none" stroke="#9a6ff0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+       <line x1="34" y1="10" x2="26" y2="30" stroke="#9a6ff0" stroke-width="3" stroke-linecap="round"/>
+     </svg>`
+  ];
+
+  const count = window.innerWidth < 700 ? 10 : 16;
+
+  for (let i = 0; i < count; i++){
+    const el = document.createElement('div');
+    el.className = 'floater';
+    const size = 30 + Math.random() * 50;
+    el.style.width = size + 'px';
+    el.style.height = size * 0.8 + 'px';
+    el.style.left = Math.random() * 95 + 'vw';
+    el.style.top = (105 + Math.random() * 40) + 'vh';
+    el.style.opacity = (0.08 + Math.random() * 0.14).toFixed(2);
+    el.style.animationDuration = (22 + Math.random() * 22) + 's';
+    el.style.animationDelay = '-' + (Math.random() * 25) + 's';
+    el.innerHTML = shapes[Math.floor(Math.random() * shapes.length)];
+    container.appendChild(el);
+  }
+})();
+</script>
+
+</body>
+</html>

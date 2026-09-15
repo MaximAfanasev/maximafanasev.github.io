@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HTTP-запрос · CRUD · Методы · Коды ответа</title>
+<style>
+  :root{
+    --blue:#4a7fe8;
+    --blue-dark:#2c56b8;
+    --blue-soft:#eaf1fe;
+    --purple:#9a6ff0;
+    --purple-soft:#f2ecfe;
+    --green:#48b87e;
+    --green-soft:#e8f7ee;
+    --pink:#e86a9c;
+    --pink-soft:#fdeaf2;
+    --orange:#f0954c;
+    --orange-soft:#fef3e8;
+    --yellow:#f4c542;
+    --yellow-soft:#fff8e0;
+    --teal:#3ab8c8;
+    --teal-soft:#e6f7f9;
+    --red:#e05666;
+    --red-soft:#fdeef0;
+    --text:#243447;
+    --text-soft:#57697e;
+    --muted:#8ea1b5;
+    --line:#e6edf6;
+    --shadow-sm:0 4px 18px rgba(74,127,232,.08);
+    --shadow:0 14px 40px rgba(74,127,232,.12);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+
+  body{
+    font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;
+    color:var(--text);
+    line-height:1.6;
+    background:
+      radial-gradient(circle at 8% 5%, rgba(154,111,240,.10) 0%, transparent 40%),
+      radial-gradient(circle at 92% 12%, rgba(74,127,232,.10) 0%, transparent 42%),
+      radial-gradient(circle at 50% 100%, rgba(72,184,126,.08) 0%, transparent 45%),
+      linear-gradient(180deg,#fbfdff 0%, #f4f8fe 100%);
+    min-height:100vh;
+    overflow-x:hidden;
+    padding:60px 0 80px;
+    font-size:16px;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .aurora{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+  .orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:.32;animation:drift 30s ease-in-out infinite;}
+  .orb-1{width:520px;height:520px;background:radial-gradient(circle,#9a6ff0,transparent 70%);top:-160px;left:-140px;}
+  .orb-2{width:600px;height:600px;background:radial-gradient(circle,#4a7fe8,transparent 70%);top:30%;right:-200px;animation-delay:-10s;opacity:.26;}
+  .orb-3{width:480px;height:480px;background:radial-gradient(circle,#48b87e,transparent 70%);bottom:-160px;left:15%;animation-delay:-20s;opacity:.22;}
+  @keyframes drift{
+    0%,100%{transform:translate(0,0) scale(1);}
+    33%{transform:translate(70px,-50px) scale(1.08);}
+    66%{transform:translate(-50px,60px) scale(.95);}
+  }
+
+  .floater{
+    position:fixed;opacity:.14;pointer-events:none;z-index:0;
+    animation:floatUp linear infinite;will-change:transform;
+  }
+  .floater svg{display:block;width:100%;height:100%;}
+  @keyframes floatUp{
+    0%  {transform:translate3d(0, 20px, 0) rotate(0deg);}
+    50% {transform:translate3d(30px, -80px, 0) rotate(14deg);}
+    100%{transform:translate3d(0, -180px, 0) rotate(0deg);}
+  }
+
+  .wrap{
+    position:relative;z-index:2;max-width:1100px;margin:0 auto;padding:0 24px;
+  }
+
+  .title{
+    text-align:center;
+    margin-bottom:50px;
+  }
+  .title h1{
+    font-size:clamp(1.5rem,3.4vw,2.2rem);
+    font-weight:800;
+    letter-spacing:-.6px;
+    background:linear-gradient(135deg,var(--blue) 0%,var(--purple) 50%,var(--pink) 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    line-height:1.2;
+  }
+
+  .section{margin-bottom:44px;}
+
+  .grid{display:grid;gap:14px;}
+  .grid-2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr));}
+  .grid-3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr));}
+  .grid-4{grid-template-columns:repeat(auto-fit,minmax(200px,1fr));}
+
+  .card{
+    background:#fff;
+    border-radius:18px;
+    padding:22px 18px;
+    border:1px solid var(--line);
+    box-shadow:var(--shadow-sm);
+    transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    gap:10px;
+    position:relative;
+    overflow:hidden;
+  }
+  .card::before{
+    content:"";
+    position:absolute;
+    top:0;left:0;right:0;
+    height:4px;
+    background:linear-gradient(90deg,var(--blue),var(--purple));
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:transform .35s ease;
+  }
+  .card:hover::before{transform:scaleX(1);}
+  .card:hover{
+    transform:translateY(-5px);
+    box-shadow:var(--shadow);
+    border-color:rgba(74,127,232,.2);
+  }
+
+  .card .em{font-size:2rem;line-height:1;display:block;}
+  .card .label{
+    font-size:.98rem;font-weight:700;color:var(--text);
+    letter-spacing:-.2px;line-height:1.35;
+  }
+
+  /* Карточка-термин */
+  .card.term{
+    align-items:flex-start;text-align:left;
+    padding:22px 22px;gap:12px;
+  }
+  .card.term .card-head{
+    display:flex;align-items:center;gap:12px;
+  }
+  .card.term .card-head .em{font-size:1.6rem;}
+  .card.term .card-head .label{
+    font-size:1.02rem;font-weight:800;
+    color:var(--blue-dark);letter-spacing:-.2px;
+    line-height:1.3;
+  }
+  .card.term .card-head .label small{
+    display:block;font-size:.72rem;font-weight:700;
+    color:var(--muted);letter-spacing:.6px;
+    text-transform:uppercase;margin-top:2px;
+  }
+  .card.term .desc{
+    font-size:.9rem;font-weight:500;
+    color:var(--text-soft);line-height:1.55;
+  }
+  .card.term .desc b{color:var(--purple);font-weight:800;}
+  .card.term .desc code{
+    background:#f4f8fe;
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:1px 6px;
+    font-size:.85em;
+    color:var(--blue-dark);
+    font-family:'Consolas','Courier New',monospace;
+  }
+
+  /* Карточка-код с подсветкой */
+  .card.code{
+    align-items:flex-start;text-align:left;
+    padding:22px 22px;gap:12px;
+  }
+  .card.code .card-head{
+    display:flex;align-items:center;gap:12px;
+  }
+  .card.code .card-head .em{font-size:1.6rem;}
+  .card.code .card-head .label{
+    font-size:1.02rem;font-weight:800;
+    color:var(--blue-dark);letter-spacing:-.2px;
+    line-height:1.3;
+  }
+  .card.code .card-head .label small{
+    display:block;font-size:.72rem;font-weight:700;
+    color:var(--muted);letter-spacing:.6px;
+    text-transform:uppercase;margin-top:2px;
+  }
+  .card.code pre{
+    width:100%;
+    background:#f9fbfe;
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:16px 18px;
+    font-family:'Consolas','Courier New',monospace;
+    font-size:.82rem;
+    color:var(--text);
+    line-height:1.7;
+    overflow-x:auto;
+    white-space:pre;
+    margin-top:4px;
+  }
+  .card.code pre .method{color:var(--green);font-weight:800;}
+  .card.code pre .uri{color:var(--blue-dark);font-weight:700;}
+  .card.code pre .version{color:var(--muted);}
+  .card.code pre .key{color:var(--purple);font-weight:700;}
+  .card.code pre .val{color:var(--blue-dark);}
+  .card.code pre .cmt{color:var(--muted);font-style:italic;}
+  .card.code pre .body{color:var(--orange);font-weight:700;}
+
+  /* Карточка с чек-листом */
+  .card.check{
+    align-items:flex-start;text-align:left;
+    padding:24px 22px;gap:14px;
+  }
+  .card.check .card-head{
+    display:flex;align-items:center;gap:12px;
+  }
+  .card.check .card-head .em{font-size:1.7rem;}
+  .card.check .card-head .label{
+    font-size:1.05rem;font-weight:800;color:var(--blue-dark);
+  }
+  .card.check ul{
+    list-style:none;display:flex;flex-direction:column;gap:8px;
+    width:100%;
+  }
+  .card.check ul li{
+    display:flex;gap:10px;align-items:flex-start;
+    font-size:.88rem;color:var(--text-soft);
+    line-height:1.5;padding:8px 12px;
+    background:#f9fbfe;border:1px solid var(--line);
+    border-radius:10px;
+  }
+  .card.check ul li .pt{flex-shrink:0;font-weight:800;color:var(--purple);}
+  .card.check ul li b{color:var(--text);font-weight:700;}
+
+  /* Бейдж метода */
+  .verb{
+    display:inline-block;
+    background:var(--green-soft);
+    color:#1e7d47;
+    font-size:.75rem;
+    font-weight:800;
+    border-radius:6px;
+    padding:3px 10px;
+    font-family:'Consolas','Courier New',monospace;
+    line-height:1.4;
+    white-space:nowrap;
+  }
+  .verb.post{background:#eaf1fe;color:var(--blue-dark);}
+  .verb.put{background:var(--orange-soft);color:#b0611e;}
+  .verb.patch{background:var(--yellow-soft);color:#a17a00;}
+  .verb.delete{background:var(--red-soft);color:var(--red);}
+  .verb + .verb{margin-left:6px;}
+
+  /* Карточка CRUD */
+  .card.crud{
+    align-items:flex-start;text-align:left;
+    padding:22px 22px;gap:10px;
+  }
+  .card.crud .card-head{
+    display:flex;align-items:center;gap:12px;
+    margin-bottom:4px;
+  }
+  .card.crud .card-head .em{font-size:1.6rem;}
+  .card.crud .card-head .label{
+    font-size:1.05rem;font-weight:800;
+    color:var(--blue-dark);letter-spacing:-.2px;
+    line-height:1.3;
+  }
+  .card.crud .line{
+    width:100%;
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:8px;
+    padding:9px 12px;
+    background:#f9fbfe;
+    border:1px solid var(--line);
+    border-radius:10px;
+    font-size:.9rem;
+    color:var(--text-soft);
+  }
+  .card.crud .line .verb{flex-shrink:0;}
+  .card.crud .line .arrow{color:var(--muted);font-weight:700;}
+  .card.crud .line b{color:var(--text);font-weight:800;font-family:'Consolas','Courier New',monospace;}
+
+  /* Карточка «метод: свойства» */
+  .card.props{
+    align-items:flex-start;text-align:left;
+    padding:22px 22px;gap:12px;
+  }
+  .card.props .card-head{
+    display:flex;align-items:center;gap:12px;
+    margin-bottom:2px;
+  }
+  .card.props .card-head .em{font-size:1.6rem;}
+  .card.props .card-head .label{
+    font-size:1.02rem;font-weight:800;
+    color:var(--blue-dark);letter-spacing:-.2px;
+    line-height:1.3;
+  }
+  .card.props .prop{
+    width:100%;
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    padding:9px 12px;
+    background:#f9fbfe;
+    border:1px solid var(--line);
+    border-radius:10px;
+    font-size:.9rem;
+    color:var(--text-soft);
+    line-height:1.5;
+  }
+  .card.props .prop .k{
+    flex-shrink:0;
+    min-width:130px;
+    font-weight:700;
+    color:var(--blue-dark);
+    font-size:.86rem;
+  }
+  .card.props .prop .v{
+    flex:1;
+    font-weight:600;
+    color:var(--text);
+  }
+  .card.props .prop .v.warn{color:#a17a00;}
+  .card.props .prop .v.ok{color:var(--green);}
+  .card.props .prop .v.no{color:var(--red);}
+
+  /* ============================================================
+     КАРТОЧКА-КОД ОТВЕТА (без таблицы)
+     ============================================================ */
+  .card.status{
+    align-items:flex-start;text-align:left;
+    padding:22px 22px;gap:12px;
+  }
+  .card.status .card-head{
+    display:flex;align-items:center;gap:12px;
+    margin-bottom:4px;
+  }
+  .card.status .card-head .em{font-size:1.6rem;}
+  .card.status .card-head .label{
+    font-size:1.02rem;font-weight:800;
+    color:var(--blue-dark);letter-spacing:-.2px;
+    line-height:1.3;
+  }
+  .card.status .row{
+    width:100%;
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    padding:10px 14px;
+    background:#f9fbfe;
+    border:1px solid var(--line);
+    border-radius:12px;
+    line-height:1.5;
+  }
+  .card.status .row .num{
+    flex-shrink:0;
+    font-family:'Consolas','Courier New',monospace;
+    font-weight:800;
+    color:var(--blue-dark);
+    font-size:1rem;
+    min-width:48px;
+  }
+  .card.status .row .text{
+    flex:1;
+    font-size:.9rem;
+    color:var(--text-soft);
+  }
+  .card.status .row .text b{
+    color:var(--text);
+    font-weight:800;
+    display:block;
+    margin-bottom:2px;
+  }
+  .card.status .row.ok .num{color:var(--green);}
+  .card.status .row.redir .num{color:var(--blue);}
+  .card.status .row.client-err .num{color:var(--orange);}
+  .card.status .row.server-err .num{color:var(--red);}
+  .card.status .row.info .num{color:var(--purple);}
+
+  .card.purple::before{background:linear-gradient(90deg,var(--purple),var(--pink));}
+  .card.green::before{background:linear-gradient(90deg,var(--green),var(--teal));}
+  .card.pink::before{background:linear-gradient(90deg,var(--pink),var(--orange));}
+  .card.orange::before{background:linear-gradient(90deg,var(--orange),var(--yellow));}
+  .card.yellow::before{background:linear-gradient(90deg,var(--yellow),var(--orange));}
+  .card.teal::before{background:linear-gradient(90deg,var(--teal),var(--blue));}
+  .card.red::before{background:linear-gradient(90deg,var(--red),var(--pink));}
+
+  .footer{
+    text-align:center;color:var(--muted);
+    font-size:.8rem;padding:40px 24px 0;
+    position:relative;z-index:2;
+  }
+
+  /* ============================================================
+     АДАПТИВ
+     ============================================================ */
+  @media(max-width:520px){
+    body{padding:36px 0 60px;}
+    .wrap{padding:0 16px;}
+
+    .card{padding:18px 14px;}
+    .card .em{font-size:1.7rem;}
+    .card .label{font-size:.9rem;}
+    .card.term{padding:18px 16px;}
+    .card.term .card-head .em{font-size:1.4rem;}
+    .card.term .card-head .label{font-size:.95rem;}
+    .card.term .desc{font-size:.84rem;}
+    .card.code{padding:18px 16px;}
+    .card.code .card-head .em{font-size:1.4rem;}
+    .card.code .card-head .label{font-size:.95rem;}
+    .card.code pre{font-size:.74rem;padding:12px 14px;}
+    .card.check{padding:20px 16px;}
+    .card.check .card-head .em{font-size:1.5rem;}
+    .card.check .card-head .label{font-size:.98rem;}
+    .card.check ul li{font-size:.82rem;padding:7px 10px;}
+
+    .card.crud{padding:18px 14px;}
+    .card.crud .card-head .em{font-size:1.4rem;}
+    .card.crud .card-head .label{font-size:.95rem;}
+    .card.crud .line{font-size:.83rem;padding:8px 10px;gap:6px;}
+
+    .card.props{padding:18px 14px;}
+    .card.props .card-head .em{font-size:1.4rem;}
+    .card.props .card-head .label{font-size:.95rem;}
+    .card.props .prop{flex-direction:column;gap:2px;font-size:.83rem;padding:8px 10px;}
+    .card.props .prop .k{min-width:auto;font-size:.78rem;}
+
+    .card.status{padding:18px 14px;}
+    .card.status .card-head .em{font-size:1.4rem;}
+    .card.status .card-head .label{font-size:.95rem;}
+    .card.status .row{flex-direction:column;gap:4px;font-size:.83rem;padding:9px 11px;}
+    .card.status .row .num{min-width:auto;font-size:.9rem;}
+    .card.status .row .text{font-size:.83rem;}
+
+    .floater{opacity:.10;}
+    .section{margin-bottom:32px;}
+  }
+
+  @media(prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none !important;transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<div class="aurora">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+</div>
+<div id="floaters"></div>
+
+<main class="wrap">
+
+  <div class="title">
+    <h1>📨 HTTP-запрос · CRUD · Методы · Коды ответа 🚦</h1>
+  </div>
+
+  <!-- СТРУКТУРА HTTP-ЗАПРОСА -->
+  <section class="section">
+    <div class="card code">
+      <div class="card-head">
+        <span class="em">🧱</span>
+        <span class="label">Структура HTTP-запроса<small>Пример</small></span>
+      </div>
+      <pre><span class="method">GET</span> <span class="uri">/api/users</span> <span class="version">HTTP/1.1</span>    <span class="cmt">← Start Line (Метод + URI + Версия)</span>
+<span class="key">Host:</span> <span class="val">vk.ru</span>                       <span class="cmt">← Заголовки (Headers)</span>
+<span class="key">Authorization:</span> <span class="val">Bearer token123</span>     <span class="cmt">← Заголовки</span>
+<span class="key">Content-Type:</span> <span class="val">application/json</span>     <span class="cmt">← Заголовки</span>
+                                    <span class="cmt">← Пустая строка (Empty Line) — разделитель</span>
+<span class="body">{ "name": "John" }</span>                <span class="cmt">← Тело (Body) — опционально</span></pre>
+    </div>
+
+    <div class="grid grid-2" style="margin-top:14px;">
+      <div class="card term">
+        <div class="card-head">
+          <span class="em">🚀</span>
+          <span class="label">Start Line / Request Line</span>
+        </div>
+        <div class="desc">Метод, <b>URI</b>, версия HTTP</div>
+      </div>
+
+      <div class="card term purple">
+        <div class="card-head">
+          <span class="em">📋</span>
+          <span class="label">Headers</span>
+        </div>
+        <div class="desc">Метаданные — <b>тип контента, авторизация, куки</b></div>
+      </div>
+
+      <div class="card term teal">
+        <div class="card-head">
+          <span class="em">⬜</span>
+          <span class="label">Empty Line</span>
+        </div>
+        <div class="desc">Разделяет <b>заголовки и тело</b></div>
+      </div>
+
+      <div class="card term orange">
+        <div class="card-head">
+          <span class="em">📦</span>
+          <span class="label">Body</span>
+        </div>
+        <div class="desc">Данные запроса — <b>POST / PUT / PATCH</b></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CRUD -->
+  <section class="section">
+    <div class="grid grid-2">
+
+      <div class="card crud">
+        <div class="card-head">
+          <span class="em">➕</span>
+          <span class="label">Create (Создать)</span>
+        </div>
+        <div class="line">
+          <span class="verb post">POST</span>
+          <span class="arrow">·</span>
+          <b>INSERT</b>
+        </div>
+      </div>
+
+      <div class="card crud green">
+        <div class="card-head">
+          <span class="em">🔍</span>
+          <span class="label">Read (Прочитать)</span>
+        </div>
+        <div class="line">
+          <span class="verb">GET</span>
+          <span class="arrow">·</span>
+          <b>SELECT</b>
+        </div>
+      </div>
+
+      <div class="card crud orange">
+        <div class="card-head">
+          <span class="em">🔄</span>
+          <span class="label">Update (Обновить)</span>
+        </div>
+        <div class="line">
+          <span class="verb put">PUT</span>
+          <span class="verb patch">PATCH</span>
+          <span class="arrow">·</span>
+          <b>UPDATE</b>
+        </div>
+      </div>
+
+      <div class="card crud red">
+        <div class="card-head">
+          <span class="em">🗑️</span>
+          <span class="label">Delete (Удалить)</span>
+        </div>
+        <div class="line">
+          <span class="verb delete">DELETE</span>
+          <span class="arrow">·</span>
+          <b>DELETE</b>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HTTP МЕТОДЫ -->
+  <section class="section">
+    <div class="grid grid-3">
+
+      <div class="card term">
+        <div class="card-head">
+          <span class="em">🔍</span>
+          <span class="label">GET</span>
+        </div>
+        <div class="desc">Запрос данных <b>(без тела)</b></div>
+      </div>
+
+      <div class="card term purple">
+        <div class="card-head">
+          <span class="em">📄</span>
+          <span class="label">HEAD</span>
+        </div>
+        <div class="desc">Только <b>заголовки</b> (без тела)</div>
+      </div>
+
+      <div class="card term teal">
+        <div class="card-head">
+          <span class="em">🔧</span>
+          <span class="label">OPTIONS</span>
+        </div>
+        <div class="desc">Спрашивает, какие методы <b>поддерживает сервер</b></div>
+      </div>
+
+      <div class="card term green">
+        <div class="card-head">
+          <span class="em">➕</span>
+          <span class="label">POST</span>
+        </div>
+        <div class="desc">Создаёт ресурс — <b>не идемпотентный</b></div>
+      </div>
+
+      <div class="card term orange">
+        <div class="card-head">
+          <span class="em">🔄</span>
+          <span class="label">PUT</span>
+        </div>
+        <div class="desc">Полная замена ресурса — <b>идемпотентный</b></div>
+      </div>
+
+      <div class="card term yellow">
+        <div class="card-head">
+          <span class="em">✏️</span>
+          <span class="label">PATCH</span>
+        </div>
+        <div class="desc">Частичное изменение — <b>не всегда идемпотентный</b></div>
+      </div>
+
+      <div class="card term red">
+        <div class="card-head">
+          <span class="em">🗑️</span>
+          <span class="label">DELETE</span>
+        </div>
+        <div class="desc">Удаляет ресурс — <b>идемпотентный</b></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ИДЕМПОТЕНТНОСТЬ И БЕЗОПАСНОСТЬ -->
+  <section class="section">
+    <div class="grid grid-2">
+
+      <div class="card term">
+        <div class="card-head">
+          <span class="em">🔄</span>
+          <span class="label">Идемпотентный</span>
+        </div>
+        <div class="desc">Метод, который можно вызвать несколько раз с <b>одинаковым результатом</b><br>
+        <b>Пример:</b> <code>PUT /users/1</code> — первый раз создаст, второй раз просто перезапишет (состояние то же)</div>
+      </div>
+
+      <div class="card term green">
+        <div class="card-head">
+          <span class="em">🛡️</span>
+          <span class="label">Безопасный</span>
+        </div>
+        <div class="desc">Метод <b>не изменяет ресурс</b> на сервере (только читает)<br>
+        <b>GET, HEAD, OPTIONS</b> — безопасные</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ИДЕМПОТЕНТНОСТЬ — карточки по каждому методу -->
+  <section class="section">
+    <div class="grid grid-2">
+
+      <div class="card props">
+        <div class="card-head">
+          <span class="em">🔍</span>
+          <span class="label">GET</span>
+        </div>
+        <div class="prop"><span class="k">Идемпотентный?</span><span class="v ok">✅ Да</span></div>
+        <div class="prop"><span class="k">Безопасный?</span><span class="v ok">✅ Да</span></div>
+        <div class="prop"><span class="k">Есть тело?</span><span class="v no">❌ Нет</span></div>
+      </div>
+
+      <div class="card props purple">
+        <div class="card-head">
+          <span class="em">📄</span>
+          <span class="label">HEAD</span>
+        </div>
+        <div class="prop"><span class="k">Идемпотентный?</span><span class="v ok">✅ Да</span></div>
+        <div class="prop"><span class="k">Безопасный?</span><span class="v ok">✅ Да</span></div>
+        <div class="prop"><span class="k">Есть тело?</span><span class="v no">❌ Нет</span></div>
+      </div>
+
+      <div class="card props teal">
+        <div class="card-head">
+          <span class="em">🔧</span>
+          <span class="label">OPTIONS</span>
+        </div>
+        <div class="prop"><span class="k">Идемпотентный?</span><span class="v ok">✅ Да</span></div>
+        <div class="prop"><span class="k">Безопасный?</span><span class="v ok">✅ Да</span></div>
+        <div class="prop"><span class="k">Есть тело?</span><span class="v no">❌ Нет</span></div>
+      </div>
+
+      <div class="card props green">
+        <div class="card-head">
+          <span class="em">➕</span>
+          <span class="label">POST</span>
+        </div>
+        <div class="prop"><span class="k">Идемпотентный?</span><span class="v no">❌ Нет</span></div>
+        <div class="prop"><span class="k">Безопасный?</span><span class="v no">❌ Нет</span></div>
+        <div class="prop"><span class="k">Есть тело?</span><span class="v ok">✅ Да</span></div>
+      </div>
+
+      <div class="card props orange">
+        <div class="card-head">
+          <span class="em">🔄</span>
+          <span class="label">PUT</span>
+        </div>
+        <div class="prop"><span class="k">Идемпотентный?</span><span class="v ok">✅ Да</span></div>
+        <div class="prop"><span class="k">Безопасный?</span><span class="v no">❌ Нет</span></div>
+        <div class="prop"><span class="k">Есть тело?</span><span class="v ok">✅ Да</span></div>
+      </div>
+
+      <div class="card props yellow">
+        <div class="card-head">
+          <span class="em">✏️</span>
+          <span class="label">PATCH</span>
+        </div>
+        <div class="prop"><span class="k">Идемпотентный?</span><span class="v warn">⚠️ Частично — зависит от реализации</span></div>
+        <div class="prop"><span class="k">Безопасный?</span><span class="v no">❌ Нет</span></div>
+        <div class="prop"><span class="k">Есть тело?</span><span class="v ok">✅ Да</span></div>
+      </div>
+
+      <div class="card props red">
+        <div class="card-head">
+          <span class="em">🗑️</span>
+          <span class="label">DELETE</span>
+        </div>
+        <div class="prop"><span class="k">Идемпотентный?</span><span class="v ok">✅ Да</span></div>
+        <div class="prop"><span class="k">Безопасный?</span><span class="v no">❌ Нет</span></div>
+        <div class="prop"><span class="k">Есть тело?</span><span class="v warn">⚠️ Может быть</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HTTP КОДЫ ОТВЕТА — карточки по группам -->
+  <section class="section">
+    <div class="grid grid-2">
+
+      <!-- 1xx -->
+      <div class="card status purple">
+        <div class="card-head">
+          <span class="em">ℹ️</span>
+          <span class="label">1xx — Информационные</span>
+        </div>
+        <div class="row info">
+          <span class="num">102</span>
+          <span class="text"><b>Processing</b>Сервер принял запрос, но ещё не завершил обработку (WebDAV)</span>
+        </div>
+      </div>
+
+      <!-- 2xx -->
+      <div class="card status green">
+        <div class="card-head">
+          <span class="em">✅</span>
+          <span class="label">2xx — Успех</span>
+        </div>
+        <div class="row ok">
+          <span class="num">200</span>
+          <span class="text"><b>OK</b>Запрос успешно выполнен</span>
+        </div>
+        <div class="row ok">
+          <span class="num">201</span>
+          <span class="text"><b>Created</b>Ресурс создан (обычно POST)</span>
+        </div>
+      </div>
+
+      <!-- 3xx -->
+      <div class="card status">
+        <div class="card-head">
+          <span class="em">↪️</span>
+          <span class="label">3xx — Перенаправление</span>
+        </div>
+        <div class="row redir">
+          <span class="num">301</span>
+          <span class="text"><b>Moved Permanently</b>Ресурс навсегда перемещён на новый URL</span>
+        </div>
+        <div class="row redir">
+          <span class="num">302</span>
+          <span class="text"><b>Found</b>Временное перенаправление</span>
+        </div>
+      </div>
+
+      <!-- 4xx -->
+      <div class="card status orange">
+        <div class="card-head">
+          <span class="em">⚠️</span>
+          <span class="label">4xx — Ошибка клиента</span>
+        </div>
+        <div class="row client-err">
+          <span class="num">400</span>
+          <span class="text"><b>Bad Request</b>Сервер не понимает запрос (невалидные данные)</span>
+        </div>
+        <div class="row client-err">
+          <span class="num">401</span>
+          <span class="text"><b>Unauthorized</b>Требуется аутентификация</span>
+        </div>
+        <div class="row client-err">
+          <span class="num">403</span>
+          <span class="text"><b>Forbidden</b>Доступ запрещён (аутентификация есть, но прав нет)</span>
+        </div>
+        <div class="row client-err">
+          <span class="num">404</span>
+          <span class="text"><b>Not Found</b>Ресурс не найден</span>
+        </div>
+        <div class="row client-err">
+          <span class="num">405</span>
+          <span class="text"><b>Method Not Allowed</b>Метод не поддерживается для этого ресурса</span>
+        </div>
+      </div>
+
+      <!-- 5xx -->
+      <div class="card status red">
+        <div class="card-head">
+          <span class="em">💥</span>
+          <span class="label">5xx — Ошибка сервера</span>
+        </div>
+        <div class="row server-err">
+          <span class="num">500</span>
+          <span class="text"><b>Internal Server Error</b>Общая ошибка сервера</span>
+        </div>
+        <div class="row server-err">
+          <span class="num">501</span>
+          <span class="text"><b>Not Implemented</b>Сервер не поддерживает нужную функциональность</span>
+        </div>
+        <div class="row server-err">
+          <span class="num">503</span>
+          <span class="text"><b>Service Unavailable</b>Сервер временно перегружен или на обслуживании</span>
+        </div>
+        <div class="row server-err">
+          <span class="num">505</span>
+          <span class="text"><b>HTTP Version Not Supported</b>Сервер не поддерживает версию HTTP</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">© HTTP · CRUD · Методы · Коды ответа</footer>
+
+<script>
+(function(){
+  const container = document.getElementById('floaters');
+
+  const shapes = [
+    `<svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg">
+       <rect x="10" y="6" width="40" height="26" rx="3" fill="#eaf1fe" stroke="#4a7fe8" stroke-width="1.6"/>
+       <rect x="4" y="32" width="52" height="5" rx="2.5" fill="#4a7fe8"/>
+     </svg>`,
+    `<svg viewBox="0 0 30 55" xmlns="http://www.w3.org/2000/svg">
+       <rect x="4" y="4" width="22" height="47" rx="6" fill="#eaf1fe" stroke="#4a7fe8" stroke-width="1.6"/>
+       <circle cx="15" cy="46" r="2" fill="#4a7fe8"/>
+     </svg>`,
+    `<svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+       <circle cx="25" cy="25" r="18" fill="none" stroke="#48b87e" stroke-width="3"/>
+       <circle cx="25" cy="25" r="7" fill="#48b87e" opacity=".55"/>
+     </svg>`,
+    `<svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg">
+       <path d="M18 32 h26 a10 10 0 0 0 0 -20 a14 14 0 0 0 -26 -4 a10 10 0 0 0 0 24 z"
+             fill="#eaf1fe" stroke="#4a7fe8" stroke-width="1.6"/>
+     </svg>`,
+    `<svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg">
+       <polyline points="12,12 4,20 12,28" fill="none" stroke="#9a6ff0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+       <polyline points="48,12 56,20 48,28" fill="none" stroke="#9a6ff0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+       <line x1="34" y1="10" x2="26" y2="30" stroke="#9a6ff0" stroke-width="3" stroke-linecap="round"/>
+     </svg>`
+  ];
+
+  const count = window.innerWidth < 700 ? 10 : 16;
+
+  for (let i = 0; i < count; i++){
+    const el = document.createElement('div');
+    el.className = 'floater';
+    const size = 30 + Math.random() * 50;
+    el.style.width = size + 'px';
+    el.style.height = size * 0.8 + 'px';
+    el.style.left = Math.random() * 95 + 'vw';
+    el.style.top = (105 + Math.random() * 40) + 'vh';
+    el.style.opacity = (0.08 + Math.random() * 0.14).toFixed(2);
+    el.style.animationDuration = (22 + Math.random() * 22) + 's';
+    el.style.animationDelay = '-' + (Math.random() * 25) + 's';
+    el.innerHTML = shapes[Math.floor(Math.random() * shapes.length)];
+    container.appendChild(el);
+  }
+})();
+</script>
+
+</body>
+</html>
