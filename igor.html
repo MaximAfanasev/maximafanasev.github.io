@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		h1 {
+			animation: rotate 4s infinite;
+			width: fit-content;
+			margin: 0 auto;
+			margin-top: 250px;
+			font-size: 120px;
+			border: 3px solid;
+			border-radius: 30px;
+			padding: 10px 20px;
+			position: relative;
+			font-family: monospace;
+		}
+
+		h1::after {
+			position: absolute;
+			content: "";
+			width: 3px;
+			height: 160px;
+			background: #000;
+			right: 190px;
+			top: 0;
+			animation: color 4s infinite;
+		}
+
+		@keyframes color {
+			0% {
+			}
+
+			100% {
+				background: gold;
+			}
+		}
+
+		@keyframes rotate {
+			0% {
+				transform: rotate(0deg); color: #000;
+			}
+
+			100% {
+				transform: rotate(360deg);
+				color: gold;
+
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<h1>У133НЕ 34</h1>
+</body></html>
