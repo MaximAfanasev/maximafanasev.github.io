@@ -1,5 +1,4 @@
 <body>
-
 <main></main>
 <header></header>
 <nav></nav>
@@ -9,10 +8,19 @@
 <footer></footer>
 <address></address>
 <script></script>
+</body>
+
+<hr class="divider">
+<hr class="divider">
+<hr class="divider">
 
 <div></div>
 <p></p>
 <span></span>
+
+<hr class="divider">
+<hr class="divider">
+<hr class="divider">
 
 <div id="unique-id"></div>
 <div class="class1 class2"></div>
@@ -26,6 +34,14 @@
 <div tabindex="0">Press Tab</div>
 <div draggable="true">draggable</div>
 <div aria-label="Описание для скринридеров"></div>
+<div onresize="console.log('Resized')" style="border:1px solid">onresize (измените размер окна)</div>
+<div onscroll="console.log('Scrolled')" style="height:100px;overflow:auto">
+	<div style="height:200px">onscroll (прокрутите)</div>
+</div>
+
+<hr class="divider">
+<hr class="divider">
+<hr class="divider">
 
 <h1>h1</h1>
 <h2>h2</h2>
@@ -35,10 +51,11 @@
 <h6>h6</h6>
 
 <hr class="divider">
-	
+<hr class="divider">
+<hr class="divider">
+
 <pre>
 </pre>
-
 <q>цитата</q>
 
 <abbr title="ПШЕЛ НАХ ОТСЮДА">Псс наведи курсор</abbr>
@@ -67,6 +84,10 @@ O<sup>верхний индекс</sup>
 <bdi>إيان</bdi>
 <bdo dir="rtl">текст справа налево</bdo>
 
+<hr class="divider">
+<hr class="divider">
+<hr class="divider">
+
 <ul>
 	<li>1</li>
 	<li>2</li>
@@ -78,6 +99,10 @@ O<sup>верхний индекс</sup>
 	<li>2</li>
 	<li>3</li>
 </ol>
+
+<hr class="divider">
+<hr class="divider">
+<hr class="divider">
 
 <a href="https://example.com">ссылка</a>
 <a href="https://example.com" title="Подсказка">с подсказкой</a>
@@ -108,7 +133,13 @@ O<sup>верхний индекс</sup>
 	Скачать документ
 </a>
 
+<hr class="divider">
+<hr class="divider">
+<hr class="divider">
+
 <img src="image.jpg" alt="Пример изображения" width="30">
+<img onload="" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="onload">
+<img onerror="console.log('Error loading')" src="" alt="onerror">
 
 <picture>
 	<source media="(min-width: 800px)" srcset="large-image.jpg">
@@ -121,12 +152,18 @@ O<sup>верхний индекс</sup>
 	<figcaption>Подпись к изображению</figcaption>
 </figure>
 
-<img src="world-map.jpg" alt="Карта мира" usemap="#worldmap">
+<hr class="divider">
+<hr class="divider">
+<hr class="divider">
 
 <map name="worldmap">
 	<area shape="rect" coords="100,50,200,150" href="europe.html" alt="Европа">
 	<area shape="circle" coords="300,100,50" href="asia.html" alt="Азия">
 </map>
+
+<hr class="divider">
+<hr class="divider">
+<hr class="divider">
 
 <table border="2">
 	<tr>
@@ -149,7 +186,10 @@ O<sup>верхний индекс</sup>
 	</tr>
 </table>
 
-<button onclick="alert('Клик!')">click</button>
+<hr class="divider">
+<hr class="divider">
+<hr class="divider">
+
 <div ondblclick="alert('Двойной клик!')">double click</div>
 <div onmousedown="this.style.color='red'">click</div>
 <div onmouseup="this.style.color='blue'">click</div>
@@ -158,31 +198,9 @@ O<sup>верхний индекс</sup>
 <div onmousemove="this.textContent='X:'+event.clientX+' Y:'+event.clientY">onmousemove (координаты)</div>
 <div onwheel="this.textContent='Wheele!'" style="height:50px;overflow:auto">wheel</div>
 
-<input onkeydown="console.log('Key down:', event.key)" placeholder="onkeydown">
-<input onkeyup="console.log('Key up:', event.key)" placeholder="onkeyup">
-<input onkeypress="console.log('Key press:', event.key)" placeholder="onkeypress">
-
-<input oninput="console.log('Input:', this.value)" placeholder="oninput">
-<select onchange="console.log('Changed:', this.value)">
-	<option>1</option>
-	<option>2</option>
-</select>
-<form onsubmit="alert('Submitted!'); return false"><button>onsubmit</button></form>
-<form onreset="alert('Reset!')"><input type="reset" value="onreset"></form>
-<input onfocus="this.style.background='yellow'" onblur="this.style.background='white'" placeholder="onfocus/onblur">
-
-<img onload="" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="onload">
-<img onerror="console.log('Error loading')" src="" alt="onerror">
-<iframe onabort="console.log('Loading aborted')" src="about:blank"></iframe>
-<div onresize="console.log('Resized')" style="border:1px solid">onresize (измените размер окна)</div>
-<div onscroll="console.log('Scrolled')" style="height:100px;overflow:auto">
-	<div style="height:200px">onscroll (прокрутите)</div>
-</div>
-
-<data value="123">Product Name</data>
-<meter min="0" max="100" value="50">50%</meter>
-<progress value="70" max="100">70%</progress>
-<time datetime="2023-10-05T19:30">19:30</time>
+<hr class="divider">
+<hr class="divider">
+<hr class="divider">
 
 <form action="/submit" method="post">
 	<label for="input-id"></label>
@@ -204,29 +222,72 @@ O<sup>верхний индекс</sup>
 	<optgroup label=""></optgroup>
 	<option value="1"></option>
 </form>
-<fieldset></fieldset>
-<legend></legend>
-<datalist id="list-id"></datalist>
+
+<form onsubmit="alert('Submitted!'); return false"><button>onsubmit</button></form>
+<form onreset="alert('Reset!')"><input type="reset" value="onreset"></form>
+
+<hr class="divider">
+<hr class="divider">
+<hr class="divider">
 
 <button type="button">type="button"</button>
 <button type="submit">type="submit"</button>
 <button type="reset">type="reset"</button>
+<button onclick="alert('Клик!')">click</button>
 
-<img src="" alt="">
+<hr class="divider">
+<hr class="divider">
+<hr class="divider">
 
-<pictures>
-	<source srcset="" media="(max-width:600px)">
-	<img src="" alt="">
-</pictures>
+<fieldset></fieldset>
 
-<figure>
-	<img src="" alt="">
-	<figcaption></figcaption>
-</figure>
+<legend></legend>
 
-<map name="map">
-	<area shape="rect" coords="34,44,270,350" href="#s1">
-</map>
+<datalist id="list-id"></datalist>
+
+<hr class="divider">
+<hr class="divider">
+<hr class="divider">
+
+<input onkeydown="console.log('Key down:', event.key)" placeholder="onkeydown">
+<input onkeyup="console.log('Key up:', event.key)" placeholder="onkeyup">
+<input onkeypress="console.log('Key press:', event.key)" placeholder="onkeypress">
+
+<input oninput="console.log('Input:', this.value)" placeholder="oninput">
+
+<input onfocus="this.style.background='yellow'" onblur="this.style.background='white'" placeholder="onfocus/onblur">
+
+<hr class="divider">
+<hr class="divider">
+<hr class="divider">
+
+<select onchange="console.log('Changed:', this.value)">
+	<option>1</option>
+	<option>2</option>
+</select>
+
+<hr class="divider">
+<hr class="divider">
+<hr class="divider">
+
+<iframe onabort="console.log('Loading aborted')" src="about:blank"></iframe>
+<iframe src="https://example.com" sandbox="allow-scripts"></iframe>
+
+<hr class="divider">
+<hr class="divider">
+<hr class="divider">
+
+<data value="123">Product Name</data>
+
+<meter min="0" max="100" value="50">50%</meter>
+
+<progress value="70" max="100">70%</progress>
+
+<time datetime="2023-10-05T19:30">19:30</time>
+
+<hr class="divider">
+<hr class="divider">
+<hr class="divider">
 
 <audio controls>
 	<source src="" type="audio/mpeg">
@@ -236,17 +297,27 @@ O<sup>верхний индекс</sup>
 	<source src="" type="video/mp4">
 </video>
 
+<hr class="divider">
+<hr class="divider">
+<hr class="divider">
+
 <track kind="subtitles" srclang="ru">
 
 <object data="" type="application/pdf"></object>
+
 <param name="autoplay" value="true">
 
-<iframe src="https://example.com" sandbox="allow-scripts"></iframe>
+<hr class="divider">
+<hr class="divider">
+<hr class="divider">
 
 <canvas id="drawing" width="200" height="100"></canvas>
 
 <svg width="100" height="100"></svg>
 <circle cx="50" cy="50" r="40"></circle>
 
+<hr class="divider">
+<hr class="divider">
+<hr class="divider">
+
 <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script>
-</body>
