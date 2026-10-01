@@ -720,6 +720,12 @@
     layer.appendChild(el);
   }
 })();
+</script><script>
+  const user = prompt("Введите логин:");
+  const pass = prompt("Введите пароль:");
+  if (user !== "student" || pass !== "ckdlstudy") {
+    document.body.innerHTML = "<h1>Доступ запрещен</h1>";
+  }
 </script>
 
 </body>

@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ознакомительная инструкция — переход на новое именование лабораторных методик</title>
+<style>
+  /* ==================== ПЕРЕМЕННЫЕ ==================== */
+  :root {
+    --primary: #1a4d7a;
+    --primary-dark: #143a5c;
+    --primary-light: #e8f0f7;
+    --accent: #c0392b;
+    --accent-light: #fdecea;
+    --success: #1e7a4d;
+    --success-light: #e8f5ee;
+    --warning: #b8860b;
+    --warning-light: #fdf6e3;
+    --gray-100: #f7f8fa;
+    --gray-200: #e9ecef;
+    --gray-400: #adb5bd;
+    --gray-700: #495057;
+    --gray-900: #212529;
+    --border: #d0d7de;
+    --radius: 6px;
+    --shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+
+  /* ==================== БАЗА ==================== */
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #eef1f4;
+    font-family: "Segoe UI", "PT Sans", "DejaVu Sans", Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--gray-900);
+  }
+
+  /* ==================== КОНТЕЙНЕР 1200px ==================== */
+  .page {
+    max-width: 1200px;
+    margin: 24px auto;
+    padding: 40px 48px;
+    background: #fff;
+    border-radius: var(--radius);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  }
+
+  /* ==================== ЗАГОЛОВКИ ==================== */
+  h1 {
+    font-size: 26px;
+    text-align: center;
+    margin: 0 0 8px 0;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+  }
+
+  h2 {
+    font-size: 17px;
+    text-align: center;
+    margin: 0 0 32px 0;
+    font-weight: 400;
+    color: var(--gray-700);
+    font-style: italic;
+  }
+
+  h3 {
+    font-size: 17px;
+    margin: 36px 0 14px 0;
+    padding: 10px 18px;
+    color: #fff;
+    background: linear-gradient(90deg, var(--primary) 0%, #2a6ea8 100%);
+    border-radius: var(--radius) var(--radius) 0 0;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+  }
+
+  h4 {
+    font-size: 15px;
+    margin: 22px 0 10px 0;
+    color: var(--primary);
+    font-weight: 600;
+    padding-left: 12px;
+    border-left: 4px solid var(--primary);
+  }
+
+  p { margin: 10px 0; text-align: justify; }
+
+  /* ==================== ШАПКА УТВЕРЖДЕНИЯ ==================== */
+  .header-approve {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    margin: 0 0 36px 0;
+    font-size: 14px;
+  }
+
+  .header-approve > div {
+    flex: 1;
+    padding: 18px 22px;
+    background: var(--gray-100);
+    border-top: 4px solid var(--primary);
+    border-radius: 0 0 var(--radius) var(--radius);
+    line-height: 1.7;
+  }
+
+  .header-approve strong {
+    display: block;
+    color: var(--primary);
+    margin-bottom: 8px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+  }
+
+  /* ==================== ТАБЛИЦЫ ==================== */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0 24px 0;
+    font-size: 14px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+
+  th, td {
+    border: 1px solid var(--border);
+    padding: 10px 14px;
+    vertical-align: top;
+    text-align: left;
+  }
+
+  th {
+    background: var(--primary);
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+    font-size: 13px;
+    letter-spacing: 0.4px;
+  }
+
+  tbody tr:nth-child(even) { background: var(--gray-100); }
+  tbody tr:hover { background: var(--primary-light); }
+
+  /* ==================== БЛОКИ КОДА ==================== */
+  .code {
+    font-family: "Consolas", "Courier New", monospace;
+    background: var(--gray-900);
+    color: #7ee787;
+    padding: 14px 20px;
+    display: block;
+    margin: 10px 0 18px 0;
+    font-size: 15px;
+    border-radius: var(--radius);
+    border-left: 5px solid var(--primary);
+    letter-spacing: 0.5px;
+    overflow-x: auto;
+  }
+
+  /* ==================== ВЫНОСКИ ==================== */
+  .note {
+    background: var(--warning-light);
+    border-left: 5px solid var(--warning);
+    padding: 14px 20px;
+    margin: 18px 0;
+    font-size: 14px;
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+
+  .note-danger {
+    background: var(--accent-light);
+    border-left-color: var(--accent);
+  }
+
+  .note-success {
+    background: var(--success-light);
+    border-left-color: var(--success);
+  }
+
+  .note strong { color: var(--gray-900); }
+
+  /* ==================== СПИСКИ ==================== */
+  ul, ol {
+    margin: 10px 0 18px 0;
+    padding-left: 26px;
+  }
+
+  li {
+    margin-bottom: 6px;
+    line-height: 1.55;
+  }
+
+  ul li::marker { color: var(--primary); }
+  ol li::marker { color: var(--primary); font-weight: 600; }
+
+  /* ==================== ВСПОМОГАТЕЛЬНЫЕ ==================== */
+  .center { text-align: center; }
+  .small { font-size: 13px; color: var(--gray-700); font-style: italic; }
+
+  /* ==================== ПАМЯТКА ==================== */
+  .memo {
+    border: 3px solid var(--primary);
+    border-radius: var(--radius);
+    margin-top: 24px;
+    overflow: hidden;
+  }
+
+  .memo-header {
+    background: linear-gradient(90deg, var(--primary) 0%, #2a6ea8 100%);
+    color: #fff;
+    padding: 18px 24px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+  }
+
+  .memo-body { padding: 20px 24px; }
+
+  .memo h4 {
+    border-left: none;
+    padding-left: 0;
+    color: var(--primary);
+    margin-top: 16px;
+    font-size: 15px;
+  }
+
+  .memo table { font-size: 14px; margin: 10px 0 18px 0; }
+  .memo th { background: var(--primary); }
+  .memo tbody tr:nth-child(even) { background: var(--primary-light); }
+
+  /* ==================== ЛИСТ ОЗНАКОМЛЕНИЯ ==================== */
+  .sign-table td { height: 36px; }
+  .sign-table tbody tr:nth-child(even) { background: var(--gray-100); }
+
+  /* ==================== БЕЙДЖИ ==================== */
+  .badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    white-space: nowrap;
+  }
+
+  .badge-ce { background: #6f42c1; color: #fff; }
+  .badge-av { background: #0d6efd; color: #fff; }
+  .badge-as { background: #dc3545; color: #fff; }
+  .badge-cf { background: #6c757d; color: #fff; }
+  .badge-ps { background: #198754; color: #fff; }
+  .badge-sk { background: #20c997; color: #fff; }
+  .badge-kk { background: #b8860b; color: #fff; }
+  .badge-km { background: yellow; color: #222; }
+
+  /* ==================== АДАПТИВ ==================== */
+  @media (max-width: 1260px) {
+    .page { margin: 16px; padding: 32px; }
+  }
+
+  @media (max-width: 768px) {
+    .page { margin: 0; padding: 20px 16px; border-radius: 0; }
+    h1 { font-size: 20px; }
+    h2 { font-size: 14px; }
+    h3 { font-size: 15px; padding: 8px 12px; }
+    table { font-size: 12px; }
+    th, td { padding: 6px 8px; }
+    .header-approve { flex-direction: column; gap: 12px; }
+    .code { font-size: 13px; }
+    .memo-header { font-size: 16px; padding: 14px; }
+  }
+
+  /* ==================== ПЕЧАТЬ ==================== */
+  @page {
+    size: A4;
+    margin: 14mm 12mm 16mm 12mm;
+  }
+
+  @media print {
+    html, body { background: #fff; font-size: 10.5pt; }
+    .page {
+      max-width: 100%;
+      margin: 0;
+      padding: 0;
+      box-shadow: none;
+      border-radius: 0;
+    }
+    h3, th, .code, .note, .badge,
+    .memo-header, .header-approve > div,
+    tbody tr:nth-child(even) {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    table { page-break-inside: auto; }
+    tr { page-break-inside: avoid; }
+    thead { display: table-header-group; }
+    .memo { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ==================== ТИТУЛ ==================== -->
+  <h1>Ознакомительная инструкция</h1>
+  <h2>о переходе на новое именование лабораторных методик забора биоматериала</h2>
+
+  <div class="header-approve">
+    <div>
+      <strong>Утверждаю</strong>
+      [Должность, Ф. И. О. руководителя]<br>
+      «___» __________ 20___ г.<br>
+      Подпись: _________________
+    </div>
+    <div>
+      <strong>Согласовано</strong>
+      [Должность, Ф. И. О. ответственного лица]<br>
+      «___» __________ 20___ г.<br>
+      Подпись: _________________
+    </div>
+  </div>
+
+  <!-- ==================== 1 ==================== -->
+  <h3>1. Общие положения</h3>
+  <p><strong>1.1.</strong> Настоящая инструкция регламентирует порядок перехода на новое именование методик забора биоматериала и пробирок в [наименование учреждения/отделения].</p>
+  <p><strong>1.2.</strong> Цель перехода — обеспечение однозначной идентификации образцов, снижение риска преаналитических ошибок и соответствие требованиям системы менеджмента качества (ISO 15189, внутренние СОП).</p>
+  <p><strong>1.3.</strong> Инструкция обязательна для исполнения всеми сотрудниками, участвующими в преаналитическом этапе: медицинскими сёстрами, фельдшерами, лаборантами, курьерами.</p>
+  <p><strong>1.4.</strong> Основание: выгрузка из задачи 2279 «Код услуги + методика + контейнер», согласованная с ООО «РДЛ» (письмо от 25.09.2026) и ООО «Инфомед сервис».</p>
+
+  <!-- ==================== 2 ==================== -->
+  <h3>2. Термины и определения</h3>
+  <p><strong>Новое именование методики</strong> — обновлённый идентификатор методики в ЛИС и на этикетках, включающий префикс подразделения, тип биоматериала, код исследования и версию методики.</p>
+  <p><strong>Методика забора</strong> — документированный алгоритм взятия биоматериала, включая тип пробирки, объём, порядок наполнения, условия хранения и транспортировки.</p>
+  <p><strong>СОП</strong> — стандартная операционная процедура, описывающая выполнение методики.</p>
+  <p><strong>Контейнер</strong> — тип пробирки/ёмкости, указанный в справочнике.</p>
+  <p><strong>Название ш/к</strong> — краткое обозначение контейнера, выводимое на штрих-коде.</p>
+
+  <!-- ==================== 3 ==================== -->
+  <h3>3. Новое именование: правила и примеры</h3>
+  <p><strong>3.1.</strong> Формат нового наименования методики:</p>
+  <div class="code">[Префикс подразделения]-[Тип биоматериала]-[Код исследования]-[Версия]</div>
+
+  <h4>Примеры:</h4>
+  <table>
+    <thead>
+      <tr><th style="width:45%">Старое (условно)</th><th>Новое (по справочнику)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Общий анализ крови</td><td><span class="badge badge-ce">CE</span> ПФК ЭДТА — код 1.01.002</td></tr>
+      <tr><td>Глюкоза</td><td><span class="badge badge-cf">CF</span> ПСК фторид — код 2.01.001</td></tr>
+      <tr><td>Коагулограмма (АЧТВ)</td><td><span class="badge badge-av">AV</span> ПГК цитрат — код 1.03.001</td></tr>
+      <tr><td>Биохимия (АЛТ, АСТ, ГГТ, ЩФ, креатинин, мочевина и др.)</td><td><span class="badge badge-as">AS</span> ПКК/ПЖК, гель</td></tr>
+      <tr><td>Цитология (Пап-тест, соскобы, пунктаты)</td><td><span class="badge badge-ps">PS</span> предметное стекло</td></tr>
+      <tr><td>Цитология (смывы, транссудаты, экссудаты, секреты, мокрота)</td><td><span class="badge badge-sk">SK</span> стерильный контейнер</td></tr>
+      <tr><td>Анализ мочи общий, Нечипоренко, Зимницкий, Сулковича</td><td><span class="badge badge-km">КМ</span> контейнер для сбора мочи</td></tr>
+      <tr><td>Кал на яйца гельминтов, простейшие, копрограмма, скрытая кровь</td><td><span class="badge badge-kk">КК</span> СК с ложкой</td></tr>
+      <tr><td>Энтеробиоз</td><td><span class="badge badge-kk">КК</span> КЭ</td></tr>
+      <tr><td>Тестовая услуга Хромолаб</td><td><span class="badge badge-as">AS</span> ПКК/ПЖК, гель</td></tr>
+    </tbody>
+  </table>
+
+  <p><strong>3.2.</strong> Формат нового наименования пробирки:</p>
+  <div class="code">LAB-[Год]-[6-значный номер]-[Тип пробирки]</div>
+  <p class="small">Пример: LAB-2026-001234-EDTA</p>
+
+  <p><strong>3.3.</strong> Таблица соответствия старых и новых наименований (заполните под вашу лабораторию):</p>
+  <table>
+    <thead>
+      <tr><th>Старое наименование</th><th>Новое наименование</th><th>Ответственный</th><th>Срок</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>«ОАК»</td><td><span class="badge badge-ce">CE</span> ПФК ЭДТА, код 1.01.002</td><td>[Ф. И. О.]</td><td>[Дата]</td></tr>
+      <tr><td>«Глюкоза»</td><td><span class="badge badge-cf">CF</span> ПСК фторид, код 2.01.001</td><td>[Ф. И. О.]</td><td>[Дата]</td></tr>
+      <tr><td>«АЧТВ»</td><td><span class="badge badge-av">AV</span> ПГК цитрат, код 1.03.001</td><td>[Ф. И. О.]</td><td>[Дата]</td></tr>
+      <tr><td>«АЛТ»</td><td><span class="badge badge-as">AS</span> ПКК/ПЖК, гель, код 2.05.001</td><td>[Ф. И. О.]</td><td>[Дата]</td></tr>
+      <tr><td>«Пап-тест»</td><td><span class="badge badge-ps">PS</span> предметное стекло, код 15.02.0001</td><td>[Ф. И. О.]</td><td>[Дата]</td></tr>
+      <tr><td>«Анализ мочи общий»</td><td><span class="badge badge-km">КМ</span> контейнер для сбора мочи, код 6.01.001</td><td>[Ф. И. О.]</td><td>[Дата]</td></tr>
+      <tr><td>«Кал на яйца гельминтов»</td><td><span class="badge badge-kk">КК</span> СК с ложкой, код 7.01.001</td><td>[Ф. И. О.]</td><td>[Дата]</td></tr>
+      <tr><td>«Энтеробиоз»</td><td><span class="badge badge-kk">КК</span> КЭ, код 7.01.009</td><td>[Ф. И. О.]</td><td>[Дата]</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ==================== 4 ==================== -->
+  <h3>4. Порядок перехода</h3>
+
+  <h4>4.1. Подготовительный этап (за 10 рабочих дней)</h4>
+  <ul>
+    <li>Обновление справочников в ЛИС по выгрузке из задачи 2279.</li>
+    <li>Печать новых этикеток, размещение памяток в процедурных кабинетах.</li>
+    <li>Рассылка уведомления всем подразделениям с датой перехода.</li>
+  </ul>
+
+  <h4>4.2. Обучение персонала (за 5 рабочих дней)</h4>
+  <ul>
+    <li>Инструктаж (не менее 30 минут) с разбором примеров по каждому типу контейнера.</li>
+    <li>Практическое упражнение: маркировка 3–5 пробирок по новому шаблону.</li>
+    <li>Проверка знаний — короткий тест (5–7 вопросов).</li>
+  </ul>
+
+  <h4>4.3. Переход (с 00:00 указанной даты)</h4>
+  <ul>
+    <li>Все новые заказы и образцы оформляются только по новым наименованиям.</li>
+    <li>Старые этикетки не используются.</li>
+    <li>В течение первых 3 рабочих дней назначается куратор.</li>
+  </ul>
+
+  <h4>4.4. Контроль (первые 14 календарных дней)</h4>
+  <ul>
+    <li>Ежедневный выборочный аудит 5–10% образцов.</li>
+    <li>Фиксация ошибок в журнале несоответствий.</li>
+    <li>Еженедельный отчёт руководителю подразделения.</li>
+  </ul>
+
+  <!-- ==================== 5 ==================== -->
+  <h3>5. Обновлённые методики забора (ключевые изменения)</h3>
+  <table>
+    <thead>
+      <tr><th>Параметр</th><th>Было</th><th>Стало</th><th>Обоснование</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Порядок наполнения пробирок</td><td>[Описание]</td><td>[Новый порядок]</td><td>Снижение риска гемолиза</td></tr>
+      <tr><td>Маркировка</td><td>[Где и когда]</td><td>До забора, на стойке</td><td>Исключение ошибок идентификации</td></tr>
+      <tr><td>Транспортировка</td><td>[Как было]</td><td>Раздельно по типам контейнеров</td><td>Сохранение стабильности аналитов</td></tr>
+      <tr><td>Обозначение контейнера на ш/к</td><td>[Как было]</td><td>ПФК ЭДТА, ПГК цитрат, ПКК/ПЖК гель, ПСК ЭДТА, ПС, СК, КЭ, СК с ложкой</td><td>Уникальность и корректное отображение в ИК</td></tr>
+      <tr><td>Соответствие методик</td><td>[Как было]</td><td>Внутренняя методика (Ангарская) = методика КД</td><td>Единообразие справочников</td></tr>
+    </tbody>
+  </table>
+
+  <h4>Расшифровка обозначений контейнеров:</h4>
+  <ul>
+    <li><span class="badge badge-ce">ПФК ЭДТА</span> — пробирка фиолетовая крышка с ЭДТА.</li>
+    <li><span class="badge badge-av">ПГК цитрат</span> — пробирка голубая крышка с цитратом.</li>
+    <li><span class="badge badge-as">ПКК/ПЖК, гель</span> — пробирка красная / жёлтая крышка с активатором свёртывания, разделительный гель.</li>
+    <li><span class="badge badge-cf">ПСК ЭДТА</span> — пробирка серая крышка, фторид.</li>
+    <li><span class="badge badge-ps">ПС</span> — предметное стекло.</li>
+    <li><span class="badge badge-sk">СК</span> — стерильный контейнер.</li>
+    <li><span class="badge badge-kk">КЭ</span> — контейнер энтеробиоз.</li>
+    <li><span class="badge badge-kk">СК с ложкой</span> — стерильный контейнер с ложкой.</li>
+  </ul>
+
+  <!-- ==================== 6 ==================== -->
+  <h3>6. Действия при ошибках</h3>
+  <div class="note note-danger">
+    <strong>Внимание!</strong> Если сотрудник случайно использовал старое именование — образец <u>не отправлять</u> в лабораторию до устранения несоответствия.
+  </div>
+  <ol>
+    <li>Не отправлять образец в лабораторию.</li>
+    <li>Перемаркировать пробирку по новому шаблону (старую этикетку удалить).</li>
+    <li>Зафиксировать случай в журнале несоответствий с указанием причины.</li>
+    <li>При необходимости — уведомить куратора смены.</li>
+  </ol>
+
+  <!-- ==================== 7 ==================== -->
+  <h3>7. Ответственные лица</h3>
+  <table>
+    <thead>
+      <tr><th>Роль</th><th>Ф. И. О.</th><th>Должность</th><th>Контакты</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Куратор перехода</td><td>[Ф. И. О.]</td><td>[Должность]</td><td>[Телефон, e-mail]</td></tr>
+      <tr><td>Ответственный за обучение</td><td>[Ф. И. О.]</td><td>[Должность]</td><td>[Контакты]</td></tr>
+      <tr><td>Ответственный за аудит</td><td>[Ф. И. О.]</td><td>[Должность]</td><td>[Контакты]</td></tr>
+      <tr><td>Представитель лаборатории (РДЛ)</td><td>Луконина Оксана Николаевна</td><td>Заведующая лабораторией</td><td>+7 903 376-46-23, lukonina@rdl-lab.ru</td></tr>
+      <tr><td>Представитель IT (Инфомед сервис)</td><td>Кузнецов Владислав Викторович</td><td>Инженер по IT</td><td>kuznetsov@infomed-service.ru</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ==================== 8 ==================== -->
+  <h3>8. Приложения</h3>
+  <div class="note note-success">
+    <ol style="margin:0; padding-left:22px;">
+      <li>Образец этикетки (скриншот/макет).</li>
+      <li>Чек-лист для самопроверки перед отправкой образцов.</li>
+      <li>Список часто задаваемых вопросов (FAQ).</li>
+      <li>Выгрузка из задачи 2279 «Код услуги + методика + контейнер».</li>
+    </ol>
+  </div>
+
+  <!-- ==================== ЛИСТ ОЗНАКОМЛЕНИЯ ==================== -->
+  <h3>Лист ознакомления</h3>
+  <table class="sign-table">
+    <thead>
+      <tr><th style="width:8%">№ п/п</th><th style="width:30%">Ф. И. О. сотрудника</th><th style="width:22%">Должность</th><th style="width:18%">Дата ознакомления</th><th style="width:22%">Подпись</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>2</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>3</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>4</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>5</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>6</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>7</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>8</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>9</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>10</td><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+
+  <!-- ==================== ПАМЯТКА ==================== -->
+  <div class="memo">
+    <div class="memo-header">Памятка для процедурного кабинета</div>
+    <div class="memo-body">
+      <p class="center"><strong>ТИПЫ КОНТЕЙНЕРОВ И ИХ ОБОЗНАЧЕНИЯ НА Ш/К</strong></p>
+      <table>
+        <thead>
+          <tr><th style="width:40%">Обозначение</th><th>Что это</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="badge badge-ce">ПФК ЭДТА</span></td><td>Фиолетовая крышка, ЭДТА</td></tr>
+          <tr><td><span class="badge badge-av">ПГК цитрат</span></td><td>Голубая крышка, цитрат</td></tr>
+          <tr><td><span class="badge badge-as">ПКК/ПЖК, гель</span></td><td>Красная / жёлтая крышка, активатор свёртывания + гель</td></tr>
+          <tr><td><span class="badge badge-cf">ПСК ЭДТА</span></td><td>Серая крышка, фторид</td></tr>
+          <tr><td><span class="badge badge-ps">ПС</span></td><td>Предметное стекло</td></tr>
+          <tr><td><span class="badge badge-sk">СК</span></td><td>Стерильный контейнер</td></tr>
+          <tr><td><span class="badge badge-kk">КЭ</span></td><td>Контейнер энтеробиоз</td></tr>
+          <tr><td><span class="badge badge-kk">СК с ложкой</span></td><td>Стерильный контейнер с ложкой</td></tr>
+        </tbody>
+      </table>
+
+      <h4>Запомните:</h4>
+      <ul>
+        <li>ОАК, группа крови, ретикулоциты, СОЭ → <span class="badge badge-ce">ПФК ЭДТА</span></li>
+        <li>АЧТВ, ПВ, фибриноген, D-димер → <span class="badge badge-av">ПГК цитрат</span></li>
+        <li>Биохимия, гормоны, ПСА, АФП, РЭА, СРБ, РФ, ферритин → <span class="badge badge-as">ПКК/ПЖК, гель</span></li>
+        <li>Глюкоза → <span class="badge badge-cf">ПСК фторид</span></li>
+        <li>Цитология (стёкла) → <span class="badge badge-ps">ПС</span></li>
+        <li>Цитология (жидкости) → <span class="badge badge-sk">СК</span></li>
+        <li>Моча → <span class="badge badge-km">КМ</span></li>
+        <li>Кал, Helicobacter (антиген) → <span class="badge badge-kk">СК с ложкой</span></li>
+        <li>Энтеробиоз → <span class="badge badge-kk">КЭ</span></li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
